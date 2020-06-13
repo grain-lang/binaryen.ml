@@ -28,6 +28,6 @@
     binaryen_stubs_modules
     ocaml_helpers)
   (include_dirs binaryen/src)
-  (flags -O2 -Wall -Wextra))
+  (flags -O2 -Wall -Wextra -pthread))
  (foreign_archives binaryen)
  (c_library_flags -lstdc++))
