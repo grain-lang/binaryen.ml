@@ -11,8 +11,7 @@
     "test": "dune runtest --force"
   },
   "dependencies": {
-    "ocaml": "~4.8.0",
-    "@opam/dune": "*",
-    "@opam/ocamlfind": "*"
+    "ocaml": "~4.9.0",
+    "@opam/dune": "2.6.0"
   }
 }
