@@ -11,6 +11,8 @@ jobs:
         with:
           node-version: '14.x'
       - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
       - name: Set up runtime and CLI
         run: |
           yarn
