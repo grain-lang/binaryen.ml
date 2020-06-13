@@ -1,0 +1,42 @@
+name: Binaryen.ml CI Workflow
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - uses: actions/checkout@v2
+      - name: Set up runtime and CLI
+        run: |
+          yarn
+      - name: esy install
+        run: |
+          yarn run esy install
+      - name: Restore esy cache
+        id: restore-cache
+        uses: actions/cache@v1
+        with:
+          path: _export
+          key:  ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
+          restore-keys: |
+            ${{ runner.os }}-esy-
+      - name: Import esy cache
+        run: |
+          yarn run esy import-dependencies _export
+          rm -rf _export
+      - name: Build
+        run: |
+          yarn build
+      # Re-export dependencies if anything has changed or if it is the first time
+      - name: Build esy cache 
+        run: |
+          yarn run esy export-dependencies
+        if: steps.restore-cache.outputs.cache-hit != 'true'
+      - name: Run tests
+        run: |
+          yarn test
