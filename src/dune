@@ -1,3 +1,14 @@
+(data_only_dirs binaryen)
+(rule
+ (deps (source_tree binaryen))
+ (targets libbinaryen.a dllbinaryen.so)
+ (action
+  (no-infer
+   (progn
+    (chdir binaryen (progn (run cmake -D BUILD_STATIC_LIB=ON .) (run make)))
+    (chdir binaryen/lib (run gcc -shared -o dllbinaryen.so libbinaryen.a -lstdc++))
+    (copy binaryen/lib/libbinaryen.a libbinaryen.a)
+    (copy binaryen/lib/dllbinaryen.so dllbinaryen.so)))))
 (library
  (name binaryen)
  (public_name binaryen)
@@ -17,4 +28,5 @@
     binaryen_stubs_modules
     ocaml_helpers)
   (flags -O2 -Wall -Wextra))
- (c_library_flags -lbinaryen))
+ (foreign_archives binaryen)
+ (c_library_flags -lstdc++))

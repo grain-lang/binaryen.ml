@@ -65,9 +65,9 @@ caml_binaryen_type_funcref(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_type_anyref(value unit) {
+caml_binaryen_type_externref(value unit) {
   CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeAnyref();
+  BinaryenType ty = BinaryenTypeExternref();
   CAMLreturn(alloc_BinaryenType(ty));
 }
 

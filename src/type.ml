@@ -22,8 +22,8 @@ let vec128 = vec128 ()
 external funcref : unit -> t = "caml_binaryen_type_funcref"
 let funcref = funcref ()
 
-external anyref : unit -> t = "caml_binaryen_type_anyref"
-let anyref = anyref ()
+external externref : unit -> t = "caml_binaryen_type_externref"
+let externref = externref ()
 
 external nullref : unit -> t = "caml_binaryen_type_nullref"
 let nullref = nullref ()
