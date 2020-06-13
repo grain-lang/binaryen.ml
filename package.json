@@ -1,0 +1,19 @@
+{
+  "name": "binaryen.ml",
+  "version": "1.0.0",
+  "description": "OCaml bindings for Binaryen.",
+  "dependencies": {},
+  "devDependencies": {
+    "esy": "^0.6.4"
+  },
+  "scripts": {
+    "build": "esy",
+    "test": "esy test"
+  },
+  "keywords": [
+    "binaryen",
+    "ocaml"
+  ],
+  "author": "Oscar Spencer",
+  "license": "ISC"
+}

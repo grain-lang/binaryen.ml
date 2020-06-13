@@ -1,0 +1,10 @@
+(executable
+ (name test)
+ (libraries binaryen))
+
+(rule
+ (alias runtest)
+ (deps
+  (:< test.exe))
+ (action
+  (run %{<})))
