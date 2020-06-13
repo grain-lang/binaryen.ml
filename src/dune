@@ -15,7 +15,7 @@
  (foreign_stubs 
   (language c) 
   (names 
-    binaryen_stubs_types 
+    binaryen_stubs_types
     binaryen_stubs_ops 
     binaryen_stubs_literals
     binaryen_stubs_expressions
@@ -27,6 +27,7 @@
     binaryen_stubs_memory
     binaryen_stubs_modules
     ocaml_helpers)
+  (include_dirs binaryen/src)
   (flags -O2 -Wall -Wextra))
  (foreign_archives binaryen)
  (c_library_flags -lstdc++))
