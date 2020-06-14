@@ -1,5 +1,5 @@
 opam-version: "2.0"
-synopsis: "OCaml bindings for Binaryen."
+synopsis: "OCaml bindings for Binaryen"
 maintainer: "oscar@grain-lang.org"
 author: "Oscar Spencer"
 homepage: "https://github.com/grain-lang/binaryen.ml"
