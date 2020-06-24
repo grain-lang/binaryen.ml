@@ -1,5 +1,5 @@
 {
-  "checksum": "207a5850ca39267a1865ede16b979772",
+  "checksum": "fb5e804ab5ae93eefa9eb0d3a4c57abc",
   "root": "binaryen.ml@link-dev:./esy.json",
   "node": {
     "ocaml@4.9.1000@d41d8cd9": {
@@ -25,7 +25,7 @@
       "dependencies": [
         "ocaml@4.9.1000@d41d8cd9", "@opam/dune@opam:2.6.0@3a9808e6"
       ],
-      "devDependencies": []
+      "devDependencies": [ "@opam/conf-cmake@opam:1@75ae6bc3" ]
     },
     "@opam/ocamlfind-secondary@opam:1.8.1@1afa38b2": {
       "id": "@opam/ocamlfind-secondary@opam:1.8.1@1afa38b2",
@@ -163,6 +163,23 @@
           "name": "conf-m4",
           "version": "1",
           "path": "esy.lock/opam/conf-m4.1"
+        }
+      },
+      "overrides": [],
+      "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
+      "devDependencies": []
+    },
+    "@opam/conf-cmake@opam:1@75ae6bc3": {
+      "id": "@opam/conf-cmake@opam:1@75ae6bc3",
+      "name": "@opam/conf-cmake",
+      "version": "opam:1",
+      "source": {
+        "type": "install",
+        "source": [ "no-source:" ],
+        "opam": {
+          "name": "conf-cmake",
+          "version": "1",
+          "path": "esy.lock/opam/conf-cmake.1"
         }
       },
       "overrides": [],

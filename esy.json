@@ -13,5 +13,8 @@
   "dependencies": {
     "ocaml": "~4.9.0",
     "@opam/dune": "2.6.0"
+  },
+  "devDependencies": {
+    "@opam/conf-cmake": "*"
   }
 }
