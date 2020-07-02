@@ -25,6 +25,7 @@
     binaryen_stubs_globals
     binaryen_stubs_function_tables
     binaryen_stubs_memory
+    binaryen_stubs_features
     binaryen_stubs_modules
     ocaml_helpers)
   (include_dirs binaryen/src)

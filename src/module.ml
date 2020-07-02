@@ -14,6 +14,10 @@ external print_asmjs : t -> unit = "caml_binaryen_module_print_asmjs"
 external validate : t -> int = "caml_binaryen_module_validate"
 external optimize : t -> unit = "caml_binaryen_module_optimize"
 
+external set_features : t -> int -> unit = "caml_binaryen_module_set_features"
+let set_features wasm_mod features =
+  set_features wasm_mod (List.fold_left (lor) 0 features)
+
 external get_optimize_level : unit -> int = "caml_binaryen_get_optimize_level"
 external set_optimize_level : int -> unit = "caml_binaryen_set_optimize_level"
 external get_shrink_level : unit -> int = "caml_binaryen_get_shrink_level"
