@@ -20,16 +20,19 @@ caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _e
   for (int i = 0; i < segmentsLen; i++) {
     segments[i] = String_val(Field(_segments, i));
   }
+  _segmentPassive = array_of_list(_segmentPassive);
   int segmentPassiveLen = array_length(_segmentPassive);
   int8_t segmentPassive[segmentPassiveLen];
   for (int i = 0; i < segmentPassiveLen; i++) {
     segmentPassive[i] = Bool_val(Field(_segmentPassive, i));
   }
+  _segmentOffsets = array_of_list(_segmentOffsets);
   int segmentOffsetsLen = array_length(_segmentOffsets);
   BinaryenExpressionRef segmentOffsets[segmentOffsetsLen];
   for (int i = 0; i < segmentOffsetsLen; i++) {
     segmentOffsets[i] = BinaryenExpressionRef_val(Field(_segmentOffsets, i));
   }
+  _segmentSizes = array_of_list(_segmentSizes);
   int segmentSizesLen = array_length(_segmentSizes);
   BinaryenIndex segmentSizes[segmentSizesLen];
   for (int i = 0; i < segmentSizesLen; i++) {
