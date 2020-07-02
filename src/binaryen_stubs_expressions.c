@@ -15,6 +15,12 @@ static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
 }
 
 CAMLprim value
+caml_binaryen_null_expression(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(alloc_BinaryenExpressionRef(NULL));
+}
+
+CAMLprim value
 caml_binaryen_block(value _module, value _name, value _children) {
   CAMLparam3(_module, _name, _children);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
@@ -327,6 +333,39 @@ caml_binaryen_memory_fill(value _module, value _dest, value _val, value _size) {
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
   BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
   BinaryenExpressionRef exp = BinaryenMemoryFill(module, dest, val, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_tuple_make(value _module, value _operands) {
+  CAMLparam2(_module, _operands);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  _operands = array_of_list(_operands);
+  int operandsLen = array_length(_operands);
+  BinaryenExpressionRef operands[operandsLen];
+  for (int i = 0; i < operandsLen; i++) {
+    operands[i] = BinaryenExpressionRef_val(Field(_operands, i));
+  }
+  BinaryenExpressionRef exp = BinaryenTupleMake(module, operands, operandsLen);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_tuple_extract(value _module, value _tuple, value _index) {
+  CAMLparam3(_module, _tuple, _index);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef tuple = BinaryenExpressionRef_val(_tuple);
+  int index = Int_val(_index);
+  BinaryenExpressionRef exp = BinaryenTupleExtract(module, tuple, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_pop(value _module, value _ty) {
+  CAMLparam2(_module, _ty);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef exp = BinaryenPop(module, ty);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 

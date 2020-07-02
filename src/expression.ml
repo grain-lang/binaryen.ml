@@ -71,5 +71,17 @@ external memory_copy : Module.t -> t -> t -> t -> t = "caml_binaryen_memory_copy
 (** Module, destination, value, size. *)
 external memory_fill : Module.t -> t -> t -> t -> t = "caml_binaryen_memory_fill"
 
+(** Module, items *)
+external tuple_make : Module.t -> t list -> t = "caml_binaryen_tuple_make"
+
+(** Module, tuple, index *)
+external tuple_extract : Module.t -> t -> int -> t = "caml_binaryen_tuple_extract"
+
+(** Module, type *)
+external pop : Module.t -> Type.t -> t = "caml_binaryen_pop"
+
+(** A null reference. *)
+external null : unit -> t = "caml_binaryen_null_expression"
+
 (** Print an expression to the console. *)
 external print : t -> unit = "caml_binaryen_expression_print"
