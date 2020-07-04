@@ -11,7 +11,7 @@ CAMLprim value
 caml_binaryen_module_set_features(value _module, value _features) {
   CAMLparam2(_module, _features);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  u_int32_t features = Int_val(_features);
+  uint32_t features = Int_val(_features);
   BinaryenModuleSetFeatures(module, features);
   CAMLreturn(Val_unit);
 }
