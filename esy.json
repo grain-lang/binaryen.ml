@@ -1,6 +1,6 @@
 {
   "name": "binaryen.ml",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "esy": {
     "build": "dune build @all @install --no-buffer",
     "buildEnv": {
