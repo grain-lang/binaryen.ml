@@ -24,7 +24,7 @@ CAMLprim value
 caml_binaryen_block(value _module, value _name, value _children) {
   CAMLparam3(_module, _name, _children);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   _children = array_of_list(_children);
   int childLen = array_length(_children);
   BinaryenExpressionRef children[childLen];
@@ -50,7 +50,7 @@ CAMLprim value
 caml_binaryen_loop(value _module, value _name, value _body) {
   CAMLparam3(_module, _name, _body);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
   BinaryenExpressionRef exp = BinaryenLoop(module, name, body);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
@@ -60,7 +60,7 @@ CAMLprim value
 caml_binaryen_break(value _module, value _name, value _cond, value _res) {
   CAMLparam4(_module, _name, _cond, _res);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenExpressionRef cond = BinaryenExpressionRef_val(_cond);
   BinaryenExpressionRef res = BinaryenExpressionRef_val(_res);
   BinaryenExpressionRef exp = BinaryenBreak(module, name, cond, res);
@@ -75,9 +75,9 @@ caml_binaryen_switch(value _module, value _names, value _defaultName, value _con
   int namesLen = array_length(_names);
   const char* names[namesLen];
   for (int i = 0; i < namesLen; i++) {
-    names[i] = String_val(Field(_names, i));
+    names[i] = Safe_String_val(Field(_names, i));
   }
-  char* defaultName = String_val(_defaultName);
+  char* defaultName = Safe_String_val(_defaultName);
   BinaryenExpressionRef cond = BinaryenExpressionRef_val(_cond);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
   BinaryenExpressionRef exp = BinaryenSwitch(module, names, namesLen, defaultName, cond, val);
@@ -88,7 +88,7 @@ CAMLprim value
 caml_binaryen_call(value _module, value _name, value _params, value _retty) {
   CAMLparam4(_module, _name, _params, _retty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   _params = array_of_list(_params);
   int paramsLen = array_length(_params);
   BinaryenExpressionRef params[paramsLen];
@@ -121,7 +121,7 @@ CAMLprim value
 caml_binaryen_return_call(value _module, value _name, value _params, value _retty) {
   CAMLparam4(_module, _name, _params, _retty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   _params = array_of_list(_params);
   int paramsLen = array_length(_params);
   BinaryenExpressionRef params[paramsLen];
@@ -185,7 +185,7 @@ CAMLprim value
 caml_binaryen_global_get(value _module, value _name, value _ty) {
   CAMLparam3(_module, _name, _ty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenType ty = BinaryenType_val(_ty);
   BinaryenExpressionRef exp = BinaryenGlobalGet(module, name, ty);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
@@ -195,7 +195,7 @@ CAMLprim value
 caml_binaryen_global_set(value _module, value _name, value _val) {
   CAMLparam3(_module, _name, _val);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
   BinaryenExpressionRef exp = BinaryenGlobalSet(module, name, val);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));

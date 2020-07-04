@@ -16,7 +16,7 @@ caml_binaryen_set_function_table(value _module, value _initial, value _maximum, 
   int funcnamesLen = array_length(_funcnames);
   const char* funcnames[funcnamesLen];
   for (int i = 0; i < funcnamesLen; i++) {
-    funcnames[i] = String_val(Field(_funcnames, i));
+    funcnames[i] = Safe_String_val(Field(_funcnames, i));
   }
   BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
   BinaryenSetFunctionTable(module, initial, maximum, funcnames, funcnamesLen, offset);

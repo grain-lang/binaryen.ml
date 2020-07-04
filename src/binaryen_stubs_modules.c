@@ -32,7 +32,7 @@ caml_binaryen_module_dispose(value module) {
 CAMLprim value
 caml_binaryen_module_parse(value _text) {
   CAMLparam1(_text);
-  const char* text = String_val(_text);
+  const char* text = Safe_String_val(_text);
   BinaryenModuleRef module = BinaryenModuleParse(text);
   CAMLreturn(alloc_BinaryenModuleRef(module));
 }
@@ -128,7 +128,7 @@ caml_binaryen_set_low_memory_unused(value _level) {
 CAMLprim value
 caml_binaryen_get_pass_argument(value _name) {
   CAMLparam1(_name);
-  const char* name = String_val(_name);
+  const char* name = Safe_String_val(_name);
   const char* val = BinaryenGetPassArgument(name);
   CAMLreturn(caml_copy_string(val));
 }
@@ -136,8 +136,8 @@ caml_binaryen_get_pass_argument(value _name) {
 CAMLprim value
 caml_binaryen_set_pass_argument(value _name, value _val) {
   CAMLparam2(_name, _val);
-  const char* name = String_val(_name);
-  const char* val = String_val(_val);
+  const char* name = Safe_String_val(_name);
+  const char* val = Safe_String_val(_val);
   BinaryenSetPassArgument(name, val);
   CAMLreturn(Val_unit);
 }
@@ -195,7 +195,7 @@ caml_binaryen_module_run_passes(value _module, value _passes) {
   int passesLen = array_length(_passes);
   const char* passes[passesLen];
   for (int i = 0; i < passesLen; i++) {
-    passes[i] = String_val(Field(_passes, i));
+    passes[i] = Safe_String_val(Field(_passes, i));
   }
   BinaryenModuleRunPasses(module, passes, passesLen);
   CAMLreturn(Val_unit);
@@ -215,7 +215,7 @@ caml_binaryen_module_write(value _module, value _sourceMapUrl) {
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   const char* sourceMapUrl;
   if (Is_some(_sourceMapUrl)) {
-    sourceMapUrl = String_val(Field(_sourceMapUrl, 0));
+    sourceMapUrl = Safe_String_val(Field(_sourceMapUrl, 0));
   } else {
     sourceMapUrl = NULL;
   }
@@ -249,7 +249,7 @@ caml_binaryen_module_write_text(value _module) {
 CAMLprim value
 caml_binaryen_module_read(value _bytes) {
   CAMLparam1(_bytes);
-  char* bytes = String_val(_bytes);
+  char* bytes = Safe_String_val(_bytes);
   int length = caml_string_length(_bytes);
   BinaryenModuleRef result = BinaryenModuleRead(bytes, length);
   CAMLreturn(alloc_BinaryenModuleRef(result));
@@ -267,7 +267,7 @@ CAMLprim value
 caml_binaryen_module_add_debug_info_filename(value _module, value _filename) {
   CAMLparam2(_module, _filename);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  const char* filename = String_val(_filename);
+  const char* filename = Safe_String_val(_filename);
   int result = BinaryenModuleAddDebugInfoFileName(module, filename);
   CAMLreturn(Val_int(result));
 }
@@ -287,8 +287,8 @@ CAMLprim value
 caml_binaryen_add_custom_section(value _module, value _name, value _contents) {
   CAMLparam3(_module, _name, _contents);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  const char* name = String_val(_name);
-  const char* contents = String_val(_contents);
+  const char* name = Safe_String_val(_name);
+  const char* contents = Safe_String_val(_contents);
   int contentsLen = caml_string_length(_contents);
   BinaryenAddCustomSection(module, name, contents, contentsLen);
   CAMLreturn(Val_unit);

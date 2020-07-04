@@ -18,7 +18,7 @@ CAMLprim value
 caml_binaryen_add_global(value _module, value _name, value _ty, value _mutable_, value _init) {
   CAMLparam5(_module, _name, _ty, _mutable_, _init);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenType ty = BinaryenType_val(_ty);
   int8_t mutable_ = Bool_val(_mutable_);
   BinaryenExpressionRef init = BinaryenExpressionRef_val(_init);
@@ -30,7 +30,7 @@ CAMLprim value
 caml_binaryen_get_global(value _module, value _name) {
   CAMLparam2(_module, _name);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenGlobalRef glob = BinaryenGetGlobal(module, name);
   CAMLreturn(alloc_BinaryenGlobalRef(glob));
 }
@@ -39,7 +39,7 @@ CAMLprim value
 caml_binaryen_remove_global(value _module, value _name) {
   CAMLparam2(_module, _name);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenRemoveGlobal(module, name);
   CAMLreturn(Val_unit);
 }

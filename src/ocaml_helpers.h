@@ -6,6 +6,8 @@
 #include <caml/alloc.h>
 #include <caml/custom.h>
 
+#include <string.h>
+
 #include <binaryen-c.h>
 
 static struct custom_operations binaryen_ops;
@@ -24,6 +26,8 @@ static struct custom_operations binaryen_ops;
 #define Tag_some 0
 #define Is_none(v) ((v) == Val_none)
 #define Is_some(v) Is_block(v)
+
+#define Safe_String_val(v) strdup(String_val(v))
 
 CAMLprim value
 caml_alloc_some(value v);
