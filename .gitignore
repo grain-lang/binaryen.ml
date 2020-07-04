@@ -2,3 +2,4 @@ node_modules/
 _esy/
 .merlin
 META
+.vscode/
