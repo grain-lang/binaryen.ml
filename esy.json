@@ -1,8 +1,8 @@
 {
   "name": "binaryen.ml",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "esy": {
-    "build": "dune build @all @install",
+    "build": "dune build @all @install --no-buffer",
     "buildEnv": {
       "DUNE_BUILD_DIR": "#{self.target_dir}"
     }
@@ -11,8 +11,8 @@
     "test": "dune runtest --force"
   },
   "dependencies": {
-    "ocaml": "~4.9.0",
-    "@opam/dune": "2.6.0"
+    "ocaml": "^4.9.0",
+    "@opam/dune": "~2.6.0"
   },
   "devDependencies": {
     "@opam/conf-cmake": "*",

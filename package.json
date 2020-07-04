@@ -4,7 +4,7 @@
   "description": "OCaml bindings for Binaryen.",
   "dependencies": {},
   "devDependencies": {
-    "esy": "^0.6.4"
+    "esy": "^0.6.6"
   },
   "scripts": {
     "build": "esy",
