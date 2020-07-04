@@ -13,12 +13,12 @@ caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _e
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenIndex initial = Int_val(_initial);
   BinaryenIndex maximum = Int_val(_maximum);
-  char* exportName = String_val(_exportName);
+  char* exportName = Safe_String_val(_exportName);
   _segments = array_of_list(_segments);
   int segmentsLen = array_length(_segments);
   const char* segments[segmentsLen];
   for (int i = 0; i < segmentsLen; i++) {
-    segments[i] = String_val(Field(_segments, i));
+    segments[i] = Safe_String_val(Field(_segments, i));
   }
   _segmentPassive = array_of_list(_segmentPassive);
   int segmentPassiveLen = array_length(_segmentPassive);

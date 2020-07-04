@@ -11,9 +11,9 @@ caml_binaryen_add_function_import(value _module, value _internalName, value _ext
   CAMLparam5(_module, _internalName, _externalModuleName, _externalBaseName, _paramsty);
   CAMLxparam1(_resultsty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* internalName = String_val(_internalName);
-  char* externalModuleName = String_val(_externalModuleName);
-  char* externalBaseName = String_val(_externalBaseName);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalModuleName = Safe_String_val(_externalModuleName);
+  char* externalBaseName = Safe_String_val(_externalBaseName);
   BinaryenType paramsty = BinaryenType_val(_paramsty);
   BinaryenType resultsty = BinaryenType_val(_resultsty);
   BinaryenAddFunctionImport(module, internalName, externalModuleName, externalBaseName, paramsty, resultsty);
@@ -28,9 +28,9 @@ CAMLprim value
 caml_binaryen_add_table_import(value _module, value _internalName, value _externalModuleName, value _externalBaseName) {
   CAMLparam4(_module, _internalName, _externalModuleName, _externalBaseName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* internalName = String_val(_internalName);
-  char* externalModuleName = String_val(_externalModuleName);
-  char* externalBaseName = String_val(_externalBaseName);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalModuleName = Safe_String_val(_externalModuleName);
+  char* externalBaseName = Safe_String_val(_externalBaseName);
   BinaryenAddTableImport(module, internalName, externalModuleName, externalBaseName);
   CAMLreturn(Val_unit);
 }
@@ -39,9 +39,9 @@ CAMLprim value
 caml_binaryen_add_memory_import(value _module, value _internalName, value _externalModuleName, value _externalBaseName, value _shared) {
   CAMLparam5(_module, _internalName, _externalModuleName, _externalBaseName, _shared);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* internalName = String_val(_internalName);
-  char* externalModuleName = String_val(_externalModuleName);
-  char* externalBaseName = String_val(_externalBaseName);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalModuleName = Safe_String_val(_externalModuleName);
+  char* externalBaseName = Safe_String_val(_externalBaseName);
   uint8_t shared = Bool_val(_shared);
   BinaryenAddMemoryImport(module, internalName, externalModuleName, externalBaseName, shared);
   CAMLreturn(Val_unit);
@@ -52,9 +52,9 @@ caml_binaryen_add_global_import(value _module, value _internalName, value _exter
   CAMLparam5(_module, _internalName, _externalModuleName, _externalBaseName, _ty);
   CAMLxparam1(_mutable_);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* internalName = String_val(_internalName);
-  char* externalModuleName = String_val(_externalModuleName);
-  char* externalBaseName = String_val(_externalBaseName);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalModuleName = Safe_String_val(_externalModuleName);
+  char* externalBaseName = Safe_String_val(_externalBaseName);
   BinaryenType ty = BinaryenType_val(_ty);
   int mutable_ = Bool_val(_mutable_);
   BinaryenAddGlobalImport(module, internalName, externalModuleName, externalBaseName, ty, mutable_);

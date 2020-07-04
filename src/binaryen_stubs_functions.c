@@ -19,7 +19,7 @@ caml_binaryen_add_function(value _module, value _name, value _params, value _res
   CAMLparam5(_module, _name, _params, _results, _locals);
   CAMLxparam1(_body);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenType params = BinaryenType_val(_params);
   BinaryenType results = BinaryenType_val(_results);
   int len = array_length(_locals);
@@ -40,7 +40,7 @@ CAMLprim value
 caml_binaryen_get_function(value _module, value _name) {
   CAMLparam2(_module, _name);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenFunctionRef fun = BinaryenGetFunction(module, name);
   CAMLreturn(alloc_BinaryenFunctionRef(fun));
 }
@@ -49,7 +49,7 @@ CAMLprim value
 caml_binaryen_remove_function(value _module, value _name) {
   CAMLparam2(_module, _name);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char* name = String_val(_name);
+  char* name = Safe_String_val(_name);
   BinaryenRemoveFunction(module, name);
   CAMLreturn(Val_unit);
 }
