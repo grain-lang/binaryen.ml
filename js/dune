@@ -1,6 +1,5 @@
 (library
  (name binaryen_js)
- (package binaryen_js)
  (public_name binaryen.js)
  (implements binaryen)
  (libraries js_of_ocaml)
