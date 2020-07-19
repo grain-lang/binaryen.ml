@@ -1,10 +1,11 @@
 (executable
  (name test)
- (libraries binaryen))
+ (modes js)
+ (libraries binaryen binaryen.js))
 
 (rule
  (alias runtest)
  (deps
-  (:< test.exe))
+  (:< test.bc.js))
  (action
-  (run %{<})))
+  (run node %{<})))

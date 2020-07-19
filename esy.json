@@ -15,6 +15,9 @@
     "@opam/dune": "~2.6.1"
   },
   "devDependencies": {
+    "@opam/js_of_ocaml": ">=3.6.0",
+    "@opam/js_of_ocaml-ppx": ">=3.6.0",
+    "@opam/js_of_ocaml-compiler": ">=3.6.0",
     "@opam/conf-cmake": "*",
     "@opam/conf-python-3": "*",
     "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798"

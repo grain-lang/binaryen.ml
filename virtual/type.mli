@@ -1,4 +1,5 @@
 type t
+
 val none : t
 val int32 : t
 val int64 : t
@@ -11,4 +12,5 @@ val nullref : t
 val exnref : t
 val unreachable : t
 val auto : t
-external create : t array -> t = "caml_binaryen_type_create"
+
+val create : t array -> t
