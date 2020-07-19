@@ -20,7 +20,6 @@
 
 (library
  (name binaryen)
- (package binaryen)
  (public_name binaryen)
  (implements binaryen)
  (foreign_stubs
