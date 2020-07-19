@@ -3,7 +3,7 @@
  (modes
   (byte js))
  (modules test_js)
- (libraries binaryen binaryen.js)
+ (libraries binaryen.virtual binaryen.js)
  (js_of_ocaml
   (flags --no-sourcemap)))
 
@@ -12,7 +12,7 @@
  (modes
   (best exe))
  (modules test)
- (libraries binaryen binaryen.native)
+ (libraries binaryen.virtual binaryen)
  (action
   (run %{test})))
 
