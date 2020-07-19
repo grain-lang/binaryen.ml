@@ -19,8 +19,9 @@
     (copy binaryen/lib/dllbinaryen.so dllbinaryen.so)))))
 
 (library
- (name binaryen_native)
- (public_name binaryen.native)
+ (name binaryen)
+ (package binaryen)
+ (public_name binaryen)
  (implements binaryen)
  (foreign_stubs
   (language c)
