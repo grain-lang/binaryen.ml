@@ -21,7 +21,7 @@
 (library
  (name binaryen)
  (public_name binaryen)
- (implements binaryen)
+ (implements binaryen.virtual)
  (foreign_stubs
   (language c)
   (names binaryen_stubs_types binaryen_stubs_ops binaryen_stubs_literals
