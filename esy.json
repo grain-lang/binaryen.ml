@@ -8,6 +8,7 @@
     }
   },
   "scripts": {
+    "format": "dune build @fmt --auto-promote",
     "test": "dune runtest --force"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "@opam/js_of_ocaml-compiler": ">=3.6.0",
     "@opam/conf-cmake": "*",
     "@opam/conf-python-3": "*",
+    "@opam/ocamlformat": "*",
     "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798"
   }
 }

@@ -1,0 +1,10 @@
+(library
+ (name binaryen_js)
+ (public_name binaryen.js)
+ (implements binaryen)
+ (libraries js_of_ocaml)
+ (preprocess
+  (pps js_of_ocaml-ppx))
+ (js_of_ocaml
+  (flags --no-sourcemap)
+  (javascript_files binaryen.js)))
