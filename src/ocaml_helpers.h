@@ -27,7 +27,7 @@ static struct custom_operations binaryen_ops;
 #define Is_none(v) ((v) == Val_none)
 #define Is_some(v) Is_block(v)
 
-#define Safe_String_val(v) strdup(String_val(v))
+#define Safe_String_val(v) memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1)
 
 CAMLprim value
 caml_alloc_some(value v);
