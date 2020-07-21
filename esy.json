@@ -1,15 +1,9 @@
 {
   "name": "binaryen.ml",
   "version": "0.2.2",
-  "esy": {
-    "build": "dune build @all @install --no-buffer",
-    "buildEnv": {
-      "DUNE_BUILD_DIR": "#{self.target_dir}"
-    }
-  },
-  "scripts": {
-    "test": "dune runtest --force"
-  },
+  "description": "OCaml bindings for Binaryen.",
+  "author": "Oscar Spencer <oscar@grain-lang.org>",
+  "license": "Apache-2.0",
   "dependencies": {
     "ocaml": "^4.9.0",
     "@opam/dune": "~2.6.1"
@@ -17,6 +11,20 @@
   "devDependencies": {
     "@opam/conf-cmake": "*",
     "@opam/conf-python-3": "*",
+    "@opam/ocamlformat": "*",
     "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798"
+  },
+  "esy": {
+    "build": "dune build @all @install --no-buffer",
+    "buildEnv": {
+      "DUNE_BUILD_DIR": "#{self.target_dir}"
+    }
+  },
+  "scripts": {
+    "test": "dune runtest --force",
+    "format": "dune build @fmt --auto-promote"
+  },
+  "installConfig": {
+    "pnp": false
   }
 }

@@ -2,18 +2,20 @@
   "name": "binaryen.ml",
   "version": "0.2.2",
   "description": "OCaml bindings for Binaryen.",
+  "author": "Oscar Spencer <oscar@grain-lang.org>",
+  "license": "Apache-2.0",
   "dependencies": {},
   "devDependencies": {
     "esy": "^0.6.6"
   },
   "scripts": {
     "build": "esy",
-    "test": "esy test"
+    "build-deps": "esy build-dependencies",
+    "test": "esy test",
+    "format": "esy format"
   },
   "keywords": [
     "binaryen",
     "ocaml"
-  ],
-  "author": "Oscar Spencer",
-  "license": "Apache-2.0"
+  ]
 }
