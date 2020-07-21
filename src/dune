@@ -1,33 +1,33 @@
 (data_only_dirs binaryen)
+
 (rule
- (deps (source_tree binaryen))
+ (deps
+  (source_tree binaryen))
  (targets libbinaryen.a dllbinaryen.so)
  (action
   (no-infer
    (progn
-    (chdir binaryen (progn (run cmake -D BUILD_STATIC_LIB=ON .) (run make)))
-    (chdir binaryen/lib (run gcc -shared -o dllbinaryen.so libbinaryen.a -lstdc++))
+    (chdir
+     binaryen
+     (progn
+      (run cmake -D BUILD_STATIC_LIB=ON .)
+      (run make)))
+    (chdir
+     binaryen/lib
+     (run gcc -shared -o dllbinaryen.so libbinaryen.a -lstdc++))
     (copy binaryen/lib/libbinaryen.a libbinaryen.a)
     (copy binaryen/lib/dllbinaryen.so dllbinaryen.so)))))
+
 (library
  (name binaryen)
  (public_name binaryen)
- (foreign_stubs 
-  (language c) 
-  (names 
-    binaryen_stubs_types
-    binaryen_stubs_ops 
-    binaryen_stubs_literals
-    binaryen_stubs_expressions
-    binaryen_stubs_functions
-    binaryen_stubs_imports
-    binaryen_stubs_exports
-    binaryen_stubs_globals
-    binaryen_stubs_function_tables
-    binaryen_stubs_memory
-    binaryen_stubs_features
-    binaryen_stubs_modules
-    ocaml_helpers)
+ (foreign_stubs
+  (language c)
+  (names binaryen_stubs_types binaryen_stubs_ops binaryen_stubs_literals
+    binaryen_stubs_expressions binaryen_stubs_functions
+    binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
+    binaryen_stubs_function_tables binaryen_stubs_memory
+    binaryen_stubs_features binaryen_stubs_modules ocaml_helpers)
   (include_dirs binaryen/src)
   (flags -O2 -Wall -Wextra))
  (foreign_archives binaryen)
