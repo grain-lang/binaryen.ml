@@ -40,7 +40,8 @@
  (target test_js.ml)
  (action
   (progn
-   (copy %{dep:test.ml} %{target}))))
+   (copy %{dep:test.ml} %{target})
+   (copy test.expected test_js.expected))))
 
 (test
  (name test_js)

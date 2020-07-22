@@ -20,5 +20,3 @@ let adder = Function.add_function wasm_mod "adder" params results [||] add
 let _ = Module.print wasm_mod
 
 let _ = Module.dispose wasm_mod
-
-let _ = Printf.printf "OK!\n"
