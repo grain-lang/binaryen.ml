@@ -1,4 +1,3 @@
-OK!
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (func $adder (param $0 i32) (param $1 i32) (result i32)

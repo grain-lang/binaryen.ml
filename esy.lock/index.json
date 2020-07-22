@@ -1,5 +1,5 @@
 {
-  "checksum": "e6317ffd713abac96421a223fb5366d1",
+  "checksum": "ae69fc835c66ccd49060ec45aa231317",
   "root": "binaryen.ml@link-dev:./esy.json",
   "node": {
     "ocaml@4.10.0@d41d8cd9": {
@@ -28,6 +28,9 @@
       "devDependencies": [
         "@opam/ocamlformat@opam:0.14.2@d742ffd5",
         "@opam/ocaml-lsp-server@github:ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798@d41d8cd9",
+        "@opam/js_of_ocaml-ppx@opam:3.6.0@92f19746",
+        "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de",
+        "@opam/js_of_ocaml@opam:3.6.0@92f53867",
         "@opam/conf-python-3@opam:1.0.0@a6b2949d",
         "@opam/conf-cmake@opam:1@75ae6bc3"
       ],
@@ -396,6 +399,34 @@
         "@opam/dune@opam:2.6.1@e1bf507c"
       ]
     },
+    "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1": {
+      "id": "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1",
+      "name": "@opam/ppx_tools_versioned",
+      "version": "opam:5.4.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/md5/3e/3e809a11cae99f57c051d3d0100311f6#md5:3e809a11cae99f57c051d3d0100311f6",
+          "archive:https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.4.0.tar.gz#md5:3e809a11cae99f57c051d3d0100311f6"
+        ],
+        "opam": {
+          "name": "ppx_tools_versioned",
+          "version": "5.4.0",
+          "path": "esy.lock/opam/ppx_tools_versioned.5.4.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/dune@opam:2.6.1@e1bf507c", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.10.0@d41d8cd9",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/dune@opam:2.6.1@e1bf507c"
+      ]
+    },
     "@opam/ppx_derivers@opam:1.2.1@ecf0aa45": {
       "id": "@opam/ppx_derivers@opam:1.2.1@ecf0aa45",
       "name": "@opam/ppx_derivers",
@@ -750,6 +781,102 @@
       "devDependencies": [
         "ocaml@4.10.0@d41d8cd9", "@opam/menhirSdk@opam:20200624@2a05b5a7",
         "@opam/menhirLib@opam:20200624@8bdd2b0e",
+        "@opam/dune@opam:2.6.1@e1bf507c"
+      ]
+    },
+    "@opam/js_of_ocaml-ppx@opam:3.6.0@92f19746": {
+      "id": "@opam/js_of_ocaml-ppx@opam:3.6.0@92f19746",
+      "name": "@opam/js_of_ocaml-ppx",
+      "version": "opam:3.6.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/51/51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0",
+          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/3.6.0/js_of_ocaml-3.6.0.tbz#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0"
+        ],
+        "opam": {
+          "name": "js_of_ocaml-ppx",
+          "version": "3.6.0",
+          "path": "esy.lock/opam/js_of_ocaml-ppx.3.6.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9",
+        "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/js_of_ocaml@opam:3.6.0@92f53867",
+        "@opam/dune@opam:2.6.1@e1bf507c", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.10.0@d41d8cd9",
+        "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/js_of_ocaml@opam:3.6.0@92f53867",
+        "@opam/dune@opam:2.6.1@e1bf507c"
+      ]
+    },
+    "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de": {
+      "id": "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de",
+      "name": "@opam/js_of_ocaml-compiler",
+      "version": "opam:3.6.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/51/51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0",
+          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/3.6.0/js_of_ocaml-3.6.0.tbz#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0"
+        ],
+        "opam": {
+          "name": "js_of_ocaml-compiler",
+          "version": "3.6.0",
+          "path": "esy.lock/opam/js_of_ocaml-compiler.3.6.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/yojson@opam:1.7.0@7056d985",
+        "@opam/ocamlfind@opam:1.8.1@ff07b0f9",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/dune@opam:2.6.1@e1bf507c",
+        "@opam/cmdliner@opam:1.0.4@93208aac",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/yojson@opam:1.7.0@7056d985",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/dune@opam:2.6.1@e1bf507c",
+        "@opam/cmdliner@opam:1.0.4@93208aac"
+      ]
+    },
+    "@opam/js_of_ocaml@opam:3.6.0@92f53867": {
+      "id": "@opam/js_of_ocaml@opam:3.6.0@92f53867",
+      "name": "@opam/js_of_ocaml",
+      "version": "opam:3.6.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/sha256/51/51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0",
+          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/3.6.0/js_of_ocaml-3.6.0.tbz#sha256:51eaa89c83ef3168ef270bf7997cbc35a747936d3f51aa6fac58fb0323b4cbb0"
+        ],
+        "opam": {
+          "name": "js_of_ocaml",
+          "version": "3.6.0",
+          "path": "esy.lock/opam/js_of_ocaml.3.6.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/uchar@opam:0.0.2@c8218eea",
+        "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de",
+        "@opam/dune@opam:2.6.1@e1bf507c", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.10.0@d41d8cd9", "@opam/uchar@opam:0.0.2@c8218eea",
+        "@opam/ppx_tools_versioned@opam:5.4.0@48c10ee1",
+        "@opam/ocaml-migrate-parsetree@opam:1.7.3@dbcf3b47",
+        "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de",
         "@opam/dune@opam:2.6.1@e1bf507c"
       ]
     },

@@ -14,4 +14,7 @@ depends: [
   "dune" {>= "2.6"}
   "conf-cmake" {build}
   "conf-python-3" {build}
+  "js_of_ocaml" {>= "3.6.0"}
+  "js_of_ocaml-ppx" {>= "3.6.0"}
+  "js_of_ocaml-compiler" {>= "3.6.0"}
 ]
