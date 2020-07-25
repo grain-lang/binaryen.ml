@@ -2,6 +2,28 @@ open Js_of_ocaml
 open Js_of_ocaml.Js
 open Js_of_ocaml.Js.Unsafe
 
+let make_encoder () = new_obj global ##. TextEncoder [||]
+
+let encode encoder (value : string) =
+  meth_call encoder "encode" [| inject (string value) |]
+
+let make_decoder () = new_obj global ##. TextDecoder [||]
+
+let decode decoder u8a = to_string (meth_call decoder "decode" [| inject u8a |])
+
+(* Uint8Array/Byte utilities *)
+let u8a_to_bytes u8a =
+  let decoder = make_decoder () in
+  Bytes.of_string (decode decoder u8a)
+
+let bytes_to_u8a byts =
+  let encoder = make_encoder () in
+  encode encoder (Bytes.to_string byts)
+
+let string_to_u8a str =
+  let encoder = make_encoder () in
+  encode encoder str
+
 type t
 
 let create () = new_obj global ##. binaryen ##. Module [||]
@@ -10,9 +32,7 @@ let dispose wasm_mod = ignore (meth_call wasm_mod "dispose" [||])
 
 (* TODO: Check the unit8Array conversion *)
 let add_custom_section wasm_mod name contents =
-  let contents =
-    meth_call Typed_array.uint8Array "from" [| inject (string contents) |]
-  in
+  let contents = string_to_u8a contents in
   ignore
     (meth_call wasm_mod "addCustomSection"
        [| inject (string name); inject contents |])
@@ -88,13 +108,6 @@ let run_passes wasm_mod passes =
 
 let auto_drop wasm_mod = meth_call wasm_mod "autoDrop" [||]
 
-let uint8array_to_bytes u8a =
-  Bytes.of_string (Typed_array.String.of_uint8Array u8a)
-
-let bytes_to_uint8array byts =
-  meth_call Typed_array.uint8Array "from"
-    [| inject (string (Bytes.to_string byts)) |]
-
 (* TODO: This returns the wrong type, need to convert from `Uint8Array` to `bytes` *)
 let write wasm_mod sourcemap_url =
   match sourcemap_url with
@@ -102,10 +115,10 @@ let write wasm_mod sourcemap_url =
       let obj = meth_call wasm_mod "emitBinary" [| inject url |] in
       let binary = get obj "binary" in
       let soucemap = get obj "soureMap" in
-      (uint8array_to_bytes binary, Some soucemap)
+      (u8a_to_bytes binary, Some soucemap)
   | None ->
       let binary = meth_call wasm_mod "emitBinary" [||] in
-      (uint8array_to_bytes binary, None)
+      (u8a_to_bytes binary, None)
 
 let write_text wasm_mod =
   let text = meth_call wasm_mod "emitText" [||] in
@@ -113,7 +126,7 @@ let write_text wasm_mod =
 
 (* TODO: This doesn't handle `bytes` correctly *)
 let read byts =
-  let data = bytes_to_uint8array byts in
+  let data = bytes_to_u8a byts in
   meth_call global##.binaryen "readBinary" [| inject data |]
 
 let interpret wasm_mod = meth_call wasm_mod "interpret" [||]

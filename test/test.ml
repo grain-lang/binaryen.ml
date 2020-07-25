@@ -19,4 +19,14 @@ let adder = Function.add_function wasm_mod "adder" params results [||] add
 
 let _ = Module.print wasm_mod
 
+let byts, _ = Module.write wasm_mod None
+
+let new_mod = Module.read byts
+
+let _ = Module.validate new_mod
+
+let _ = Module.print new_mod
+
 let _ = Module.dispose wasm_mod
+
+let _ = Module.dispose new_mod
