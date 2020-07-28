@@ -4,12 +4,21 @@ let _ = Callback.register "array_length" Array.length
 
 type t
 
+type bigstring = (char, Stdlib.Bigarray.int8_unsigned_elt, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t
+
 external create : unit -> t = "caml_binaryen_module_create"
 
 external dispose : t -> unit = "caml_binaryen_module_dispose"
 
-external add_custom_section : t -> string -> string -> unit
+external add_custom_section : t -> string -> bytes -> unit
   = "caml_binaryen_add_custom_section"
+let add_custom_section wasm_mod name data =
+  let size = Stdlib.Bigarray.Array1.dim data in
+  let buf = Bytes.create size in
+  for i = 0 to size - 1 do
+    Bytes.set buf i (Stdlib.Bigarray.Array1.unsafe_get data i)
+  done;
+  add_custom_section wasm_mod name buf
 
 external parse : string -> t = "caml_binaryen_module_parse"
 
@@ -75,10 +84,25 @@ external auto_drop : t -> unit = "caml_binaryen_module_auto_drop"
 
 external write : t -> string option -> bytes * string option
   = "caml_binaryen_module_write"
+let write wasm_mod source_map =
+  let (data, source_map) = write wasm_mod source_map in
+  let size = Bytes.length data in
+  let buf = Stdlib.Bigarray.Array1.create Stdlib.Bigarray.char Stdlib.Bigarray.c_layout size in
+  for i = 0 to size - 1 do
+    buf.{i} <- Bytes.get data i
+  done;
+  (buf, source_map)
 
 external write_text : t -> string = "caml_binaryen_module_write_text"
 
 external read : bytes -> t = "caml_binaryen_module_read"
+let read data =
+  let size = Stdlib.Bigarray.Array1.dim data in
+  let buf = Bytes.create size in
+  for i = 0 to size - 1 do
+    Bytes.set buf i (Stdlib.Bigarray.Array1.unsafe_get data i)
+  done;
+  read buf
 
 external interpret : t -> unit = "caml_binaryen_module_interpret"
 

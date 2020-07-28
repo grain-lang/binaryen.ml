@@ -1,10 +1,12 @@
 type t
 
+type bigstring = (char, Stdlib.Bigarray.int8_unsigned_elt, Stdlib.Bigarray.c_layout) Stdlib.Bigarray.Array1.t
+
 val create : unit -> t
 
 val dispose : t -> unit
 
-val add_custom_section : t -> string -> string -> unit
+val add_custom_section : t -> string -> bigstring -> unit
 
 val parse : string -> t
 
@@ -54,11 +56,11 @@ val run_passes : t -> string list -> unit
 
 val auto_drop : t -> unit
 
-val write : t -> string option -> bytes * string option
+val write : t -> string option -> bigstring * string option
 
 val write_text : t -> string
 
-val read : bytes -> t
+val read : bigstring -> t
 
 val interpret : t -> unit
 
