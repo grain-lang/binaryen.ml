@@ -2,7 +2,7 @@ open Js_of_ocaml
 open Js_of_ocaml.Js
 open Js_of_ocaml.Js.Unsafe
 
-let make_encoder () = new_obj global ##. TextEncoder [||]
+let make_encoder () = new_obj global ##. TextEncoder [| inject (string "utf-16") |]
 
 let encode encoder (value : string) =
   meth_call encoder "encode" [| inject (string value) |]
