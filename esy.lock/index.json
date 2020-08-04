@@ -1,5 +1,5 @@
 {
-  "checksum": "ae69fc835c66ccd49060ec45aa231317",
+  "checksum": "4d7032dd7f0003ee0e29eabc86c2a023",
   "root": "binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.10.0@d41d8cd9": {
@@ -27,16 +27,14 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@4.10.0@d41d8cd9", "@opam/dune@opam:2.6.2@20433b4f"
+        "ocaml@4.10.0@d41d8cd9", "@opam/js_of_ocaml-ppx@opam:3.6.0@92f19746",
+        "@opam/js_of_ocaml@opam:3.6.0@92f53867",
+        "@opam/dune@opam:2.6.2@20433b4f"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.14.3@94ff52ab",
         "@opam/ocaml-lsp-server@github:ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798@d41d8cd9",
-        "@opam/js_of_ocaml-ppx@opam:3.6.0@92f19746",
-        "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de",
-        "@opam/js_of_ocaml@opam:3.6.0@92f53867",
-        "@opam/conf-python-3@opam:1.0.0@a6b2949d",
-        "@opam/conf-cmake@opam:1@75ae6bc3"
+        "@opam/js_of_ocaml-compiler@opam:3.6.0@bda9e5de"
       ],
       "installConfig": { "pnp": false }
     },
@@ -1100,23 +1098,6 @@
         "@opam/base-unix@opam:base@87d0b2eb"
       ]
     },
-    "@opam/conf-python-3@opam:1.0.0@a6b2949d": {
-      "id": "@opam/conf-python-3@opam:1.0.0@a6b2949d",
-      "name": "@opam/conf-python-3",
-      "version": "opam:1.0.0",
-      "source": {
-        "type": "install",
-        "source": [ "no-source:" ],
-        "opam": {
-          "name": "conf-python-3",
-          "version": "1.0.0",
-          "path": "esy.lock/opam/conf-python-3.1.0.0"
-        }
-      },
-      "overrides": [],
-      "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
-      "devDependencies": []
-    },
     "@opam/conf-m4@opam:1@3b2b148a": {
       "id": "@opam/conf-m4@opam:1@3b2b148a",
       "name": "@opam/conf-m4",
@@ -1128,23 +1109,6 @@
           "name": "conf-m4",
           "version": "1",
           "path": "esy.lock/opam/conf-m4.1"
-        }
-      },
-      "overrides": [],
-      "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
-      "devDependencies": []
-    },
-    "@opam/conf-cmake@opam:1@75ae6bc3": {
-      "id": "@opam/conf-cmake@opam:1@75ae6bc3",
-      "name": "@opam/conf-cmake",
-      "version": "opam:1",
-      "source": {
-        "type": "install",
-        "source": [ "no-source:" ],
-        "opam": {
-          "name": "conf-cmake",
-          "version": "1",
-          "path": "esy.lock/opam/conf-cmake.1"
         }
       },
       "overrides": [],
