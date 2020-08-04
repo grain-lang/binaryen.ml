@@ -23,11 +23,11 @@ jobs:
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 
-      # - run: opam pin add hello.dev . --no-action
-
+      # I'm not exactly sure what the `opam pin` does
       - name: Setup environment
         run: |
-          opam depext hello --yes --with-doc --with-test
+          opam pin add binaryen.dev . --no-action
+          opam depext binaryen --yes --with-doc --with-test
 
       - name: Install local dependencies
         run: |
@@ -35,7 +35,7 @@ jobs:
 
       - name: Build project
         run: |
-          opam exec -- dune build
+          opam exec -- dune build @all @install --no-buffer
 
       - name: Run tests
         run: |
