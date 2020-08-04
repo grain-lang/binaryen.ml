@@ -3,3 +3,5 @@ _esy/
 .merlin
 META
 .vscode/
+.DS_Store
+*.tar.gz
