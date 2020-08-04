@@ -1,0 +1,44 @@
+name: Binaryen.ml - opam workflow
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        ocaml-version: [4.10.0, 4.09.1]
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Setup OCaml ${{ matrix.ocaml-version }}
+        uses: avsm/setup-ocaml@v1
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+
+      # I'm not exactly sure what the `opam pin` does
+      - name: Setup environment
+        run: |
+          opam pin add binaryen.dev . --no-action
+          opam depext binaryen --yes --with-doc --with-test
+
+      - name: Install local dependencies
+        run: |
+          opam install . --deps-only --with-doc --with-test
+
+      - name: Build project
+        run: |
+          opam exec -- dune build @all @install --no-buffer
+
+      - name: Run tests
+        run: |
+          opam exec -- dune runtest --force

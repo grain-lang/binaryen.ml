@@ -1,0 +1,64 @@
+name: Binaryen.ml - esy workflow
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Setup node.js
+        uses: actions/setup-node@v2.1.0
+        with:
+          node-version: '14'
+          check-latest: true
+
+      # Install `esy` to build the project
+      # It also adds `shx` globally for cross-platform shell commands
+      - name: Setup environment
+        run: |
+          npm i -g esy
+          npm i -g shx
+
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+
+      - name: Install local dependencies
+        run: |
+          esy install
+
+      - name: Esy cache
+        id: esy-cache
+        uses: actions/cache@v2
+        with:
+          path: _export
+          key:  ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
+
+      - name: Import esy cache
+        if: steps.esy-cache.outputs.cache-hit == 'true'
+        run: |
+          esy import-dependencies _export
+          shx rm -rf _export
+
+      - name: Build project
+        run: |
+          esy build
+
+      # Re-export dependencies if anything has changed or if it is the first time
+      - name: Build esy cache
+        if: steps.esy-cache.outputs.cache-hit != 'true'
+        run: |
+          esy export-dependencies
+
+      - name: Run tests
+        run: |
+          esy test
