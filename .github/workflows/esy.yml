@@ -49,6 +49,22 @@ jobs:
           esy import-dependencies _export
           shx rm -rf _export
 
+      # Build the project in release to make sure deps are specified correctly
+      - name: Build release dependencies
+        if: steps.esy-cache.outputs.cache-hit != 'true'
+        run: |
+          esy build-dependencies --release
+
+      - name: Build project in release
+        run: |
+          esy build --release
+
+      # Then build in non-release so we can test
+      - name: Build  dependencies
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        run: |
+          esy build-dependencies
+
       - name: Build project
         run: |
           esy build
