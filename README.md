@@ -50,17 +50,16 @@ After cloning the repository, be sure to initialize the Binaryen submodule:
 git submodule update --init
 ```
 
-You'll need Node.js and `yarn` to build this project, as well as `cmake` to build Binaryen.
+You'll need Node.js and [`esy`](https://esy.sh/docs/en/getting-started.html#install-esy) to build this project, as well as `cmake` to build Binaryen.
 
 `dune` will take care of building Binaryen and compiling the C stubs, so to build the project you'll only need to run:
 
 ```bash
-yarn
-yarn build
+esy
 ```
 
 This will take a while. Once it's done, you can run the tests:
 
 ```bash
-yarn test
+esy test
 ```
