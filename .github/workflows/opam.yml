@@ -1,0 +1,42 @@
+name: Binaryen.ml - opam workflow
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        ocaml-version: [4.10.0, 4.09.1]
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
+      - name: Setup OCaml ${{ matrix.ocaml-version }}
+        uses: avsm/setup-ocaml@v1
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+
+      # - run: opam pin add hello.dev . --no-action
+
+      - name: Setup environment
+        run: |
+          opam depext hello --yes --with-doc --with-test
+
+      - name: Install local dependencies
+        run: |
+          opam install . --deps-only --with-doc --with-test
+
+      - name: Build project
+        run: |
+          opam exec -- dune build
+
+      - name: Run tests
+        run: |
+          opam exec -- dune runtest --force
