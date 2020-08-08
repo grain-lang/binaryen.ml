@@ -11,7 +11,7 @@
      binaryen
      (progn
       (run cmake -D BUILD_STATIC_LIB=ON .)
-      (run make)))
+      (run cmake --build .)))
     (copy binaryen/lib/libbinaryen.a libbinaryen.a)))))
 
 (rule
