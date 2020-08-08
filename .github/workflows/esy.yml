@@ -60,7 +60,7 @@ jobs:
           esy build --release
 
       # Then build in non-release so we can test
-      - name: Build  dependencies
+      - name: Build dependencies
         if: steps.deps-cache.outputs.cache-hit != 'true'
         run: |
           esy build-dependencies
