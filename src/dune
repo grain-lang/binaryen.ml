@@ -3,7 +3,7 @@
 (rule
  (deps
   (source_tree binaryen))
- (targets libbinaryen.a dllbinaryen.so)
+ (targets libbinaryen.a)
  (action
   (no-infer
    (progn
@@ -11,11 +11,18 @@
      binaryen
      (progn
       (run cmake -D BUILD_STATIC_LIB=ON .)
-      (run make)))
+      (run cmake --build .)))
+    (copy binaryen/lib/libbinaryen.a libbinaryen.a)))))
+
+(rule
+ (deps libbinaryen.a)
+ (targets dllbinaryen.so)
+ (action
+  (no-infer
+   (progn
     (chdir
      binaryen/lib
      (run gcc -shared -o dllbinaryen.so libbinaryen.a -lstdc++))
-    (copy binaryen/lib/libbinaryen.a libbinaryen.a)
     (copy binaryen/lib/dllbinaryen.so dllbinaryen.so)))))
 
 (library
