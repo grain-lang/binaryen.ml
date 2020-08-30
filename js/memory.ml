@@ -35,3 +35,5 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
          inject (array (Array.of_list segs));
          inject (if shared then _true else _false);
        |])
+
+let unlimited = -1

@@ -35,3 +35,5 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
   in
   set_memory wasm_mod initial maximum export_name segment_names segment_passive
     segment_offsets segment_sizes shared
+
+let unlimited = -1
