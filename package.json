@@ -6,7 +6,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ocaml": "^4.9.0",
-    "@opam/dune": "^2.6.1",
+    "@opam/fpath": "0.7.2",
+    "@opam/dune": "2.6.1",
     "@opam/js_of_ocaml": "^3.6.0",
     "@opam/js_of_ocaml-ppx": "^3.6.0",
     "esy-cmake": "esy-packages/esy-cmake#d3e4fb29ca3e01c13f62c8ca8af061ea976b6096",
@@ -15,7 +16,7 @@
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": "^3.6.0",
     "@opam/ocamlformat": "*",
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#ce1840355541ff60b999e39388835027f89d8798"
+    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam"
   },
   "esy": {
     "build": "dune build @all @install --no-buffer",
