@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": "^3.6.0",
-    "@opam/ocamlformat": "*",
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam"
+    "@opam/ocamlformat": "^0.15.0",
+    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#27e3d175bffb9beb1f18b3a48f908bab39145686"
   },
   "esy": {
     "build": "dune build @all @install --no-buffer",
