@@ -6,7 +6,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ocaml": "^4.9.0",
-    "@opam/fpath": "0.7.2",
     "@opam/dune": "2.6.1",
     "@opam/js_of_ocaml": "^3.6.0",
     "@opam/js_of_ocaml-ppx": "^3.6.0",
