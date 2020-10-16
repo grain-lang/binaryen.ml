@@ -5,3 +5,4 @@ META
 .vscode/
 .DS_Store
 *.tar.gz
+*.install
