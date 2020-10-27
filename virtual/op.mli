@@ -256,10 +256,6 @@ val gt_float64 : t
 
 val ge_float64 : t
 
-val memory_size : t
-
-val memory_grow : t
-
 val atomic_rmw_add : t
 
 val atomic_rmw_sub : t

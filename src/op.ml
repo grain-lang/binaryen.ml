@@ -537,14 +537,6 @@ external ge_float64 : unit -> t = "caml_binaryen_binaryen_ge_float64"
 
 let ge_float64 = ge_float64 ()
 
-external memory_size : unit -> t = "caml_binaryen_binaryen_memory_size"
-
-let memory_size = memory_size ()
-
-external memory_grow : unit -> t = "caml_binaryen_binaryen_memory_grow"
-
-let memory_grow = memory_grow ()
-
 external atomic_rmw_add : unit -> t = "caml_binaryen_binaryen_atomic_rmw_add"
 
 let atomic_rmw_add = atomic_rmw_add ()

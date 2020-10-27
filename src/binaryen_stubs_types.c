@@ -72,13 +72,6 @@ caml_binaryen_type_externref(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_type_nullref(value unit) {
-  CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeNullref();
-  CAMLreturn(alloc_BinaryenType(ty));
-}
-
-CAMLprim value
 caml_binaryen_type_exnref(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeExnref();

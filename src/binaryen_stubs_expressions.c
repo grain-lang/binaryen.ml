@@ -299,6 +299,23 @@ caml_binaryen_return(value _module, value _p1) {
 }
 
 CAMLprim value
+caml_binaryen_memory_size(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef exp = BinaryenMemorySize(module);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_memory_grow(value _module, value _p1) {
+  CAMLparam2(_module, _p1);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef p1 = BinaryenExpressionRef_val(_p1);
+  BinaryenExpressionRef exp = BinaryenMemoryGrow(module, p1);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_nop(value _module) {
   CAMLparam1(_module);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);

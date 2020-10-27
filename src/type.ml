@@ -32,10 +32,6 @@ external externref : unit -> t = "caml_binaryen_type_externref"
 
 let externref = externref ()
 
-external nullref : unit -> t = "caml_binaryen_type_nullref"
-
-let nullref = nullref ()
-
 external exnref : unit -> t = "caml_binaryen_type_exnref"
 
 let exnref = exnref ()
