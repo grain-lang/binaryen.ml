@@ -145,6 +145,11 @@ let drop wasm_mod value = meth_call wasm_mod "drop" [| inject value |]
 
 let return wasm_mod value = meth_call wasm_mod "return" [| inject value |]
 
+let memory_grow wasm_mod value =
+  meth_call wasm_mod "memory_grow" [| inject value |]
+
+let memory_size wasm_mod = meth_call wasm_mod "memory_size" [||]
+
 let nop wasm_mod = meth_call wasm_mod "nop" [||]
 
 let unreachable wasm_mod = meth_call wasm_mod "unreachable" [||]

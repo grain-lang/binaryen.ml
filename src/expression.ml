@@ -70,6 +70,10 @@ external drop : Module.t -> t -> t = "caml_binaryen_drop"
 
 external return : Module.t -> t -> t = "caml_binaryen_return"
 
+external memory_grow : Module.t -> t -> t = "caml_binaryen_memory_grow"
+
+external memory_size : Module.t -> t = "caml_binaryen_memory_size"
+
 external nop : Module.t -> t = "caml_binaryen_nop"
 
 external unreachable : Module.t -> t = "caml_binaryen_unreachable"

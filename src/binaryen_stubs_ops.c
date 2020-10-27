@@ -911,20 +911,6 @@ caml_binaryen_binaryen_ge_float64(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_binaryen_memory_size(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenMemorySize();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_binaryen_memory_grow(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenMemoryGrow();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_binaryen_atomic_rmw_add(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenAtomicRMWAdd();
