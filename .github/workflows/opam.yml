@@ -11,8 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        ocaml-version: [4.10.0, 4.09.1]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        ocaml-version: [4.11.1]
 
     steps:
       - name: Checkout project
@@ -21,7 +21,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
-        uses: avsm/setup-ocaml@v1
+        uses: phated/setup-ocaml@master
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 

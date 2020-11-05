@@ -2,9 +2,10 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
-#include <binaryen-c.h>
 
+#include "binaryen-c.h"
 #include "ocaml_helpers.h"
+
 
 /* Allocating an OCaml custom block to hold the given BinaryenLiteral */
 static value alloc_BinaryenLiteral(struct BinaryenLiteral op)

@@ -9,13 +9,11 @@ dev-repo: "git+https://github.com/grain-lang/binaryen.ml.git"
 bug-reports: "https://github.com/grain-lang/binaryen.ml/issues"
 build: [
   [ "dune" "subst" ] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs "--no-buffer" ]
+  [ "dune" "build" "-p" name "-j" jobs ]
 ]
 depends: [
   "ocaml" {>= "4.08"}
-  "dune" {= "2.6.1"}
-  "conf-cmake" {build}
-  "conf-python-3" {build}
+  "dune" {>= "2.7.1"}
   "js_of_ocaml" {>= "3.6.0"}
   "js_of_ocaml-ppx" {>= "3.6.0"}
   "js_of_ocaml-compiler" {>= "3.6.0"}

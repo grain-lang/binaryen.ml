@@ -10,8 +10,6 @@
 (test
  (name test_default)
  (modules test_default)
- (modes
-  (best exe))
  (libraries binaryen)
  (action
   (run %{test})))
@@ -28,8 +26,6 @@
 (test
  (name test_native)
  (modules test_native)
- (modes
-  (best exe))
  (libraries binaryen binaryen.native)
  (action
   (run %{test})))

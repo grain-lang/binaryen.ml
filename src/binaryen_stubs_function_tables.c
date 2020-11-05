@@ -2,9 +2,10 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
-#include <binaryen-c.h>
 
+#include "binaryen-c.h"
 #include "ocaml_helpers.h"
+
 
 CAMLprim value
 caml_binaryen_set_function_table(value _module, value _initial, value _maximum, value _funcnames, value _offset) {
