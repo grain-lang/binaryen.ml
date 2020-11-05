@@ -2,8 +2,8 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
-#include <binaryen-c.h>
 
+#include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
 CAMLprim value

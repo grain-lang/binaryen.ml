@@ -8,7 +8,7 @@
 
 #include <string.h>
 
-#include <binaryen-c.h>
+#include "binaryen-c.h"
 
 static struct custom_operations binaryen_ops;
 
