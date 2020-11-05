@@ -11,9 +11,9 @@ let () =
               cflags = [ "-O2"; "-Wall"; "-Wextra" ];
               libs = [ "-lstdc++"; "-lpthread" ];
             }
+        | Some "mingw64" -> default
         | Some unknown ->
-            print_endline ("We don't know how to build for platform" ^ unknown);
-            default
+            failwith ("We don't know how to build for platform: " ^ unknown)
       in
 
       C.Flags.write_sexp "c_flags.sexp" conf.cflags;

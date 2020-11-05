@@ -17,13 +17,13 @@
     "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#27e3d175bffb9beb1f18b3a48f908bab39145686"
   },
   "esy": {
-    "build": "dune build -p binaryen --no-buffer",
+    "build": "dune build -p binaryen",
     "buildEnv": {
       "DUNE_BUILD_DIR": "#{self.target_dir}"
     }
   },
   "scripts": {
-    "test": "dune runtest --force",
+    "test": "esy b dune runtest",
     "format": "dune build @fmt --auto-promote"
   },
   "installConfig": {
