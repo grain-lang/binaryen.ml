@@ -27,17 +27,8 @@
 
 (rule
  (target libbinaryen.a)
- (enabled_if
-  (<> %{system} mingw64))
  (action
   (copy ../vendor/%{system}/lib/libbinaryen.a libbinaryen.a)))
-
-(rule
- (target libbinaryen.a)
- (enabled_if
-  (= %{system} mingw64))
- (action
-  (copy ../vendor/%{system}/lib/libbinaryen.dll.a libbinaryen.a)))
 
 (rule
  (target dllbinaryen.so)
