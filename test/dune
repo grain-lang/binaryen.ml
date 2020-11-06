@@ -1,3 +1,8 @@
+(rule
+ (targets link_flags.sexp)
+ (action
+  (run ../config/link_flags.exe)))
+
 ; Tests for the default_implementation (mirrors 0.2.2 usage)
 
 (rule
@@ -11,7 +16,8 @@
  (name test_default)
  (modules test_default)
  (libraries binaryen)
- (link_flags -cc g++)
+ (link_flags
+  (:include link_flags.sexp))
  (action
   (run %{test})))
 
@@ -28,7 +34,8 @@
  (name test_native)
  (modules test_native)
  (libraries binaryen binaryen.native)
- (link_flags -cc g++)
+ (link_flags
+  (:include link_flags.sexp))
  (action
   (run %{test})))
 
