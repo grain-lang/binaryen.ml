@@ -3,7 +3,7 @@
  (public_name binaryen.native)
  (implements binaryen)
  (foreign_stubs
-  (language c)
+  (language cxx)
   (names binaryen_stubs_types binaryen_stubs_ops binaryen_stubs_literals
     binaryen_stubs_expressions binaryen_stubs_functions
     binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
