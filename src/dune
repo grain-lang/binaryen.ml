@@ -49,4 +49,4 @@
  (enabled_if
   (= %{system} mingw64))
  (action
-  (copy ../vendor/%{system}/lib/libbinaryen.dll.a dllbinaryen.dll)))
+  (copy ../vendor/%{system}/lib/libbinaryen.dll dllbinaryen.dll)))
