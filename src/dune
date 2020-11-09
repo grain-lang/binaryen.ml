@@ -1,6 +1,7 @@
 (library
  (name binaryen_native)
  (public_name binaryen.native)
+ (library_flags (-g))
  (implements binaryen)
  (foreign_stubs
   (language cxx)
