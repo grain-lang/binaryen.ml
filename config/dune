@@ -2,8 +2,3 @@
  (name discover)
  (modules discover)
  (libraries dune-configurator))
-
-(executable
- (name link_flags)
- (modules link_flags)
- (libraries dune-configurator))
