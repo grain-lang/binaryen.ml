@@ -3,7 +3,10 @@ module C = Configurator.V1
 let () =
   C.main ~name:"binaryen" (fun c ->
       let default : C.Pkg_config.package_conf =
-        { libs = []; cflags = [ "-O2"; "-Wall"; "-Wextra"; "-fPIC" ] }
+        {
+          libs = [ "-lstdc++"; "-lpthread" ];
+          cflags = [ "-O2"; "-Wall"; "-Wextra"; "-fPIC" ];
+        }
       in
       let conf =
         match C.ocaml_config_var c "system" with
