@@ -4,7 +4,7 @@ let () =
   C.main ~name:"binaryen" (fun c ->
       let default : C.Pkg_config.package_conf =
         {
-          libs = [ "-lpthread" ];
+          libs = [ "-lstdc++"; "-lpthread" ];
           cflags = [ "-O2"; "-Wall"; "-Wextra"; "-fPIC"; "-xc++" ];
         }
       in

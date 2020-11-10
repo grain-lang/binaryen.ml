@@ -5,6 +5,7 @@ on:
 
 env:
   TEMP: "C:\\Temp"
+  TMP: "C:\\Temp"
   
 jobs:
   build:
