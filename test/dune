@@ -1,5 +1,9 @@
 ; Tests for the default_implementation (mirrors 0.2.2 usage)
 
+(env
+ (test (env-vars
+  (TEMP C:\Temp))))
+
 (rule
  (target test_default.ml)
  (action
