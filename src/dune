@@ -13,7 +13,6 @@
   (flags
    (:include c_flags.sexp)))
  (foreign_archives binaryen)
- (link_flags -cc g++)
  (c_library_flags
   (:include c_library_flags.sexp)))
 

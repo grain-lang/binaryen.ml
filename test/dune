@@ -11,6 +11,7 @@
  (name test_default)
  (modules test_default)
  (libraries binaryen)
+ (link_flags -cc g++)
  (action
   (run %{test})))
 
