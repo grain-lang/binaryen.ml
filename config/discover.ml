@@ -5,7 +5,7 @@ let () =
       let default : C.Pkg_config.package_conf =
         {
           libs = [ "-lstdc++"; "-lpthread" ];
-          cflags = [ "-O2"; "-Wall"; "-Wextra"; "-fPIC"; "-xc++" ];
+          cflags = [ "-O2"; "-Wall"; "-Wextra" ];
         }
       in
       let conf =
