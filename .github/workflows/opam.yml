@@ -38,10 +38,10 @@ jobs:
       - name: Build project (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          ocaml-env exec -- dune build @all @install --no-buffer
-        env:
-          PATH: /usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH
-          OCAMLPATH: /usr/x86_64-w64-mingw32/sys-root/mingw/lib:$OCAMLPATH
+          eval $(ocaml-env cygwin)
+          echo $env:PATH
+          echo $env:OCAMLPATH
+          opam exec -- dune build @all @install --no-buffer
 
       - name: Build project (MacOS/Linux)
         if: matrix.os != 'windows-latest'
@@ -51,10 +51,10 @@ jobs:
       - name: Run tests (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          ocaml-env exec -- dune runtest --force
-        env:
-          PATH: /usr/x86_64-w64-mingw32/sys-root/mingw/bin:$PATH
-          OCAMLPATH: /usr/x86_64-w64-mingw32/sys-root/mingw/lib:$OCAMLPATH
+          eval $(ocaml-env cygwin)
+          echo $env:PATH
+          echo $env:OCAMLPATH
+          opam exec -- dune runtest --force
 
       - name: Run tests (MacOS/Linux)
         if: matrix.os != 'windows-latest'
