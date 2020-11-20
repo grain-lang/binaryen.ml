@@ -25,6 +25,17 @@ jobs:
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 
+      - name: Setup MinGW Environments (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          echo "/usr/x86_64-w64-mingw32/sys-root/mingw/bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "OCAMLPATH=/usr/x86_64-w64-mingw32/sys-root/mingw/lib;$OCAMLPATH" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Debug
+        run: |
+          echo $PATH
+          echo $OCAMLPATH
+
       # I'm not exactly sure what the `opam pin` does
       - name: Setup environment
         run: |
@@ -35,22 +46,10 @@ jobs:
         run: |
           opam install . --deps-only --with-doc --with-test
 
-      - name: Build project (Windows)
-        if: matrix.os == 'windows-latest'
+      - name: Build project
         run: |
-          ocaml-env exec -- dune build @all @install --no-buffer
+          ocaml exec -- dune build @all @install --no-buffer
 
-      - name: Build project (MacOS/Linux)
-        if: matrix.os != 'windows-latest'
-        run: |
-          opam exec -- dune build @all @install --no-buffer
-
-      - name: Run tests (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          ocaml-env exec -- dune runtest --force
-
-      - name: Run tests (MacOS/Linux)
-        if: matrix.os != 'windows-latest'
+      - name: Run tests
         run: |
           opam exec -- dune runtest --force
