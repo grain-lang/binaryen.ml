@@ -14,12 +14,24 @@
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": "^3.6.0",
     "@opam/ocamlformat": "^0.15.0",
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#27e3d175bffb9beb1f18b3a48f908bab39145686"
+    "@opam/ocaml-lsp-server": "^1.1.0"
   },
   "esy": {
     "build": "dune build -p binaryen",
     "buildEnv": {
-      "DUNE_BUILD_DIR": "#{self.target_dir}"
+      "DUNE_BUILD_DIR": "#{self.target_dir}",
+      "PATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }",
+      "OCAMLPATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/lib' : '' : $OCAMLPATH }"
+    },
+    "exportedEnv": {
+      "PATH": {
+        "val": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }",
+        "scope": "global"
+      },
+      "OCAMLPATH": {
+        "val": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/lib' : '' : $OCAMLPATH }",
+        "scope": "global"
+      }
     }
   },
   "scripts": {
