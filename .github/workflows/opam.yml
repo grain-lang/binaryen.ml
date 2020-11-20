@@ -35,10 +35,22 @@ jobs:
         run: |
           opam install . --deps-only --with-doc --with-test
 
-      - name: Build project
+      - name: Build project (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          ocaml-env exec -- dune build @all @install --no-buffer
+
+      - name: Build project (MacOS/Linux)
+        if: matrix.os != 'windows-latest'
         run: |
           opam exec -- dune build @all @install --no-buffer
 
-      - name: Run tests
+      - name: Run tests (Windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          ocaml-env exec -- dune runtest --force
+
+      - name: Run tests (MacOS/Linux)
+        if: matrix.os != 'windows-latest'
         run: |
           opam exec -- dune runtest --force
