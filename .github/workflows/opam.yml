@@ -29,6 +29,8 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: |
           Invoke-Expression "$env:CYGWIN_ROOT\setup-x86_64.exe  --quiet-mode --root $env:CYGWIN_ROOT --site $env:CYGWIN_MIRROR --packages $env:CYGWIN_PACKAGES --no-desktop --no-startmenu --no-shortcuts"
+          echo "$env:CYGWIN_ROOT\usr\x86_64-w64-mingw32\sys-root\mingw\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "OCAMLPATH=$env:CYGWIN_ROOT\usr\x86_64-w64-mingw32\sys-root\mingw\lib" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
         env:
           CYGWIN_ROOT: "C:\\cygwin"
           CYGWIN_MIRROR: "http://cygwin.mirror.constant.com"
@@ -50,9 +52,6 @@ jobs:
           opam exec -- echo $env:PATH
           opam exec -- echo $env:OCAMLPATH
           opam exec -- dune build @all @install --no-buffer
-        env:
-          PATH: "C:\\cygwin\\usr\\x86_64-w64-mingw32\\sys-root\\mingw\\bin;$env:PATH"
-          OCAMLPATH: "C:\\cygwin\\usr\\x86_64-w64-mingw32\\sys-root\\mingw\\lib;$env:OCAMLPATH"
 
       - name: Build project (MacOS/Linux)
         if: matrix.os != 'windows-latest'
@@ -65,9 +64,6 @@ jobs:
           opam exec -- echo $env:PATH
           opam exec -- echo $env:OCAMLPATH
           opam exec -- dune runtest --force
-        env:
-          PATH: "C:\\cygwin\\usr\\x86_64-w64-mingw32\\sys-root\\mingw\\bin;$env:PATH"
-          OCAMLPATH: "C:\\cygwin\\usr\\x86_64-w64-mingw32\\sys-root\\mingw\\lib;$env:OCAMLPATH"
 
       - name: Run tests (MacOS/Linux)
         if: matrix.os != 'windows-latest'
