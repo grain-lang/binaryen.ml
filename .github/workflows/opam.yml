@@ -25,7 +25,13 @@ jobs:
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 
-      - name: Setup additional tools (Windows)
+      # I'm not exactly sure what the `opam pin` does
+      - name: Setup environment
+        run: |
+          opam pin add binaryen.dev . --no-action
+          opam depext binaryen --yes --with-doc --with-test
+
+      - name: (Windows) Setup additional tools & environment
         if: matrix.os == 'windows-latest'
         run: |
           Invoke-Expression "$env:CYGWIN_ROOT\setup-x86_64.exe  --quiet-mode --root $env:CYGWIN_ROOT --site $env:CYGWIN_MIRROR --packages $env:CYGWIN_PACKAGES --no-desktop --no-startmenu --no-shortcuts"
@@ -36,36 +42,14 @@ jobs:
           CYGWIN_MIRROR: "http://cygwin.mirror.constant.com"
           CYGWIN_PACKAGES: "mingw64-x86_64-gcc-g++,mingw64-x86_64-headers,mingw64-x86_64-runtime,mingw64-x86_64-winpthreads"
 
-      # I'm not exactly sure what the `opam pin` does
-      - name: Setup environment
-        run: |
-          opam pin add binaryen.dev . --no-action
-          opam depext binaryen --yes --with-doc --with-test
-
       - name: Install local dependencies
         run: |
           opam install . --deps-only --with-doc --with-test
 
-      - name: Build project (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          opam exec -- echo $env:PATH
-          opam exec -- echo $env:OCAMLPATH
-          opam exec -- dune build @all @install --no-buffer
-
-      - name: Build project (MacOS/Linux)
-        if: matrix.os != 'windows-latest'
+      - name: Build project
         run: |
           opam exec -- dune build @all @install --no-buffer
 
-      - name: Run tests (Windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          opam exec -- echo $env:PATH
-          opam exec -- echo $env:OCAMLPATH
-          opam exec -- dune runtest --force
-
-      - name: Run tests (MacOS/Linux)
-        if: matrix.os != 'windows-latest'
+      - name: Run tests
         run: |
           opam exec -- dune runtest --force
