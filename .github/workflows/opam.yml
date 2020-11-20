@@ -38,9 +38,8 @@ jobs:
       - name: Build project (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          eval $(ocaml-env cygwin)
-          echo $env:PATH
-          echo $env:OCAMLPATH
+          opam exec -- echo $env:PATH
+          opam exec -- echo $env:OCAMLPATH
           opam exec -- dune build @all @install --no-buffer
 
       - name: Build project (MacOS/Linux)
@@ -51,9 +50,8 @@ jobs:
       - name: Run tests (Windows)
         if: matrix.os == 'windows-latest'
         run: |
-          eval $(ocaml-env cygwin)
-          echo $env:PATH
-          echo $env:OCAMLPATH
+          opam exec -- echo $env:PATH
+          opam exec -- echo $env:OCAMLPATH
           opam exec -- dune runtest --force
 
       - name: Run tests (MacOS/Linux)
