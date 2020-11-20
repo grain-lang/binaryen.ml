@@ -48,7 +48,7 @@ jobs:
 
       - name: Build project
         run: |
-          ocaml exec -- dune build @all @install --no-buffer
+          opam exec -- dune build @all @install --no-buffer
 
       - name: Run tests
         run: |
