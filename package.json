@@ -20,16 +20,11 @@
     "build": "dune build -p binaryen",
     "buildEnv": {
       "DUNE_BUILD_DIR": "#{self.target_dir}",
-      "PATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }",
-      "OCAMLPATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/lib' : '' : $OCAMLPATH }"
+      "PATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }"
     },
     "exportedEnv": {
       "PATH": {
         "val": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }",
-        "scope": "global"
-      },
-      "OCAMLPATH": {
-        "val": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/lib' : '' : $OCAMLPATH }",
         "scope": "global"
       }
     }
