@@ -34,13 +34,8 @@ jobs:
       - name: (Windows) Setup additional tools & environment
         if: matrix.os == 'windows-latest'
         run: |
-          Invoke-Expression "$env:CYGWIN_ROOT\setup-x86_64.exe  --quiet-mode --root $env:CYGWIN_ROOT --site $env:CYGWIN_MIRROR --packages $env:CYGWIN_PACKAGES --no-desktop --no-startmenu --no-shortcuts"
-          echo "$env:CYGWIN_ROOT\usr\x86_64-w64-mingw32\sys-root\mingw\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          echo "OCAMLPATH=$env:CYGWIN_ROOT\usr\x86_64-w64-mingw32\sys-root\mingw\lib" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-        env:
-          CYGWIN_ROOT: "C:\\cygwin"
-          CYGWIN_MIRROR: "http://cygwin.mirror.constant.com"
-          CYGWIN_PACKAGES: "mingw64-x86_64-gcc-g++,mingw64-x86_64-headers,mingw64-x86_64-runtime,mingw64-x86_64-winpthreads"
+          Invoke-Expression "C:\cygwin\setup-x86_64.exe  --quiet-mode --root C:\cygwin --site http://cygwin.mirror.constant.com --packages mingw64-x86_64-gcc-g++,mingw64-x86_64-headers,mingw64-x86_64-runtime,mingw64-x86_64-winpthreads --no-desktop --no-startmenu --no-shortcuts --verbose"
+          echo "C:\cygwin\usr\x86_64-w64-mingw32\sys-root\mingw\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Install local dependencies
         run: |
