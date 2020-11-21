@@ -14,11 +14,6 @@
  (c_library_flags -lstdc++ -lpthread))
 
 (rule
- (targets c_flags.sexp c_library_flags.sexp)
- (action
-  (run ../config/discover.exe)))
-
-(rule
  (target binaryen-c.h)
  (action
   (copy ../vendor/%{system}/include/binaryen-c.h binaryen-c.h)))
