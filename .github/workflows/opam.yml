@@ -31,12 +31,6 @@ jobs:
           opam pin add binaryen.dev . --no-action
           opam depext binaryen --yes --with-doc --with-test
 
-      - name: Windows debug
-        if: matrix.os == 'windows-latest'
-        run: |
-          opam exec -- echo $env:PATH
-          ls c:\cygwin\usr\x86_64-w64-mingw32\sys-root\mingw\bin
-
       - name: Install local dependencies
         run: |
           opam install . --deps-only --with-doc --with-test
