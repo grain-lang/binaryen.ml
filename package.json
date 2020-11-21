@@ -11,6 +11,7 @@
     "@opam/js_of_ocaml-ppx": "^3.6.0"
   },
   "devDependencies": {
+    "@grain/js-stub": "^1.0.0",
     "@opam/js_of_ocaml-compiler": "^3.6.0",
     "@opam/ocamlformat": "^0.15.0",
     "@opam/ocaml-lsp-server": "^1.1.0"

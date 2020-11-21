@@ -1,5 +1,5 @@
 {
-  "checksum": "3b0f77da6026c615c6e76750400012d9",
+  "checksum": "29d5db78bd1e28cdf96673533f6d1d07",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.11.1000@d41d8cd9": {
@@ -512,7 +512,7 @@
         "@opam/odoc@opam:1.5.2@236518eb",
         "@opam/menhir@opam:20200624@8629ff13",
         "@opam/fpath@opam:0.7.3@674d8125",
-        "@opam/fix@opam:20200131@0ecd2f01", "@opam/dune@opam:2.7.1@f5f493bc",
+        "@opam/fix@opam:20201120@5c318621", "@opam/dune@opam:2.7.1@f5f493bc",
         "@opam/cmdliner@opam:1.0.4@93208aac",
         "@opam/base-unix@opam:base@87d0b2eb",
         "@opam/base@opam:v0.14.0@8bc55fce",
@@ -526,7 +526,7 @@
         "@opam/odoc@opam:1.5.2@236518eb",
         "@opam/menhir@opam:20200624@8629ff13",
         "@opam/fpath@opam:0.7.3@674d8125",
-        "@opam/fix@opam:20200131@0ecd2f01", "@opam/dune@opam:2.7.1@f5f493bc",
+        "@opam/fix@opam:20201120@5c318621", "@opam/dune@opam:2.7.1@f5f493bc",
         "@opam/cmdliner@opam:1.0.4@93208aac",
         "@opam/base-unix@opam:base@87d0b2eb",
         "@opam/base@opam:v0.14.0@8bc55fce"
@@ -876,20 +876,20 @@
         "ocaml@4.11.1000@d41d8cd9", "@opam/astring@opam:0.8.5@1300cee8"
       ]
     },
-    "@opam/fix@opam:20200131@0ecd2f01": {
-      "id": "@opam/fix@opam:20200131@0ecd2f01",
+    "@opam/fix@opam:20201120@5c318621": {
+      "id": "@opam/fix@opam:20201120@5c318621",
       "name": "@opam/fix",
-      "version": "opam:20200131",
+      "version": "opam:20201120",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/md5/99/991ff031666c662eaab638d2e0f4ac1d#md5:991ff031666c662eaab638d2e0f4ac1d",
-          "archive:https://gitlab.inria.fr/fpottier/fix/repository/20200131/archive.tar.gz#md5:991ff031666c662eaab638d2e0f4ac1d"
+          "archive:https://opam.ocaml.org/cache/md5/7e/7eb570b759635fe66f3556d2b1cc88e3#md5:7eb570b759635fe66f3556d2b1cc88e3",
+          "archive:https://gitlab.inria.fr/fpottier/fix/repository/20201120/archive.tar.gz#md5:7eb570b759635fe66f3556d2b1cc88e3"
         ],
         "opam": {
           "name": "fix",
-          "version": "20200131",
-          "path": "esy.lock/opam/fix.20200131"
+          "version": "20201120",
+          "path": "esy.lock/opam/fix.20201120"
         }
       },
       "overrides": [],
@@ -1251,6 +1251,20 @@
       ],
       "devDependencies": [ "ocaml@4.11.1000@d41d8cd9" ]
     },
+    "@grain/js-stub@1.0.0@d41d8cd9": {
+      "id": "@grain/js-stub@1.0.0@d41d8cd9",
+      "name": "@grain/js-stub",
+      "version": "1.0.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://registry.npmjs.org/@grain/js-stub/-/js-stub-1.0.0.tgz#sha1:30867ef2494141c6365ac0bb18539a92d210a05b"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [],
+      "devDependencies": []
+    },
     "@grain/binaryen.ml@link-dev:./package.json": {
       "id": "@grain/binaryen.ml@link-dev:./package.json",
       "name": "@grain/binaryen.ml",
@@ -1270,7 +1284,8 @@
       "devDependencies": [
         "@opam/ocamlformat@opam:0.15.1@cbc67b21",
         "@opam/ocaml-lsp-server@opam:1.2.0@581525b2",
-        "@opam/js_of_ocaml-compiler@opam:3.8.0@0b5efb6b"
+        "@opam/js_of_ocaml-compiler@opam:3.8.0@0b5efb6b",
+        "@grain/js-stub@1.0.0@d41d8cd9"
       ],
       "installConfig": { "pnp": false }
     },
