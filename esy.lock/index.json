@@ -1286,8 +1286,7 @@
         "@opam/ocaml-lsp-server@opam:1.2.0@581525b2",
         "@opam/js_of_ocaml-compiler@opam:3.8.0@0b5efb6b",
         "@grain/js-stub@1.0.0@d41d8cd9"
-      ],
-      "installConfig": { "pnp": false }
+      ]
     },
     "@esy-ocaml/substs@0.0.1@d41d8cd9": {
       "id": "@esy-ocaml/substs@0.0.1@d41d8cd9",

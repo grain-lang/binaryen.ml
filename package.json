@@ -33,9 +33,6 @@
     "test": "esy b dune runtest",
     "format": "dune build @fmt --auto-promote"
   },
-  "installConfig": {
-    "pnp": false
-  },
   "keywords": [
     "binaryen",
     "ocaml"
