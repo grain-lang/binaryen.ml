@@ -41,6 +41,8 @@
 
 (test
  (name test_js)
+ (enabled_if
+  (<> %{system} mingw64))
  (modules test_js)
  (modes
   (byte js))
