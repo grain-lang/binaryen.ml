@@ -8,9 +8,18 @@
 
 #include <string.h>
 
-#include <binaryen-c.h>
+#include "binaryen-c.h"
 
-static struct custom_operations binaryen_ops;
+static struct custom_operations binaryen_ops = {
+  "com.binaryen.caml",
+  custom_finalize_default,
+  custom_compare_default,
+  custom_hash_default,
+  custom_serialize_default,
+  custom_deserialize_default,
+  custom_compare_ext_default,
+  custom_fixed_length_default
+};
 
 #define BinaryenModuleRef_val(v) (*((BinaryenModuleRef*) Data_custom_val(v)))
 #define BinaryenType_val(v) (*((BinaryenType*) Data_custom_val(v)))
@@ -27,7 +36,7 @@ static struct custom_operations binaryen_ops;
 #define Is_none(v) ((v) == Val_none)
 #define Is_some(v) Is_block(v)
 
-#define Safe_String_val(v) memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1)
+#define Safe_String_val(v) ((char *)memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1))
 
 CAMLprim value
 caml_alloc_some(value v);

@@ -2,9 +2,10 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
-#include <binaryen-c.h>
 
+#include "binaryen-c.h"
 #include "ocaml_helpers.h"
+
 
 CAMLprim value
 caml_binaryen_add_function_import(value _module, value _internalName, value _externalModuleName, value _externalBaseName, value _paramsty, value _resultsty) {

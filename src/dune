@@ -1,30 +1,3 @@
-(data_only_dirs binaryen)
-
-(rule
- (deps
-  (source_tree binaryen))
- (targets libbinaryen.a)
- (action
-  (no-infer
-   (progn
-    (chdir
-     binaryen
-     (progn
-      (run cmake -D BUILD_STATIC_LIB=ON .)
-      (run cmake --build .)))
-    (copy binaryen/lib/libbinaryen.a libbinaryen.a)))))
-
-(rule
- (deps libbinaryen.a)
- (targets dllbinaryen.so)
- (action
-  (no-infer
-   (progn
-    (chdir
-     binaryen/lib
-     (run gcc -shared -o dllbinaryen.so libbinaryen.a -lstdc++))
-    (copy binaryen/lib/dllbinaryen.so dllbinaryen.so)))))
-
 (library
  (name binaryen_native)
  (public_name binaryen.native)
@@ -36,7 +9,37 @@
     binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
     binaryen_stubs_function_tables binaryen_stubs_memory
     binaryen_stubs_features binaryen_stubs_modules ocaml_helpers)
-  (include_dirs binaryen/src)
   (flags -O2 -Wall -Wextra))
  (foreign_archives binaryen)
  (c_library_flags -lstdc++ -lpthread))
+
+(rule
+ (target binaryen-c.h)
+ (action
+  (copy ../vendor/binaryen-c.h binaryen-c.h)))
+
+(rule
+ (target libbinaryen.a)
+ (action
+  (copy ../vendor/%{system}/libbinaryen.a libbinaryen.a)))
+
+(rule
+ (target dllbinaryen.so)
+ (enabled_if
+  (= %{system} macosx))
+ (action
+  (copy ../vendor/%{system}/libbinaryen.dylib dllbinaryen.so)))
+
+(rule
+ (target dllbinaryen.so)
+ (enabled_if
+  (= %{system} linux))
+ (action
+  (copy ../vendor/%{system}/libbinaryen.so dllbinaryen.so)))
+
+(rule
+ (target dllbinaryen.dll)
+ (enabled_if
+  (= %{system} mingw64))
+ (action
+  (copy ../vendor/%{system}/libbinaryen.dll dllbinaryen.dll)))

@@ -2,9 +2,10 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
-#include <binaryen-c.h>
 
+#include "binaryen-c.h"
 #include "ocaml_helpers.h"
+
 
 CAMLprim value
 caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _exportName, value _segments, value _segmentPassive, value _segmentOffsets, value _segmentSizes, value _shared) {

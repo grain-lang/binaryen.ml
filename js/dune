@@ -7,4 +7,9 @@
   (pps js_of_ocaml-ppx))
  (js_of_ocaml
   (flags --no-sourcemap)
-  (javascript_files binaryen.js/index.js postlude.js)))
+  (javascript_files binaryen.js postlude.js)))
+
+(rule
+ (target binaryen.js)
+ (action
+  (copy ../vendor/js/index.js binaryen.js)))

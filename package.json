@@ -8,23 +8,28 @@
     "ocaml": "^4.9.0",
     "@opam/dune": "^2.7.1",
     "@opam/js_of_ocaml": "^3.6.0",
-    "@opam/js_of_ocaml-ppx": "^3.6.0",
-    "esy-cmake": "esy-packages/esy-cmake#d3e4fb29ca3e01c13f62c8ca8af061ea976b6096",
-    "esy-python": "esy-packages/esy-python#53918f6447633d149ca59329474714c50bf729c4"
+    "@opam/js_of_ocaml-ppx": "^3.6.0"
   },
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": "^3.6.0",
     "@opam/ocamlformat": "^0.15.0",
-    "@opam/ocaml-lsp-server": "ocaml/ocaml-lsp:ocaml-lsp-server.opam#27e3d175bffb9beb1f18b3a48f908bab39145686"
+    "@opam/ocaml-lsp-server": "^1.1.0"
   },
   "esy": {
-    "build": "dune build -p binaryen --no-buffer",
+    "build": "dune build -p binaryen",
     "buildEnv": {
-      "DUNE_BUILD_DIR": "#{self.target_dir}"
+      "DUNE_BUILD_DIR": "#{self.target_dir}",
+      "PATH": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }"
+    },
+    "exportedEnv": {
+      "PATH": {
+        "val": "#{os == 'windows' ? '/usr/x86_64-w64-mingw32/sys-root/mingw/bin' : '' : $PATH }",
+        "scope": "global"
+      }
     }
   },
   "scripts": {
-    "test": "dune runtest --force",
+    "test": "esy b dune runtest",
     "format": "dune build @fmt --auto-promote"
   },
   "installConfig": {
