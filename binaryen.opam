@@ -1,5 +1,5 @@
 opam-version: "2.0"
-version: "0.3.0"
+version: "0.4.0"
 synopsis: "OCaml bindings for Binaryen"
 maintainer: "oscar@grain-lang.org"
 author: "Oscar Spencer"
@@ -12,7 +12,7 @@ build: [
   [ "dune" "build" "-p" name "-j" jobs ]
 ]
 depends: [
-  "ocaml" {>= "4.08"}
+  "ocaml" {>= "4.09"}
   "dune" {>= "2.7.1"}
   "js_of_ocaml" {>= "3.6.0"}
   "js_of_ocaml-ppx" {>= "3.6.0"}
