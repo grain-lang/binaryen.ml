@@ -42,6 +42,22 @@ This project aims to provide full feature parity with the [Binaryen C API](https
 
 None of these are particularly challenging to create bindings for—they just haven't been written yet. If you need anything that's missing, feel free to open a PR.
 
+## Static Linking
+
+If you are planning to create portable binaries for Windows, it will try to find Cygwin/MinGW locations in your `PATH`. To avoid this, you probably want to add this to your `(executable)` stanzas:
+
+```diff
+ (executable
+  (name example)
+  (public_name example)
+  (package example)
++ (flags (:standard -ccopt -- -ccopt -static))
+  (modules example)
+  (libraries binaryen))
+```
+
+These flags might not work on other operating systems (like MacOS), so you'll probably need to use `dune-configurator` to vary the flags per platform.
+
 ## Contributing
 
 After cloning the repository, be sure to initialize the Binaryen submodule:
