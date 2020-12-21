@@ -21,7 +21,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
-        uses: phated/setup-ocaml@master
+        uses: avsm/setup-ocaml@v1
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 
