@@ -1,6 +1,6 @@
 {
   "name": "@grain/binaryen.ml",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "OCaml bindings for Binaryen.",
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
