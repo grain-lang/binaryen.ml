@@ -39,11 +39,6 @@ jobs:
           mkdir -p  ~/.opam/plugins/opam-publish/
           echo -n ${{ secrets.OPAM_RELEASE }} > ~/.opam/plugins/opam-publish/binaryen.token
 
-      # This is the only way to make opam publish "headless" currently
-      - name: Remove xdg-open
-        run: |
-          sudo rm $(which xdg-open)
-
       - name: Generate CHANGES file
         run: |
           echo -n "${{ github.event.release.body }}" > CHANGES.md
@@ -59,4 +54,4 @@ jobs:
 
       - name: Publish to opam
         run: |
-          opam publish --msg-file=CHANGES.md ${{ github.event.release.assets[0].browser_download_url }}
+          opam publish --no-browser --msg-file=CHANGES.md ${{ github.event.release.assets[0].browser_download_url }}
