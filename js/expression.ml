@@ -3,12 +3,12 @@ open Js_of_ocaml.Js.Unsafe
 
 type t = int
 
-let block wasm_mod name children =
+let block ?(return_type=Type.auto) wasm_mod name children =
   meth_call wasm_mod "block"
     [|
       inject (string name);
       inject (array (Array.of_list children));
-      inject Type.auto;
+      inject return_type;
     |]
 
 let if_ wasm_mod cond if_true if_false =

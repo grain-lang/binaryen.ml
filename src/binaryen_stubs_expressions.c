@@ -22,8 +22,8 @@ caml_binaryen_null_expression(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_block(value _module, value _name, value _children) {
-  CAMLparam3(_module, _name, _children);
+caml_binaryen_block(value _module, value _name, value _children, value _ty) {
+  CAMLparam4(_module, _name, _children, _ty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   char* name = Safe_String_val(_name);
   _children = array_of_list(_children);
@@ -32,7 +32,8 @@ caml_binaryen_block(value _module, value _name, value _children) {
   for (int i = 0; i < childLen; i++) {
     children[i] = BinaryenExpressionRef_val(Field(_children, i));
   }
-  BinaryenExpressionRef block = BinaryenBlock(module, name, children, childLen, BinaryenTypeAuto());
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef block = BinaryenBlock(module, name, children, childLen, ty);
   CAMLreturn(alloc_BinaryenExpressionRef(block));
 }
 

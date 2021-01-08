@@ -1,6 +1,6 @@
 type t
 
-val block : Module.t -> string -> t list -> t
+val block : ?return_type:Type.t -> Module.t -> string -> t list -> t
 
 val if_ : Module.t -> t -> t -> t -> t
 

@@ -1,6 +1,8 @@
 type t
 
-external block : Module.t -> string -> t list -> t = "caml_binaryen_block"
+external block : Module.t -> string -> t list -> Type.t -> t = "caml_binaryen_block"
+let block ?(return_type=Type.auto) wasm_mod name exprs =
+  block wasm_mod name exprs return_type
 (** Module, block name, expression list. *)
 
 external if_ : Module.t -> t -> t -> t -> t = "caml_binaryen_if"
