@@ -65,7 +65,9 @@ external unary : Module.t -> Op.t -> t -> t = "caml_binaryen_unary"
 
 external binary : Module.t -> Op.t -> t -> t -> t = "caml_binaryen_binary"
 
-external select : Module.t -> t -> t -> t -> t = "caml_binaryen_select"
+external select : Module.t -> t -> t -> t -> Type.t -> t = "caml_binaryen_select"
+let select wasm_mod cond tru fals =
+  select wasm_mod cond tru fals Type.auto
 (** Module, condition, true branch, false branch. *)
 
 external drop : Module.t -> t -> t = "caml_binaryen_drop"
