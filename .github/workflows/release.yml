@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: ocaml
-          package-name: release-please-action
+          package-name: "@grain/binaryen.ml"
 
   add-archive:
     needs: release-please
