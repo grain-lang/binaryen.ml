@@ -7,17 +7,20 @@ let params = Type.create [| Type.int32; Type.int32 |]
 
 let results = Type.int32
 
-(* Get arguments 0 and 1, add them *)
-let x = Expression.local_get wasm_mod 0 Type.int32
+let x () = Expression.local_get wasm_mod 0 Type.int32
 
-let y = Expression.local_get wasm_mod 1 Type.int32
+let y () = Expression.local_get wasm_mod 1 Type.int32
 
-let select = Expression.select wasm_mod (Expression.const wasm_mod (Literal.int32 1l)) x y
+let load = Expression.load wasm_mod 1 ~signed:true 0 0 Type.int32 (y ())
 
-let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [Expression.binary wasm_mod Op.add_int32 select y]
+let select = Expression.select wasm_mod (Expression.const wasm_mod (Literal.int32 1l)) (x ()) load
+
+let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [Expression.binary wasm_mod Op.add_int32 select (y ())]
 
 (* Create the add function *)
 let adder = Function.add_function wasm_mod "adder" params results [||] add
+
+let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [] false
 
 let _ = Module.print wasm_mod
 
