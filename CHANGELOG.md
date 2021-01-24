@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.5.0...v0.6.0) (2021-01-24)
+
+
+### Features
+
+* Allow signed narrow-width loads ([#62](https://www.github.com/grain-lang/binaryen.ml/issues/62)) ([6448aeb](https://www.github.com/grain-lang/binaryen.ml/commit/6448aeb4ae00a07c98b0386fc1a82f6b653ac2c0))
+
 ## [0.5.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.4.0...v0.5.0) (2021-01-12)
 
 
