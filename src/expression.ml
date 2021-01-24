@@ -51,9 +51,11 @@ external global_get : Module.t -> string -> Type.t -> t
 external global_set : Module.t -> string -> t -> t = "caml_binaryen_global_set"
 (** Module, name, value. *)
 
-external load : Module.t -> int -> int -> int -> Type.t -> t -> t
+external load : Module.t -> int -> bool -> int -> int -> Type.t -> t -> t
   = "caml_binaryen_load__bytecode" "caml_binaryen_load"
-(** Module, num_bytes, offset, align, type, ptr. *)
+let load wasm_mod bytes ?(signed=false) offset align ty ptr =
+  load wasm_mod bytes signed offset align ty ptr
+(** Module, num_bytes, ?signed, offset, align, type, ptr. *)
 
 external store : Module.t -> int -> int -> int -> t -> t -> Type.t -> t
   = "caml_binaryen_store__bytecode" "caml_binaryen_store"

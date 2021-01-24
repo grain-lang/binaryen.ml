@@ -83,11 +83,12 @@ let global_set wasm_mod name value =
   let scope = get wasm_mod "global" in
   meth_call scope "set" [| inject (string name); inject value |]
 
-let load wasm_mod byts offset align typ ptr =
+let load wasm_mod byts ?(signed=false) offset align typ ptr =
   meth_call global##.binaryen "_BinaryenLoad"
     [|
       inject wasm_mod;
       inject byts;
+      inject signed;
       inject offset;
       inject align;
       inject typ;

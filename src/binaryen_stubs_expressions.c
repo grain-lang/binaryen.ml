@@ -204,21 +204,22 @@ caml_binaryen_global_set(value _module, value _name, value _val) {
 }
 
 CAMLprim value
-caml_binaryen_load(value _module, value _bytes, value _offset, value _align, value _ty, value _ptr) {
-  CAMLparam5(_module, _bytes, _offset, _align, _ty);
-  CAMLxparam1(_ptr);
+caml_binaryen_load(value _module, value _bytes, value _signed_, value _offset, value _align, value _ty, value _ptr) {
+  CAMLparam5(_module, _bytes, _signed_, _offset, _align);
+  CAMLxparam2(_ty, _ptr);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   int bytes = Int_val(_bytes);
+  int8_t signed_ = Bool_val(_signed_);
   int offset = Int_val(_offset);
   int align = Int_val(_align);
   BinaryenType ty = BinaryenType_val(_ty);
   BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
-  BinaryenExpressionRef exp = BinaryenLoad(module, bytes, 0, offset, align, ty, ptr);
+  BinaryenExpressionRef exp = BinaryenLoad(module, bytes, signed_, offset, align, ty, ptr);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 CAMLprim value
 caml_binaryen_load__bytecode(value * argv) {
-  return caml_binaryen_load(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+  return caml_binaryen_load(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6]);
 }
 
 CAMLprim value

@@ -28,7 +28,7 @@ val global_get : Module.t -> string -> Type.t -> t
 
 val global_set : Module.t -> string -> t -> t
 
-val load : Module.t -> int -> int -> int -> Type.t -> t -> t
+val load : Module.t -> int -> ?signed:bool -> int -> int -> Type.t -> t -> t
 
 val store : Module.t -> int -> int -> int -> t -> t -> Type.t -> t
 
