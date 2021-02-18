@@ -19,10 +19,6 @@ let funcref : t = global##.binaryen##.funcref
 
 let externref : t = global##.binaryen##.externref
 
-let nullref : t = global##.binaryen##.nullref
-
-let exnref : t = global##.binaryen##.exnref
-
 let unreachable : t = global##.binaryen##.unreachable
 
 let auto : t = global##.binaryen##.auto

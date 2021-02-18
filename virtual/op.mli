@@ -256,10 +256,6 @@ val gt_float64 : t
 
 val ge_float64 : t
 
-val memory_size : t
-
-val memory_grow : t
-
 val atomic_rmw_add : t
 
 val atomic_rmw_sub : t
@@ -537,10 +533,6 @@ val max_u_vec_i32x4 : t
 val dot_s_vec_i16x8_to_vec_i32x4 : t
 
 val neg_vec_i64x2 : t
-
-val any_true_vec_i64x2 : t
-
-val all_true_vec_i64x2 : t
 
 val shl_vec_i64x2 : t
 

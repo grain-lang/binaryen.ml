@@ -44,6 +44,10 @@ val drop : Module.t -> t -> t
 
 val return : Module.t -> t -> t
 
+val memory_size : Module.t -> t
+
+val memory_grow : Module.t -> t -> t
+
 val nop : Module.t -> t
 
 val unreachable : Module.t -> t
