@@ -15,7 +15,9 @@ let load = Expression.load wasm_mod 1 ~signed:true 0 0 Type.int32 (y ())
 
 let select = Expression.select wasm_mod (Expression.const wasm_mod (Literal.int32 1l)) (x ()) load
 
-let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [Expression.binary wasm_mod Op.add_int32 select (y ())]
+let bin = Expression.binary wasm_mod Op.add_int32 select (y ())
+
+let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [bin]
 
 (* Create the add function *)
 let adder = Function.add_function wasm_mod "adder" params results [||] add
