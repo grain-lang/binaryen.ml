@@ -12,4 +12,4 @@
 (rule
  (target binaryen.js)
  (action
-  (copy ../vendor/js/index.js binaryen.js)))
+  (copy ../vendor/js/index.es5.js binaryen.js)))
