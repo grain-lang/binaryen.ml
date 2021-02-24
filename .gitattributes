@@ -1,4 +1,2 @@
 .github         export-ignore
 .ocamlformat    export-ignore
-yarn.lock       export-ignore
-package.json    export-ignore
