@@ -1,4 +1,4 @@
-name: Binaryen.ml - esy workflow
+name: Esy
 on:
   - push
   - pull_request

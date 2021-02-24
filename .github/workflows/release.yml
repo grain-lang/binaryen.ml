@@ -1,4 +1,4 @@
-name: Binaryen.ml Release
+name: Release
 on:
   push:
     branches:
@@ -12,6 +12,7 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       upload_url: ${{ steps.release.outputs.upload_url }}
       tag_name: ${{ steps.release.outputs.tag_name }}
+      body: ${{ steps.release.outputs.body }}
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v2
         id: release
@@ -22,10 +23,12 @@ jobs:
           bump-minor-pre-major: true
 
   add-archive:
-    needs: release-please
+    needs: [release-please]
     if: ${{ needs.release-please.outputs.release_created }}
     name: Add archive to release
     runs-on: macos-latest
+    outputs:
+      browser_download_url: ${{ steps.upload.outputs.browser_download_url }}
     steps:
       - name: Install git-archive-all
         run: |
@@ -41,7 +44,7 @@ jobs:
           git-archive-all --force-submodules binaryen-archive.tar.gz
 
       - name: Upload Release Asset
-        id: upload-release-asset
+        id: upload
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,3 +53,60 @@ jobs:
           asset_path: ./binaryen-archive.tar.gz
           asset_name: binaryen-archive-${{ needs.release-please.outputs.tag_name }}.tar.gz
           asset_content_type: application/gzip
+
+  opam-release:
+    needs: [release-please, add-archive]
+    name: Publish to opam registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup bot user
+        run: |
+          git config --global user.email "bot@grain-lang.org"
+          git config --global user.name "Grain Bot"
+
+      # Some hacks to make sure opam doesn't pull the repo in a way we can't deal with
+      - name: Setup opam repository
+        run: |
+          mkdir -p  ~/.opam/plugins/opam-publish/repos/
+          git clone git://github.com/ocaml/opam-repository ~/.opam/plugins/opam-publish/repos/ocaml%opam-repository
+          cd ~/.opam/plugins/opam-publish/repos/ocaml%opam-repository
+          git remote add user https://${{ secrets.OPAM_RELEASE }}@github.com/grainbot/opam-repository
+
+      # Set up our token because opam doesn't support env var tokens
+      - name: Setup token
+        run: |
+          mkdir -p  ~/.opam/plugins/opam-publish/
+          echo -n ${{ secrets.OPAM_RELEASE }} > ~/.opam/plugins/opam-publish/binaryen.token
+
+      - name: Generate CHANGES file
+        run: |
+          echo -n "${{ needs.release-please.outputs.body }}" > CHANGES.md
+
+      - name: Setup OCaml
+        uses: avsm/setup-ocaml@v1
+        with:
+          ocaml-version: 4.11.1
+
+      - name: Install publish utils
+        run: |
+          opam install opam-publish
+
+      - name: Publish to opam
+        run: |
+          opam publish --no-browser --msg-file=CHANGES.md ${{ needs.add-archive.outputs.browser_download_url }}
+
+  npm-release:
+    needs: [add-archive]
+    name: Publish to npm registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Publish to npm
+        run: npm publish ${{ needs.add-archive.outputs.browser_download_url }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE }}

@@ -1,4 +1,4 @@
-name: Binaryen.ml - opam workflow
+name: Opam
 on:
   - push
   - pull_request
