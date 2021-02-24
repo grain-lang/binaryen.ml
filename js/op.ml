@@ -280,10 +280,6 @@ let gt_float64 : t = global ##. binaryen ##. Operations ##. GtFloat64
 
 let ge_float64 : t = global ##. binaryen ##. Operations ##. GeFloat64
 
-let memory_size : t = global ##. binaryen ##. Operations ##. MemorySize
-
-let memory_grow : t = global ##. binaryen ##. Operations ##. MemoryGrow
-
 let atomic_rmw_add : t = global ##. binaryen ##. Operations ##. AtomicRMWAdd
 
 let atomic_rmw_sub : t = global ##. binaryen ##. Operations ##. AtomicRMWSub
@@ -602,12 +598,6 @@ let dot_s_vec_i16x8_to_vec_i32x4 : t =
   global ##. binaryen ##. Operations ##. DotSVecI16x8ToVecI32x4
 
 let neg_vec_i64x2 : t = global ##. binaryen ##. Operations ##. NegVecI64x2
-
-let any_true_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. AnyTrueVecI64x2
-
-let all_true_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. AllTrueVecI64x2
 
 let shl_vec_i64x2 : t = global ##. binaryen ##. Operations ##. ShlVecI64x2
 

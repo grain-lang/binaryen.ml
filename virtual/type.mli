@@ -16,10 +16,6 @@ val funcref : t
 
 val externref : t
 
-val nullref : t
-
-val exnref : t
-
 val unreachable : t
 
 val auto : t

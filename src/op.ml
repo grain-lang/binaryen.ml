@@ -537,14 +537,6 @@ external ge_float64 : unit -> t = "caml_binaryen_binaryen_ge_float64"
 
 let ge_float64 = ge_float64 ()
 
-external memory_size : unit -> t = "caml_binaryen_binaryen_memory_size"
-
-let memory_size = memory_size ()
-
-external memory_grow : unit -> t = "caml_binaryen_binaryen_memory_grow"
-
-let memory_grow = memory_grow ()
-
 external atomic_rmw_add : unit -> t = "caml_binaryen_binaryen_atomic_rmw_add"
 
 let atomic_rmw_add = atomic_rmw_add ()
@@ -1143,16 +1135,6 @@ let dot_s_vec_i16x8_to_vec_i32x4 = dot_s_vec_i16x8_to_vec_i32x4 ()
 external neg_vec_i64x2 : unit -> t = "caml_binaryen_binaryen_neg_vec_i64x2"
 
 let neg_vec_i64x2 = neg_vec_i64x2 ()
-
-external any_true_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_any_true_vec_i64x2"
-
-let any_true_vec_i64x2 = any_true_vec_i64x2 ()
-
-external all_true_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_all_true_vec_i64x2"
-
-let all_true_vec_i64x2 = all_true_vec_i64x2 ()
 
 external shl_vec_i64x2 : unit -> t = "caml_binaryen_binaryen_shl_vec_i64x2"
 
