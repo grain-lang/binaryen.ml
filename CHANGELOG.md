@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.7.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.6.0...v0.7.0) (2021-02-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* memory_size and memory_grow are now toplevel functions in `Expression`.
+* removed `Type.nullref`, `Type.exnref`
+* removed `Op.any_true_vec_i64x2` and `Op.all_true_vec_i64x2`
+* Bump to Binaryen 98
+
+### Features
+
+* Bump to Binaryen 98 ([9a52a07](https://www.github.com/grain-lang/binaryen.ml/commit/9a52a077051441f8b0999bad1d77a8d3a6357460))
+
+
+### Continuous Integration
+
+* add opam & npm releases to workflow ([#69](https://www.github.com/grain-lang/binaryen.ml/issues/69)) ([d339608](https://www.github.com/grain-lang/binaryen.ml/commit/d3396085565e478b31a5819628be08bae1e2be16))
+* run opam build on ubuntu 18 instead of 20 ([#67](https://www.github.com/grain-lang/binaryen.ml/issues/67)) ([7ee2009](https://www.github.com/grain-lang/binaryen.ml/commit/7ee20092da341f927acf552abcbcf8bfcca90c0b))
+
+
+### Miscellaneous Chores
+
+* memory_size and memory_grow are now toplevel functions in `Expression`. ([9a52a07](https://www.github.com/grain-lang/binaryen.ml/commit/9a52a077051441f8b0999bad1d77a8d3a6357460))
+* removed `Op.any_true_vec_i64x2` and `Op.all_true_vec_i64x2` ([9a52a07](https://www.github.com/grain-lang/binaryen.ml/commit/9a52a077051441f8b0999bad1d77a8d3a6357460))
+* removed `Type.nullref`, `Type.exnref` ([9a52a07](https://www.github.com/grain-lang/binaryen.ml/commit/9a52a077051441f8b0999bad1d77a8d3a6357460))
+
 ## [0.6.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.5.0...v0.6.0) (2021-01-24)
 
 
