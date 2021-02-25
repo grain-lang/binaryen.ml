@@ -80,7 +80,7 @@ jobs:
 
       - name: Generate CHANGES file
         run: |
-          echo -n "${{ needs.release-please.outputs.body }}" > CHANGES.md
+          printf "%q" '${{ needs.release-please.outputs.body }}' > CHANGES.md
 
       - name: Setup OCaml
         uses: avsm/setup-ocaml@v1
