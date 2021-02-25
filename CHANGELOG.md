@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.7.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.7.0...v0.7.1) (2021-02-25)
+
+
+### Continuous Integration
+
+* fix markdown escaping for opam release ([#72](https://www.github.com/grain-lang/binaryen.ml/issues/72)) ([a2e6052](https://www.github.com/grain-lang/binaryen.ml/commit/a2e605241376ffdfcbba7ecd2e7a7ac52b53019f))
+
+
+### Miscellaneous Chores
+
+* fix dune misdocumentation ([#73](https://www.github.com/grain-lang/binaryen.ml/issues/73)) ([341e718](https://www.github.com/grain-lang/binaryen.ml/commit/341e71805078dae312171d5985dec7ebc689bdbe))
+
 ## [0.7.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.6.0...v0.7.0) (2021-02-24)
 
 
