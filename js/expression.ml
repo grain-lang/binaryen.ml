@@ -37,9 +37,10 @@ let call wasm_mod name params return_typ =
       inject return_typ;
     |]
 
-let call_indirect wasm_mod target params params_typ return_typ =
+let call_indirect wasm_mod table target params params_typ return_typ =
   meth_call wasm_mod "call_indirect"
     [|
+      inject table;
       inject target;
       inject (array (Array.of_list params));
       inject params_typ;
@@ -54,9 +55,10 @@ let return_call wasm_mod name params return_typ =
       inject return_typ;
     |]
 
-let return_call_indirect wasm_mod target params params_typ return_typ =
+let return_call_indirect wasm_mod table target params params_typ return_typ =
   meth_call wasm_mod "return_call_indirect"
     [|
+      inject table;
       inject target;
       inject (array (Array.of_list params));
       inject params_typ;

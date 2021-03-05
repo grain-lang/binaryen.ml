@@ -22,17 +22,17 @@ external call : Module.t -> string -> t list -> Type.t -> t
   = "caml_binaryen_call"
 (** Module, function name, params, return type. *)
 
-external call_indirect : Module.t -> t -> t list -> Type.t -> Type.t -> t
-  = "caml_binaryen_call_indirect"
-(** Module, function value, params, params type, return type. *)
+external call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
+  = "caml_binaryen_call_indirect__bytecode" "caml_binaryen_call_indirect"
+(** Module, table, function value, params, params type, return type. *)
 
 external return_call : Module.t -> string -> t list -> Type.t -> t
   = "caml_binaryen_return_call"
 (** Module, function name, params, return type. *)
 
-external return_call_indirect : Module.t -> t -> t list -> Type.t -> Type.t -> t
-  = "caml_binaryen_return_call_indirect"
-(** Module, function value, params, params type, return type. *)
+external return_call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
+  = "caml_binaryen_return_call_indirect__bytecode" "caml_binaryen_return_call_indirect"
+(** Module, table, function value, params, params type, return type. *)
 
 external local_get : Module.t -> int -> Type.t -> t = "caml_binaryen_local_get"
 (** Module, slot, type. *)
