@@ -19,6 +19,11 @@
   (copy ../vendor/binaryen-c.h binaryen-c.h)))
 
 (rule
+ (target wasm-delegations.h)
+ (action
+  (copy ../vendor/wasm-delegations.h wasm-delegations.h)))
+
+(rule
  (target libbinaryen.a)
  (action
   (copy ../vendor/%{system}/libbinaryen.a libbinaryen.a)))

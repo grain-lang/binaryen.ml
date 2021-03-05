@@ -103,9 +103,11 @@ caml_binaryen_call(value _module, value _name, value _params, value _retty) {
 }
 
 CAMLprim value
-caml_binaryen_call_indirect(value _module, value _target, value _params, value _paramsty, value _retty) {
-  CAMLparam5(_module, _target, _params, _paramsty, _retty);
+caml_binaryen_call_indirect(value _module, value _table, value _target, value _params, value _paramsty, value _retty) {
+  CAMLparam5(_module, _table, _target, _params, _paramsty);
+  CAMLxparam1(_retty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* table = Safe_String_val(_table);
   BinaryenExpressionRef target = BinaryenExpressionRef_val(_target);
   _params = array_of_list(_params);
   int paramsLen = array_length(_params);
@@ -115,8 +117,12 @@ caml_binaryen_call_indirect(value _module, value _target, value _params, value _
   }
   BinaryenType paramsty = BinaryenType_val(_paramsty);
   BinaryenType retty = BinaryenType_val(_retty);
-  BinaryenExpressionRef exp = BinaryenCallIndirect(module, target, params, paramsLen, paramsty, retty);
+  BinaryenExpressionRef exp = BinaryenCallIndirect(module, table, target, params, paramsLen, paramsty, retty);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+CAMLprim value
+caml_binaryen_call_indirect__bytecode(value * argv) {
+  return caml_binaryen_call_indirect(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
 }
 
 CAMLprim value
@@ -136,9 +142,11 @@ caml_binaryen_return_call(value _module, value _name, value _params, value _rett
 }
 
 CAMLprim value
-caml_binaryen_return_call_indirect(value _module, value _target, value _params, value _paramsty, value _retty) {
-  CAMLparam5(_module, _target, _params, _paramsty, _retty);
+caml_binaryen_return_call_indirect(value _module, value _table, value _target, value _params, value _paramsty, value _retty) {
+  CAMLparam5(_module, _table, _target, _params, _paramsty);
+  CAMLxparam1(_retty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* table = Safe_String_val(_table);
   BinaryenExpressionRef target = BinaryenExpressionRef_val(_target);
   _params = array_of_list(_params);
   int paramsLen = array_length(_params);
@@ -148,8 +156,12 @@ caml_binaryen_return_call_indirect(value _module, value _target, value _params, 
   }
   BinaryenType paramsty = BinaryenType_val(_paramsty);
   BinaryenType retty = BinaryenType_val(_retty);
-  BinaryenExpressionRef exp = BinaryenReturnCallIndirect(module, target, params, paramsLen, paramsty, retty);
+  BinaryenExpressionRef exp = BinaryenReturnCallIndirect(module, table, target, params, paramsLen, paramsty, retty);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+CAMLprim value
+caml_binaryen_return_call_indirect__bytecode(value * argv) {
+  return caml_binaryen_return_call_indirect(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
 }
 
 CAMLprim value
