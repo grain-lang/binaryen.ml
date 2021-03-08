@@ -22,7 +22,13 @@ let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [bin]
 (* Create the add function *)
 let adder = Function.add_function wasm_mod "adder" params results [||] add
 
+let _ = Export.add_function_export wasm_mod "adder" "adder"
+
 let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [] false
+
+let _ = Module.print wasm_mod
+
+let _ = Module.optimize wasm_mod
 
 let _ = Module.print wasm_mod
 
