@@ -1,5 +1,17 @@
 # Changelog
 
+### [0.8.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.0...v0.8.1) (2021-03-09)
+
+
+### Bug Fixes
+
+* Module.optimize on macOS ([#77](https://www.github.com/grain-lang/binaryen.ml/issues/77)) ([0b92043](https://www.github.com/grain-lang/binaryen.ml/commit/0b920431372119d92b0077f51b91ca745fbfde87))
+
+
+### Continuous Integration
+
+* write opam CHANGES from environment var ([#78](https://www.github.com/grain-lang/binaryen.ml/issues/78)) ([4f25e0e](https://www.github.com/grain-lang/binaryen.ml/commit/4f25e0e96c3b1d2ad22d3b037695960cd6b2722a))
+
 ## [0.8.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.7.0...v0.8.0) (2021-03-05)
 
 
