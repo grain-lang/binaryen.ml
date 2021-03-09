@@ -3,7 +3,7 @@ open Js_of_ocaml.Js.Unsafe
 
 type t = int
 
-let block ?(return_type=Type.auto) wasm_mod name children =
+let block ?(return_type = Type.auto) wasm_mod name children =
   meth_call wasm_mod "block"
     [|
       inject (string name);
@@ -85,7 +85,7 @@ let global_set wasm_mod name value =
   let scope = get wasm_mod "global" in
   meth_call scope "set" [| inject (string name); inject value |]
 
-let load wasm_mod byts ?(signed=false) offset align typ ptr =
+let load wasm_mod byts ?(signed = false) offset align typ ptr =
   meth_call global##.binaryen "_BinaryenLoad"
     [|
       inject wasm_mod;
@@ -148,11 +148,11 @@ let drop wasm_mod value = meth_call wasm_mod "drop" [| inject value |]
 
 let return wasm_mod value = meth_call wasm_mod "return" [| inject value |]
 
-let memory_size wasm_mod = 
+let memory_size wasm_mod =
   let scope = get wasm_mod "memory" in
   meth_call scope "size" [||]
 
-let memory_grow wasm_mod value = 
+let memory_grow wasm_mod value =
   let scope = get wasm_mod "memory" in
   meth_call scope "grow" [| inject value |]
 
