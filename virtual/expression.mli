@@ -16,7 +16,8 @@ val call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
 
 val return_call : Module.t -> string -> t list -> Type.t -> t
 
-val return_call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
+val return_call_indirect :
+  Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
 
 val local_get : Module.t -> int -> Type.t -> t
 

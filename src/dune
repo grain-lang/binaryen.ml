@@ -12,7 +12,7 @@
   (flags -O2 -Wall -Wextra))
  (foreign_archives binaryen)
  (library_flags
-   (:include ./config/library_flags.sexp))
+  (:include ./config/library_flags.sexp))
  (c_library_flags -lstdc++ -lpthread))
 
 (rule

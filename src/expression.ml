@@ -1,9 +1,11 @@
 type t
 
-external block : Module.t -> string -> t list -> Type.t -> t = "caml_binaryen_block"
-let block ?(return_type=Type.auto) wasm_mod name exprs =
-  block wasm_mod name exprs return_type
+external block : Module.t -> string -> t list -> Type.t -> t
+  = "caml_binaryen_block"
+
 (** Module, block name, expression list. *)
+let block ?(return_type = Type.auto) wasm_mod name exprs =
+  block wasm_mod name exprs return_type
 
 external if_ : Module.t -> t -> t -> t -> t = "caml_binaryen_if"
 (** Module, condition, true branch, false branch. False branch may be null. *)
@@ -22,7 +24,8 @@ external call : Module.t -> string -> t list -> Type.t -> t
   = "caml_binaryen_call"
 (** Module, function name, params, return type. *)
 
-external call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
+external call_indirect :
+  Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
   = "caml_binaryen_call_indirect__bytecode" "caml_binaryen_call_indirect"
 (** Module, table, function value, params, params type, return type. *)
 
@@ -30,7 +33,8 @@ external return_call : Module.t -> string -> t list -> Type.t -> t
   = "caml_binaryen_return_call"
 (** Module, function name, params, return type. *)
 
-external return_call_indirect : Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
+external return_call_indirect :
+  Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
   = "caml_binaryen_return_call_indirect__bytecode" "caml_binaryen_return_call_indirect"
 (** Module, table, function value, params, params type, return type. *)
 
@@ -53,9 +57,10 @@ external global_set : Module.t -> string -> t -> t = "caml_binaryen_global_set"
 
 external load : Module.t -> int -> bool -> int -> int -> Type.t -> t -> t
   = "caml_binaryen_load__bytecode" "caml_binaryen_load"
-let load wasm_mod bytes ?(signed=false) offset align ty ptr =
-  load wasm_mod bytes signed offset align ty ptr
+
 (** Module, num_bytes, ?signed, offset, align, type, ptr. *)
+let load wasm_mod bytes ?(signed = false) offset align ty ptr =
+  load wasm_mod bytes signed offset align ty ptr
 
 external store : Module.t -> int -> int -> int -> t -> t -> Type.t -> t
   = "caml_binaryen_store__bytecode" "caml_binaryen_store"
@@ -67,10 +72,11 @@ external unary : Module.t -> Op.t -> t -> t = "caml_binaryen_unary"
 
 external binary : Module.t -> Op.t -> t -> t -> t = "caml_binaryen_binary"
 
-external select : Module.t -> t -> t -> t -> Type.t -> t = "caml_binaryen_select"
-let select wasm_mod cond tru fals =
-  select wasm_mod cond tru fals Type.auto
+external select : Module.t -> t -> t -> t -> Type.t -> t
+  = "caml_binaryen_select"
+
 (** Module, condition, true branch, false branch. *)
+let select wasm_mod cond tru fals = select wasm_mod cond tru fals Type.auto
 
 external drop : Module.t -> t -> t = "caml_binaryen_drop"
 
