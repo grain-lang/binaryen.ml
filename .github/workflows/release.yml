@@ -79,8 +79,10 @@ jobs:
           echo -n ${{ secrets.OPAM_RELEASE }} > ~/.opam/plugins/opam-publish/binaryen.token
 
       - name: Generate CHANGES file
+        env:
+          CHANGES: ${{ needs.release-please.outputs.body }}
         run: |
-          printf "%q" '${{ needs.release-please.outputs.body }}' > CHANGES.md
+          echo -n "$CHANGES" > CHANGES.md
 
       - name: Setup OCaml
         uses: avsm/setup-ocaml@v1
