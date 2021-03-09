@@ -1,6 +1,7 @@
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (memory $0 1)
+ (export "adder" (func $adder))
  (export "memory" (memory $0))
  (func $adder (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
@@ -20,6 +21,25 @@
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (memory $0 1)
+ (export "adder" (func $adder))
+ (export "memory" (memory $0))
+ (func $adder (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
+  (i32.add
+   (select
+    (local.get $0)
+    (i32.load8_s
+     (local.get $1)
+    )
+    (i32.const 1)
+   )
+   (local.get $1)
+  )
+ )
+)
+(module
+ (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
+ (memory $0 1)
+ (export "adder" (func $0))
  (export "memory" (memory $0))
  (func $0 (param $0 i32) (param $1 i32) (result i32)
   (i32.add

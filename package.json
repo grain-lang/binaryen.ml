@@ -5,8 +5,9 @@
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
   "dependencies": {
-    "ocaml": "^4.9.0",
+    "ocaml": ">= 4.9.0 < 4.12.0",
     "@opam/dune": "^2.7.1",
+    "@opam/dune-configurator": "^2.7.1",
     "@opam/js_of_ocaml": "^3.6.0",
     "@opam/js_of_ocaml-ppx": "^3.6.0"
   },
