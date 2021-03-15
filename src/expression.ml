@@ -108,7 +108,7 @@ external tuple_extract : Module.t -> t -> int -> t
 external pop : Module.t -> Type.t -> t = "caml_binaryen_pop"
 (** Module, type *)
 
-external null : unit -> t = "caml_binaryen_null_expression"
+external null : Module.t -> t = "caml_binaryen_null_expression"
 (** A null reference. *)
 
 external print : t -> unit = "caml_binaryen_expression_print"
