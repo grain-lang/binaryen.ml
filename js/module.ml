@@ -1,28 +1,11 @@
-open Js_of_ocaml
 open Js_of_ocaml.Js
 open Js_of_ocaml.Js.Unsafe
 
-let make_encoder () = new_obj global ##. TextEncoder [||]
+external u8a_to_bytes : 'a -> bytes = "caml_bytes_of_array"
 
-let encode encoder (value : string) =
-  meth_call encoder "encode" [| inject (string value) |]
+external bytes_to_u8a : bytes -> 'a = "caml_array_of_bytes"
 
-let make_decoder () = new_obj global ##. TextDecoder [||]
-
-let decode decoder u8a = to_string (meth_call decoder "decode" [| inject u8a |])
-
-(* Uint8Array/Byte utilities *)
-let u8a_to_bytes u8a =
-  let decoder = make_decoder () in
-  Bytes.of_string (decode decoder u8a)
-
-let bytes_to_u8a byts =
-  let encoder = make_encoder () in
-  encode encoder (Bytes.to_string byts)
-
-let string_to_u8a str =
-  let encoder = make_encoder () in
-  encode encoder str
+external string_to_u8a : string -> 'a = "caml_array_of_string"
 
 type t
 

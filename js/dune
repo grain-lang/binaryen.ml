@@ -5,6 +5,9 @@
  (libraries js_of_ocaml)
  (preprocess
   (pps js_of_ocaml-ppx))
+ (foreign_stubs
+  (language c)
+  (names stubs))
  (js_of_ocaml
   (flags --no-sourcemap)
   (javascript_files binaryen.js postlude.js)))
