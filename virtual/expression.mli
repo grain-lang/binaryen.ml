@@ -63,6 +63,6 @@ val tuple_extract : Module.t -> t -> int -> t
 
 val pop : Module.t -> Type.t -> t
 
-val null : Module.t -> t
+val null : unit -> t
 
 val print : t -> unit

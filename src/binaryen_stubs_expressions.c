@@ -16,8 +16,8 @@ static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
 }
 
 CAMLprim value
-caml_binaryen_null_expression(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_null_expression(value unit) {
+  CAMLparam1(unit);
   CAMLreturn(alloc_BinaryenExpressionRef(NULL));
 }
 
