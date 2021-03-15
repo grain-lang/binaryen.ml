@@ -9,3 +9,5 @@ let set_function_table wasm_mod initial maximum funcnames offset =
       inject (array (Array.of_list (List.map string funcnames)));
       inject offset;
     |]
+
+let unlimited = -1
