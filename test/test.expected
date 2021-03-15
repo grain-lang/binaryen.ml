@@ -1,10 +1,12 @@
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
+ (type $none_=>_none (func))
  (memory $0 1)
  (table $table 1 1 funcref)
  (elem (i32.const 0) $adder)
  (export "adder" (func $adder))
  (export "memory" (memory $0))
+ (start $start)
  (func $adder (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
    (if
@@ -23,12 +25,25 @@
    )
   )
  )
+ (func $start
+  (drop
+   (call_indirect (type $i32_i32_=>_i32)
+    (i32.const 3)
+    (i32.const 5)
+    (i32.const 0)
+   )
+  )
+ )
 )
 (module
+ (type $none_=>_none (func))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (memory $0 1)
+ (table $table 1 1 funcref)
+ (elem (i32.const 0) $adder)
  (export "adder" (func $adder))
  (export "memory" (memory $0))
+ (start $start)
  (func $adder (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
@@ -41,12 +56,24 @@
    (local.get $1)
   )
  )
+ (func $start (; has Stack IR ;)
+  (drop
+   (call $adder
+    (i32.const 3)
+    (i32.const 5)
+   )
+  )
+ )
 )
 (module
+ (type $none_=>_none (func))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (memory $0 1)
+ (table $0 1 1 funcref)
+ (elem (i32.const 0) $0)
  (export "adder" (func $0))
  (export "memory" (memory $0))
+ (start $1)
  (func $0 (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
@@ -57,6 +84,14 @@
     (i32.const 1)
    )
    (local.get $1)
+  )
+ )
+ (func $1
+  (drop
+   (call $0
+    (i32.const 3)
+    (i32.const 5)
+   )
   )
  )
 )
