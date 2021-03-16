@@ -30,6 +30,10 @@ let adder = Function.add_function wasm_mod "adder" params results [||] add
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 
+let _ =
+  Table.add_table wasm_mod "table" 1 1 [ "adder" ]
+    (Expression.const wasm_mod (Literal.int32 0l))
+
 let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [] false
 
 let _ = Module.print wasm_mod
