@@ -5,6 +5,10 @@
  (export "memory" (memory $0))
  (func $adder (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
+   (if
+    (i32.const 0)
+    (unreachable)
+   )
    (i32.add
     (select
      (local.get $0)

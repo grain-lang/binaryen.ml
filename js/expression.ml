@@ -179,8 +179,7 @@ let tuple_extract wasm_mod tuple index =
 let pop wasm_mod typ =
   meth_call global##.binaryen "_BinaryenPop" [| inject wasm_mod; inject typ |]
 
-(* TODO: Figure this out *)
-let null () = Obj.magic ()
+let null () = pure_js_expr "null"
 
 let print expr =
   let text = meth_call global##.binaryen "emitText" [| inject expr |] in
