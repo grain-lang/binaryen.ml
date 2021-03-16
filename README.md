@@ -60,15 +60,9 @@ These flags might not work on other operating systems (like MacOS), so you'll pr
 
 ## Contributing
 
-After cloning the repository, be sure to initialize the Binaryen submodule:
+You'll need Node.js and [`esy`](https://esy.sh/docs/en/getting-started.html#install-esy) to build this project.
 
-```bash
-git submodule update --init
-```
-
-You'll need Node.js and [`esy`](https://esy.sh/docs/en/getting-started.html#install-esy) to build this project, as well as `cmake` to build Binaryen.
-
-`dune` will take care of building Binaryen and compiling the C stubs, so to build the project you'll only need to run:
+`dune` will take care of compiling the C stubs, so to build the project you'll only need to run:
 
 ```bash
 esy
