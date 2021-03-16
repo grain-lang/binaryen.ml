@@ -1,5 +1,24 @@
 # Changelog
 
+### [0.8.2](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.1...v0.8.2) (2021-03-16)
+
+
+### Bug Fixes
+
+* return JS null value from Expression.null ([#83](https://www.github.com/grain-lang/binaryen.ml/issues/83)) ([61861e2](https://www.github.com/grain-lang/binaryen.ml/commit/61861e2590816bccc5c6c17a2a5b77f3a3db3779))
+
+
+### Miscellaneous Chores
+
+* fix formatter & format the code ([#80](https://www.github.com/grain-lang/binaryen.ml/issues/80)) ([b9c485a](https://www.github.com/grain-lang/binaryen.ml/commit/b9c485a69cfb6ffbcc8a7a7611c2ea09386486e2))
+* set dune language to the version of dune we use ([e9eb5c9](https://www.github.com/grain-lang/binaryen.ml/commit/e9eb5c927dbee84f9ab783a2bfb7f2e16c94e7f6))
+* use test file directly in one rule so ocaml-lsp works ([34b7a13](https://www.github.com/grain-lang/binaryen.ml/commit/34b7a13864f81d5d2b8781f1b172d72f28354209))
+
+
+### Documentation
+
+* cleanup Binaryen submodule & building language (closes [#65](https://www.github.com/grain-lang/binaryen.ml/issues/65)) ([3bdb23d](https://www.github.com/grain-lang/binaryen.ml/commit/3bdb23dbca2734d58ee0802b796593016ac80c6e))
+
 ### [0.8.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.0...v0.8.1) (2021-03-09)
 
 
