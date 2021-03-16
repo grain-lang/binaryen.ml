@@ -1,15 +1,8 @@
 ; Tests for the default_implementation (mirrors 0.2.2 usage)
 
-(rule
- (target test_default.ml)
- (action
-  (progn
-   (copy %{dep:test.ml} %{target})
-   (copy test.expected test_default.expected))))
-
 (test
- (name test_default)
- (modules test_default)
+ (name test)
+ (modules test)
  (libraries binaryen)
  (action
   (run %{test})))
