@@ -20,7 +20,10 @@ let select =
 
 let bin = Expression.binary wasm_mod Op.add_int32 select (y ())
 
-let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [ bin ]
+let add = Expression.block wasm_mod ~return_type:Type.int32 "add" [
+  Expression.if_ wasm_mod (Expression.const wasm_mod (Literal.int32 0l)) (Expression.unreachable wasm_mod) (Expression.null ());
+  bin 
+]
 
 (* Create the add function *)
 let adder = Function.add_function wasm_mod "adder" params results [||] add
