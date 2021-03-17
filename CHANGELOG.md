@@ -1,5 +1,32 @@
 # Changelog
 
+## [0.9.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.1...v0.9.0) (2021-03-17)
+
+
+### Features
+
+* add Function_table.unlimited constant ([#87](https://www.github.com/grain-lang/binaryen.ml/issues/87)) ([0d2fcde](https://www.github.com/grain-lang/binaryen.ml/commit/0d2fcde007b77e6edd5c66975fd7a611ae9a8ef8))
+* write bindings for add_table ([6dc0fa8](https://www.github.com/grain-lang/binaryen.ml/commit/6dc0fa83d5873630cf7a0a6f2895600c68ad4f30))
+
+
+### Bug Fixes
+
+* **js:** cast the call_indirect string arguments to JS strings ([7b4136a](https://www.github.com/grain-lang/binaryen.ml/commit/7b4136a2e2fdae3efd85351dc40aad2ad4c3ed3e))
+* **js:** utilize JSOO externals to convert between uint8array & bytes ([#85](https://www.github.com/grain-lang/binaryen.ml/issues/85)) ([61d28c5](https://www.github.com/grain-lang/binaryen.ml/commit/61d28c5e7e6ca6217759a75e2c96e7cb5c1b3d45))
+* return JS null value from Expression.null ([#83](https://www.github.com/grain-lang/binaryen.ml/issues/83)) ([61861e2](https://www.github.com/grain-lang/binaryen.ml/commit/61861e2590816bccc5c6c17a2a5b77f3a3db3779))
+
+
+### Miscellaneous Chores
+
+* fix formatter & format the code ([#80](https://www.github.com/grain-lang/binaryen.ml/issues/80)) ([b9c485a](https://www.github.com/grain-lang/binaryen.ml/commit/b9c485a69cfb6ffbcc8a7a7611c2ea09386486e2))
+* set dune language to the version of dune we use ([e9eb5c9](https://www.github.com/grain-lang/binaryen.ml/commit/e9eb5c927dbee84f9ab783a2bfb7f2e16c94e7f6))
+* use test file directly in one rule so ocaml-lsp works ([34b7a13](https://www.github.com/grain-lang/binaryen.ml/commit/34b7a13864f81d5d2b8781f1b172d72f28354209))
+
+
+### Documentation
+
+* cleanup Binaryen submodule & building language (closes [#65](https://www.github.com/grain-lang/binaryen.ml/issues/65)) ([3bdb23d](https://www.github.com/grain-lang/binaryen.ml/commit/3bdb23dbca2734d58ee0802b796593016ac80c6e))
+
 ### [0.8.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.0...v0.8.1) (2021-03-09)
 
 
