@@ -12,7 +12,17 @@ external set_debug_location : t -> Expression.t -> int -> int -> int -> unit
 
 external get_function : Module.t -> string -> t = "caml_binaryen_get_function"
 
+external get_function_by_index : Module.t -> int -> t
+  = "caml_binaryen_get_function_by_index"
+
 external remove_function : Module.t -> string -> unit
   = "caml_binaryen_remove_function"
 
 external get_num_functions : Module.t -> int = "caml_binaryen_get_num_functions"
+
+external get_name : t -> string = "caml_binaryen_function_get_name"
+
+external get_body : t -> Expression.t = "caml_binaryen_function_get_body"
+
+external set_body : t -> Expression.t -> unit
+  = "caml_binaryen_function_set_body"

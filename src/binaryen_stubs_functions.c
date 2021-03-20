@@ -2,6 +2,7 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
+#include <caml/alloc.h>
 
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
@@ -12,6 +13,14 @@ static value alloc_BinaryenFunctionRef(BinaryenFunctionRef fun)
 {
   value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenFunctionRef), 0, 1);
   BinaryenFunctionRef_val(v) = fun;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
+static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
+  BinaryenExpressionRef_val(v) = exp;
   return v;
 }
 
@@ -63,6 +72,15 @@ caml_binaryen_get_num_functions(value _module) {
 }
 
 CAMLprim value
+caml_binaryen_get_function_by_index(value _module, value _index) {
+  CAMLparam2(_module, _index);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenFunctionRef fun = BinaryenGetFunctionByIndex(module, index);
+  CAMLreturn(alloc_BinaryenFunctionRef(fun));
+}
+
+CAMLprim value
 caml_binaryen_set_start(value _module, value _fun) {
   CAMLparam2(_module, _fun);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
@@ -80,5 +98,28 @@ caml_binaryen_function_set_debug_location(value _fun, value _exp, value _file, v
   BinaryenIndex line = Int_val(_line);
   BinaryenIndex column = Int_val(_column);
   BinaryenFunctionSetDebugLocation(fun, exp, file, line, column);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_function_get_name(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(caml_copy_string(BinaryenFunctionGetName(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_get_body(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenFunctionGetBody(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_set_body(value _fun, value _body) {
+  CAMLparam2(_fun, _body);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
+  BinaryenFunctionSetBody(fun, body);
   CAMLreturn(Val_unit);
 }
