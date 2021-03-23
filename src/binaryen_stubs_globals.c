@@ -74,7 +74,7 @@ caml_binaryen_get_global_by_index(value _module, value _index) {
   CAMLparam2(_module, _index);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenIndex index = Int_val(_index);
-  CAMLreturn(alloc_BinaryenGlobalRef(BinaryenGlobalByIndex(module, index)));
+  CAMLreturn(alloc_BinaryenGlobalRef(BinaryenGetGlobalByIndex(module, index)));
 }
 
 CAMLprim value

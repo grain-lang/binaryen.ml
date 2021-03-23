@@ -22,7 +22,7 @@ let get_num_globals wasm_mod =
   meth_call global##.binaryen "_BinaryenGetNumGlobals" [| inject wasm_mod |]
 
 let get_global_by_index wasm_mod index =
-  meth_call global##.binaryen "_BinaryenGlobalByIndex"
+  meth_call global##.binaryen "_BinaryenGetGlobalByIndex"
     [| inject wasm_mod; inject index |]
 
 let get_name global_ =

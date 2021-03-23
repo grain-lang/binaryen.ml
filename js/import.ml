@@ -43,3 +43,23 @@ let add_global_import wasm_mod internal_name external_module_name
       inject typ;
       inject (if is_mut then 1 else 0);
     |]
+
+let function_import_get_module func =
+  to_string
+    (meth_call global##.binaryen "_BinaryenFunctionImportGetModule"
+       [| inject func |])
+
+let global_import_get_module global_ =
+  to_string
+    (meth_call global##.binaryen "_BinaryenGlobalImportGetModule"
+       [| inject global_ |])
+
+let function_import_get_base func =
+  to_string
+    (meth_call global##.binaryen "_BinaryenFunctionImportGetBase"
+       [| inject func |])
+
+let global_import_get_base global_ =
+  to_string
+    (meth_call global##.binaryen "_BinaryenGlobalImportGetBase"
+       [| inject global_ |])

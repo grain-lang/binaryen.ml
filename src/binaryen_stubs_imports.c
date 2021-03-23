@@ -2,6 +2,7 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
+#include <caml/alloc.h>
 
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
@@ -64,4 +65,32 @@ caml_binaryen_add_global_import(value _module, value _internalName, value _exter
 CAMLprim value
 caml_binaryen_add_global_import__bytecode(value * argv) {
   return caml_binaryen_add_global_import(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_function_import_get_module(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(caml_copy_string(BinaryenFunctionImportGetModule(fun)));
+}
+
+CAMLprim value
+caml_binaryen_global_import_get_module(value _global) {
+  CAMLparam1(_global);
+  BinaryenGlobalRef global = BinaryenGlobalRef_val(_global);
+  CAMLreturn(caml_copy_string(BinaryenGlobalImportGetModule(global)));
+}
+
+CAMLprim value
+caml_binaryen_function_import_get_base(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(caml_copy_string(BinaryenFunctionImportGetBase(fun)));
+}
+
+CAMLprim value
+caml_binaryen_global_import_get_base(value _global) {
+  CAMLparam1(_global);
+  BinaryenGlobalRef global = BinaryenGlobalRef_val(_global);
+  CAMLreturn(caml_copy_string(BinaryenGlobalImportGetBase(global)));
 }
