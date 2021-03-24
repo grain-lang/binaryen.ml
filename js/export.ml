@@ -19,5 +19,23 @@ let add_global_export wasm_mod internal_name external_name =
   meth_call wasm_mod "addGlobalExport"
     [| inject (string internal_name); inject (string external_name) |]
 
+let get_export wasm_mod external_name =
+  meth_call wasm_mod "getExport" [| inject (string external_name) |]
+
 let remove_export wasm_mod external_name =
   meth_call wasm_mod "removeExport" [| inject (string external_name) |]
+
+let get_num_exports wasm_mod =
+  meth_call global##.binaryen "_BinaryenGetNumExports" [| inject wasm_mod |]
+
+let get_export_by_index wasm_mod index =
+  meth_call global##.binaryen "_BinaryenGetExportByIndex"
+    [| inject wasm_mod; inject index |]
+
+let get_name export =
+  to_string
+    (meth_call global##.binaryen "_BinaryenExportGetName" [| inject export |])
+
+let get_value export =
+  to_string
+    (meth_call global##.binaryen "_BinaryenExportGetValue" [| inject export |])
