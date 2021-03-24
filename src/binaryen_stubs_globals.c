@@ -81,7 +81,7 @@ CAMLprim value
 caml_binaryen_global_get_name(value _global) {
   CAMLparam1(_global);
   BinaryenGlobalRef global = BinaryenGlobalRef_val(_global);
-  char* name = BinaryenGlobalGetName(global);
+  const char* name = BinaryenGlobalGetName(global);
   CAMLreturn(caml_copy_string(name));
 }
 

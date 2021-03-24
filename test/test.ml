@@ -48,8 +48,10 @@ let start =
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 
+let _ = Table.add_table wasm_mod "table" 1 1
+
 let _ =
-  Table.add_table wasm_mod "table" 1 1 [ "adder" ]
+  Table.add_active_element_segment wasm_mod "table" "elem" [ "adder" ]
     (Expression.const wasm_mod (Literal.int32 0l))
 
 let _ = Function.set_start wasm_mod start

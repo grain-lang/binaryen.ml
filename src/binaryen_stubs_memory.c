@@ -23,7 +23,7 @@ caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _e
   }
   _segmentPassive = array_of_list(_segmentPassive);
   int segmentPassiveLen = array_length(_segmentPassive);
-  int8_t segmentPassive[segmentPassiveLen];
+  bool segmentPassive[segmentPassiveLen];
   for (int i = 0; i < segmentPassiveLen; i++) {
     segmentPassive[i] = Bool_val(Field(_segmentPassive, i));
   }

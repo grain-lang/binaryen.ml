@@ -29,6 +29,8 @@ static struct custom_operations binaryen_ops = {
 #define BinaryenFunctionRef_val(v) (*((BinaryenFunctionRef*) Data_custom_val(v)))
 #define BinaryenGlobalRef_val(v) (*((BinaryenGlobalRef*) Data_custom_val(v)))
 #define BinaryenExportRef_val(v) (*((BinaryenExportRef*) Data_custom_val(v)))
+#define BinaryenTableRef_val(v) (*((BinaryenTableRef*) Data_custom_val(v)))
+#define BinaryenElementSegmentRef_val(v) (*((BinaryenElementSegmentRef*) Data_custom_val(v)))
 
 #define Val_none Val_int(0)
 #define Some_val(v) Field(v, 0)

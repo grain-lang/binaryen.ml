@@ -1,6 +1,6 @@
 (library
  (name binaryen)
  (public_name binaryen)
- (virtual_modules export expression features function function_table table
-   global import literal memory module op type)
+ (virtual_modules export expression features function table global import
+   literal memory module op type)
  (default_implementation binaryen.native))
