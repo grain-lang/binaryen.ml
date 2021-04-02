@@ -20,6 +20,14 @@ val get_name : t -> string
 
 val get_value : t -> string
 
-val get_name : t -> string
+val external_function : int
 
-val get_value : t -> string
+val external_table : int
+
+val external_memory : int
+
+val external_global : int
+
+val external_event : int
+
+val export_get_kind : t -> int

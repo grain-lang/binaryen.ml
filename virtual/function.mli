@@ -17,6 +17,14 @@ val get_num_functions : Module.t -> int
 
 val get_name : t -> string
 
+val get_params : t -> Type.t
+
+val get_results : t -> Type.t
+
+val get_num_vars : t -> int
+
+val get_var : t -> int -> Type.t
+
 val get_body : t -> Expression.t
 
 val set_body : t -> Expression.t -> unit

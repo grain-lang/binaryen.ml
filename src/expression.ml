@@ -478,7 +478,8 @@ external id_ref_as : unit -> int = "caml_binaryen_expression_id_ref_as"
 let id_ref_as = id_ref_as ()
 
 let get_kind expr =
-  match get_id expr with
+  let id = get_id expr in
+  match id with
   | n when n = id_invalid -> Invalid
   | n when n = id_nop -> Nop
   | n when n = id_block -> Block
@@ -555,7 +556,7 @@ external expression_finalize : t -> unit = "caml_binaryen_expression_finalize"
 
 external expression_copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
 
-external block_get_name : t -> string = "caml_binaryen_block_get_name"
+external block_get_name : t -> string option = "caml_binaryen_block_get_name"
 
 external block_set_name : t -> string -> unit = "caml_binaryen_block_set_name"
 

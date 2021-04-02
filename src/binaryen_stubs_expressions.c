@@ -784,7 +784,11 @@ caml_binaryen_block_get_name(value _exp) {
   CAMLparam1(_exp);
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
   const char* name = BinaryenBlockGetName(exp);
-  CAMLreturn(caml_copy_string(name));
+  if (name == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(name)));
+  }
 }
 
 CAMLprim value

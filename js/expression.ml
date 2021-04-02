@@ -337,8 +337,9 @@ let expression_copy exp mod_ =
     [| inject exp; inject mod_ |]
 
 let block_get_name exp =
-  to_string
-    (meth_call global##.binaryen "_BinaryenBlockGetName" [| inject exp |])
+  Option.map to_string
+    (Opt.to_option
+       (meth_call global##.binaryen "_BinaryenBlockGetName" [| inject exp |]))
 
 let block_set_name exp name =
   meth_call global##.binaryen "_BinaryenBlockSetName"

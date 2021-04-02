@@ -35,6 +35,19 @@ let get_name func =
   to_string
     (meth_call global##.binaryen "_BinaryenFunctionGetName" [| inject func |])
 
+let get_params func =
+  meth_call global##.binaryen "_BinaryenFunctionGetParams" [| inject func |]
+
+let get_results func =
+  meth_call global##.binaryen "_BinaryenFunctionGetResults" [| inject func |]
+
+let get_num_vars func =
+  meth_call global##.binaryen "_BinaryenFunctionGetNumVars" [| inject func |]
+
+let get_var func index =
+  meth_call global##.binaryen "_BinaryenFunctionGetVar"
+    [| inject func; inject index |]
+
 let get_body func =
   meth_call global##.binaryen "_BinaryenFunctionGetBody" [| inject func |]
 
