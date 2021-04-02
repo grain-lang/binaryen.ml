@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.9.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.9.0...v0.9.1) (2021-04-02)
+
+
+### Bug Fixes
+
+* Correct JS conversion of i64 & float64_bits literals ([#96](https://www.github.com/grain-lang/binaryen.ml/issues/96)) ([00b7093](https://www.github.com/grain-lang/binaryen.ml/commit/00b7093ad57c7698ff7f6e69f59fd426ee341fbf))
+
 ## [0.9.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.8.1...v0.9.0) (2021-03-17)
 
 
