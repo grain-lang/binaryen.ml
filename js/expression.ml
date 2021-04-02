@@ -115,18 +115,17 @@ let const wasm_mod lit =
   | Int32 value ->
       let scope = get wasm_mod "i32" in
       meth_call scope "const" [| inject value |]
-  | Int64 value ->
+  | Int64 (low, high) ->
       let scope = get wasm_mod "i64" in
-      meth_call scope "const" [| inject value |]
+      meth_call scope "const" [| inject low; inject high |]
   | Float32Bits value ->
       let scope = get wasm_mod "f32" in
       meth_call scope "const_bits" [| inject value |]
-  | Float64Bits value ->
+  | Float64Bits (low, high) ->
       let scope = get wasm_mod "f64" in
-      meth_call scope "const_bits" [| inject value |]
+      meth_call scope "const_bits" [| inject low; inject high |]
   | Float32 value ->
       let scope = get wasm_mod "f32" in
-      (* TODO: Investigate if this needs the Int32 conversion stuff *)
       meth_call scope "const" [| inject value |]
   | Float64 value ->
       let scope = get wasm_mod "f64" in
