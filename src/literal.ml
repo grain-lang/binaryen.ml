@@ -15,7 +15,7 @@ external float64 : float -> t = "caml_binaryen_literal_float64"
 (* Hacks for Binaryen.js stack allocations, Don't use in binaryen.native *)
 type jsoo =
   | Int32 of int32
-  | Int64 of int64
+  | Int64 of int32 * int32
   | Float32Bits of int32
   | Float64Bits of int64
   | Float32 of float
