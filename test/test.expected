@@ -5,7 +5,7 @@
  (table $table 1 1 funcref)
  (elem (i32.const 0) $adder)
  (global $max_int64 i64 (i64.const 9223372036854775807))
- (global $test_float64_bits () (f64.const 1.23))
+ (global $test_float64_bits f64 (f64.const 1.23))
  (export "adder" (func $adder))
  (export "memory" (memory $0))
  (start $start)

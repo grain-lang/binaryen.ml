@@ -53,7 +53,7 @@ let _ =
     (Expression.const wasm_mod (Literal.int64 Int64.max_int))
 
 let _ =
-  Global.add_global wasm_mod "test_float64_bits" Type.auto false
+  Global.add_global wasm_mod "test_float64_bits" Type.float64 false
     (Expression.const wasm_mod (Literal.float64_bits 0x3FF3AE147AE147AEL))
 
 let _ =
