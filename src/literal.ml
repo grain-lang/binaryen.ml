@@ -17,7 +17,7 @@ type jsoo =
   | Int32 of int32
   | Int64 of int32 * int32
   | Float32Bits of int32
-  | Float64Bits of int64
+  | Float64Bits of int32 * int32
   | Float32 of float
   | Float64 of float
 

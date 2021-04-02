@@ -53,6 +53,10 @@ let _ =
     (Expression.const wasm_mod (Literal.int64 Int64.max_int))
 
 let _ =
+  Global.add_global wasm_mod "test_float64_bits" Type.auto false
+    (Expression.const wasm_mod (Literal.float64_bits 0x3FF3AE147AE147AEL))
+
+let _ =
   Table.add_table wasm_mod "table" 1 1 [ "adder" ]
     (Expression.const wasm_mod (Literal.int32 0l))
 
