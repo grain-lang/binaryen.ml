@@ -22,6 +22,14 @@ external get_num_functions : Module.t -> int = "caml_binaryen_get_num_functions"
 
 external get_name : t -> string = "caml_binaryen_function_get_name"
 
+external get_params : t -> Type.t = "caml_binaryen_function_get_params"
+
+external get_results : t -> Type.t = "caml_binaryen_function_get_results"
+
+external get_num_vars : t -> int = "caml_binaryen_function_get_num_vars"
+
+external get_var : t -> int -> Type.t = "caml_binaryen_function_get_var"
+
 external get_body : t -> Expression.t = "caml_binaryen_function_get_body"
 
 external set_body : t -> Expression.t -> unit

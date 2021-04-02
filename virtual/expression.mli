@@ -145,7 +145,7 @@ val expression_finalize : t -> unit
 
 val expression_copy : t -> Module.t -> t
 
-val block_get_name : t -> string
+val block_get_name : t -> string option
 
 val block_set_name : t -> string -> unit
 

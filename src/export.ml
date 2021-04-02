@@ -31,6 +31,24 @@ external get_name : t -> string = "caml_binaryen_export_get_name"
 
 external get_value : t -> string = "caml_binaryen_export_get_value"
 
-external get_name : t -> string = "caml_binaryen_export_get_name"
+external external_function : unit -> int = "caml_binaryen_external_function"
 
-external get_value : t -> string = "caml_binaryen_export_get_value"
+let external_function = external_function ()
+
+external external_table : unit -> int = "caml_binaryen_external_table"
+
+let external_table = external_table ()
+
+external external_memory : unit -> int = "caml_binaryen_external_memory"
+
+let external_memory = external_memory ()
+
+external external_global : unit -> int = "caml_binaryen_external_global"
+
+let external_global = external_global ()
+
+external external_event : unit -> int = "caml_binaryen_external_event"
+
+let external_event = external_event ()
+
+external export_get_kind : t -> int = "caml_binaryen_export_get_kind"

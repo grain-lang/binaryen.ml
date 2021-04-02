@@ -104,3 +104,40 @@ caml_binaryen_export_get_value(value _exp) {
   BinaryenExportRef exp = BinaryenExportRef_val(_exp);
   CAMLreturn(caml_copy_string(BinaryenExportGetValue(exp)));
 }
+
+CAMLprim value
+caml_binaryen_external_function(value _unit) {
+  CAMLparam1(_unit);
+  CAMLreturn(Val_int(BinaryenExternalFunction()));
+}
+
+CAMLprim value
+caml_binaryen_external_table(value _unit) {
+  CAMLparam1(_unit);
+  CAMLreturn(Val_int(BinaryenExternalTable()));
+}
+
+CAMLprim value
+caml_binaryen_external_memory(value _unit) {
+  CAMLparam1(_unit);
+  CAMLreturn(Val_int(BinaryenExternalMemory()));
+}
+
+CAMLprim value
+caml_binaryen_external_global(value _unit) {
+  CAMLparam1(_unit);
+  CAMLreturn(Val_int(BinaryenExternalGlobal()));
+}
+
+CAMLprim value
+caml_binaryen_external_event(value _unit) {
+  CAMLparam1(_unit);
+  CAMLreturn(Val_int(BinaryenExternalEvent()));
+}
+
+CAMLprim value
+caml_binaryen_export_get_kind(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExportRef exp = BinaryenExportRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenExportGetKind(exp)));
+}

@@ -24,6 +24,14 @@ static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
   return v;
 }
 
+/* Allocating an OCaml custom block to hold the given BinaryenType */
+static value alloc_BinaryenType(BinaryenType typ)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenType), 0, 1);
+  BinaryenType_val(v) = typ;
+  return v;
+}
+
 CAMLprim value
 caml_binaryen_add_function(value _module, value _name, value _params, value _results, value _locals, value _body) {
   CAMLparam5(_module, _name, _params, _results, _locals);
@@ -106,6 +114,35 @@ caml_binaryen_function_get_name(value _fun) {
   CAMLparam1(_fun);
   BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
   CAMLreturn(caml_copy_string(BinaryenFunctionGetName(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_get_params(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(alloc_BinaryenType(BinaryenFunctionGetParams(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_get_results(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(alloc_BinaryenType(BinaryenFunctionGetResults(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_get_num_vars(value _fun) {
+  CAMLparam1(_fun);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  CAMLreturn(Val_int(BinaryenFunctionGetNumVars(fun)));
+}
+
+CAMLprim value
+caml_binaryen_function_get_var(value _fun, value _index) {
+  CAMLparam2(_fun, _index);
+  BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenType(BinaryenFunctionGetVar(fun, index)));
 }
 
 CAMLprim value
