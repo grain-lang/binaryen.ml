@@ -49,6 +49,10 @@ let start =
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 
 let _ =
+  Global.add_global wasm_mod "max_int64" Type.int64 false
+    (Expression.const wasm_mod (Literal.int64 Int64.max_int))
+
+let _ =
   Table.add_table wasm_mod "table" 1 1 [ "adder" ]
     (Expression.const wasm_mod (Literal.int32 0l))
 
