@@ -41,3 +41,5 @@ external auto : unit -> t = "caml_binaryen_type_auto"
 let auto = auto ()
 
 external create : t array -> t = "caml_binaryen_type_create"
+
+external expand : t -> t array = "caml_binaryen_type_expand"
