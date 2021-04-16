@@ -25,3 +25,6 @@ let auto : t = global##.binaryen##.auto
 
 let create typs =
   meth_call global##.binaryen "createType" [| inject (array typs) |]
+
+let expand typ =
+  to_array (meth_call global##.binaryen "expandType" [| inject typ |])

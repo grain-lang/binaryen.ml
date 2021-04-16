@@ -21,3 +21,5 @@ val unreachable : t
 val auto : t
 
 val create : t array -> t
+
+val expand : t -> t array
