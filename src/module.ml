@@ -21,6 +21,18 @@ external validate : t -> int = "caml_binaryen_module_validate"
 
 external optimize : t -> unit = "caml_binaryen_module_optimize"
 
+external get_features : t -> int = "caml_binaryen_module_get_features"
+
+let get_features wasm_mod =
+  let features_int = get_features wasm_mod in
+  let rec split_features = function
+    | 0 -> []
+    | feature when features_int land feature > 0 ->
+        feature :: split_features (feature lsr 1)
+    | feature -> split_features (feature lsr 1)
+  in
+  split_features 0x80000000
+
 external set_features : t -> int -> unit = "caml_binaryen_module_set_features"
 
 let set_features wasm_mod features =

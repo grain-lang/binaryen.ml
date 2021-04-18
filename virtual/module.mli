@@ -16,6 +16,8 @@ val validate : t -> int
 
 val optimize : t -> unit
 
+val get_features : t -> int list
+
 val set_features : t -> int list -> unit
 
 val get_optimize_level : unit -> int
