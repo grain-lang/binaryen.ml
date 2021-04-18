@@ -36,6 +36,16 @@ let validate wasm_mod = meth_call wasm_mod "validate" [||]
 
 let optimize wasm_mod = meth_call wasm_mod "optimize" [||]
 
+let get_features wasm_mod =
+  let features_int = meth_call wasm_mod "getFeatures" [||] in
+  let rec split_features = function
+    | 0 -> []
+    | feature when features_int land feature > 0 ->
+        feature :: split_features (feature lsr 1)
+    | feature -> split_features (feature lsr 1)
+  in
+  split_features 0x80000000
+
 let set_features wasm_mod features =
   meth_call wasm_mod "setFeatures"
     [| inject (List.fold_left ( lor ) 0 features) |]
