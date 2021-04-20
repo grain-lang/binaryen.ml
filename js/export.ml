@@ -25,20 +25,22 @@ let get_export wasm_mod external_name =
 let remove_export wasm_mod external_name =
   meth_call wasm_mod "removeExport" [| inject (string external_name) |]
 
-let get_num_exports wasm_mod =
-  meth_call global##.binaryen "_BinaryenGetNumExports" [| inject wasm_mod |]
+let get_num_exports wasm_mod = meth_call wasm_mod "getNumExports" [||]
 
 let get_export_by_index wasm_mod index =
-  meth_call global##.binaryen "_BinaryenGetExportByIndex"
-    [| inject wasm_mod; inject index |]
+  meth_call wasm_mod "getExportByIndex" [| inject index |]
 
 let get_name export =
-  to_string
-    (meth_call global##.binaryen "_BinaryenExportGetName" [| inject export |])
+  let export_info =
+    meth_call global##.binaryen "getExportInfo" [| inject export |]
+  in
+  to_string (get export_info "name")
 
 let get_value export =
-  to_string
-    (meth_call global##.binaryen "_BinaryenExportGetValue" [| inject export |])
+  let export_info =
+    meth_call global##.binaryen "getExportInfo" [| inject export |]
+  in
+  to_string (get export_info "value")
 
 let external_function =
   meth_call global##.binaryen "_BinaryenExternalFunction" [||]
@@ -52,4 +54,7 @@ let external_global = meth_call global##.binaryen "_BinaryenExternalGlobal" [||]
 let external_event = meth_call global##.binaryen "_BinaryenExternalEvent" [||]
 
 let export_get_kind export =
-  meth_call global##.binaryen "_BinaryenExportGetKind" [| inject export |]
+  let export_info =
+    meth_call global##.binaryen "getExportInfo" [| inject export |]
+  in
+  get export_info "kind"

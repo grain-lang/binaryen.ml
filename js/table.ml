@@ -31,32 +31,38 @@ let get_element_segment_by_index wasm_mod index =
   meth_call wasm_mod "getElementSegmentByIndex" [| inject index |]
 
 let element_segment_get_name elem =
-  to_string
-    (meth_call global##.binaryen "_BinaryenElementSegmentGetName"
-       [| inject elem |])
+  let element_segment_info =
+    meth_call global##.binaryen "getElementSegmentInfo" [| inject elem |]
+  in
+  to_string (get element_segment_info "name")
 
+(* TODO: Get this implemented upstream *)
 let element_segment_set_name elem name =
-  meth_call global##.binaryen "_BinaryenElementSegmentSetName"
-    [| inject elem; inject (string name) |]
+  failwith "NYI: element_segment_set_name not supported in Binaryen.js"
 
 let element_segment_get_table elem =
-  to_string
-    (meth_call global##.binaryen "_BinaryenElementSegmentGetTable"
-       [| inject elem |])
+  let element_segment_info =
+    meth_call global##.binaryen "getElementSegmentInfo" [| inject elem |]
+  in
+  to_string (get element_segment_info "table")
 
+(* TODO: Get this implemented upstream *)
 let element_segment_set_table elem table =
-  meth_call global##.binaryen "_BinaryenElementSegmentSetTable"
-    [| inject elem; inject (string table) |]
+  failwith "NYI: element_segment_set_table not supported in Binaryen.js"
 
 let element_segment_get_offset elem =
-  meth_call global##.binaryen "_BinaryenElementSegmentGetOffset"
-    [| inject elem |]
+  let element_segment_info =
+    meth_call global##.binaryen "getElementSegmentInfo" [| inject elem |]
+  in
+  get element_segment_info "offset"
 
 let element_segment_get_length elem =
   meth_call global##.binaryen "_BinaryenElementSegmentGetLength"
     [| inject elem |]
 
 let element_segment_get_data elem index =
-  to_string
-    (meth_call global##.binaryen "_BinaryenElementSegmentGetData"
-       [| inject elem; inject index |])
+  let element_segment_info =
+    meth_call global##.binaryen "getElementSegmentInfo" [| inject elem |]
+  in
+  let data_js_array = get element_segment_info "data" in
+  to_string (get data_js_array index)
