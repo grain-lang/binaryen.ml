@@ -36,9 +36,9 @@ let element_segment_get_name elem =
   in
   to_string (get element_segment_info "name")
 
+(* TODO: Get this implemented upstream *)
 let element_segment_set_name elem name =
-  meth_call global##.binaryen "_BinaryenElementSegmentSetName"
-    [| inject elem; inject (string name) |]
+  failwith "NYI: element_segment_set_name not supported in Binaryen.js"
 
 let element_segment_get_table elem =
   let element_segment_info =
@@ -46,9 +46,9 @@ let element_segment_get_table elem =
   in
   to_string (get element_segment_info "table")
 
+(* TODO: Get this implemented upstream *)
 let element_segment_set_table elem table =
-  meth_call global##.binaryen "_BinaryenElementSegmentSetTable"
-    [| inject elem; inject (string table) |]
+  failwith "NYI: element_segment_set_table not supported in Binaryen.js"
 
 let element_segment_get_offset elem =
   let element_segment_info =
@@ -65,4 +65,4 @@ let element_segment_get_data elem index =
     meth_call global##.binaryen "getElementSegmentInfo" [| inject elem |]
   in
   let data_js_array = get element_segment_info "data" in
-  to_string (meth_call data_js_array "join" [| inject (string "") |])
+  to_string (get data_js_array index)

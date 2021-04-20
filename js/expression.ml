@@ -73,6 +73,8 @@ type kind =
   | ArrayLen
   | RefAs
 
+let expression_to_option x = if x = 0 then None else Some x
+
 let block ?(return_type = Type.auto) wasm_mod name children =
   meth_call wasm_mod "block"
     [|
@@ -398,7 +400,7 @@ let if_set_if_true exp child =
     [| inject exp; inject child |]
 
 let if_get_if_false exp =
-  Opt.to_option
+  expression_to_option
     (meth_call global ##. binaryen ##. If "getIfFalse" [| inject exp |])
 
 let if_set_if_false exp child =
@@ -435,7 +437,7 @@ let break_set_name exp name =
     [| inject exp; inject (string name) |]
 
 let break_get_condition exp =
-  Opt.to_option
+  expression_to_option
     (meth_call global ##. binaryen ##. Break "getCondition" [| inject exp |])
 
 let break_set_condition exp child =
@@ -445,7 +447,7 @@ let break_set_condition exp child =
     [| inject exp; inject child |]
 
 let break_get_value exp =
-  Opt.to_option
+  expression_to_option
     (meth_call global ##. binaryen ##. Break "getValue" [| inject exp |])
 
 let break_set_value exp child =
@@ -513,7 +515,7 @@ let switch_set_condition exp child =
     [| inject exp; inject child |]
 
 let switch_get_value exp =
-  Opt.to_option
+  expression_to_option
     (meth_call global ##. binaryen ##. Switch "getValue" [| inject exp |])
 
 let switch_set_value exp child =
