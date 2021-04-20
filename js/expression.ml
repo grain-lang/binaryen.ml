@@ -330,423 +330,547 @@ let expression_print exp =
   meth_call global##.binaryen "_BinaryenExpressionPrint" [| inject exp |]
 
 let expression_finalize exp =
-  meth_call global##.binaryen "_BinaryenExpressionFinalize" [| inject exp |]
+  meth_call global ##. binaryen ##. Expression "finalize" [| inject exp |]
 
-let expression_copy exp mod_ =
-  meth_call global##.binaryen "_BinaryenExpressionCopy"
-    [| inject exp; inject mod_ |]
+let expression_copy exp wasm_mod =
+  meth_call wasm_mod "copyExpression" [| inject exp |]
 
 let block_get_name exp =
   Option.map to_string
     (Opt.to_option
-       (meth_call global##.binaryen "_BinaryenBlockGetName" [| inject exp |]))
+       (meth_call global ##. binaryen ##. Block "getName" [| inject exp |]))
 
 let block_set_name exp name =
-  meth_call global##.binaryen "_BinaryenBlockSetName"
+  meth_call
+    global ##. binaryen ##. Block
+    "setName"
     [| inject exp; inject (string name) |]
 
 let block_get_num_children exp =
-  meth_call global##.binaryen "_BinaryenBlockGetNumChildren" [| inject exp |]
+  meth_call global ##. binaryen ##. Block "getNumChildren" [| inject exp |]
 
 let block_get_child_at exp index =
-  meth_call global##.binaryen "_BinaryenBlockGetChildAt"
+  meth_call
+    global ##. binaryen ##. Block
+    "getChildAt"
     [| inject exp; inject index |]
 
 let block_set_child_at exp index child =
-  meth_call global##.binaryen "_BinaryenBlockSetChildAt"
+  meth_call
+    global ##. binaryen ##. Block
+    "setChildAt"
     [| inject exp; inject index; inject child |]
 
 let block_append_child exp child =
-  meth_call global##.binaryen "_BinaryenBlockAppendChild"
+  meth_call
+    global ##. binaryen ##. Block
+    "appendChild"
     [| inject exp; inject child |]
 
 let block_insert_child_at exp index child =
-  meth_call global##.binaryen "_BinaryenBlockInsertChildAt"
+  meth_call
+    global ##. binaryen ##. Block
+    "insertChildAt"
     [| inject exp; inject index; inject child |]
 
 let block_remove_child_at exp index =
-  meth_call global##.binaryen "_BinaryenBlockRemoveChildAt"
+  meth_call
+    global ##. binaryen ##. Block
+    "removeChildAt"
     [| inject exp; inject index |]
 
 let if_get_condition exp =
-  meth_call global##.binaryen "_BinaryenIfGetCondition" [| inject exp |]
+  meth_call global ##. binaryen ##. If "getCondition" [| inject exp |]
 
 let if_set_condition exp cond =
-  meth_call global##.binaryen "_BinaryenIfSetCondition"
+  meth_call
+    global ##. binaryen ##. If
+    "setCondition"
     [| inject exp; inject cond |]
 
 let if_get_if_true exp =
-  meth_call global##.binaryen "_BinaryenIfGetIfTrue" [| inject exp |]
+  meth_call global ##. binaryen ##. If "getIfTrue" [| inject exp |]
 
 let if_set_if_true exp child =
-  meth_call global##.binaryen "_BinaryenIfSetIfTrue"
+  meth_call
+    global ##. binaryen ##. If
+    "setIfTrue"
     [| inject exp; inject child |]
 
 let if_get_if_false exp =
   Opt.to_option
-    (meth_call global##.binaryen "_BinaryenIfGetIfFalse" [| inject exp |])
+    (meth_call global ##. binaryen ##. If "getIfFalse" [| inject exp |])
 
 let if_set_if_false exp child =
-  meth_call global##.binaryen "_BinaryenIfSetIfFalse"
+  meth_call
+    global ##. binaryen ##. If
+    "setIfFalse"
     [| inject exp; inject child |]
 
 let loop_get_name exp =
-  meth_call global##.binaryen "_BinaryenLoopGetName" [| inject exp |]
+  to_string (meth_call global ##. binaryen ##. Loop "getName" [| inject exp |])
 
 let loop_set_name exp name =
-  meth_call global##.binaryen "_BinaryenLoopSetName"
+  meth_call
+    global ##. binaryen ##. Loop
+    "setName"
     [| inject exp; inject (string name) |]
 
 let loop_get_body exp =
-  meth_call global##.binaryen "_BinaryenLoopGetBody" [| inject exp |]
+  meth_call global ##. binaryen ##. Loop "getBody" [| inject exp |]
 
 let loop_set_body exp child =
-  meth_call global##.binaryen "_BinaryenLoopSetBody"
+  meth_call
+    global ##. binaryen ##. Loop
+    "setBody"
     [| inject exp; inject child |]
 
 let break_get_name exp =
-  to_string
-    (meth_call global##.binaryen "_BinaryenBreakGetName" [| inject exp |])
+  to_string (meth_call global ##. binaryen ##. Break "getName" [| inject exp |])
 
 let break_set_name exp name =
-  meth_call global##.binaryen "_BinaryenBreakSetName"
+  meth_call
+    global ##. binaryen ##. Break
+    "setName"
     [| inject exp; inject (string name) |]
 
 let break_get_condition exp =
   Opt.to_option
-    (meth_call global##.binaryen "_BinaryenBreakGetCondition" [| inject exp |])
+    (meth_call global ##. binaryen ##. Break "getCondition" [| inject exp |])
 
 let break_set_condition exp child =
-  meth_call global##.binaryen "_BinaryenBreakSetCondition"
+  meth_call
+    global ##. binaryen ##. Break
+    "setCondition"
     [| inject exp; inject child |]
 
 let break_get_value exp =
   Opt.to_option
-    (meth_call global##.binaryen "_BinaryenBreakGetValue" [| inject exp |])
+    (meth_call global ##. binaryen ##. Break "getValue" [| inject exp |])
 
 let break_set_value exp child =
-  meth_call global##.binaryen "_BinaryenBreakSetValue"
+  meth_call
+    global ##. binaryen ##. Break
+    "setValue"
     [| inject exp; inject child |]
 
 let switch_get_num_names exp =
-  meth_call global##.binaryen "_BinaryenSwitchGetNumNames" [| inject exp |]
+  meth_call global ##. binaryen ##. Switch "getNumNames" [| inject exp |]
 
 let switch_get_name_at exp index =
   to_string
-    (meth_call global##.binaryen "_BinaryenSwitchGetNameAt"
+    (meth_call
+       global ##. binaryen ##. Switch
+       "getNameAt"
        [| inject exp; inject index |])
 
 let switch_set_name_at exp index name =
-  meth_call global##.binaryen "_BinaryenSwitchSetNameAt"
+  meth_call
+    global ##. binaryen ##. Switch
+    "setNameAt"
     [| inject exp; inject index; inject (string name) |]
 
 let switch_append_name exp name =
-  meth_call global##.binaryen "_BinaryenSwitchAppendName"
+  meth_call
+    global ##. binaryen ##. Switch
+    "appendName"
     [| inject exp; inject (string name) |]
 
 let switch_insert_name_at exp index name =
-  meth_call global##.binaryen "_BinaryenSwitchInsertNameAt"
+  meth_call
+    global ##. binaryen ##. Switch
+    "insertNameAt"
     [| inject exp; inject index; inject (string name) |]
 
 let switch_remove_name_at exp index =
   to_string
-    (meth_call global##.binaryen "_BinaryenSwitchRemoveNameAt"
+    (meth_call
+       global ##. binaryen ##. Switch
+       "removeNameAt"
        [| inject exp; inject index |])
 
 let switch_get_default_name exp =
   Option.map to_string
     (Opt.to_option
-       (meth_call global##.binaryen "_BinaryenSwitchGetDefaultName"
+       (meth_call
+          global ##. binaryen ##. Switch
+          "getDefaultName"
           [| inject exp |]))
 
 let switch_set_default_name exp name =
-  meth_call global##.binaryen "_BinaryenSwitchSetDefaultName"
+  meth_call
+    global ##. binaryen ##. Switch
+    "setDefaultName"
     [| inject exp; inject (string name) |]
 
 let switch_get_condition exp =
-  meth_call global##.binaryen "_BinaryenSwitchGetCondition" [| inject exp |]
+  meth_call global ##. binaryen ##. Switch "getCondition" [| inject exp |]
 
 let switch_set_condition exp child =
-  meth_call global##.binaryen "_BinaryenSwitchSetCondition"
+  meth_call
+    global ##. binaryen ##. Switch
+    "setCondition"
     [| inject exp; inject child |]
 
 let switch_get_value exp =
   Opt.to_option
-    (meth_call global##.binaryen "_BinaryenSwitchGetValue" [| inject exp |])
+    (meth_call global ##. binaryen ##. Switch "getValue" [| inject exp |])
 
 let switch_set_value exp child =
-  meth_call global##.binaryen "_BinaryenSwitchSetValue"
+  meth_call
+    global ##. binaryen ##. Switch
+    "setValue"
     [| inject exp; inject child |]
 
 let call_get_target exp =
   to_string
-    (meth_call global##.binaryen "_BinaryenCallGetTarget" [| inject exp |])
+    (meth_call global ##. binaryen ##. Call "getTarget" [| inject exp |])
 
 let call_set_target exp name =
-  meth_call global##.binaryen "_BinaryenCallSetTarget"
+  meth_call
+    global ##. binaryen ##. Call
+    "setTarget"
     [| inject exp; inject (string name) |]
 
 let call_get_num_operands exp =
-  meth_call global##.binaryen "_BinaryenCallGetNumOperands" [| inject exp |]
+  meth_call global ##. binaryen ##. Call "getNumOperands" [| inject exp |]
 
 let call_get_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenCallGetOperandAt"
+  meth_call
+    global ##. binaryen ##. Call
+    "getOperandAt"
     [| inject exp; inject index |]
 
 let call_set_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenCallSetOperandAt"
+  meth_call
+    global ##. binaryen ##. Call
+    "setOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let call_append_operand exp operand =
-  meth_call global##.binaryen "_BinaryenCallAppendOperand"
+  meth_call
+    global ##. binaryen ##. Call
+    "appendOperand"
     [| inject exp; inject operand |]
 
 let call_insert_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenCallInsertOperandAt"
+  meth_call
+    global ##. binaryen ##. Call
+    "insertOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let call_remove_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenCallRemoveOperandAt"
+  meth_call
+    global ##. binaryen ##. Call
+    "removeOperandAt"
     [| inject exp; inject index |]
 
 let call_is_return exp =
-  to_bool (meth_call global##.binaryen "_BinaryenCallIsReturn" [| inject exp |])
+  to_bool (meth_call global ##. binaryen ##. Call "isReturn" [| inject exp |])
 
 let call_set_return exp isReturn =
-  meth_call global##.binaryen "_BinaryenCallSetReturn"
+  meth_call
+    global ##. binaryen ##. Call
+    "setReturn"
     [| inject exp; inject (bool isReturn) |]
 
 let call_indirect_get_target exp =
-  meth_call global##.binaryen "_BinaryenCallIndirectGetTarget" [| inject exp |]
+  meth_call global ##. binaryen ##. CallIndirect "getTarget" [| inject exp |]
 
 let call_indirect_set_target exp target =
-  meth_call global##.binaryen "_BinaryenCallIndirectSetTarget"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "setTarget"
     [| inject exp; inject target |]
 
 let call_indirect_get_table exp =
   to_string
-    (meth_call global##.binaryen "_BinaryenCallIndirectGetTable"
-       [| inject exp |])
+    (meth_call global ##. binaryen ##. CallIndirect "getTable" [| inject exp |])
 
 let call_indirect_set_table exp name =
-  meth_call global##.binaryen "_BinaryenCallIndirectSetTable"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "setTable"
     [| inject exp; inject (string name) |]
 
 let call_indirect_get_num_operands exp =
-  meth_call global##.binaryen "_BinaryenCallIndirectGetNumOperands"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "getNumOperands"
     [| inject exp |]
 
 let call_indirect_get_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenCallIndirectGetOperandAt"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "getOperandAt"
     [| inject exp; inject index |]
 
 let call_indirect_set_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenCallIndirectSetOperandAt"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "setOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let call_indirect_append_operand exp operand =
-  meth_call global##.binaryen "_BinaryenCallIndirectAppendOperand"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "appendOperand"
     [| inject exp; inject operand |]
 
 let call_indirect_insert_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenCallIndirectInsertOperandAt"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "insertOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let call_indirect_remove_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenCallIndirectRemoveOperandAt"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "removeOperandAt"
     [| inject exp; inject index |]
 
 let call_indirect_is_return exp =
   to_bool
-    (meth_call global##.binaryen "_BinaryenCallIndirectIsReturn"
-       [| inject exp |])
+    (meth_call global ##. binaryen ##. CallIndirect "isReturn" [| inject exp |])
 
 let call_indirect_set_return exp isReturn =
-  meth_call global##.binaryen "_BinaryenCallIndirectSetReturn"
+  meth_call
+    global ##. binaryen ##. CallIndirect
+    "setReturn"
     [| inject exp; inject (bool isReturn) |]
 
 let local_set_get_value exp =
-  meth_call global##.binaryen "_BinaryenLocalSetGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. LocalSet "getValue" [| inject exp |]
 
 let local_set_set_value exp value =
-  meth_call global##.binaryen "_BinaryenLocalSetSetValue"
+  meth_call
+    global ##. binaryen ##. LocalSet
+    "setValue"
     [| inject exp; inject value |]
 
 let global_get_get_name exp =
   to_string
-    (meth_call global##.binaryen "_BinaryenGlobalGetGetName" [| inject exp |])
+    (meth_call global ##. binaryen ##. GlobalGet "getName" [| inject exp |])
 
 let global_get_set_name exp name =
-  meth_call global##.binaryen "_BinaryenGlobalGetSetName"
+  meth_call
+    global ##. binaryen ##. GlobalGet
+    "setName"
     [| inject exp; inject (string name) |]
 
 let global_set_get_name exp =
   to_string
-    (meth_call global##.binaryen "_BinaryenGlobalSetGetName" [| inject exp |])
+    (meth_call global ##. binaryen ##. GlobalSet "getName" [| inject exp |])
 
 let global_set_set_name exp name =
-  meth_call global##.binaryen "_BinaryenGlobalSetSetName"
+  meth_call
+    global ##. binaryen ##. GlobalSet
+    "setName"
     [| inject exp; inject (string name) |]
 
 let global_set_get_value exp =
-  meth_call global##.binaryen "_BinaryenGlobalSetGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. GlobalSet "getValue" [| inject exp |]
 
 let global_set_set_value exp value =
-  meth_call global##.binaryen "_BinaryenGlobalSetSetValue"
+  meth_call
+    global ##. binaryen ##. GlobalSet
+    "setValue"
     [| inject exp; inject value |]
 
 let memory_grow_get_delta exp =
-  meth_call global##.binaryen "_BinaryenMemoryGrowGetDelta" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryGrow "getDelta" [| inject exp |]
 
 let memory_grow_set_delta exp delta =
-  meth_call global##.binaryen "_BinaryenMemoryGrowSetDelta"
+  meth_call
+    global ##. binaryen ##. MemoryGrow
+    "setDelta"
     [| inject exp; inject delta |]
 
 let load_get_ptr exp =
-  meth_call global##.binaryen "_BinaryenLoadGetPtr" [| inject exp |]
+  meth_call global ##. binaryen ##. Load "getPtr" [| inject exp |]
 
 let load_set_ptr exp ptr =
-  meth_call global##.binaryen "_BinaryenLoadSetPtr" [| inject exp; inject ptr |]
+  meth_call global ##. binaryen ##. Load "setPtr" [| inject exp; inject ptr |]
 
 let store_get_ptr exp =
-  meth_call global##.binaryen "_BinaryenStoreGetPtr" [| inject exp |]
+  meth_call global ##. binaryen ##. Store "getPtr" [| inject exp |]
 
 let store_set_ptr exp ptr =
-  meth_call global##.binaryen "_BinaryenStoreSetPtr"
-    [| inject exp; inject ptr |]
+  meth_call global ##. binaryen ##. Store "setPtr" [| inject exp; inject ptr |]
 
 let store_get_value exp =
-  meth_call global##.binaryen "_BinaryenStoreGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. Store "getValue" [| inject exp |]
 
 let store_set_value exp value =
-  meth_call global##.binaryen "_BinaryenStoreSetValue"
+  meth_call
+    global ##. binaryen ##. Store
+    "setValue"
     [| inject exp; inject value |]
 
 let unary_get_value exp =
-  meth_call global##.binaryen "_BinaryenUnaryGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. Unary "getValue" [| inject exp |]
 
 let unary_set_value exp value =
-  meth_call global##.binaryen "_BinaryenUnarySetValue"
+  meth_call
+    global ##. binaryen ##. Unary
+    "setValue"
     [| inject exp; inject value |]
 
 let binary_get_left exp =
-  meth_call global##.binaryen "_BinaryenBinaryGetLeft" [| inject exp |]
+  meth_call global ##. binaryen ##. Binary "getLeft" [| inject exp |]
 
 let binary_set_left exp value =
-  meth_call global##.binaryen "_BinaryenBinarySetLeft"
+  meth_call
+    global ##. binaryen ##. Binary
+    "setLeft"
     [| inject exp; inject value |]
 
 let binary_get_right exp =
-  meth_call global##.binaryen "_BinaryenBinaryGetRight" [| inject exp |]
+  meth_call global ##. binaryen ##. Binary "getRight" [| inject exp |]
 
 let binary_set_right exp value =
-  meth_call global##.binaryen "_BinaryenBinarySetRight"
+  meth_call
+    global ##. binaryen ##. Binary
+    "setRight"
     [| inject exp; inject value |]
 
 let select_get_if_true exp =
-  meth_call global##.binaryen "_BinaryenSelectGetIfTrue" [| inject exp |]
+  meth_call global ##. binaryen ##. Select "getIfTrue" [| inject exp |]
 
 let select_set_if_true exp value =
-  meth_call global##.binaryen "_BinaryenSelectSetIfTrue"
+  meth_call
+    global ##. binaryen ##. Select
+    "setIfTrue"
     [| inject exp; inject value |]
 
 let select_get_if_false exp =
-  meth_call global##.binaryen "_BinaryenSelectGetIfFalse" [| inject exp |]
+  meth_call global ##. binaryen ##. Select "getIfFalse" [| inject exp |]
 
 let select_set_if_false exp value =
-  meth_call global##.binaryen "_BinaryenSelectSetIfFalse"
+  meth_call
+    global ##. binaryen ##. Select
+    "setIfFalse"
     [| inject exp; inject value |]
 
 let select_get_condition exp =
-  meth_call global##.binaryen "_BinaryenSelectGetCondition" [| inject exp |]
+  meth_call global ##. binaryen ##. Select "getCondition" [| inject exp |]
 
 let select_set_condition exp value =
-  meth_call global##.binaryen "_BinaryenSelectSetCondition"
+  meth_call
+    global ##. binaryen ##. Select
+    "setCondition"
     [| inject exp; inject value |]
 
 let drop_get_value exp =
-  meth_call global##.binaryen "_BinaryenDropGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. Drop "getValue" [| inject exp |]
 
 let drop_set_value exp value =
-  meth_call global##.binaryen "_BinaryenDropSetValue"
+  meth_call
+    global ##. binaryen ##. Drop
+    "setValue"
     [| inject exp; inject value |]
 
 let return_get_value exp =
-  meth_call global##.binaryen "_BinaryenReturnGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. Return "getValue" [| inject exp |]
 
 let return_set_value exp value =
-  meth_call global##.binaryen "_BinaryenReturnSetValue"
+  meth_call
+    global ##. binaryen ##. Return
+    "setValue"
     [| inject exp; inject value |]
 
 let memory_copy_get_dest exp =
-  meth_call global##.binaryen "_BinaryenMemoryCopyGetDest" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryCopy "getDest" [| inject exp |]
 
 let memory_copy_set_dest exp value =
-  meth_call global##.binaryen "_BinaryenMemoryCopySetDest"
+  meth_call
+    global ##. binaryen ##. MemoryCopy
+    "setDest"
     [| inject exp; inject value |]
 
 let memory_copy_get_source exp =
-  meth_call global##.binaryen "_BinaryenMemoryCopyGetSource" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryCopy "getSource" [| inject exp |]
 
 let memory_copy_set_source exp value =
-  meth_call global##.binaryen "_BinaryenMemoryCopySetSource"
+  meth_call
+    global ##. binaryen ##. MemoryCopy
+    "setSource"
     [| inject exp; inject value |]
 
 let memory_copy_get_size exp =
-  meth_call global##.binaryen "_BinaryenMemoryCopyGetSize" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryCopy "getSize" [| inject exp |]
 
 let memory_copy_set_size exp value =
-  meth_call global##.binaryen "_BinaryenMemoryCopySetSize"
+  meth_call
+    global ##. binaryen ##. MemoryCopy
+    "setSize"
     [| inject exp; inject value |]
 
 let memory_fill_get_dest exp =
-  meth_call global##.binaryen "_BinaryenMemoryFillGetDest" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryFill "getDest" [| inject exp |]
 
 let memory_fill_set_dest exp value =
-  meth_call global##.binaryen "_BinaryenMemoryFillSetDest"
+  meth_call
+    global ##. binaryen ##. MemoryFill
+    "setDest"
     [| inject exp; inject value |]
 
 let memory_fill_get_value exp =
-  meth_call global##.binaryen "_BinaryenMemoryFillGetValue" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryFill "getValue" [| inject exp |]
 
 let memory_fill_set_value exp value =
-  meth_call global##.binaryen "_BinaryenMemoryFillSetValue"
+  meth_call
+    global ##. binaryen ##. MemoryFill
+    "setValue"
     [| inject exp; inject value |]
 
 let memory_fill_get_size exp =
-  meth_call global##.binaryen "_BinaryenMemoryFillGetSize" [| inject exp |]
+  meth_call global ##. binaryen ##. MemoryFill "getSize" [| inject exp |]
 
 let memory_fill_set_size exp value =
-  meth_call global##.binaryen "_BinaryenMemoryFillSetSize"
+  meth_call
+    global ##. binaryen ##. MemoryFill
+    "setSize"
     [| inject exp; inject value |]
 
 let tuple_make_get_num_operands exp =
-  meth_call global##.binaryen "_BinaryenTupleMakeGetNumOperands"
-    [| inject exp |]
+  meth_call global ##. binaryen ##. TupleMake "getNumOperands" [| inject exp |]
 
 let tuple_make_get_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenTupleMakeGetOperandAt"
+  meth_call
+    global ##. binaryen ##. TupleMake
+    "getOperandAt"
     [| inject exp; inject index |]
 
 let tuple_make_set_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenTupleMakeSetOperandAt"
+  meth_call
+    global ##. binaryen ##. TupleMake
+    "setOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let tuple_make_append_operand exp operand =
-  meth_call global##.binaryen "_BinaryenTupleMakeAppendOperand"
+  meth_call
+    global ##. binaryen ##. TupleMake
+    "appendOperand"
     [| inject exp; inject operand |]
 
 let tuple_make_insert_operand_at exp index operand =
-  meth_call global##.binaryen "_BinaryenTupleMakeInsertOperandAt"
+  meth_call
+    global ##. binaryen ##. TupleMake
+    "insertOperandAt"
     [| inject exp; inject index; inject operand |]
 
 let tuple_make_remove_operand_at exp index =
-  meth_call global##.binaryen "_BinaryenTupleMakeRemoveOperandAt"
+  meth_call
+    global ##. binaryen ##. TupleMake
+    "removeOperandAt"
     [| inject exp; inject index |]
 
 let tuple_extract_get_tuple exp =
-  meth_call global##.binaryen "_BinaryenTupleExtractGetTuple" [| inject exp |]
+  meth_call global ##. binaryen ##. TupleExtract "getTuple" [| inject exp |]
 
 let tuple_extract_set_tuple exp value =
-  meth_call global##.binaryen "_BinaryenTupleExtractSetTuple"
+  meth_call
+    global ##. binaryen ##. TupleExtract
+    "setTuple"
     [| inject exp; inject value |]

@@ -18,24 +18,31 @@ let get_global wasm_mod name =
 let remove_global wasm_mod name =
   meth_call wasm_mod "removeGlobal" [| inject (string name) |]
 
-let get_num_globals wasm_mod =
-  meth_call global##.binaryen "_BinaryenGetNumGlobals" [| inject wasm_mod |]
+let get_num_globals wasm_mod = meth_call wasm_mod "getNumGlobals" [||]
 
 let get_global_by_index wasm_mod index =
-  meth_call global##.binaryen "_BinaryenGetGlobalByIndex"
-    [| inject wasm_mod; inject index |]
+  meth_call wasm_mod "getGlobalByIndex" [| inject index |]
 
 let get_name global_ =
-  to_string
-    (meth_call global##.binaryen "_BinaryenGlobalGetName" [| inject global_ |])
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  to_string (get global_info "name")
 
 let get_type global_ =
-  meth_call global##.binaryen "_BinaryenGlobalGetType" [| inject global_ |]
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  get global_info "type"
 
 let is_mutable global_ =
-  to_bool
-    (meth_call global##.binaryen "_BinaryenGlobalIsMutable"
-       [| inject global_ |])
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  to_bool (get global_info "mutable")
 
 let get_init_expr global_ =
-  meth_call global##.binaryen "_BinaryenGlobalGetInitExpr" [| inject global_ |]
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  get global_info "init"

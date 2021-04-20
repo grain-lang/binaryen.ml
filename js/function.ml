@@ -33,24 +33,28 @@ let get_num_functions wasm_mod = meth_call wasm_mod "getNumFunctions" [||]
 
 let get_name func =
   to_string
-    (meth_call global##.binaryen "_BinaryenFunctionGetName" [| inject func |])
+    (meth_call global ##. binaryen ##. Function "getName" [| inject func |])
 
 let get_params func =
-  meth_call global##.binaryen "_BinaryenFunctionGetParams" [| inject func |]
+  meth_call global ##. binaryen ##. Function "getParams" [| inject func |]
 
 let get_results func =
-  meth_call global##.binaryen "_BinaryenFunctionGetResults" [| inject func |]
+  meth_call global ##. binaryen ##. Function "getResults" [| inject func |]
 
 let get_num_vars func =
-  meth_call global##.binaryen "_BinaryenFunctionGetNumVars" [| inject func |]
+  meth_call global ##. binaryen ##. Function "getNumVars" [| inject func |]
 
 let get_var func index =
-  meth_call global##.binaryen "_BinaryenFunctionGetVar"
+  meth_call
+    global ##. binaryen ##. Function
+    "getVar"
     [| inject func; inject index |]
 
 let get_body func =
-  meth_call global##.binaryen "_BinaryenFunctionGetBody" [| inject func |]
+  meth_call global ##. binaryen ##. Function "getBody" [| inject func |]
 
 let set_body func body =
-  meth_call global##.binaryen "_BinaryenFunctionSetBody"
+  meth_call
+    global ##. binaryen ##. Function
+    "setBody"
     [| inject func; inject body |]

@@ -45,21 +45,25 @@ let add_global_import wasm_mod internal_name external_module_name
     |]
 
 let function_import_get_module func =
-  to_string
-    (meth_call global##.binaryen "_BinaryenFunctionImportGetModule"
-       [| inject func |])
+  let func_info =
+    meth_call global##.binaryen "getFunctionInfo" [| inject func |]
+  in
+  to_string (get func_info "module")
 
 let global_import_get_module global_ =
-  to_string
-    (meth_call global##.binaryen "_BinaryenGlobalImportGetModule"
-       [| inject global_ |])
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  to_string (get global_info "module")
 
 let function_import_get_base func =
-  to_string
-    (meth_call global##.binaryen "_BinaryenFunctionImportGetBase"
-       [| inject func |])
+  let func_info =
+    meth_call global##.binaryen "getFunctionInfo" [| inject func |]
+  in
+  to_string (get func_info "base")
 
 let global_import_get_base global_ =
-  to_string
-    (meth_call global##.binaryen "_BinaryenGlobalImportGetBase"
-       [| inject global_ |])
+  let global_info =
+    meth_call global##.binaryen "getGlobalInfo" [| inject global_ |]
+  in
+  to_string (get global_info "base")
