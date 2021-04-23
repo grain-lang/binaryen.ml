@@ -626,6 +626,11 @@ caml_binaryen_expression_id_ref_is(value unit) {
   CAMLreturn(Val_int(BinaryenRefIsId()));
 }
 CAMLprim value
+caml_binaryen_expression_id_ref_as(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefAsId()));
+}
+CAMLprim value
 caml_binaryen_expression_id_ref_func(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenRefFuncId()));
@@ -734,11 +739,6 @@ CAMLprim value
 caml_binaryen_expression_id_array_len(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenArrayLenId()));
-}
-CAMLprim value
-caml_binaryen_expression_id_ref_as(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenRefAsId()));
 }
 
 // Expression operations

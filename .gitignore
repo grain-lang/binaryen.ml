@@ -1,5 +1,6 @@
 node_modules/
 _esy/
+_build/
 .merlin
 META
 .vscode/
