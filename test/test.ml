@@ -95,11 +95,40 @@ let _ = Function.set_start wasm_mod start
 
 let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [] false
 
+(* Create an imported "write" function i32 (externref, i32, i32) *)
+(* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
+
+let _ =
+  Import.add_function_import wasm_mod "write" "future-wasi" "write"
+    (Type.create [| Type.externref; Type.int32; Type.int32 |])
+    Type.int32
+
+(* Create a function that calls the imported write function *)
+let _ =
+  Function.add_function wasm_mod "hello" Type.externref Type.int32 [||]
+    (Expression.Call.make wasm_mod "write"
+       [
+         Expression.Local_get.make wasm_mod 0 Type.externref;
+         Expression.Const.make wasm_mod (Literal.int32 0l);
+         Expression.Const.make wasm_mod (Literal.int32 1l);
+       ]
+       Type.int32)
+
+let _ = Export.add_function_export wasm_mod "hello" "hello"
+
+(* Finally, we print 3 versions of the module to be checked against test.expected *)
+
+(* 1. Print the the module as-is *)
+
 let _ = Module.print wasm_mod
+
+(* 2. Optimize, then print the module *)
 
 let _ = Module.optimize wasm_mod
 
 let _ = Module.print wasm_mod
+
+(* 3. Copy previous module bytes into new module, validate, and print *)
 
 let byts, _ = Module.write wasm_mod None
 
@@ -108,6 +137,8 @@ let new_mod = Module.read byts
 let _ = Module.validate new_mod
 
 let _ = Module.print new_mod
+
+(* Dispose the modules 👋 *)
 
 let _ = Module.dispose wasm_mod
 
