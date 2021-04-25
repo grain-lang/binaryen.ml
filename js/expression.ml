@@ -383,51 +383,58 @@ module Block = struct
       [| inject exp; inject index |]
 end
 
-let if_get_condition exp =
-  meth_call global ##. binaryen ##. If "getCondition" [| inject exp |]
 
-let if_set_condition exp cond =
-  meth_call
-    global ##. binaryen ##. If
-    "setCondition"
-    [| inject exp; inject cond |]
+module If = struct
+  let get_condition exp =
+    meth_call global ##. binaryen ##. If "getCondition" [| inject exp |]
+  
+  let set_condition exp cond =
+    meth_call
+      global ##. binaryen ##. If
+      "setCondition"
+      [| inject exp; inject cond |]
+  
+  let get_if_true exp =
+    meth_call global ##. binaryen ##. If "getIfTrue" [| inject exp |]
+  
+  let set_if_true exp child =
+    meth_call
+      global ##. binaryen ##. If
+      "setIfTrue"
+      [| inject exp; inject child |]
+  
+  let get_if_false exp =
+    expression_to_option
+      (meth_call global ##. binaryen ##. If "getIfFalse" [| inject exp |])
+  
+  let set_if_false exp child =
+    meth_call
+      global ##. binaryen ##. If
+      "setIfFalse"
+      [| inject exp; inject child |]
+end;;
 
-let if_get_if_true exp =
-  meth_call global ##. binaryen ##. If "getIfTrue" [| inject exp |]
+module Loop = struct
+  let get_name exp =
+    to_string (meth_call global ##. binaryen ##. Loop "getName" [| inject exp |])
+  
+  let set_name exp name =
+    meth_call
+      global ##. binaryen ##. Loop
+      "setName"
+      [| inject exp; inject (string name) |]
+  
+  let get_body exp =
+    meth_call global ##. binaryen ##. Loop "getBody" [| inject exp |]
+  
+  let set_body exp child =
+    meth_call
+      global ##. binaryen ##. Loop
+      "setBody"
+      [| inject exp; inject child |]
 
-let if_set_if_true exp child =
-  meth_call
-    global ##. binaryen ##. If
-    "setIfTrue"
-    [| inject exp; inject child |]
+end;;
 
-let if_get_if_false exp =
-  expression_to_option
-    (meth_call global ##. binaryen ##. If "getIfFalse" [| inject exp |])
-
-let if_set_if_false exp child =
-  meth_call
-    global ##. binaryen ##. If
-    "setIfFalse"
-    [| inject exp; inject child |]
-
-let loop_get_name exp =
-  to_string (meth_call global ##. binaryen ##. Loop "getName" [| inject exp |])
-
-let loop_set_name exp name =
-  meth_call
-    global ##. binaryen ##. Loop
-    "setName"
-    [| inject exp; inject (string name) |]
-
-let loop_get_body exp =
-  meth_call global ##. binaryen ##. Loop "getBody" [| inject exp |]
-
-let loop_set_body exp child =
-  meth_call
-    global ##. binaryen ##. Loop
-    "setBody"
-    [| inject exp; inject child |]
 
 let break_get_name exp =
   to_string (meth_call global ##. binaryen ##. Break "getName" [| inject exp |])

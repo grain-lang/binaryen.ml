@@ -577,25 +577,31 @@ module Block = struct
     = "caml_binaryen_block_remove_child_at"
 end
 
-external if_get_condition : t -> t = "caml_binaryen_if_get_condition"
+module If = struct
+  external get_condition : t -> t = "caml_binaryen_if_get_condition"
 
-external if_set_condition : t -> t -> unit = "caml_binaryen_if_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_if_set_condition"
+  
+  external get_if_true : t -> t = "caml_binaryen_if_get_if_true"
+  
+  external set_if_true : t -> t -> unit = "caml_binaryen_if_set_if_true"
+  
+  external get_if_false : t -> t option = "caml_binaryen_if_get_if_false"
+  
+  external set_if_false : t -> t -> unit = "caml_binaryen_if_set_if_false"
+end;;
 
-external if_get_if_true : t -> t = "caml_binaryen_if_get_if_true"
 
-external if_set_if_true : t -> t -> unit = "caml_binaryen_if_set_if_true"
+module Loop = struct
+  external get_name : t -> string = "caml_binaryen_loop_get_name"
+  
+  external set_name : t -> string -> unit = "caml_binaryen_loop_set_name"
+  
+  external get_body : t -> t = "caml_binaryen_loop_get_body"
+  
+  external set_body : t -> t -> unit = "caml_binaryen_loop_set_body"
 
-external if_get_if_false : t -> t option = "caml_binaryen_if_get_if_false"
-
-external if_set_if_false : t -> t -> unit = "caml_binaryen_if_set_if_false"
-
-external loop_get_name : t -> string = "caml_binaryen_loop_get_name"
-
-external loop_set_name : t -> string -> unit = "caml_binaryen_loop_set_name"
-
-external loop_get_body : t -> t = "caml_binaryen_loop_get_body"
-
-external loop_set_body : t -> t -> unit = "caml_binaryen_loop_set_body"
+end;;
 
 external break_get_name : t -> string = "caml_binaryen_break_get_name"
 

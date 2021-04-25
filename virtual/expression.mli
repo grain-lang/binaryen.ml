@@ -163,25 +163,30 @@ module Block : sig
   val remove_child_at : t -> int -> t
 end
 
-val if_get_condition : t -> t
+module If: sig
+  val get_condition : t -> t
 
-val if_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
+  
+  val get_if_true : t -> t
+  
+  val set_if_true : t -> t -> unit
+  
+  val get_if_false : t -> t option
+  
+  val set_if_false : t -> t -> unit
+end
 
-val if_get_if_true : t -> t
+module Loop: sig
+  val get_name : t -> string
+  
+  val set_name : t -> string -> unit
+  
+  val get_body : t -> t
+  
+  val set_body : t -> t -> unit
+end
 
-val if_set_if_true : t -> t -> unit
-
-val if_get_if_false : t -> t option
-
-val if_set_if_false : t -> t -> unit
-
-val loop_get_name : t -> string
-
-val loop_set_name : t -> string -> unit
-
-val loop_get_body : t -> t
-
-val loop_set_body : t -> t -> unit
 
 val break_get_name : t -> string
 
