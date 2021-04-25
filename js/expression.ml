@@ -924,11 +924,13 @@ module Tuple_make = struct
       [| inject exp; inject index |]
 end
 
-let tuple_extract_get_tuple exp =
-  meth_call global ##. binaryen ##. TupleExtract "getTuple" [| inject exp |]
+module Tuple_extract = struct
+  let get_tuple exp =
+    meth_call global ##. binaryen ##. TupleExtract "getTuple" [| inject exp |]
 
-let tuple_extract_set_tuple exp value =
-  meth_call
-    global ##. binaryen ##. TupleExtract
-    "setTuple"
-    [| inject exp; inject value |]
+  let set_tuple exp value =
+    meth_call
+      global ##. binaryen ##. TupleExtract
+      "setTuple"
+      [| inject exp; inject value |]
+end

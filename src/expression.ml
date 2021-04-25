@@ -840,8 +840,8 @@ module Typle_make = struct
     = "caml_binaryen_tuple_make_remove_operand_at"
 end
 
-external tuple_extract_get_tuple : t -> t
-  = "caml_binaryen_tuple_extract_get_tuple"
+module Tuple_extract = struct
+  external get_tuple : t -> t = "caml_binaryen_tuple_extract_get_tuple"
 
-external tuple_extract_set_tuple : t -> t -> unit
-  = "caml_binaryen_tuple_extract_set_tuple"
+  external set_tuple : t -> t -> unit = "caml_binaryen_tuple_extract_set_tuple"
+end

@@ -403,6 +403,8 @@ module Tuple_make : sig
   val remove_operand_at : t -> int -> t
 end
 
-val tuple_extract_get_tuple : t -> t
+module Tuple_extract : sig
+  val get_tuple : t -> t
 
-val tuple_extract_set_tuple : t -> t -> unit
+  val set_tuple : t -> t -> unit
+end
