@@ -375,17 +375,19 @@ module Memory_copy : sig
   val set_size : t -> t -> unit
 end
 
-val memory_fill_get_dest : t -> t
+module Memory_fill : sig
+  val get_dest : t -> t
 
-val memory_fill_set_dest : t -> t -> unit
+  val set_dest : t -> t -> unit
 
-val memory_fill_get_value : t -> t
+  val get_value : t -> t
 
-val memory_fill_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
 
-val memory_fill_get_size : t -> t
+  val get_size : t -> t
 
-val memory_fill_set_size : t -> t -> unit
+  val set_size : t -> t -> unit
+end
 
 val tuple_make_get_num_operands : t -> int
 

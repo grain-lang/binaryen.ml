@@ -857,32 +857,34 @@ module Memory_copy = struct
       [| inject exp; inject value |]
 end
 
-let memory_fill_get_dest exp =
-  meth_call global ##. binaryen ##. MemoryFill "getDest" [| inject exp |]
+module Memory_fill = struct
+  let get_dest exp =
+    meth_call global ##. binaryen ##. MemoryFill "getDest" [| inject exp |]
 
-let memory_fill_set_dest exp value =
-  meth_call
-    global ##. binaryen ##. MemoryFill
-    "setDest"
-    [| inject exp; inject value |]
+  let set_dest exp value =
+    meth_call
+      global ##. binaryen ##. MemoryFill
+      "setDest"
+      [| inject exp; inject value |]
 
-let memory_fill_get_value exp =
-  meth_call global ##. binaryen ##. MemoryFill "getValue" [| inject exp |]
+  let get_value exp =
+    meth_call global ##. binaryen ##. MemoryFill "getValue" [| inject exp |]
 
-let memory_fill_set_value exp value =
-  meth_call
-    global ##. binaryen ##. MemoryFill
-    "setValue"
-    [| inject exp; inject value |]
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. MemoryFill
+      "setValue"
+      [| inject exp; inject value |]
 
-let memory_fill_get_size exp =
-  meth_call global ##. binaryen ##. MemoryFill "getSize" [| inject exp |]
+  let get_size exp =
+    meth_call global ##. binaryen ##. MemoryFill "getSize" [| inject exp |]
 
-let memory_fill_set_size exp value =
-  meth_call
-    global ##. binaryen ##. MemoryFill
-    "setSize"
-    [| inject exp; inject value |]
+  let set_size exp value =
+    meth_call
+      global ##. binaryen ##. MemoryFill
+      "setSize"
+      [| inject exp; inject value |]
+end
 
 let tuple_make_get_num_operands exp =
   meth_call global ##. binaryen ##. TupleMake "getNumOperands" [| inject exp |]

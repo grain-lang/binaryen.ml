@@ -806,20 +806,19 @@ module Memory_copy = struct
   external set_size : t -> t -> unit = "caml_binaryen_memory_copy_set_size"
 end
 
-external memory_fill_get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
+module Memory_fill = struct
+  external get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
 
-external memory_fill_set_dest : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_dest"
+  external set_dest : t -> t -> unit = "caml_binaryen_memory_fill_set_dest"
 
-external memory_fill_get_value : t -> t = "caml_binaryen_memory_fill_get_value"
+  external get_value : t -> t = "caml_binaryen_memory_fill_get_value"
 
-external memory_fill_set_value : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_memory_fill_set_value"
 
-external memory_fill_get_size : t -> t = "caml_binaryen_memory_fill_get_size"
+  external get_size : t -> t = "caml_binaryen_memory_fill_get_size"
 
-external memory_fill_set_size : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_size"
+  external set_size : t -> t -> unit = "caml_binaryen_memory_fill_set_size"
+end
 
 external tuple_make_get_num_operands : t -> int
   = "caml_binaryen_tuple_make_get_num_operands"
