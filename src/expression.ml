@@ -786,9 +786,11 @@ module Drop = struct
   external set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
 end
 
-external return_get_value : t -> t = "caml_binaryen_return_get_value"
+module Return = struct
+  external get_value : t -> t = "caml_binaryen_return_get_value"
 
-external return_set_value : t -> t -> unit = "caml_binaryen_return_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_return_set_value"
+end
 
 external memory_copy_get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
 

@@ -817,14 +817,16 @@ module Drop = struct
       [| inject exp; inject value |]
 end
 
-let return_get_value exp =
-  meth_call global ##. binaryen ##. Return "getValue" [| inject exp |]
+module Return = struct
+  let get_value exp =
+    meth_call global ##. binaryen ##. Return "getValue" [| inject exp |]
 
-let return_set_value exp value =
-  meth_call
-    global ##. binaryen ##. Return
-    "setValue"
-    [| inject exp; inject value |]
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. Return
+      "setValue"
+      [| inject exp; inject value |]
+end
 
 let memory_copy_get_dest exp =
   meth_call global ##. binaryen ##. MemoryCopy "getDest" [| inject exp |]

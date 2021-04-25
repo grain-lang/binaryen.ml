@@ -355,9 +355,11 @@ module Drop : sig
   val set_value : t -> t -> unit
 end
 
-val return_get_value : t -> t
+module Return : sig
+  val get_value : t -> t
 
-val return_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
 val memory_copy_get_dest : t -> t
 
