@@ -780,9 +780,11 @@ module Select = struct
   external set_condition : t -> t -> unit = "caml_binaryen_select_set_condition"
 end
 
-external drop_get_value : t -> t = "caml_binaryen_drop_get_value"
+module Drop = struct
+  external get_value : t -> t = "caml_binaryen_drop_get_value"
 
-external drop_set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
+end
 
 external return_get_value : t -> t = "caml_binaryen_return_get_value"
 

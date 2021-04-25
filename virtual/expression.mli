@@ -349,9 +349,11 @@ module Select : sig
   val set_condition : t -> t -> unit
 end
 
-val drop_get_value : t -> t
+module Drop : sig
+  val get_value : t -> t
 
-val drop_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
 val return_get_value : t -> t
 

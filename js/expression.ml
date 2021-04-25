@@ -806,14 +806,16 @@ module Select = struct
       [| inject exp; inject value |]
 end
 
-let drop_get_value exp =
-  meth_call global ##. binaryen ##. Drop "getValue" [| inject exp |]
+module Drop = struct
+  let get_value exp =
+    meth_call global ##. binaryen ##. Drop "getValue" [| inject exp |]
 
-let drop_set_value exp value =
-  meth_call
-    global ##. binaryen ##. Drop
-    "setValue"
-    [| inject exp; inject value |]
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. Drop
+      "setValue"
+      [| inject exp; inject value |]
+end
 
 let return_get_value exp =
   meth_call global ##. binaryen ##. Return "getValue" [| inject exp |]
