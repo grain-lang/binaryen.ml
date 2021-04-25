@@ -828,32 +828,34 @@ module Return = struct
       [| inject exp; inject value |]
 end
 
-let memory_copy_get_dest exp =
-  meth_call global ##. binaryen ##. MemoryCopy "getDest" [| inject exp |]
+module Memory_copy = struct
+  let get_dest exp =
+    meth_call global ##. binaryen ##. MemoryCopy "getDest" [| inject exp |]
 
-let memory_copy_set_dest exp value =
-  meth_call
-    global ##. binaryen ##. MemoryCopy
-    "setDest"
-    [| inject exp; inject value |]
+  let set_dest exp value =
+    meth_call
+      global ##. binaryen ##. MemoryCopy
+      "setDest"
+      [| inject exp; inject value |]
 
-let memory_copy_get_source exp =
-  meth_call global ##. binaryen ##. MemoryCopy "getSource" [| inject exp |]
+  let get_source exp =
+    meth_call global ##. binaryen ##. MemoryCopy "getSource" [| inject exp |]
 
-let memory_copy_set_source exp value =
-  meth_call
-    global ##. binaryen ##. MemoryCopy
-    "setSource"
-    [| inject exp; inject value |]
+  let set_source exp value =
+    meth_call
+      global ##. binaryen ##. MemoryCopy
+      "setSource"
+      [| inject exp; inject value |]
 
-let memory_copy_get_size exp =
-  meth_call global ##. binaryen ##. MemoryCopy "getSize" [| inject exp |]
+  let get_size exp =
+    meth_call global ##. binaryen ##. MemoryCopy "getSize" [| inject exp |]
 
-let memory_copy_set_size exp value =
-  meth_call
-    global ##. binaryen ##. MemoryCopy
-    "setSize"
-    [| inject exp; inject value |]
+  let set_size exp value =
+    meth_call
+      global ##. binaryen ##. MemoryCopy
+      "setSize"
+      [| inject exp; inject value |]
+end
 
 let memory_fill_get_dest exp =
   meth_call global ##. binaryen ##. MemoryFill "getDest" [| inject exp |]

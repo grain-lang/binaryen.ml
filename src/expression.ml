@@ -792,21 +792,19 @@ module Return = struct
   external set_value : t -> t -> unit = "caml_binaryen_return_set_value"
 end
 
-external memory_copy_get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
+module Memory_copy = struct
+  external get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
 
-external memory_copy_set_dest : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_dest"
+  external set_dest : t -> t -> unit = "caml_binaryen_memory_copy_set_dest"
 
-external memory_copy_get_source : t -> t
-  = "caml_binaryen_memory_copy_get_source"
+  external get_source : t -> t = "caml_binaryen_memory_copy_get_source"
 
-external memory_copy_set_source : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_source"
+  external set_source : t -> t -> unit = "caml_binaryen_memory_copy_set_source"
 
-external memory_copy_get_size : t -> t = "caml_binaryen_memory_copy_get_size"
+  external get_size : t -> t = "caml_binaryen_memory_copy_get_size"
 
-external memory_copy_set_size : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_size"
+  external set_size : t -> t -> unit = "caml_binaryen_memory_copy_set_size"
+end
 
 external memory_fill_get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
 

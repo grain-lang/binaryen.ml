@@ -361,17 +361,19 @@ module Return : sig
   val set_value : t -> t -> unit
 end
 
-val memory_copy_get_dest : t -> t
+module Memory_copy : sig
+  val get_dest : t -> t
 
-val memory_copy_set_dest : t -> t -> unit
+  val set_dest : t -> t -> unit
 
-val memory_copy_get_source : t -> t
+  val get_source : t -> t
 
-val memory_copy_set_source : t -> t -> unit
+  val set_source : t -> t -> unit
 
-val memory_copy_get_size : t -> t
+  val get_size : t -> t
 
-val memory_copy_set_size : t -> t -> unit
+  val set_size : t -> t -> unit
+end
 
 val memory_fill_get_dest : t -> t
 
