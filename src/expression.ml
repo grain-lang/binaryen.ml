@@ -653,31 +653,34 @@ module Switch = struct
   external set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
 end;;
 
-external call_get_target : t -> string = "caml_binaryen_call_get_target"
+module Call = struct
+  external get_target : t -> string = "caml_binaryen_call_get_target"
+  
+  external set_target : t -> string -> unit = "caml_binaryen_call_set_target"
+  
+  external get_num_operands : t -> int
+    = "caml_binaryen_call_get_num_operands"
+  
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_call_get_operand_at"
+  
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_set_operand_at"
+  
+  external append_operand : t -> t -> int
+    = "caml_binaryen_call_append_operand"
+  
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_insert_operand_at"
+  
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_call_remove_operand_at"
+  
+  external is_return : t -> bool = "caml_binaryen_call_is_return"
+  
+  external set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
+end;;
 
-external call_set_target : t -> string -> unit = "caml_binaryen_call_set_target"
-
-external call_get_num_operands : t -> int
-  = "caml_binaryen_call_get_num_operands"
-
-external call_get_operand_at : t -> int -> t
-  = "caml_binaryen_call_get_operand_at"
-
-external call_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_set_operand_at"
-
-external call_append_operand : t -> t -> int
-  = "caml_binaryen_call_append_operand"
-
-external call_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_insert_operand_at"
-
-external call_remove_operand_at : t -> int -> t
-  = "caml_binaryen_call_remove_operand_at"
-
-external call_is_return : t -> bool = "caml_binaryen_call_is_return"
-
-external call_set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
 
 external call_indirect_get_target : t -> t
   = "caml_binaryen_call_indirect_get_target"

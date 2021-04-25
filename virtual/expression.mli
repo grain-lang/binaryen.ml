@@ -228,26 +228,28 @@ module Switch: sig
   val set_value : t -> t -> unit
 end
 
+module Call: sig
+  val get_target : t -> string
+  
+  val set_target : t -> string -> unit
+  
+  val get_num_operands : t -> int
+  
+  val get_operand_at : t -> int -> t
+  
+  val set_operand_at : t -> int -> t -> unit
+  
+  val append_operand : t -> t -> int
+  
+  val insert_operand_at : t -> int -> t -> unit
+  
+  val remove_operand_at : t -> int -> t
+  
+  val is_return : t -> bool
+  
+  val set_return : t -> bool -> unit
+end
 
-val call_get_target : t -> string
-
-val call_set_target : t -> string -> unit
-
-val call_get_num_operands : t -> int
-
-val call_get_operand_at : t -> int -> t
-
-val call_set_operand_at : t -> int -> t -> unit
-
-val call_append_operand : t -> t -> int
-
-val call_insert_operand_at : t -> int -> t -> unit
-
-val call_remove_operand_at : t -> int -> t
-
-val call_is_return : t -> bool
-
-val call_set_return : t -> bool -> unit
 
 val call_indirect_get_target : t -> t
 
