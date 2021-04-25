@@ -297,9 +297,11 @@ module Global_set : sig
   val set_value : t -> t -> unit
 end
 
-val memory_grow_get_delta : t -> t
+module Memory_grow : sig
+  val get_delta : t -> t
 
-val memory_grow_set_delta : t -> t -> unit
+  val set_delta : t -> t -> unit
+end
 
 val load_get_ptr : t -> t
 

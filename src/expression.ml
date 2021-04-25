@@ -728,10 +728,11 @@ module Global_set = struct
   external set_value : t -> t -> unit = "caml_binaryen_global_set_set_value"
 end
 
-external memory_grow_get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
+module Memory_grow = struct
+  external get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
 
-external memory_grow_set_delta : t -> t -> unit
-  = "caml_binaryen_memory_grow_set_delta"
+  external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
+end
 
 external load_get_ptr : t -> t = "caml_binaryen_load_get_ptr"
 

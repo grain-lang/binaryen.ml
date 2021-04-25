@@ -707,14 +707,16 @@ module Global_set = struct
       [| inject exp; inject value |]
 end
 
-let memory_grow_get_delta exp =
-  meth_call global ##. binaryen ##. MemoryGrow "getDelta" [| inject exp |]
+module Memory_grow = struct
+  let get_delta exp =
+    meth_call global ##. binaryen ##. MemoryGrow "getDelta" [| inject exp |]
 
-let memory_grow_set_delta exp delta =
-  meth_call
-    global ##. binaryen ##. MemoryGrow
-    "setDelta"
-    [| inject exp; inject delta |]
+  let set_delta exp delta =
+    meth_call
+      global ##. binaryen ##. MemoryGrow
+      "setDelta"
+      [| inject exp; inject delta |]
+end
 
 let load_get_ptr exp =
   meth_call global ##. binaryen ##. Load "getPtr" [| inject exp |]
