@@ -820,7 +820,7 @@ module Memory_fill = struct
   external set_size : t -> t -> unit = "caml_binaryen_memory_fill_set_size"
 end
 
-module Typle_make = struct
+module Tuple_make = struct
   external get_num_operands : t -> int
     = "caml_binaryen_tuple_make_get_num_operands"
 
