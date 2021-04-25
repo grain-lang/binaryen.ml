@@ -591,71 +591,72 @@ module Call = struct
       [| inject exp; inject (bool isReturn) |]
 end;;
 
-
-let call_indirect_get_target exp =
-  meth_call global ##. binaryen ##. CallIndirect "getTarget" [| inject exp |]
-
-let call_indirect_set_target exp target =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "setTarget"
-    [| inject exp; inject target |]
-
-let call_indirect_get_table exp =
-  to_string
-    (meth_call global ##. binaryen ##. CallIndirect "getTable" [| inject exp |])
-
-let call_indirect_set_table exp name =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "setTable"
-    [| inject exp; inject (string name) |]
-
-let call_indirect_get_num_operands exp =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "getNumOperands"
-    [| inject exp |]
-
-let call_indirect_get_operand_at exp index =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "getOperandAt"
-    [| inject exp; inject index |]
-
-let call_indirect_set_operand_at exp index operand =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "setOperandAt"
-    [| inject exp; inject index; inject operand |]
-
-let call_indirect_append_operand exp operand =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "appendOperand"
-    [| inject exp; inject operand |]
-
-let call_indirect_insert_operand_at exp index operand =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "insertOperandAt"
-    [| inject exp; inject index; inject operand |]
-
-let call_indirect_remove_operand_at exp index =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "removeOperandAt"
-    [| inject exp; inject index |]
-
-let call_indirect_is_return exp =
-  to_bool
-    (meth_call global ##. binaryen ##. CallIndirect "isReturn" [| inject exp |])
-
-let call_indirect_set_return exp isReturn =
-  meth_call
-    global ##. binaryen ##. CallIndirect
-    "setReturn"
-    [| inject exp; inject (bool isReturn) |]
+module Call_indirect = struct
+  let get_target exp =
+    meth_call global ##. binaryen ##. CallIndirect "getTarget" [| inject exp |]
+  
+  let set_target exp target =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "setTarget"
+      [| inject exp; inject target |]
+  
+  let get_table exp =
+    to_string
+      (meth_call global ##. binaryen ##. CallIndirect "getTable" [| inject exp |])
+  
+  let set_table exp name =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "setTable"
+      [| inject exp; inject (string name) |]
+  
+  let get_num_operands exp =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "getNumOperands"
+      [| inject exp |]
+  
+  let get_operand_at exp index =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "getOperandAt"
+      [| inject exp; inject index |]
+  
+  let set_operand_at exp index operand =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "setOperandAt"
+      [| inject exp; inject index; inject operand |]
+  
+  let append_operand exp operand =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "appendOperand"
+      [| inject exp; inject operand |]
+  
+  let insert_operand_at exp index operand =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "insertOperandAt"
+      [| inject exp; inject index; inject operand |]
+  
+  let remove_operand_at exp index =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "removeOperandAt"
+      [| inject exp; inject index |]
+  
+  let is_return exp =
+    to_bool
+      (meth_call global ##. binaryen ##. CallIndirect "isReturn" [| inject exp |])
+  
+  let set_return exp isReturn =
+    meth_call
+      global ##. binaryen ##. CallIndirect
+      "setReturn"
+      [| inject exp; inject (bool isReturn) |]
+end;;
 
 let local_set_get_value exp =
   meth_call global ##. binaryen ##. LocalSet "getValue" [| inject exp |]

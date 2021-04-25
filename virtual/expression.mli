@@ -250,30 +250,31 @@ module Call: sig
   val set_return : t -> bool -> unit
 end
 
-
-val call_indirect_get_target : t -> t
-
-val call_indirect_set_target : t -> t -> unit
-
-val call_indirect_get_table : t -> string
-
-val call_indirect_set_table : t -> string -> unit
-
-val call_indirect_get_num_operands : t -> int
-
-val call_indirect_get_operand_at : t -> int -> t
-
-val call_indirect_set_operand_at : t -> int -> t -> unit
-
-val call_indirect_append_operand : t -> t -> int
-
-val call_indirect_insert_operand_at : t -> int -> t -> unit
-
-val call_indirect_remove_operand_at : t -> int -> t
-
-val call_indirect_is_return : t -> bool
-
-val call_indirect_set_return : t -> bool -> unit
+module Call_indirect: sig
+  val get_target : t -> t
+  
+  val set_target : t -> t -> unit
+  
+  val get_table : t -> string
+  
+  val set_table : t -> string -> unit
+  
+  val get_num_operands : t -> int
+  
+  val get_operand_at : t -> int -> t
+  
+  val set_operand_at : t -> int -> t -> unit
+  
+  val append_operand : t -> t -> int
+  
+  val insert_operand_at : t -> int -> t -> unit
+  
+  val remove_operand_at : t -> int -> t
+  
+  val is_return : t -> bool
+  
+  val set_return : t -> bool -> unit
+end
 
 val local_set_get_value : t -> t
 

@@ -681,42 +681,44 @@ module Call = struct
   external set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
 end;;
 
+module Call_indirect = struct
+  external get_target : t -> t
+    = "caml_binaryen_call_indirect_get_target"
+  
+  external set_target : t -> t -> unit
+    = "caml_binaryen_call_indirect_set_target"
+  
+  external get_table : t -> string
+    = "caml_binaryen_call_indirect_get_table"
+  
+  external set_table : t -> string -> unit
+    = "caml_binaryen_call_indirect_set_table"
+  
+  external get_num_operands : t -> int
+    = "caml_binaryen_call_indirect_get_num_operands"
+  
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_call_indirect_get_operand_at"
+  
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_indirect_set_operand_at"
+  
+  external append_operand : t -> t -> int
+    = "caml_binaryen_call_indirect_append_operand"
+  
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_indirect_insert_operand_at"
+  
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_call_indirect_remove_operand_at"
+  
+  external is_return : t -> bool
+    = "caml_binaryen_call_indirect_is_return"
+  
+  external set_return : t -> bool -> unit
+    = "caml_binaryen_call_indirect_set_return"
+end;;
 
-external call_indirect_get_target : t -> t
-  = "caml_binaryen_call_indirect_get_target"
-
-external call_indirect_set_target : t -> t -> unit
-  = "caml_binaryen_call_indirect_set_target"
-
-external call_indirect_get_table : t -> string
-  = "caml_binaryen_call_indirect_get_table"
-
-external call_indirect_set_table : t -> string -> unit
-  = "caml_binaryen_call_indirect_set_table"
-
-external call_indirect_get_num_operands : t -> int
-  = "caml_binaryen_call_indirect_get_num_operands"
-
-external call_indirect_get_operand_at : t -> int -> t
-  = "caml_binaryen_call_indirect_get_operand_at"
-
-external call_indirect_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_indirect_set_operand_at"
-
-external call_indirect_append_operand : t -> t -> int
-  = "caml_binaryen_call_indirect_append_operand"
-
-external call_indirect_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_indirect_insert_operand_at"
-
-external call_indirect_remove_operand_at : t -> int -> t
-  = "caml_binaryen_call_indirect_remove_operand_at"
-
-external call_indirect_is_return : t -> bool
-  = "caml_binaryen_call_indirect_is_return"
-
-external call_indirect_set_return : t -> bool -> unit
-  = "caml_binaryen_call_indirect_set_return"
 
 external local_set_get_value : t -> t = "caml_binaryen_local_set_get_value"
 
