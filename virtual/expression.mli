@@ -389,17 +389,19 @@ module Memory_fill : sig
   val set_size : t -> t -> unit
 end
 
-val tuple_make_get_num_operands : t -> int
+module Tuple_make : sig
+  val get_num_operands : t -> int
 
-val tuple_make_get_operand_at : t -> int -> t
+  val get_operand_at : t -> int -> t
 
-val tuple_make_set_operand_at : t -> int -> t -> unit
+  val set_operand_at : t -> int -> t -> unit
 
-val tuple_make_append_operand : t -> t -> int
+  val append_operand : t -> t -> int
 
-val tuple_make_insert_operand_at : t -> int -> t -> unit
+  val insert_operand_at : t -> int -> t -> unit
 
-val tuple_make_remove_operand_at : t -> int -> t
+  val remove_operand_at : t -> int -> t
+end
 
 val tuple_extract_get_tuple : t -> t
 

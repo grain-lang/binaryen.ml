@@ -886,38 +886,43 @@ module Memory_fill = struct
       [| inject exp; inject value |]
 end
 
-let tuple_make_get_num_operands exp =
-  meth_call global ##. binaryen ##. TupleMake "getNumOperands" [| inject exp |]
+module Tuple_make = struct
+  let get_num_operands exp =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "getNumOperands"
+      [| inject exp |]
 
-let tuple_make_get_operand_at exp index =
-  meth_call
-    global ##. binaryen ##. TupleMake
-    "getOperandAt"
-    [| inject exp; inject index |]
+  let get_operand_at exp index =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "getOperandAt"
+      [| inject exp; inject index |]
 
-let tuple_make_set_operand_at exp index operand =
-  meth_call
-    global ##. binaryen ##. TupleMake
-    "setOperandAt"
-    [| inject exp; inject index; inject operand |]
+  let set_operand_at exp index operand =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "setOperandAt"
+      [| inject exp; inject index; inject operand |]
 
-let tuple_make_append_operand exp operand =
-  meth_call
-    global ##. binaryen ##. TupleMake
-    "appendOperand"
-    [| inject exp; inject operand |]
+  let append_operand exp operand =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "appendOperand"
+      [| inject exp; inject operand |]
 
-let tuple_make_insert_operand_at exp index operand =
-  meth_call
-    global ##. binaryen ##. TupleMake
-    "insertOperandAt"
-    [| inject exp; inject index; inject operand |]
+  let insert_operand_at exp index operand =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "insertOperandAt"
+      [| inject exp; inject index; inject operand |]
 
-let tuple_make_remove_operand_at exp index =
-  meth_call
-    global ##. binaryen ##. TupleMake
-    "removeOperandAt"
-    [| inject exp; inject index |]
+  let remove_operand_at exp index =
+    meth_call
+      global ##. binaryen ##. TupleMake
+      "removeOperandAt"
+      [| inject exp; inject index |]
+end
 
 let tuple_extract_get_tuple exp =
   meth_call global ##. binaryen ##. TupleExtract "getTuple" [| inject exp |]

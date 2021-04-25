@@ -820,23 +820,25 @@ module Memory_fill = struct
   external set_size : t -> t -> unit = "caml_binaryen_memory_fill_set_size"
 end
 
-external tuple_make_get_num_operands : t -> int
-  = "caml_binaryen_tuple_make_get_num_operands"
+module Typle_make = struct
+  external get_num_operands : t -> int
+    = "caml_binaryen_tuple_make_get_num_operands"
 
-external tuple_make_get_operand_at : t -> int -> t
-  = "caml_binaryen_tuple_make_get_operand_at"
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_tuple_make_get_operand_at"
 
-external tuple_make_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_tuple_make_set_operand_at"
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_tuple_make_set_operand_at"
 
-external tuple_make_append_operand : t -> t -> int
-  = "caml_binaryen_tuple_make_append_operand"
+  external append_operand : t -> t -> int
+    = "caml_binaryen_tuple_make_append_operand"
 
-external tuple_make_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_tuple_make_insert_operand_at"
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_tuple_make_insert_operand_at"
 
-external tuple_make_remove_operand_at : t -> int -> t
-  = "caml_binaryen_tuple_make_remove_operand_at"
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_tuple_make_remove_operand_at"
+end
 
 external tuple_extract_get_tuple : t -> t
   = "caml_binaryen_tuple_extract_get_tuple"
