@@ -435,35 +435,37 @@ module Loop = struct
 
 end;;
 
+module Break = struct
+  let get_name exp =
+    to_string (meth_call global ##. binaryen ##. Break "getName" [| inject exp |])
+  
+  let set_name exp name =
+    meth_call
+      global ##. binaryen ##. Break
+      "setName"
+      [| inject exp; inject (string name) |]
+  
+  let get_condition exp =
+    expression_to_option
+      (meth_call global ##. binaryen ##. Break "getCondition" [| inject exp |])
+  
+  let set_condition exp child =
+    meth_call
+      global ##. binaryen ##. Break
+      "setCondition"
+      [| inject exp; inject child |]
+  
+  let get_value exp =
+    expression_to_option
+      (meth_call global ##. binaryen ##. Break "getValue" [| inject exp |])
+  
+  let set_value exp child =
+    meth_call
+      global ##. binaryen ##. Break
+      "setValue"
+      [| inject exp; inject child |]
+end;;
 
-let break_get_name exp =
-  to_string (meth_call global ##. binaryen ##. Break "getName" [| inject exp |])
-
-let break_set_name exp name =
-  meth_call
-    global ##. binaryen ##. Break
-    "setName"
-    [| inject exp; inject (string name) |]
-
-let break_get_condition exp =
-  expression_to_option
-    (meth_call global ##. binaryen ##. Break "getCondition" [| inject exp |])
-
-let break_set_condition exp child =
-  meth_call
-    global ##. binaryen ##. Break
-    "setCondition"
-    [| inject exp; inject child |]
-
-let break_get_value exp =
-  expression_to_option
-    (meth_call global ##. binaryen ##. Break "getValue" [| inject exp |])
-
-let break_set_value exp child =
-  meth_call
-    global ##. binaryen ##. Break
-    "setValue"
-    [| inject exp; inject child |]
 
 let switch_get_num_names exp =
   meth_call global ##. binaryen ##. Switch "getNumNames" [| inject exp |]

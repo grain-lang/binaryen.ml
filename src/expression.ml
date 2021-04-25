@@ -603,19 +603,22 @@ module Loop = struct
 
 end;;
 
-external break_get_name : t -> string = "caml_binaryen_break_get_name"
+module Break = struct
+  external get_name : t -> string = "caml_binaryen_break_get_name"
+  
+  external set_name : t -> string -> unit = "caml_binaryen_break_set_name"
+  
+  external get_condition : t -> t option
+    = "caml_binaryen_break_get_condition"
+  
+  external set_condition : t -> t -> unit
+    = "caml_binaryen_break_set_condition"
+  
+  external get_value : t -> t option = "caml_binaryen_break_get_value"
+  
+  external set_value : t -> t -> unit = "caml_binaryen_break_set_value"
+end;;
 
-external break_set_name : t -> string -> unit = "caml_binaryen_break_set_name"
-
-external break_get_condition : t -> t option
-  = "caml_binaryen_break_get_condition"
-
-external break_set_condition : t -> t -> unit
-  = "caml_binaryen_break_set_condition"
-
-external break_get_value : t -> t option = "caml_binaryen_break_get_value"
-
-external break_set_value : t -> t -> unit = "caml_binaryen_break_set_value"
 
 external switch_get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
 

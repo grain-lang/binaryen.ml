@@ -188,17 +188,20 @@ module Loop: sig
 end
 
 
-val break_get_name : t -> string
+module Break: sig
+  val get_name : t -> string
+  
+  val set_name : t -> string -> unit
+  
+  val get_condition : t -> t option
+  
+  val set_condition : t -> t -> unit
+  
+  val get_value : t -> t option
+  
+  val set_value : t -> t -> unit
+end
 
-val break_set_name : t -> string -> unit
-
-val break_get_condition : t -> t option
-
-val break_set_condition : t -> t -> unit
-
-val break_get_value : t -> t option
-
-val break_set_value : t -> t -> unit
 
 val switch_get_num_names : t -> int
 
