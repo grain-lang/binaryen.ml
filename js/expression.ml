@@ -718,11 +718,13 @@ module Memory_grow = struct
       [| inject exp; inject delta |]
 end
 
-let load_get_ptr exp =
-  meth_call global ##. binaryen ##. Load "getPtr" [| inject exp |]
+module Load = struct
+  let get_ptr exp =
+    meth_call global ##. binaryen ##. Load "getPtr" [| inject exp |]
 
-let load_set_ptr exp ptr =
-  meth_call global ##. binaryen ##. Load "setPtr" [| inject exp; inject ptr |]
+  let set_ptr exp ptr =
+    meth_call global ##. binaryen ##. Load "setPtr" [| inject exp; inject ptr |]
+end
 
 let store_get_ptr exp =
   meth_call global ##. binaryen ##. Store "getPtr" [| inject exp |]

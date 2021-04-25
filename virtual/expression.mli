@@ -303,9 +303,11 @@ module Memory_grow : sig
   val set_delta : t -> t -> unit
 end
 
-val load_get_ptr : t -> t
+module Load : sig
+  val get_ptr : t -> t
 
-val load_set_ptr : t -> t -> unit
+  val set_ptr : t -> t -> unit
+end
 
 val store_get_ptr : t -> t
 

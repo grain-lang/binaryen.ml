@@ -734,9 +734,11 @@ module Memory_grow = struct
   external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
 end
 
-external load_get_ptr : t -> t = "caml_binaryen_load_get_ptr"
+module Load = struct
+  external get_ptr : t -> t = "caml_binaryen_load_get_ptr"
 
-external load_set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
+  external set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
+end
 
 external store_get_ptr : t -> t = "caml_binaryen_store_get_ptr"
 
