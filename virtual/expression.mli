@@ -325,13 +325,15 @@ module Unary : sig
   val set_value : t -> t -> unit
 end
 
-val binary_get_left : t -> t
+module Binary : sig
+  val get_left : t -> t
 
-val binary_set_left : t -> t -> unit
+  val set_left : t -> t -> unit
 
-val binary_get_right : t -> t
+  val get_right : t -> t
 
-val binary_set_right : t -> t -> unit
+  val set_right : t -> t -> unit
+end
 
 val select_get_if_true : t -> t
 

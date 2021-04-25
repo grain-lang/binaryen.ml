@@ -756,13 +756,15 @@ module Unary = struct
   external set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
 end
 
-external binary_get_left : t -> t = "caml_binaryen_binary_get_left"
+module Binary = struct
+  external get_left : t -> t = "caml_binaryen_binary_get_left"
 
-external binary_set_left : t -> t -> unit = "caml_binaryen_binary_set_left"
+  external set_left : t -> t -> unit = "caml_binaryen_binary_set_left"
 
-external binary_get_right : t -> t = "caml_binaryen_binary_get_right"
+  external get_right : t -> t = "caml_binaryen_binary_get_right"
 
-external binary_set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
+  external set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
+end
 
 external select_get_if_true : t -> t = "caml_binaryen_select_get_if_true"
 

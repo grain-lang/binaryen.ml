@@ -757,23 +757,25 @@ module Unary = struct
       [| inject exp; inject value |]
 end
 
-let binary_get_left exp =
-  meth_call global ##. binaryen ##. Binary "getLeft" [| inject exp |]
+module Binary = struct
+  let get_left exp =
+    meth_call global ##. binaryen ##. Binary "getLeft" [| inject exp |]
 
-let binary_set_left exp value =
-  meth_call
-    global ##. binaryen ##. Binary
-    "setLeft"
-    [| inject exp; inject value |]
+  let set_left exp value =
+    meth_call
+      global ##. binaryen ##. Binary
+      "setLeft"
+      [| inject exp; inject value |]
 
-let binary_get_right exp =
-  meth_call global ##. binaryen ##. Binary "getRight" [| inject exp |]
+  let get_right exp =
+    meth_call global ##. binaryen ##. Binary "getRight" [| inject exp |]
 
-let binary_set_right exp value =
-  meth_call
-    global ##. binaryen ##. Binary
-    "setRight"
-    [| inject exp; inject value |]
+  let set_right exp value =
+    meth_call
+      global ##. binaryen ##. Binary
+      "setRight"
+      [| inject exp; inject value |]
+end
 
 let select_get_if_true exp =
   meth_call global ##. binaryen ##. Select "getIfTrue" [| inject exp |]
