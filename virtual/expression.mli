@@ -335,17 +335,19 @@ module Binary : sig
   val set_right : t -> t -> unit
 end
 
-val select_get_if_true : t -> t
+module Select : sig
+  val get_if_true : t -> t
 
-val select_set_if_true : t -> t -> unit
+  val set_if_true : t -> t -> unit
 
-val select_get_if_false : t -> t
+  val get_if_false : t -> t
 
-val select_set_if_false : t -> t -> unit
+  val set_if_false : t -> t -> unit
 
-val select_get_condition : t -> t
+  val get_condition : t -> t
 
-val select_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
+end
 
 val drop_get_value : t -> t
 

@@ -777,32 +777,34 @@ module Binary = struct
       [| inject exp; inject value |]
 end
 
-let select_get_if_true exp =
-  meth_call global ##. binaryen ##. Select "getIfTrue" [| inject exp |]
+module Select = struct
+  let get_if_true exp =
+    meth_call global ##. binaryen ##. Select "getIfTrue" [| inject exp |]
 
-let select_set_if_true exp value =
-  meth_call
-    global ##. binaryen ##. Select
-    "setIfTrue"
-    [| inject exp; inject value |]
+  let set_if_true exp value =
+    meth_call
+      global ##. binaryen ##. Select
+      "setIfTrue"
+      [| inject exp; inject value |]
 
-let select_get_if_false exp =
-  meth_call global ##. binaryen ##. Select "getIfFalse" [| inject exp |]
+  let get_if_false exp =
+    meth_call global ##. binaryen ##. Select "getIfFalse" [| inject exp |]
 
-let select_set_if_false exp value =
-  meth_call
-    global ##. binaryen ##. Select
-    "setIfFalse"
-    [| inject exp; inject value |]
+  let set_if_false exp value =
+    meth_call
+      global ##. binaryen ##. Select
+      "setIfFalse"
+      [| inject exp; inject value |]
 
-let select_get_condition exp =
-  meth_call global ##. binaryen ##. Select "getCondition" [| inject exp |]
+  let get_condition exp =
+    meth_call global ##. binaryen ##. Select "getCondition" [| inject exp |]
 
-let select_set_condition exp value =
-  meth_call
-    global ##. binaryen ##. Select
-    "setCondition"
-    [| inject exp; inject value |]
+  let set_condition exp value =
+    meth_call
+      global ##. binaryen ##. Select
+      "setCondition"
+      [| inject exp; inject value |]
+end
 
 let drop_get_value exp =
   meth_call global ##. binaryen ##. Drop "getValue" [| inject exp |]

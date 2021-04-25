@@ -766,20 +766,19 @@ module Binary = struct
   external set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
 end
 
-external select_get_if_true : t -> t = "caml_binaryen_select_get_if_true"
+module Select = struct
+  external get_if_true : t -> t = "caml_binaryen_select_get_if_true"
 
-external select_set_if_true : t -> t -> unit
-  = "caml_binaryen_select_set_if_true"
+  external set_if_true : t -> t -> unit = "caml_binaryen_select_set_if_true"
 
-external select_get_if_false : t -> t = "caml_binaryen_select_get_if_false"
+  external get_if_false : t -> t = "caml_binaryen_select_get_if_false"
 
-external select_set_if_false : t -> t -> unit
-  = "caml_binaryen_select_set_if_false"
+  external set_if_false : t -> t -> unit = "caml_binaryen_select_set_if_false"
 
-external select_get_condition : t -> t = "caml_binaryen_select_get_condition"
+  external get_condition : t -> t = "caml_binaryen_select_get_condition"
 
-external select_set_condition : t -> t -> unit
-  = "caml_binaryen_select_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_select_set_condition"
+end
 
 external drop_get_value : t -> t = "caml_binaryen_drop_get_value"
 
