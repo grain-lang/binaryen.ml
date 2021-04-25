@@ -726,20 +726,25 @@ module Load = struct
     meth_call global ##. binaryen ##. Load "setPtr" [| inject exp; inject ptr |]
 end
 
-let store_get_ptr exp =
-  meth_call global ##. binaryen ##. Store "getPtr" [| inject exp |]
+module Store = struct
+  let get_ptr exp =
+    meth_call global ##. binaryen ##. Store "getPtr" [| inject exp |]
 
-let store_set_ptr exp ptr =
-  meth_call global ##. binaryen ##. Store "setPtr" [| inject exp; inject ptr |]
+  let set_ptr exp ptr =
+    meth_call
+      global ##. binaryen ##. Store
+      "setPtr"
+      [| inject exp; inject ptr |]
 
-let store_get_value exp =
-  meth_call global ##. binaryen ##. Store "getValue" [| inject exp |]
+  let get_value exp =
+    meth_call global ##. binaryen ##. Store "getValue" [| inject exp |]
 
-let store_set_value exp value =
-  meth_call
-    global ##. binaryen ##. Store
-    "setValue"
-    [| inject exp; inject value |]
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. Store
+      "setValue"
+      [| inject exp; inject value |]
+end
 
 let unary_get_value exp =
   meth_call global ##. binaryen ##. Unary "getValue" [| inject exp |]

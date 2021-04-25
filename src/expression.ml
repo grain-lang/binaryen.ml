@@ -740,13 +740,15 @@ module Load = struct
   external set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
 end
 
-external store_get_ptr : t -> t = "caml_binaryen_store_get_ptr"
+module Store = struct
+  external get_ptr : t -> t = "caml_binaryen_store_get_ptr"
 
-external store_set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
+  external set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
 
-external store_get_value : t -> t = "caml_binaryen_store_get_value"
+  external get_value : t -> t = "caml_binaryen_store_get_value"
 
-external store_set_value : t -> t -> unit = "caml_binaryen_store_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_store_set_value"
+end
 
 external unary_get_value : t -> t = "caml_binaryen_unary_get_value"
 

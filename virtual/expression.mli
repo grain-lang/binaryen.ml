@@ -309,13 +309,15 @@ module Load : sig
   val set_ptr : t -> t -> unit
 end
 
-val store_get_ptr : t -> t
+module Store : sig
+  val get_ptr : t -> t
 
-val store_set_ptr : t -> t -> unit
+  val set_ptr : t -> t -> unit
 
-val store_get_value : t -> t
+  val get_value : t -> t
 
-val store_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
 val unary_get_value : t -> t
 
