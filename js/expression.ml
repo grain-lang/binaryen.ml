@@ -337,49 +337,51 @@ let expression_finalize exp =
 let expression_copy exp wasm_mod =
   meth_call wasm_mod "copyExpression" [| inject exp |]
 
-let block_get_name exp =
-  Option.map to_string
-    (Opt.to_option
-       (meth_call global ##. binaryen ##. Block "getName" [| inject exp |]))
+module Block = struct
+  let get_name exp =
+    Option.map to_string
+      (Opt.to_option
+         (meth_call global ##. binaryen ##. Block "getName" [| inject exp |]))
 
-let block_set_name exp name =
-  meth_call
-    global ##. binaryen ##. Block
-    "setName"
-    [| inject exp; inject (string name) |]
+  let set_name exp name =
+    meth_call
+      global ##. binaryen ##. Block
+      "setName"
+      [| inject exp; inject (string name) |]
 
-let block_get_num_children exp =
-  meth_call global ##. binaryen ##. Block "getNumChildren" [| inject exp |]
+  let get_num_children exp =
+    meth_call global ##. binaryen ##. Block "getNumChildren" [| inject exp |]
 
-let block_get_child_at exp index =
-  meth_call
-    global ##. binaryen ##. Block
-    "getChildAt"
-    [| inject exp; inject index |]
+  let get_child_at exp index =
+    meth_call
+      global ##. binaryen ##. Block
+      "getChildAt"
+      [| inject exp; inject index |]
 
-let block_set_child_at exp index child =
-  meth_call
-    global ##. binaryen ##. Block
-    "setChildAt"
-    [| inject exp; inject index; inject child |]
+  let set_child_at exp index child =
+    meth_call
+      global ##. binaryen ##. Block
+      "setChildAt"
+      [| inject exp; inject index; inject child |]
 
-let block_append_child exp child =
-  meth_call
-    global ##. binaryen ##. Block
-    "appendChild"
-    [| inject exp; inject child |]
+  let append_child exp child =
+    meth_call
+      global ##. binaryen ##. Block
+      "appendChild"
+      [| inject exp; inject child |]
 
-let block_insert_child_at exp index child =
-  meth_call
-    global ##. binaryen ##. Block
-    "insertChildAt"
-    [| inject exp; inject index; inject child |]
+  let insert_child_at exp index child =
+    meth_call
+      global ##. binaryen ##. Block
+      "insertChildAt"
+      [| inject exp; inject index; inject child |]
 
-let block_remove_child_at exp index =
-  meth_call
-    global ##. binaryen ##. Block
-    "removeChildAt"
-    [| inject exp; inject index |]
+  let remove_child_at exp index =
+    meth_call
+      global ##. binaryen ##. Block
+      "removeChildAt"
+      [| inject exp; inject index |]
+end
 
 let if_get_condition exp =
   meth_call global ##. binaryen ##. If "getCondition" [| inject exp |]

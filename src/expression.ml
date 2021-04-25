@@ -556,25 +556,26 @@ external expression_finalize : t -> unit = "caml_binaryen_expression_finalize"
 
 external expression_copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
 
-external block_get_name : t -> string option = "caml_binaryen_block_get_name"
+module Block = struct
+  external get_name : t -> string option = "caml_binaryen_block_get_name"
 
-external block_set_name : t -> string -> unit = "caml_binaryen_block_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_block_set_name"
 
-external block_get_num_children : t -> int
-  = "caml_binaryen_block_get_num_children"
+  external get_num_children : t -> int = "caml_binaryen_block_get_num_children"
 
-external block_get_child_at : t -> int -> t = "caml_binaryen_block_get_child_at"
+  external get_child_at : t -> int -> t = "caml_binaryen_block_get_child_at"
 
-external block_set_child_at : t -> int -> t -> unit
-  = "caml_binaryen_block_set_child_at"
+  external set_child_at : t -> int -> t -> unit
+    = "caml_binaryen_block_set_child_at"
 
-external block_append_child : t -> t -> int = "caml_binaryen_block_append_child"
+  external append_child : t -> t -> int = "caml_binaryen_block_append_child"
 
-external block_insert_child_at : t -> int -> t -> unit
-  = "caml_binaryen_block_insert_child_at"
+  external insert_child_at : t -> int -> t -> unit
+    = "caml_binaryen_block_insert_child_at"
 
-external block_remove_child_at : t -> int -> t
-  = "caml_binaryen_block_remove_child_at"
+  external remove_child_at : t -> int -> t
+    = "caml_binaryen_block_remove_child_at"
+end
 
 external if_get_condition : t -> t = "caml_binaryen_if_get_condition"
 

@@ -145,21 +145,23 @@ val expression_finalize : t -> unit
 
 val expression_copy : t -> Module.t -> t
 
-val block_get_name : t -> string option
+module Block : sig
+  val get_name : t -> string option
 
-val block_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
 
-val block_get_num_children : t -> int
+  val get_num_children : t -> int
 
-val block_get_child_at : t -> int -> t
+  val get_child_at : t -> int -> t
 
-val block_set_child_at : t -> int -> t -> unit
+  val set_child_at : t -> int -> t -> unit
 
-val block_append_child : t -> t -> int
+  val append_child : t -> t -> int
 
-val block_insert_child_at : t -> int -> t -> unit
+  val insert_child_at : t -> int -> t -> unit
 
-val block_remove_child_at : t -> int -> t
+  val remove_child_at : t -> int -> t
+end
 
 val if_get_condition : t -> t
 
