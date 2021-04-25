@@ -750,9 +750,11 @@ module Store = struct
   external set_value : t -> t -> unit = "caml_binaryen_store_set_value"
 end
 
-external unary_get_value : t -> t = "caml_binaryen_unary_get_value"
+module Unary = struct
+  external get_value : t -> t = "caml_binaryen_unary_get_value"
 
-external unary_set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
+end
 
 external binary_get_left : t -> t = "caml_binaryen_binary_get_left"
 

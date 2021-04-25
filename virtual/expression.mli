@@ -319,9 +319,11 @@ module Store : sig
   val set_value : t -> t -> unit
 end
 
-val unary_get_value : t -> t
+module Unary : sig
+  val get_value : t -> t
 
-val unary_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
 val binary_get_left : t -> t
 

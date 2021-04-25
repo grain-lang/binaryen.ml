@@ -746,14 +746,16 @@ module Store = struct
       [| inject exp; inject value |]
 end
 
-let unary_get_value exp =
-  meth_call global ##. binaryen ##. Unary "getValue" [| inject exp |]
+module Unary = struct
+  let get_value exp =
+    meth_call global ##. binaryen ##. Unary "getValue" [| inject exp |]
 
-let unary_set_value exp value =
-  meth_call
-    global ##. binaryen ##. Unary
-    "setValue"
-    [| inject exp; inject value |]
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. Unary
+      "setValue"
+      [| inject exp; inject value |]
+end
 
 let binary_get_left exp =
   meth_call global ##. binaryen ##. Binary "getLeft" [| inject exp |]
