@@ -163,137 +163,139 @@ module Block : sig
   val remove_child_at : t -> int -> t
 end
 
-module If: sig
+module If : sig
   val get_condition : t -> t
 
   val set_condition : t -> t -> unit
-  
+
   val get_if_true : t -> t
-  
+
   val set_if_true : t -> t -> unit
-  
+
   val get_if_false : t -> t option
-  
+
   val set_if_false : t -> t -> unit
 end
 
-module Loop: sig
+module Loop : sig
   val get_name : t -> string
-  
+
   val set_name : t -> string -> unit
-  
+
   val get_body : t -> t
-  
+
   val set_body : t -> t -> unit
 end
 
-
-module Break: sig
+module Break : sig
   val get_name : t -> string
-  
+
   val set_name : t -> string -> unit
-  
+
   val get_condition : t -> t option
-  
+
   val set_condition : t -> t -> unit
-  
+
   val get_value : t -> t option
-  
+
   val set_value : t -> t -> unit
 end
 
-module Switch: sig
+module Switch : sig
   val get_num_names : t -> int
-  
+
   val get_name_at : t -> int -> string
-  
+
   val set_name_at : t -> int -> string -> unit
-  
+
   val append_name : t -> string -> int
-  
+
   val insert_name_at : t -> int -> string -> unit
-  
+
   val remove_name_at : t -> int -> string
-  
+
   val get_default_name : t -> string option
-  
+
   val set_default_name : t -> string -> unit
-  
+
   val get_condition : t -> t
-  
+
   val set_condition : t -> t -> unit
-  
+
   val get_value : t -> t option
-  
+
   val set_value : t -> t -> unit
 end
 
-module Call: sig
+module Call : sig
   val get_target : t -> string
-  
+
   val set_target : t -> string -> unit
-  
+
   val get_num_operands : t -> int
-  
+
   val get_operand_at : t -> int -> t
-  
+
   val set_operand_at : t -> int -> t -> unit
-  
+
   val append_operand : t -> t -> int
-  
+
   val insert_operand_at : t -> int -> t -> unit
-  
+
   val remove_operand_at : t -> int -> t
-  
+
   val is_return : t -> bool
-  
+
   val set_return : t -> bool -> unit
 end
 
-module Call_indirect: sig
+module Call_indirect : sig
   val get_target : t -> t
-  
+
   val set_target : t -> t -> unit
-  
+
   val get_table : t -> string
-  
+
   val set_table : t -> string -> unit
-  
+
   val get_num_operands : t -> int
-  
+
   val get_operand_at : t -> int -> t
-  
+
   val set_operand_at : t -> int -> t -> unit
-  
+
   val append_operand : t -> t -> int
-  
+
   val insert_operand_at : t -> int -> t -> unit
-  
+
   val remove_operand_at : t -> int -> t
-  
+
   val is_return : t -> bool
-  
+
   val set_return : t -> bool -> unit
 end
 
-module Local_set: sig
+module Local_set : sig
   val get_value : t -> t
-  
+
   val set_value : t -> t -> unit
 end
 
+module Global_get : sig
+  val get_name : t -> string
 
-val global_get_get_name : t -> string
+  val set_name : t -> string -> unit
+end
 
-val global_get_set_name : t -> string -> unit
+module Global_set : sig
+  val get_name : t -> string
 
-val global_set_get_name : t -> string
+  val set_name : t -> string -> unit
 
-val global_set_set_name : t -> string -> unit
+  val get_value : t -> t
 
-val global_set_get_value : t -> t
-
-val global_set_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
 val memory_grow_get_delta : t -> t
 
