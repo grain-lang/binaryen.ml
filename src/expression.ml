@@ -619,38 +619,39 @@ module Break = struct
   external set_value : t -> t -> unit = "caml_binaryen_break_set_value"
 end;;
 
-
-external switch_get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
-
-external switch_get_name_at : t -> int -> string
-  = "caml_binaryen_switch_get_name_at"
-
-external switch_set_name_at : t -> int -> string -> unit
-  = "caml_binaryen_switch_set_name_at"
-
-external switch_append_name : t -> string -> int
-  = "caml_binaryen_switch_append_name"
-
-external switch_insert_name_at : t -> int -> string -> unit
-  = "caml_binaryen_switch_insert_name_at"
-
-external switch_remove_name_at : t -> int -> string
-  = "caml_binaryen_switch_remove_name_at"
-
-external switch_get_default_name : t -> string option
-  = "caml_binaryen_switch_get_default_name"
-
-external switch_set_default_name : t -> string -> unit
-  = "caml_binaryen_switch_set_default_name"
-
-external switch_get_condition : t -> t = "caml_binaryen_switch_get_condition"
-
-external switch_set_condition : t -> t -> unit
-  = "caml_binaryen_switch_set_condition"
-
-external switch_get_value : t -> t option = "caml_binaryen_switch_get_value"
-
-external switch_set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
+module Switch = struct
+  external get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
+  
+  external get_name_at : t -> int -> string
+    = "caml_binaryen_switch_get_name_at"
+  
+  external set_name_at : t -> int -> string -> unit
+    = "caml_binaryen_switch_set_name_at"
+  
+  external append_name : t -> string -> int
+    = "caml_binaryen_switch_append_name"
+  
+  external insert_name_at : t -> int -> string -> unit
+    = "caml_binaryen_switch_insert_name_at"
+  
+  external remove_name_at : t -> int -> string
+    = "caml_binaryen_switch_remove_name_at"
+  
+  external get_default_name : t -> string option
+    = "caml_binaryen_switch_get_default_name"
+  
+  external set_default_name : t -> string -> unit
+    = "caml_binaryen_switch_set_default_name"
+  
+  external get_condition : t -> t = "caml_binaryen_switch_get_condition"
+  
+  external set_condition : t -> t -> unit
+    = "caml_binaryen_switch_set_condition"
+  
+  external get_value : t -> t option = "caml_binaryen_switch_get_value"
+  
+  external set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
+end;;
 
 external call_get_target : t -> string = "caml_binaryen_call_get_target"
 

@@ -466,74 +466,76 @@ module Break = struct
       [| inject exp; inject child |]
 end;;
 
+module Switch = struct
 
-let switch_get_num_names exp =
-  meth_call global ##. binaryen ##. Switch "getNumNames" [| inject exp |]
-
-let switch_get_name_at exp index =
-  to_string
-    (meth_call
-       global ##. binaryen ##. Switch
-       "getNameAt"
-       [| inject exp; inject index |])
-
-let switch_set_name_at exp index name =
-  meth_call
-    global ##. binaryen ##. Switch
-    "setNameAt"
-    [| inject exp; inject index; inject (string name) |]
-
-let switch_append_name exp name =
-  meth_call
-    global ##. binaryen ##. Switch
-    "appendName"
-    [| inject exp; inject (string name) |]
-
-let switch_insert_name_at exp index name =
-  meth_call
-    global ##. binaryen ##. Switch
-    "insertNameAt"
-    [| inject exp; inject index; inject (string name) |]
-
-let switch_remove_name_at exp index =
-  to_string
-    (meth_call
-       global ##. binaryen ##. Switch
-       "removeNameAt"
-       [| inject exp; inject index |])
-
-let switch_get_default_name exp =
-  Option.map to_string
-    (Opt.to_option
-       (meth_call
-          global ##. binaryen ##. Switch
-          "getDefaultName"
-          [| inject exp |]))
-
-let switch_set_default_name exp name =
-  meth_call
-    global ##. binaryen ##. Switch
-    "setDefaultName"
-    [| inject exp; inject (string name) |]
-
-let switch_get_condition exp =
-  meth_call global ##. binaryen ##. Switch "getCondition" [| inject exp |]
-
-let switch_set_condition exp child =
-  meth_call
-    global ##. binaryen ##. Switch
-    "setCondition"
-    [| inject exp; inject child |]
-
-let switch_get_value exp =
-  expression_to_option
-    (meth_call global ##. binaryen ##. Switch "getValue" [| inject exp |])
-
-let switch_set_value exp child =
-  meth_call
-    global ##. binaryen ##. Switch
-    "setValue"
-    [| inject exp; inject child |]
+  let get_num_names exp =
+    meth_call global ##. binaryen ##. Switch "getNumNames" [| inject exp |]
+  
+  let get_name_at exp index =
+    to_string
+      (meth_call
+         global ##. binaryen ##. Switch
+         "getNameAt"
+         [| inject exp; inject index |])
+  
+  let set_name_at exp index name =
+    meth_call
+      global ##. binaryen ##. Switch
+      "setNameAt"
+      [| inject exp; inject index; inject (string name) |]
+  
+  let append_name exp name =
+    meth_call
+      global ##. binaryen ##. Switch
+      "appendName"
+      [| inject exp; inject (string name) |]
+  
+  let insert_name_at exp index name =
+    meth_call
+      global ##. binaryen ##. Switch
+      "insertNameAt"
+      [| inject exp; inject index; inject (string name) |]
+  
+  let remove_name_at exp index =
+    to_string
+      (meth_call
+         global ##. binaryen ##. Switch
+         "removeNameAt"
+         [| inject exp; inject index |])
+  
+  let get_default_name exp =
+    Option.map to_string
+      (Opt.to_option
+         (meth_call
+            global ##. binaryen ##. Switch
+            "getDefaultName"
+            [| inject exp |]))
+  
+  let set_default_name exp name =
+    meth_call
+      global ##. binaryen ##. Switch
+      "setDefaultName"
+      [| inject exp; inject (string name) |]
+  
+  let get_condition exp =
+    meth_call global ##. binaryen ##. Switch "getCondition" [| inject exp |]
+  
+  let set_condition exp child =
+    meth_call
+      global ##. binaryen ##. Switch
+      "setCondition"
+      [| inject exp; inject child |]
+  
+  let get_value exp =
+    expression_to_option
+      (meth_call global ##. binaryen ##. Switch "getValue" [| inject exp |])
+  
+  let set_value exp child =
+    meth_call
+      global ##. binaryen ##. Switch
+      "setValue"
+      [| inject exp; inject child |]
+end;;
 
 let call_get_target exp =
   to_string
