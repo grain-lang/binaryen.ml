@@ -658,14 +658,16 @@ module Call_indirect = struct
       [| inject exp; inject (bool isReturn) |]
 end;;
 
-let local_set_get_value exp =
-  meth_call global ##. binaryen ##. LocalSet "getValue" [| inject exp |]
-
-let local_set_set_value exp value =
-  meth_call
-    global ##. binaryen ##. LocalSet
-    "setValue"
-    [| inject exp; inject value |]
+module Local_set = struct
+  let get_value exp =
+    meth_call global ##. binaryen ##. LocalSet "getValue" [| inject exp |]
+  
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. LocalSet
+      "setValue"
+      [| inject exp; inject value |]
+end;;
 
 let global_get_get_name exp =
   to_string

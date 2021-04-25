@@ -719,11 +719,12 @@ module Call_indirect = struct
     = "caml_binaryen_call_indirect_set_return"
 end;;
 
-
-external local_set_get_value : t -> t = "caml_binaryen_local_set_get_value"
-
-external local_set_set_value : t -> t -> unit
-  = "caml_binaryen_local_set_set_value"
+module Local_set = struct
+  external get_value : t -> t = "caml_binaryen_local_set_get_value"
+  
+  external set_value : t -> t -> unit
+    = "caml_binaryen_local_set_set_value"
+end;;
 
 external global_get_get_name : t -> string = "caml_binaryen_global_get_get_name"
 

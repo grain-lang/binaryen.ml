@@ -276,9 +276,12 @@ module Call_indirect: sig
   val set_return : t -> bool -> unit
 end
 
-val local_set_get_value : t -> t
+module Local_set: sig
+  val get_value : t -> t
+  
+  val set_value : t -> t -> unit
+end
 
-val local_set_set_value : t -> t -> unit
 
 val global_get_get_name : t -> string
 
