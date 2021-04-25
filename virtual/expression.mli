@@ -139,11 +139,13 @@ val get_kind : t -> kind
 
 (* Expression operations *)
 
-val expression_print : t -> unit
+module Util : sig
+  val print : t -> unit
 
-val expression_finalize : t -> unit
+  val finalize : t -> unit
 
-val expression_copy : t -> Module.t -> t
+  val copy : t -> Module.t -> t
+end
 
 module Block : sig
   val get_name : t -> string option

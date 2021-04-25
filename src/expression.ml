@@ -550,11 +550,13 @@ let get_kind expr =
   | n when n = id_ref_as -> RefAs
   | _ -> failwith "unknown expression kind"
 
-external expression_print : t -> unit = "caml_binaryen_expression_print"
+module Util = struct
+  external print : t -> unit = "caml_binaryen_expression_print"
 
-external expression_finalize : t -> unit = "caml_binaryen_expression_finalize"
+  external finalize : t -> unit = "caml_binaryen_expression_finalize"
 
-external expression_copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
+  external copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
+end
 
 module Block = struct
   external get_name : t -> string option = "caml_binaryen_block_get_name"

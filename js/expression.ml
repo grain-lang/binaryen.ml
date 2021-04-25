@@ -328,14 +328,15 @@ let get_kind expr =
   | n when n = global ##. binaryen ##. RefAsId -> RefAs
   | _ -> failwith "unknown expression kind"
 
-let expression_print exp =
-  meth_call global##.binaryen "_BinaryenExpressionPrint" [| inject exp |]
+module Util = struct
+  let print exp =
+    meth_call global##.binaryen "_BinaryenExpressionPrint" [| inject exp |]
 
-let expression_finalize exp =
-  meth_call global ##. binaryen ##. Expression "finalize" [| inject exp |]
+  let finalize exp =
+    meth_call global ##. binaryen ##. Expression "finalize" [| inject exp |]
 
-let expression_copy exp wasm_mod =
-  meth_call wasm_mod "copyExpression" [| inject exp |]
+  let copy exp wasm_mod = meth_call wasm_mod "copyExpression" [| inject exp |]
+end
 
 module Block = struct
   let get_name exp =
