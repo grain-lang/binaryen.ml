@@ -139,228 +139,274 @@ val get_kind : t -> kind
 
 (* Expression operations *)
 
-val expression_print : t -> unit
+module Util : sig
+  val print : t -> unit
 
-val expression_finalize : t -> unit
+  val finalize : t -> unit
 
-val expression_copy : t -> Module.t -> t
+  val copy : t -> Module.t -> t
+end
 
-val block_get_name : t -> string option
+module Block : sig
+  val get_name : t -> string option
 
-val block_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
 
-val block_get_num_children : t -> int
+  val get_num_children : t -> int
 
-val block_get_child_at : t -> int -> t
+  val get_child_at : t -> int -> t
 
-val block_set_child_at : t -> int -> t -> unit
+  val set_child_at : t -> int -> t -> unit
 
-val block_append_child : t -> t -> int
+  val append_child : t -> t -> int
 
-val block_insert_child_at : t -> int -> t -> unit
+  val insert_child_at : t -> int -> t -> unit
 
-val block_remove_child_at : t -> int -> t
+  val remove_child_at : t -> int -> t
+end
 
-val if_get_condition : t -> t
+module If : sig
+  val get_condition : t -> t
 
-val if_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
 
-val if_get_if_true : t -> t
+  val get_if_true : t -> t
 
-val if_set_if_true : t -> t -> unit
+  val set_if_true : t -> t -> unit
 
-val if_get_if_false : t -> t option
+  val get_if_false : t -> t option
 
-val if_set_if_false : t -> t -> unit
+  val set_if_false : t -> t -> unit
+end
 
-val loop_get_name : t -> string
+module Loop : sig
+  val get_name : t -> string
 
-val loop_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
 
-val loop_get_body : t -> t
+  val get_body : t -> t
 
-val loop_set_body : t -> t -> unit
+  val set_body : t -> t -> unit
+end
 
-val break_get_name : t -> string
+module Break : sig
+  val get_name : t -> string
 
-val break_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
 
-val break_get_condition : t -> t option
+  val get_condition : t -> t option
 
-val break_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
 
-val break_get_value : t -> t option
+  val get_value : t -> t option
 
-val break_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val switch_get_num_names : t -> int
+module Switch : sig
+  val get_num_names : t -> int
 
-val switch_get_name_at : t -> int -> string
+  val get_name_at : t -> int -> string
 
-val switch_set_name_at : t -> int -> string -> unit
+  val set_name_at : t -> int -> string -> unit
 
-val switch_append_name : t -> string -> int
+  val append_name : t -> string -> int
 
-val switch_insert_name_at : t -> int -> string -> unit
+  val insert_name_at : t -> int -> string -> unit
 
-val switch_remove_name_at : t -> int -> string
+  val remove_name_at : t -> int -> string
 
-val switch_get_default_name : t -> string option
+  val get_default_name : t -> string option
 
-val switch_set_default_name : t -> string -> unit
+  val set_default_name : t -> string -> unit
 
-val switch_get_condition : t -> t
+  val get_condition : t -> t
 
-val switch_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
 
-val switch_get_value : t -> t option
+  val get_value : t -> t option
 
-val switch_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val call_get_target : t -> string
+module Call : sig
+  val get_target : t -> string
 
-val call_set_target : t -> string -> unit
+  val set_target : t -> string -> unit
 
-val call_get_num_operands : t -> int
+  val get_num_operands : t -> int
 
-val call_get_operand_at : t -> int -> t
+  val get_operand_at : t -> int -> t
 
-val call_set_operand_at : t -> int -> t -> unit
+  val set_operand_at : t -> int -> t -> unit
 
-val call_append_operand : t -> t -> int
+  val append_operand : t -> t -> int
 
-val call_insert_operand_at : t -> int -> t -> unit
+  val insert_operand_at : t -> int -> t -> unit
 
-val call_remove_operand_at : t -> int -> t
+  val remove_operand_at : t -> int -> t
 
-val call_is_return : t -> bool
+  val is_return : t -> bool
 
-val call_set_return : t -> bool -> unit
+  val set_return : t -> bool -> unit
+end
 
-val call_indirect_get_target : t -> t
+module Call_indirect : sig
+  val get_target : t -> t
 
-val call_indirect_set_target : t -> t -> unit
+  val set_target : t -> t -> unit
 
-val call_indirect_get_table : t -> string
+  val get_table : t -> string
 
-val call_indirect_set_table : t -> string -> unit
+  val set_table : t -> string -> unit
 
-val call_indirect_get_num_operands : t -> int
+  val get_num_operands : t -> int
 
-val call_indirect_get_operand_at : t -> int -> t
+  val get_operand_at : t -> int -> t
 
-val call_indirect_set_operand_at : t -> int -> t -> unit
+  val set_operand_at : t -> int -> t -> unit
 
-val call_indirect_append_operand : t -> t -> int
+  val append_operand : t -> t -> int
 
-val call_indirect_insert_operand_at : t -> int -> t -> unit
+  val insert_operand_at : t -> int -> t -> unit
 
-val call_indirect_remove_operand_at : t -> int -> t
+  val remove_operand_at : t -> int -> t
 
-val call_indirect_is_return : t -> bool
+  val is_return : t -> bool
 
-val call_indirect_set_return : t -> bool -> unit
+  val set_return : t -> bool -> unit
+end
 
-val local_set_get_value : t -> t
+module Local_set : sig
+  val get_value : t -> t
 
-val local_set_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val global_get_get_name : t -> string
+module Global_get : sig
+  val get_name : t -> string
 
-val global_get_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
+end
 
-val global_set_get_name : t -> string
+module Global_set : sig
+  val get_name : t -> string
 
-val global_set_set_name : t -> string -> unit
+  val set_name : t -> string -> unit
 
-val global_set_get_value : t -> t
+  val get_value : t -> t
 
-val global_set_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val memory_grow_get_delta : t -> t
+module Memory_grow : sig
+  val get_delta : t -> t
 
-val memory_grow_set_delta : t -> t -> unit
+  val set_delta : t -> t -> unit
+end
 
-val load_get_ptr : t -> t
+module Load : sig
+  val get_ptr : t -> t
 
-val load_set_ptr : t -> t -> unit
+  val set_ptr : t -> t -> unit
+end
 
-val store_get_ptr : t -> t
+module Store : sig
+  val get_ptr : t -> t
 
-val store_set_ptr : t -> t -> unit
+  val set_ptr : t -> t -> unit
 
-val store_get_value : t -> t
+  val get_value : t -> t
 
-val store_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val unary_get_value : t -> t
+module Unary : sig
+  val get_value : t -> t
 
-val unary_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val binary_get_left : t -> t
+module Binary : sig
+  val get_left : t -> t
 
-val binary_set_left : t -> t -> unit
+  val set_left : t -> t -> unit
 
-val binary_get_right : t -> t
+  val get_right : t -> t
 
-val binary_set_right : t -> t -> unit
+  val set_right : t -> t -> unit
+end
 
-val select_get_if_true : t -> t
+module Select : sig
+  val get_if_true : t -> t
 
-val select_set_if_true : t -> t -> unit
+  val set_if_true : t -> t -> unit
 
-val select_get_if_false : t -> t
+  val get_if_false : t -> t
 
-val select_set_if_false : t -> t -> unit
+  val set_if_false : t -> t -> unit
 
-val select_get_condition : t -> t
+  val get_condition : t -> t
 
-val select_set_condition : t -> t -> unit
+  val set_condition : t -> t -> unit
+end
 
-val drop_get_value : t -> t
+module Drop : sig
+  val get_value : t -> t
 
-val drop_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val return_get_value : t -> t
+module Return : sig
+  val get_value : t -> t
 
-val return_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
+end
 
-val memory_copy_get_dest : t -> t
+module Memory_copy : sig
+  val get_dest : t -> t
 
-val memory_copy_set_dest : t -> t -> unit
+  val set_dest : t -> t -> unit
 
-val memory_copy_get_source : t -> t
+  val get_source : t -> t
 
-val memory_copy_set_source : t -> t -> unit
+  val set_source : t -> t -> unit
 
-val memory_copy_get_size : t -> t
+  val get_size : t -> t
 
-val memory_copy_set_size : t -> t -> unit
+  val set_size : t -> t -> unit
+end
 
-val memory_fill_get_dest : t -> t
+module Memory_fill : sig
+  val get_dest : t -> t
 
-val memory_fill_set_dest : t -> t -> unit
+  val set_dest : t -> t -> unit
 
-val memory_fill_get_value : t -> t
+  val get_value : t -> t
 
-val memory_fill_set_value : t -> t -> unit
+  val set_value : t -> t -> unit
 
-val memory_fill_get_size : t -> t
+  val get_size : t -> t
 
-val memory_fill_set_size : t -> t -> unit
+  val set_size : t -> t -> unit
+end
 
-val tuple_make_get_num_operands : t -> int
+module Tuple_make : sig
+  val get_num_operands : t -> int
 
-val tuple_make_get_operand_at : t -> int -> t
+  val get_operand_at : t -> int -> t
 
-val tuple_make_set_operand_at : t -> int -> t -> unit
+  val set_operand_at : t -> int -> t -> unit
 
-val tuple_make_append_operand : t -> t -> int
+  val append_operand : t -> t -> int
 
-val tuple_make_insert_operand_at : t -> int -> t -> unit
+  val insert_operand_at : t -> int -> t -> unit
 
-val tuple_make_remove_operand_at : t -> int -> t
+  val remove_operand_at : t -> int -> t
+end
 
-val tuple_extract_get_tuple : t -> t
+module Tuple_extract : sig
+  val get_tuple : t -> t
 
-val tuple_extract_set_tuple : t -> t -> unit
+  val set_tuple : t -> t -> unit
+end

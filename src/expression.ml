@@ -550,283 +550,300 @@ let get_kind expr =
   | n when n = id_ref_as -> RefAs
   | _ -> failwith "unknown expression kind"
 
-external expression_print : t -> unit = "caml_binaryen_expression_print"
+module Util = struct
+  external print : t -> unit = "caml_binaryen_expression_print"
 
-external expression_finalize : t -> unit = "caml_binaryen_expression_finalize"
+  external finalize : t -> unit = "caml_binaryen_expression_finalize"
 
-external expression_copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
+  external copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
+end
 
-external block_get_name : t -> string option = "caml_binaryen_block_get_name"
+module Block = struct
+  external get_name : t -> string option = "caml_binaryen_block_get_name"
 
-external block_set_name : t -> string -> unit = "caml_binaryen_block_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_block_set_name"
 
-external block_get_num_children : t -> int
-  = "caml_binaryen_block_get_num_children"
+  external get_num_children : t -> int = "caml_binaryen_block_get_num_children"
 
-external block_get_child_at : t -> int -> t = "caml_binaryen_block_get_child_at"
+  external get_child_at : t -> int -> t = "caml_binaryen_block_get_child_at"
 
-external block_set_child_at : t -> int -> t -> unit
-  = "caml_binaryen_block_set_child_at"
+  external set_child_at : t -> int -> t -> unit
+    = "caml_binaryen_block_set_child_at"
 
-external block_append_child : t -> t -> int = "caml_binaryen_block_append_child"
+  external append_child : t -> t -> int = "caml_binaryen_block_append_child"
 
-external block_insert_child_at : t -> int -> t -> unit
-  = "caml_binaryen_block_insert_child_at"
+  external insert_child_at : t -> int -> t -> unit
+    = "caml_binaryen_block_insert_child_at"
 
-external block_remove_child_at : t -> int -> t
-  = "caml_binaryen_block_remove_child_at"
+  external remove_child_at : t -> int -> t
+    = "caml_binaryen_block_remove_child_at"
+end
 
-external if_get_condition : t -> t = "caml_binaryen_if_get_condition"
+module If = struct
+  external get_condition : t -> t = "caml_binaryen_if_get_condition"
 
-external if_set_condition : t -> t -> unit = "caml_binaryen_if_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_if_set_condition"
 
-external if_get_if_true : t -> t = "caml_binaryen_if_get_if_true"
+  external get_if_true : t -> t = "caml_binaryen_if_get_if_true"
 
-external if_set_if_true : t -> t -> unit = "caml_binaryen_if_set_if_true"
+  external set_if_true : t -> t -> unit = "caml_binaryen_if_set_if_true"
 
-external if_get_if_false : t -> t option = "caml_binaryen_if_get_if_false"
+  external get_if_false : t -> t option = "caml_binaryen_if_get_if_false"
 
-external if_set_if_false : t -> t -> unit = "caml_binaryen_if_set_if_false"
+  external set_if_false : t -> t -> unit = "caml_binaryen_if_set_if_false"
+end
 
-external loop_get_name : t -> string = "caml_binaryen_loop_get_name"
+module Loop = struct
+  external get_name : t -> string = "caml_binaryen_loop_get_name"
 
-external loop_set_name : t -> string -> unit = "caml_binaryen_loop_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_loop_set_name"
 
-external loop_get_body : t -> t = "caml_binaryen_loop_get_body"
+  external get_body : t -> t = "caml_binaryen_loop_get_body"
 
-external loop_set_body : t -> t -> unit = "caml_binaryen_loop_set_body"
+  external set_body : t -> t -> unit = "caml_binaryen_loop_set_body"
+end
 
-external break_get_name : t -> string = "caml_binaryen_break_get_name"
+module Break = struct
+  external get_name : t -> string = "caml_binaryen_break_get_name"
 
-external break_set_name : t -> string -> unit = "caml_binaryen_break_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_break_set_name"
 
-external break_get_condition : t -> t option
-  = "caml_binaryen_break_get_condition"
+  external get_condition : t -> t option = "caml_binaryen_break_get_condition"
 
-external break_set_condition : t -> t -> unit
-  = "caml_binaryen_break_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_break_set_condition"
 
-external break_get_value : t -> t option = "caml_binaryen_break_get_value"
+  external get_value : t -> t option = "caml_binaryen_break_get_value"
 
-external break_set_value : t -> t -> unit = "caml_binaryen_break_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_break_set_value"
+end
 
-external switch_get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
+module Switch = struct
+  external get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
 
-external switch_get_name_at : t -> int -> string
-  = "caml_binaryen_switch_get_name_at"
+  external get_name_at : t -> int -> string = "caml_binaryen_switch_get_name_at"
 
-external switch_set_name_at : t -> int -> string -> unit
-  = "caml_binaryen_switch_set_name_at"
+  external set_name_at : t -> int -> string -> unit
+    = "caml_binaryen_switch_set_name_at"
 
-external switch_append_name : t -> string -> int
-  = "caml_binaryen_switch_append_name"
+  external append_name : t -> string -> int = "caml_binaryen_switch_append_name"
 
-external switch_insert_name_at : t -> int -> string -> unit
-  = "caml_binaryen_switch_insert_name_at"
+  external insert_name_at : t -> int -> string -> unit
+    = "caml_binaryen_switch_insert_name_at"
 
-external switch_remove_name_at : t -> int -> string
-  = "caml_binaryen_switch_remove_name_at"
+  external remove_name_at : t -> int -> string
+    = "caml_binaryen_switch_remove_name_at"
 
-external switch_get_default_name : t -> string option
-  = "caml_binaryen_switch_get_default_name"
+  external get_default_name : t -> string option
+    = "caml_binaryen_switch_get_default_name"
 
-external switch_set_default_name : t -> string -> unit
-  = "caml_binaryen_switch_set_default_name"
+  external set_default_name : t -> string -> unit
+    = "caml_binaryen_switch_set_default_name"
 
-external switch_get_condition : t -> t = "caml_binaryen_switch_get_condition"
+  external get_condition : t -> t = "caml_binaryen_switch_get_condition"
 
-external switch_set_condition : t -> t -> unit
-  = "caml_binaryen_switch_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_switch_set_condition"
 
-external switch_get_value : t -> t option = "caml_binaryen_switch_get_value"
+  external get_value : t -> t option = "caml_binaryen_switch_get_value"
 
-external switch_set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
+end
 
-external call_get_target : t -> string = "caml_binaryen_call_get_target"
+module Call = struct
+  external get_target : t -> string = "caml_binaryen_call_get_target"
 
-external call_set_target : t -> string -> unit = "caml_binaryen_call_set_target"
+  external set_target : t -> string -> unit = "caml_binaryen_call_set_target"
 
-external call_get_num_operands : t -> int
-  = "caml_binaryen_call_get_num_operands"
+  external get_num_operands : t -> int = "caml_binaryen_call_get_num_operands"
 
-external call_get_operand_at : t -> int -> t
-  = "caml_binaryen_call_get_operand_at"
+  external get_operand_at : t -> int -> t = "caml_binaryen_call_get_operand_at"
 
-external call_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_set_operand_at"
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_set_operand_at"
 
-external call_append_operand : t -> t -> int
-  = "caml_binaryen_call_append_operand"
+  external append_operand : t -> t -> int = "caml_binaryen_call_append_operand"
 
-external call_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_insert_operand_at"
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_insert_operand_at"
 
-external call_remove_operand_at : t -> int -> t
-  = "caml_binaryen_call_remove_operand_at"
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_call_remove_operand_at"
 
-external call_is_return : t -> bool = "caml_binaryen_call_is_return"
+  external is_return : t -> bool = "caml_binaryen_call_is_return"
 
-external call_set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
+  external set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
+end
 
-external call_indirect_get_target : t -> t
-  = "caml_binaryen_call_indirect_get_target"
+module Call_indirect = struct
+  external get_target : t -> t = "caml_binaryen_call_indirect_get_target"
 
-external call_indirect_set_target : t -> t -> unit
-  = "caml_binaryen_call_indirect_set_target"
+  external set_target : t -> t -> unit
+    = "caml_binaryen_call_indirect_set_target"
 
-external call_indirect_get_table : t -> string
-  = "caml_binaryen_call_indirect_get_table"
+  external get_table : t -> string = "caml_binaryen_call_indirect_get_table"
 
-external call_indirect_set_table : t -> string -> unit
-  = "caml_binaryen_call_indirect_set_table"
+  external set_table : t -> string -> unit
+    = "caml_binaryen_call_indirect_set_table"
 
-external call_indirect_get_num_operands : t -> int
-  = "caml_binaryen_call_indirect_get_num_operands"
+  external get_num_operands : t -> int
+    = "caml_binaryen_call_indirect_get_num_operands"
 
-external call_indirect_get_operand_at : t -> int -> t
-  = "caml_binaryen_call_indirect_get_operand_at"
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_call_indirect_get_operand_at"
 
-external call_indirect_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_indirect_set_operand_at"
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_indirect_set_operand_at"
 
-external call_indirect_append_operand : t -> t -> int
-  = "caml_binaryen_call_indirect_append_operand"
+  external append_operand : t -> t -> int
+    = "caml_binaryen_call_indirect_append_operand"
 
-external call_indirect_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_call_indirect_insert_operand_at"
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_indirect_insert_operand_at"
 
-external call_indirect_remove_operand_at : t -> int -> t
-  = "caml_binaryen_call_indirect_remove_operand_at"
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_call_indirect_remove_operand_at"
 
-external call_indirect_is_return : t -> bool
-  = "caml_binaryen_call_indirect_is_return"
+  external is_return : t -> bool = "caml_binaryen_call_indirect_is_return"
 
-external call_indirect_set_return : t -> bool -> unit
-  = "caml_binaryen_call_indirect_set_return"
+  external set_return : t -> bool -> unit
+    = "caml_binaryen_call_indirect_set_return"
+end
 
-external local_set_get_value : t -> t = "caml_binaryen_local_set_get_value"
+module Local_set = struct
+  external get_value : t -> t = "caml_binaryen_local_set_get_value"
 
-external local_set_set_value : t -> t -> unit
-  = "caml_binaryen_local_set_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_local_set_set_value"
+end
 
-external global_get_get_name : t -> string = "caml_binaryen_global_get_get_name"
+module Global_get = struct
+  external get_name : t -> string = "caml_binaryen_global_get_get_name"
 
-external global_get_set_name : t -> string -> unit
-  = "caml_binaryen_global_get_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_global_get_set_name"
+end
 
-external global_set_get_name : t -> string = "caml_binaryen_global_set_get_name"
+module Global_set = struct
+  external get_name : t -> string = "caml_binaryen_global_set_get_name"
 
-external global_set_set_name : t -> string -> unit
-  = "caml_binaryen_global_set_set_name"
+  external set_name : t -> string -> unit = "caml_binaryen_global_set_set_name"
 
-external global_set_get_value : t -> t = "caml_binaryen_global_set_get_value"
+  external get_value : t -> t = "caml_binaryen_global_set_get_value"
 
-external global_set_set_value : t -> t -> unit
-  = "caml_binaryen_global_set_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_global_set_set_value"
+end
 
-external memory_grow_get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
+module Memory_grow = struct
+  external get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
 
-external memory_grow_set_delta : t -> t -> unit
-  = "caml_binaryen_memory_grow_set_delta"
+  external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
+end
 
-external load_get_ptr : t -> t = "caml_binaryen_load_get_ptr"
+module Load = struct
+  external get_ptr : t -> t = "caml_binaryen_load_get_ptr"
 
-external load_set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
+  external set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
+end
 
-external store_get_ptr : t -> t = "caml_binaryen_store_get_ptr"
+module Store = struct
+  external get_ptr : t -> t = "caml_binaryen_store_get_ptr"
 
-external store_set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
+  external set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
 
-external store_get_value : t -> t = "caml_binaryen_store_get_value"
+  external get_value : t -> t = "caml_binaryen_store_get_value"
 
-external store_set_value : t -> t -> unit = "caml_binaryen_store_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_store_set_value"
+end
 
-external unary_get_value : t -> t = "caml_binaryen_unary_get_value"
+module Unary = struct
+  external get_value : t -> t = "caml_binaryen_unary_get_value"
 
-external unary_set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
+end
 
-external binary_get_left : t -> t = "caml_binaryen_binary_get_left"
+module Binary = struct
+  external get_left : t -> t = "caml_binaryen_binary_get_left"
 
-external binary_set_left : t -> t -> unit = "caml_binaryen_binary_set_left"
+  external set_left : t -> t -> unit = "caml_binaryen_binary_set_left"
 
-external binary_get_right : t -> t = "caml_binaryen_binary_get_right"
+  external get_right : t -> t = "caml_binaryen_binary_get_right"
 
-external binary_set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
+  external set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
+end
 
-external select_get_if_true : t -> t = "caml_binaryen_select_get_if_true"
+module Select = struct
+  external get_if_true : t -> t = "caml_binaryen_select_get_if_true"
 
-external select_set_if_true : t -> t -> unit
-  = "caml_binaryen_select_set_if_true"
+  external set_if_true : t -> t -> unit = "caml_binaryen_select_set_if_true"
 
-external select_get_if_false : t -> t = "caml_binaryen_select_get_if_false"
+  external get_if_false : t -> t = "caml_binaryen_select_get_if_false"
 
-external select_set_if_false : t -> t -> unit
-  = "caml_binaryen_select_set_if_false"
+  external set_if_false : t -> t -> unit = "caml_binaryen_select_set_if_false"
 
-external select_get_condition : t -> t = "caml_binaryen_select_get_condition"
+  external get_condition : t -> t = "caml_binaryen_select_get_condition"
 
-external select_set_condition : t -> t -> unit
-  = "caml_binaryen_select_set_condition"
+  external set_condition : t -> t -> unit = "caml_binaryen_select_set_condition"
+end
 
-external drop_get_value : t -> t = "caml_binaryen_drop_get_value"
+module Drop = struct
+  external get_value : t -> t = "caml_binaryen_drop_get_value"
 
-external drop_set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
+end
 
-external return_get_value : t -> t = "caml_binaryen_return_get_value"
+module Return = struct
+  external get_value : t -> t = "caml_binaryen_return_get_value"
 
-external return_set_value : t -> t -> unit = "caml_binaryen_return_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_return_set_value"
+end
 
-external memory_copy_get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
+module Memory_copy = struct
+  external get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
 
-external memory_copy_set_dest : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_dest"
+  external set_dest : t -> t -> unit = "caml_binaryen_memory_copy_set_dest"
 
-external memory_copy_get_source : t -> t
-  = "caml_binaryen_memory_copy_get_source"
+  external get_source : t -> t = "caml_binaryen_memory_copy_get_source"
 
-external memory_copy_set_source : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_source"
+  external set_source : t -> t -> unit = "caml_binaryen_memory_copy_set_source"
 
-external memory_copy_get_size : t -> t = "caml_binaryen_memory_copy_get_size"
+  external get_size : t -> t = "caml_binaryen_memory_copy_get_size"
 
-external memory_copy_set_size : t -> t -> unit
-  = "caml_binaryen_memory_copy_set_size"
+  external set_size : t -> t -> unit = "caml_binaryen_memory_copy_set_size"
+end
 
-external memory_fill_get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
+module Memory_fill = struct
+  external get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
 
-external memory_fill_set_dest : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_dest"
+  external set_dest : t -> t -> unit = "caml_binaryen_memory_fill_set_dest"
 
-external memory_fill_get_value : t -> t = "caml_binaryen_memory_fill_get_value"
+  external get_value : t -> t = "caml_binaryen_memory_fill_get_value"
 
-external memory_fill_set_value : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_value"
+  external set_value : t -> t -> unit = "caml_binaryen_memory_fill_set_value"
 
-external memory_fill_get_size : t -> t = "caml_binaryen_memory_fill_get_size"
+  external get_size : t -> t = "caml_binaryen_memory_fill_get_size"
 
-external memory_fill_set_size : t -> t -> unit
-  = "caml_binaryen_memory_fill_set_size"
+  external set_size : t -> t -> unit = "caml_binaryen_memory_fill_set_size"
+end
 
-external tuple_make_get_num_operands : t -> int
-  = "caml_binaryen_tuple_make_get_num_operands"
+module Tuple_make = struct
+  external get_num_operands : t -> int
+    = "caml_binaryen_tuple_make_get_num_operands"
 
-external tuple_make_get_operand_at : t -> int -> t
-  = "caml_binaryen_tuple_make_get_operand_at"
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_tuple_make_get_operand_at"
 
-external tuple_make_set_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_tuple_make_set_operand_at"
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_tuple_make_set_operand_at"
 
-external tuple_make_append_operand : t -> t -> int
-  = "caml_binaryen_tuple_make_append_operand"
+  external append_operand : t -> t -> int
+    = "caml_binaryen_tuple_make_append_operand"
 
-external tuple_make_insert_operand_at : t -> int -> t -> unit
-  = "caml_binaryen_tuple_make_insert_operand_at"
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_tuple_make_insert_operand_at"
 
-external tuple_make_remove_operand_at : t -> int -> t
-  = "caml_binaryen_tuple_make_remove_operand_at"
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_tuple_make_remove_operand_at"
+end
 
-external tuple_extract_get_tuple : t -> t
-  = "caml_binaryen_tuple_extract_get_tuple"
+module Tuple_extract = struct
+  external get_tuple : t -> t = "caml_binaryen_tuple_extract_get_tuple"
 
-external tuple_extract_set_tuple : t -> t -> unit
-  = "caml_binaryen_tuple_extract_set_tuple"
+  external set_tuple : t -> t -> unit = "caml_binaryen_tuple_extract_set_tuple"
+end
