@@ -1,10 +1,31 @@
 open Binaryen
 
-let _ = assert (Settings.are_colors_enabled () == 1)
+(* Testing colors enable *)
+let _ = assert (Settings.are_colors_enabled () == true)
 
-let _ = Settings.set_colors_enabled 0
+let _ = Settings.set_colors_enabled false
 
-let _ = assert (Settings.are_colors_enabled () == 0)
+let _ = assert (Settings.are_colors_enabled () == false)
+
+let _ = Settings.set_colors_enabled true
+
+(* Testing debug_info enable *)
+let _ = assert (Settings.get_debug_info () == false)
+
+let _ = Settings.set_debug_info true
+
+let _ = assert (Settings.get_debug_info () == true)
+
+let _ = Settings.set_debug_info false
+
+(* Testing low_memory_unused enable *)
+let _ = assert (Settings.get_low_memory_unused () == false)
+
+let _ = Settings.set_low_memory_unused true
+
+let _ = assert (Settings.get_low_memory_unused () == true)
+
+let _ = Settings.set_low_memory_unused false
 
 let wasm_mod = Module.create ()
 

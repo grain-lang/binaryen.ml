@@ -6,13 +6,13 @@ val get_shrink_level : unit -> int
 
 val set_shrink_level : int -> unit
 
-val get_debug_info : unit -> int
+val get_debug_info : unit -> bool
 
-val set_debug_info : int -> unit
+val set_debug_info : bool -> unit
 
-val get_low_memory_unused : unit -> int
+val get_low_memory_unused : unit -> bool
 
-val set_low_memory_unused : int -> unit
+val set_low_memory_unused : bool -> unit
 
 val get_pass_argument : string -> string
 
@@ -30,6 +30,6 @@ val get_one_caller_inline_max_size : unit -> int
 
 val set_one_caller_inline_max_size : int -> unit
 
-val set_colors_enabled : int -> unit
+val set_colors_enabled : bool -> unit
 
-val are_colors_enabled : unit -> int
+val are_colors_enabled : unit -> bool

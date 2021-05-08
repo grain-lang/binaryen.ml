@@ -6,14 +6,14 @@ external get_shrink_level : unit -> int = "caml_binaryen_get_shrink_level"
 
 external set_shrink_level : int -> unit = "caml_binaryen_set_shrink_level"
 
-external get_debug_info : unit -> int = "caml_binaryen_get_debug_info"
+external get_debug_info : unit -> bool = "caml_binaryen_get_debug_info"
 
-external set_debug_info : int -> unit = "caml_binaryen_set_debug_info"
+external set_debug_info : bool -> unit = "caml_binaryen_set_debug_info"
 
-external get_low_memory_unused : unit -> int
+external get_low_memory_unused : unit -> bool
   = "caml_binaryen_get_low_memory_unused"
 
-external set_low_memory_unused : int -> unit
+external set_low_memory_unused : bool -> unit
   = "caml_binaryen_set_low_memory_unused"
 
 external get_pass_argument : string -> string
@@ -40,6 +40,6 @@ external get_one_caller_inline_max_size : unit -> int
 external set_one_caller_inline_max_size : int -> unit
   = "caml_binaryen_set_one_caller_inline_max_size"
 
-external set_colors_enabled : int -> unit = "caml_binaryen_set_colors_enabled"
+external set_colors_enabled : bool -> unit = "caml_binaryen_set_colors_enabled"
 
-external are_colors_enabled : unit -> int = "caml_binaryen_are_colors_enabled"
+external are_colors_enabled : unit -> bool = "caml_binaryen_are_colors_enabled"

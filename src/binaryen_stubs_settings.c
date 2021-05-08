@@ -40,30 +40,30 @@ caml_binaryen_set_shrink_level(value _level) {
 CAMLprim value
 caml_binaryen_get_debug_info(value unit) {
   CAMLparam1(unit);
-  int res = BinaryenGetDebugInfo();
-  CAMLreturn(Val_int(res));
+  bool res = BinaryenGetDebugInfo();
+  CAMLreturn(Val_bool(res));
 }
 
 CAMLprim value
-caml_binaryen_set_debug_info(value _level) {
-  CAMLparam1(_level);
-  int level = Int_val(_level);
-  BinaryenSetDebugInfo(level);
+caml_binaryen_set_debug_info(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetDebugInfo(on);
   CAMLreturn(Val_unit);
 }
 
 CAMLprim value
 caml_binaryen_get_low_memory_unused(value unit) {
   CAMLparam1(unit);
-  int res = BinaryenGetLowMemoryUnused();
-  CAMLreturn(Val_int(res));
+  bool res = BinaryenGetLowMemoryUnused();
+  CAMLreturn(Val_bool(res));
 }
 
 CAMLprim value
-caml_binaryen_set_low_memory_unused(value _level) {
-  CAMLparam1(_level);
-  int level = Int_val(_level);
-  BinaryenSetLowMemoryUnused(level);
+caml_binaryen_set_low_memory_unused(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetLowMemoryUnused(on);
   CAMLreturn(Val_unit);
 }
 
@@ -130,16 +130,16 @@ caml_binaryen_set_one_caller_inline_max_size(value _size) {
 }
 
 CAMLprim value
-caml_binaryen_set_colors_enabled(value _enabled) {
-  CAMLparam1(_enabled);
-  int enabled = Int_val(_enabled);
-  BinaryenSetColorsEnabled(enabled);
+caml_binaryen_set_colors_enabled(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetColorsEnabled(on);
   CAMLreturn(Val_unit);
 }
 
 CAMLprim value
 caml_binaryen_are_colors_enabled(value unit) {
   CAMLparam1(unit);
-  int res = BinaryenAreColorsEnabled();
-  CAMLreturn(Val_int(res));
+  bool res = BinaryenAreColorsEnabled();
+  CAMLreturn(Val_bool(res));
 }
