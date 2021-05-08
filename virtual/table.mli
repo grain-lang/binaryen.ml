@@ -17,11 +17,7 @@ val get_element_segment_by_index : Module.t -> int -> element_segment
 
 val element_segment_get_name : element_segment -> string
 
-val element_segment_set_name : element_segment -> string -> unit
-
 val element_segment_get_table : element_segment -> string
-
-val element_segment_set_table : element_segment -> string -> unit
 
 val element_segment_get_offset : element_segment -> Expression.t
 

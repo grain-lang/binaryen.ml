@@ -26,14 +26,8 @@ external get_element_segment_by_index : Module.t -> int -> element_segment
 external element_segment_get_name : element_segment -> string
   = "caml_binaryen_element_segment_get_name"
 
-external element_segment_set_name : element_segment -> string -> unit
-  = "caml_binaryen_element_segment_set_name"
-
 external element_segment_get_table : element_segment -> string
   = "caml_binaryen_element_segment_get_table"
-
-external element_segment_set_table : element_segment -> string -> unit
-  = "caml_binaryen_element_segment_set_table"
 
 external element_segment_get_offset : element_segment -> Expression.t
   = "caml_binaryen_element_segment_get_offset"
