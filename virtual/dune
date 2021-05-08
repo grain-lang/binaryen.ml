@@ -6,12 +6,13 @@
   export
   expression
   function
-  table
   global
   import
   literal
   memory
   module
   op
+  settings
+  table
   type)
  (default_implementation binaryen.native))

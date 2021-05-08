@@ -1,5 +1,11 @@
 open Binaryen
 
+let _ = assert (Settings.are_colors_enabled () == 1)
+
+let _ = Settings.set_colors_enabled 0
+
+let _ = assert (Settings.are_colors_enabled () == 0)
+
 let wasm_mod = Module.create ()
 
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
