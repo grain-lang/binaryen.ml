@@ -1,5 +1,33 @@
 type t
 
+module Feature : sig
+  type t
+
+  val mvp : t
+
+  val atomics : t
+
+  val bulk_memory : t
+
+  val mutable_globals : t
+
+  val nontrapping_fp_to_int : t
+
+  val sign_ext : t
+
+  val simd128 : t
+
+  val exception_handling : t
+
+  val tail_call : t
+
+  val reference_types : t
+
+  val multivalue : t
+
+  val all : t
+end
+
 val create : unit -> t
 
 val dispose : t -> unit
@@ -16,9 +44,9 @@ val validate : t -> int
 
 val optimize : t -> unit
 
-val get_features : t -> int list
+val get_features : t -> Feature.t list
 
-val set_features : t -> int list -> unit
+val set_features : t -> Feature.t list -> unit
 
 val get_optimize_level : unit -> int
 

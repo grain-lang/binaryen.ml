@@ -1,6 +1,36 @@
 open Js_of_ocaml.Js
 open Js_of_ocaml.Js.Unsafe
 
+module Feature = struct
+  type t = int
+
+  let mvp : t = global ##. binaryen ##. Features ##. MVP
+
+  let atomics : t = global ##. binaryen ##. Features ##. Atomics
+
+  let bulk_memory : t = global ##. binaryen ##. Features ##. BulkMemory
+
+  let mutable_globals : t = global ##. binaryen ##. Features ##. MutableGlobals
+
+  let nontrapping_fp_to_int : t =
+    global ##. binaryen ##. Features ##. NontrappingFPToInt
+
+  let sign_ext : t = global ##. binaryen ##. Features ##. SignExt
+
+  let simd128 : t = global ##. binaryen ##. Features ##. SIMD128
+
+  let exception_handling : t =
+    global ##. binaryen ##. Features ##. ExceptionHandling
+
+  let tail_call : t = global ##. binaryen ##. Features ##. TailCall
+
+  let reference_types : t = global ##. binaryen ##. Features ##. ReferenceTypes
+
+  let multivalue : t = global ##. binaryen ##. Features ##. Multivalue
+
+  let all : t = global ##. binaryen ##. Features ##. All
+end
+
 external u8a_to_bytes : 'a -> bytes = "caml_bytes_of_array"
 
 (* TODO: Verify this converts to bytes correctly? *)

@@ -2,6 +2,8 @@ open Binaryen
 
 let wasm_mod = Module.create ()
 
+let _ = Module.set_features wasm_mod [ Module.Feature.all ]
+
 (* Create function type for i32 (i32, i32) *)
 let params () = Type.create [| Type.int32; Type.int32 |]
 
