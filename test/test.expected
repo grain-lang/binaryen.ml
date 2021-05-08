@@ -1,11 +1,11 @@
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $none_=>_none (func))
+ (global $max_int64 i64 (i64.const 9223372036854775807))
+ (global $test_float64_bits f64 (f64.const 1.23))
  (memory $0 1)
  (table $table 1 1 funcref)
  (elem $elem (i32.const 0) $adder)
- (global $max_int64 i64 (i64.const 9223372036854775807))
- (global $test_float64_bits f64 (f64.const 1.23))
  (export "adder" (func $adder))
  (export "memory" (memory $0))
  (start $start)

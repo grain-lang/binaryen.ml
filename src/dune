@@ -4,21 +4,11 @@
  (implements binaryen)
  (foreign_stubs
   (language c)
-  (names
-   binaryen_stubs_types
-   binaryen_stubs_ops
-   binaryen_stubs_literals
-   binaryen_stubs_expressions
-   binaryen_stubs_functions
-   binaryen_stubs_imports
-   binaryen_stubs_exports
-   binaryen_stubs_globals
-   binaryen_stubs_tables
-   binaryen_stubs_memory
-   binaryen_stubs_features
-   binaryen_stubs_modules
-   binaryen_stubs_settings
-   ocaml_helpers)
+  (names binaryen_stubs_types binaryen_stubs_ops binaryen_stubs_literals
+    binaryen_stubs_expressions binaryen_stubs_functions
+    binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
+    binaryen_stubs_tables binaryen_stubs_memory binaryen_stubs_features
+    binaryen_stubs_modules binaryen_stubs_settings ocaml_helpers)
   (flags -O2 -Wall -Wextra))
  (foreign_archives binaryen)
  (library_flags

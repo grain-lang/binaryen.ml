@@ -28,8 +28,6 @@ type kind =
   | SIMDShift
   | SIMDLoad
   | SIMDLoadStoreLane
-  | SIMDWiden
-  | Prefetch
   | MemoryInit
   | DataDrop
   | MemoryCopy

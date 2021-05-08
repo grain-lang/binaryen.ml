@@ -31,8 +31,6 @@ type kind =
   | SIMDShift
   | SIMDLoad
   | SIMDLoadStoreLane
-  | SIMDWiden
-  | Prefetch
   | MemoryInit
   | DataDrop
   | MemoryCopy
@@ -104,8 +102,6 @@ let get_kind expr =
   | n when n = global ##. binaryen ##. SIMDShiftId -> SIMDShift
   | n when n = global ##. binaryen ##. SIMDLoadId -> SIMDLoad
   | n when n = global ##. binaryen ##. SIMDLoadStoreLaneId -> SIMDLoadStoreLane
-  | n when n = global ##. binaryen ##. SIMDWidenId -> SIMDWiden
-  | n when n = global ##. binaryen ##. PrefetchId -> Prefetch
   | n when n = global ##. binaryen ##. MemoryInitId -> MemoryInit
   | n when n = global ##. binaryen ##. DataDropId -> DataDrop
   | n when n = global ##. binaryen ##. MemoryCopyId -> MemoryCopy

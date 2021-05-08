@@ -28,8 +28,6 @@ type kind =
   | SIMDShift
   | SIMDLoad
   | SIMDLoadStoreLane
-  | SIMDWiden
-  | Prefetch
   | MemoryInit
   | DataDrop
   | MemoryCopy
@@ -189,14 +187,6 @@ external id_simd_load_store_lane : unit -> int
   = "caml_binaryen_expression_id_simd_load_store_lane"
 
 let id_simd_load_store_lane = id_simd_load_store_lane ()
-
-external id_simd_widen : unit -> int = "caml_binaryen_expression_id_simd_widen"
-
-let id_simd_widen = id_simd_widen ()
-
-external id_prefetch : unit -> int = "caml_binaryen_expression_id_prefetch"
-
-let id_prefetch = id_prefetch ()
 
 external id_memory_init : unit -> int
   = "caml_binaryen_expression_id_memory_init"
@@ -391,8 +381,6 @@ let get_kind expr =
   | n when n = id_simd_shift -> SIMDShift
   | n when n = id_simd_load -> SIMDLoad
   | n when n = id_simd_load_store_lane -> SIMDLoadStoreLane
-  | n when n = id_simd_widen -> SIMDWiden
-  | n when n = id_prefetch -> Prefetch
   | n when n = id_memory_init -> MemoryInit
   | n when n = id_data_drop -> DataDrop
   | n when n = id_memory_copy -> MemoryCopy
