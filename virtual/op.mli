@@ -424,8 +424,6 @@ val abs_vec_i8x16 : t
 
 val neg_vec_i8x16 : t
 
-val any_true_vec_i8x16 : t
-
 val all_true_vec_i8x16 : t
 
 val bitmask_vec_i8x16 : t
@@ -448,8 +446,6 @@ val sub_sat_s_vec_i8x16 : t
 
 val sub_sat_u_vec_i8x16 : t
 
-val mul_vec_i8x16 : t
-
 val min_s_vec_i8x16 : t
 
 val min_u_vec_i8x16 : t
@@ -463,8 +459,6 @@ val avgr_u_vec_i8x16 : t
 val abs_vec_i16x8 : t
 
 val neg_vec_i16x8 : t
-
-val any_true_vec_i16x8 : t
 
 val all_true_vec_i16x8 : t
 
@@ -503,8 +497,6 @@ val avgr_u_vec_i16x8 : t
 val abs_vec_i32x4 : t
 
 val neg_vec_i32x4 : t
-
-val any_true_vec_i32x4 : t
 
 val all_true_vec_i32x4 : t
 
@@ -552,10 +544,6 @@ val neg_vec_f32x4 : t
 
 val sqrt_vec_f32x4 : t
 
-val qfma_vec_f32x4 : t
-
-val qfms_vec_f32x4 : t
-
 val add_vec_f32x4 : t
 
 val sub_vec_f32x4 : t
@@ -586,10 +574,6 @@ val neg_vec_f64x2 : t
 
 val sqrt_vec_f64x2 : t
 
-val qfma_vec_f64x2 : t
-
-val qfms_vec_f64x2 : t
-
 val add_vec_f64x2 : t
 
 val sub_vec_f64x2 : t
@@ -618,37 +602,9 @@ val trunc_sat_s_vec_f32x4_to_vec_i32x4 : t
 
 val trunc_sat_u_vec_f32x4_to_vec_i32x4 : t
 
-val trunc_sat_s_vec_f64x2_to_vec_i64x2 : t
-
-val trunc_sat_u_vec_f64x2_to_vec_i64x2 : t
-
 val convert_s_vec_i32x4_to_vec_f32x4 : t
 
 val convert_u_vec_i32x4_to_vec_f32x4 : t
-
-val convert_s_vec_i64x2_to_vec_f64x2 : t
-
-val convert_u_vec_i64x2_to_vec_f64x2 : t
-
-val load_splat_vec8x16 : t
-
-val load_splat_vec16x8 : t
-
-val load_splat_vec32x4 : t
-
-val load_splat_vec64x2 : t
-
-val load_ext_s_vec8x8_to_vec_i16x8 : t
-
-val load_ext_u_vec8x8_to_vec_i16x8 : t
-
-val load_ext_s_vec16x4_to_vec_i32x4 : t
-
-val load_ext_u_vec16x4_to_vec_i32x4 : t
-
-val load_ext_s_vec32x2_to_vec_i64x2 : t
-
-val load_ext_u_vec32x2_to_vec_i64x2 : t
 
 val narrow_s_vec_i16x8_to_vec_i8x16 : t
 
@@ -657,21 +613,5 @@ val narrow_u_vec_i16x8_to_vec_i8x16 : t
 val narrow_s_vec_i32x4_to_vec_i16x8 : t
 
 val narrow_u_vec_i32x4_to_vec_i16x8 : t
-
-val widen_low_s_vec_i8x16_to_vec_i16x8 : t
-
-val widen_high_s_vec_i8x16_to_vec_i16x8 : t
-
-val widen_low_u_vec_i8x16_to_vec_i16x8 : t
-
-val widen_high_u_vec_i8x16_to_vec_i16x8 : t
-
-val widen_low_s_vec_i16x8_to_vec_i32x4 : t
-
-val widen_high_s_vec_i16x8_to_vec_i32x4 : t
-
-val widen_low_u_vec_i16x8_to_vec_i32x4 : t
-
-val widen_high_u_vec_i16x8_to_vec_i32x4 : t
 
 val swizzle_vec8x16 : t

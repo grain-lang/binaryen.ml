@@ -546,16 +546,6 @@ caml_binaryen_expression_id_simd_load_store_lane(value unit) {
   CAMLreturn(Val_int(BinaryenSIMDLoadStoreLaneId()));
 }
 CAMLprim value
-caml_binaryen_expression_id_simd_widen(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenSIMDWidenId()));
-}
-CAMLprim value
-caml_binaryen_expression_id_prefetch(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenPrefetchId()));
-}
-CAMLprim value
 caml_binaryen_expression_id_memory_init(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenMemoryInitId()));

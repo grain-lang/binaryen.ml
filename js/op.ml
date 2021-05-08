@@ -471,9 +471,6 @@ let abs_vec_i8x16 : t = global ##. binaryen ##. Operations ##. AbsVecI8x16
 
 let neg_vec_i8x16 : t = global ##. binaryen ##. Operations ##. NegVecI8x16
 
-let any_true_vec_i8x16 : t =
-  global ##. binaryen ##. Operations ##. AnyTrueVecI8x16
-
 let all_true_vec_i8x16 : t =
   global ##. binaryen ##. Operations ##. AllTrueVecI8x16
 
@@ -502,8 +499,6 @@ let sub_sat_s_vec_i8x16 : t =
 let sub_sat_u_vec_i8x16 : t =
   global ##. binaryen ##. Operations ##. SubSatUVecI8x16
 
-let mul_vec_i8x16 : t = global ##. binaryen ##. Operations ##. MulVecI8x16
-
 let min_s_vec_i8x16 : t = global ##. binaryen ##. Operations ##. MinSVecI8x16
 
 let min_u_vec_i8x16 : t = global ##. binaryen ##. Operations ##. MinUVecI8x16
@@ -517,9 +512,6 @@ let avgr_u_vec_i8x16 : t = global ##. binaryen ##. Operations ##. AvgrUVecI8x16
 let abs_vec_i16x8 : t = global ##. binaryen ##. Operations ##. AbsVecI16x8
 
 let neg_vec_i16x8 : t = global ##. binaryen ##. Operations ##. NegVecI16x8
-
-let any_true_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. AnyTrueVecI16x8
 
 let all_true_vec_i16x8 : t =
   global ##. binaryen ##. Operations ##. AllTrueVecI16x8
@@ -564,9 +556,6 @@ let avgr_u_vec_i16x8 : t = global ##. binaryen ##. Operations ##. AvgrUVecI16x8
 let abs_vec_i32x4 : t = global ##. binaryen ##. Operations ##. AbsVecI32x4
 
 let neg_vec_i32x4 : t = global ##. binaryen ##. Operations ##. NegVecI32x4
-
-let any_true_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. AnyTrueVecI32x4
 
 let all_true_vec_i32x4 : t =
   global ##. binaryen ##. Operations ##. AllTrueVecI32x4
@@ -617,10 +606,6 @@ let neg_vec_f32x4 : t = global ##. binaryen ##. Operations ##. NegVecF32x4
 
 let sqrt_vec_f32x4 : t = global ##. binaryen ##. Operations ##. SqrtVecF32x4
 
-let qfma_vec_f32x4 : t = global ##. binaryen ##. Operations ##. QFMAVecF32x4
-
-let qfms_vec_f32x4 : t = global ##. binaryen ##. Operations ##. QFMSVecF32x4
-
 let add_vec_f32x4 : t = global ##. binaryen ##. Operations ##. AddVecF32x4
 
 let sub_vec_f32x4 : t = global ##. binaryen ##. Operations ##. SubVecF32x4
@@ -651,10 +636,6 @@ let abs_vec_f64x2 : t = global ##. binaryen ##. Operations ##. AbsVecF64x2
 let neg_vec_f64x2 : t = global ##. binaryen ##. Operations ##. NegVecF64x2
 
 let sqrt_vec_f64x2 : t = global ##. binaryen ##. Operations ##. SqrtVecF64x2
-
-let qfma_vec_f64x2 : t = global ##. binaryen ##. Operations ##. QFMAVecF64x2
-
-let qfms_vec_f64x2 : t = global ##. binaryen ##. Operations ##. QFMSVecF64x2
 
 let add_vec_f64x2 : t = global ##. binaryen ##. Operations ##. AddVecF64x2
 
@@ -687,53 +668,11 @@ let trunc_sat_s_vec_f32x4_to_vec_i32x4 : t =
 let trunc_sat_u_vec_f32x4_to_vec_i32x4 : t =
   global ##. binaryen ##. Operations ##. TruncSatUVecF32x4ToVecI32x4
 
-let trunc_sat_s_vec_f64x2_to_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. TruncSatSVecF64x2ToVecI64x2
-
-let trunc_sat_u_vec_f64x2_to_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. TruncSatUVecF64x2ToVecI64x2
-
 let convert_s_vec_i32x4_to_vec_f32x4 : t =
   global ##. binaryen ##. Operations ##. ConvertSVecI32x4ToVecF32x4
 
 let convert_u_vec_i32x4_to_vec_f32x4 : t =
   global ##. binaryen ##. Operations ##. ConvertUVecI32x4ToVecF32x4
-
-let convert_s_vec_i64x2_to_vec_f64x2 : t =
-  global ##. binaryen ##. Operations ##. ConvertSVecI64x2ToVecF64x2
-
-let convert_u_vec_i64x2_to_vec_f64x2 : t =
-  global ##. binaryen ##. Operations ##. ConvertUVecI64x2ToVecF64x2
-
-let load_splat_vec8x16 : t =
-  global ##. binaryen ##. Operations ##. LoadSplatVec8x16
-
-let load_splat_vec16x8 : t =
-  global ##. binaryen ##. Operations ##. LoadSplatVec16x8
-
-let load_splat_vec32x4 : t =
-  global ##. binaryen ##. Operations ##. LoadSplatVec32x4
-
-let load_splat_vec64x2 : t =
-  global ##. binaryen ##. Operations ##. LoadSplatVec64x2
-
-let load_ext_s_vec8x8_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. LoadExtSVec8x8ToVecI16x8
-
-let load_ext_u_vec8x8_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. LoadExtUVec8x8ToVecI16x8
-
-let load_ext_s_vec16x4_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. LoadExtSVec16x4ToVecI32x4
-
-let load_ext_u_vec16x4_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. LoadExtUVec16x4ToVecI32x4
-
-let load_ext_s_vec32x2_to_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. LoadExtSVec32x2ToVecI64x2
-
-let load_ext_u_vec32x2_to_vec_i64x2 : t =
-  global ##. binaryen ##. Operations ##. LoadExtUVec32x2ToVecI64x2
 
 let narrow_s_vec_i16x8_to_vec_i8x16 : t =
   global ##. binaryen ##. Operations ##. NarrowSVecI16x8ToVecI8x16
@@ -746,29 +685,5 @@ let narrow_s_vec_i32x4_to_vec_i16x8 : t =
 
 let narrow_u_vec_i32x4_to_vec_i16x8 : t =
   global ##. binaryen ##. Operations ##. NarrowUVecI32x4ToVecI16x8
-
-let widen_low_s_vec_i8x16_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. WidenLowSVecI8x16ToVecI16x8
-
-let widen_high_s_vec_i8x16_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. WidenHighSVecI8x16ToVecI16x8
-
-let widen_low_u_vec_i8x16_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. WidenLowUVecI8x16ToVecI16x8
-
-let widen_high_u_vec_i8x16_to_vec_i16x8 : t =
-  global ##. binaryen ##. Operations ##. WidenHighUVecI8x16ToVecI16x8
-
-let widen_low_s_vec_i16x8_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. WidenLowSVecI16x8ToVecI32x4
-
-let widen_high_s_vec_i16x8_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. WidenHighSVecI16x8ToVecI32x4
-
-let widen_low_u_vec_i16x8_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. WidenLowUVecI16x8ToVecI32x4
-
-let widen_high_u_vec_i16x8_to_vec_i32x4 : t =
-  global ##. binaryen ##. Operations ##. WidenHighUVecI16x8ToVecI32x4
 
 let swizzle_vec8x16 : t = global ##. binaryen ##. Operations ##. SwizzleVec8x16

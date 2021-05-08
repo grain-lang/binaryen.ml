@@ -31,8 +31,6 @@ type kind =
   | SIMDShift
   | SIMDLoad
   | SIMDLoadStoreLane
-  | SIMDWiden
-  | Prefetch
   | MemoryInit
   | DataDrop
   | MemoryCopy
@@ -75,187 +73,6 @@ type kind =
 
 let expression_to_option x = if x = 0 then None else Some x
 
-let block ?(return_type = Type.auto) wasm_mod name children =
-  meth_call wasm_mod "block"
-    [|
-      inject (string name);
-      inject (array (Array.of_list children));
-      inject return_type;
-    |]
-
-let if_ wasm_mod cond if_true if_false =
-  meth_call wasm_mod "if" [| inject cond; inject if_true; inject if_false |]
-
-let loop wasm_mod name body =
-  meth_call wasm_mod "loop" [| inject (string name); inject body |]
-
-let break wasm_mod name cond res =
-  meth_call wasm_mod "br" [| inject (string name); inject cond; inject res |]
-
-let switch wasm_mod names default_name cond value =
-  meth_call wasm_mod "switch"
-    [|
-      inject (array (Array.of_list (List.map string names)));
-      inject (string default_name);
-      inject cond;
-      inject value;
-    |]
-
-let call wasm_mod name params return_typ =
-  meth_call wasm_mod "call"
-    [|
-      inject (string name);
-      inject (array (Array.of_list params));
-      inject return_typ;
-    |]
-
-let call_indirect wasm_mod table target params params_typ return_typ =
-  meth_call wasm_mod "call_indirect"
-    [|
-      inject (string table);
-      inject target;
-      inject (array (Array.of_list params));
-      inject params_typ;
-      inject return_typ;
-    |]
-
-let return_call wasm_mod name params return_typ =
-  meth_call wasm_mod "return_call"
-    [|
-      inject (string name);
-      inject (array (Array.of_list params));
-      inject return_typ;
-    |]
-
-let return_call_indirect wasm_mod table target params params_typ return_typ =
-  meth_call wasm_mod "return_call_indirect"
-    [|
-      inject (string table);
-      inject target;
-      inject (array (Array.of_list params));
-      inject params_typ;
-      inject return_typ;
-    |]
-
-let local_get wasm_mod slot typ =
-  let scope = get wasm_mod "local" in
-  meth_call scope "get" [| inject slot; inject typ |]
-
-let local_set wasm_mod slot value =
-  let scope = get wasm_mod "local" in
-  meth_call scope "set" [| inject slot; inject value |]
-
-let local_tee wasm_mod slot value typ =
-  let scope = get wasm_mod "local" in
-  meth_call scope "tee" [| inject slot; inject value; inject typ |]
-
-let global_get wasm_mod name typ =
-  let scope = get wasm_mod "global" in
-  meth_call scope "get" [| inject (string name); inject typ |]
-
-let global_set wasm_mod name value =
-  let scope = get wasm_mod "global" in
-  meth_call scope "set" [| inject (string name); inject value |]
-
-let load wasm_mod byts ?(signed = false) offset align typ ptr =
-  meth_call global##.binaryen "_BinaryenLoad"
-    [|
-      inject wasm_mod;
-      inject byts;
-      inject signed;
-      inject offset;
-      inject align;
-      inject typ;
-      inject ptr;
-    |]
-
-let store wasm_mod byts offset align ptr value typ =
-  meth_call global##.binaryen "_BinaryenStore"
-    [|
-      inject wasm_mod;
-      inject byts;
-      inject offset;
-      inject align;
-      inject ptr;
-      inject value;
-      inject typ;
-    |]
-
-let const wasm_mod lit =
-  let lit_hack = Literal.to_jsoo lit in
-  match lit_hack with
-  | Int32 value ->
-      let scope = get wasm_mod "i32" in
-      meth_call scope "const" [| inject value |]
-  | Int64 (low, high) ->
-      let scope = get wasm_mod "i64" in
-      meth_call scope "const" [| inject low; inject high |]
-  | Float32Bits value ->
-      let scope = get wasm_mod "f32" in
-      meth_call scope "const_bits" [| inject value |]
-  | Float64Bits (low, high) ->
-      let scope = get wasm_mod "f64" in
-      meth_call scope "const_bits" [| inject low; inject high |]
-  | Float32 value ->
-      let scope = get wasm_mod "f32" in
-      meth_call scope "const" [| inject value |]
-  | Float64 value ->
-      let scope = get wasm_mod "f64" in
-      meth_call scope "const" [| inject value |]
-
-let unary wasm_mod op p =
-  meth_call global##.binaryen "_BinaryenUnary"
-    [| inject wasm_mod; inject op; inject p |]
-
-let binary wasm_mod op a b =
-  meth_call global##.binaryen "_BinaryenBinary"
-    [| inject wasm_mod; inject op; inject a; inject b |]
-
-let select wasm_mod cond if_true if_false =
-  meth_call wasm_mod "select"
-    [| inject cond; inject if_true; inject if_false; inject Type.auto |]
-
-let drop wasm_mod value = meth_call wasm_mod "drop" [| inject value |]
-
-let return wasm_mod value = meth_call wasm_mod "return" [| inject value |]
-
-let memory_size wasm_mod =
-  let scope = get wasm_mod "memory" in
-  meth_call scope "size" [||]
-
-let memory_grow wasm_mod value =
-  let scope = get wasm_mod "memory" in
-  meth_call scope "grow" [| inject value |]
-
-let nop wasm_mod = meth_call wasm_mod "nop" [||]
-
-let unreachable wasm_mod = meth_call wasm_mod "unreachable" [||]
-
-let memory_copy wasm_mod dest source size =
-  let scope = get wasm_mod "memory" in
-  meth_call scope "copy" [| inject dest; inject source; inject size |]
-
-let memory_fill wasm_mod dest value size =
-  let scope = get wasm_mod "memory" in
-  meth_call scope "fill" [| inject dest; inject value; inject size |]
-
-let tuple_make wasm_mod operands =
-  let scope = get wasm_mod "tuple" in
-  meth_call scope "make" [| inject (array (Array.of_list operands)) |]
-
-let tuple_extract wasm_mod tuple index =
-  let scope = get wasm_mod "tuple" in
-  meth_call scope "extract" [| inject tuple; inject index |]
-
-let pop wasm_mod typ =
-  meth_call global##.binaryen "_BinaryenPop" [| inject wasm_mod; inject typ |]
-
-let null () = pure_js_expr "null"
-
-let print expr =
-  let text = meth_call global##.binaryen "emitText" [| inject expr |] in
-  print_string (to_string text)
-
 let get_kind expr =
   match meth_call global##.binaryen "getExpressionId" [| inject expr |] with
   | n when n = global ##. binaryen ##. InvalidId -> Invalid
@@ -285,8 +102,6 @@ let get_kind expr =
   | n when n = global ##. binaryen ##. SIMDShiftId -> SIMDShift
   | n when n = global ##. binaryen ##. SIMDLoadId -> SIMDLoad
   | n when n = global ##. binaryen ##. SIMDLoadStoreLaneId -> SIMDLoadStoreLane
-  | n when n = global ##. binaryen ##. SIMDWidenId -> SIMDWiden
-  | n when n = global ##. binaryen ##. PrefetchId -> Prefetch
   | n when n = global ##. binaryen ##. MemoryInitId -> MemoryInit
   | n when n = global ##. binaryen ##. DataDropId -> DataDrop
   | n when n = global ##. binaryen ##. MemoryCopyId -> MemoryCopy
@@ -328,17 +143,24 @@ let get_kind expr =
   | n when n = global ##. binaryen ##. RefAsId -> RefAs
   | _ -> failwith "unknown expression kind"
 
-module Util = struct
-  let print exp =
-    meth_call global##.binaryen "_BinaryenExpressionPrint" [| inject exp |]
+let print expr =
+  let text = meth_call global##.binaryen "emitText" [| inject expr |] in
+  print_string (to_string text)
 
-  let finalize exp =
-    meth_call global ##. binaryen ##. Expression "finalize" [| inject exp |]
+let finalize exp =
+  meth_call global ##. binaryen ##. Expression "finalize" [| inject exp |]
 
-  let copy exp wasm_mod = meth_call wasm_mod "copyExpression" [| inject exp |]
-end
+let copy exp wasm_mod = meth_call wasm_mod "copyExpression" [| inject exp |]
 
 module Block = struct
+  let make ?(return_type = Type.auto) wasm_mod name children =
+    meth_call wasm_mod "block"
+      [|
+        inject (string name);
+        inject (array (Array.of_list children));
+        inject return_type;
+      |]
+
   let get_name exp =
     Option.map to_string
       (Opt.to_option
@@ -385,6 +207,9 @@ module Block = struct
 end
 
 module If = struct
+  let make wasm_mod cond if_true if_false =
+    meth_call wasm_mod "if" [| inject cond; inject if_true; inject if_false |]
+
   let get_condition exp =
     meth_call global ##. binaryen ##. If "getCondition" [| inject exp |]
 
@@ -415,6 +240,9 @@ module If = struct
 end
 
 module Loop = struct
+  let make wasm_mod name body =
+    meth_call wasm_mod "loop" [| inject (string name); inject body |]
+
   let get_name exp =
     to_string
       (meth_call global ##. binaryen ##. Loop "getName" [| inject exp |])
@@ -436,6 +264,9 @@ module Loop = struct
 end
 
 module Break = struct
+  let make wasm_mod name cond res =
+    meth_call wasm_mod "br" [| inject (string name); inject cond; inject res |]
+
   let get_name exp =
     to_string
       (meth_call global ##. binaryen ##. Break "getName" [| inject exp |])
@@ -468,6 +299,15 @@ module Break = struct
 end
 
 module Switch = struct
+  let make wasm_mod names default_name cond value =
+    meth_call wasm_mod "switch"
+      [|
+        inject (array (Array.of_list (List.map string names)));
+        inject (string default_name);
+        inject cond;
+        inject value;
+      |]
+
   let get_num_names exp =
     meth_call global ##. binaryen ##. Switch "getNumNames" [| inject exp |]
 
@@ -538,6 +378,22 @@ module Switch = struct
 end
 
 module Call = struct
+  let make wasm_mod name params return_typ =
+    meth_call wasm_mod "call"
+      [|
+        inject (string name);
+        inject (array (Array.of_list params));
+        inject return_typ;
+      |]
+
+  let make_return wasm_mod name params return_typ =
+    meth_call wasm_mod "return_call"
+      [|
+        inject (string name);
+        inject (array (Array.of_list params));
+        inject return_typ;
+      |]
+
   let get_target exp =
     to_string
       (meth_call global ##. binaryen ##. Call "getTarget" [| inject exp |])
@@ -592,6 +448,26 @@ module Call = struct
 end
 
 module Call_indirect = struct
+  let make wasm_mod table target params params_typ return_typ =
+    meth_call wasm_mod "call_indirect"
+      [|
+        inject (string table);
+        inject target;
+        inject (array (Array.of_list params));
+        inject params_typ;
+        inject return_typ;
+      |]
+
+  let make_return wasm_mod table target params params_typ return_typ =
+    meth_call wasm_mod "return_call_indirect"
+      [|
+        inject (string table);
+        inject target;
+        inject (array (Array.of_list params));
+        inject params_typ;
+        inject return_typ;
+      |]
+
   let get_target exp =
     meth_call global ##. binaryen ##. CallIndirect "getTarget" [| inject exp |]
 
@@ -664,7 +540,17 @@ module Call_indirect = struct
       [| inject exp; inject (bool isReturn) |]
 end
 
+module Local_get = struct
+  let make wasm_mod slot typ =
+    let scope = get wasm_mod "local" in
+    meth_call scope "get" [| inject slot; inject typ |]
+end
+
 module Local_set = struct
+  let make wasm_mod slot value =
+    let scope = get wasm_mod "local" in
+    meth_call scope "set" [| inject slot; inject value |]
+
   let get_value exp =
     meth_call global ##. binaryen ##. LocalSet "getValue" [| inject exp |]
 
@@ -675,7 +561,17 @@ module Local_set = struct
       [| inject exp; inject value |]
 end
 
+module Local_tee = struct
+  let make wasm_mod slot value typ =
+    let scope = get wasm_mod "local" in
+    meth_call scope "tee" [| inject slot; inject value; inject typ |]
+end
+
 module Global_get = struct
+  let make wasm_mod name typ =
+    let scope = get wasm_mod "global" in
+    meth_call scope "get" [| inject (string name); inject typ |]
+
   let get_name exp =
     to_string
       (meth_call global ##. binaryen ##. GlobalGet "getName" [| inject exp |])
@@ -688,6 +584,10 @@ module Global_get = struct
 end
 
 module Global_set = struct
+  let make wasm_mod name value =
+    let scope = get wasm_mod "global" in
+    meth_call scope "set" [| inject (string name); inject value |]
+
   let get_name exp =
     to_string
       (meth_call global ##. binaryen ##. GlobalSet "getName" [| inject exp |])
@@ -708,18 +608,19 @@ module Global_set = struct
       [| inject exp; inject value |]
 end
 
-module Memory_grow = struct
-  let get_delta exp =
-    meth_call global ##. binaryen ##. MemoryGrow "getDelta" [| inject exp |]
-
-  let set_delta exp delta =
-    meth_call
-      global ##. binaryen ##. MemoryGrow
-      "setDelta"
-      [| inject exp; inject delta |]
-end
-
 module Load = struct
+  let make wasm_mod byts ?(signed = false) offset align typ ptr =
+    meth_call global##.binaryen "_BinaryenLoad"
+      [|
+        inject wasm_mod;
+        inject byts;
+        inject signed;
+        inject offset;
+        inject align;
+        inject typ;
+        inject ptr;
+      |]
+
   let get_ptr exp =
     meth_call global ##. binaryen ##. Load "getPtr" [| inject exp |]
 
@@ -728,6 +629,18 @@ module Load = struct
 end
 
 module Store = struct
+  let make wasm_mod byts offset align ptr value typ =
+    meth_call global##.binaryen "_BinaryenStore"
+      [|
+        inject wasm_mod;
+        inject byts;
+        inject offset;
+        inject align;
+        inject ptr;
+        inject value;
+        inject typ;
+      |]
+
   let get_ptr exp =
     meth_call global ##. binaryen ##. Store "getPtr" [| inject exp |]
 
@@ -747,7 +660,35 @@ module Store = struct
       [| inject exp; inject value |]
 end
 
+module Const = struct
+  let make wasm_mod lit =
+    let lit_hack = Literal.to_jsoo lit in
+    match lit_hack with
+    | Int32 value ->
+        let scope = get wasm_mod "i32" in
+        meth_call scope "const" [| inject value |]
+    | Int64 (low, high) ->
+        let scope = get wasm_mod "i64" in
+        meth_call scope "const" [| inject low; inject high |]
+    | Float32Bits value ->
+        let scope = get wasm_mod "f32" in
+        meth_call scope "const_bits" [| inject value |]
+    | Float64Bits (low, high) ->
+        let scope = get wasm_mod "f64" in
+        meth_call scope "const_bits" [| inject low; inject high |]
+    | Float32 value ->
+        let scope = get wasm_mod "f32" in
+        meth_call scope "const" [| inject value |]
+    | Float64 value ->
+        let scope = get wasm_mod "f64" in
+        meth_call scope "const" [| inject value |]
+end
+
 module Unary = struct
+  let make wasm_mod op p =
+    meth_call global##.binaryen "_BinaryenUnary"
+      [| inject wasm_mod; inject op; inject p |]
+
   let get_value exp =
     meth_call global ##. binaryen ##. Unary "getValue" [| inject exp |]
 
@@ -759,6 +700,10 @@ module Unary = struct
 end
 
 module Binary = struct
+  let make wasm_mod op a b =
+    meth_call global##.binaryen "_BinaryenBinary"
+      [| inject wasm_mod; inject op; inject a; inject b |]
+
   let get_left exp =
     meth_call global ##. binaryen ##. Binary "getLeft" [| inject exp |]
 
@@ -779,6 +724,10 @@ module Binary = struct
 end
 
 module Select = struct
+  let make wasm_mod cond if_true if_false =
+    meth_call wasm_mod "select"
+      [| inject cond; inject if_true; inject if_false; inject Type.auto |]
+
   let get_if_true exp =
     meth_call global ##. binaryen ##. Select "getIfTrue" [| inject exp |]
 
@@ -808,6 +757,8 @@ module Select = struct
 end
 
 module Drop = struct
+  let make wasm_mod value = meth_call wasm_mod "drop" [| inject value |]
+
   let get_value exp =
     meth_call global ##. binaryen ##. Drop "getValue" [| inject exp |]
 
@@ -819,6 +770,8 @@ module Drop = struct
 end
 
 module Return = struct
+  let make wasm_mod value = meth_call wasm_mod "return" [| inject value |]
+
   let get_value exp =
     meth_call global ##. binaryen ##. Return "getValue" [| inject exp |]
 
@@ -829,7 +782,32 @@ module Return = struct
       [| inject exp; inject value |]
 end
 
+module Memory_size = struct
+  let make wasm_mod =
+    let scope = get wasm_mod "memory" in
+    meth_call scope "size" [||]
+end
+
+module Memory_grow = struct
+  let make wasm_mod value =
+    let scope = get wasm_mod "memory" in
+    meth_call scope "grow" [| inject value |]
+
+  let get_delta exp =
+    meth_call global ##. binaryen ##. MemoryGrow "getDelta" [| inject exp |]
+
+  let set_delta exp delta =
+    meth_call
+      global ##. binaryen ##. MemoryGrow
+      "setDelta"
+      [| inject exp; inject delta |]
+end
+
 module Memory_copy = struct
+  let make wasm_mod dest source size =
+    let scope = get wasm_mod "memory" in
+    meth_call scope "copy" [| inject dest; inject source; inject size |]
+
   let get_dest exp =
     meth_call global ##. binaryen ##. MemoryCopy "getDest" [| inject exp |]
 
@@ -859,6 +837,10 @@ module Memory_copy = struct
 end
 
 module Memory_fill = struct
+  let make wasm_mod dest value size =
+    let scope = get wasm_mod "memory" in
+    meth_call scope "fill" [| inject dest; inject value; inject size |]
+
   let get_dest exp =
     meth_call global ##. binaryen ##. MemoryFill "getDest" [| inject exp |]
 
@@ -888,6 +870,10 @@ module Memory_fill = struct
 end
 
 module Tuple_make = struct
+  let make wasm_mod operands =
+    let scope = get wasm_mod "tuple" in
+    meth_call scope "make" [| inject (array (Array.of_list operands)) |]
+
   let get_num_operands exp =
     meth_call
       global ##. binaryen ##. TupleMake
@@ -926,6 +912,10 @@ module Tuple_make = struct
 end
 
 module Tuple_extract = struct
+  let make wasm_mod tuple index =
+    let scope = get wasm_mod "tuple" in
+    meth_call scope "extract" [| inject tuple; inject index |]
+
   let get_tuple exp =
     meth_call global ##. binaryen ##. TupleExtract "getTuple" [| inject exp |]
 
@@ -934,4 +924,21 @@ module Tuple_extract = struct
       global ##. binaryen ##. TupleExtract
       "setTuple"
       [| inject exp; inject value |]
+end
+
+module Nop = struct
+  let make wasm_mod = meth_call wasm_mod "nop" [||]
+end
+
+module Unreachable = struct
+  let make wasm_mod = meth_call wasm_mod "unreachable" [||]
+end
+
+module Pop = struct
+  let make wasm_mod typ =
+    meth_call global##.binaryen "_BinaryenPop" [| inject wasm_mod; inject typ |]
+end
+
+module Null = struct
+  let make () = pure_js_expr "null"
 end

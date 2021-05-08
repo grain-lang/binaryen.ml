@@ -4,6 +4,60 @@ let _ = Callback.register "array_length" Array.length
 
 type t
 
+module Feature = struct
+  type t = int
+
+  external mvp : unit -> t = "caml_binaryen_feature_mvp"
+
+  let mvp = mvp ()
+
+  external atomics : unit -> t = "caml_binaryen_feature_atomics"
+
+  let atomics = atomics ()
+
+  external bulk_memory : unit -> t = "caml_binaryen_feature_bulk_memory"
+
+  let bulk_memory = bulk_memory ()
+
+  external mutable_globals : unit -> t = "caml_binaryen_feature_mutable_globals"
+
+  let mutable_globals = mutable_globals ()
+
+  external nontrapping_fp_to_int : unit -> t
+    = "caml_binaryen_feature_nontrapping_fp_to_int"
+
+  let nontrapping_fp_to_int = nontrapping_fp_to_int ()
+
+  external sign_ext : unit -> t = "caml_binaryen_feature_sign_ext"
+
+  let sign_ext = sign_ext ()
+
+  external simd128 : unit -> t = "caml_binaryen_feature_simd128"
+
+  let simd128 = simd128 ()
+
+  external exception_handling : unit -> t
+    = "caml_binaryen_feature_exception_handling"
+
+  let exception_handling = exception_handling ()
+
+  external tail_call : unit -> t = "caml_binaryen_feature_tail_call"
+
+  let tail_call = tail_call ()
+
+  external reference_types : unit -> t = "caml_binaryen_feature_reference_types"
+
+  let reference_types = reference_types ()
+
+  external multivalue : unit -> t = "caml_binaryen_feature_multivalue"
+
+  let multivalue = multivalue ()
+
+  external all : unit -> t = "caml_binaryen_feature_all"
+
+  let all = all ()
+end
+
 external create : unit -> t = "caml_binaryen_module_create"
 
 external dispose : t -> unit = "caml_binaryen_module_dispose"
@@ -37,48 +91,6 @@ external set_features : t -> int -> unit = "caml_binaryen_module_set_features"
 
 let set_features wasm_mod features =
   set_features wasm_mod (List.fold_left ( lor ) 0 features)
-
-external get_optimize_level : unit -> int = "caml_binaryen_get_optimize_level"
-
-external set_optimize_level : int -> unit = "caml_binaryen_set_optimize_level"
-
-external get_shrink_level : unit -> int = "caml_binaryen_get_shrink_level"
-
-external set_shrink_level : int -> unit = "caml_binaryen_set_shrink_level"
-
-external get_debug_info : unit -> int = "caml_binaryen_get_debug_info"
-
-external set_debug_info : int -> unit = "caml_binaryen_set_debug_info"
-
-external get_low_memory_unused : unit -> int
-  = "caml_binaryen_get_low_memory_unused"
-
-external set_low_memory_unused : int -> unit
-  = "caml_binaryen_set_low_memory_unused"
-
-external get_pass_argument : string -> string
-  = "caml_binaryen_get_pass_argument"
-
-external set_pass_argument : string -> string -> unit
-  = "caml_binaryen_set_pass_argument"
-
-external get_always_inline_max_size : unit -> int
-  = "caml_binaryen_get_always_inline_max_size"
-
-external set_always_inline_max_size : int -> unit
-  = "caml_binaryen_set_always_inline_max_size"
-
-external get_flexible_inline_max_size : unit -> int
-  = "caml_binaryen_get_flexible_inline_max_size"
-
-external set_flexible_inline_max_size : int -> unit
-  = "caml_binaryen_set_flexible_inline_max_size"
-
-external get_one_caller_inline_max_size : unit -> int
-  = "caml_binaryen_get_one_caller_inline_max_size"
-
-external set_one_caller_inline_max_size : int -> unit
-  = "caml_binaryen_set_one_caller_inline_max_size"
 
 external run_passes : t -> string list -> unit
   = "caml_binaryen_module_run_passes"
