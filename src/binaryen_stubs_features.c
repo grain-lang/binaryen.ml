@@ -8,6 +8,13 @@
 
 
 CAMLprim value
+caml_binaryen_module_get_features(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  CAMLreturn(Val_int(BinaryenModuleGetFeatures(module)));
+}
+
+CAMLprim value
 caml_binaryen_module_set_features(value _module, value _features) {
   CAMLparam2(_module, _features);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);

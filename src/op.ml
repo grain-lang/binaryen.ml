@@ -896,11 +896,6 @@ external neg_vec_i8x16 : unit -> t = "caml_binaryen_binaryen_neg_vec_i8x16"
 
 let neg_vec_i8x16 = neg_vec_i8x16 ()
 
-external any_true_vec_i8x16 : unit -> t
-  = "caml_binaryen_binaryen_any_true_vec_i8x16"
-
-let any_true_vec_i8x16 = any_true_vec_i8x16 ()
-
 external all_true_vec_i8x16 : unit -> t
   = "caml_binaryen_binaryen_all_true_vec_i8x16"
 
@@ -951,10 +946,6 @@ external sub_sat_u_vec_i8x16 : unit -> t
 
 let sub_sat_u_vec_i8x16 = sub_sat_u_vec_i8x16 ()
 
-external mul_vec_i8x16 : unit -> t = "caml_binaryen_binaryen_mul_vec_i8x16"
-
-let mul_vec_i8x16 = mul_vec_i8x16 ()
-
 external min_s_vec_i8x16 : unit -> t = "caml_binaryen_binaryen_min_s_vec_i8x16"
 
 let min_s_vec_i8x16 = min_s_vec_i8x16 ()
@@ -983,11 +974,6 @@ let abs_vec_i16x8 = abs_vec_i16x8 ()
 external neg_vec_i16x8 : unit -> t = "caml_binaryen_binaryen_neg_vec_i16x8"
 
 let neg_vec_i16x8 = neg_vec_i16x8 ()
-
-external any_true_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_any_true_vec_i16x8"
-
-let any_true_vec_i16x8 = any_true_vec_i16x8 ()
 
 external all_true_vec_i16x8 : unit -> t
   = "caml_binaryen_binaryen_all_true_vec_i16x8"
@@ -1071,11 +1057,6 @@ let abs_vec_i32x4 = abs_vec_i32x4 ()
 external neg_vec_i32x4 : unit -> t = "caml_binaryen_binaryen_neg_vec_i32x4"
 
 let neg_vec_i32x4 = neg_vec_i32x4 ()
-
-external any_true_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_any_true_vec_i32x4"
-
-let any_true_vec_i32x4 = any_true_vec_i32x4 ()
 
 external all_true_vec_i32x4 : unit -> t
   = "caml_binaryen_binaryen_all_true_vec_i32x4"
@@ -1172,14 +1153,6 @@ external sqrt_vec_f32x4 : unit -> t = "caml_binaryen_binaryen_sqrt_vec_f32x4"
 
 let sqrt_vec_f32x4 = sqrt_vec_f32x4 ()
 
-external qfma_vec_f32x4 : unit -> t = "caml_binaryen_binaryen_qfma_vec_f32x4"
-
-let qfma_vec_f32x4 = qfma_vec_f32x4 ()
-
-external qfms_vec_f32x4 : unit -> t = "caml_binaryen_binaryen_qfms_vec_f32x4"
-
-let qfms_vec_f32x4 = qfms_vec_f32x4 ()
-
 external add_vec_f32x4 : unit -> t = "caml_binaryen_binaryen_add_vec_f32x4"
 
 let add_vec_f32x4 = add_vec_f32x4 ()
@@ -1241,14 +1214,6 @@ external sqrt_vec_f64x2 : unit -> t = "caml_binaryen_binaryen_sqrt_vec_f64x2"
 
 let sqrt_vec_f64x2 = sqrt_vec_f64x2 ()
 
-external qfma_vec_f64x2 : unit -> t = "caml_binaryen_binaryen_qfma_vec_f64x2"
-
-let qfma_vec_f64x2 = qfma_vec_f64x2 ()
-
-external qfms_vec_f64x2 : unit -> t = "caml_binaryen_binaryen_qfms_vec_f64x2"
-
-let qfms_vec_f64x2 = qfms_vec_f64x2 ()
-
 external add_vec_f64x2 : unit -> t = "caml_binaryen_binaryen_add_vec_f64x2"
 
 let add_vec_f64x2 = add_vec_f64x2 ()
@@ -1308,16 +1273,6 @@ external trunc_sat_u_vec_f32x4_to_vec_i32x4 : unit -> t
 
 let trunc_sat_u_vec_f32x4_to_vec_i32x4 = trunc_sat_u_vec_f32x4_to_vec_i32x4 ()
 
-external trunc_sat_s_vec_f64x2_to_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_trunc_sat_s_vec_f64x2_to_vec_i64x2"
-
-let trunc_sat_s_vec_f64x2_to_vec_i64x2 = trunc_sat_s_vec_f64x2_to_vec_i64x2 ()
-
-external trunc_sat_u_vec_f64x2_to_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_trunc_sat_u_vec_f64x2_to_vec_i64x2"
-
-let trunc_sat_u_vec_f64x2_to_vec_i64x2 = trunc_sat_u_vec_f64x2_to_vec_i64x2 ()
-
 external convert_s_vec_i32x4_to_vec_f32x4 : unit -> t
   = "caml_binaryen_binaryen_convert_s_vec_i32x4_to_vec_f32x4"
 
@@ -1327,66 +1282,6 @@ external convert_u_vec_i32x4_to_vec_f32x4 : unit -> t
   = "caml_binaryen_binaryen_convert_u_vec_i32x4_to_vec_f32x4"
 
 let convert_u_vec_i32x4_to_vec_f32x4 = convert_u_vec_i32x4_to_vec_f32x4 ()
-
-external convert_s_vec_i64x2_to_vec_f64x2 : unit -> t
-  = "caml_binaryen_binaryen_convert_s_vec_i64x2_to_vec_f64x2"
-
-let convert_s_vec_i64x2_to_vec_f64x2 = convert_s_vec_i64x2_to_vec_f64x2 ()
-
-external convert_u_vec_i64x2_to_vec_f64x2 : unit -> t
-  = "caml_binaryen_binaryen_convert_u_vec_i64x2_to_vec_f64x2"
-
-let convert_u_vec_i64x2_to_vec_f64x2 = convert_u_vec_i64x2_to_vec_f64x2 ()
-
-external load_splat_vec8x16 : unit -> t
-  = "caml_binaryen_binaryen_load_splat_vec8x16"
-
-let load_splat_vec8x16 = load_splat_vec8x16 ()
-
-external load_splat_vec16x8 : unit -> t
-  = "caml_binaryen_binaryen_load_splat_vec16x8"
-
-let load_splat_vec16x8 = load_splat_vec16x8 ()
-
-external load_splat_vec32x4 : unit -> t
-  = "caml_binaryen_binaryen_load_splat_vec32x4"
-
-let load_splat_vec32x4 = load_splat_vec32x4 ()
-
-external load_splat_vec64x2 : unit -> t
-  = "caml_binaryen_binaryen_load_splat_vec64x2"
-
-let load_splat_vec64x2 = load_splat_vec64x2 ()
-
-external load_ext_s_vec8x8_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_s_vec8x8_to_vec_i16x8"
-
-let load_ext_s_vec8x8_to_vec_i16x8 = load_ext_s_vec8x8_to_vec_i16x8 ()
-
-external load_ext_u_vec8x8_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_u_vec8x8_to_vec_i16x8"
-
-let load_ext_u_vec8x8_to_vec_i16x8 = load_ext_u_vec8x8_to_vec_i16x8 ()
-
-external load_ext_s_vec16x4_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_s_vec16x4_to_vec_i32x4"
-
-let load_ext_s_vec16x4_to_vec_i32x4 = load_ext_s_vec16x4_to_vec_i32x4 ()
-
-external load_ext_u_vec16x4_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_u_vec16x4_to_vec_i32x4"
-
-let load_ext_u_vec16x4_to_vec_i32x4 = load_ext_u_vec16x4_to_vec_i32x4 ()
-
-external load_ext_s_vec32x2_to_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_s_vec32x2_to_vec_i64x2"
-
-let load_ext_s_vec32x2_to_vec_i64x2 = load_ext_s_vec32x2_to_vec_i64x2 ()
-
-external load_ext_u_vec32x2_to_vec_i64x2 : unit -> t
-  = "caml_binaryen_binaryen_load_ext_u_vec32x2_to_vec_i64x2"
-
-let load_ext_u_vec32x2_to_vec_i64x2 = load_ext_u_vec32x2_to_vec_i64x2 ()
 
 external narrow_s_vec_i16x8_to_vec_i8x16 : unit -> t
   = "caml_binaryen_binaryen_narrow_s_vec_i16x8_to_vec_i8x16"
@@ -1407,46 +1302,6 @@ external narrow_u_vec_i32x4_to_vec_i16x8 : unit -> t
   = "caml_binaryen_binaryen_narrow_u_vec_i32x4_to_vec_i16x8"
 
 let narrow_u_vec_i32x4_to_vec_i16x8 = narrow_u_vec_i32x4_to_vec_i16x8 ()
-
-external widen_low_s_vec_i8x16_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_widen_low_s_vec_i8x16_to_vec_i16x8"
-
-let widen_low_s_vec_i8x16_to_vec_i16x8 = widen_low_s_vec_i8x16_to_vec_i16x8 ()
-
-external widen_high_s_vec_i8x16_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_widen_high_s_vec_i8x16_to_vec_i16x8"
-
-let widen_high_s_vec_i8x16_to_vec_i16x8 = widen_high_s_vec_i8x16_to_vec_i16x8 ()
-
-external widen_low_u_vec_i8x16_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_widen_low_u_vec_i8x16_to_vec_i16x8"
-
-let widen_low_u_vec_i8x16_to_vec_i16x8 = widen_low_u_vec_i8x16_to_vec_i16x8 ()
-
-external widen_high_u_vec_i8x16_to_vec_i16x8 : unit -> t
-  = "caml_binaryen_binaryen_widen_high_u_vec_i8x16_to_vec_i16x8"
-
-let widen_high_u_vec_i8x16_to_vec_i16x8 = widen_high_u_vec_i8x16_to_vec_i16x8 ()
-
-external widen_low_s_vec_i16x8_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_widen_low_s_vec_i16x8_to_vec_i32x4"
-
-let widen_low_s_vec_i16x8_to_vec_i32x4 = widen_low_s_vec_i16x8_to_vec_i32x4 ()
-
-external widen_high_s_vec_i16x8_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_widen_high_s_vec_i16x8_to_vec_i32x4"
-
-let widen_high_s_vec_i16x8_to_vec_i32x4 = widen_high_s_vec_i16x8_to_vec_i32x4 ()
-
-external widen_low_u_vec_i16x8_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_widen_low_u_vec_i16x8_to_vec_i32x4"
-
-let widen_low_u_vec_i16x8_to_vec_i32x4 = widen_low_u_vec_i16x8_to_vec_i32x4 ()
-
-external widen_high_u_vec_i16x8_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_binaryen_widen_high_u_vec_i16x8_to_vec_i32x4"
-
-let widen_high_u_vec_i16x8_to_vec_i32x4 = widen_high_u_vec_i16x8_to_vec_i32x4 ()
 
 external swizzle_vec8x16 : unit -> t = "caml_binaryen_binaryen_swizzle_vec8x16"
 

@@ -97,3 +97,21 @@ caml_binaryen_type_create(value tys) {
   BinaryenType newType = BinaryenTypeCreate(valueTypes, len);
   CAMLreturn(alloc_BinaryenType(newType));
 }
+
+CAMLprim value
+caml_binaryen_type_expand(value _ty) {
+  CAMLparam1(_ty);
+  BinaryenType ty = BinaryenType_val(_ty);
+  int arity = BinaryenTypeArity(ty);
+  BinaryenType* buf = malloc(sizeof(BinaryenType) * arity);
+  BinaryenTypeExpand(ty, buf);
+
+  value typeArray = caml_alloc(arity, 0);
+  for (int i = 0; i < arity; i++) {
+    Field(typeArray, i) = alloc_BinaryenType(buf[i]);
+  }
+
+  free(buf);
+
+  CAMLreturn(typeArray);
+}

@@ -2,6 +2,7 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
+#include <caml/alloc.h>
 
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
@@ -13,6 +14,13 @@ static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
   value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
   BinaryenExpressionRef_val(v) = exp;
   return v;
+}
+
+CAMLprim value
+caml_binaryen_expression_get_id(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  CAMLreturn(Val_int(BinaryenExpressionGetId(expr)));
 }
 
 CAMLprim value
@@ -402,9 +410,1301 @@ caml_binaryen_pop(value _module, value _ty) {
 }
 
 CAMLprim value
+caml_binaryen_expression_id_invalid(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenInvalidId()));
+}
+
+CAMLprim value
+caml_binaryen_expression_id_nop(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenNopId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_block(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenBlockId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_if(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenIfId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_loop(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenLoopId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_break(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenBreakId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_switch(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSwitchId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_call(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenCallId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_call_indirect(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenCallIndirectId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_local_get(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenLocalGetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_local_set(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenLocalSetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_global_get(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenGlobalGetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_global_set(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenGlobalSetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_load(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenLoadId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_store(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenStoreId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_atomic_rmw(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenAtomicRMWId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_atomic_cmpxchg(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenAtomicCmpxchgId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_atomic_wait(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenAtomicWaitId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_atomic_notify(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenAtomicNotifyId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_atomic_fence(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenAtomicFenceId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_extract(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDExtractId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_replace(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDReplaceId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_shuffle(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDShuffleId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_ternary(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDTernaryId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_shift(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDShiftId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_load(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDLoadId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_simd_load_store_lane(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSIMDLoadStoreLaneId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_memory_init(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenMemoryInitId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_data_drop(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenDataDropId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_memory_copy(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenMemoryCopyId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_memory_fill(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenMemoryFillId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_const(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenConstId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_unary(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenUnaryId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_binary(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenBinaryId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_select(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenSelectId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_drop(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenDropId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_return(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenReturnId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_memory_size(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenMemorySizeId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_memory_grow(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenMemoryGrowId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_unreachable(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenUnreachableId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_pop(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenPopId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_null(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefNullId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_is(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefIsId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_func(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefFuncId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_eq(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefEqId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_try(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenTryId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_throw(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenThrowId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_rethrow(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRethrowId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_tuple_make(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenTupleMakeId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_tuple_extract(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenTupleExtractId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_i31_new(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenI31NewId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_i31_get(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenI31GetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_call_ref(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenCallRefId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_test(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefTestId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_cast(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefCastId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_br_on(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenBrOnId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_rtt_canon(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRttCanonId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_rtt_sub(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRttSubId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_struct_new(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenStructNewId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_struct_get(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenStructGetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_struct_set(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenStructSetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_array_new(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenArrayNewId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_array_get(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenArrayGetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_array_set(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenArraySetId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_array_len(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenArrayLenId()));
+}
+CAMLprim value
+caml_binaryen_expression_id_ref_as(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenRefAsId()));
+}
+
+// Expression operations
+
+CAMLprim value
 caml_binaryen_expression_print(value _exp) {
   CAMLparam1(_exp);
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
   BinaryenExpressionPrint(exp);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_expression_finalize(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionFinalize(exp);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_expression_copy(value _exp, value _module) {
+  CAMLparam1(_exp);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef exp = BinaryenExpressionCopy(BinaryenExpressionRef_val(_exp), module);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+// Block operations
+
+CAMLprim value
+caml_binaryen_block_get_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenBlockGetName(exp);
+  if (name == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(name)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_block_set_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenBlockSetName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_block_get_num_children(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenBlockGetNumChildren(exp)));
+}
+
+CAMLprim value
+caml_binaryen_block_get_child_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenBlockGetChildAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_block_set_child_at(value _exp, value _index, value _child) {
+  CAMLparam3(_exp, _index, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenBlockSetChildAt(exp, index, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_block_append_child(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  CAMLreturn(Val_int(BinaryenBlockAppendChild(exp, child)));
+}
+
+CAMLprim value
+caml_binaryen_block_insert_child_at(value _exp, value _index, value _child) {
+  CAMLparam3(_exp, _index, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenBlockInsertChildAt(exp, index, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_block_remove_child_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenBlockRemoveChildAt(exp, index)));
+}
+
+// If operations
+
+CAMLprim value
+caml_binaryen_if_get_condition(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenIfGetCondition(exp)));
+}
+
+CAMLprim value
+caml_binaryen_if_set_condition(value _exp, value _cond) {
+  CAMLparam2(_exp, _cond);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef cond = BinaryenExpressionRef_val(_cond);
+  BinaryenIfSetCondition(exp, cond);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_if_get_if_true(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenIfGetIfTrue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_if_set_if_true(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenIfSetIfTrue(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_if_get_if_false(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef ifFalse = BinaryenIfGetIfFalse(exp);
+  if (ifFalse == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(alloc_BinaryenExpressionRef(ifFalse)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_if_set_if_false(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenIfSetIfFalse(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+// Loop operations
+
+CAMLprim value
+caml_binaryen_loop_get_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenLoopGetName(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_loop_set_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenLoopSetName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_loop_get_body(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenLoopGetBody(exp)));
+}
+
+CAMLprim value
+caml_binaryen_loop_set_body(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenLoopSetBody(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+// Break operations
+
+CAMLprim value
+caml_binaryen_break_get_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenBreakGetName(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_break_set_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenBreakSetName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_break_get_condition(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef cond = BinaryenBreakGetCondition(exp);
+  if (cond == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(alloc_BinaryenExpressionRef(cond)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_break_set_condition(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenBreakSetCondition(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_break_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenBreakGetValue(exp);
+  if (val == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(alloc_BinaryenExpressionRef(val)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_break_set_value(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenBreakSetValue(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+// Switch operations
+
+CAMLprim value
+caml_binaryen_switch_get_num_names(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenSwitchGetNumNames(exp)));
+}
+
+CAMLprim value
+caml_binaryen_switch_get_name_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  const char* name = BinaryenSwitchGetNameAt(exp, index);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_switch_set_name_at(value _exp, value _index, value _name) {
+  CAMLparam3(_exp, _index, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  char* name = Safe_String_val(_name);
+  BinaryenSwitchSetNameAt(exp, index, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_switch_append_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  CAMLreturn(Val_int(BinaryenSwitchAppendName(exp, name)));
+}
+
+CAMLprim value
+caml_binaryen_switch_insert_name_at(value _exp, value _index, value _name) {
+  CAMLparam3(_exp, _index, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  char* name = Safe_String_val(_name);
+  BinaryenSwitchInsertNameAt(exp, index, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_switch_remove_name_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  const char* name = BinaryenSwitchRemoveNameAt(exp, index);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_switch_get_default_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenSwitchGetDefaultName(exp);
+  if (name == NULL) {
+    CAMLreturn(Val_none);
+  }
+  CAMLreturn(caml_alloc_some(caml_copy_string(name)));
+}
+
+CAMLprim value
+caml_binaryen_switch_set_default_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenSwitchSetDefaultName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_switch_get_condition(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenSwitchGetCondition(exp)));
+}
+
+CAMLprim value
+caml_binaryen_switch_set_condition(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenSwitchSetCondition(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_switch_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenSwitchGetValue(exp);
+  if (val == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(alloc_BinaryenExpressionRef(val)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_switch_set_value(value _exp, value _child) {
+  CAMLparam2(_exp, _child);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef child = BinaryenExpressionRef_val(_child);
+  BinaryenSwitchSetValue(exp, child);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_get_target(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenCallGetTarget(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_call_set_target(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenCallSetTarget(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_get_num_operands(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenCallGetNumOperands(exp)));
+}
+
+CAMLprim value
+caml_binaryen_call_get_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenCallGetOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_call_set_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenCallSetOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_append_operand(value _exp, value _operand) {
+  CAMLparam2(_exp, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  CAMLreturn(Val_int(BinaryenCallAppendOperand(exp, operand)));
+}
+
+CAMLprim value
+caml_binaryen_call_insert_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenCallInsertOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_remove_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenCallRemoveOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_call_is_return(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_bool(BinaryenCallIsReturn(exp)));
+}
+
+CAMLprim value
+caml_binaryen_call_set_return(value _exp, value _isReturn) {
+  CAMLparam2(_exp, _isReturn);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  int isReturn = Bool_val(_isReturn);
+  BinaryenCallSetReturn(exp, isReturn);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_get_target(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenCallIndirectGetTarget(exp)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_set_target(value _exp, value _target) {
+  CAMLparam2(_exp, _target);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef target = BinaryenExpressionRef_val(_target);
+  BinaryenCallIndirectSetTarget(exp, target);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_get_table(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenCallIndirectGetTable(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_set_table(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenCallIndirectSetTable(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_get_num_operands(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenCallIndirectGetNumOperands(exp)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_get_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenCallIndirectGetOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_set_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenCallIndirectSetOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_append_operand(value _exp, value _operand) {
+  CAMLparam2(_exp, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  CAMLreturn(Val_int(BinaryenCallIndirectAppendOperand(exp, operand)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_insert_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenCallIndirectInsertOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_remove_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenCallIndirectRemoveOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_is_return(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_bool(BinaryenCallIndirectIsReturn(exp)));
+}
+
+CAMLprim value
+caml_binaryen_call_indirect_set_return(value _exp, value _isReturn) {
+  CAMLparam2(_exp, _isReturn);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  int isReturn = Bool_val(_isReturn);
+  BinaryenCallIndirectSetReturn(exp, isReturn);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_local_set_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenLocalSetGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_local_set_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenLocalSetSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_global_get_get_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenGlobalGetGetName(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_global_get_set_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenGlobalGetSetName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_global_set_get_name(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenGlobalSetGetName(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_global_set_set_name(value _exp, value _name) {
+  CAMLparam2(_exp, _name);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* name = Safe_String_val(_name);
+  BinaryenGlobalSetSetName(exp, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_global_set_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenGlobalSetGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_global_set_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenGlobalSetSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_grow_get_delta(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryGrowGetDelta(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_grow_set_delta(value _exp, value _delta) {
+  CAMLparam2(_exp, _delta);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef delta = BinaryenExpressionRef_val(_delta);
+  BinaryenMemoryGrowSetDelta(exp, delta);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_load_get_ptr(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenLoadGetPtr(exp)));
+}
+
+CAMLprim value
+caml_binaryen_load_set_ptr(value _exp, value _ptr) {
+  CAMLparam2(_exp, _ptr);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenLoadSetPtr(exp, ptr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_store_get_ptr(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenStoreGetPtr(exp)));
+}
+
+CAMLprim value
+caml_binaryen_store_set_ptr(value _exp, value _ptr) {
+  CAMLparam2(_exp, _ptr);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenStoreSetPtr(exp, ptr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_store_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenStoreGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_store_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenStoreSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_unary_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenUnaryGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_unary_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenUnarySetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_binary_get_left(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenBinaryGetLeft(exp)));
+}
+
+CAMLprim value
+caml_binaryen_binary_set_left(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenBinarySetLeft(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_binary_get_right(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenBinaryGetRight(exp)));
+}
+
+CAMLprim value
+caml_binaryen_binary_set_right(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenBinarySetRight(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_select_get_if_true(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenSelectGetIfTrue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_select_set_if_true(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenSelectSetIfTrue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_select_get_if_false(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenSelectGetIfFalse(exp)));
+}
+
+CAMLprim value
+caml_binaryen_select_set_if_false(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenSelectSetIfFalse(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_select_get_condition(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenSelectGetCondition(exp)));
+}
+
+CAMLprim value
+caml_binaryen_select_set_condition(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenSelectSetCondition(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_drop_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenDropGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_drop_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenDropSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_return_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenReturnGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_return_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenReturnSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_get_dest(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryCopyGetDest(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_set_dest(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryCopySetDest(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_get_source(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryCopyGetSource(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_set_source(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryCopySetSource(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_get_size(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryCopyGetSize(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_copy_set_size(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryCopySetSize(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_get_dest(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryFillGetDest(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_set_dest(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryFillSetDest(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryFillGetValue(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryFillSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_get_size(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryFillGetSize(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_fill_set_size(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryFillSetSize(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_get_num_operands(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenTupleMakeGetNumOperands(exp)));
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_get_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenTupleMakeGetOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_set_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenTupleMakeSetOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_append_operand(value _exp, value _operand) {
+  CAMLparam2(_exp, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  CAMLreturn(Val_int(BinaryenTupleMakeAppendOperand(exp, operand)));
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_insert_operand_at(value _exp, value _index, value _operand) {
+  CAMLparam3(_exp, _index, _operand);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operand = BinaryenExpressionRef_val(_operand);
+  BinaryenTupleMakeInsertOperandAt(exp, index, operand);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tuple_make_remove_operand_at(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenIndex index = Int_val(_index);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenTupleMakeRemoveOperandAt(exp, index)));
+}
+
+CAMLprim value
+caml_binaryen_tuple_extract_get_tuple(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenTupleExtractGetTuple(exp)));
+}
+
+CAMLprim value
+caml_binaryen_tuple_extract_set_tuple(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenTupleExtractSetTuple(exp, val);
   CAMLreturn(Val_unit);
 }
