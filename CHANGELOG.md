@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.10.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.9.1...v0.10.0) (2021-05-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Move expressions into namespaces
+* Move element segment into own module
+* Move `Features` into `Module.Feature`
+* Create Settings modules & move global functions
+* Convert some Settings from ints to bools
+* Remove SIMD methods that Binaryen replaced
+* Upgrade Binaryen to v101 (#99)
+
+### Features
+
+* Add `Module.get_features` ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add `Type.expandType` ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on element segments ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on exports ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on expressions ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on functions ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on globals ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add operations on imports ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Add support for reference types ([#101](https://www.github.com/grain-lang/binaryen.ml/issues/101)) ([5058492](https://www.github.com/grain-lang/binaryen.ml/commit/50584929466b7aae5f7c9b48b8b9bab5676ed53e))
+* Build vendored Binaryen with GCC 7 instead of 9 ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Convert some Settings from ints to bools ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Create Settings modules & move global functions ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Move `Features` into `Module.Feature` ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Move element segment into own module ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Move expressions into namespaces ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+* Upgrade Binaryen to v101 ([#99](https://www.github.com/grain-lang/binaryen.ml/issues/99)) ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+
+
+### Miscellaneous Chores
+
+* Remove SIMD methods that Binaryen replaced ([3de1b28](https://www.github.com/grain-lang/binaryen.ml/commit/3de1b289ed4673f701801f3087e48ac9746d89d1))
+
 ### [0.9.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.9.0...v0.9.1) (2021-04-02)
 
 
