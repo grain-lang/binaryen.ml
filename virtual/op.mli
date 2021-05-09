@@ -615,3 +615,19 @@ val narrow_s_vec_i32x4_to_vec_i16x8 : t
 val narrow_u_vec_i32x4_to_vec_i16x8 : t
 
 val swizzle_vec8x16 : t
+
+val ref_is_null : t
+
+val ref_is_func : t
+
+val ref_is_data : t
+
+val ref_is_i31 : t
+
+val ref_as_non_null : t
+
+val ref_as_func : t
+
+val ref_as_data : t
+
+val ref_as_i31 : t

@@ -2170,3 +2170,59 @@ caml_binaryen_binaryen_swizzle_vec8x16(value unit) {
   BinaryenOp op = BinaryenSwizzleVec8x16();
   CAMLreturn(alloc_BinaryenOp(op));
 }
+
+CAMLprim value
+caml_binaryen_binaryen_ref_is_null(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefIsNull();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_is_func(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefIsFunc();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_is_data(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefIsData();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_is_i31(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefIsI31();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_non_null(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsNonNull();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_func(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsFunc();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_data(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsData();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_i31(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsI31();
+  CAMLreturn(alloc_BinaryenOp(op));
+}

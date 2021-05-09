@@ -687,3 +687,19 @@ let narrow_u_vec_i32x4_to_vec_i16x8 : t =
   global ##. binaryen ##. Operations ##. NarrowUVecI32x4ToVecI16x8
 
 let swizzle_vec8x16 : t = global ##. binaryen ##. Operations ##. SwizzleVec8x16
+
+let ref_is_null : t = global ##. binaryen ##. Operations ##. RefIsNull
+
+let ref_is_func : t = global ##. binaryen ##. Operations ##. RefIsFunc
+
+let ref_is_data : t = global ##. binaryen ##. Operations ##. RefIsData
+
+let ref_is_i31 : t = global ##. binaryen ##. Operations ##. RefIsI31
+
+let ref_as_non_null : t = global ##. binaryen ##. Operations ##. RefAsNonNull
+
+let ref_as_func : t = global ##. binaryen ##. Operations ##. RefAsFunc
+
+let ref_as_data : t = global ##. binaryen ##. Operations ##. RefAsData
+
+let ref_as_i31 : t = global ##. binaryen ##. Operations ##. RefAsI31

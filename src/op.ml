@@ -1306,3 +1306,35 @@ let narrow_u_vec_i32x4_to_vec_i16x8 = narrow_u_vec_i32x4_to_vec_i16x8 ()
 external swizzle_vec8x16 : unit -> t = "caml_binaryen_binaryen_swizzle_vec8x16"
 
 let swizzle_vec8x16 = swizzle_vec8x16 ()
+
+external ref_is_null : unit -> t = "caml_binaryen_binaryen_ref_is_null"
+
+let ref_is_null = ref_is_null ()
+
+external ref_is_func : unit -> t = "caml_binaryen_binaryen_ref_is_func"
+
+let ref_is_func = ref_is_func ()
+
+external ref_is_data : unit -> t = "caml_binaryen_binaryen_ref_is_data"
+
+let ref_is_data = ref_is_data ()
+
+external ref_is_i31 : unit -> t = "caml_binaryen_binaryen_ref_is_i31"
+
+let ref_is_i31 = ref_is_i31 ()
+
+external ref_as_non_null : unit -> t = "caml_binaryen_binaryen_ref_as_non_null"
+
+let ref_as_non_null = ref_as_non_null ()
+
+external ref_as_func : unit -> t = "caml_binaryen_binaryen_ref_as_func"
+
+let ref_as_func = ref_as_func ()
+
+external ref_as_data : unit -> t = "caml_binaryen_binaryen_ref_as_data"
+
+let ref_as_data = ref_as_data ()
+
+external ref_as_i31 : unit -> t = "caml_binaryen_binaryen_ref_as_i31"
+
+let ref_as_i31 = ref_as_i31 ()
