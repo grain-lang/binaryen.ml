@@ -134,6 +134,8 @@ let byts, _ = Module.write wasm_mod None
 
 let new_mod = Module.read byts
 
+let _ = Module.set_features new_mod [ Module.Feature.all ]
+
 let _ = Module.validate new_mod
 
 let _ = Module.print new_mod
