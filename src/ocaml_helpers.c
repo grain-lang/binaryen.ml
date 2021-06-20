@@ -37,7 +37,3 @@ int array_length(value array) {
   res = caml_callback(*closure_f, array);
   CAMLreturnT(int, Int_val(res));
 }
-
-int __sprintf_chk(char * str, int flag, size_t strlen, const char * format) {
-  sprintf(str, flag, strlen, format);
-}
