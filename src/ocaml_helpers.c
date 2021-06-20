@@ -65,9 +65,9 @@ extern "C" {
 typedef pthread_t __gthread_t;
 typedef pthread_key_t __gthread_key_t;
 typedef pthread_once_t __gthread_once_t;
-typedef struct _Mutex_Control __gthread_mutex_t;
+typedef pthread_mutex_t __gthread_mutex_t;
 typedef struct _Mutex_recursive_Control __gthread_recursive_mutex_t;
-typedef struct _Condition_Control __gthread_cond_t;
+typedef pthread_cond_t __gthread_cond_t;
 typedef struct timespec __gthread_time_t;
 
 
@@ -144,18 +144,18 @@ __gthread_setspecific (__gthread_key_t __key, const void *__ptr)
   return pthread_setspecific (__key, __ptr);
 }
 
-// int
-// __gthread_mutex_lock (__gthread_mutex_t *__mutex)
-// {
-//   _Mutex_Acquire (__mutex);
-//   return 0;
-// }
+int
+__gthread_mutex_lock (__gthread_mutex_t *__mutex)
+{
+  pthread_mutex_lock(__mutex);
+  return 0;
+}
 
-// int
-// __gthread_mutex_trylock (__gthread_mutex_t *__mutex)
-// {
-//   return _Mutex_Try_acquire (__mutex);
-// }
+int
+__gthread_mutex_trylock (__gthread_mutex_t *__mutex)
+{
+  return pthread_mutex_trylock(__mutex);
+}
 
 // int
 // __gthread_mutex_timedlock (__gthread_mutex_t *__mutex,
@@ -164,19 +164,19 @@ __gthread_setspecific (__gthread_key_t __key, const void *__ptr)
 //   return _Mutex_Acquire_timed (__mutex, __abs_timeout);
 // }
 
-// int
-// __gthread_mutex_unlock (__gthread_mutex_t *__mutex)
-// {
-//   _Mutex_Release (__mutex);
-//   return 0;
-// }
+int
+__gthread_mutex_unlock (__gthread_mutex_t *__mutex)
+{
+  pthread_mutex_release(__mutex);
+  return 0;
+}
 
-// int
-// __gthread_mutex_destroy (__gthread_mutex_t *__mutex)
-// {
-//   _Mutex_Destroy (__mutex);
-//   return 0;
-// }
+int
+__gthread_mutex_destroy (__gthread_mutex_t *__mutex)
+{
+  pthread_mutex_destroy(__mutex);
+  return 0;
+}
 
 // int
 // __gthread_recursive_mutex_lock (__gthread_recursive_mutex_t *__mutex)
@@ -212,33 +212,33 @@ __gthread_setspecific (__gthread_key_t __key, const void *__ptr)
 //   return 0;
 // }
 
-// int
-// __gthread_cond_broadcast (__gthread_cond_t *__cond)
-// {
-//   _Condition_Broadcast (__cond);
-//   return 0;
-// }
+int
+__gthread_cond_broadcast (__gthread_cond_t *__cond)
+{
+  pthread_cond_broadcast(__cond);
+  return 0;
+}
 
-// int
-// __gthread_cond_signal (__gthread_cond_t *__cond)
-// {
-//   _Condition_Signal (__cond);
-//   return 0;
-// }
+int
+__gthread_cond_signal (__gthread_cond_t *__cond)
+{
+  pthread_cond_signal(__cond);
+  return 0;
+}
 
-// int
-// __gthread_cond_wait (__gthread_cond_t *__cond, __gthread_mutex_t *__mutex)
-// {
-//   _Condition_Wait (__cond, __mutex);
-//   return 0;
-// }
+int
+__gthread_cond_wait (__gthread_cond_t *__cond, __gthread_mutex_t *__mutex)
+{
+  pthread_cond_wait(__cond, __mutex);
+  return 0;
+}
 
-// int
-// __gthread_cond_timedwait (__gthread_cond_t *__cond, __gthread_mutex_t *__mutex,
-// 			  const __gthread_time_t *__abs_timeout)
-// {
-//   return _Condition_Wait_timed (__cond, __mutex, __abs_timeout);
-// }
+int
+__gthread_cond_timedwait (__gthread_cond_t *__cond, __gthread_mutex_t *__mutex,
+			  const __gthread_time_t *__abs_timeout)
+{
+  return pthread_cond_timedwait(__cond, __mutex, __abs_timeout);
+}
 
 // int
 // __gthread_cond_wait_recursive (__gthread_cond_t *__cond,
@@ -248,12 +248,12 @@ __gthread_setspecific (__gthread_key_t __key, const void *__ptr)
 //   return 0;
 // }
 
-// int
-// __gthread_cond_destroy (__gthread_cond_t *__cond)
-// {
-//   _Condition_Destroy (__cond);
-//   return 0;
-// }
+int
+__gthread_cond_destroy (__gthread_cond_t *__cond)
+{
+  pthread_cond_destroy(__cond);
+  return 0;
+}
 
 #ifdef __cplusplus
 }
