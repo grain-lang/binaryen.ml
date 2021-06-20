@@ -5,7 +5,6 @@
 #include <caml/callback.h>
 #include <stdarg.h>
 #include <pthread.h>
-#include <sys/lock.h>
 #include <sched.h>
 
 #include "ocaml_helpers.h"
