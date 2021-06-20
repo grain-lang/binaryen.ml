@@ -9,7 +9,7 @@
 int __sprintf_chk(char * str, int flag, size_t strlen, const char * format, ...) {
   //return sprintf(str, flag, strlen, format);
   va_list vargs;
-  va_start(vargs, fmt);
+  va_start(vargs, format);
   int ret = vsprintf(str, format, vargs);
   va_end(vargs);
   return ret;
