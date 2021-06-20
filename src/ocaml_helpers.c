@@ -3,6 +3,7 @@
 #include <caml/fail.h>
 #include <caml/memory.h>
 #include <caml/callback.h>
+#include <stdarg.h>
 
 #include "ocaml_helpers.h"
 
@@ -38,8 +39,12 @@ int array_length(value array) {
   CAMLreturnT(int, Int_val(res));
 }
 
-int __sprintf_chk(char * str, int flag, size_t strlen, const char * format) {
-  sprintf(str, flag, strlen, format);
+int __sprintf_chk(char * str, int flag, size_t strlen, const char * format, ...) {
+  va_list vargs;
+  va_start(vargs, fmt);
+  int ret = vsprintf(str, format, vargs);
+  va_end(vargs);
+  return ret;
 }
 
 typedef void (*dtor_func) (void *);
