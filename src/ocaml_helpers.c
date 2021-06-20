@@ -167,7 +167,7 @@ __gthread_mutex_trylock (__gthread_mutex_t *__mutex)
 int
 __gthread_mutex_unlock (__gthread_mutex_t *__mutex)
 {
-  pthread_mutex_release(__mutex);
+  pthread_mutex_unlock(__mutex);
   return 0;
 }
 
