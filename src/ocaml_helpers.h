@@ -41,9 +41,6 @@ static struct custom_operations binaryen_ops = {
 #define Safe_String_val(v) ((char *)memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1))
 
 CAMLprim value
-caml_alloc_some(value v);
-
-CAMLprim value
 array_of_list(value list);
 
 int array_length(value array);
