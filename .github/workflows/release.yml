@@ -87,7 +87,7 @@ jobs:
       - name: Setup OCaml
         uses: avsm/setup-ocaml@v1
         with:
-          ocaml-version: 4.11.1
+          ocaml-version: 4.12.0
 
       - name: Install publish utils
         run: |

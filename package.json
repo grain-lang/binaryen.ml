@@ -5,16 +5,16 @@
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
   "dependencies": {
-    "ocaml": ">= 4.9.0 < 4.12.0",
-    "@opam/dune": "^2.7.1",
-    "@opam/dune-configurator": "^2.7.1",
-    "@opam/js_of_ocaml": "^3.6.0",
-    "@opam/js_of_ocaml-ppx": "^3.6.0"
+    "ocaml": ">= 4.12.0 < 4.13.0",
+    "@opam/dune": "^2.9.1",
+    "@opam/dune-configurator": "^2.9.1",
+    "@opam/js_of_ocaml": "^3.10.0",
+    "@opam/js_of_ocaml-ppx": "^3.10.0"
   },
   "devDependencies": {
-    "@opam/js_of_ocaml-compiler": "^3.6.0",
-    "@opam/ocamlformat": "^0.15.0",
-    "@opam/ocaml-lsp-server": "^1.1.0"
+    "@opam/js_of_ocaml-compiler": "^3.10.0",
+    "@opam/ocamlformat": "0.18.0",
+    "@opam/ocaml-lsp-server": "^1.8.2"
   },
   "esy": {
     "build": "dune build -p binaryen",

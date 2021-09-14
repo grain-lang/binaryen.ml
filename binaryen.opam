@@ -12,11 +12,11 @@ build: [
   [ "dune" "build" "-p" name "-j" jobs ]
 ]
 depends: [
-  "ocaml" {>= "4.09"}
-  "dune" {>= "2.7.1"}
-  "dune-configurator" {>= "2.7.1"}
-  "js_of_ocaml" {>= "3.6.0"}
-  "js_of_ocaml-ppx" {>= "3.6.0"}
-  "js_of_ocaml-compiler" {>= "3.6.0"}
+  "ocaml" {>= "4.12" < "4.13"}
+  "dune" {>= "2.9.1"}
+  "dune-configurator" {>= "2.9.1"}
+  "js_of_ocaml" {>= "3.10.0"}
+  "js_of_ocaml-ppx" {>= "3.10.0"}
+  "js_of_ocaml-compiler" {>= "3.10.0"}
 ]
 available: arch = "x86_64" & (os = "linux" | os = "macos" | os = "win32")
