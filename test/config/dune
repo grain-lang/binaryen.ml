@@ -1,0 +1,8 @@
+(executable
+ (name ocamlopt_flags)
+ (libraries dune.configurator))
+
+(rule
+ (targets ocamlopt_flags.sexp)
+ (action
+  (run ./ocamlopt_flags.exe)))

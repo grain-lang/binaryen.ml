@@ -1,8 +1,0 @@
-(executable
- (name library_flags)
- (libraries dune.configurator))
-
-(rule
- (targets library_flags.sexp)
- (action
-  (run ./library_flags.exe)))
