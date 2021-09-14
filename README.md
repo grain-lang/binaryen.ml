@@ -44,9 +44,9 @@ None of these are particularly challenging to create bindings for—they just ha
 
 ## MacOS C++ Compiler
 
-When including this library in your MacOS executables, you'll need to specify `-cc clang++` in your `(ocamlopt_flags)` stanza. This is required because Binaryen will throw errors for itself to catch and using `clang++` is the only way to handle them correctly. You can find more info on this [ocaml issue](https://github.com/ocaml/ocaml/issues/10423).
+When including this library in your `dune` MacOS executables, you'll need to specify `-cc clang++` in your `(ocamlopt_flags)` stanza. This is required because Binaryen will throw errors for itself to catch and using `clang++` is the only way to handle them correctly. You can find more info on this [ocaml issue](https://github.com/ocaml/ocaml/issues/10423).
 
-You're stanza could look something like this:
+Your stanza could look something like this:
 
 ```diff
  (executable
