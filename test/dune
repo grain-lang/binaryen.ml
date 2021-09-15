@@ -4,6 +4,8 @@
  (name test)
  (modules test)
  (libraries binaryen)
+ (ocamlopt_flags
+  (:include ./config/ocamlopt_flags.sexp))
  (action
   (run %{test})))
 
@@ -20,6 +22,8 @@
  (name test_native)
  (modules test_native)
  (libraries binaryen binaryen.native)
+ (ocamlopt_flags
+  (:include ./config/ocamlopt_flags.sexp))
  (action
   (run %{test})))
 

@@ -42,6 +42,24 @@ This project aims to provide full feature parity with the [Binaryen C API](https
 
 None of these are particularly challenging to create bindings for—they just haven't been written yet. If you need anything that's missing, feel free to open a PR.
 
+## MacOS C++ Compiler
+
+When including this library in your `dune` MacOS executables, you'll need to specify `-cc clang++` in your `(ocamlopt_flags)` stanza. This is required because Binaryen will throw errors for itself to catch and using `clang++` is the only way to handle them correctly. You can find more info on this [ocaml issue](https://github.com/ocaml/ocaml/issues/10423).
+
+Your stanza could look something like this:
+
+```diff
+ (executable
+  (name example)
+  (public_name example)
+  (package example)
++ (ocamlopt_flags -cc clang++)
+  (modules example)
+  (libraries binaryen))
+```
+
+These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [tests/](./tests/dune).
+
 ## Static Linking
 
 If you are planning to create portable binaries for Windows, it will try to find Cygwin/MinGW locations in your `PATH`. To avoid this, you probably want to add this to your `(executable)` stanzas:
