@@ -19,4 +19,4 @@ depends: [
   "js_of_ocaml-ppx" {>= "3.10.0"}
   "js_of_ocaml-compiler" {>= "3.10.0"}
 ]
-available: arch = "x86_64" & (os = "linux" | os = "macos" | os = "win32")
+available: (arch = "x86_64" & (os = "linux" | os = "macos" | os = "win32")) | (arch = "arm64" & os = "macos")
