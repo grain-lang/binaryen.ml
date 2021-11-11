@@ -12,27 +12,22 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04, macos-latest, windows-latest]
-        ocaml-version: [4.12.0]
+        ocaml-compiler: [4.12.0]
 
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: "recursive"
 
-      - name: Setup OCaml ${{ matrix.ocaml-version }}
-        uses: ocaml/setup-ocaml@v1.1.12
+      - name: Setup OCaml ${{ matrix.ocaml-compiler }}
+        uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-version: ${{ matrix.ocaml-version }}
-
-      # I'm not exactly sure what the `opam pin` does
-      - name: Setup environment
-        run: |
-          opam pin add binaryen.dev . --no-action
+          ocaml-compiler: ${{ matrix.ocaml-compiler }}
 
       - name: Install local dependencies
         run: |
-          opam install . --deps-only --with-doc --with-test
+          opam install . --deps-only --with-test
 
       - name: Build project
         run: |
