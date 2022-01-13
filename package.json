@@ -27,6 +27,9 @@
   "installConfig": {
     "pnp": false
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "binaryen",
     "ocaml"
