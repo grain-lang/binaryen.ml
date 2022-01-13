@@ -10,9 +10,4 @@
   (names stubs))
  (js_of_ocaml
   (flags --no-sourcemap)
-  (javascript_files binaryen.js postlude.js)))
-
-(rule
- (target binaryen.js)
- (action
-  (copy ../vendor/js/index.es5.js binaryen.js)))
+  (javascript_files binaryen.es5.js postlude.js)))

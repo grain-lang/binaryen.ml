@@ -18,5 +18,5 @@ depends: [
   "js_of_ocaml" {>= "3.10.0"}
   "js_of_ocaml-ppx" {>= "3.10.0"}
   "js_of_ocaml-compiler" {>= "3.10.0"}
+  "libbinaryen" {>= "101.0.1" < "102.0.0"}
 ]
-available: arch = "x86_64" & (os = "linux" | os = "macos" | os = "win32")
