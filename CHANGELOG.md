@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.11.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.10.0...v0.11.0) (2022-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Mention implicit python dependency in the docs
+* Switch to libbinaryen dependency (#113)
+* Remove MacOS-specific library flags (#111)
+* Require OCaml 4.12 (#108)
+
+### Features
+
+* Depend on libbinaryen ([59874ce](https://www.github.com/grain-lang/binaryen.ml/commit/59874ce785288d4a33ed5408ac4a0a33e16ff4c1))
+* Remove MacOS-specific library flags ([#111](https://www.github.com/grain-lang/binaryen.ml/issues/111)) ([5a67f9f](https://www.github.com/grain-lang/binaryen.ml/commit/5a67f9f330332f8957976841819707d09124dc94))
+* Require OCaml 4.12 ([#108](https://www.github.com/grain-lang/binaryen.ml/issues/108)) ([36eedea](https://www.github.com/grain-lang/binaryen.ml/commit/36eedea279fb19ee6131b72b21c24ba0a9d7f993))
+* Switch to libbinaryen dependency ([#113](https://www.github.com/grain-lang/binaryen.ml/issues/113)) ([59874ce](https://www.github.com/grain-lang/binaryen.ml/commit/59874ce785288d4a33ed5408ac4a0a33e16ff4c1))
+
+
+### Miscellaneous Chores
+
+* Mention implicit python dependency in the docs ([59874ce](https://www.github.com/grain-lang/binaryen.ml/commit/59874ce785288d4a33ed5408ac4a0a33e16ff4c1))
+
 ## [0.10.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.9.1...v0.10.0) (2021-05-09)
 
 
