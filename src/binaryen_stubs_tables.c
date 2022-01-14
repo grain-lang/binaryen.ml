@@ -33,13 +33,14 @@ static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
 }
 
 CAMLprim value
-caml_binaryen_add_table(value _module, value _table, value _initial, value _maximum) {
-  CAMLparam4(_module, _table, _initial, _maximum);
+caml_binaryen_add_table(value _module, value _table, value _initial, value _maximum, value _tableType) {
+  CAMLparam5(_module, _table, _initial, _maximum, _tableType);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   char* table = Safe_String_val(_table);
   BinaryenIndex initial = Int_val(_initial);
   BinaryenIndex maximum = Int_val(_maximum);
-  CAMLreturn(alloc_BinaryenTableRef(BinaryenAddTable(module, table, initial, maximum)));
+  BinaryenType tableType = BinaryenType_val(_tableType);
+  CAMLreturn(alloc_BinaryenTableRef(BinaryenAddTable(module, table, initial, maximum, tableType)));
 }
 
 CAMLprim value
