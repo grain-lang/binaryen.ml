@@ -112,3 +112,6 @@ let add_debug_info_filename wasm_mod filename =
 
 let get_debug_info_filename wasm_mod index =
   meth_call wasm_mod "getDebugInfoFileName" [| inject index |]
+
+(* The JS version doesn't expose `update_maps` *)
+let update_maps wasm_mod = ()

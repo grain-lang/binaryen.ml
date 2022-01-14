@@ -63,3 +63,5 @@ val interpret : t -> unit
 val add_debug_info_filename : t -> string -> int
 
 val get_debug_info_filename : t -> int -> string
+
+val update_maps : t -> unit
