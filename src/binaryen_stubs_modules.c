@@ -172,3 +172,10 @@ caml_binaryen_add_custom_section(value _module, value _name, value _contents) {
   BinaryenAddCustomSection(module, name, contents, contentsLen);
   CAMLreturn(Val_unit);
 }
+
+CAMLprim value
+caml_binaryen_module_update_maps(value module) {
+  CAMLparam1(module);
+  BinaryenModuleUpdateMaps(BinaryenModuleRef_val(module));
+  CAMLreturn(Val_unit);
+}

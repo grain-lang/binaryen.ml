@@ -116,6 +116,9 @@ let _ =
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
 
+(* Shouldn't actually do anything since we aren't doing function renames *)
+let _ = Module.update_maps wasm_mod
+
 (* Finally, we print 3 versions of the module to be checked against test.expected *)
 
 (* 1. Print the the module as-is *)
