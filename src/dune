@@ -22,5 +22,4 @@
    binaryen_stubs_modules
    binaryen_stubs_settings
    ocaml_helpers)
-  (flags :standard -O2 -Wall -Wextra))
- (c_library_flags :standard -lstdc++ -lpthread))
+  (flags :standard -O2 -Wall -Wextra)))
