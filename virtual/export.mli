@@ -28,6 +28,6 @@ val external_memory : int
 
 val external_global : int
 
-val external_event : int
+val external_tag : int
 
 val export_get_kind : t -> int

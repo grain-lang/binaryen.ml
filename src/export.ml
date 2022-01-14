@@ -47,8 +47,8 @@ external external_global : unit -> int = "caml_binaryen_external_global"
 
 let external_global = external_global ()
 
-external external_event : unit -> int = "caml_binaryen_external_event"
+external external_tag : unit -> int = "caml_binaryen_external_tag"
 
-let external_event = external_event ()
+let external_tag = external_tag ()
 
 external export_get_kind : t -> int = "caml_binaryen_export_get_kind"
