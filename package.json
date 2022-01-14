@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ocaml": ">= 4.12.0 < 4.13.0",
-    "@grain/libbinaryen": "^101.0.1",
+    "@grain/libbinaryen": "^102.0.0",
     "@opam/dune": "^2.9.1",
     "@opam/dune-configurator": "^2.9.1",
     "@opam/js_of_ocaml": "^3.10.0",
@@ -16,6 +16,9 @@
     "@opam/js_of_ocaml-compiler": "^3.10.0",
     "@opam/ocamlformat": "0.18.0",
     "@opam/ocaml-lsp-server": "^1.8.2"
+  },
+  "resolutions": {
+    "@grain/libbinaryen": "grain-lang/libbinaryen:package.json#05a63b065a5cd205bb3d8c3e4c4a0febe175fec9"
   },
   "esy": {
     "build": "dune build -p binaryen"
