@@ -35,7 +35,7 @@ let _ = Module.dispose wasm_mod
 This project aims to provide full feature parity with the [Binaryen C API](https://github.com/WebAssembly/binaryen/blob/master/src/binaryen-c.h). It's fairly complete, but a few things still need bindings:
 
 - SIMD instructions
-- Events
+- Tags
 - Atomics
 - Query operations on expressions
 - Query operations on functions

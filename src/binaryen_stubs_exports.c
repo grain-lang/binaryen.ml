@@ -130,9 +130,9 @@ caml_binaryen_external_global(value _unit) {
 }
 
 CAMLprim value
-caml_binaryen_external_event(value _unit) {
+caml_binaryen_external_tag(value _unit) {
   CAMLparam1(_unit);
-  CAMLreturn(Val_int(BinaryenExternalEvent()));
+  CAMLreturn(Val_int(BinaryenExternalTag()));
 }
 
 CAMLprim value
