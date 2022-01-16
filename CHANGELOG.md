@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.11.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.0...v0.11.1) (2022-01-16)
+
+
+### Bug Fixes
+
+* Make features work in 32-bit mode ([#123](https://www.github.com/grain-lang/binaryen.ml/issues/123)) ([e435c8b](https://www.github.com/grain-lang/binaryen.ml/commit/e435c8bd9f6619c42b82e53e5d1caa929b5d4ebf))
+
 ## [0.11.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.10.0...v0.11.0) (2022-01-13)
 
 
