@@ -89,9 +89,11 @@ jobs:
         with:
           ocaml-version: 4.12.0
 
+      # Version 2.1.0 of opam-publish doesn't respect OPAMYES=1
+      # Ref https://github.com/ocaml-opam/opam-publish/issues/132#issuecomment-963616802
       - name: Install publish utils
         run: |
-          opam install opam-publish
+          opam install opam-publish=2.0.3
 
       - name: Publish to opam
         run: |
