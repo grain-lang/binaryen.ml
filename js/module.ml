@@ -74,7 +74,9 @@ let get_features wasm_mod =
         feature :: split_features (feature lsr 1)
     | feature -> split_features (feature lsr 1)
   in
-  split_features 0x80000000
+  (* Support 32-bit OCaml where integers are 31 bits *)
+  (* This supports up to 31 Binaryen features *)
+  split_features 0x40000000
 
 let set_features wasm_mod features =
   meth_call wasm_mod "setFeatures"
