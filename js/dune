@@ -10,4 +10,4 @@
   (names stubs))
  (js_of_ocaml
   (flags --no-sourcemap)
-  (javascript_files binaryen.es5.js postlude.js)))
+  (javascript_files prelude.js binaryen.es5.js postlude.js)))

@@ -1,2 +1,2 @@
-// Attach binaryen to our global
-global.binaryen = module.exports;
+// Attach binaryen to globalThis because JSOO wraps in an iife
+globalThis.binaryen = module.exports;
