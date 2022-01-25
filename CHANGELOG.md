@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.11.2](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.1...v0.11.2) (2022-01-24)
+
+
+### Bug Fixes
+
+* Handle JS global in non-node environments ([#125](https://www.github.com/grain-lang/binaryen.ml/issues/125)) ([74e94fe](https://www.github.com/grain-lang/binaryen.ml/commit/74e94fe8ac7b2c2a66b8118b5eaa3a81e5f9296a))
+
 ### [0.11.1](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.0...v0.11.1) (2022-01-16)
 
 
