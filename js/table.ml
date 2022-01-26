@@ -3,9 +3,9 @@ open Js_of_ocaml.Js.Unsafe
 
 type t = int
 
-let add_table wasm_mod name initial maximum =
+let add_table wasm_mod name initial maximum tableType =
   meth_call wasm_mod "addTable"
-    [| inject (string name); inject initial; inject maximum |]
+    [| inject (string name); inject initial; inject maximum; inject tableType |]
 
 let add_active_element_segment wasm_mod table name funcnames offset =
   meth_call wasm_mod "addActiveElementSegment"

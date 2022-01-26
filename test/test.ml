@@ -77,7 +77,7 @@ let start =
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 
-let _ = Table.add_table wasm_mod "table" 1 1
+let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
 let _ =
   Global.add_global wasm_mod "max_int64" Type.int64 false
@@ -115,6 +115,9 @@ let _ =
        Type.int32)
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
+
+(* Shouldn't actually do anything since we aren't doing function renames *)
+let _ = Module.update_maps wasm_mod
 
 (* Finally, we print 3 versions of the module to be checked against test.expected *)
 

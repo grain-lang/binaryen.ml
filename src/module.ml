@@ -113,3 +113,5 @@ external add_debug_info_filename : t -> string -> int
 
 external get_debug_info_filename : t -> int -> string
   = "caml_binaryen_module_get_debug_info_filename"
+
+external update_maps : t -> unit = "caml_binaryen_module_update_maps"

@@ -10,5 +10,4 @@
     binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
     binaryen_stubs_tables binaryen_stubs_memory binaryen_stubs_features
     binaryen_stubs_modules binaryen_stubs_settings ocaml_helpers)
-  (flags :standard -O2 -Wall -Wextra))
- (c_library_flags :standard -lstdc++ -lpthread))
+  (flags :standard -O2 -Wall -Wextra)))

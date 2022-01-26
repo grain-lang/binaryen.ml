@@ -51,7 +51,7 @@ let external_memory = meth_call global##.binaryen "_BinaryenExternalMemory" [||]
 
 let external_global = meth_call global##.binaryen "_BinaryenExternalGlobal" [||]
 
-let external_event = meth_call global##.binaryen "_BinaryenExternalEvent" [||]
+let external_tag = meth_call global##.binaryen "_BinaryenExternalTag" [||]
 
 let export_get_kind export =
   let export_info =
