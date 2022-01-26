@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.12.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.2...v0.12.0) (2022-01-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add table type to add_table signature
+* Rename Event to Tag to match Binaryen
+
+### Features
+
+* Add table type to add_table signature ([5c50272](https://www.github.com/grain-lang/binaryen.ml/commit/5c502720943a8bf6e649891051db00336eec9451))
+* Add update_maps function that Binaryen added ([5c50272](https://www.github.com/grain-lang/binaryen.ml/commit/5c502720943a8bf6e649891051db00336eec9451))
+* Rename Event to Tag to match Binaryen ([5c50272](https://www.github.com/grain-lang/binaryen.ml/commit/5c502720943a8bf6e649891051db00336eec9451))
+* Upgrade to libbinaryen v102 ([#120](https://www.github.com/grain-lang/binaryen.ml/issues/120)) ([5c50272](https://www.github.com/grain-lang/binaryen.ml/commit/5c502720943a8bf6e649891051db00336eec9451))
+
 ### [0.11.2](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.1...v0.11.2) (2022-01-24)
 
 
