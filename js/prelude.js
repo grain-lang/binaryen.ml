@@ -1,11 +1,2 @@
-if (typeof module === 'undefined') {
-  module = {};
-}
-
-if (typeof exports === 'undefined') {
-  exports = {};
-}
-
-if (typeof module.exports === 'undefined') {
-  module.exports = exports;
-}
+// Attach binaryen to globalThis so binaryen will register itself on the object
+globalThis.binaryen = {}
