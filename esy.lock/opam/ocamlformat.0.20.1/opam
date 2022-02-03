@@ -4,31 +4,29 @@ description:
   "OCamlFormat is a tool to automatically format OCaml code in a uniform style."
 maintainer: ["OCamlFormat Team <ocamlformat-dev@lists.ocaml.org>"]
 authors: ["Josh Berdine <jjb@fb.com>"]
-license: "MIT"
 homepage: "https://github.com/ocaml-ppx/ocamlformat"
 bug-reports: "https://github.com/ocaml-ppx/ocamlformat/issues"
 depends: [
   "dune" {>= "2.8"}
-  "ocaml" {>= "4.08" & < "4.13"}
-  "ocaml-version" {>= "3.1.0"}
+  "ocaml" {>= "4.08" & < "4.15"}
   "alcotest" {with-test}
   "base" {>= "v0.12.0" & < "v0.15"}
-  "base-unix"
   "cmdliner"
   "dune-build-info"
+  "either"
   "fix"
   "fpath"
-  "menhir" {>= "20180528"}
-  "menhirLib" {>= "20200624"}
-  "menhirSdk" {>= "20200624"}
-  "ocp-indent" {with-test}
-  "bisect_ppx" {dev & >= "2.5.0"}
-  "odoc" {>= "1.4.2" & < "2.0.0"}
-  "ppxlib" {>= "0.22.0" & < "0.23.0"}
+  "menhir" {>= "20201216"}
+  "menhirLib" {>= "20201216"}
+  "menhirSdk" {>= "20201216"}
+  "ocaml-version" {>= "3.3.0"}
+  "ocp-indent"
+  "odoc-parser" {>= "1.0.0"}
   "re" {>= "1.7.2"}
   "stdio" {< "v0.15"}
   "uuseg" {>= "10.0.0"}
   "uutf" {>= "1.0.1"}
+  "odoc" {with-doc}
 ]
 build: [
   ["dune" "subst"] {dev}
@@ -45,12 +43,13 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/ocaml-ppx/ocamlformat.git"
-x-commit-hash: "3697f0f92854a681fd1156fe4f6fb97d060da1d8"
+license: ["MIT" "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"]
 url {
   src:
-    "https://github.com/ocaml-ppx/ocamlformat/releases/download/0.18.0/ocamlformat-0.18.0.tbz"
+    "https://github.com/ocaml-ppx/ocamlformat/releases/download/0.20.1/ocamlformat-0.20.1.tbz"
   checksum: [
-    "sha256=981a44296485da6ca29ab2cd8c711270398e5e1d1624408ec403c0b0ea9fe114"
-    "sha512=d1cbd63e4b82ff2e9ec0c96a9305704d3eea3e978c703ef9d1244853d8aaea912ad9f934379eeddfc1a0468b1cb1c2dc39ecf452189f2a35fa1ae53aec10b277"
+    "sha256=7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235"
+    "sha512=8cc8bc9ebf822b18cf54f2f5b0b61c7bf775a1de9b984f57448dcee391627a08d43e7b15a2cfbd287f5ae16b3b9dd18c42086b59ccfbe3174184418652c4f668"
   ]
 }
+x-commit-hash: "74668925ca977e252acb084bd139b3077cf95b58" # OCamlFormat is distributed under the MIT license. Parts of the OCaml library are vendored for OCamlFormat and distributed under their original LGPL 2.1 license
