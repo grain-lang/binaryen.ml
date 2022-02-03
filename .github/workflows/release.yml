@@ -19,6 +19,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: ocaml
           package-name: binaryen.ml
+          pull-request-title-pattern: "chore${scope}: Release${component} ${version}"
           bump-minor-pre-major: true
 
   add-archive:
