@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
-      upload_url: ${{ steps.release.outputs.upload_url }}
       tag_name: ${{ steps.release.outputs.tag_name }}
       notes: ${{ steps.release.outputs.notes }}
     steps:
@@ -45,14 +44,12 @@ jobs:
 
       - name: Upload Release Asset
         id: upload
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: svenstaro/upload-release-action@2.2.1
         with:
-          upload_url: ${{ needs.release-please.outputs.upload_url }}
-          asset_path: ./binaryen-archive.tar.gz
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./binaryen-archive.tar.gz
           asset_name: binaryen-archive-${{ needs.release-please.outputs.tag_name }}.tar.gz
-          asset_content_type: application/gzip
+          tag: ${{ needs.release-please.outputs.tag_name }}
 
   opam-release:
     needs: [release-please, add-archive]
