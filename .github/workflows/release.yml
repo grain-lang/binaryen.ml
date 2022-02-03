@@ -12,9 +12,9 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       upload_url: ${{ steps.release.outputs.upload_url }}
       tag_name: ${{ steps.release.outputs.tag_name }}
-      body: ${{ steps.release.outputs.body }}
+      notes: ${{ steps.release.outputs.notes }}
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v2
+      - uses: GoogleCloudPlatform/release-please-action@v3.1.0
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -80,7 +80,7 @@ jobs:
 
       - name: Generate CHANGES file
         env:
-          CHANGES: ${{ needs.release-please.outputs.body }}
+          CHANGES: ${{ needs.release-please.outputs.notes }}
         run: |
           echo -n "$CHANGES" > CHANGES.md
 
