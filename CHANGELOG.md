@@ -1,5 +1,22 @@
 # Changelog
 
+### [0.12.1](https://github.com/grain-lang/binaryen.ml/compare/v0.12.0...v0.12.1) (2022-02-03)
+
+
+### Features
+
+* **ci:** Upgrade release-please ([#131](https://github.com/grain-lang/binaryen.ml/issues/131)) ([ca3bdb7](https://github.com/grain-lang/binaryen.ml/commit/ca3bdb7aa324a013205a80759bcc733fea64ae4a))
+
+
+### Bug Fixes
+
+* Restrict js_of_ocaml to version 3 ([fa39480](https://github.com/grain-lang/binaryen.ml/commit/fa39480fc74b19cf7052ec5c0764ee58b5783549))
+
+
+### Miscellaneous Chores
+
+* Fix release version ([5d1bd42](https://github.com/grain-lang/binaryen.ml/commit/5d1bd42a7132298a902060c46dae72507e702eb0))
+
 ## [0.12.0](https://www.github.com/grain-lang/binaryen.ml/compare/v0.11.2...v0.12.0) (2022-01-26)
 
 
