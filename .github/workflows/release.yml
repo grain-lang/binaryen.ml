@@ -11,7 +11,6 @@ jobs:
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
-      notes: ${{ steps.release.outputs.notes }}
     steps:
       - uses: GoogleCloudPlatform/release-please-action@v3.1.0
         id: release
@@ -29,6 +28,7 @@ jobs:
     runs-on: macos-latest
     outputs:
       browser_download_url: ${{ steps.upload.outputs.browser_download_url }}
+      notes: ${{ steps.upload.outputs.notes }}
     steps:
       - name: Install git-archive-all
         run: |
@@ -45,9 +45,9 @@ jobs:
 
       - name: Upload Release Asset
         id: upload
-        uses: svenstaro/upload-release-action@2.2.1
+        uses: grain-lang/upload-release-action@v3.0.0
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           file: ./binaryen-archive.tar.gz
           asset_name: binaryen-archive-${{ needs.release-please.outputs.tag_name }}.tar.gz
           tag: ${{ needs.release-please.outputs.tag_name }}
@@ -78,7 +78,7 @@ jobs:
 
       - name: Generate CHANGES file
         env:
-          CHANGES: ${{ needs.release-please.outputs.notes }}
+          CHANGES: ${{ needs.add-archive.outputs.notes }}
         run: |
           echo -n "$CHANGES" > CHANGES.md
 
