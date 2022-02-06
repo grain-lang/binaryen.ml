@@ -28,6 +28,15 @@ module Feature = struct
 
   let multivalue : t = global ##. binaryen ##. Features ##. Multivalue
 
+  let gc : t = global ##. binaryen ##. Features ##. GC
+
+  let memory64 : t = global ##. binaryen ##. Features ##. Memory64
+
+  let typed_function_references : t =
+    global ##. binaryen ##. Features ##. TypedFunctionReferences
+
+  let relaxed_simd : t = global ##. binaryen ##. Features ##. RelaxedSIMD
+
   let all : t = global ##. binaryen ##. Features ##. All
 end
 

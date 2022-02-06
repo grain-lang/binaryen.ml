@@ -137,7 +137,26 @@ let byts, _ = Module.write wasm_mod None
 
 let new_mod = Module.read byts
 
-let _ = Module.set_features new_mod [ Module.Feature.all ]
+let _ =
+  Module.set_features new_mod
+    [
+      Module.Feature.mvp;
+      Module.Feature.atomics;
+      Module.Feature.bulk_memory;
+      Module.Feature.mutable_globals;
+      Module.Feature.nontrapping_fp_to_int;
+      Module.Feature.sign_ext;
+      Module.Feature.simd128;
+      Module.Feature.exception_handling;
+      Module.Feature.tail_call;
+      Module.Feature.reference_types;
+      Module.Feature.multivalue;
+      Module.Feature.gc;
+      Module.Feature.memory64;
+      Module.Feature.typed_function_references;
+      Module.Feature.relaxed_simd;
+      Module.Feature.all;
+    ]
 
 let _ = Module.validate new_mod
 

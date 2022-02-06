@@ -53,6 +53,23 @@ module Feature = struct
 
   let multivalue = multivalue ()
 
+  external gc : unit -> t = "caml_binaryen_feature_gc"
+
+  let gc = gc ()
+
+  external memory64 : unit -> t = "caml_binaryen_feature_memory64"
+
+  let memory64 = memory64 ()
+
+  external typed_function_references : unit -> t
+    = "caml_binaryen_feature_typed_function_references"
+
+  let typed_function_references = typed_function_references ()
+
+  external relaxed_simd : unit -> t = "caml_binaryen_feature_relaxed_simd"
+
+  let relaxed_simd = relaxed_simd ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()

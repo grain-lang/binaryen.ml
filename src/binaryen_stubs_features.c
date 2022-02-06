@@ -90,6 +90,30 @@ caml_binaryen_feature_multivalue(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_feature_gc(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureGC()));
+}
+
+CAMLprim value
+caml_binaryen_feature_memory64(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureMemory64()));
+}
+
+CAMLprim value
+caml_binaryen_feature_typed_function_references(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureTypedFunctionReferences()));
+}
+
+CAMLprim value
+caml_binaryen_feature_relaxed_simd(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureRelaxedSIMD()));
+}
+
+CAMLprim value
 caml_binaryen_feature_all(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureAll()));
