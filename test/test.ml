@@ -2,44 +2,29 @@ open Binaryen
 
 (* Testing colors enable *)
 let _ = assert (Settings.are_colors_enabled () == true)
-
 let _ = Settings.set_colors_enabled false
-
 let _ = assert (Settings.are_colors_enabled () == false)
-
 let _ = Settings.set_colors_enabled true
 
 (* Testing debug_info enable *)
 let _ = assert (Settings.get_debug_info () == false)
-
 let _ = Settings.set_debug_info true
-
 let _ = assert (Settings.get_debug_info () == true)
-
 let _ = Settings.set_debug_info false
 
 (* Testing low_memory_unused enable *)
 let _ = assert (Settings.get_low_memory_unused () == false)
-
 let _ = Settings.set_low_memory_unused true
-
 let _ = assert (Settings.get_low_memory_unused () == true)
-
 let _ = Settings.set_low_memory_unused false
-
 let wasm_mod = Module.create ()
-
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 
 (* Create function type for i32 (i32, i32) *)
 let params () = Type.create [| Type.int32; Type.int32 |]
-
 let results = Type.int32
-
 let x () = Expression.Local_get.make wasm_mod 0 Type.int32
-
 let y () = Expression.Local_get.make wasm_mod 1 Type.int32
-
 let load = Expression.Load.make wasm_mod 1 ~signed:true 0 0 Type.int32 (y ())
 
 let select =
@@ -76,7 +61,6 @@ let start =
     (Expression.Drop.make wasm_mod call_adder)
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
-
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
 let _ =
@@ -92,7 +76,6 @@ let _ =
     (Expression.Const.make wasm_mod (Literal.int32 0l))
 
 let _ = Function.set_start wasm_mod start
-
 let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [] false
 
 (* Create an imported "write" function i32 (externref, i32, i32) *)
@@ -128,13 +111,11 @@ let _ = Module.print wasm_mod
 (* 2. Optimize, then print the module *)
 
 let _ = Module.optimize wasm_mod
-
 let _ = Module.print wasm_mod
 
 (* 3. Copy previous module bytes into new module, validate, and print *)
 
 let byts, _ = Module.write wasm_mod None
-
 let new_mod = Module.read byts
 
 let _ =
@@ -159,11 +140,9 @@ let _ =
     ]
 
 let _ = Module.validate new_mod
-
 let _ = Module.print new_mod
 
 (* Dispose the modules 👋 *)
 
 let _ = Module.dispose wasm_mod
-
 let _ = Module.dispose new_mod
