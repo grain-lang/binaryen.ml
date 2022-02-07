@@ -842,3 +842,97 @@ module Null = struct
   external make : unit -> t = "caml_binaryen_null_expression"
   (** A null reference. *)
 end
+
+module Ref = struct
+  external null : Module.t -> Type.t -> t = "caml_binaryen_ref_null"
+  (** Module, type *)
+
+  external is : Module.t -> Op.t -> t -> t = "caml_binaryen_ref_is"
+  (** Module, op, value *)
+
+  external as_ : Module.t -> Op.t -> t -> t = "caml_binaryen_ref_as"
+  (** Module, op, value *)
+
+  external func : Module.t -> string -> Type.t -> t = "caml_binaryen_ref_func"
+  (** Module, func, type *)
+
+  external eq : Module.t -> t -> t -> t = "caml_binaryen_ref_eq"
+  (** Module, left, right *)
+end
+
+module Table = struct
+  external get : Module.t -> string -> t -> Type.t -> t
+    = "caml_binaryen_table_get"
+  (** Module, name, index, type *)
+
+  external set : Module.t -> string -> t -> t -> t = "caml_binaryen_table_set"
+  (** Module, name, index, value *)
+
+  external size : Module.t -> string -> t = "caml_binaryen_table_size"
+  (** Module, name *)
+
+  external grow : Module.t -> string -> t -> t -> t = "caml_binaryen_table_grow"
+  (** Module, name, value, delta *)
+end
+
+module Table_get = struct
+  external get_table : t -> string = "caml_binaryen_tableget_get_table"
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+
+  external set_table : t -> string -> unit = "caml_binaryen_tableget_set_table"
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+
+  external get_index : t -> t = "caml_binaryen_tableget_get_index"
+  (** Gets the index expression of a `Table.get` expression. *)
+
+  external set_index : t -> t -> unit = "caml_binaryen_tableget_set_index"
+  (** Gets the index expression of a `Table.get` expression. *)
+end
+
+module Table_set = struct
+  external get_table : t -> string = "caml_binaryen_tableset_get_table"
+  (** Gets the name of the table being accessed by a `Table.set` expression. *)
+
+  external set_table : t -> string -> unit = "caml_binaryen_tableset_set_table"
+  (** Sets the name of the table being accessed by a `Table.set` expression. *)
+
+  external get_index : t -> t = "caml_binaryen_tableset_get_index"
+  (** Gets the index expression of a `Table.set` expression. *)
+
+  external set_index : t -> t -> unit = "caml_binaryen_tableset_set_index"
+  (** Sets the index expression of a `Table.set` expression. *)
+
+  external get_value : t -> t = "caml_binaryen_tableset_get_value"
+  (** Gets the value expression of a `Table.set` expression. *)
+
+  external set_value : t -> t -> unit = "caml_binaryen_tableset_set_value"
+  (** Sets the value expression of a `Table.set` expression. *)
+end
+
+module Table_size = struct
+  external get_table : t -> string = "caml_binaryen_tablesize_get_table"
+  (** Gets the name of the table being accessed by a `Table.size` expression. *)
+
+  external set_table : t -> string -> unit = "caml_binaryen_tablesize_set_table"
+  (** Sets the name of the table being accessed by a `Table.size` expression. *)
+end
+
+module Table_grow = struct
+  external get_table : t -> string = "caml_binaryen_tablegrow_get_table"
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+
+  external set_table : t -> string -> unit = "caml_binaryen_tablegrow_set_table"
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+
+  external get_value : t -> t = "caml_binaryen_tablegrow_get_value"
+  (** Gets the value expression of a `Table.grow` expression. *)
+
+  external set_value : t -> t -> unit = "caml_binaryen_tablegrow_set_value"
+  (** Sets the value expression of a `Table.grow` expression. *)
+
+  external get_delta : t -> t = "caml_binaryen_tablegrow_get_delta"
+  (** Gets the delta of a `Table.grow` expression. *)
+
+  external set_delta : t -> t -> unit = "caml_binaryen_tablegrow_set_delta"
+  (** Sets the delta of a `Table.grow` expression. *)
+end

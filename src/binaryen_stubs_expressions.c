@@ -1708,3 +1708,253 @@ caml_binaryen_tuple_extract_set_tuple(value _exp, value _value) {
   BinaryenTupleExtractSetTuple(exp, val);
   CAMLreturn(Val_unit);
 }
+
+// Ref operations
+CAMLprim value
+caml_binaryen_ref_null(value _module, value _ty) {
+  CAMLparam2(_module, _ty);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef exp = BinaryenRefNull(module, ty);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_ref_is(value _module, value _op, value _value) {
+  CAMLparam3(_module, _op, _value);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenExpressionRef exp = BinaryenRefIs(module, op, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_ref_as(value _module, value _op, value _value) {
+  CAMLparam3(_module, _op, _value);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenExpressionRef exp = BinaryenRefAs(module, op, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_ref_func(value _module, value _name, value _ty) {
+  CAMLparam3(_module, _name, _ty);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef exp = BinaryenRefFunc(module, name, ty);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_ref_eq(value _module, value _left, value _right) {
+  CAMLparam3(_module, _left, _right);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef left = BinaryenExpressionRef_val(_left);
+  BinaryenExpressionRef right = BinaryenExpressionRef_val(_right);
+  BinaryenExpressionRef exp = BinaryenRefEq(module, left, right);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+// Table operations
+CAMLprim value
+caml_binaryen_table_get(value _module, value _name, value _index, value _ty) {
+  CAMLparam4(_module, _name, _index, _ty);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef exp = BinaryenTableGet(module, name, index, ty);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_table_set(value _module, value _name, value _index, value _value) {
+  CAMLparam4(_module, _name, _index, _value);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenExpressionRef exp = BinaryenTableSet(module, name, index, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_table_size(value _module, value _name) {
+  CAMLparam2(_module, _name);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenExpressionRef exp = BinaryenTableSize(module, name);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_table_grow(value _module, value _name, value _value, value _delta) {
+  CAMLparam4(_module, _name, _value, _delta);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenExpressionRef delta = BinaryenExpressionRef_val(_delta);
+  BinaryenExpressionRef exp = BinaryenTableGrow(module, name, val, delta);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+// TableGet operations
+CAMLprim value
+caml_binaryen_tableget_get_table(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenTableGetGetTable(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_tableget_set_table(value _exp, value _table) {
+  CAMLparam2(_exp, _table);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* table = Safe_String_val(_table);
+  BinaryenTableGetSetTable(exp, table);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tableget_get_index(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef index = BinaryenTableGetGetIndex(exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(index));
+}
+
+CAMLprim value
+caml_binaryen_tableget_set_index(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenTableGetSetIndex(exp, index);
+  CAMLreturn(Val_unit);
+}
+
+// TableSet operations
+CAMLprim value
+caml_binaryen_tableset_get_table(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenTableSetGetTable(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_tableset_set_table(value _exp, value _table) {
+  CAMLparam2(_exp, _table);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* table = Safe_String_val(_table);
+  BinaryenTableSetSetTable(exp, table);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tableset_get_index(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef index = BinaryenTableSetGetIndex(exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(index));
+}
+
+CAMLprim value
+caml_binaryen_tableset_set_index(value _exp, value _index) {
+  CAMLparam2(_exp, _index);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenTableSetSetIndex(exp, index);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tableset_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenTableSetGetValue(exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(val));
+}
+
+CAMLprim value
+caml_binaryen_tableset_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenTableSetSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+// TableSize operations
+CAMLprim value
+caml_binaryen_tablesize_get_table(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenTableSizeGetTable(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_tablesize_set_table(value _exp, value _table) {
+  CAMLparam2(_exp, _table);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* table = Safe_String_val(_table);
+  BinaryenTableSizeSetTable(exp, table);
+  CAMLreturn(Val_unit);
+}
+
+// TableGrow operations
+CAMLprim value
+caml_binaryen_tablegrow_get_table(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  const char* name = BinaryenTableGrowGetTable(exp);
+  CAMLreturn(caml_copy_string(name));
+}
+
+CAMLprim value
+caml_binaryen_tablegrow_set_table(value _exp, value _table) {
+  CAMLparam2(_exp, _table);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  char* table = Safe_String_val(_table);
+  BinaryenTableGrowSetTable(exp, table);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tablegrow_get_value(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenTableGrowGetValue(exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(val));
+}
+
+CAMLprim value
+caml_binaryen_tablegrow_set_value(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenTableGrowSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_tablegrow_get_delta(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef delta = BinaryenTableGrowGetDelta(exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(delta));
+}
+
+CAMLprim value
+caml_binaryen_tablegrow_set_delta(value _exp, value _delta) {
+  CAMLparam2(_exp, _delta);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef delta = BinaryenExpressionRef_val(_delta);
+  BinaryenTableGrowSetDelta(exp, delta);
+  CAMLreturn(Val_unit);
+}

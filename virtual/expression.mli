@@ -421,3 +421,96 @@ end
 module Null : sig
   val make : unit -> t
 end
+
+module Ref : sig
+  val null : Module.t -> Type.t -> t
+  (** Module, type *)
+
+  val is : Module.t -> Op.t -> t -> t
+  (** Module, op, value *)
+
+  val as_ : Module.t -> Op.t -> t -> t
+  (** Module, op, value *)
+
+  val func : Module.t -> string -> Type.t -> t
+  (** Module, func, type *)
+
+  val eq : Module.t -> t -> t -> t
+  (** Module, left, right *)
+end
+
+module Table : sig
+  val get : Module.t -> string -> t -> Type.t -> t
+  (** Module, name, index, type *)
+
+  val set : Module.t -> string -> t -> t -> t
+  (** Module, name, index, value *)
+
+  val size : Module.t -> string -> t
+  (** Module, name *)
+
+  val grow : Module.t -> string -> t -> t -> t
+  (** Module, name, value, delta *)
+end
+
+module Table_get : sig
+  val get_table : t -> string
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+
+  val set_table : t -> string -> unit
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+
+  val get_index : t -> t
+  (** Gets the index expression of a `Table.get` expression. *)
+
+  val set_index : t -> t -> unit
+  (** Gets the index expression of a `Table.get` expression. *)
+end
+
+module Table_set : sig
+  val get_table : t -> string
+  (** Gets the name of the table being accessed by a `Table.set` expression. *)
+
+  val set_table : t -> string -> unit
+  (** Sets the name of the table being accessed by a `Table.set` expression. *)
+
+  val get_index : t -> t
+  (** Gets the index expression of a `Table.set` expression. *)
+
+  val set_index : t -> t -> unit
+  (** Sets the index expression of a `Table.set` expression. *)
+
+  val get_value : t -> t
+  (** Gets the value expression of a `Table.set` expression. *)
+
+  val set_value : t -> t -> unit
+  (** Sets the value expression of a `Table.set` expression. *)
+end
+
+module Table_size : sig
+  val get_table : t -> string
+  (** Gets the name of the table being accessed by a `Table.size` expression. *)
+
+  val set_table : t -> string -> unit
+  (** Sets the name of the table being accessed by a `Table.size` expression. *)
+end
+
+module Table_grow : sig
+  val get_table : t -> string
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+
+  val set_table : t -> string -> unit
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+
+  val get_value : t -> t
+  (** Gets the value expression of a `Table.grow` expression. *)
+
+  val set_value : t -> t -> unit
+  (** Sets the value expression of a `Table.grow` expression. *)
+
+  val get_delta : t -> t
+  (** Gets the delta of a `Table.grow` expression. *)
+
+  val set_delta : t -> t -> unit
+  (** Sets the delta of a `Table.grow` expression. *)
+end

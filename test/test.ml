@@ -62,6 +62,30 @@ let start =
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
+let funcref_expr1 = Expression.Ref.func wasm_mod "adder" Type.funcref
+
+let _ =
+  Expression.Table.set wasm_mod "table"
+    (Expression.Const.make wasm_mod (Literal.int32 0l))
+    funcref_expr1
+
+let funcref_expr2 =
+  Expression.Table.get wasm_mod "table"
+    (Expression.Const.make wasm_mod (Literal.int32 0l))
+    Type.funcref
+
+let _ = Expression.print funcref_expr2
+let table_size = Expression.Table.size wasm_mod "table"
+let _ = Expression.print table_size
+let table_name = Expression.Table_size.get_table table_size
+let _ = Expression.Table_size.set_table table_size table_name
+let null_ref = Expression.Ref.null wasm_mod Type.funcref
+
+let table_grow =
+  Expression.Table.grow wasm_mod "table" null_ref
+    (Expression.Const.make wasm_mod (Literal.int32 0l))
+
+let _ = Expression.print table_grow
 
 let _ =
   Global.add_global wasm_mod "max_int64" Type.int64 false
