@@ -8,7 +8,14 @@ let () =
         match C.ocaml_config_var c "system" with
         | Some "macosx" ->
             (* These flags preserve the original C++ error behavior. Ref https://github.com/ocaml/ocaml/issues/10423 *)
-            [ "-cc"; "clang++" ]
+            [
+              "-cc";
+              "clang++";
+              "-cclib";
+              "-Wl,-keep_dwarf_unwind";
+              "-cclib";
+              "-Wl,-no_compact_unwind";
+            ]
         | Some _ -> default
         | None -> default
       in
