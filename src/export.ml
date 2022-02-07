@@ -28,9 +28,7 @@ external get_export_by_index : Module.t -> int -> t
   = "caml_binaryen_get_export_by_index"
 
 external get_name : t -> string = "caml_binaryen_export_get_name"
-
 external get_value : t -> string = "caml_binaryen_export_get_value"
-
 external external_function : unit -> int = "caml_binaryen_external_function"
 
 let external_function = external_function ()

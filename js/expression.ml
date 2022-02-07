@@ -942,3 +942,164 @@ end
 module Null = struct
   let make () = pure_js_expr "null"
 end
+
+module Ref = struct
+  (** Module, type *)
+  let null wasm_mod typ =
+    let scope = get wasm_mod "ref" in
+    meth_call scope "null" [| inject typ |]
+
+  (** Module, op, value *)
+  let is wasm_mod op value =
+    meth_call global##.binaryen "_BinaryenRefIs"
+      [| inject wasm_mod; inject op; inject value |]
+
+  (** Module, op, value *)
+  let as_ wasm_mod op value =
+    meth_call global##.binaryen "_BinaryenRefAs"
+      [| inject wasm_mod; inject op; inject value |]
+
+  (** Module, func, type *)
+  let func wasm_mod func typ =
+    let scope = get wasm_mod "ref" in
+    meth_call scope "func" [| inject (string func); inject typ |]
+
+  (** Module, left, right *)
+  let eq wasm_mod left right =
+    let scope = get wasm_mod "ref" in
+    meth_call scope "func" [| inject left; inject right |]
+end
+
+module Table = struct
+  (** Module, name, index, type *)
+  let get wasm_mod name index typ =
+    let scope = Js_of_ocaml.Js.Unsafe.get wasm_mod "table" in
+    meth_call scope "get" [| inject (string name); inject index; inject typ |]
+
+  (** Module, name, index, value *)
+  let set wasm_mod name index value =
+    let scope = Js_of_ocaml.Js.Unsafe.get wasm_mod "table" in
+    meth_call scope "set" [| inject (string name); inject index; inject value |]
+
+  (** Module, name *)
+  let size wasm_mod name =
+    let scope = Js_of_ocaml.Js.Unsafe.get wasm_mod "table" in
+    meth_call scope "size" [| inject (string name) |]
+
+  (** Module, name, value, delta *)
+  let grow wasm_mod name value delta =
+    let scope = Js_of_ocaml.Js.Unsafe.get wasm_mod "table" in
+    meth_call scope "grow"
+      [| inject (string name); inject value; inject delta |]
+end
+
+module Table_get = struct
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+  let get_table exp =
+    to_string
+      (meth_call global ##. binaryen ##. TableGet "getTable" [| inject exp |])
+
+  (** Gets the name of the table being accessed by a `Table.get` expression. *)
+  let set_table exp name =
+    meth_call
+      global ##. binaryen ##. TableGet
+      "setTable"
+      [| inject exp; inject (string name) |]
+
+  (** Gets the index expression of a `Table.get` expression. *)
+  let get_index exp =
+    meth_call global ##. binaryen ##. TableGet "getIndex" [| inject exp |]
+
+  (** Gets the index expression of a `Table.get` expression. *)
+  let set_index exp index =
+    meth_call
+      global ##. binaryen ##. TableGet
+      "setIndex"
+      [| inject exp; inject index |]
+end
+
+module Table_set = struct
+  (** Gets the name of the table being accessed by a `Table.set` expression. *)
+  let get_table exp =
+    to_string
+      (meth_call global ##. binaryen ##. TableSet "getTable" [| inject exp |])
+
+  (** Sets the name of the table being accessed by a `Table.set` expression. *)
+  let set_table exp name =
+    meth_call
+      global ##. binaryen ##. TableSet
+      "setTable"
+      [| inject exp; inject (string name) |]
+
+  (** Gets the index expression of a `Table.set` expression. *)
+  let get_index exp =
+    meth_call global ##. binaryen ##. TableSet "getIndex" [| inject exp |]
+
+  (** Sets the index expression of a `Table.set` expression. *)
+  let set_index exp index =
+    meth_call
+      global ##. binaryen ##. TableSet
+      "setIndex"
+      [| inject exp; inject index |]
+
+  (** Gets the value expression of a `Table.set` expression. *)
+  let get_value exp =
+    meth_call global ##. binaryen ##. TableSet "getValue" [| inject exp |]
+
+  (** Sets the value expression of a `Table.set` expression. *)
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. TableSet
+      "setValue"
+      [| inject exp; inject value |]
+end
+
+module Table_size = struct
+  (** Gets the name of the table being accessed by a `Table.size` expression. *)
+  let get_table exp =
+    to_string
+      (meth_call global ##. binaryen ##. TableSize "getTable" [| inject exp |])
+
+  (** Sets the name of the table being accessed by a `Table.size` expression. *)
+  let set_table exp name =
+    meth_call
+      global ##. binaryen ##. TableSize
+      "setTable"
+      [| inject exp; inject (string name) |]
+end
+
+module Table_grow = struct
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+  let get_table exp =
+    to_string
+      (meth_call global ##. binaryen ##. TableGrow "getTable" [| inject exp |])
+
+  (** Gets the name of the table being accessed by a `Table.grow` expression. *)
+  let set_table exp name =
+    meth_call
+      global ##. binaryen ##. TableGrow
+      "setTable"
+      [| inject exp; inject (string name) |]
+
+  (** Gets the value expression of a `Table.grow` expression. *)
+  let get_value exp =
+    meth_call global ##. binaryen ##. TableGrow "getValue" [| inject exp |]
+
+  (** Sets the value expression of a `Table.grow` expression. *)
+  let set_value exp value =
+    meth_call
+      global ##. binaryen ##. TableGrow
+      "setValue"
+      [| inject exp; inject value |]
+
+  (** Gets the delta of a `Table.grow` expression. *)
+  let get_delta exp =
+    meth_call global ##. binaryen ##. TableGrow "getDelta" [| inject exp |]
+
+  (** Sets the delta of a `Table.grow` expression. *)
+  let set_delta exp delta =
+    meth_call
+      global ##. binaryen ##. TableGrow
+      "setDelta"
+      [| inject exp; inject delta |]
+end

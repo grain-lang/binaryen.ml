@@ -1,13 +1,8 @@
 external get_optimize_level : unit -> int = "caml_binaryen_get_optimize_level"
-
 external set_optimize_level : int -> unit = "caml_binaryen_set_optimize_level"
-
 external get_shrink_level : unit -> int = "caml_binaryen_get_shrink_level"
-
 external set_shrink_level : int -> unit = "caml_binaryen_set_shrink_level"
-
 external get_debug_info : unit -> bool = "caml_binaryen_get_debug_info"
-
 external set_debug_info : bool -> unit = "caml_binaryen_set_debug_info"
 
 external get_low_memory_unused : unit -> bool
@@ -41,5 +36,4 @@ external set_one_caller_inline_max_size : int -> unit
   = "caml_binaryen_set_one_caller_inline_max_size"
 
 external set_colors_enabled : bool -> unit = "caml_binaryen_set_colors_enabled"
-
 external are_colors_enabled : unit -> bool = "caml_binaryen_are_colors_enabled"

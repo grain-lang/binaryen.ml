@@ -1,5 +1,4 @@
 let _ = Callback.register "array_of_list" Array.of_list
-
 let _ = Callback.register "array_length" Array.length
 
 type t
@@ -53,28 +52,39 @@ module Feature = struct
 
   let multivalue = multivalue ()
 
+  external gc : unit -> t = "caml_binaryen_feature_gc"
+
+  let gc = gc ()
+
+  external memory64 : unit -> t = "caml_binaryen_feature_memory64"
+
+  let memory64 = memory64 ()
+
+  external typed_function_references : unit -> t
+    = "caml_binaryen_feature_typed_function_references"
+
+  let typed_function_references = typed_function_references ()
+
+  external relaxed_simd : unit -> t = "caml_binaryen_feature_relaxed_simd"
+
+  let relaxed_simd = relaxed_simd ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()
 end
 
 external create : unit -> t = "caml_binaryen_module_create"
-
 external dispose : t -> unit = "caml_binaryen_module_dispose"
 
 external add_custom_section : t -> string -> string -> unit
   = "caml_binaryen_add_custom_section"
 
 external parse : string -> t = "caml_binaryen_module_parse"
-
 external print : t -> unit = "caml_binaryen_module_print"
-
 external print_asmjs : t -> unit = "caml_binaryen_module_print_asmjs"
-
 external validate : t -> int = "caml_binaryen_module_validate"
-
 external optimize : t -> unit = "caml_binaryen_module_optimize"
-
 external get_features : t -> int = "caml_binaryen_module_get_features"
 
 let get_features wasm_mod =
@@ -103,9 +113,7 @@ external write : t -> string option -> bytes * string option
   = "caml_binaryen_module_write"
 
 external write_text : t -> string = "caml_binaryen_module_write_text"
-
 external read : bytes -> t = "caml_binaryen_module_read"
-
 external interpret : t -> unit = "caml_binaryen_module_interpret"
 
 external add_debug_info_filename : t -> string -> int
