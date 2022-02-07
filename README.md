@@ -66,6 +66,30 @@ Your stanza could look something like this:
 
 These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [tests/](./tests/dune).
 
+## MacOS DWARF & Compact unwind
+
+When including this library in your `dune` MacOS executables, you might want to specify `-cclib -Wl,-keep_dwarf_unwind -cclib -Wl,-no_compact_unwind` in your `(ocamlopt_flags)` stanza. If you don't include them, you'll probably see warnings like:
+
+```log
+ld: warning: could not create compact unwind for _caml_start_program: dwarf uses DW_CFA_same_value
+ld: warning: could not create compact unwind for _caml_raise_exn: stack subq instruction is too different from dwarf stack size
+ld: warning: could not create compact unwind for _caml_raise_exception: stack subq instruction is too different from dwarf stack size
+```
+
+Your stanza could look something like this:
+
+```diff
+ (executable
+  (name example)
+  (public_name example)
+  (package example)
++ (ocamlopt_flags -cclib -Wl,-keep_dwarf_unwind -cclib -Wl,-no_compact_unwind)
+  (modules example)
+  (libraries binaryen))
+```
+
+These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [tests/](./tests/dune).
+
 ## Static Linking
 
 If you are planning to create portable binaries for Windows, it will try to find Cygwin/MinGW locations in your `PATH`. To avoid this, you probably want to add this to your `(executable)` stanzas:
