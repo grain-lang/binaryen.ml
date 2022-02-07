@@ -69,7 +69,6 @@ type kind =
   | RefAs
 
 external get_id : t -> int = "caml_binaryen_expression_get_id"
-
 external id_invalid : unit -> int = "caml_binaryen_expression_id_invalid"
 
 let id_invalid = id_invalid ()
@@ -426,7 +425,6 @@ external print : t -> unit = "caml_binaryen_expression_print"
 (** Print an expression to the console. *)
 
 external finalize : t -> unit = "caml_binaryen_expression_finalize"
-
 external copy : t -> Module.t -> t = "caml_binaryen_expression_copy"
 
 (** Expression manipulation *)
@@ -440,11 +438,8 @@ module Block = struct
     make wasm_mod name exprs return_type
 
   external get_name : t -> string option = "caml_binaryen_block_get_name"
-
   external set_name : t -> string -> unit = "caml_binaryen_block_set_name"
-
   external get_num_children : t -> int = "caml_binaryen_block_get_num_children"
-
   external get_child_at : t -> int -> t = "caml_binaryen_block_get_child_at"
 
   external set_child_at : t -> int -> t -> unit
@@ -464,15 +459,10 @@ module If = struct
   (** Module, condition, true branch, false branch. False branch may be null. *)
 
   external get_condition : t -> t = "caml_binaryen_if_get_condition"
-
   external set_condition : t -> t -> unit = "caml_binaryen_if_set_condition"
-
   external get_if_true : t -> t = "caml_binaryen_if_get_if_true"
-
   external set_if_true : t -> t -> unit = "caml_binaryen_if_set_if_true"
-
   external get_if_false : t -> t option = "caml_binaryen_if_get_if_false"
-
   external set_if_false : t -> t -> unit = "caml_binaryen_if_set_if_false"
 end
 
@@ -481,11 +471,8 @@ module Loop = struct
   (** Module, loop name, body. *)
 
   external get_name : t -> string = "caml_binaryen_loop_get_name"
-
   external set_name : t -> string -> unit = "caml_binaryen_loop_set_name"
-
   external get_body : t -> t = "caml_binaryen_loop_get_body"
-
   external set_body : t -> t -> unit = "caml_binaryen_loop_set_body"
 end
 
@@ -494,15 +481,10 @@ module Break = struct
   (** Module, block name, condition, result. Value and condition may be null. *)
 
   external get_name : t -> string = "caml_binaryen_break_get_name"
-
   external set_name : t -> string -> unit = "caml_binaryen_break_set_name"
-
   external get_condition : t -> t option = "caml_binaryen_break_get_condition"
-
   external set_condition : t -> t -> unit = "caml_binaryen_break_set_condition"
-
   external get_value : t -> t option = "caml_binaryen_break_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_break_set_value"
 end
 
@@ -512,7 +494,6 @@ module Switch = struct
   (** Module, branch names, default branch name, condition, value. Value may be null. *)
 
   external get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
-
   external get_name_at : t -> int -> string = "caml_binaryen_switch_get_name_at"
 
   external set_name_at : t -> int -> string -> unit
@@ -533,11 +514,8 @@ module Switch = struct
     = "caml_binaryen_switch_set_default_name"
 
   external get_condition : t -> t = "caml_binaryen_switch_get_condition"
-
   external set_condition : t -> t -> unit = "caml_binaryen_switch_set_condition"
-
   external get_value : t -> t option = "caml_binaryen_switch_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_switch_set_value"
 end
 
@@ -551,11 +529,8 @@ module Call = struct
   (** Module, function name, params, return type. *)
 
   external get_target : t -> string = "caml_binaryen_call_get_target"
-
   external set_target : t -> string -> unit = "caml_binaryen_call_set_target"
-
   external get_num_operands : t -> int = "caml_binaryen_call_get_num_operands"
-
   external get_operand_at : t -> int -> t = "caml_binaryen_call_get_operand_at"
 
   external set_operand_at : t -> int -> t -> unit
@@ -570,7 +545,6 @@ module Call = struct
     = "caml_binaryen_call_remove_operand_at"
 
   external is_return : t -> bool = "caml_binaryen_call_is_return"
-
   external set_return : t -> bool -> unit = "caml_binaryen_call_set_return"
 end
 
@@ -628,7 +602,6 @@ module Local_set = struct
   (** Module, slot, value. *)
 
   external get_value : t -> t = "caml_binaryen_local_set_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_local_set_set_value"
 end
 
@@ -643,7 +616,6 @@ module Global_get = struct
   (** Module, name, type. *)
 
   external get_name : t -> string = "caml_binaryen_global_get_get_name"
-
   external set_name : t -> string -> unit = "caml_binaryen_global_get_set_name"
 end
 
@@ -652,11 +624,8 @@ module Global_set = struct
   (** Module, name, value. *)
 
   external get_name : t -> string = "caml_binaryen_global_set_get_name"
-
   external set_name : t -> string -> unit = "caml_binaryen_global_set_set_name"
-
   external get_value : t -> t = "caml_binaryen_global_set_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_global_set_set_value"
 end
 
@@ -669,7 +638,6 @@ module Load = struct
     make wasm_mod bytes signed offset align ty ptr
 
   external get_ptr : t -> t = "caml_binaryen_load_get_ptr"
-
   external set_ptr : t -> t -> unit = "caml_binaryen_load_set_ptr"
 end
 
@@ -679,11 +647,8 @@ module Store = struct
   (** Module, num_bytes, offset, align, ptr, value, type. *)
 
   external get_ptr : t -> t = "caml_binaryen_store_get_ptr"
-
   external set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
-
   external get_value : t -> t = "caml_binaryen_store_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_store_set_value"
 end
 
@@ -693,21 +658,15 @@ end
 
 module Unary = struct
   external make : Module.t -> Op.t -> t -> t = "caml_binaryen_unary"
-
   external get_value : t -> t = "caml_binaryen_unary_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_unary_set_value"
 end
 
 module Binary = struct
   external make : Module.t -> Op.t -> t -> t -> t = "caml_binaryen_binary"
-
   external get_left : t -> t = "caml_binaryen_binary_get_left"
-
   external set_left : t -> t -> unit = "caml_binaryen_binary_set_left"
-
   external get_right : t -> t = "caml_binaryen_binary_get_right"
-
   external set_right : t -> t -> unit = "caml_binaryen_binary_set_right"
 end
 
@@ -719,31 +678,22 @@ module Select = struct
   let make wasm_mod cond tru fals = make wasm_mod cond tru fals Type.auto
 
   external get_if_true : t -> t = "caml_binaryen_select_get_if_true"
-
   external set_if_true : t -> t -> unit = "caml_binaryen_select_set_if_true"
-
   external get_if_false : t -> t = "caml_binaryen_select_get_if_false"
-
   external set_if_false : t -> t -> unit = "caml_binaryen_select_set_if_false"
-
   external get_condition : t -> t = "caml_binaryen_select_get_condition"
-
   external set_condition : t -> t -> unit = "caml_binaryen_select_set_condition"
 end
 
 module Drop = struct
   external make : Module.t -> t -> t = "caml_binaryen_drop"
-
   external get_value : t -> t = "caml_binaryen_drop_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_drop_set_value"
 end
 
 module Return = struct
   external make : Module.t -> t -> t = "caml_binaryen_return"
-
   external get_value : t -> t = "caml_binaryen_return_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_return_set_value"
 end
 
@@ -753,9 +703,7 @@ end
 
 module Memory_grow = struct
   external make : Module.t -> t -> t = "caml_binaryen_memory_grow"
-
   external get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
-
   external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
 end
 
@@ -764,15 +712,10 @@ module Memory_copy = struct
   (** Module, destination, source, size. *)
 
   external get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
-
   external set_dest : t -> t -> unit = "caml_binaryen_memory_copy_set_dest"
-
   external get_source : t -> t = "caml_binaryen_memory_copy_get_source"
-
   external set_source : t -> t -> unit = "caml_binaryen_memory_copy_set_source"
-
   external get_size : t -> t = "caml_binaryen_memory_copy_get_size"
-
   external set_size : t -> t -> unit = "caml_binaryen_memory_copy_set_size"
 end
 
@@ -781,15 +724,10 @@ module Memory_fill = struct
   (** Module, destination, value, size. *)
 
   external get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
-
   external set_dest : t -> t -> unit = "caml_binaryen_memory_fill_set_dest"
-
   external get_value : t -> t = "caml_binaryen_memory_fill_get_value"
-
   external set_value : t -> t -> unit = "caml_binaryen_memory_fill_set_value"
-
   external get_size : t -> t = "caml_binaryen_memory_fill_get_size"
-
   external set_size : t -> t -> unit = "caml_binaryen_memory_fill_set_size"
 end
 
@@ -821,7 +759,6 @@ module Tuple_extract = struct
   (** Module, tuple, index *)
 
   external get_tuple : t -> t = "caml_binaryen_tuple_extract_get_tuple"
-
   external set_tuple : t -> t -> unit = "caml_binaryen_tuple_extract_set_tuple"
 end
 

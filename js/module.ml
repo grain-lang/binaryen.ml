@@ -5,38 +5,29 @@ module Feature = struct
   type t = int
 
   let mvp : t = global ##. binaryen ##. Features ##. MVP
-
   let atomics : t = global ##. binaryen ##. Features ##. Atomics
-
   let bulk_memory : t = global ##. binaryen ##. Features ##. BulkMemory
-
   let mutable_globals : t = global ##. binaryen ##. Features ##. MutableGlobals
 
   let nontrapping_fp_to_int : t =
     global ##. binaryen ##. Features ##. NontrappingFPToInt
 
   let sign_ext : t = global ##. binaryen ##. Features ##. SignExt
-
   let simd128 : t = global ##. binaryen ##. Features ##. SIMD128
 
   let exception_handling : t =
     global ##. binaryen ##. Features ##. ExceptionHandling
 
   let tail_call : t = global ##. binaryen ##. Features ##. TailCall
-
   let reference_types : t = global ##. binaryen ##. Features ##. ReferenceTypes
-
   let multivalue : t = global ##. binaryen ##. Features ##. Multivalue
-
   let gc : t = global ##. binaryen ##. Features ##. GC
-
   let memory64 : t = global ##. binaryen ##. Features ##. Memory64
 
   let typed_function_references : t =
     global ##. binaryen ##. Features ##. TypedFunctionReferences
 
   let relaxed_simd : t = global ##. binaryen ##. Features ##. RelaxedSIMD
-
   let all : t = global ##. binaryen ##. Features ##. All
 end
 
@@ -44,13 +35,11 @@ external u8a_to_bytes : 'a -> bytes = "caml_bytes_of_array"
 
 (* TODO: Verify this converts to bytes correctly? *)
 external bytes_to_u8a : bytes -> 'a = "caml_array_of_bytes"
-
 external string_to_u8a : string -> 'a = "caml_array_of_string"
 
 type t
 
 let create () = new_obj global ##. binaryen ##. Module [||]
-
 let dispose wasm_mod = ignore (meth_call wasm_mod "dispose" [||])
 
 (* TODO: Check the unit8Array conversion *)
@@ -72,7 +61,6 @@ let print_asmjs wasm_mod =
   print_string (to_string asm)
 
 let validate wasm_mod = meth_call wasm_mod "validate" [||]
-
 let optimize wasm_mod = meth_call wasm_mod "optimize" [||]
 
 let get_features wasm_mod =

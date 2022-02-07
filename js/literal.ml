@@ -22,7 +22,6 @@ let float64_bits value =
     (Int64.to_int32 value, Int64.to_int32 (Int64.shift_right_logical value 32))
 
 let float32 value = Float32 value
-
 let float64 value = Float64 value
 
 (* This makes our `t` public so we can match on it *)
