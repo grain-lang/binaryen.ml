@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.13.0](https://github.com/grain-lang/binaryen.ml/compare/v0.12.1...v0.13.0) (2022-02-07)
+
+
+### Features
+
+* Add all `Module.Features` that were missing ([09c5d30](https://github.com/grain-lang/binaryen.ml/commit/09c5d3064e9fd80ea6adac8b2f40cf2b708ebb8c))
+* Add functions for ref & table expressions ([09c5d30](https://github.com/grain-lang/binaryen.ml/commit/09c5d3064e9fd80ea6adac8b2f40cf2b708ebb8c))
+* Upgrade to libbinaryen v103 ([#134](https://github.com/grain-lang/binaryen.ml/issues/134)) ([09c5d30](https://github.com/grain-lang/binaryen.ml/commit/09c5d3064e9fd80ea6adac8b2f40cf2b708ebb8c))
+
+
+### Miscellaneous Chores
+
+* Use a upload-release-action that works ([97dbcdc](https://github.com/grain-lang/binaryen.ml/commit/97dbcdc53e69ccdb6e88ef03ce0766443a024cf1))
+
 ### [0.12.1](https://github.com/grain-lang/binaryen.ml/compare/v0.12.0...v0.12.1) (2022-02-03)
 
 
