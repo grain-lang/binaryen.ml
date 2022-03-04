@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.14.0](https://github.com/grain-lang/binaryen.ml/compare/v0.13.0...v0.14.0) (2022-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update libbinaryen to v104 (#138)
+
+### Features
+
+* Update libbinaryen to v104 ([#138](https://github.com/grain-lang/binaryen.ml/issues/138)) ([81addf7](https://github.com/grain-lang/binaryen.ml/commit/81addf76dcc21dc1681b5a29b80ba31522911047))
+
 ## [0.13.0](https://github.com/grain-lang/binaryen.ml/compare/v0.12.1...v0.13.0) (2022-02-07)
 
 
