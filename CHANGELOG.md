@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.14.1](https://github.com/grain-lang/binaryen.ml/compare/v0.14.0...v0.14.1) (2022-03-08)
+
+
+### Bug Fixes
+
+* Update binaryen JS to v104 ([#140](https://github.com/grain-lang/binaryen.ml/issues/140)) ([eb9049e](https://github.com/grain-lang/binaryen.ml/commit/eb9049e4ec0ec2406e72c5bb9190b993a187f2d0))
+
 ## [0.14.0](https://github.com/grain-lang/binaryen.ml/compare/v0.13.0...v0.14.0) (2022-03-04)
 
 
