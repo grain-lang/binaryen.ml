@@ -1,7 +1,6 @@
 (library
- (name binaryen_native)
- (public_name binaryen.native)
- (implements binaryen)
+ (name binaryen)
+ (public_name binaryen)
  (libraries libbinaryen.c)
  (foreign_stubs
   (language c)

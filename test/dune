@@ -1,27 +1,7 @@
-; Tests for the default_implementation (mirrors 0.2.2 usage)
-
 (test
  (name test)
  (modules test)
  (libraries binaryen)
- (ocamlopt_flags
-  (:include ./config/ocamlopt_flags.sexp))
- (action
-  (run %{test})))
-
-; Tests for binaryen.native implementation
-
-(rule
- (target test_native.ml)
- (action
-  (progn
-   (copy %{dep:test.ml} %{target})
-   (copy test.expected test_native.expected))))
-
-(test
- (name test_native)
- (modules test_native)
- (libraries binaryen binaryen.native)
  (ocamlopt_flags
   (:include ./config/ocamlopt_flags.sexp))
  (action
@@ -43,8 +23,8 @@
  (modules test_js)
  (modes
   (byte js))
- (libraries binaryen binaryen.js)
+ (libraries binaryen)
  (action
   (run node %{dep:test_js.bc.js}))
  (js_of_ocaml
-  (flags --no-sourcemap)))
+  (flags --no-sourcemap --disable share)))
