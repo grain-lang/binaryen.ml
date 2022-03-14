@@ -15,7 +15,6 @@ function caml_binaryen_add_active_element_segment(wasm_mod, table, name, funcnam
   return wasm_mod.addActiveElementSegment(
     caml_jsstring_of_string(table),
     caml_jsstring_of_string(name),
-    // TODO: Check this
     caml_list_to_js_array(funcnames).map(caml_jsstring_of_string),
     offset
   );

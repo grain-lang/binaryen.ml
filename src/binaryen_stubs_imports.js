@@ -32,7 +32,6 @@ function caml_binaryen_add_memory_import(wasm_mod, internalName, externalModuleN
     caml_jsstring_of_string(internalName),
     caml_jsstring_of_string(externalModuleName),
     caml_jsstring_of_string(externalBaseName),
-    // TODO: Check this
     shared // bool will come through as an int
   );
 }
@@ -45,7 +44,6 @@ function caml_binaryen_add_global_import(wasm_mod, internalName, externalModuleN
     caml_jsstring_of_string(externalModuleName),
     caml_jsstring_of_string(externalBaseName),
     typ,
-    // TODO: Check this
     is_mut // bool will come through as an int
   );
 }

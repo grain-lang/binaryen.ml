@@ -644,7 +644,6 @@ function caml_binaryen_expression_print(expr) {
   var text = binaryen.emitText(expr);
   var chanid = 1; // stdout
   var s = caml_string_of_jsstring(text);
-  // TODO: Check this
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
 }
 

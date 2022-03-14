@@ -23,7 +23,6 @@ function caml_binaryen_module_print(wasm_mod) {
   var text = wasm_mod.emitText();
   var chanid = 1; // stdout
   var s = caml_string_of_jsstring(text);
-  // TODO: Check this
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
 }
 
@@ -34,7 +33,6 @@ function caml_binaryen_module_print_asmjs(wasm_mod) {
   var asm = wasm_mod.emitAsmjs();
   var chanid = 1; // stdout
   var s = caml_string_of_jsstring(asm);
-  // TODO: Check this
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
 }
 
@@ -51,7 +49,6 @@ function caml_binaryen_module_optimize(wasm_mod) {
 //Provides: caml_binaryen_module_run_passes
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
 function caml_binaryen_module_run_passes(wasm_mod, passes) {
-  // TODO: Check this
   return wasm_mod.runPasses(
     caml_list_to_js_array(passes).map(caml_jsstring_of_string)
   );

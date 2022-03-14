@@ -4,7 +4,6 @@ function caml_binaryen_add_global(wasm_mod, name, typ, is_mut, init) {
   return wasm_mod.addGlobal(
     caml_jsstring_of_string(name),
     typ,
-    // TODO: Check this
     is_mut, // bool will come through as an int
     init
   );
