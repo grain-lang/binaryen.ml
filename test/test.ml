@@ -92,6 +92,10 @@ let _ =
     (Expression.Const.make wasm_mod (Literal.int64 Int64.max_int))
 
 let _ =
+  Global.add_global wasm_mod "max_int64_mut" Type.int64 true
+    (Expression.Const.make wasm_mod (Literal.int64 Int64.max_int))
+
+let _ =
   Global.add_global wasm_mod "test_float64_bits" Type.float64 false
     (Expression.Const.make wasm_mod (Literal.float64_bits 0x3FF3AE147AE147AEL))
 
