@@ -1,5 +1,5 @@
 type segment = {
-  name : string;
+  data : string;
   passive : bool;
   offset : Expression.t;
   size : int;

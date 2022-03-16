@@ -109,11 +109,11 @@ let _ =
 let _ = Function.set_start wasm_mod start
 
 let segment : Binaryen.Memory.segment =
-  let name = "hello" in
+  let data = "hello" in
   let passive = false in
   let offset = Expression.Const.make wasm_mod (Literal.int32 0l) in
-  let size = String.length name in
-  { name; passive; offset; size }
+  let size = String.length data in
+  { data; passive; offset; size }
 
 let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [ segment ] false
 
