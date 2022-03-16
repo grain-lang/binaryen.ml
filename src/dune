@@ -1,7 +1,6 @@
 (library
- (name binaryen_native)
- (public_name binaryen.native)
- (implements binaryen)
+ (name binaryen)
+ (public_name binaryen)
  (libraries libbinaryen.c)
  (foreign_stubs
   (language c)
@@ -10,4 +9,12 @@
     binaryen_stubs_imports binaryen_stubs_exports binaryen_stubs_globals
     binaryen_stubs_tables binaryen_stubs_memory binaryen_stubs_features
     binaryen_stubs_modules binaryen_stubs_settings ocaml_helpers)
-  (flags :standard -O2 -Wall -Wextra)))
+  (flags :standard -O2 -Wall -Wextra))
+ (js_of_ocaml
+  (javascript_files binaryen_stubs_types.js binaryen_stubs_ops.js
+    binaryen_stubs_literals.js binaryen_stubs_expressions.js
+    binaryen_stubs_functions.js binaryen_stubs_imports.js
+    binaryen_stubs_exports.js binaryen_stubs_globals.js
+    binaryen_stubs_tables.js binaryen_stubs_memory.js
+    binaryen_stubs_features.js binaryen_stubs_modules.js
+    binaryen_stubs_settings.js)))

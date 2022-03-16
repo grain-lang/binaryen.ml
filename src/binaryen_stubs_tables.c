@@ -98,6 +98,7 @@ caml_binaryen_element_segment_get_name(value _elem) {
   CAMLreturn(caml_copy_string(BinaryenElementSegmentGetName(elem)));
 }
 
+// TODO: Expose to bindings
 CAMLprim value
 caml_binaryen_element_segment_set_name(value _elem, value _name) {
   CAMLparam2(_elem, _name);
@@ -114,6 +115,7 @@ caml_binaryen_element_segment_get_table(value _elem) {
   CAMLreturn(caml_copy_string(BinaryenElementSegmentGetTable(elem)));
 }
 
+// TODO: Expose to bindings
 CAMLprim value
 caml_binaryen_element_segment_set_table(value _elem, value _table) {
   CAMLparam2(_elem, _table);
