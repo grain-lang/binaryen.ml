@@ -1,6 +1,5 @@
 //Provides: to_option
 function to_option(x) {
-  // TODO: Check this
   if (x) {
     return [0, x];
   } else {
@@ -667,7 +666,6 @@ function caml_binaryen_expression_copy(exp, wasm_mod) {
 function caml_binaryen_block_get_name(exp) {
   var name = binaryen.Block.getName(exp);
   var str = name != null ? caml_string_of_jsstring(name) : null;
-  // TODO: Check this
   return to_option(str);
 }
 
@@ -747,7 +745,6 @@ function caml_binaryen_if_set_if_true(exp, child) {
 //Requires: binaryen
 //Requires: to_option
 function caml_binaryen_if_get_if_false(exp) {
-  // TODO: Check this
   return to_option(binaryen.If.getIfFalse(exp));
 }
 
@@ -894,7 +891,6 @@ function caml_binaryen_switch_remove_name_at(exp, index) {
 function caml_binaryen_switch_get_default_name(exp) {
   var name = binaryen.Switch.getDefaultName(exp);
   var str = name != null ? caml_string_of_jsstring(name) : null;
-  // TODO: Check this
   return to_option(str);
 }
 

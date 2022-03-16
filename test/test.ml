@@ -34,15 +34,18 @@ let select =
 
 let bin = Expression.Binary.make wasm_mod Op.add_int32 select (y ())
 
+let if_ =
+  Expression.If.make wasm_mod
+    (Expression.Const.make wasm_mod (Literal.int32 0l))
+    (Expression.Unreachable.make wasm_mod)
+    (Expression.Null.make ())
+
+let _ = assert (Expression.If.get_if_false if_ = None)
+
 let add =
-  Expression.Block.make wasm_mod ~return_type:Type.int32 "add"
-    [
-      Expression.If.make wasm_mod
-        (Expression.Const.make wasm_mod (Literal.int32 0l))
-        (Expression.Unreachable.make wasm_mod)
-        (Expression.Null.make ());
-      bin;
-    ]
+  Expression.Block.make wasm_mod ~return_type:Type.int32 "add" [ if_; bin ]
+
+let _ = assert (Expression.Block.get_name add = Some "add")
 
 (* Create the add function *)
 let adder = Function.add_function wasm_mod "adder" (params ()) results [||] add
