@@ -61,13 +61,13 @@ function caml_binaryen_module_auto_drop(wasm_mod) {
 
 //Provides: caml_binaryen_module_write
 //Requires: to_option
-//Requires: caml_bytes_of_array
+//Requires: caml_jsstring_of_string, caml_string_of_jsstring, caml_bytes_of_array
 function caml_binaryen_module_write(wasm_mod, sourceMapUrl) {
   if (sourceMapUrl) {
-    // TODO: Check this
-    var url = sourceMapUrl[1];
+    var url = caml_jsstring_of_string(sourceMapUrl[1]);
     var obj = wasm_mod.emitBinary(url);
-    return [0, caml_bytes_of_array(obj.binary), to_option(obj.soureMap)];
+    var sourceMap = obj.sourceMap != null ? caml_string_of_jsstring(obj.sourceMap) : null;
+    return [0, caml_bytes_of_array(obj.binary), to_option(sourceMap)];
   } else {
     var binary = wasm_mod.emitBinary();
     return [0, caml_bytes_of_array(binary), 0];

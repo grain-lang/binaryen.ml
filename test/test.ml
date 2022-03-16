@@ -146,7 +146,14 @@ let _ = Module.print wasm_mod
 
 (* 3. Copy previous module bytes into new module, validate, and print *)
 
-let byts, _ = Module.write wasm_mod None
+let byts, no_sourcemap = Module.write wasm_mod None
+let _ = assert (no_sourcemap = None)
+let _, sourcemap = Module.write wasm_mod (Some "test.wasm.map")
+
+let _ =
+  assert (
+    sourcemap = Some {|{"version":3,"sources":[],"names":[],"mappings":""}|})
+
 let new_mod = Module.read byts
 
 let _ =
