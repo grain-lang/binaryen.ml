@@ -23,8 +23,8 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
   let split_segments segments =
     List.fold_right
       (fun { data; passive; offset; size }
-           (segment_names, segment_passive, segment_offsets, segment_sizes) ->
-        ( data :: segment_names,
+           (segment_data, segment_passive, segment_offsets, segment_sizes) ->
+        ( data :: segment_data,
           passive :: segment_passive,
           offset :: segment_offsets,
           size :: segment_sizes ))
