@@ -163,6 +163,7 @@ let _ =
     sourcemap = Some {|{"version":3,"sources":[],"names":[],"mappings":""}|})
 
 let new_mod = Module.read byts
+let _ = Module.run_passes new_mod [ Passes.name_types ]
 
 let _ =
   Module.set_features new_mod
