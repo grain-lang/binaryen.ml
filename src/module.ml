@@ -104,7 +104,7 @@ external set_features : t -> int -> unit = "caml_binaryen_module_set_features"
 let set_features wasm_mod features =
   set_features wasm_mod (List.fold_left ( lor ) 0 features)
 
-external run_passes : t -> string list -> unit
+external run_passes : t -> Passes.t list -> unit
   = "caml_binaryen_module_run_passes"
 
 external auto_drop : t -> unit = "caml_binaryen_module_auto_drop"
