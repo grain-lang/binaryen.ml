@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.15.0](https://github.com/grain-lang/binaryen.ml/compare/v0.14.1...v0.15.0) (2022-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rename segment name to data (#146)
+* Add Passes module & require `Passes.t` in `Module.run_passes` (#145)
+* Remove virtual modules
+* Remove the "jsoo hack" API
+* Update libbinaryen to v105 (#142)
+
+### Features
+
+* Add Passes module & require `Passes.t` in `Module.run_passes` ([#145](https://github.com/grain-lang/binaryen.ml/issues/145)) ([c3e751c](https://github.com/grain-lang/binaryen.ml/commit/c3e751c4f869b9481e18c85a525100fbdcfa9072))
+* Remove the "jsoo hack" API ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+* Remove unneeded js_of_ocaml & js_of_ocaml-ppx deps ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+* Remove virtual modules ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+* Rename segment name to data ([#146](https://github.com/grain-lang/binaryen.ml/issues/146)) ([d55e577](https://github.com/grain-lang/binaryen.ml/commit/d55e5773d39fd5f21f556e0f5493d6c60bbc2198))
+* Rewrite JS bindings as js_of_ocaml externals ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+* Update libbinaryen to v105 ([#142](https://github.com/grain-lang/binaryen.ml/issues/142)) ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+
+
+### Bug Fixes
+
+* Make memory segments work with js_of_ocaml ([3c81209](https://github.com/grain-lang/binaryen.ml/commit/3c81209763e3d09d51a5ab68ebd705582fe02c54))
+
 ### [0.14.1](https://github.com/grain-lang/binaryen.ml/compare/v0.14.0...v0.14.1) (2022-03-08)
 
 
