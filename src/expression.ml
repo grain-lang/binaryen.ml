@@ -693,7 +693,7 @@ end
 
 module Return = struct
   external make : Module.t -> t -> t = "caml_binaryen_return"
-  external get_value : t -> t = "caml_binaryen_return_get_value"
+  external get_value : t -> t option = "caml_binaryen_return_get_value"
   external set_value : t -> t -> unit = "caml_binaryen_return_set_value"
 end
 

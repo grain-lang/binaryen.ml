@@ -20,6 +20,20 @@ let _ = Settings.set_low_memory_unused false
 let wasm_mod = Module.create ()
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 
+(* Testing Return.get_value *)
+let _ =
+  assert (
+    Option.is_some
+      (Expression.Return.get_value
+         (Expression.Return.make wasm_mod
+            (Expression.Const.make wasm_mod (Literal.int32 0l)))))
+
+let _ =
+  assert (
+    Option.is_none
+      (Expression.Return.get_value
+         (Expression.Return.make wasm_mod (Expression.Null.make ()))))
+
 (* Create function type for i32 (i32, i32) *)
 let params () = Type.create [| Type.int32; Type.int32 |]
 let results = Type.int32

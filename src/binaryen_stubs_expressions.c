@@ -1534,7 +1534,12 @@ CAMLprim value
 caml_binaryen_return_get_value(value _exp) {
   CAMLparam1(_exp);
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenReturnGetValue(exp)));
+  BinaryenExpressionRef val = BinaryenReturnGetValue(exp);
+  if (val == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(alloc_BinaryenExpressionRef(val)));
+  }
 }
 
 CAMLprim value
