@@ -241,7 +241,7 @@ end
 
 module Return : sig
   val make : Module.t -> t -> t
-  val get_value : t -> t
+  val get_value : t -> t option
   val set_value : t -> t -> unit
 end
 
