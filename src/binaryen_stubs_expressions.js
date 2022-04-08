@@ -1273,6 +1273,7 @@ function caml_binaryen_drop_set_value(exp, value) {
 
 //Provides: caml_binaryen_return_get_value
 //Requires: binaryen
+//Requires: to_option
 function caml_binaryen_return_get_value(exp) {
   return to_option(binaryen.Return.getValue(exp));
 }
