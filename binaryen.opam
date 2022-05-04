@@ -19,5 +19,5 @@ depends: [
   "libbinaryen" {>= "106.0.0" < "107.0.0"}
 ]
 pin-depends: [
-  [ "libbinaryen.106.0.0" "https://github.com/grain-lang/libbinaryen#phated/version_106" ]
+  [ "libbinaryen.106.0.0" "git+https://github.com/grain-lang/libbinaryen#phated/version_106" ]
 ]
