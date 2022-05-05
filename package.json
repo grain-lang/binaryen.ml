@@ -16,8 +16,7 @@
     "@opam/ocaml-lsp-server": "^1.9.1"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.7.0",
-    "@grain/libbinaryen": "grain-lang/libbinaryen:package.json#5a65721658c0d41255804f3e58b3818e3c58aa4c"
+    "@opam/ocp-indent": "1.7.0"
   },
   "esy": {
     "build": "dune build -p binaryen"
