@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.17.0](https://github.com/grain-lang/binaryen.ml/compare/v0.16.0...v0.17.0) (2022-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update libbinaryen to 107 (#152)
+
+### Features
+
+* Add merge_similar_functions pass ([#154](https://github.com/grain-lang/binaryen.ml/issues/154)) ([54b03fd](https://github.com/grain-lang/binaryen.ml/commit/54b03fd854311f49aa1821868a8265116be922c2))
+* Add signature_pruning pass ([#155](https://github.com/grain-lang/binaryen.ml/issues/155)) ([206b6cf](https://github.com/grain-lang/binaryen.ml/commit/206b6cf0ade48a778f4e991cf5d2ab0daf559bf8))
+* Add support for extended_const feature ([260c2a1](https://github.com/grain-lang/binaryen.ml/commit/260c2a131a08720eac0f21abf68689fd201eb753))
+* Update libbinaryen to 107 ([#152](https://github.com/grain-lang/binaryen.ml/issues/152)) ([260c2a1](https://github.com/grain-lang/binaryen.ml/commit/260c2a131a08720eac0f21abf68689fd201eb753))
+
 ## [0.16.0](https://github.com/grain-lang/binaryen.ml/compare/v0.15.0...v0.16.0) (2022-05-11)
 
 
