@@ -114,6 +114,12 @@ caml_binaryen_feature_relaxed_simd(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_feature_extended_const(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureExtendedConst()));
+}
+
+CAMLprim value
 caml_binaryen_feature_all(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureAll()));

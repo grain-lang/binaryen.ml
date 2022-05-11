@@ -18,6 +18,7 @@ module Feature : sig
   val memory64 : t
   val typed_function_references : t
   val relaxed_simd : t
+  val extended_const : t
   val all : t
 end
 

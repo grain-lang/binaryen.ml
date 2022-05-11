@@ -98,6 +98,12 @@ function caml_binaryen_feature_relaxed_simd() {
   return binaryen.Features.RelaxedSIMD;
 }
 
+//Provides: caml_binaryen_feature_extended_const
+//Requires: binaryen
+function caml_binaryen_feature_extended_const() {
+  return binaryen.Features.ExtendedConst;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: binaryen
 function caml_binaryen_feature_all() {

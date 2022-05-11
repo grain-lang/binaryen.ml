@@ -69,6 +69,10 @@ module Feature = struct
 
   let relaxed_simd = relaxed_simd ()
 
+  external extended_const : unit -> t = "caml_binaryen_feature_extended_const"
+
+  let extended_const = extended_const ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()
