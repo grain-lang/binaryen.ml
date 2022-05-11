@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.16.0](https://github.com/grain-lang/binaryen.ml/compare/v0.15.0...v0.16.0) (2022-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Restrict OCaml < 4.14 temporarily
+* Update libbinaryen to 106 (#151)
+* Expression.Return.get_value can be null (#149)
+
+### Features
+
+* Update libbinaryen to 106 ([#151](https://github.com/grain-lang/binaryen.ml/issues/151)) ([453b9de](https://github.com/grain-lang/binaryen.ml/commit/453b9dea8f0bda026b70f67d7c99311f9f6601e3))
+
+
+### Bug Fixes
+
+* Expression.Return.get_value can be null ([#149](https://github.com/grain-lang/binaryen.ml/issues/149)) ([559341d](https://github.com/grain-lang/binaryen.ml/commit/559341d13a7ba5abb8521f6d0d982d4f25b86ce0))
+
+
+### Miscellaneous Chores
+
+* Restrict OCaml < 4.14 temporarily ([453b9de](https://github.com/grain-lang/binaryen.ml/commit/453b9dea8f0bda026b70f67d7c99311f9f6601e3))
+
 ## [0.15.0](https://github.com/grain-lang/binaryen.ml/compare/v0.14.1...v0.15.0) (2022-03-16)
 
 
