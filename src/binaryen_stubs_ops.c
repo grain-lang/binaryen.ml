@@ -2167,7 +2167,7 @@ caml_binaryen_binaryen_narrow_u_vec_i32x4_to_vec_i16x8(value unit) {
 CAMLprim value
 caml_binaryen_binaryen_swizzle_vec8x16(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenSwizzleVec8x16();
+  BinaryenOp op = BinaryenSwizzleVecI8x16();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 

@@ -1843,7 +1843,7 @@ function caml_binaryen_binaryen_narrow_u_vec_i32x4_to_vec_i16x8() {
 //Provides: caml_binaryen_binaryen_swizzle_vec8x16
 //Requires: binaryen
 function caml_binaryen_binaryen_swizzle_vec8x16() {
-  return binaryen.Operations.SwizzleVec8x16;
+  return binaryen.Operations.SwizzleVecI8x16;
 }
 
 //Provides: caml_binaryen_binaryen_ref_is_null
