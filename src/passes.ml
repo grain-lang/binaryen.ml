@@ -278,6 +278,9 @@ let safe_heap = "safe-heap"
 (** sets specified globals to specified values *)
 let set_globals = "set-globals"
 
+(** remove params from function signature types where possible *)
+let signature_pruning = "signature-pruning"
+
 (** apply more specific subtypes to signature types where possible *)
 let signature_refining = "signature-refining"
 
