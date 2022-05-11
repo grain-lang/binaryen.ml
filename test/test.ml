@@ -197,6 +197,7 @@ let _ =
       Module.Feature.memory64;
       Module.Feature.typed_function_references;
       Module.Feature.relaxed_simd;
+      Module.Feature.extended_const;
       Module.Feature.all;
     ]
 
