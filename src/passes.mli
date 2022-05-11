@@ -147,6 +147,9 @@ val memory_packing : t
 val merge_blocks : t
 (** merges blocks to their parents *)
 
+val merge_similar_functions : t
+(** merges similar functions when benefical *)
+
 val merge_locals : t
 (** merges locals when beneficial *)
 

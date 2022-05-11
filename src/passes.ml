@@ -147,6 +147,9 @@ let memory_packing = "memory-packing"
 (** merges blocks to their parents *)
 let merge_blocks = "merge-blocks"
 
+(** merges similar functions when benefical *)
+let merge_similar_functions = "merge-similar-functions"
+
 (** merges locals when beneficial *)
 let merge_locals = "merge-locals"
 
