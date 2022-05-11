@@ -273,6 +273,9 @@ val safe_heap : t
 val set_globals : t
 (** sets specified globals to specified values *)
 
+val signature_pruning : t
+(** remove params from function signature types where possible *)
+
 val signature_refining : t
 (** apply more specific subtypes to signature types where possible *)
 
