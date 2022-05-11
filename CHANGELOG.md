@@ -6,8 +6,8 @@
 ### ⚠ BREAKING CHANGES
 
 * Restrict OCaml < 4.14 temporarily
-* Update libbinaryen to 106 (#151)
-* Expression.Return.get_value can be null (#149)
+* Update libbinaryen to 106 ([#151](https://github.com/grain-lang/binaryen.ml/issues/151))
+* Expression.Return.get_value can be null ([#149](https://github.com/grain-lang/binaryen.ml/issues/149))
 
 ### Features
 
