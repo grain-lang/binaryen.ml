@@ -18,6 +18,3 @@ depends: [
   "js_of_ocaml-compiler" {>= "3.10.0" < "4.0.0"}
   "libbinaryen" {>= "106.0.0" < "107.0.0"}
 ]
-pin-depends: [
-  [ "libbinaryen.106.0.0" "git+https://github.com/grain-lang/libbinaryen#v106.0.0" ]
-]
