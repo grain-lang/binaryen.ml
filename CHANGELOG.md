@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.17.1](https://github.com/grain-lang/binaryen.ml/compare/v0.17.0...v0.17.1) (2022-06-11)
+
+
+### Bug Fixes
+
+* Remove upper bounds on dependencies ([#156](https://github.com/grain-lang/binaryen.ml/issues/156)) ([9ae4015](https://github.com/grain-lang/binaryen.ml/commit/9ae4015a4af6233e38d96a6f2ebabe55313fb8ea))
+
 ## [0.17.0](https://github.com/grain-lang/binaryen.ml/compare/v0.16.0...v0.17.0) (2022-05-11)
 
 
