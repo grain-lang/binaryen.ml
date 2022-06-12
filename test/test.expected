@@ -17,6 +17,7 @@
  (global $test_float64_bits f64 (f64.const 1.23))
  (memory $0 1)
  (data (i32.const 0) "hello")
+ (data "world")
  (table $table 1 1 funcref)
  (elem $elem (i32.const 0) $adder)
  (export "adder" (func $adder))

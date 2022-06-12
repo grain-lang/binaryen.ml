@@ -274,6 +274,16 @@ function caml_binaryen_unreachable(wasm_mod) {
   return wasm_mod.unreachable();
 }
 
+//Provides: caml_binaryen_memory_init
+function caml_binaryen_memory_init(wasm_mod, segment, dest, offset, size) {
+  return wasm_mod.memory.init(segment, dest, offset, size);
+}
+
+//Provides: caml_binaryen_data_drop
+function caml_binaryen_data_drop(wasm_mod, segment) {
+  return wasm_mod.data.drop(segment);
+}
+
 //Provides: caml_binaryen_memory_copy
 function caml_binaryen_memory_copy(wasm_mod, dest, source, size) {
   return wasm_mod.memory.copy(dest, source, size);
@@ -1282,6 +1292,66 @@ function caml_binaryen_return_get_value(exp) {
 //Requires: binaryen
 function caml_binaryen_return_set_value(exp, value) {
   return binaryen.Return.setValue(exp, value);
+}
+
+//Provides: caml_binaryen_memory_init_get_segment
+//Requires: binaryen
+function caml_binaryen_memory_init_get_segment(exp) {
+  return binaryen.MemoryInit.getSegment(exp);
+}
+
+//Provides: caml_binaryen_memory_init_set_segment
+//Requires: binaryen
+function caml_binaryen_memory_init_set_segment(exp, value) {
+  return binaryen.MemoryInit.setSegment(exp, value);
+}
+
+//Provides: caml_binaryen_memory_init_get_dest
+//Requires: binaryen
+function caml_binaryen_memory_init_get_dest(exp) {
+  return binaryen.MemoryInit.getDest(exp);
+}
+
+//Provides: caml_binaryen_memory_init_set_dest
+//Requires: binaryen
+function caml_binaryen_memory_init_set_dest(exp, value) {
+  return binaryen.MemoryInit.setDest(exp, value);
+}
+
+//Provides: caml_binaryen_memory_init_get_offset
+//Requires: binaryen
+function caml_binaryen_memory_init_get_offset(exp) {
+  return binaryen.MemoryInit.getOffset(exp);
+}
+
+//Provides: caml_binaryen_memory_init_set_offset
+//Requires: binaryen
+function caml_binaryen_memory_init_set_offset(exp, value) {
+  return binaryen.MemoryInit.setOffset(exp, value);
+}
+
+//Provides: caml_binaryen_memory_init_get_size
+//Requires: binaryen
+function caml_binaryen_memory_init_get_size(exp) {
+  return binaryen.MemoryInit.getSize(exp);
+}
+
+//Provides: caml_binaryen_memory_init_set_size
+//Requires: binaryen
+function caml_binaryen_memory_init_set_size(exp, value) {
+  return binaryen.MemoryInit.setSize(exp, value);
+}
+
+//Provides: caml_binaryen_data_drop_get_segment
+//Requires: binaryen
+function caml_binaryen_data_drop_get_segment(exp) {
+  return binaryen.DataDrop.getSegment(exp);
+}
+
+//Provides: caml_binaryen_data_drop_set_segment
+//Requires: binaryen
+function caml_binaryen_data_drop_set_segment(exp, value) {
+  return binaryen.DataDrop.setSegment(exp, value);
 }
 
 //Provides: caml_binaryen_memory_copy_get_dest

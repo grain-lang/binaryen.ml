@@ -707,6 +707,33 @@ module Memory_grow = struct
   external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
 end
 
+module Memory_init = struct
+  external make : Module.t -> int -> t -> t -> t = "caml_binaryen_memory_init"
+  (** Module, segment, destination, offset, size. *)
+
+  external get_segment : t -> int = "caml_binaryen_memory_init_get_segment"
+
+  external set_segment : t -> int -> unit
+    = "caml_binaryen_memory_init_set_segment"
+
+  external get_dest : t -> t = "caml_binaryen_memory_init_get_dest"
+  external set_dest : t -> t -> unit = "caml_binaryen_memory_init_set_dest"
+  external get_offset : t -> t = "caml_binaryen_memory_init_get_offset"
+  external set_offset : t -> t -> unit = "caml_binaryen_memory_init_set_offset"
+  external get_size : t -> t = "caml_binaryen_memory_init_get_size"
+  external set_size : t -> t -> unit = "caml_binaryen_memory_init_set_size"
+end
+
+module Data_drop = struct
+  external make : Module.t -> int -> t = "caml_binaryen_data_drop"
+  (** Module, segment. *)
+
+  external get_segment : t -> int = "caml_binaryen_data_drop_get_segment"
+
+  external set_segment : t -> int -> unit
+    = "caml_binaryen_data_drop_set_segment"
+end
+
 module Memory_copy = struct
   external make : Module.t -> t -> t -> t -> t = "caml_binaryen_memory_copy"
   (** Module, destination, source, size. *)

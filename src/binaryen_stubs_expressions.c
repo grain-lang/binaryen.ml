@@ -355,6 +355,27 @@ caml_binaryen_unreachable(value _module) {
 }
 
 CAMLprim value
+caml_binaryen_memory_init(value _module, value _segment, value _dest, value _offset, value _size) {
+  CAMLparam5(_module, _segment, _dest, _offset, _size);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  uint32_t segment = Int_val(_segment);
+  BinaryenExpressionRef dest = BinaryenExpressionRef_val(_dest);
+  BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
+  BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
+  BinaryenExpressionRef exp = BinaryenMemoryInit(module, segment, dest, offset, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_data_drop(value _module, value _segment) {
+  CAMLparam2(_module, _segment);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  uint32_t segment = Int_val(_segment);
+  BinaryenExpressionRef exp = BinaryenDataDrop(module, segment);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_memory_copy(value _module, value _dest, value _source, value _size) {
   CAMLparam4(_module, _dest, _source, _size);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
@@ -1548,6 +1569,86 @@ caml_binaryen_return_set_value(value _exp, value _value) {
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
   BinaryenReturnSetValue(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_init_get_segment(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenMemoryInitGetSegment(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_init_set_segment(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  uint32_t val = Int_val(_value);
+  BinaryenMemoryInitSetSegment(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_init_get_dest(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryInitGetDest(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_init_set_dest(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryInitSetDest(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_init_get_offset(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryInitGetOffset(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_init_set_offset(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryInitSetOffset(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_memory_init_get_size(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(alloc_BinaryenExpressionRef(BinaryenMemoryInitGetSize(exp)));
+}
+
+CAMLprim value
+caml_binaryen_memory_init_set_size(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenMemoryInitSetSize(exp, val);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_data_drop_get_segment(value _exp) {
+  CAMLparam1(_exp);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  CAMLreturn(Val_int(BinaryenDataDropGetSegment(exp)));
+}
+
+CAMLprim value
+caml_binaryen_data_drop_set_segment(value _exp, value _value) {
+  CAMLparam2(_exp, _value);
+  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
+  uint32_t val = Int_val(_value);
+  BinaryenDataDropSetSegment(exp, val);
   CAMLreturn(Val_unit);
 }
 
