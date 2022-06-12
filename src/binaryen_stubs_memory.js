@@ -5,7 +5,7 @@ function caml_binaryen_set_memory(wasm_mod, initial, maximum, exportName, segmen
   var segs = caml_list_to_js_array(segments).map(function (segment, idx) {
     return {
       data: caml_convert_bytes_to_array(segment),
-      passive: segmentPassives[idx + 1], // OCaml Lists are offset by 1
+      passive: caml_js_from_bool(segmentPassives[idx + 1]), // OCaml Lists are offset by 1
       offset: segmentOffsets[idx + 1] // OCaml Lists are offset by 1
     }
   });

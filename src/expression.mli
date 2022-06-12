@@ -255,6 +255,24 @@ module Memory_grow : sig
   val set_delta : t -> t -> unit
 end
 
+module Memory_init : sig
+  val make : Module.t -> int -> t -> t -> t
+  val get_segment : t -> int
+  val set_segment : t -> int -> unit
+  val get_dest : t -> t
+  val set_dest : t -> t -> unit
+  val get_offset : t -> t
+  val set_offset : t -> t -> unit
+  val get_size : t -> t
+  val set_size : t -> t -> unit
+end
+
+module Data_drop : sig
+  val make : Module.t -> int -> t
+  val get_segment : t -> int
+  val set_segment : t -> int -> unit
+end
+
 module Memory_copy : sig
   val make : Module.t -> t -> t -> t -> t
   val get_dest : t -> t
