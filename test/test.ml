@@ -123,13 +123,24 @@ let _ =
 let _ = Function.set_start wasm_mod start
 
 let segment : Binaryen.Memory.segment =
-  let data = "hello" in
-  let passive = false in
-  let offset = Expression.Const.make wasm_mod (Literal.int32 0l) in
-  let size = String.length data in
-  { data; passive; offset; size }
+  let data = Bytes.of_string "hello" in
+  let kind =
+    Binaryen.Memory.Active
+      { offset = Expression.Const.make wasm_mod (Literal.int32 0l) }
+  in
+  let size = Bytes.length data in
+  { data; kind; size }
 
-let _ = Memory.set_memory wasm_mod 1 Memory.unlimited "memory" [ segment ] false
+let passive_segment : Binaryen.Memory.segment =
+  let data = Bytes.of_string "world" in
+  let kind = Binaryen.Memory.Passive in
+  let size = Bytes.length data in
+  { data; kind; size }
+
+let _ =
+  Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
+    [ segment; passive_segment ]
+    false
 
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
