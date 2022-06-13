@@ -43,11 +43,18 @@
   )
  )
  (func $start
-  (drop
-   (call_indirect $table (type $i32_i32_=>_i32)
-    (i32.const 3)
-    (i32.const 5)
+  (block $start
+   (memory.init 1
+    (i32.const 2048)
     (i32.const 0)
+    (i32.const 5)
+   )
+   (drop
+    (call_indirect $table (type $i32_i32_=>_i32)
+     (i32.const 3)
+     (i32.const 5)
+     (i32.const 0)
+    )
    )
   )
  )
@@ -67,6 +74,7 @@
  (import "future-wasi" "write" (func $write (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data (i32.const 0) "hello")
+ (data "world")
  (table $table 1 1 funcref)
  (elem $elem (i32.const 0) $adder)
  (export "adder" (func $adder))
@@ -86,6 +94,11 @@
   )
  )
  (func $start (; has Stack IR ;)
+  (memory.init 1
+   (i32.const 2048)
+   (i32.const 0)
+   (i32.const 5)
+  )
   (drop
    (call $adder
     (i32.const 3)
@@ -109,6 +122,7 @@
  (import "future-wasi" "write" (func $fimport$0 (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data (i32.const 0) "hello")
+ (data "world")
  (table $0 1 1 funcref)
  (elem (i32.const 0) $0)
  (export "adder" (func $0))
@@ -128,6 +142,11 @@
   )
  )
  (func $1
+  (memory.init 1
+   (i32.const 2048)
+   (i32.const 0)
+   (i32.const 5)
+  )
   (drop
    (call $0
     (i32.const 3)
@@ -151,6 +170,7 @@
  (import "future-wasi" "write" (func $fimport$0 (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data (i32.const 0) "hello")
+ (data "world")
  (table $0 1 1 funcref)
  (elem (i32.const 0) $0)
  (export "adder" (func $0))
@@ -167,6 +187,10 @@
   i32.add
  )
  (func $1
+  i32.const 2048
+  i32.const 0
+  i32.const 5
+  memory.init $0 1
   i32.const 3
   i32.const 5
   call $0
