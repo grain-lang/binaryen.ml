@@ -32,6 +32,18 @@ external externref : unit -> t = "caml_binaryen_type_externref"
 
 let externref = externref ()
 
+external eqref : unit -> t = "caml_binaryen_type_eqref"
+
+let eqref = eqref ()
+
+external i31ref : unit -> t = "caml_binaryen_type_i31ref"
+
+let i31ref = i31ref ()
+
+external dataref : unit -> t = "caml_binaryen_type_dataref"
+
+let dataref = dataref ()
+
 external unreachable : unit -> t = "caml_binaryen_type_unreachable"
 
 let unreachable = unreachable ()

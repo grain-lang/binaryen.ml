@@ -46,6 +46,24 @@ function caml_binaryen_type_externref() {
   return binaryen.externref;
 }
 
+//Provides: caml_binaryen_type_eqref
+//Requires: binaryen
+function caml_binaryen_type_eqref() {
+  return binaryen.eqref;
+}
+
+//Provides: caml_binaryen_type_i31ref
+//Requires: binaryen
+function caml_binaryen_type_i31ref() {
+  return binaryen.i31ref;
+}
+
+//Provides: caml_binaryen_type_dataref
+//Requires: binaryen
+function caml_binaryen_type_dataref() {
+  return binaryen.dataref;
+}
+
 //Provides: caml_binaryen_type_unreachable
 //Requires: binaryen
 function caml_binaryen_type_unreachable() {
