@@ -1,7 +1,7 @@
 //Provides: caml_binaryen_module_create
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_module_create() {
-  return new binaryen.Module();
+  return new Binaryen.Module();
 }
 
 //Provides: caml_binaryen_module_dispose
@@ -10,10 +10,10 @@ function caml_binaryen_module_dispose(wasm_mod) {
 }
 
 //Provides: caml_binaryen_module_parse
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_jsstring_of_string
 function caml_binaryen_module_parse(text) {
-  return binaryen.parseText(caml_jsstring_of_string(text));
+  return Binaryen.parseText(caml_jsstring_of_string(text));
 }
 
 //Provides: caml_binaryen_module_print
@@ -66,7 +66,8 @@ function caml_binaryen_module_write(wasm_mod, sourceMapUrl) {
   if (sourceMapUrl) {
     var url = caml_jsstring_of_string(sourceMapUrl[1]);
     var obj = wasm_mod.emitBinary(url);
-    var sourceMap = obj.sourceMap != null ? caml_string_of_jsstring(obj.sourceMap) : null;
+    var sourceMap =
+      obj.sourceMap != null ? caml_string_of_jsstring(obj.sourceMap) : null;
     return [0, caml_bytes_of_array(obj.binary), to_option(sourceMap)];
   } else {
     var binary = wasm_mod.emitBinary();
@@ -82,11 +83,11 @@ function caml_binaryen_module_write_text(wasm_mod) {
 }
 
 //Provides: caml_binaryen_module_read
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_array_of_bytes
 function caml_binaryen_module_read(bytes) {
-  var data = caml_array_of_bytes(bytes)
-  return binaryen.readBinary(data);
+  var data = caml_array_of_bytes(bytes);
+  return Binaryen.readBinary(data);
 }
 
 //Provides: caml_binaryen_module_interpret

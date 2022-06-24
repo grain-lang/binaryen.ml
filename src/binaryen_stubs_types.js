@@ -1,91 +1,91 @@
 //Provides: caml_binaryen_type_none
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_none() {
-  return binaryen.none;
+  return Binaryen.none;
 }
 
 //Provides: caml_binaryen_type_int32
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_int32() {
-  return binaryen.i32;
+  return Binaryen.i32;
 }
 
 //Provides: caml_binaryen_type_int64
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_int64() {
-  return binaryen.i64;
+  return Binaryen.i64;
 }
 
 //Provides: caml_binaryen_type_float32
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_float32() {
-  return binaryen.f32;
+  return Binaryen.f32;
 }
 
 //Provides: caml_binaryen_type_float64
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_float64() {
-  return binaryen.f64;
+  return Binaryen.f64;
 }
 
 //Provides: caml_binaryen_type_vec128
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_vec128() {
-  return binaryen.v128;
+  return Binaryen.v128;
 }
 
 //Provides: caml_binaryen_type_funcref
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_funcref() {
-  return binaryen.funcref;
+  return Binaryen.funcref;
 }
 
 //Provides: caml_binaryen_type_externref
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_externref() {
-  return binaryen.externref;
+  return Binaryen.externref;
 }
 
 //Provides: caml_binaryen_type_eqref
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_eqref() {
-  return binaryen.eqref;
+  return Binaryen.eqref;
 }
 
 //Provides: caml_binaryen_type_i31ref
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_i31ref() {
-  return binaryen.i31ref;
+  return Binaryen.i31ref;
 }
 
 //Provides: caml_binaryen_type_dataref
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_dataref() {
-  return binaryen.dataref;
+  return Binaryen.dataref;
 }
 
 //Provides: caml_binaryen_type_unreachable
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_unreachable() {
-  return binaryen.unreachable;
+  return Binaryen.unreachable;
 }
 
 //Provides: caml_binaryen_type_auto
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_type_auto() {
-  return binaryen.auto;
+  return Binaryen.auto;
 }
 
 //Provides: caml_binaryen_type_create
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_js_from_array
 function caml_binaryen_type_create(typs) {
-  return binaryen.createType(caml_js_from_array(typs));
+  return Binaryen.createType(caml_js_from_array(typs));
 }
 
 //Provides: caml_binaryen_type_expand
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_js_to_array
 function caml_binaryen_type_expand(typ) {
-  return caml_js_to_array(binaryen.expandType(typ));
+  return caml_js_to_array(Binaryen.expandType(typ));
 }

@@ -1,120 +1,118 @@
 //Provides: caml_binaryen_get_optimize_level
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_optimize_level() {
-  return binaryen.getOptimizeLevel();
+  return Binaryen.getOptimizeLevel();
 }
 
 //Provides: caml_binaryen_set_optimize_level
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_optimize_level(level) {
-  return binaryen.setOptimizeLevel(level);
+  return Binaryen.setOptimizeLevel(level);
 }
 
 //Provides: caml_binaryen_get_shrink_level
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_shrink_level() {
-  return binaryen.getShrinkLevel();
+  return Binaryen.getShrinkLevel();
 }
 
 //Provides: caml_binaryen_set_shrink_level
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_shrink_level(level) {
-  return binaryen.setShrinkLevel(level);
+  return Binaryen.setShrinkLevel(level);
 }
 
 //Provides: caml_binaryen_get_debug_info
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_debug_info() {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenGetDebugInfo();
+  return Binaryen._BinaryenGetDebugInfo();
 }
 
 //Provides: caml_binaryen_set_debug_info
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_debug_info(on) {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenSetDebugInfo(on);
+  return Binaryen._BinaryenSetDebugInfo(on);
 }
 
 //Provides: caml_binaryen_get_low_memory_unused
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_low_memory_unused() {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenGetLowMemoryUnused();
+  return Binaryen._BinaryenGetLowMemoryUnused();
 }
 
 //Provides: caml_binaryen_set_low_memory_unused
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_low_memory_unused(on) {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenSetLowMemoryUnused(on);
+  return Binaryen._BinaryenSetLowMemoryUnused(on);
 }
 
 //Provides: caml_binaryen_get_pass_argument
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_jsstring_of_string
 function caml_binaryen_get_pass_argument(name) {
-  return binaryen.getPassArgument(
-    caml_jsstring_of_string(name)
-  );
+  return Binaryen.getPassArgument(caml_jsstring_of_string(name));
 }
 
 //Provides: caml_binaryen_set_pass_argument
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_jsstring_of_string
 function caml_binaryen_set_pass_argument(name, value) {
-  return binaryen.setPassArgument(
+  return Binaryen.setPassArgument(
     caml_jsstring_of_string(name),
     caml_jsstring_of_string(value)
   );
 }
 
 //Provides: caml_binaryen_get_always_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_always_inline_max_size() {
-  return binaryen.getAlwaysInlineMaxSize();
+  return Binaryen.getAlwaysInlineMaxSize();
 }
 
 //Provides: caml_binaryen_set_always_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_always_inline_max_size(size) {
-  return binaryen.setAlwaysInlineMaxSize(size);
+  return Binaryen.setAlwaysInlineMaxSize(size);
 }
 
 //Provides: caml_binaryen_get_flexible_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_flexible_inline_max_size() {
-  return binaryen.getFlexibleInlineMaxSize();
+  return Binaryen.getFlexibleInlineMaxSize();
 }
 
 //Provides: caml_binaryen_set_flexible_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_flexible_inline_max_size(size) {
-  return binaryen.setFlexibleInlineMaxSize(size);
+  return Binaryen.setFlexibleInlineMaxSize(size);
 }
 
 //Provides: caml_binaryen_get_one_caller_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_get_one_caller_inline_max_size() {
-  return binaryen.getOneCallerInlineMaxSize();
+  return Binaryen.getOneCallerInlineMaxSize();
 }
 
 //Provides: caml_binaryen_set_one_caller_inline_max_size
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_one_caller_inline_max_size(size) {
-  return binaryen.setOneCallerInlineMaxSize(size);
+  return Binaryen.setOneCallerInlineMaxSize(size);
 }
 
 //Provides: caml_binaryen_set_colors_enabled
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_set_colors_enabled(on) {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenSetColorsEnabled(on);
+  return Binaryen._BinaryenSetColorsEnabled(on);
 }
 
 //Provides: caml_binaryen_are_colors_enabled
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_are_colors_enabled() {
   // Uses the `_Binaryen` function because then we are working with ints which are also booleans to JSOO
-  return binaryen._BinaryenAreColorsEnabled();
+  return Binaryen._BinaryenAreColorsEnabled();
 }

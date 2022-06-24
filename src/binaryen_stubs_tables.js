@@ -11,7 +11,13 @@ function caml_binaryen_add_table(wasm_mod, table, initial, maximum, tableType) {
 
 //Provides: caml_binaryen_add_active_element_segment
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
-function caml_binaryen_add_active_element_segment(wasm_mod, table, name, funcnames, offset) {
+function caml_binaryen_add_active_element_segment(
+  wasm_mod,
+  table,
+  name,
+  funcnames,
+  offset
+) {
   return wasm_mod.addActiveElementSegment(
     caml_jsstring_of_string(table),
     caml_jsstring_of_string(name),
@@ -43,42 +49,42 @@ function caml_binaryen_get_element_segment_by_index(wasm_mod, index) {
 }
 
 //Provides: caml_binaryen_element_segment_get_name
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_element_segment_get_name(elem) {
-  var element_segment_info = binaryen.getElementSegmentInfo(elem);
-  return caml_string_of_jsstring(element_segment_info.name)
+  var element_segment_info = Binaryen.getElementSegmentInfo(elem);
+  return caml_string_of_jsstring(element_segment_info.name);
 }
 
 // TODO: Implement caml_binaryen_element_segment_set_name
 
 //Provides: caml_binaryen_element_segment_get_table
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_element_segment_get_table(elem) {
-  var element_segment_info = binaryen.getElementSegmentInfo(elem);
+  var element_segment_info = Binaryen.getElementSegmentInfo(elem);
   return caml_string_of_jsstring(element_segment_info.table);
 }
 
 // TODO: Implement caml_binaryen_element_segment_set_table
 
 //Provides: caml_binaryen_element_segment_get_offset
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_element_segment_get_offset(elem) {
-  var element_segment_info = binaryen.getElementSegmentInfo(elem);
+  var element_segment_info = Binaryen.getElementSegmentInfo(elem);
   return element_segment_info.offset;
 }
 
 //Provides: caml_binaryen_element_segment_get_length
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_element_segment_get_length(elem) {
-  return binaryen._BinaryenElementSegmentGetLength(elem);
+  return Binaryen._BinaryenElementSegmentGetLength(elem);
 }
 
 //Provides: caml_binaryen_element_segment_get_data
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_element_segment_get_data(elem, index) {
-  var element_segment_info = binaryen.getElementSegmentInfo(elem);
+  var element_segment_info = Binaryen.getElementSegmentInfo(elem);
   return caml_string_of_jsstring(element_segment_info.data[index]);
 }
