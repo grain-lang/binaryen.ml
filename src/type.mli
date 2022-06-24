@@ -8,6 +8,9 @@ val float64 : t
 val vec128 : t
 val funcref : t
 val externref : t
+val eqref : t
+val i31ref : t
+val dataref : t
 val unreachable : t
 val auto : t
 val create : t array -> t

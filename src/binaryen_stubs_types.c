@@ -73,6 +73,27 @@ caml_binaryen_type_externref(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_type_eqref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeEqref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_i31ref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeI31ref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_dataref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeDataref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
 caml_binaryen_type_unreachable(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeUnreachable();
