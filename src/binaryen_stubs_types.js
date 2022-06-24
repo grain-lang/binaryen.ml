@@ -40,10 +40,10 @@ function caml_binaryen_type_funcref() {
   return Binaryen.funcref;
 }
 
-//Provides: caml_binaryen_type_externref
+//Provides: caml_binaryen_type_anyref
 //Requires: Binaryen
-function caml_binaryen_type_externref() {
-  return Binaryen.externref;
+function caml_binaryen_type_anyref() {
+  return Binaryen.anyref;
 }
 
 //Provides: caml_binaryen_type_eqref

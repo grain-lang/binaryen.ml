@@ -7,7 +7,7 @@ val float32 : t
 val float64 : t
 val vec128 : t
 val funcref : t
-val externref : t
+val anyref : t
 val eqref : t
 val i31ref : t
 val dataref : t
