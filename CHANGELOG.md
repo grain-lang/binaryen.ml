@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.18.0](https://github.com/grain-lang/binaryen.ml/compare/v0.17.1...v0.18.0) (2022-07-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove externref type
+* Update to libbinaryen v108 (#163)
+* Support passive memory segments (#158)
+
+### Features
+
+* Add anyref type as replacement for externref type ([f0c7d7e](https://github.com/grain-lang/binaryen.ml/commit/f0c7d7e5aaad93eb75ad850387730a245db3a545))
+* Add eqref, i31ref, and dataref types ([#162](https://github.com/grain-lang/binaryen.ml/issues/162)) ([b6808ee](https://github.com/grain-lang/binaryen.ml/commit/b6808ee4422a68aa27114573e642b2467df9cc3c))
+* Remove externref type ([f0c7d7e](https://github.com/grain-lang/binaryen.ml/commit/f0c7d7e5aaad93eb75ad850387730a245db3a545))
+* Support passive memory segments ([#158](https://github.com/grain-lang/binaryen.ml/issues/158)) ([21857f7](https://github.com/grain-lang/binaryen.ml/commit/21857f7cf653a52e558fb7ffaa5a1e6042e895a0))
+* Update to libbinaryen v108 ([#163](https://github.com/grain-lang/binaryen.ml/issues/163)) ([f0c7d7e](https://github.com/grain-lang/binaryen.ml/commit/f0c7d7e5aaad93eb75ad850387730a245db3a545))
+
+
+### Bug Fixes
+
+* Convert JSOO lists to JS arrays before working with them ([#161](https://github.com/grain-lang/binaryen.ml/issues/161)) ([e4931f0](https://github.com/grain-lang/binaryen.ml/commit/e4931f00cffccefd5918b94b17b18883e120e444))
+
 ### [0.17.1](https://github.com/grain-lang/binaryen.ml/compare/v0.17.0...v0.17.1) (2022-06-11)
 
 
