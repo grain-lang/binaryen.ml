@@ -1,6 +1,13 @@
 //Provides: caml_binaryen_add_function
 //Requires: caml_jsstring_of_string, caml_js_from_array
-function caml_binaryen_add_function(wasm_mod, name, params, results, locals, body) {
+function caml_binaryen_add_function(
+  wasm_mod,
+  name,
+  params,
+  results,
+  locals,
+  body
+) {
   return wasm_mod.addFunction(
     caml_jsstring_of_string(name),
     params,
@@ -12,7 +19,14 @@ function caml_binaryen_add_function(wasm_mod, name, params, results, locals, bod
 //Provides: caml_binaryen_add_function__bytecode
 //Requires: caml_binaryen_add_function
 function caml_binaryen_add_function__bytecode() {
-  return caml_binaryen_add_function(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
+  return caml_binaryen_add_function(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
 }
 
 //Provides: caml_binaryen_get_function
@@ -43,50 +57,62 @@ function caml_binaryen_set_start(wasm_mod, func) {
 }
 
 //Provides: caml_binaryen_function_set_debug_location
-//Requires: binaryen
-function caml_binaryen_function_set_debug_location(func, exp, file, line, column) {
-  return binaryen._BinaryenFunctionSetDebugLocation(func, exp, file, line, column);
+//Requires: Binaryen
+function caml_binaryen_function_set_debug_location(
+  func,
+  exp,
+  file,
+  line,
+  column
+) {
+  return Binaryen._BinaryenFunctionSetDebugLocation(
+    func,
+    exp,
+    file,
+    line,
+    column
+  );
 }
 
 //Provides: caml_binaryen_function_get_name
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_function_get_name(func) {
-  return caml_string_of_jsstring(binaryen.Function.getName(func));
+  return caml_string_of_jsstring(Binaryen.Function.getName(func));
 }
 
 //Provides: caml_binaryen_function_get_params
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_get_params(func) {
-  return binaryen.Function.getParams(func);
+  return Binaryen.Function.getParams(func);
 }
 
 //Provides: caml_binaryen_function_get_results
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_get_results(func) {
-  return binaryen.Function.getResults(func);
+  return Binaryen.Function.getResults(func);
 }
 
 //Provides: caml_binaryen_function_get_num_vars
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_get_num_vars(func) {
-  return binaryen.Function.getNumVars(func);
+  return Binaryen.Function.getNumVars(func);
 }
 
 //Provides: caml_binaryen_function_get_var
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_get_var(func, index) {
-  return binaryen.Function.getVar(func, index);
+  return Binaryen.Function.getVar(func, index);
 }
 
 //Provides: caml_binaryen_function_get_body
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_get_body(func) {
-  return binaryen.Function.getBody(func);
+  return Binaryen.Function.getBody(func);
 }
 
 //Provides: caml_binaryen_function_set_body
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_function_set_body(func, body) {
-  return binaryen.Function.setBody(func, body);
+  return Binaryen.Function.setBody(func, body);
 }

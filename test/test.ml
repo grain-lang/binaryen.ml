@@ -142,20 +142,20 @@ let _ =
     [ segment; passive_segment ]
     false
 
-(* Create an imported "write" function i32 (externref, i32, i32) *)
+(* Create an imported "write" function i32 (anyref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 
 let _ =
   Import.add_function_import wasm_mod "write" "future-wasi" "write"
-    (Type.create [| Type.externref; Type.int32; Type.int32 |])
+    (Type.create [| Type.anyref; Type.int32; Type.int32 |])
     Type.int32
 
 (* Create a function that calls the imported write function *)
 let _ =
-  Function.add_function wasm_mod "hello" Type.externref Type.int32 [||]
+  Function.add_function wasm_mod "hello" Type.anyref Type.int32 [||]
     (Expression.Call.make wasm_mod "write"
        [
-         Expression.Local_get.make wasm_mod 0 Type.externref;
+         Expression.Local_get.make wasm_mod 0 Type.anyref;
          Expression.Const.make wasm_mod (Literal.int32 0l);
          Expression.Const.make wasm_mod (Literal.int32 1l);
        ]

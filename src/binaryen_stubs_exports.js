@@ -1,6 +1,10 @@
 //Provides: caml_binaryen_add_function_export
 //Requires: caml_jsstring_of_string
-function caml_binaryen_add_function_export(wasm_mod, internal_name, external_name) {
+function caml_binaryen_add_function_export(
+  wasm_mod,
+  internal_name,
+  external_name
+) {
   return wasm_mod.addFunctionExport(
     caml_jsstring_of_string(internal_name),
     caml_jsstring_of_string(external_name)
@@ -9,7 +13,11 @@ function caml_binaryen_add_function_export(wasm_mod, internal_name, external_nam
 
 //Provides: caml_binaryen_add_table_export
 //Requires: caml_jsstring_of_string
-function caml_binaryen_add_table_export(wasm_mod, internal_name, external_name) {
+function caml_binaryen_add_table_export(
+  wasm_mod,
+  internal_name,
+  external_name
+) {
   return wasm_mod.addTableExport(
     caml_jsstring_of_string(internal_name),
     caml_jsstring_of_string(external_name)
@@ -18,7 +26,11 @@ function caml_binaryen_add_table_export(wasm_mod, internal_name, external_name) 
 
 //Provides: caml_binaryen_add_memory_export
 //Requires: caml_jsstring_of_string
-function caml_binaryen_add_memory_export(wasm_mod, internal_name, external_name) {
+function caml_binaryen_add_memory_export(
+  wasm_mod,
+  internal_name,
+  external_name
+) {
   return wasm_mod.addMemoryExport(
     caml_jsstring_of_string(internal_name),
     caml_jsstring_of_string(external_name)
@@ -27,7 +39,11 @@ function caml_binaryen_add_memory_export(wasm_mod, internal_name, external_name)
 
 //Provides: caml_binaryen_add_global_export
 //Requires: caml_jsstring_of_string
-function caml_binaryen_add_global_export(wasm_mod, internal_name, external_name) {
+function caml_binaryen_add_global_export(
+  wasm_mod,
+  internal_name,
+  external_name
+) {
   return wasm_mod.addGlobalExport(
     caml_jsstring_of_string(internal_name),
     caml_jsstring_of_string(external_name)
@@ -57,54 +73,54 @@ function caml_binaryen_get_export_by_index(wasm_mod, index) {
 }
 
 //Provides: caml_binaryen_export_get_name
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_export_get_name(exp) {
-  var export_info = binaryen.getExportInfo(exp);
+  var export_info = Binaryen.getExportInfo(exp);
   return caml_string_of_jsstring(export_info.name);
 }
 
 //Provides: caml_binaryen_export_get_value
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_export_get_value(exp) {
-  var export_info = binaryen.getExportInfo(exp);
+  var export_info = Binaryen.getExportInfo(exp);
   return caml_string_of_jsstring(export_info.value);
 }
 
 //Provides: caml_binaryen_external_function
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_external_function() {
-  return binaryen._BinaryenExternalFunction();
+  return Binaryen._BinaryenExternalFunction();
 }
 
 //Provides: caml_binaryen_external_table
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_external_table() {
-  return binaryen._BinaryenExternalTable();
+  return Binaryen._BinaryenExternalTable();
 }
 
 //Provides: caml_binaryen_external_memory
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_external_memory() {
-  return binaryen._BinaryenExternalMemory();
+  return Binaryen._BinaryenExternalMemory();
 }
 
 //Provides: caml_binaryen_external_global
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_external_global() {
-  return binaryen._BinaryenExternalGlobal();
+  return Binaryen._BinaryenExternalGlobal();
 }
 
 //Provides: caml_binaryen_external_tag
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_external_tag() {
-  return binaryen._BinaryenExternalTag();
+  return Binaryen._BinaryenExternalTag();
 }
 
 //Provides: caml_binaryen_export_get_kind
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_export_get_kind(exp) {
-  var export_info = binaryen.getExportInfo(exp);
+  var export_info = Binaryen.getExportInfo(exp);
   return export_info.kind;
 }

@@ -32,31 +32,31 @@ function caml_binaryen_get_global_by_index(wasm_mod, index) {
 }
 
 //Provides: caml_binaryen_global_get_name
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_string_of_jsstring
 function caml_binaryen_global_get_name(global) {
-  var global_info = binaryen.getGlobalInfo(global);
+  var global_info = Binaryen.getGlobalInfo(global);
   return caml_string_of_jsstring(global_info.name);
 }
 
 //Provides: caml_binaryen_global_get_type
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_global_get_type(global) {
-  var global_info = binaryen.getGlobalInfo(global);
+  var global_info = Binaryen.getGlobalInfo(global);
   return global_info.type;
 }
 
 //Provides: caml_binaryen_global_is_mutable
-//Requires: binaryen
+//Requires: Binaryen
 //Requires: caml_js_to_bool
 function caml_binaryen_global_is_mutable(global) {
-  var global_info = binaryen.getGlobalInfo(global);
+  var global_info = Binaryen.getGlobalInfo(global);
   return caml_js_to_bool(global_info.mutable);
 }
 
 //Provides: caml_binaryen_global_get_init_expr
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_global_get_init_expr(global) {
-  var global_info = binaryen.getGlobalInfo(global);
+  var global_info = Binaryen.getGlobalInfo(global);
   return global_info.init;
 }

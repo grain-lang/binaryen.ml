@@ -28,9 +28,9 @@ external funcref : unit -> t = "caml_binaryen_type_funcref"
 
 let funcref = funcref ()
 
-external externref : unit -> t = "caml_binaryen_type_externref"
+external anyref : unit -> t = "caml_binaryen_type_anyref"
 
-let externref = externref ()
+let anyref = anyref ()
 
 external eqref : unit -> t = "caml_binaryen_type_eqref"
 

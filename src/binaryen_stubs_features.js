@@ -9,103 +9,103 @@ function caml_binaryen_module_set_features(wasm_mod, features) {
 }
 
 //Provides: caml_binaryen_feature_mvp
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_mvp() {
-  return binaryen.Features.MVP;
+  return Binaryen.Features.MVP;
 }
 
 //Provides: caml_binaryen_feature_atomics
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_atomics() {
-  return binaryen.Features.Atomics;
+  return Binaryen.Features.Atomics;
 }
 
 //Provides: caml_binaryen_feature_bulk_memory
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_bulk_memory() {
-  return binaryen.Features.BulkMemory;
+  return Binaryen.Features.BulkMemory;
 }
 
 //Provides: caml_binaryen_feature_mutable_globals
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_mutable_globals() {
-  return binaryen.Features.MutableGlobals;
+  return Binaryen.Features.MutableGlobals;
 }
 
 //Provides: caml_binaryen_feature_nontrapping_fp_to_int
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_nontrapping_fp_to_int() {
-  return binaryen.Features.NontrappingFPToInt;
+  return Binaryen.Features.NontrappingFPToInt;
 }
 
 //Provides: caml_binaryen_feature_sign_ext
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_sign_ext() {
-  return binaryen.Features.SignExt;
+  return Binaryen.Features.SignExt;
 }
 
 //Provides: caml_binaryen_feature_simd128
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_simd128() {
-  return binaryen.Features.SIMD128;
+  return Binaryen.Features.SIMD128;
 }
 
 //Provides: caml_binaryen_feature_exception_handling
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_exception_handling() {
-  return binaryen.Features.ExceptionHandling;
+  return Binaryen.Features.ExceptionHandling;
 }
 
 //Provides: caml_binaryen_feature_tail_call
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_tail_call() {
-  return binaryen.Features.TailCall;
+  return Binaryen.Features.TailCall;
 }
 
 //Provides: caml_binaryen_feature_reference_types
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_reference_types() {
-  return binaryen.Features.ReferenceTypes;
+  return Binaryen.Features.ReferenceTypes;
 }
 
 //Provides: caml_binaryen_feature_multivalue
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_multivalue() {
-  return binaryen.Features.Multivalue;
+  return Binaryen.Features.Multivalue;
 }
 
 //Provides: caml_binaryen_feature_gc
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_gc() {
-  return binaryen.Features.GC;
+  return Binaryen.Features.GC;
 }
 
 //Provides: caml_binaryen_feature_memory64
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_memory64() {
-  return binaryen.Features.Memory64;
+  return Binaryen.Features.Memory64;
 }
 
 //Provides: caml_binaryen_feature_typed_function_references
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_typed_function_references() {
-  return binaryen.Features.TypedFunctionReferences;
+  return Binaryen.Features.TypedFunctionReferences;
 }
 
 //Provides: caml_binaryen_feature_relaxed_simd
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_relaxed_simd() {
-  return binaryen.Features.RelaxedSIMD;
+  return Binaryen.Features.RelaxedSIMD;
 }
 
 //Provides: caml_binaryen_feature_extended_const
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_extended_const() {
-  return binaryen.Features.ExtendedConst;
+  return Binaryen.Features.ExtendedConst;
 }
 
 //Provides: caml_binaryen_feature_all
-//Requires: binaryen
+//Requires: Binaryen
 function caml_binaryen_feature_all() {
-  return binaryen.Features.All;
+  return Binaryen.Features.All;
 }
