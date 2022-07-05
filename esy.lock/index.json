@@ -1,5 +1,5 @@
 {
-  "checksum": "40488ca917b93e7f2d7f5a073c11cf59",
+  "checksum": "ba64159d781bcde0ae96467434fe2e63",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.14.0@d41d8cd9": {
@@ -787,20 +787,20 @@
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.3.1@37a83374"
       ]
     },
-    "@opam/ocaml-lsp-server@opam:1.12.1@578f30bb": {
-      "id": "@opam/ocaml-lsp-server@opam:1.12.1@578f30bb",
+    "@opam/ocaml-lsp-server@opam:1.12.2@7e7be5b8": {
+      "id": "@opam/ocaml-lsp-server@opam:1.12.2@7e7be5b8",
       "name": "@opam/ocaml-lsp-server",
-      "version": "opam:1.12.1",
+      "version": "opam:1.12.2",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/a7/a70c37fe4ef94a809e813509317c653c0f26197da303fd2f6ed4d04298aaf0c7#sha256:a70c37fe4ef94a809e813509317c653c0f26197da303fd2f6ed4d04298aaf0c7",
-          "archive:https://github.com/ocaml/ocaml-lsp/releases/download/1.12.1/lsp-1.12.1.tbz#sha256:a70c37fe4ef94a809e813509317c653c0f26197da303fd2f6ed4d04298aaf0c7"
+          "archive:https://opam.ocaml.org/cache/sha256/cf/cf25c8587c848aa913a5e5cc6417e95901be58623c049116e733d8473597dd39#sha256:cf25c8587c848aa913a5e5cc6417e95901be58623c049116e733d8473597dd39",
+          "archive:https://github.com/ocaml/ocaml-lsp/releases/download/1.12.2/lsp-1.12.2.tbz#sha256:cf25c8587c848aa913a5e5cc6417e95901be58623c049116e733d8473597dd39"
         ],
         "opam": {
           "name": "ocaml-lsp-server",
-          "version": "1.12.1",
-          "path": "esy.lock/opam/ocaml-lsp-server.1.12.1"
+          "version": "1.12.2",
+          "path": "esy.lock/opam/ocaml-lsp-server.1.12.2"
         }
       },
       "overrides": [],
@@ -1439,16 +1439,14 @@
       ],
       "devDependencies": [ "ocaml@4.14.0@d41d8cd9" ]
     },
-    "@grain/libbinaryen@github:grain-lang/libbinaryen:package.json#25079d5b69a18e565ad646152251edff11c3b3b8@d41d8cd9": {
-      "id":
-        "@grain/libbinaryen@github:grain-lang/libbinaryen:package.json#25079d5b69a18e565ad646152251edff11c3b3b8@d41d8cd9",
+    "@grain/libbinaryen@108.0.0@d41d8cd9": {
+      "id": "@grain/libbinaryen@108.0.0@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version":
-        "github:grain-lang/libbinaryen:package.json#25079d5b69a18e565ad646152251edff11c3b3b8",
+      "version": "108.0.0",
       "source": {
         "type": "install",
         "source": [
-          "github:grain-lang/libbinaryen:package.json#25079d5b69a18e565ad646152251edff11c3b3b8"
+          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-108.0.0.tgz#sha1:a1edd55b8179d4e4abfdc1c17d1ce90788ae1db8"
         ]
       },
       "overrides": [],
@@ -1475,11 +1473,11 @@
         "ocaml@4.14.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.3.1@fd9d68cb",
         "@opam/dune@opam:3.3.1@37a83374",
-        "@grain/libbinaryen@github:grain-lang/libbinaryen:package.json#25079d5b69a18e565ad646152251edff11c3b3b8@d41d8cd9"
+        "@grain/libbinaryen@108.0.0@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.20.1@30a05b69",
-        "@opam/ocaml-lsp-server@opam:1.12.1@578f30bb",
+        "@opam/ocaml-lsp-server@opam:1.12.2@7e7be5b8",
         "@opam/js_of_ocaml-compiler@opam:4.0.0@e10fcdb0"
       ],
       "installConfig": { "pnp": false }

@@ -53,10 +53,10 @@ build: [
 ]
 url {
   src:
-    "https://github.com/ocaml/ocaml-lsp/releases/download/1.12.1/lsp-1.12.1.tbz"
+    "https://github.com/ocaml/ocaml-lsp/releases/download/1.12.2/lsp-1.12.2.tbz"
   checksum: [
-    "sha256=a70c37fe4ef94a809e813509317c653c0f26197da303fd2f6ed4d04298aaf0c7"
-    "sha512=c674487665dd2f32ec89f953f86e0e209e8ebc709a00376fa4553b6d35280f24d23b08a51688f071927616fba9e6e3b17339d036c920aadeb53249ae5df5d03c"
+    "sha256=cf25c8587c848aa913a5e5cc6417e95901be58623c049116e733d8473597dd39"
+    "sha512=b5aa4278006a0ed8dac3fb18a331c18c5e877c5910165b34e32a1ba346951bf234864ff2b53d58191130b38e07dadaab9778e6bfb2bce351ba98c54c09d6028e"
   ]
 }
-x-commit-hash: "5846c8c4b3e3d56022bedaa70cd0d87680b49d88"
+x-commit-hash: "bc3e9c298185fdcb3b80d2d89562b586ba21eb74"
