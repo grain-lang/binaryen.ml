@@ -6,8 +6,8 @@
 ### ⚠ BREAKING CHANGES
 
 * Remove externref type
-* Update to libbinaryen v108 (#163)
-* Support passive memory segments (#158)
+* Update to libbinaryen v108 ([#163](https://github.com/grain-lang/binaryen.ml/issues/163))
+* Support passive memory segments ([#158](https://github.com/grain-lang/binaryen.ml/issues/158)) ([21857f7](https://github.com/grain-lang/binaryen.ml/commit/21857f7cf653a52e558fb7ffaa5a1e6042e895a0))
 
 ### Features
 
