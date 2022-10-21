@@ -100,6 +100,13 @@ function caml_binaryen_function_import_get_module(func) {
   return caml_string_of_jsstring(func_info.module);
 }
 
+//Provides: caml_binaryen_memory_import_get_module
+//Requires: caml_string_of_jsstring
+function caml_binaryen_memory_import_get_module(mod) {
+  var memory_info = mod.getMemoryInfo();
+  return caml_string_of_jsstring(memory_info.module);
+}
+
 //Provides: caml_binaryen_global_import_get_module
 //Requires: Binaryen
 //Requires: caml_string_of_jsstring
@@ -114,6 +121,13 @@ function caml_binaryen_global_import_get_module(global) {
 function caml_binaryen_function_import_get_base(func) {
   var func_info = Binaryen.getFunctionInfo(func);
   return caml_string_of_jsstring(func_info.base);
+}
+
+//Provides: caml_binaryen_memory_import_get_base
+//Requires: caml_string_of_jsstring
+function caml_binaryen_memory_import_get_base(mod) {
+  var memory_info = mod.getMemoryInfo();
+  return caml_string_of_jsstring(memory_info.base);
 }
 
 //Provides: caml_binaryen_global_import_get_base

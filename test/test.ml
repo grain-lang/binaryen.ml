@@ -20,6 +20,13 @@ let _ = Settings.set_low_memory_unused false
 let wasm_mod = Module.create ()
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 
+let import_wasm_mod = Module.create ()
+
+let _ = Import.add_memory_import import_wasm_mod "internal_name" "external_name" "external_base_name" false
+
+let _ = assert (Import.memory_import_get_module import_wasm_mod = "external_name")
+let _ = assert (Import.memory_import_get_base import_wasm_mod = "external_base_name")
+
 (* Testing Return.get_value *)
 let _ =
   assert (
