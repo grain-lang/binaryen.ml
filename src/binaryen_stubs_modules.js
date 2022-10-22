@@ -36,6 +36,16 @@ function caml_binaryen_module_print_asmjs(wasm_mod) {
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
 }
 
+//Provides: caml_binaryen_module_print_stack_ir
+//Requires: caml_string_of_jsstring
+//Requires: caml_ml_output, caml_ml_string_length
+function caml_binaryen_module_print_stack_ir(wasm_mod) {
+  var stackir = wasm_mod.emitStackIR()
+  var chanid = 1; // stdout
+  var s = caml_string_of_jsstring(stackir);
+  caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
+}
+
 //Provides: caml_binaryen_module_validate
 function caml_binaryen_module_validate(wasm_mod) {
   return wasm_mod.validate();

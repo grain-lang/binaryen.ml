@@ -87,6 +87,7 @@ external add_custom_section : t -> string -> string -> unit
 external parse : string -> t = "caml_binaryen_module_parse"
 external print : t -> unit = "caml_binaryen_module_print"
 external print_asmjs : t -> unit = "caml_binaryen_module_print_asmjs"
+external print_stack_ir : t -> unit = "caml_binaryen_module_print_stack_ir"
 external validate : t -> int = "caml_binaryen_module_validate"
 external optimize : t -> unit = "caml_binaryen_module_optimize"
 external get_features : t -> int = "caml_binaryen_module_get_features"

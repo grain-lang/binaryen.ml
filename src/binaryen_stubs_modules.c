@@ -53,6 +53,13 @@ caml_binaryen_module_print_asmjs(value module) {
 }
 
 CAMLprim value
+caml_binaryen_module_print_stack_ir(value module) {
+  CAMLparam1(module);
+  BinaryenModulePrintStackIR(BinaryenModuleRef_val(module));
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
 caml_binaryen_module_validate(value module) {
   CAMLparam1(module);
   int res = BinaryenModuleValidate(BinaryenModuleRef_val(module));

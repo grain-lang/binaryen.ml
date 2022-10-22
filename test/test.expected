@@ -143,3 +143,39 @@
   )
  )
 )
+(module
+ (type $type$0 (func (param anyref i32 i32) (result i32)))
+ (type $type$1 (func (param i32 i32) (result i32)))
+ (type $type$2 (func))
+ (type $type$3 (func (param anyref) (result i32)))
+ (import "future-wasi" "write" (func $fimport$0 (param anyref i32 i32) (result i32)))
+ (memory $0 1)
+ (data (i32.const 0) "hello")
+ (table $0 1 1 funcref)
+ (elem (i32.const 0) $0)
+ (export "adder" (func $0))
+ (export "memory" (memory $0))
+ (export "hello" (func $2))
+ (start $1)
+ (func $0 (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  local.get $1
+  i32.load8_s
+  i32.const 1
+  select
+  local.get $1
+  i32.add
+ )
+ (func $1
+  i32.const 3
+  i32.const 5
+  call $0
+  drop
+ )
+ (func $2 (param $0 anyref) (result i32)
+  local.get $0
+  i32.const 0
+  i32.const 1
+  call $fimport$0
+ )
+)

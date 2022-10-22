@@ -28,6 +28,7 @@ val add_custom_section : t -> string -> string -> unit
 val parse : string -> t
 val print : t -> unit
 val print_asmjs : t -> unit
+val print_stack_ir : t -> unit
 val validate : t -> int
 val optimize : t -> unit
 val get_features : t -> Feature.t list
