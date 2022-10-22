@@ -132,6 +132,19 @@ caml_binaryen_module_write_text(value _module) {
   CAMLreturn(text);
 }
 
+// There is something weird with this function that causes a bunch of newlines to
+// be printed on stdout when calling it. Not sure if that's a bug in Binaryen.
+CAMLprim value
+caml_binaryen_module_write_stack_ir(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* result = BinaryenModuleAllocateAndWriteStackIR(module);
+  CAMLlocal1(text);
+  text = caml_copy_string(result);
+  free(result);
+  CAMLreturn(text);
+}
+
 CAMLprim value
 caml_binaryen_module_read(value _bytes) {
   CAMLparam1(_bytes);
