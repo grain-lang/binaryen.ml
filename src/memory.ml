@@ -39,4 +39,14 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
   set_memory wasm_mod initial maximum export_name segment_data segment_passive
     segment_offsets segment_sizes shared
 
+external has_memory : Module.t -> bool = "caml_binaryen_has_memory"
+
+external get_initial : Module.t -> int = "caml_binaryen_memory_get_initial"
+
+external has_max : Module.t -> bool = "caml_binaryen_memory_has_max"
+
+external get_max : Module.t -> int = "caml_binaryen_memory_get_max"
+
+external is_shared : Module.t -> bool = "caml_binaryen_memory_is_shared"
+
 let unlimited = -1
