@@ -90,6 +90,9 @@ val global_refining : t
 val gto : t
 (** globally optimize GC types *)
 
+val gsi : t
+(** globally optimize struct values *)
+
 val type_refining : t
 (** apply more specific subtypes to type fields where possible *)
 
@@ -308,6 +311,9 @@ val souperify : t
 
 val souperify_single_use : t
 (** emit Souper IR in text form (single-use nodes only) *)
+
+val spill_pointers : t
+(** spill pointers to the C stack (useful for Boehm-style GC) *)
 
 val stub_unsupported_js : t
 (** stub out unsupported JS operations *)

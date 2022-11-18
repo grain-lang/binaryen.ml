@@ -20,11 +20,15 @@ external add_global_import :
 external function_import_get_module : Function.t -> string
   = "caml_binaryen_function_import_get_module"
 
+external memory_import_get_module : Module.t -> string = "caml_binaryen_memory_import_get_module"
+
 external global_import_get_module : Global.t -> string
   = "caml_binaryen_global_import_get_module"
 
 external function_import_get_base : Function.t -> string
   = "caml_binaryen_function_import_get_base"
+
+external memory_import_get_base : Module.t -> string = "caml_binaryen_memory_import_get_base"
 
 external global_import_get_base : Global.t -> string
   = "caml_binaryen_global_import_get_base"

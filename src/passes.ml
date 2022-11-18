@@ -90,6 +90,9 @@ let global_refining = "global-refining"
 (** globally optimize GC types *)
 let gto = "gto"
 
+(** globally optimize struct values *)
+let gsi = "gsi"
+
 (** apply more specific subtypes to type fields where possible *)
 let type_refining = "type-refining"
 
@@ -310,6 +313,9 @@ let souperify = "souperify"
 
 (** emit Souper IR in text form (single-use nodes only) *)
 let souperify_single_use = "souperify-single-use"
+
+(** spill pointers to the C stack (useful for Boehm-style GC) *)
+let spill_pointers = "spill-pointers"
 
 (** stub out unsupported JS operations *)
 let stub_unsupported_js = "stub-unsupported-js"

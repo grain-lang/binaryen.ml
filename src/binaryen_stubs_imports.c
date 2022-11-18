@@ -75,6 +75,13 @@ caml_binaryen_function_import_get_module(value _fun) {
 }
 
 CAMLprim value
+caml_binaryen_memory_import_get_module(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetModule(module)));
+}
+
+CAMLprim value
 caml_binaryen_global_import_get_module(value _global) {
   CAMLparam1(_global);
   BinaryenGlobalRef global = BinaryenGlobalRef_val(_global);
@@ -86,6 +93,13 @@ caml_binaryen_function_import_get_base(value _fun) {
   CAMLparam1(_fun);
   BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
   CAMLreturn(caml_copy_string(BinaryenFunctionImportGetBase(fun)));
+}
+
+CAMLprim value
+caml_binaryen_memory_import_get_base(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetBase(module)));
 }
 
 CAMLprim value

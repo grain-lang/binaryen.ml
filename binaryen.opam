@@ -16,5 +16,5 @@ depends: [
   "dune" {>= "2.9.1"}
   "dune-configurator" {>= "2.9.1"}
   "js_of_ocaml-compiler" {>= "3.10.0"}
-  "libbinaryen" {>= "108.0.0" < "109.0.0"}
+  "libbinaryen" {>= "109.0.0" < "110.0.0"}
 ]

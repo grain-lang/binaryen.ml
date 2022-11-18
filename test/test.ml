@@ -19,6 +19,19 @@ let _ = assert (Settings.get_low_memory_unused () == true)
 let _ = Settings.set_low_memory_unused false
 let wasm_mod = Module.create ()
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
+let import_wasm_mod = Module.create ()
+
+let _ =
+  Import.add_memory_import import_wasm_mod "internal_name" "external_name"
+    "external_base_name" true
+
+let _ =
+  assert (Import.memory_import_get_module import_wasm_mod = "external_name")
+
+let _ =
+  assert (Import.memory_import_get_base import_wasm_mod = "external_base_name")
+
+let _ = assert (Memory.is_shared import_wasm_mod = true)
 
 (* Testing Return.get_value *)
 let _ =
@@ -137,10 +150,21 @@ let passive_segment : Binaryen.Memory.segment =
   let size = Bytes.length data in
   { data; kind; size }
 
+let _ = assert (Memory.has_memory wasm_mod = false)
+
 let _ =
   Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
     [ segment; passive_segment ]
     false
+
+let _ = assert (Memory.has_memory wasm_mod = true)
+let _ = assert (Memory.get_initial wasm_mod = 1)
+let _ = assert (Memory.has_max wasm_mod = false)
+let _ = assert (Memory.get_max wasm_mod = Memory.unlimited)
+let max_memory_wasm_mod = Module.create ()
+let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false
+let _ = assert (Memory.has_max max_memory_wasm_mod = true)
+let _ = assert (Memory.get_max max_memory_wasm_mod = 2)
 
 (* Create an imported "write" function i32 (anyref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
@@ -191,7 +215,7 @@ let new_mod = Module.read byts
 
 let _ =
   Module.run_passes new_mod
-    [ Passes.name_types; Passes.merge_similar_functions ]
+    [ Passes.name_types; Passes.merge_similar_functions; Passes.spill_pointers ]
 
 let _ =
   Module.set_features new_mod
@@ -217,6 +241,8 @@ let _ =
 
 let _ = Module.validate new_mod
 let _ = Module.print new_mod
+
+let _ = Module.print_stack_ir new_mod
 
 (* Dispose the modules 👋 *)
 
