@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.19.0](https://github.com/grain-lang/binaryen.ml/compare/v0.18.0...v0.19.0) (2022-11-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to libbinaryen v109 (#165)
+
+### Features
+
+* Add `Import.memory_import_get_module` and `Import.memory_import_get_base` functions ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+* Add function to print StackIR ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+* Add function to write StackIR ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+* Add gsi & spill_pointers passes ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+* Add operations on memory ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+* Upgrade to libbinaryen v109 ([#165](https://github.com/grain-lang/binaryen.ml/issues/165)) ([b584500](https://github.com/grain-lang/binaryen.ml/commit/b5845005bd20c3813db11bebb9b47ad616c01c5d))
+
 ## [0.18.0](https://github.com/grain-lang/binaryen.ml/compare/v0.17.1...v0.18.0) (2022-07-05)
 
 
