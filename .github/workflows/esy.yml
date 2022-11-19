@@ -15,9 +15,9 @@ jobs:
 
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v3.5.1
         with:
-          node-version: '14'
+          node-version: "16"
           check-latest: true
 
       # Install `esy` to build the project
@@ -28,9 +28,9 @@ jobs:
           npm i -g shx
 
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
         with:
-          submodules: 'recursive'
+          submodules: "recursive"
 
       - name: Install local dependencies
         run: |
@@ -38,10 +38,10 @@ jobs:
 
       - name: Esy cache
         id: esy-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3.0.11
         with:
           path: _export
-          key:  ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
+          key: ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
 
       - name: Import esy cache
         if: steps.esy-cache.outputs.cache-hit == 'true'

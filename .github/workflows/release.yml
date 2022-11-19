@@ -12,7 +12,7 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v3.1.0
+      - uses: GoogleCloudPlatform/release-please-action@v3.6.0
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +35,7 @@ jobs:
           brew install git-archive-all
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
         with:
           submodules: "recursive"
 
@@ -45,7 +45,7 @@ jobs:
 
       - name: Upload Release Asset
         id: upload
-        uses: grain-lang/upload-release-action@v3.0.1
+        uses: grain-lang/upload-release-action@v3.0.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           file: ./binaryen-archive.tar.gz
@@ -83,9 +83,9 @@ jobs:
           echo -n "$CHANGES" > CHANGES.md
 
       - name: Setup OCaml
-        uses: avsm/setup-ocaml@v1
+        uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-version: 4.12.0
+          ocaml-compiler: 4.14.0
 
       # Version 2.1.0 of opam-publish doesn't respect OPAMYES=1
       # Ref https://github.com/ocaml-opam/opam-publish/issues/132#issuecomment-963616802
@@ -103,9 +103,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup NodeJS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3.5.1
         with:
-          node-version: "14"
+          node-version: "16"
           registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm
