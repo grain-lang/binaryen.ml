@@ -12,11 +12,11 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        ocaml-compiler: [4.12.0, 4.13.1, 4.14.0]
+        ocaml-compiler: [4.12.1, 4.13.1, 4.14.0]
 
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
         with:
           submodules: "recursive"
 
