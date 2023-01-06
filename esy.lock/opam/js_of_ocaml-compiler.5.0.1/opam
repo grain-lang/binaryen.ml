@@ -10,13 +10,13 @@ homepage: "https://ocsigen.org/js_of_ocaml/latest/manual/overview"
 doc: "https://ocsigen.org/js_of_ocaml/latest/manual/overview"
 bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
 depends: [
-  "dune" {>= "2.9"}
-  "ocaml" {>= "4.04" & < "4.15"}
+  "dune" {>= "3.2"}
+  "ocaml" {>= "4.04" & < "5.1"}
   "num" {with-test}
   "ppx_expect" {>= "v0.14.2" & with-test}
   "ppxlib" {>= "0.15.0"}
   "re" {with-test}
-  "cmdliner" {>= "1.0.0"}
+  "cmdliner" {>= "1.1.0"}
   "menhir"
   "menhirLib"
   "menhirSdk"
@@ -27,7 +27,6 @@ depopts: ["ocamlfind"]
 conflicts: [
   "ocamlfind" {< "1.5.1"}
   "js_of_ocaml" {< "3.0"}
-  "base-domains"
 ]
 dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 build: [
@@ -39,18 +38,16 @@ build: [
     name
     "-j"
     jobs
-    "--promote-install-files=false"
     "@install"
     "@doc" {with-doc}
   ]
-  ["dune" "install" "-p" name "--create-install-files" name]
 ]
 url {
   src:
-    "https://github.com/ocsigen/js_of_ocaml/releases/download/4.0.0/js_of_ocaml-4.0.0.tbz"
+    "https://github.com/ocsigen/js_of_ocaml/releases/download/5.0.1/js_of_ocaml-5.0.1.tbz"
   checksum: [
-    "sha256=df02f819e5b2f48234af2b3e3e7c9781afa8212f8bece7ebcfbd8358b394495e"
-    "sha512=92e822849c8be14ce0428f7f4be3991449f76e65d408073a5b8b9674ba2d099439027aa11618b603c7ee31a179cf6976d54a929917a69b269425f0367926c200"
+    "sha256=7a210f1ca16a742381947dc67c3d8d9f4c94fbf20738744b1353897985b61069"
+    "sha512=07a973561190686d56bd5d56d9a275e177716ea8b9720f6acc7ddf8618680844a6d0c798447567ea9542d83bab524c165d076f3cce0769a12fc483ef8cd6a733"
   ]
 }
-x-commit-hash: "6fb1d008061b6c028c375b240882bb735d54a5bc"
+x-commit-hash: "66570bae49d9fae4341bc548dde9f944afe3b41a"
