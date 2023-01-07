@@ -19,6 +19,7 @@
    binaryen_stubs_modules
    binaryen_stubs_settings
    binaryen_stubs_packed_types
+   binaryen_stubs_heap_types
    binaryen_stubs_type_system
    ocaml_helpers)
   (flags :standard -O2 -Wall -Wextra))
@@ -38,4 +39,5 @@
    binaryen_stubs_modules.js
    binaryen_stubs_settings.js
    binaryen_stubs_packed_types.js
+   binaryen_stubs_heap_types.js
    binaryen_stubs_type_system.js)))
