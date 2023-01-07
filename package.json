@@ -7,8 +7,8 @@
   "dependencies": {
     "ocaml": ">= 4.12.0",
     "@grain/libbinaryen": ">= 110.0.0 < 111.0.0",
-    "@opam/dune": ">= 2.9.1",
-    "@opam/dune-configurator": ">= 2.9.1"
+    "@opam/dune": ">= 3.0.0",
+    "@opam/dune-configurator": ">= 3.0.0"
   },
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": ">= 3.10.0",
@@ -22,7 +22,7 @@
     "build": "dune build -p binaryen"
   },
   "scripts": {
-    "test": "esy b dune runtest",
+    "test": "esy b dune runtest --display=short",
     "format": "dune build @fmt --auto-promote"
   },
   "installConfig": {

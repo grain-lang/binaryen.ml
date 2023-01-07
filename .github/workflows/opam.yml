@@ -31,8 +31,8 @@ jobs:
 
       - name: Build project
         run: |
-          opam exec -- dune build @all @install --no-buffer
+          opam exec -- dune build
 
       - name: Run tests
         run: |
-          opam exec -- dune runtest --force
+          opam exec -- dune runtest --display=short

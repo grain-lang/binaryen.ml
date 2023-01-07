@@ -2,10 +2,10 @@
  (name test)
  (modules test)
  (libraries binaryen)
- (ocamlopt_flags
-  (:include ./config/ocamlopt_flags.sexp))
- (action
-  (run %{test})))
+ (modes exe)
+ (flags
+  :standard
+  (:include ./config/ocamlopt_flags.sexp)))
 
 ; Tests for binaryen.js implementation
 
@@ -19,12 +19,9 @@
 (test
  (name test_js)
  (enabled_if
-  (<> %{system} mingw64))
+  (= %{bin-available:node} true))
  (modules test_js)
- (modes
-  (byte js))
  (libraries binaryen)
- (action
-  (run node %{dep:test_js.bc.js}))
+ (modes js)
  (js_of_ocaml
-  (flags --no-sourcemap --disable share)))
+  (flags --no-sourcemap)))
