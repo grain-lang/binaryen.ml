@@ -37,10 +37,10 @@ function caml_binaryen_module_print_asmjs(wasm_mod) {
 }
 
 //Provides: caml_binaryen_module_print_stack_ir
-//Requires: caml_string_of_jsstring
+//Requires: caml_string_of_jsstring, caml_js_from_bool
 //Requires: caml_ml_output, caml_ml_string_length
-function caml_binaryen_module_print_stack_ir(wasm_mod) {
-  var stackir = wasm_mod.emitStackIR()
+function caml_binaryen_module_print_stack_ir(wasm_mod, optimize) {
+  var stackir = wasm_mod.emitStackIR(caml_js_from_bool(optimize));
   var chanid = 1; // stdout
   var s = caml_string_of_jsstring(stackir);
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
@@ -93,9 +93,9 @@ function caml_binaryen_module_write_text(wasm_mod) {
 }
 
 //Provides: caml_binaryen_module_write_stack_ir
-//Requires: caml_string_of_jsstring
-function caml_binaryen_module_write_stack_ir(wasm_mod) {
-  var text = wasm_mod.emitStackIR();
+//Requires: caml_string_of_jsstring, caml_js_from_bool
+function caml_binaryen_module_write_stack_ir(wasm_mod, optimize) {
+  var text = wasm_mod.emitStackIR(caml_js_from_bool(optimize));
   return caml_string_of_jsstring(text);
 }
 
