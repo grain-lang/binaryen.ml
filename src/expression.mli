@@ -192,13 +192,15 @@ module Global_set : sig
 end
 
 module Load : sig
-  val make : Module.t -> int -> ?signed:bool -> int -> int -> Type.t -> t -> t
+  val make :
+    Module.t -> int -> ?signed:bool -> int -> int -> Type.t -> t -> string -> t
+
   val get_ptr : t -> t
   val set_ptr : t -> t -> unit
 end
 
 module Store : sig
-  val make : Module.t -> int -> int -> int -> t -> t -> Type.t -> t
+  val make : Module.t -> int -> int -> int -> t -> t -> Type.t -> string -> t
   val get_ptr : t -> t
   val set_ptr : t -> t -> unit
   val get_value : t -> t
@@ -246,17 +248,17 @@ module Return : sig
 end
 
 module Memory_size : sig
-  val make : Module.t -> t
+  val make : Module.t -> string -> bool -> t
 end
 
 module Memory_grow : sig
-  val make : Module.t -> t -> t
+  val make : Module.t -> t -> string -> bool -> t
   val get_delta : t -> t
   val set_delta : t -> t -> unit
 end
 
 module Memory_init : sig
-  val make : Module.t -> int -> t -> t -> t -> t
+  val make : Module.t -> int -> t -> t -> t -> string -> t
   val get_segment : t -> int
   val set_segment : t -> int -> unit
   val get_dest : t -> t
@@ -274,7 +276,7 @@ module Data_drop : sig
 end
 
 module Memory_copy : sig
-  val make : Module.t -> t -> t -> t -> t
+  val make : Module.t -> t -> t -> t -> string -> string -> t
   val get_dest : t -> t
   val set_dest : t -> t -> unit
   val get_source : t -> t
@@ -284,7 +286,7 @@ module Memory_copy : sig
 end
 
 module Memory_fill : sig
-  val make : Module.t -> t -> t -> t -> t
+  val make : Module.t -> t -> t -> t -> string -> t
   val get_dest : t -> t
   val set_dest : t -> t -> unit
   val get_value : t -> t

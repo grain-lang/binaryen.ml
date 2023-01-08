@@ -1,15 +1,26 @@
 //Provides: caml_binaryen_set_memory
 //Requires: caml_list_to_js_array, caml_convert_bytes_to_array
 //Requires: caml_jsstring_of_string, caml_js_from_bool
-function caml_binaryen_set_memory(wasm_mod, initial, maximum, exportName, segments, segmentPassives, segmentOffsets, segmentSizes, shared) {
+function caml_binaryen_set_memory(
+  wasm_mod,
+  initial,
+  maximum,
+  exportName,
+  segments,
+  segmentPassives,
+  segmentOffsets,
+  segmentSizes,
+  shared,
+  memoryName
+) {
   var passives = caml_list_to_js_array(segmentPassives);
   var offsets = caml_list_to_js_array(segmentOffsets);
   var segs = caml_list_to_js_array(segments).map(function (segment, idx) {
     return {
       data: caml_convert_bytes_to_array(segment),
       passive: caml_js_from_bool(passives[idx]),
-      offset: offsets[idx]
-    }
+      offset: offsets[idx],
+    };
   });
 
   return wasm_mod.setMemory(
@@ -17,13 +28,25 @@ function caml_binaryen_set_memory(wasm_mod, initial, maximum, exportName, segmen
     maximum,
     caml_jsstring_of_string(exportName),
     segs,
-    caml_js_from_bool(shared)
+    caml_js_from_bool(shared),
+    caml_jsstring_of_string(memoryName)
   );
 }
 //Provides: caml_binaryen_set_memory__bytecode
 //Requires: caml_binaryen_set_memory
 function caml_binaryen_set_memory__bytecode() {
-  return caml_binaryen_set_memory(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5], arguments[6], arguments[7], arguments[8]);
+  return caml_binaryen_set_memory(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5],
+    arguments[6],
+    arguments[7],
+    arguments[8],
+    arguments[9]
+  );
 }
 
 //Provides: caml_binaryen_has_memory
@@ -33,15 +56,16 @@ function caml_binaryen_has_memory(mod) {
 }
 
 //Provides: caml_binaryen_memory_get_initial
-function caml_binaryen_memory_get_initial(mod) {
-  var memory_info = mod.getMemoryInfo();
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_get_initial(mod, memoryName) {
+  var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   return memory_info.initial;
 }
 
 //Provides: caml_binaryen_memory_has_max
-//Requires: caml_js_to_bool
-function caml_binaryen_memory_has_max(mod) {
-  var memory_info = mod.getMemoryInfo();
+//Requires: caml_js_to_bool, caml_jsstring_of_string
+function caml_binaryen_memory_has_max(mod, memoryName) {
+  var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   if (memory_info.max != null) {
     return caml_js_to_bool(true);
   } else {
@@ -50,8 +74,9 @@ function caml_binaryen_memory_has_max(mod) {
 }
 
 //Provides: caml_binaryen_memory_get_max
-function caml_binaryen_memory_get_max(mod) {
-  var memory_info = mod.getMemoryInfo();
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_get_max(mod, memoryName) {
+  var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   if (memory_info.max != null) {
     return memory_info.max;
   } else {
@@ -61,8 +86,8 @@ function caml_binaryen_memory_get_max(mod) {
 }
 
 //Provides: caml_binaryen_memory_is_shared
-//Requires: caml_js_to_bool
-function caml_binaryen_memory_is_shared(mod) {
-  var memory_info = mod.getMemoryInfo();
+//Requires: caml_js_to_bool, caml_jsstring_of_string
+function caml_binaryen_memory_is_shared(mod, memoryName) {
+  var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   return caml_js_to_bool(memory_info.shared);
 }

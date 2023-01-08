@@ -173,16 +173,89 @@ function caml_binaryen_global_set(wasm_mod, name, value) {
 
 //Provides: caml_binaryen_load
 //Requires: Binaryen
-function caml_binaryen_load(wasm_mod, bytes, signed, offset, align, typ, ptr) {
-  return Binaryen._BinaryenLoad(
-    wasm_mod,
-    bytes,
-    signed,
-    offset,
-    align,
-    typ,
-    ptr
-  );
+//Requires: caml_jsstring_of_string
+//Requires: caml_failwith
+function caml_binaryen_load(
+  wasm_mod,
+  bytes,
+  signed,
+  offset,
+  align,
+  typ,
+  ptr,
+  memoryName
+) {
+  var name = caml_jsstring_of_string(memoryName);
+
+  if (typ === Binaryen.i32) {
+    if (signed) {
+      if (bytes === 4) {
+        return wasm_mod.i32.load(offset, align, ptr, name);
+      }
+
+      if (bytes === 1) {
+        return wasm_mod.i32.load8_s(offset, align, ptr, name);
+      }
+
+      if (bytes === 2) {
+        return wasm_mod.i32.load16_s(offset, align, ptr, name);
+      }
+    } else {
+      if (bytes === 1) {
+        return wasm_mod.i32.load8_u(offset, align, ptr, name);
+      }
+
+      if (bytes === 2) {
+        return wasm_mod.i32.load16_u(offset, align, ptr, name);
+      }
+    }
+  }
+
+  if (typ === Binaryen.i64) {
+    if (signed) {
+      if (bytes === 8) {
+        return wasm_mod.i64.load(offset, align, ptr, name);
+      }
+
+      if (bytes === 1) {
+        return wasm_mod.i64.load8_s(offset, align, ptr, name);
+      }
+
+      if (bytes === 2) {
+        return wasm_mod.i64.load16_s(offset, align, ptr, name);
+      }
+
+      if (bytes === 4) {
+        return wasm_mod.i64.load32_s(offset, align, ptr, name);
+      }
+    } else {
+      if (bytes === 1) {
+        return wasm_mod.i64.load8_u(offset, align, ptr, name);
+      }
+
+      if (bytes === 2) {
+        return wasm_mod.i64.load16_u(offset, align, ptr, name);
+      }
+
+      if (bytes === 4) {
+        return wasm_mod.i64.load32_u(offset, align, ptr, name);
+      }
+    }
+  }
+
+  if (typ === Binaryen.f32) {
+    return wasm_mod.f32.load(offset, align, ptr, name);
+  }
+
+  if (typ === Binaryen.f64) {
+    return wasm_mod.f64.load(offset, align, ptr, name);
+  }
+
+  if (typ === Binaryen.v128) {
+    return wasm_mod.v128.load(offset, align, ptr, name);
+  }
+
+  caml_failwith("Invalid arguments to BinaryenLoad");
 }
 //Provides: caml_binaryen_load__bytecode
 //Requires: caml_binaryen_load
@@ -194,22 +267,72 @@ function caml_binaryen_load__bytecode() {
     arguments[3],
     arguments[4],
     arguments[5],
-    arguments[6]
+    arguments[6],
+    arguments[7]
   );
 }
 
 //Provides: caml_binaryen_store
 //Requires: Binaryen
-function caml_binaryen_store(wasm_mod, bytes, offset, align, ptr, value, typ) {
-  return Binaryen._BinaryenStore(
-    wasm_mod,
-    bytes,
-    offset,
-    align,
-    ptr,
-    value,
-    typ
-  );
+//Requires: caml_jsstring_of_string
+//Requires: caml_failwith
+function caml_binaryen_store(
+  wasm_mod,
+  bytes,
+  offset,
+  align,
+  ptr,
+  value,
+  typ,
+  memoryName
+) {
+  var name = caml_jsstring_of_string(memoryName);
+
+  if (typ === Binaryen.i32) {
+    if (bytes === 4) {
+      return wasm_mod.i32.store(offset, align, ptr, value, name);
+    }
+
+    if (bytes === 1) {
+      return wasm_mod.i32.store8(offset, align, ptr, value, name);
+    }
+
+    if (bytes === 2) {
+      return wasm_mod.i32.store16(offset, align, ptr, value, name);
+    }
+  }
+
+  if (typ === Binaryen.i64) {
+    if (bytes === 8) {
+      return wasm_mod.i64.store(offset, align, ptr, value, name);
+    }
+
+    if (bytes === 1) {
+      return wasm_mod.i64.store8(offset, align, ptr, value, name);
+    }
+
+    if (bytes === 2) {
+      return wasm_mod.i64.store16(offset, align, ptr, value, name);
+    }
+
+    if (bytes === 4) {
+      return wasm_mod.i64.store32(offset, align, ptr, value, name);
+    }
+  }
+
+  if (typ === Binaryen.f32) {
+    return wasm_mod.f32.store(offset, align, ptr, value, name);
+  }
+
+  if (typ === Binaryen.f64) {
+    return wasm_mod.f64.store(offset, align, ptr, value, name);
+  }
+
+  if (typ === Binaryen.v128) {
+    return wasm_mod.v128.store(offset, align, ptr, value, name);
+  }
+
+  caml_failwith("Invalid arguments to BinaryenStore");
 }
 //Provides: caml_binaryen_store__bytecode
 //Requires: caml_binaryen_store
@@ -221,7 +344,8 @@ function caml_binaryen_store__bytecode() {
     arguments[3],
     arguments[4],
     arguments[5],
-    arguments[6]
+    arguments[6],
+    arguments[7]
   );
 }
 
@@ -286,13 +410,22 @@ function caml_binaryen_return(wasm_mod, value) {
 }
 
 //Provides: caml_binaryen_memory_size
-function caml_binaryen_memory_size(wasm_mod) {
-  return wasm_mod.memory.size();
+//Requires: caml_jsstring_of_string, caml_js_from_bool
+function caml_binaryen_memory_size(wasm_mod, memoryName, memoryIs64) {
+  return wasm_mod.memory.size(
+    caml_jsstring_of_string(memoryName),
+    caml_js_from_bool(memoryIs64)
+  );
 }
 
 //Provides: caml_binaryen_memory_grow
-function caml_binaryen_memory_grow(wasm_mod, value) {
-  return wasm_mod.memory.grow(value);
+//Requires: caml_jsstring_of_string, caml_js_from_bool
+function caml_binaryen_memory_grow(wasm_mod, value, memoryName, memoryIs64) {
+  return wasm_mod.memory.grow(
+    value,
+    caml_jsstring_of_string(memoryName),
+    caml_js_from_bool(memoryIs64)
+  );
 }
 
 //Provides: caml_binaryen_nop
@@ -306,8 +439,34 @@ function caml_binaryen_unreachable(wasm_mod) {
 }
 
 //Provides: caml_binaryen_memory_init
-function caml_binaryen_memory_init(wasm_mod, segment, dest, offset, size) {
-  return wasm_mod.memory.init(segment, dest, offset, size);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_init(
+  wasm_mod,
+  segment,
+  dest,
+  offset,
+  size,
+  memoryName
+) {
+  return wasm_mod.memory.init(
+    segment,
+    dest,
+    offset,
+    size,
+    caml_jsstring_of_string(memoryName)
+  );
+}
+//Provides: caml_binaryen_memory_init__bytecode
+//Requires: caml_binaryen_memory_init
+function caml_binaryen_memory_init__bytecode() {
+  return caml_binaryen_memory_init(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
 }
 
 //Provides: caml_binaryen_data_drop
@@ -316,13 +475,45 @@ function caml_binaryen_data_drop(wasm_mod, segment) {
 }
 
 //Provides: caml_binaryen_memory_copy
-function caml_binaryen_memory_copy(wasm_mod, dest, source, size) {
-  return wasm_mod.memory.copy(dest, source, size);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_copy(
+  wasm_mod,
+  dest,
+  source,
+  size,
+  dest_memory,
+  source_memory
+) {
+  return wasm_mod.memory.copy(
+    dest,
+    source,
+    size,
+    caml_jsstring_of_string(dest_memory),
+    caml_jsstring_of_string(source_memory)
+  );
+}
+//Provides: caml_binaryen_memory_copy__bytecode
+//Requires: caml_binaryen_memory_copy
+function caml_binaryen_memory_copy__bytecode() {
+  return caml_binaryen_memory_copy(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
 }
 
 //Provides: caml_binaryen_memory_fill
-function caml_binaryen_memory_fill(wasm_mod, dest, value, size) {
-  return wasm_mod.memory.fill(dest, value, size);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_fill(wasm_mod, dest, value, size, memoryName) {
+  return wasm_mod.memory.fill(
+    dest,
+    value,
+    size,
+    caml_jsstring_of_string(memoryName)
+  );
 }
 
 //Provides: caml_binaryen_tuple_make

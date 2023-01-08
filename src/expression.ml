@@ -630,10 +630,11 @@ module Global_set = struct
 end
 
 module Load = struct
-  external make : Module.t -> int -> bool -> int -> int -> Type.t -> t -> t
+  external make :
+    Module.t -> int -> bool -> int -> int -> Type.t -> t -> string -> t
     = "caml_binaryen_load__bytecode" "caml_binaryen_load"
 
-  (** Module, num_bytes, ?signed, offset, align, type, ptr. *)
+  (** Module, num_bytes, ?signed, offset, align, type, ptr, memory_name *)
   let make wasm_mod bytes ?(signed = false) offset align ty ptr =
     make wasm_mod bytes signed offset align ty ptr
 
@@ -642,9 +643,10 @@ module Load = struct
 end
 
 module Store = struct
-  external make : Module.t -> int -> int -> int -> t -> t -> Type.t -> t
+  external make :
+    Module.t -> int -> int -> int -> t -> t -> Type.t -> string -> t
     = "caml_binaryen_store__bytecode" "caml_binaryen_store"
-  (** Module, num_bytes, offset, align, ptr, value, type. *)
+  (** Module, num_bytes, offset, align, ptr, value, type, memory_name *)
 
   external get_ptr : t -> t = "caml_binaryen_store_get_ptr"
   external set_ptr : t -> t -> unit = "caml_binaryen_store_set_ptr"
@@ -698,19 +700,23 @@ module Return = struct
 end
 
 module Memory_size = struct
-  external make : Module.t -> t = "caml_binaryen_memory_size"
+  external make : Module.t -> string -> bool -> t = "caml_binaryen_memory_size"
+  (** Module, memory_name, memory_is_64 *)
 end
 
 module Memory_grow = struct
-  external make : Module.t -> t -> t = "caml_binaryen_memory_grow"
+  external make : Module.t -> t -> string -> bool -> t
+    = "caml_binaryen_memory_grow"
+  (** Module, delta, memory_name, memory_is_64 *)
+
   external get_delta : t -> t = "caml_binaryen_memory_grow_get_delta"
   external set_delta : t -> t -> unit = "caml_binaryen_memory_grow_set_delta"
 end
 
 module Memory_init = struct
-  external make : Module.t -> int -> t -> t -> t -> t
-    = "caml_binaryen_memory_init"
-  (** Module, segment, destination, offset, size. *)
+  external make : Module.t -> int -> t -> t -> t -> string -> t
+    = "caml_binaryen_memory_init__bytecode" "caml_binaryen_memory_init"
+  (** Module, segment, destination, offset, size, memory_name *)
 
   external get_segment : t -> int = "caml_binaryen_memory_init_get_segment"
 
@@ -736,8 +742,9 @@ module Data_drop = struct
 end
 
 module Memory_copy = struct
-  external make : Module.t -> t -> t -> t -> t = "caml_binaryen_memory_copy"
-  (** Module, destination, source, size. *)
+  external make : Module.t -> t -> t -> t -> string -> string -> t
+    = "caml_binaryen_memory_copy__bytecode" "caml_binaryen_memory_copy"
+  (** Module, destination, source, size, dest_memory, source_memory *)
 
   external get_dest : t -> t = "caml_binaryen_memory_copy_get_dest"
   external set_dest : t -> t -> unit = "caml_binaryen_memory_copy_set_dest"
@@ -748,8 +755,9 @@ module Memory_copy = struct
 end
 
 module Memory_fill = struct
-  external make : Module.t -> t -> t -> t -> t = "caml_binaryen_memory_fill"
-  (** Module, destination, value, size. *)
+  external make : Module.t -> t -> t -> t -> string -> t
+    = "caml_binaryen_memory_fill"
+  (** Module, destination, value, size, memory_name *)
 
   external get_dest : t -> t = "caml_binaryen_memory_fill_get_dest"
   external set_dest : t -> t -> unit = "caml_binaryen_memory_fill_set_dest"
