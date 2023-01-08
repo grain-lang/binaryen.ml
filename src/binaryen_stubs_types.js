@@ -64,6 +64,30 @@ function caml_binaryen_type_dataref() {
   return Binaryen.dataref;
 }
 
+//Provides: caml_binaryen_type_stringref
+//Requires: Binaryen
+function caml_binaryen_type_stringref() {
+  return Binaryen.stringref;
+}
+
+//Provides: caml_binaryen_type_stringview_wtf8
+//Requires: Binaryen
+function caml_binaryen_type_stringview_wtf8() {
+  return Binaryen.stringview_wtf8;
+}
+
+//Provides: caml_binaryen_type_stringview_wtf16
+//Requires: Binaryen
+function caml_binaryen_type_stringview_wtf16() {
+  return Binaryen.stringview_wtf16;
+}
+
+//Provides: caml_binaryen_type_stringview_iter
+//Requires: Binaryen
+function caml_binaryen_type_stringview_iter() {
+  return Binaryen.stringview_iter;
+}
+
 //Provides: caml_binaryen_type_unreachable
 //Requires: Binaryen
 function caml_binaryen_type_unreachable() {

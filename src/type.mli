@@ -11,6 +11,10 @@ val anyref : t
 val eqref : t
 val i31ref : t
 val dataref : t
+val stringref : t
+val stringview_wtf8 : t
+val stringview_wtf16 : t
+val stringview_iter : t
 val unreachable : t
 val auto : t
 val create : t array -> t

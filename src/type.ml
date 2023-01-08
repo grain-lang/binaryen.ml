@@ -44,6 +44,22 @@ external dataref : unit -> t = "caml_binaryen_type_dataref"
 
 let dataref = dataref ()
 
+external stringref : unit -> t = "caml_binaryen_type_stringref"
+
+let stringref = stringref ()
+
+external stringview_wtf8 : unit -> t = "caml_binaryen_type_stringview_wtf8"
+
+let stringview_wtf8 = stringview_wtf8 ()
+
+external stringview_wtf16 : unit -> t = "caml_binaryen_type_stringview_wtf16"
+
+let stringview_wtf16 = stringview_wtf16 ()
+
+external stringview_iter : unit -> t = "caml_binaryen_type_stringview_iter"
+
+let stringview_iter = stringview_iter ()
+
 external unreachable : unit -> t = "caml_binaryen_type_unreachable"
 
 let unreachable = unreachable ()
