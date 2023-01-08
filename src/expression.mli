@@ -417,3 +417,65 @@ module Table_grow : sig
   val set_delta : t -> t -> unit
   (** Sets the delta of a `Table.grow` expression. *)
 end
+
+module Atomic : sig
+  val load :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    typ:Type.t ->
+    ptr:t ->
+    memory_name:string ->
+    t
+  (** module, bytes, offset, ty, ptr, memoryName *)
+
+  val store :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    value:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t
+  (** module, bytes, offset, ptr, val, ty, memoryName *)
+
+  val rmw :
+    Module.t ->
+    op:Op.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    value:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t
+  (** module, op, bytes, offset, ptr, val, ty, memoryName *)
+
+  val cmpxchg :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    expected:t ->
+    replacement:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t
+  (** module, bytes, offset, ptr, expected, replacement, ty, memoryName *)
+
+  val wait :
+    Module.t ->
+    ptr:t ->
+    expected:t ->
+    timeout:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t
+  (** module, ptr, expected, timeout, ty, memoryName *)
+
+  val notify : Module.t -> ptr:t -> notify_count:t -> memory_name:string -> t
+  (** module, ptr, notifyCount, memoryName *)
+
+  val fence : Module.t -> t
+end

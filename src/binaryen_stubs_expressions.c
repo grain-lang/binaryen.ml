@@ -2074,3 +2074,119 @@ caml_binaryen_tablegrow_set_delta(value _exp, value _delta) {
   BinaryenTableGrowSetDelta(exp, delta);
   CAMLreturn(Val_unit);
 }
+
+// Atomics
+
+CAMLprim value
+caml_binaryen_atomic_load(value _module, value _bytes, value _offset, value _ty, value _ptr, value _memoryName) {
+  CAMLparam5(_module, _bytes, _offset, _ty, _ptr);
+  CAMLxparam1(_memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  int bytes = Int_val(_bytes);
+  int offset = Int_val(_offset);
+  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicLoad(module, bytes, offset, ty, ptr, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+CAMLprim value
+caml_binaryen_atomic_load__bytecode(value * argv) {
+  return caml_binaryen_atomic_load(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_atomic_store(value _module, value _bytes, value _offset, value _ptr, value _val, value _ty, value _memoryName) {
+  CAMLparam5(_module, _bytes, _offset, _ptr, _val);
+  CAMLxparam2(_ty, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  int bytes = Int_val(_bytes);
+  int offset = Int_val(_offset);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  BinaryenType ty = BinaryenType_val(_ty);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicStore(module, bytes, offset, ptr, val, ty, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+CAMLprim value
+caml_binaryen_atomic_store__bytecode(value * argv) {
+  return caml_binaryen_atomic_store(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6]);
+}
+
+CAMLprim value
+caml_binaryen_atomic_rmw(value _module, value _op, value _bytes, value _offset, value _ptr, value _val, value _ty, value _memoryName) {
+  CAMLparam5(_module, _op, _bytes, _offset, _ptr);
+  CAMLxparam3(_val, _ty, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenIndex bytes = Int_val(_bytes);
+  BinaryenIndex offset = Int_val(_offset);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  BinaryenType ty = BinaryenType_val(_ty);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicRMW(module, op, bytes, offset, ptr, val, ty, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+CAMLprim value
+caml_binaryen_atomic_rmw__bytecode(value * argv) {
+  return caml_binaryen_atomic_rmw(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
+}
+
+CAMLprim value
+caml_binaryen_atomic_cmpxchg(value _module, value _bytes, value _offset, value _ptr, value _expected, value _replacement, value _ty, value _memoryName) {
+  CAMLparam5(_module, _bytes, _offset, _ptr, _expected);
+  CAMLxparam3(_replacement, _ty, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenIndex bytes = Int_val(_bytes);
+  BinaryenIndex offset = Int_val(_offset);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef expected = BinaryenExpressionRef_val(_expected);
+  BinaryenExpressionRef replacement = BinaryenExpressionRef_val(_replacement);
+  BinaryenType ty = BinaryenType_val(_ty);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicCmpxchg(module, bytes, offset, ptr, expected, replacement, ty, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+CAMLprim value
+caml_binaryen_atomic_cmpxchg__bytecode(value * argv) {
+  return caml_binaryen_atomic_cmpxchg(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
+}
+
+CAMLprim value
+caml_binaryen_atomic_wait(value _module, value _ptr, value _expected, value _timeout, value _ty, value _memoryName) {
+  CAMLparam5(_module, _ptr, _expected, _timeout, _ty);
+  CAMLxparam1(_memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef expected = BinaryenExpressionRef_val(_expected);
+  BinaryenExpressionRef timeout = BinaryenExpressionRef_val(_timeout);
+  BinaryenType ty = BinaryenType_val(_ty);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicWait(module, ptr, expected, timeout, ty, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+CAMLprim value
+caml_binaryen_atomic_wait__bytecode(value * argv) {
+  return caml_binaryen_atomic_wait(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_atomic_notify(value _module, value _ptr, value _notifyCount, value _memoryName) {
+  CAMLparam4(_module, _ptr, _notifyCount, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef notifyCount = BinaryenExpressionRef_val(_notifyCount);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef res = BinaryenAtomicNotify(module, ptr, notifyCount, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
+
+CAMLprim value
+caml_binaryen_atomic_fence(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef res = BinaryenAtomicFence(module);
+  CAMLreturn(alloc_BinaryenExpressionRef(res));
+}
