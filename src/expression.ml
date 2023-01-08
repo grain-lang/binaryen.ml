@@ -708,7 +708,8 @@ module Memory_grow = struct
 end
 
 module Memory_init = struct
-  external make : Module.t -> int -> t -> t -> t = "caml_binaryen_memory_init"
+  external make : Module.t -> int -> t -> t -> t -> t
+    = "caml_binaryen_memory_init"
   (** Module, segment, destination, offset, size. *)
 
   external get_segment : t -> int = "caml_binaryen_memory_init_get_segment"
