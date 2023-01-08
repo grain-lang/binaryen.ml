@@ -76,22 +76,6 @@ If you are planning to create portable binaries for Windows, it will try to find
 
 These flags might not work on other operating systems (like MacOS), so you'll probably need to use `dune-configurator` to vary the flags per platform.
 
-## JavaScript
-
-When compiling to JavaScript with `js_of_ocaml`, you'll need to add the `--disable share` flag. This is needed until we can depend on the bug fix from [ocsigen/js_of_ocaml#1249](https://github.com/ocsigen/js_of_ocaml/pull/1249). In the meantime, you can change your dune file:
-
-```diff
- (executable
-  (name example)
-  (public_name example)
-  (modes
-   (byte js))
-+ (js_of_ocaml
-+  (flags --disable share))
-  (modules example)
-  (libraries binaryen))
-```
-
 ## Contributing
 
 You'll need Node.js and [`esy`](https://esy.sh/docs/en/getting-started.html#install-esy) to build this project.

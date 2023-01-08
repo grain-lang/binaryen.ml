@@ -11,9 +11,9 @@
     "@opam/dune-configurator": ">= 3.0.0"
   },
   "devDependencies": {
-    "@opam/js_of_ocaml-compiler": ">= 3.10.0",
-    "@opam/ocamlformat": "0.20.1",
-    "@opam/ocaml-lsp-server": "^1.9.1"
+    "@opam/js_of_ocaml-compiler": ">= 4.1.0 < 5.0.0",
+    "@opam/ocamlformat": "0.24.1",
+    "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
   "resolutions": {
     "@opam/ocp-indent": "1.7.0"
