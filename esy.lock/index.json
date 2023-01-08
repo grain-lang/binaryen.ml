@@ -1,5 +1,5 @@
 {
-  "checksum": "863c6358d8d8e21c6dfd4897c51b61b5",
+  "checksum": "8f8fff53a9883f33ed348e5e443fc279",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.14.0@d41d8cd9": {
@@ -234,31 +234,31 @@
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.6.1@662f326b"
       ]
     },
-    "@opam/stdio@opam:v0.14.0@a5affb43": {
-      "id": "@opam/stdio@opam:v0.14.0@a5affb43",
+    "@opam/stdio@opam:v0.15.0@aeefdf96": {
+      "id": "@opam/stdio@opam:v0.15.0@aeefdf96",
       "name": "@opam/stdio",
-      "version": "opam:v0.14.0",
+      "version": "opam:v0.15.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/md5/4c/4cbdf15f0be88c3258aaeff9e04e00e9#md5:4cbdf15f0be88c3258aaeff9e04e00e9",
-          "archive:https://ocaml.janestreet.com/ocaml-core/v0.14/files/stdio-v0.14.0.tar.gz#md5:4cbdf15f0be88c3258aaeff9e04e00e9"
+          "archive:https://opam.ocaml.org/cache/sha256/c3/c37292921dc6a88425f773eba6bdbeac1dedacd1f55917fa4bcd9c4b25795e4b#sha256:c37292921dc6a88425f773eba6bdbeac1dedacd1f55917fa4bcd9c4b25795e4b",
+          "archive:https://ocaml.janestreet.com/ocaml-core/v0.15/files/stdio-v0.15.0.tar.gz#sha256:c37292921dc6a88425f773eba6bdbeac1dedacd1f55917fa4bcd9c4b25795e4b"
         ],
         "opam": {
           "name": "stdio",
-          "version": "v0.14.0",
-          "path": "esy.lock/opam/stdio.v0.14.0"
+          "version": "v0.15.0",
+          "path": "esy.lock/opam/stdio.v0.15.0"
         }
       },
       "overrides": [],
       "dependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.6.1@662f326b",
-        "@opam/base@opam:v0.14.3@b3ddb868",
+        "@opam/base@opam:v0.15.1@e8a71f35",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.6.1@662f326b",
-        "@opam/base@opam:v0.14.3@b3ddb868"
+        "@opam/base@opam:v0.15.1@e8a71f35"
       ]
     },
     "@opam/spawn@opam:v0.15.1@85e9d6f1": {
@@ -286,20 +286,20 @@
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.6.1@662f326b"
       ]
     },
-    "@opam/sexplib0@opam:v0.14.0@70ace5c1": {
-      "id": "@opam/sexplib0@opam:v0.14.0@70ace5c1",
+    "@opam/sexplib0@opam:v0.15.1@51111c0c": {
+      "id": "@opam/sexplib0@opam:v0.15.1@51111c0c",
       "name": "@opam/sexplib0",
-      "version": "opam:v0.14.0",
+      "version": "opam:v0.15.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/md5/37/37aff0af8f8f6f759249475684aebdc4#md5:37aff0af8f8f6f759249475684aebdc4",
-          "archive:https://ocaml.janestreet.com/ocaml-core/v0.14/files/sexplib0-v0.14.0.tar.gz#md5:37aff0af8f8f6f759249475684aebdc4"
+          "archive:https://opam.ocaml.org/cache/md5/ab/ab8fd6273f35a792cad48cbb3024a7f9#md5:ab8fd6273f35a792cad48cbb3024a7f9",
+          "archive:https://github.com/janestreet/sexplib0/archive/refs/tags/v0.15.1.tar.gz#md5:ab8fd6273f35a792cad48cbb3024a7f9"
         ],
         "opam": {
           "name": "sexplib0",
-          "version": "v0.14.0",
-          "path": "esy.lock/opam/sexplib0.v0.14.0"
+          "version": "v0.15.1",
+          "path": "esy.lock/opam/sexplib0.v0.15.1"
         }
       },
       "overrides": [],
@@ -400,14 +400,14 @@
       "overrides": [],
       "dependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/stdlib-shims@opam:0.3.0@72c7bc98",
-        "@opam/sexplib0@opam:v0.14.0@70ace5c1",
+        "@opam/sexplib0@opam:v0.15.1@51111c0c",
         "@opam/ppx_derivers@opam:1.2.1@e2cbad12",
         "@opam/ocaml-compiler-libs@opam:v0.12.4@41979882",
         "@opam/dune@opam:3.6.1@662f326b", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/stdlib-shims@opam:0.3.0@72c7bc98",
-        "@opam/sexplib0@opam:v0.14.0@70ace5c1",
+        "@opam/sexplib0@opam:v0.15.1@51111c0c",
         "@opam/ppx_derivers@opam:1.2.1@e2cbad12",
         "@opam/ocaml-compiler-libs@opam:v0.12.4@41979882",
         "@opam/dune@opam:3.6.1@662f326b"
@@ -543,20 +543,20 @@
         "@opam/base-bigarray@opam:base@b03491b0"
       ]
     },
-    "@opam/odoc-parser@opam:1.0.1@4bf15d79": {
-      "id": "@opam/odoc-parser@opam:1.0.1@4bf15d79",
+    "@opam/odoc-parser@opam:2.0.0@a08011a0": {
+      "id": "@opam/odoc-parser@opam:2.0.0@a08011a0",
       "name": "@opam/odoc-parser",
-      "version": "opam:1.0.1",
+      "version": "opam:2.0.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/a2/a2bbe8e4201b60e980bab01e96e41f2ba0b05ba3f50b44f75837e8a2fb907d2c#sha256:a2bbe8e4201b60e980bab01e96e41f2ba0b05ba3f50b44f75837e8a2fb907d2c",
-          "archive:https://github.com/ocaml-doc/odoc-parser/releases/download/1.0.1/odoc-parser-1.0.1.tbz#sha256:a2bbe8e4201b60e980bab01e96e41f2ba0b05ba3f50b44f75837e8a2fb907d2c"
+          "archive:https://opam.ocaml.org/cache/sha256/40/407919fbb0eb95761d6fc6ec6777628d94aa1907343bdca678b1880bafb33922#sha256:407919fbb0eb95761d6fc6ec6777628d94aa1907343bdca678b1880bafb33922",
+          "archive:https://github.com/ocaml-doc/odoc-parser/releases/download/2.0.0/odoc-parser-2.0.0.tbz#sha256:407919fbb0eb95761d6fc6ec6777628d94aa1907343bdca678b1880bafb33922"
         ],
         "opam": {
           "name": "odoc-parser",
-          "version": "1.0.1",
-          "path": "esy.lock/opam/odoc-parser.1.0.1"
+          "version": "2.0.0",
+          "path": "esy.lock/opam/odoc-parser.2.0.0"
         }
       },
       "overrides": [],
@@ -656,28 +656,28 @@
         "@opam/csexp@opam:1.5.1@8a8fb3a7"
       ]
     },
-    "@opam/ocamlformat@opam:0.20.1@86f627a5": {
-      "id": "@opam/ocamlformat@opam:0.20.1@86f627a5",
+    "@opam/ocamlformat@opam:0.24.1@80ba1b34": {
+      "id": "@opam/ocamlformat@opam:0.24.1@80ba1b34",
       "name": "@opam/ocamlformat",
-      "version": "opam:0.20.1",
+      "version": "opam:0.24.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/7d/7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235",
-          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.20.1/ocamlformat-0.20.1.tbz#sha256:7d3a51645416fa78287344fa03af6b78450067a1a61e4790bf1b29779cd10235"
+          "archive:https://opam.ocaml.org/cache/sha256/02/023425e9818f80ea50537b2371a4a766c149a9957d05807e88a004d2d5f441ce#sha256:023425e9818f80ea50537b2371a4a766c149a9957d05807e88a004d2d5f441ce",
+          "archive:https://github.com/ocaml-ppx/ocamlformat/releases/download/0.24.1/ocamlformat-0.24.1.tbz#sha256:023425e9818f80ea50537b2371a4a766c149a9957d05807e88a004d2d5f441ce"
         ],
         "opam": {
           "name": "ocamlformat",
-          "version": "0.20.1",
-          "path": "esy.lock/opam/ocamlformat.0.20.1"
+          "version": "0.24.1",
+          "path": "esy.lock/opam/ocamlformat.0.24.1"
         }
       },
       "overrides": [],
       "dependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:15.0.0@14085231",
-        "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.4@c4910ba6",
-        "@opam/odoc-parser@opam:1.0.1@4bf15d79",
+        "@opam/stdio@opam:v0.15.0@aeefdf96", "@opam/re@opam:1.10.4@c4910ba6",
+        "@opam/odoc-parser@opam:2.0.0@a08011a0",
         "@opam/ocp-indent@opam:1.7.0@2da3c6e5",
         "@opam/ocaml-version@opam:3.5.0@6bef55f5",
         "@opam/menhirSdk@opam:20220210@fe146ed3",
@@ -687,16 +687,16 @@
         "@opam/fix@opam:20220121@17b9a1a4",
         "@opam/either@opam:1.0.0@be5a1416",
         "@opam/dune-build-info@opam:3.6.1@5877ed82",
-        "@opam/dune@opam:3.6.1@662f326b",
+        "@opam/dune@opam:3.6.1@662f326b", "@opam/csexp@opam:1.5.1@8a8fb3a7",
         "@opam/cmdliner@opam:1.1.1@03763729",
-        "@opam/base@opam:v0.14.3@b3ddb868",
+        "@opam/base@opam:v0.15.1@e8a71f35",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
         "ocaml@4.14.0@d41d8cd9", "@opam/uutf@opam:1.0.3@47c95a18",
         "@opam/uuseg@opam:15.0.0@14085231",
-        "@opam/stdio@opam:v0.14.0@a5affb43", "@opam/re@opam:1.10.4@c4910ba6",
-        "@opam/odoc-parser@opam:1.0.1@4bf15d79",
+        "@opam/stdio@opam:v0.15.0@aeefdf96", "@opam/re@opam:1.10.4@c4910ba6",
+        "@opam/odoc-parser@opam:2.0.0@a08011a0",
         "@opam/ocp-indent@opam:1.7.0@2da3c6e5",
         "@opam/ocaml-version@opam:3.5.0@6bef55f5",
         "@opam/menhirSdk@opam:20220210@fe146ed3",
@@ -706,9 +706,9 @@
         "@opam/fix@opam:20220121@17b9a1a4",
         "@opam/either@opam:1.0.0@be5a1416",
         "@opam/dune-build-info@opam:3.6.1@5877ed82",
-        "@opam/dune@opam:3.6.1@662f326b",
+        "@opam/dune@opam:3.6.1@662f326b", "@opam/csexp@opam:1.5.1@8a8fb3a7",
         "@opam/cmdliner@opam:1.1.1@03763729",
-        "@opam/base@opam:v0.14.3@b3ddb868"
+        "@opam/base@opam:v0.15.1@e8a71f35"
       ]
     },
     "@opam/ocamlfind@opam:1.9.5@c23112ba": {
@@ -737,32 +737,6 @@
         "ocaml@4.14.0@d41d8cd9", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@4.14.0@d41d8cd9" ]
-    },
-    "@opam/ocamlc-loc@opam:3.6.1@738bc6fc": {
-      "id": "@opam/ocamlc-loc@opam:3.6.1@738bc6fc",
-      "name": "@opam/ocamlc-loc",
-      "version": "opam:3.6.1",
-      "source": {
-        "type": "install",
-        "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/f1/f1d5ac04b7a027f3d549e25cf885ebf7acc135e0291c18e6b43123a799c143ce#sha256:f1d5ac04b7a027f3d549e25cf885ebf7acc135e0291c18e6b43123a799c143ce",
-          "archive:https://github.com/ocaml/dune/releases/download/3.6.1/dune-3.6.1.tbz#sha256:f1d5ac04b7a027f3d549e25cf885ebf7acc135e0291c18e6b43123a799c143ce"
-        ],
-        "opam": {
-          "name": "ocamlc-loc",
-          "version": "3.6.1",
-          "path": "esy.lock/opam/ocamlc-loc.3.6.1"
-        }
-      },
-      "overrides": [],
-      "dependencies": [
-        "ocaml@4.14.0@d41d8cd9", "@opam/dyn@opam:3.6.1@6b14b55c",
-        "@opam/dune@opam:3.6.1@662f326b", "@esy-ocaml/substs@0.0.1@d41d8cd9"
-      ],
-      "devDependencies": [
-        "ocaml@4.14.0@d41d8cd9", "@opam/dyn@opam:3.6.1@6b14b55c",
-        "@opam/dune@opam:3.6.1@662f326b"
-      ]
     },
     "@opam/ocamlbuild@opam:0.14.2@c6163b28": {
       "id": "@opam/ocamlbuild@opam:0.14.2@c6163b28",
@@ -816,20 +790,20 @@
         "ocaml@4.14.0@d41d8cd9", "@opam/dune@opam:3.6.1@662f326b"
       ]
     },
-    "@opam/ocaml-lsp-server@opam:1.14.2@98e2df4b": {
-      "id": "@opam/ocaml-lsp-server@opam:1.14.2@98e2df4b",
+    "@opam/ocaml-lsp-server@opam:1.12.4@c24ab770": {
+      "id": "@opam/ocaml-lsp-server@opam:1.12.4@c24ab770",
       "name": "@opam/ocaml-lsp-server",
-      "version": "opam:1.14.2",
+      "version": "opam:1.12.4",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/d5/d51f8761a19b3cb183b390cc3778e69eb6453213263d41e017eb3ec8dcc85494#sha256:d51f8761a19b3cb183b390cc3778e69eb6453213263d41e017eb3ec8dcc85494",
-          "archive:https://github.com/ocaml/ocaml-lsp/releases/download/1.14.2/lsp-1.14.2.tbz#sha256:d51f8761a19b3cb183b390cc3778e69eb6453213263d41e017eb3ec8dcc85494"
+          "archive:https://opam.ocaml.org/cache/sha256/91/919b98027cbc56359dabe8a911d3d24d1706cea8cd04e8173a2d1d3b06f9d846#sha256:919b98027cbc56359dabe8a911d3d24d1706cea8cd04e8173a2d1d3b06f9d846",
+          "archive:https://github.com/ocaml/ocaml-lsp/releases/download/1.12.4/lsp-1.12.4.tbz#sha256:919b98027cbc56359dabe8a911d3d24d1706cea8cd04e8173a2d1d3b06f9d846"
         ],
         "opam": {
           "name": "ocaml-lsp-server",
-          "version": "1.14.2",
-          "path": "esy.lock/opam/ocaml-lsp-server.1.14.2"
+          "version": "1.12.4",
+          "path": "esy.lock/opam/ocaml-lsp-server.1.12.4"
         }
       },
       "overrides": [],
@@ -843,7 +817,6 @@
         "@opam/omd@opam:1.3.2@511d53d2",
         "@opam/octavius@opam:1.2.2@2205cc65",
         "@opam/ocamlformat-rpc-lib@opam:0.24.1@4b5db4b3",
-        "@opam/ocamlc-loc@opam:3.6.1@738bc6fc",
         "@opam/fiber@opam:3.6.1@014772b4", "@opam/dyn@opam:3.6.1@6b14b55c",
         "@opam/dune-rpc@opam:3.6.1@d9761fef",
         "@opam/dune-build-info@opam:3.6.1@5877ed82",
@@ -861,7 +834,6 @@
         "@opam/omd@opam:1.3.2@511d53d2",
         "@opam/octavius@opam:1.2.2@2205cc65",
         "@opam/ocamlformat-rpc-lib@opam:0.24.1@4b5db4b3",
-        "@opam/ocamlc-loc@opam:3.6.1@738bc6fc",
         "@opam/fiber@opam:3.6.1@014772b4", "@opam/dyn@opam:3.6.1@6b14b55c",
         "@opam/dune-rpc@opam:3.6.1@d9761fef",
         "@opam/dune-build-info@opam:3.6.1@5877ed82",
@@ -972,20 +944,20 @@
         "@opam/dune@opam:3.6.1@662f326b"
       ]
     },
-    "@opam/js_of_ocaml-compiler@opam:5.0.1@49a39906": {
-      "id": "@opam/js_of_ocaml-compiler@opam:5.0.1@49a39906",
+    "@opam/js_of_ocaml-compiler@opam:4.1.0@fe77344f": {
+      "id": "@opam/js_of_ocaml-compiler@opam:4.1.0@fe77344f",
       "name": "@opam/js_of_ocaml-compiler",
-      "version": "opam:5.0.1",
+      "version": "opam:4.1.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/7a/7a210f1ca16a742381947dc67c3d8d9f4c94fbf20738744b1353897985b61069#sha256:7a210f1ca16a742381947dc67c3d8d9f4c94fbf20738744b1353897985b61069",
-          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/5.0.1/js_of_ocaml-5.0.1.tbz#sha256:7a210f1ca16a742381947dc67c3d8d9f4c94fbf20738744b1353897985b61069"
+          "archive:https://opam.ocaml.org/cache/sha256/91/91793f29a5af3deaba3f7d35ceab11e739cfe0a5cc30556f6201461a6d4236ef#sha256:91793f29a5af3deaba3f7d35ceab11e739cfe0a5cc30556f6201461a6d4236ef",
+          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/4.1.0/js_of_ocaml-4.1.0.tbz#sha256:91793f29a5af3deaba3f7d35ceab11e739cfe0a5cc30556f6201461a6d4236ef"
         ],
         "opam": {
           "name": "js_of_ocaml-compiler",
-          "version": "5.0.1",
-          "path": "esy.lock/opam/js_of_ocaml-compiler.5.0.1"
+          "version": "4.1.0",
+          "path": "esy.lock/opam/js_of_ocaml-compiler.4.1.0"
         }
       },
       "overrides": [],
@@ -1464,30 +1436,30 @@
       "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
       "devDependencies": []
     },
-    "@opam/base@opam:v0.14.3@b3ddb868": {
-      "id": "@opam/base@opam:v0.14.3@b3ddb868",
+    "@opam/base@opam:v0.15.1@e8a71f35": {
+      "id": "@opam/base@opam:v0.15.1@e8a71f35",
       "name": "@opam/base",
-      "version": "opam:v0.14.3",
+      "version": "opam:v0.15.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/e3/e34dc0dd052a386c84f5f67e71a90720dff76e0edd01f431604404bee86ebe5a#sha256:e34dc0dd052a386c84f5f67e71a90720dff76e0edd01f431604404bee86ebe5a",
-          "archive:https://github.com/janestreet/base/archive/v0.14.3.tar.gz#sha256:e34dc0dd052a386c84f5f67e71a90720dff76e0edd01f431604404bee86ebe5a"
+          "archive:https://opam.ocaml.org/cache/sha256/75/755e303171ea267e3ba5af7aa8ea27537f3394d97c77d340b10f806d6ef61a14#sha256:755e303171ea267e3ba5af7aa8ea27537f3394d97c77d340b10f806d6ef61a14",
+          "archive:https://github.com/janestreet/base/archive/refs/tags/v0.15.1.tar.gz#sha256:755e303171ea267e3ba5af7aa8ea27537f3394d97c77d340b10f806d6ef61a14"
         ],
         "opam": {
           "name": "base",
-          "version": "v0.14.3",
-          "path": "esy.lock/opam/base.v0.14.3"
+          "version": "v0.15.1",
+          "path": "esy.lock/opam/base.v0.15.1"
         }
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@4.14.0@d41d8cd9", "@opam/sexplib0@opam:v0.14.0@70ace5c1",
+        "ocaml@4.14.0@d41d8cd9", "@opam/sexplib0@opam:v0.15.1@51111c0c",
         "@opam/dune-configurator@opam:3.6.1@966be260",
         "@opam/dune@opam:3.6.1@662f326b", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@4.14.0@d41d8cd9", "@opam/sexplib0@opam:v0.14.0@70ace5c1",
+        "ocaml@4.14.0@d41d8cd9", "@opam/sexplib0@opam:v0.15.1@51111c0c",
         "@opam/dune-configurator@opam:3.6.1@966be260",
         "@opam/dune@opam:3.6.1@662f326b"
       ]
@@ -1554,9 +1526,9 @@
         "@grain/libbinaryen@110.0.0@d41d8cd9"
       ],
       "devDependencies": [
-        "@opam/ocamlformat@opam:0.20.1@86f627a5",
-        "@opam/ocaml-lsp-server@opam:1.14.2@98e2df4b",
-        "@opam/js_of_ocaml-compiler@opam:5.0.1@49a39906"
+        "@opam/ocamlformat@opam:0.24.1@80ba1b34",
+        "@opam/ocaml-lsp-server@opam:1.12.4@c24ab770",
+        "@opam/js_of_ocaml-compiler@opam:4.1.0@fe77344f"
       ],
       "installConfig": { "pnp": false }
     },

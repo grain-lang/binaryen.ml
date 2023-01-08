@@ -27,6 +27,8 @@ depopts: ["ocamlfind"]
 conflicts: [
   "ocamlfind" {< "1.5.1"}
   "js_of_ocaml" {< "3.0"}
+  "ocaml-variants" {= "4.12.0+domains" | = "4.12.0+domains+effects"}
+  "ocaml-option-bytecode-only"
 ]
 dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 build: [
@@ -44,10 +46,10 @@ build: [
 ]
 url {
   src:
-    "https://github.com/ocsigen/js_of_ocaml/releases/download/5.0.1/js_of_ocaml-5.0.1.tbz"
+    "https://github.com/ocsigen/js_of_ocaml/releases/download/4.1.0/js_of_ocaml-4.1.0.tbz"
   checksum: [
-    "sha256=7a210f1ca16a742381947dc67c3d8d9f4c94fbf20738744b1353897985b61069"
-    "sha512=07a973561190686d56bd5d56d9a275e177716ea8b9720f6acc7ddf8618680844a6d0c798447567ea9542d83bab524c165d076f3cce0769a12fc483ef8cd6a733"
+    "sha256=91793f29a5af3deaba3f7d35ceab11e739cfe0a5cc30556f6201461a6d4236ef"
+    "sha512=43f91c1f37939dfc894558a23a8ca163e6f316db442bdd0a5909bd095f5b0eb596d0943883452f4b78641da71222a775476877ea9ba0500583700d1fb35e04a5"
   ]
 }
-x-commit-hash: "66570bae49d9fae4341bc548dde9f944afe3b41a"
+x-commit-hash: "9cb30b78c1a4bde6176652b94c96b26e1140f8a4"
