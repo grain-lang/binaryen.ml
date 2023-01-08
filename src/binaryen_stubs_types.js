@@ -113,3 +113,15 @@ function caml_binaryen_type_create(typs) {
 function caml_binaryen_type_expand(typ) {
   return caml_js_to_array(Binaryen.expandType(typ));
 }
+
+//Provides: caml_binaryen_type_is_nullable
+//Requires: Binaryen
+function caml_binaryen_type_is_nullable(typ) {
+  return Binaryen._BinaryenTypeIsNullable(typ);
+}
+
+//Provides: caml_binaryen_type_from_heap_type
+//Requires: Binaryen
+function caml_binaryen_type_from_heap_type(typ, nullable) {
+  return Binaryen._BinaryenTypeFromHeapType(typ, nullable);
+}

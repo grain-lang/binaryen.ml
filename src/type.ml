@@ -70,3 +70,6 @@ let auto = auto ()
 
 external create : t array -> t = "caml_binaryen_type_create"
 external expand : t -> t array = "caml_binaryen_type_expand"
+external is_nullable : t -> bool = "caml_binaryen_type_is_nullable"
+external from_heap_type : Heap_type.t -> t = "caml_binaryen_type_from_heap_type"
+external get_heap_type : t -> Heap_type.t = "caml_binaryen_type_get_heap_type"

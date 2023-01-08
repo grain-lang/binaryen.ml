@@ -164,3 +164,19 @@ caml_binaryen_type_expand(value _ty) {
 
   CAMLreturn(typeArray);
 }
+
+CAMLprim value
+caml_binaryen_type_is_nullable(value _ty) {
+  CAMLparam1(_ty);
+  BinaryenType ty = BinaryenType_val(_ty);
+  CAMLreturn(Val_bool(BinaryenTypeIsNullable(ty)));
+}
+
+CAMLprim value
+caml_binaryen_type_from_heap_type(value _ty, value _nullable) {
+  CAMLparam2(_ty, _nullable);
+  BinaryenHeapType heapTy = BinaryenHeapType_val(_ty);
+  bool nullable = Bool_val(_nullable);
+  BinaryenType ty = BinaryenTypeFromHeapType(heapTy, nullable);
+  CAMLreturn(alloc_BinaryenType(ty));
+}
