@@ -256,7 +256,7 @@ module Memory_grow : sig
 end
 
 module Memory_init : sig
-  val make : Module.t -> int -> t -> t -> t
+  val make : Module.t -> int -> t -> t -> t -> t
   val get_segment : t -> int
   val set_segment : t -> int -> unit
   val get_dest : t -> t
