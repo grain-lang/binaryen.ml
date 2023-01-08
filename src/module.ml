@@ -73,6 +73,10 @@ module Feature = struct
 
   let extended_const = extended_const ()
 
+  external strings : unit -> t = "caml_binaryen_feature_strings"
+
+  let strings = strings ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()

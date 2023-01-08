@@ -19,6 +19,7 @@ module Feature : sig
   val typed_function_references : t
   val relaxed_simd : t
   val extended_const : t
+  val strings : t
   val all : t
 end
 
