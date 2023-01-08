@@ -57,8 +57,6 @@ type kind =
   | RefTest
   | RefCast
   | BrOn
-  | RttCanon
-  | RttSub
   | StructNew
   | StructGet
   | StructSet

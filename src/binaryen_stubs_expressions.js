@@ -819,16 +819,6 @@ function caml_binaryen_expression_id_ref_cast() {
 function caml_binaryen_expression_id_br_on() {
   return Binaryen.BrOnId;
 }
-//Provides: caml_binaryen_expression_id_rtt_canon
-//Requires: Binaryen
-function caml_binaryen_expression_id_rtt_canon() {
-  return Binaryen.RttCanonId;
-}
-//Provides: caml_binaryen_expression_id_rtt_sub
-//Requires: Binaryen
-function caml_binaryen_expression_id_rtt_sub() {
-  return Binaryen.RttSubId;
-}
 //Provides: caml_binaryen_expression_id_struct_new
 //Requires: Binaryen
 function caml_binaryen_expression_id_struct_new() {

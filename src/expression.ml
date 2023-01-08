@@ -57,8 +57,6 @@ type kind =
   | RefTest
   | RefCast
   | BrOn
-  | RttCanon
-  | RttSub
   | StructNew
   | StructGet
   | StructSet
@@ -310,14 +308,6 @@ external id_br_on : unit -> int = "caml_binaryen_expression_id_br_on"
 
 let id_br_on = id_br_on ()
 
-external id_rtt_canon : unit -> int = "caml_binaryen_expression_id_rtt_canon"
-
-let id_rtt_canon = id_rtt_canon ()
-
-external id_rtt_sub : unit -> int = "caml_binaryen_expression_id_rtt_sub"
-
-let id_rtt_sub = id_rtt_sub ()
-
 external id_struct_new : unit -> int = "caml_binaryen_expression_id_struct_new"
 
 let id_struct_new = id_struct_new ()
@@ -409,8 +399,6 @@ let get_kind expr =
   | n when n = id_ref_test -> RefTest
   | n when n = id_ref_cast -> RefCast
   | n when n = id_br_on -> BrOn
-  | n when n = id_rtt_canon -> RttCanon
-  | n when n = id_rtt_sub -> RttSub
   | n when n = id_struct_new -> StructNew
   | n when n = id_struct_get -> StructGet
   | n when n = id_struct_set -> StructSet

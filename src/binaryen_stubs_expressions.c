@@ -737,16 +737,6 @@ caml_binaryen_expression_id_br_on(value unit) {
   CAMLreturn(Val_int(BinaryenBrOnId()));
 }
 CAMLprim value
-caml_binaryen_expression_id_rtt_canon(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenRttCanonId()));
-}
-CAMLprim value
-caml_binaryen_expression_id_rtt_sub(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenRttSubId()));
-}
-CAMLprim value
 caml_binaryen_expression_id_struct_new(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenStructNewId()));
