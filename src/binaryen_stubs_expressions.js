@@ -187,75 +187,74 @@ function caml_binaryen_load(
 ) {
   var name = caml_jsstring_of_string(memoryName);
 
-  if (typ === Binaryen.i32) {
-    if (signed) {
-      if (bytes === 4) {
-        return wasm_mod.i32.load(offset, align, ptr, name);
-      }
+  switch (typ) {
+    case Binaryen.i32: {
+      if (signed) {
+        if (bytes === 4) {
+          return wasm_mod.i32.load(offset, align, ptr, name);
+        }
 
-      if (bytes === 1) {
-        return wasm_mod.i32.load8_s(offset, align, ptr, name);
-      }
+        if (bytes === 1) {
+          return wasm_mod.i32.load8_s(offset, align, ptr, name);
+        }
 
-      if (bytes === 2) {
-        return wasm_mod.i32.load16_s(offset, align, ptr, name);
-      }
-    } else {
-      if (bytes === 1) {
-        return wasm_mod.i32.load8_u(offset, align, ptr, name);
-      }
+        if (bytes === 2) {
+          return wasm_mod.i32.load16_s(offset, align, ptr, name);
+        }
+      } else {
+        if (bytes === 1) {
+          return wasm_mod.i32.load8_u(offset, align, ptr, name);
+        }
 
-      if (bytes === 2) {
-        return wasm_mod.i32.load16_u(offset, align, ptr, name);
-      }
-    }
-  }
-
-  if (typ === Binaryen.i64) {
-    if (signed) {
-      if (bytes === 8) {
-        return wasm_mod.i64.load(offset, align, ptr, name);
-      }
-
-      if (bytes === 1) {
-        return wasm_mod.i64.load8_s(offset, align, ptr, name);
-      }
-
-      if (bytes === 2) {
-        return wasm_mod.i64.load16_s(offset, align, ptr, name);
-      }
-
-      if (bytes === 4) {
-        return wasm_mod.i64.load32_s(offset, align, ptr, name);
-      }
-    } else {
-      if (bytes === 1) {
-        return wasm_mod.i64.load8_u(offset, align, ptr, name);
-      }
-
-      if (bytes === 2) {
-        return wasm_mod.i64.load16_u(offset, align, ptr, name);
-      }
-
-      if (bytes === 4) {
-        return wasm_mod.i64.load32_u(offset, align, ptr, name);
+        if (bytes === 2) {
+          return wasm_mod.i32.load16_u(offset, align, ptr, name);
+        }
       }
     }
-  }
+    case Binaryen.i64: {
+      if (signed) {
+        if (bytes === 8) {
+          return wasm_mod.i64.load(offset, align, ptr, name);
+        }
 
-  if (typ === Binaryen.f32) {
-    return wasm_mod.f32.load(offset, align, ptr, name);
-  }
+        if (bytes === 1) {
+          return wasm_mod.i64.load8_s(offset, align, ptr, name);
+        }
 
-  if (typ === Binaryen.f64) {
-    return wasm_mod.f64.load(offset, align, ptr, name);
-  }
+        if (bytes === 2) {
+          return wasm_mod.i64.load16_s(offset, align, ptr, name);
+        }
 
-  if (typ === Binaryen.v128) {
-    return wasm_mod.v128.load(offset, align, ptr, name);
-  }
+        if (bytes === 4) {
+          return wasm_mod.i64.load32_s(offset, align, ptr, name);
+        }
+      } else {
+        if (bytes === 1) {
+          return wasm_mod.i64.load8_u(offset, align, ptr, name);
+        }
 
-  caml_failwith("Invalid arguments to BinaryenLoad");
+        if (bytes === 2) {
+          return wasm_mod.i64.load16_u(offset, align, ptr, name);
+        }
+
+        if (bytes === 4) {
+          return wasm_mod.i64.load32_u(offset, align, ptr, name);
+        }
+      }
+    }
+    case Binaryen.f32: {
+      return wasm_mod.f32.load(offset, align, ptr, name);
+    }
+    case Binaryen.f64: {
+      return wasm_mod.f64.load(offset, align, ptr, name);
+    }
+    case Binaryen.v128: {
+      return wasm_mod.v128.load(offset, align, ptr, name);
+    }
+    default: {
+      caml_failwith("Invalid arguments to BinaryenLoad");
+    }
+  }
 }
 //Provides: caml_binaryen_load__bytecode
 //Requires: caml_binaryen_load
@@ -288,51 +287,50 @@ function caml_binaryen_store(
 ) {
   var name = caml_jsstring_of_string(memoryName);
 
-  if (typ === Binaryen.i32) {
-    if (bytes === 4) {
-      return wasm_mod.i32.store(offset, align, ptr, value, name);
-    }
+  switch (typ) {
+    case Binaryen.i32: {
+      if (bytes === 4) {
+        return wasm_mod.i32.store(offset, align, ptr, value, name);
+      }
 
-    if (bytes === 1) {
-      return wasm_mod.i32.store8(offset, align, ptr, value, name);
-    }
+      if (bytes === 1) {
+        return wasm_mod.i32.store8(offset, align, ptr, value, name);
+      }
 
-    if (bytes === 2) {
-      return wasm_mod.i32.store16(offset, align, ptr, value, name);
+      if (bytes === 2) {
+        return wasm_mod.i32.store16(offset, align, ptr, value, name);
+      }
+    }
+    case Binaryen.i64: {
+      if (bytes === 8) {
+        return wasm_mod.i64.store(offset, align, ptr, value, name);
+      }
+
+      if (bytes === 1) {
+        return wasm_mod.i64.store8(offset, align, ptr, value, name);
+      }
+
+      if (bytes === 2) {
+        return wasm_mod.i64.store16(offset, align, ptr, value, name);
+      }
+
+      if (bytes === 4) {
+        return wasm_mod.i64.store32(offset, align, ptr, value, name);
+      }
+    }
+    case Binaryen.f32: {
+      return wasm_mod.f32.store(offset, align, ptr, value, name);
+    }
+    case Binaryen.f64: {
+      return wasm_mod.f64.store(offset, align, ptr, value, name);
+    }
+    case Binaryen.v128: {
+      return wasm_mod.v128.store(offset, align, ptr, value, name);
+    }
+    default: {
+      caml_failwith("Invalid arguments to BinaryenStore");
     }
   }
-
-  if (typ === Binaryen.i64) {
-    if (bytes === 8) {
-      return wasm_mod.i64.store(offset, align, ptr, value, name);
-    }
-
-    if (bytes === 1) {
-      return wasm_mod.i64.store8(offset, align, ptr, value, name);
-    }
-
-    if (bytes === 2) {
-      return wasm_mod.i64.store16(offset, align, ptr, value, name);
-    }
-
-    if (bytes === 4) {
-      return wasm_mod.i64.store32(offset, align, ptr, value, name);
-    }
-  }
-
-  if (typ === Binaryen.f32) {
-    return wasm_mod.f32.store(offset, align, ptr, value, name);
-  }
-
-  if (typ === Binaryen.f64) {
-    return wasm_mod.f64.store(offset, align, ptr, value, name);
-  }
-
-  if (typ === Binaryen.v128) {
-    return wasm_mod.v128.store(offset, align, ptr, value, name);
-  }
-
-  caml_failwith("Invalid arguments to BinaryenStore");
 }
 //Provides: caml_binaryen_store__bytecode
 //Requires: caml_binaryen_store
