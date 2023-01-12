@@ -1,30 +1,29 @@
-(test
+(executable
  (name test)
- (modules test)
  (libraries binaryen)
- (ocamlopt_flags
+ (modes exe js)
+ (flags
+  :standard
   (:include ./config/ocamlopt_flags.sexp))
- (action
-  (run %{test})))
-
-; Tests for binaryen.js implementation
+ (js_of_ocaml
+  (flags --no-sourcemap)))
 
 (rule
- (target test_js.ml)
+ (alias runtest)
  (action
   (progn
-   (copy %{dep:test.ml} %{target})
-   (copy test.expected test_js.expected))))
+   (with-stdout-to
+    test.out
+    (run %{exe:test.exe}))
+   (diff test.out test.expected))))
 
-(test
- (name test_js)
+(rule
+ (alias runtest)
  (enabled_if
-  (<> %{system} mingw64))
- (modules test_js)
- (modes
-  (byte js))
- (libraries binaryen)
+  (= %{bin-available:node} true))
  (action
-  (run node %{dep:test_js.bc.js}))
- (js_of_ocaml
-  (flags --no-sourcemap --disable share)))
+  (progn
+   (with-stdout-to
+    test_js.out
+    (run node %{dep:test.bc.js}))
+   (diff test_js.out test.expected))))

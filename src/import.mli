@@ -8,8 +8,8 @@ val add_global_import :
   Module.t -> string -> string -> string -> Type.t -> bool -> unit
 
 val function_import_get_module : Function.t -> string
-val memory_import_get_module : Module.t -> string
+val memory_import_get_module : Module.t -> string -> string
 val global_import_get_module : Global.t -> string
 val function_import_get_base : Function.t -> string
-val memory_import_get_base : Module.t -> string
+val memory_import_get_base : Module.t -> string -> string
 val global_import_get_base : Global.t -> string

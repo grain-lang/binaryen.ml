@@ -8,9 +8,9 @@
 
 
 CAMLprim value
-caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _exportName, value _segments, value _segmentPassive, value _segmentOffsets, value _segmentSizes, value _shared) {
+caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _exportName, value _segments, value _segmentPassive, value _segmentOffsets, value _segmentSizes, value _shared, value _memoryName) {
   CAMLparam5(_module, _initial, _maximum, _exportName, _segments);
-  CAMLxparam4(_segmentPassive, _segmentOffsets, _segmentSizes, _shared);
+  CAMLxparam5(_segmentPassive, _segmentOffsets, _segmentSizes, _shared, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenIndex initial = Int_val(_initial);
   BinaryenIndex maximum = Int_val(_maximum);
@@ -40,12 +40,13 @@ caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _e
     segmentSizes[i] = Int_val(Field(_segmentSizes, i));
   }
   uint8_t shared = Bool_val(_shared);
-  BinaryenSetMemory(module, initial, maximum, exportName, segments, segmentPassive, segmentOffsets, segmentSizes, segmentsLen, shared);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenSetMemory(module, initial, maximum, exportName, segments, segmentPassive, segmentOffsets, segmentSizes, segmentsLen, shared, memoryName);
   CAMLreturn(Val_unit);
 }
 CAMLprim value
 caml_binaryen_set_memory__bytecode(value * argv) {
-  return caml_binaryen_set_memory(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8]);
+  return caml_binaryen_set_memory(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
 }
 
 CAMLprim value
@@ -56,25 +57,28 @@ caml_binaryen_has_memory(value _module) {
 }
 
 CAMLprim value
-caml_binaryen_memory_get_initial(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_get_initial(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(Val_int(BinaryenMemoryGetInitial(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(Val_int(BinaryenMemoryGetInitial(module, memoryName)));
 }
 
 CAMLprim value
-caml_binaryen_memory_has_max(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_has_max(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(Val_bool(BinaryenMemoryHasMax(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(Val_bool(BinaryenMemoryHasMax(module, memoryName)));
 }
 
 CAMLprim value
-caml_binaryen_memory_get_max(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_get_max(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  if (BinaryenMemoryHasMax(module)) {
-    CAMLreturn(Val_int(BinaryenMemoryGetMax(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  if (BinaryenMemoryHasMax(module, memoryName)) {
+    CAMLreturn(Val_int(BinaryenMemoryGetMax(module, memoryName)));
   } else {
     // This ensures that our return is equal to Memory.unlimited
     CAMLreturn(Val_int(-1));
@@ -82,8 +86,9 @@ caml_binaryen_memory_get_max(value _module) {
 }
 
 CAMLprim value
-caml_binaryen_memory_is_shared(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_is_shared(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(Val_bool(BinaryenMemoryIsShared(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(Val_bool(BinaryenMemoryIsShared(module, memoryName)));
 }

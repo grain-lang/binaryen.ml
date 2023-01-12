@@ -8,6 +8,7 @@ external set_memory :
   Expression.t list ->
   int list ->
   bool ->
+  string ->
   unit = "caml_binaryen_set_memory__bytecode" "caml_binaryen_set_memory"
 
 type segment = { data : bytes; kind : segment_kind; size : int }
@@ -41,12 +42,13 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
 
 external has_memory : Module.t -> bool = "caml_binaryen_has_memory"
 
-external get_initial : Module.t -> int = "caml_binaryen_memory_get_initial"
+external get_initial : Module.t -> string -> int
+  = "caml_binaryen_memory_get_initial"
 
-external has_max : Module.t -> bool = "caml_binaryen_memory_has_max"
+external has_max : Module.t -> string -> bool = "caml_binaryen_memory_has_max"
+external get_max : Module.t -> string -> int = "caml_binaryen_memory_get_max"
 
-external get_max : Module.t -> int = "caml_binaryen_memory_get_max"
-
-external is_shared : Module.t -> bool = "caml_binaryen_memory_is_shared"
+external is_shared : Module.t -> string -> bool
+  = "caml_binaryen_memory_is_shared"
 
 let unlimited = -1

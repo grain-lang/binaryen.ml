@@ -75,10 +75,11 @@ caml_binaryen_function_import_get_module(value _fun) {
 }
 
 CAMLprim value
-caml_binaryen_memory_import_get_module(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_import_get_module(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetModule(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetModule(module, memoryName)));
 }
 
 CAMLprim value
@@ -96,10 +97,11 @@ caml_binaryen_function_import_get_base(value _fun) {
 }
 
 CAMLprim value
-caml_binaryen_memory_import_get_base(value _module) {
-  CAMLparam1(_module);
+caml_binaryen_memory_import_get_base(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetBase(module)));
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(caml_copy_string(BinaryenMemoryImportGetBase(module, memoryName)));
 }
 
 CAMLprim value

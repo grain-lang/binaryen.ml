@@ -23,6 +23,7 @@ static struct custom_operations binaryen_ops = {
 
 #define BinaryenModuleRef_val(v) (*((BinaryenModuleRef*) Data_custom_val(v)))
 #define BinaryenType_val(v) (*((BinaryenType*) Data_custom_val(v)))
+#define BinaryenHeapType_val(v) (*((BinaryenHeapType*) Data_custom_val(v)))
 #define BinaryenExpressionRef_val(v) (*((BinaryenExpressionRef*) Data_custom_val(v)))
 #define BinaryenOp_val(v) (*((BinaryenOp*) Data_custom_val(v)))
 #define BinaryenLiteral_val(v) (*((struct BinaryenLiteral*) Data_custom_val(v)))

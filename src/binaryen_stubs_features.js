@@ -104,6 +104,12 @@ function caml_binaryen_feature_extended_const() {
   return Binaryen.Features.ExtendedConst;
 }
 
+//Provides: caml_binaryen_feature_strings
+//Requires: Binaryen
+function caml_binaryen_feature_strings() {
+  return Binaryen.Features.Strings;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: Binaryen
 function caml_binaryen_feature_all() {

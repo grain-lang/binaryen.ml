@@ -26,12 +26,16 @@ let _ =
     "external_base_name" true
 
 let _ =
-  assert (Import.memory_import_get_module import_wasm_mod = "external_name")
+  assert (
+    Import.memory_import_get_module import_wasm_mod "internal_name"
+    = "external_name")
 
 let _ =
-  assert (Import.memory_import_get_base import_wasm_mod = "external_base_name")
+  assert (
+    Import.memory_import_get_base import_wasm_mod "internal_name"
+    = "external_base_name")
 
-let _ = assert (Memory.is_shared import_wasm_mod = true)
+let _ = assert (Memory.is_shared import_wasm_mod "internal_name" = true)
 
 (* Testing Return.get_value *)
 let _ =
@@ -52,7 +56,9 @@ let params () = Type.create [| Type.int32; Type.int32 |]
 let results = Type.int32
 let x () = Expression.Local_get.make wasm_mod 0 Type.int32
 let y () = Expression.Local_get.make wasm_mod 1 Type.int32
-let load = Expression.Load.make wasm_mod 1 ~signed:true 0 0 Type.int32 (y ())
+
+let load =
+  Expression.Load.make wasm_mod 1 ~signed:true 0 0 Type.int32 (y ()) "0"
 
 let select =
   Expression.Select.make wasm_mod
@@ -155,16 +161,16 @@ let _ = assert (Memory.has_memory wasm_mod = false)
 let _ =
   Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
     [ segment; passive_segment ]
-    false
+    false "0"
 
 let _ = assert (Memory.has_memory wasm_mod = true)
-let _ = assert (Memory.get_initial wasm_mod = 1)
-let _ = assert (Memory.has_max wasm_mod = false)
-let _ = assert (Memory.get_max wasm_mod = Memory.unlimited)
+let _ = assert (Memory.get_initial wasm_mod "0" = 1)
+let _ = assert (Memory.has_max wasm_mod "0" = false)
+let _ = assert (Memory.get_max wasm_mod "0" = Memory.unlimited)
 let max_memory_wasm_mod = Module.create ()
-let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false
-let _ = assert (Memory.has_max max_memory_wasm_mod = true)
-let _ = assert (Memory.get_max max_memory_wasm_mod = 2)
+let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false "0"
+let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
+let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
 (* Create an imported "write" function i32 (anyref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
@@ -236,13 +242,13 @@ let _ =
       Module.Feature.typed_function_references;
       Module.Feature.relaxed_simd;
       Module.Feature.extended_const;
+      Module.Feature.strings;
       Module.Feature.all;
     ]
 
 let _ = Module.validate new_mod
 let _ = Module.print new_mod
-
-let _ = Module.print_stack_ir new_mod
+let _ = Module.print_stack_ir new_mod false
 
 (* Dispose the modules 👋 *)
 
