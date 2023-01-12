@@ -897,3 +897,67 @@ module Table_grow = struct
   external set_delta : t -> t -> unit = "caml_binaryen_tablegrow_set_delta"
   (** Sets the delta of a `Table.grow` expression. *)
 end
+
+module Atomic = struct
+  external load :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    typ:Type.t ->
+    ptr:t ->
+    memory_name:string ->
+    t = "caml_binaryen_atomic_load__bytecode" "caml_binaryen_atomic_load"
+  (** module, bytes, offset, ty, ptr, memoryName *)
+
+  external store :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    value:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t = "caml_binaryen_atomic_store__bytecode" "caml_binaryen_atomic_store"
+  (** module, bytes, offset, ptr, val, ty, memoryName *)
+
+  external rmw :
+    Module.t ->
+    op:Op.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    value:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t = "caml_binaryen_atomic_rmw__bytecode" "caml_binaryen_atomic_rmw"
+  (** module, op, bytes, offset, ptr, val, ty, memoryName *)
+
+  external cmpxchg :
+    Module.t ->
+    bytes:int ->
+    offset:int ->
+    ptr:t ->
+    expected:t ->
+    replacement:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t = "caml_binaryen_atomic_cmpxchg__bytecode" "caml_binaryen_atomic_cmpxchg"
+  (** module, bytes, offset, ptr, expected, replacement, ty, memoryName *)
+
+  external wait :
+    Module.t ->
+    ptr:t ->
+    expected:t ->
+    timeout:t ->
+    typ:Type.t ->
+    memory_name:string ->
+    t = "caml_binaryen_atomic_wait__bytecode" "caml_binaryen_atomic_wait"
+  (** module, ptr, expected, timeout, ty, memoryName *)
+
+  external notify :
+    Module.t -> ptr:t -> notify_count:t -> memory_name:string -> t
+    = "caml_binaryen_atomic_notify"
+  (** module, ptr, notifyCount, memoryName *)
+
+  external fence : Module.t -> t = "caml_binaryen_atomic_fence"
+end

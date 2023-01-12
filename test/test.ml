@@ -172,6 +172,33 @@ let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false "0"
 let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
+(* Atomics *)
+let atomics_ptr = Expression.Const.make wasm_mod (Literal.int32 0l)
+let atomics_timeout = Expression.Const.make wasm_mod (Literal.int64 111L)
+
+let atomic_store =
+  Expression.Atomic.store wasm_mod ~bytes:4 ~offset:0 ~ptr:atomics_ptr
+    ~value:
+      (Expression.Atomic.load wasm_mod ~bytes:4 ~offset:0 ~typ:Type.int32
+         ~ptr:atomics_ptr ~memory_name:"0")
+    ~typ:Type.int32 ~memory_name:"0"
+
+let atomic_wait =
+  Expression.Drop.make wasm_mod
+    (Expression.Atomic.wait wasm_mod ~ptr:atomics_ptr ~expected:atomics_ptr
+       ~timeout:atomics_timeout ~typ:Type.int32 ~memory_name:"0")
+
+let atomic_notify =
+  Expression.Drop.make wasm_mod
+    (Expression.Atomic.notify wasm_mod ~ptr:atomics_ptr
+       ~notify_count:atomics_ptr ~memory_name:"0")
+
+let atomic_fence = Expression.Atomic.fence wasm_mod
+let () = Expression.print atomic_store
+let () = Expression.print atomic_wait
+let () = Expression.print atomic_notify
+let () = Expression.print atomic_fence
+
 (* Create an imported "write" function i32 (anyref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 

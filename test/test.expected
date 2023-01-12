@@ -6,6 +6,26 @@
  (ref.null func)
  (i32.const 0)
 )
+(i32.atomic.store $0
+ (i32.const 0)
+ (i32.atomic.load $0
+  (i32.const 0)
+ )
+)
+(drop
+ (memory.atomic.wait32 $0
+  (i32.const 0)
+  (i32.const 0)
+  (i64.const 111)
+ )
+)
+(drop
+ (memory.atomic.notify $0
+  (i32.const 0)
+  (i32.const 0)
+ )
+)
+(atomic.fence)
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $none_=>_none (func))
