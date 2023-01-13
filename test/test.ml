@@ -94,7 +94,15 @@ let call_adder =
 
 let start =
   Function.add_function wasm_mod "start" Type.none Type.none [||]
-    (Expression.Drop.make wasm_mod call_adder)
+    (Expression.Block.make wasm_mod ~return_type:Type.none "start"
+       [
+         Expression.Memory_init.make wasm_mod 1
+           (Expression.Const.make wasm_mod (Literal.int32 2048l))
+           (Expression.Const.make wasm_mod (Literal.int32 0l))
+           (Expression.Const.make wasm_mod (Literal.int32 5l))
+           "0";
+         Expression.Drop.make wasm_mod call_adder;
+       ])
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
@@ -172,7 +180,11 @@ let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false "0"
 let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
-(* Create an imported "write" function i32 (anyref, i32, i32) *)
+let _ =
+  assert (
+    Bytes.equal (Memory.get_segment_data wasm_mod 1) (Bytes.of_string "world"))
+
+(* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 
 let _ =

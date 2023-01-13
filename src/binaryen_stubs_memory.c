@@ -92,3 +92,37 @@ caml_binaryen_memory_is_shared(value _module, value _memoryName) {
   char* memoryName = Safe_String_val(_memoryName);
   CAMLreturn(Val_bool(BinaryenMemoryIsShared(module, memoryName)));
 }
+
+CAMLprim value
+caml_binaryen_get_num_memory_segments(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  CAMLreturn(Val_int(BinaryenGetNumMemorySegments(module)));
+}
+
+CAMLprim value
+caml_binaryen_get_memory_segment_byte_offset(value _module, value _id) {
+  CAMLparam2(_module, _id);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenIndex id = Int_val(_id);
+  CAMLreturn(Val_int(BinaryenGetMemorySegmentByteOffset(module, id)));
+}
+
+CAMLprim value
+caml_binaryen_get_memory_segment_passive(value _module, value _id) {
+  CAMLparam2(_module, _id);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenIndex id = Int_val(_id);
+  CAMLreturn(Val_bool(BinaryenGetMemorySegmentPassive(module, id)));
+}
+
+CAMLprim value
+caml_binaryen_get_memory_segment_data(value _module, value _id) {
+  CAMLparam2(_module, _id);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenIndex id = Int_val(_id);
+  size_t size = BinaryenGetMemorySegmentByteLength(module, id);
+  CAMLprim value bytes = caml_alloc_string(size);
+  BinaryenCopyMemorySegmentData(module, id, (char*)Bytes_val(bytes));
+  CAMLreturn(bytes);
+}

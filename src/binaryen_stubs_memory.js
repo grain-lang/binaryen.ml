@@ -91,3 +91,27 @@ function caml_binaryen_memory_is_shared(mod, memoryName) {
   var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   return caml_js_to_bool(memory_info.shared);
 }
+
+//Provides: caml_binaryen_get_num_memory_segments
+function caml_binaryen_get_num_memory_segments(wasm_mod) {
+  return wasm_mod.getNumMemorySegments();
+}
+
+//Provides: caml_binaryen_get_memory_segment_byte_offset
+function caml_binaryen_get_memory_segment_byte_offset(wasm_mod, idx) {
+  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+  return info.offset;
+}
+
+//Provides: caml_binaryen_get_memory_segment_passive
+function caml_binaryen_get_memory_segment_passive(wasm_mod, idx) {
+  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+  return info.passive;
+}
+
+//Provides: caml_binaryen_get_memory_segment_data
+//Requires: caml_bytes_of_array
+function caml_binaryen_get_memory_segment_data(wasm_mod, idx) {
+  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+  return caml_bytes_of_array(info.data);
+}

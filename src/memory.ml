@@ -52,3 +52,15 @@ external is_shared : Module.t -> string -> bool
   = "caml_binaryen_memory_is_shared"
 
 let unlimited = -1
+
+external get_num_segments : Module.t -> int
+  = "caml_binaryen_get_num_memory_segments"
+
+external get_segment_byte_offset : Module.t -> int -> int
+  = "caml_binaryen_get_memory_segment_byte_offset"
+
+external get_segment_passive : Module.t -> int -> bool
+  = "caml_binaryen_get_memory_segment_passive"
+
+external get_segment_data : Module.t -> int -> bytes
+  = "caml_binaryen_get_memory_segment_data"
