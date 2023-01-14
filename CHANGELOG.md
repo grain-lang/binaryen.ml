@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.20.0](https://github.com/grain-lang/binaryen.ml/compare/v0.19.0...v0.20.0) (2023-01-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* Require dune 3.0 to better support js_of_ocaml
+* Update memory operations to require memory name
+* Remove RttCanon and RttSub expression kinds
+* Add optimize argument to StackIR emitting functions
+* Require js_of_ocaml 4.1 to ensure optimization fix
+* Upgrade to libbinaryen v110 ([#173](https://github.com/grain-lang/binaryen.ml/issues/173))
+* Properly accept the size argument to Memory_init.make ([#171](https://github.com/grain-lang/binaryen.ml/issues/171))
+
+### Features
+
+* Add functions for converting between Types and Heap Types ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add operations on Heap Types ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add operations on Packed Types ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add operations on the Type System ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add optimize argument to StackIR emitting functions ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add Stringref and Stringview Types ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Add strings feature ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Support querying data segments ([#176](https://github.com/grain-lang/binaryen.ml/issues/176)) ([5a6141c](https://github.com/grain-lang/binaryen.ml/commit/5a6141cd585e5030f74ebdaaee1e664b4339c17e))
+* Update memory operations to require memory name ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Upgrade to libbinaryen v110 ([#173](https://github.com/grain-lang/binaryen.ml/issues/173)) ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+
+
+### Bug Fixes
+
+* Properly accept the size argument to Memory_init.make ([#171](https://github.com/grain-lang/binaryen.ml/issues/171)) ([9ea20fe](https://github.com/grain-lang/binaryen.ml/commit/9ea20fe141f4f39697382c786c8d7f13290ff26d))
+
+
+### Miscellaneous Chores
+
+* Remove RttCanon and RttSub expression kinds ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Require dune 3.0 to better support js_of_ocaml ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+* Require js_of_ocaml 4.1 to ensure optimization fix ([474e5cd](https://github.com/grain-lang/binaryen.ml/commit/474e5cd49b276b5becc54e6f1bf4d9c044ef5b76))
+
 ## [0.19.0](https://github.com/grain-lang/binaryen.ml/compare/v0.18.0...v0.19.0) (2022-11-19)
 
 
