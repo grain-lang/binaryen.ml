@@ -87,11 +87,17 @@ val generate_stack_ir : t
 val global_refining : t
 (** refine the types of globals *)
 
+val gsi : t
+(** globally optimize struct values *)
+
 val gto : t
 (** globally optimize GC types *)
 
-val gsi : t
-(** globally optimize struct values *)
+val gufa : t
+(** Grand Unified Flow Analysis: optimize the entire program using information about what content can actually appear in each location *)
+
+val gufa_optimizing : t
+(** GUFA plus local optimizations in functions we modified *)
 
 val type_refining : t
 (** apply more specific subtypes to type fields where possible *)

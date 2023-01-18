@@ -87,11 +87,17 @@ let generate_stack_ir = "generate-stack-ir"
 (** refine the types of globals *)
 let global_refining = "global-refining"
 
+(** globally optimize struct values *)
+let gsi = "gsi"
+
 (** globally optimize GC types *)
 let gto = "gto"
 
-(** globally optimize struct values *)
-let gsi = "gsi"
+(** Grand Unified Flow Analysis: optimize the entire program using information about what content can actually appear in each location *)
+let gufa = "gufa"
+
+(** GUFA plus local optimizations in functions we modified *)
+let gufa_optimizing = "gufa-optimizing"
 
 (** apply more specific subtypes to type fields where possible *)
 let type_refining = "type-refining"

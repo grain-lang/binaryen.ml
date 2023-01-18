@@ -234,7 +234,13 @@ let new_mod = Module.read byts
 
 let _ =
   Module.run_passes new_mod
-    [ Passes.name_types; Passes.merge_similar_functions; Passes.spill_pointers ]
+    [
+      Passes.name_types;
+      Passes.merge_similar_functions;
+      Passes.spill_pointers;
+      Passes.gufa;
+      Passes.gufa_optimizing;
+    ]
 
 let _ =
   Module.set_features new_mod
