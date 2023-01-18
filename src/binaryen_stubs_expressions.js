@@ -189,11 +189,12 @@ function caml_binaryen_load(
 
   switch (typ) {
     case Binaryen.i32: {
-      if (signed) {
-        if (bytes === 4) {
-          return wasm_mod.i32.load(offset, align, ptr, name);
-        }
+      // Using four bytes doesn't matter if it is signed or unsigned
+      if (bytes === 4) {
+        return wasm_mod.i32.load(offset, align, ptr, name);
+      }
 
+      if (signed) {
         if (bytes === 1) {
           return wasm_mod.i32.load8_s(offset, align, ptr, name);
         }
@@ -210,13 +211,16 @@ function caml_binaryen_load(
           return wasm_mod.i32.load16_u(offset, align, ptr, name);
         }
       }
+
+      break;
     }
     case Binaryen.i64: {
-      if (signed) {
-        if (bytes === 8) {
-          return wasm_mod.i64.load(offset, align, ptr, name);
-        }
+      // Using eight bytes doesn't matter if it is signed or unsigned
+      if (bytes === 8) {
+        return wasm_mod.i64.load(offset, align, ptr, name);
+      }
 
+      if (signed) {
         if (bytes === 1) {
           return wasm_mod.i64.load8_s(offset, align, ptr, name);
         }
@@ -241,6 +245,8 @@ function caml_binaryen_load(
           return wasm_mod.i64.load32_u(offset, align, ptr, name);
         }
       }
+
+      break;
     }
     case Binaryen.f32: {
       return wasm_mod.f32.load(offset, align, ptr, name);
@@ -300,6 +306,8 @@ function caml_binaryen_store(
       if (bytes === 2) {
         return wasm_mod.i32.store16(offset, align, ptr, value, name);
       }
+
+      break;
     }
     case Binaryen.i64: {
       if (bytes === 8) {
@@ -317,6 +325,8 @@ function caml_binaryen_store(
       if (bytes === 4) {
         return wasm_mod.i64.store32(offset, align, ptr, value, name);
       }
+
+      break;
     }
     case Binaryen.f32: {
       return wasm_mod.f32.store(offset, align, ptr, value, name);

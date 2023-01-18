@@ -58,7 +58,7 @@ let x () = Expression.Local_get.make wasm_mod 0 Type.int32
 let y () = Expression.Local_get.make wasm_mod 1 Type.int32
 
 let load =
-  Expression.Load.make wasm_mod 1 ~signed:true 0 0 Type.int32 (y ()) "0"
+  Expression.Load.make wasm_mod 4 ~signed:false 0 0 Type.int32 (y ()) "0"
 
 let select =
   Expression.Select.make wasm_mod
@@ -204,6 +204,7 @@ let _ =
        Type.int32)
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
+let _ = Module.validate wasm_mod
 
 (* Shouldn't actually do anything since we aren't doing function renames *)
 let _ = Module.update_maps wasm_mod
