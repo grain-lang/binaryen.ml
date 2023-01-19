@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.20.1](https://github.com/grain-lang/binaryen.ml/compare/v0.20.0...v0.20.1) (2023-01-19)
+
+
+### Features
+
+* Add gufa & gufa_optimizing passes ([#180](https://github.com/grain-lang/binaryen.ml/issues/180)) ([7395a1f](https://github.com/grain-lang/binaryen.ml/commit/7395a1fe0591a835eeeeb6e6e58c28c32b69342d))
+
+
+### Bug Fixes
+
+* Properly handle load & store instructions in JS ([#178](https://github.com/grain-lang/binaryen.ml/issues/178)) ([becd3b8](https://github.com/grain-lang/binaryen.ml/commit/becd3b82ac31c7f2ba1055b320c7ff537b58d971))
+
 ## [0.20.0](https://github.com/grain-lang/binaryen.ml/compare/v0.19.0...v0.20.0) (2023-01-13)
 
 
