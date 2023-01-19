@@ -20,6 +20,7 @@ jobs:
           package-name: binaryen.ml
           pull-request-title-pattern: "chore${scope}: Release${component} ${version}"
           bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
 
   add-archive:
     needs: [release-please]
