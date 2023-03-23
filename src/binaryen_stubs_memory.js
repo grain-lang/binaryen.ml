@@ -11,6 +11,7 @@ function caml_binaryen_set_memory(
   segmentOffsets,
   segmentSizes,
   shared,
+  memory64,
   memoryName
 ) {
   var passives = caml_list_to_js_array(segmentPassives);
@@ -29,6 +30,7 @@ function caml_binaryen_set_memory(
     caml_jsstring_of_string(exportName),
     segs,
     caml_js_from_bool(shared),
+    caml_js_from_bool(memory64),
     caml_jsstring_of_string(memoryName)
   );
 }
@@ -45,7 +47,8 @@ function caml_binaryen_set_memory__bytecode() {
     arguments[6],
     arguments[7],
     arguments[8],
-    arguments[9]
+    arguments[9],
+    arguments[10]
   );
 }
 

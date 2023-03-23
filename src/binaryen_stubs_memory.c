@@ -8,9 +8,10 @@
 
 
 CAMLprim value
-caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _exportName, value _segments, value _segmentPassive, value _segmentOffsets, value _segmentSizes, value _shared, value _memoryName) {
+caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _exportName, value _segments, value _segmentPassive, value _segmentOffsets, value _segmentSizes, value _shared, value _memory64, value _memoryName) {
   CAMLparam5(_module, _initial, _maximum, _exportName, _segments);
-  CAMLxparam5(_segmentPassive, _segmentOffsets, _segmentSizes, _shared, _memoryName);
+  CAMLxparam5(_segmentPassive, _segmentOffsets, _segmentSizes, _shared, _memory64);
+  CAMLxparam1(_memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenIndex initial = Int_val(_initial);
   BinaryenIndex maximum = Int_val(_maximum);
@@ -39,14 +40,15 @@ caml_binaryen_set_memory(value _module, value _initial, value _maximum, value _e
   for (int i = 0; i < segmentSizesLen; i++) {
     segmentSizes[i] = Int_val(Field(_segmentSizes, i));
   }
-  uint8_t shared = Bool_val(_shared);
+  bool shared = Bool_val(_shared);
+  bool memory64 = Bool_val(_memory64);
   char* memoryName = Safe_String_val(_memoryName);
-  BinaryenSetMemory(module, initial, maximum, exportName, segments, segmentPassive, segmentOffsets, segmentSizes, segmentsLen, shared, memoryName);
+  BinaryenSetMemory(module, initial, maximum, exportName, segments, segmentPassive, segmentOffsets, segmentSizes, segmentsLen, shared, memory64, memoryName);
   CAMLreturn(Val_unit);
 }
 CAMLprim value
 caml_binaryen_set_memory__bytecode(value * argv) {
-  return caml_binaryen_set_memory(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9]);
+  return caml_binaryen_set_memory(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8], argv[9], argv[10]);
 }
 
 CAMLprim value

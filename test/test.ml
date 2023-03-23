@@ -169,14 +169,14 @@ let _ = assert (Memory.has_memory wasm_mod = false)
 let _ =
   Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
     [ segment; passive_segment ]
-    false "0"
+    false false "0"
 
 let _ = assert (Memory.has_memory wasm_mod = true)
 let _ = assert (Memory.get_initial wasm_mod "0" = 1)
 let _ = assert (Memory.has_max wasm_mod "0" = false)
 let _ = assert (Memory.get_max wasm_mod "0" = Memory.unlimited)
 let max_memory_wasm_mod = Module.create ()
-let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false "0"
+let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false false "0"
 let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
