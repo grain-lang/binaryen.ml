@@ -21,6 +21,7 @@
    settings
    packed_type
    heap_type
+   signature_type
    struct_type
    type_system
    ocaml_helpers)
@@ -43,5 +44,6 @@
    settings.js
    packed_type.js
    heap_type.js
+   signature_type.js
    struct_type.js
    type_system.js)))
