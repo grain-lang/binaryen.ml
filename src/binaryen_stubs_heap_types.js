@@ -34,6 +34,12 @@ function caml_binaryen_heap_type_data() {
   return Binaryen._BinaryenHeapTypeData();
 }
 
+//Provides: caml_binaryen_heap_type_array
+//Requires: Binaryen
+function caml_binaryen_heap_type_array() {
+  return Binaryen._BinaryenHeapTypeArray();
+}
+
 //Provides: caml_binaryen_heap_type_string
 //Requires: Binaryen
 function caml_binaryen_heap_type_string() {
@@ -56,6 +62,24 @@ function caml_binaryen_heap_type_stringview_wtf16() {
 //Requires: Binaryen
 function caml_binaryen_heap_type_stringview_iter() {
   return Binaryen._BinaryenHeapTypeStringviewIter();
+}
+
+//Provides: caml_binaryen_heap_type_none
+//Requires: Binaryen
+function caml_binaryen_heap_type_none() {
+  return Binaryen._BinaryenHeapTypeNone();
+}
+
+//Provides: caml_binaryen_heap_type_noext
+//Requires: Binaryen
+function caml_binaryen_heap_type_noext() {
+  return Binaryen._BinaryenHeapTypeNoext();
+}
+
+//Provides: caml_binaryen_heap_type_nofunc
+//Requires: Binaryen
+function caml_binaryen_heap_type_nofunc() {
+  return Binaryen._BinaryenHeapTypeNofunc();
 }
 
 //Provides: caml_binaryen_type_get_heap_type

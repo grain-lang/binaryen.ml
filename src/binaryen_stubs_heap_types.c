@@ -59,6 +59,13 @@ caml_binaryen_heap_type_data(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_heap_type_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeArray();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
 caml_binaryen_heap_type_string(value unit) {
   CAMLparam1(unit);
   BinaryenHeapType ty = BinaryenHeapTypeString();
@@ -83,6 +90,27 @@ CAMLprim value
 caml_binaryen_heap_type_stringview_iter(value unit) {
   CAMLparam1(unit);
   BinaryenHeapType ty = BinaryenHeapTypeStringviewIter();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
+caml_binaryen_heap_type_none(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeNone();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
+caml_binaryen_heap_type_noext(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeNoext();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
+caml_binaryen_heap_type_nofunc(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeNofunc();
   CAMLreturn(alloc_BinaryenHeapType(ty));
 }
 
