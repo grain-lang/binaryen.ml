@@ -7,31 +7,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenTableRef */
-static value alloc_BinaryenTableRef(BinaryenTableRef table)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenTableRef), 0, 1);
-  BinaryenTableRef_val(v) = table;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenElementSegmentRef */
-static value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenElementSegmentRef), 0, 1);
-  BinaryenElementSegmentRef_val(v) = elem;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
-static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
-  BinaryenExpressionRef_val(v) = exp;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_add_table(value _module, value _table, value _initial, value _maximum, value _tableType) {
   CAMLparam5(_module, _table, _initial, _maximum, _tableType);

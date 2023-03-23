@@ -7,15 +7,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
-static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
-  BinaryenExpressionRef_val(v) = exp;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_expression_get_id(value _expr) {
   CAMLparam1(_expr);

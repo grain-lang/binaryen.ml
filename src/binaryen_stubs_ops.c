@@ -6,15 +6,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenOp */
-static value alloc_BinaryenOp(BinaryenOp op)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenOp), 0, 1);
-  BinaryenOp_val(v) = op;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_binaryen_clz_int32(value unit) {
   CAMLparam1(unit);

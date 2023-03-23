@@ -7,15 +7,6 @@
 #include "ocaml_helpers.h"
 
 
-/* Allocating an OCaml custom block to hold the given BinaryenHeapType */
-static value alloc_BinaryenHeapType(BinaryenHeapType typ)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenHeapType), 0, 1);
-  BinaryenHeapType_val(v) = typ;
-  return v;
-}
-
-
 CAMLprim value
 caml_binaryen_heap_type_ext(value unit) {
   CAMLparam1(unit);

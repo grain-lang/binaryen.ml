@@ -6,16 +6,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenType */
-static value alloc_BinaryenType(BinaryenType typ)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenType), 0, 1);
-  BinaryenType_val(v) = typ;
-  return v;
-}
-
-
 CAMLprim value
 caml_binaryen_type_none(value unit) {
   CAMLparam1(unit);

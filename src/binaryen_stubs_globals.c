@@ -7,31 +7,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenGlobalRef */
-static value alloc_BinaryenGlobalRef(BinaryenGlobalRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenGlobalRef), 0, 1);
-  BinaryenGlobalRef_val(v) = exp;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenType */
-static value alloc_BinaryenType(BinaryenType typ)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenType), 0, 1);
-  BinaryenType_val(v) = typ;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
-static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
-  BinaryenExpressionRef_val(v) = exp;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_add_global(value _module, value _name, value _ty, value _mutable_, value _init) {
   CAMLparam5(_module, _name, _ty, _mutable_, _init);

@@ -8,30 +8,6 @@
 #include "ocaml_helpers.h"
 
 
-/* Allocating an OCaml custom block to hold the given BinaryenFunctionRef */
-static value alloc_BinaryenFunctionRef(BinaryenFunctionRef fun)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenFunctionRef), 0, 1);
-  BinaryenFunctionRef_val(v) = fun;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
-static value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
-  BinaryenExpressionRef_val(v) = exp;
-  return v;
-}
-
-/* Allocating an OCaml custom block to hold the given BinaryenType */
-static value alloc_BinaryenType(BinaryenType typ)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenType), 0, 1);
-  BinaryenType_val(v) = typ;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_add_function(value _module, value _name, value _params, value _results, value _locals, value _body) {
   CAMLparam5(_module, _name, _params, _results, _locals);

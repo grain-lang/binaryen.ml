@@ -7,15 +7,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenModuleRef */
-static value alloc_BinaryenModuleRef(BinaryenModuleRef typ)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenModuleRef), 0, 1);
-  BinaryenModuleRef_val(v) = typ;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_module_create(value unit) {
   CAMLparam1(unit);

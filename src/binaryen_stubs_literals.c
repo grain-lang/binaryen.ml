@@ -6,15 +6,6 @@
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
 
-
-/* Allocating an OCaml custom block to hold the given BinaryenLiteral */
-static value alloc_BinaryenLiteral(struct BinaryenLiteral op)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(struct BinaryenLiteral), 0, 1);
-  BinaryenLiteral_val(v) = op;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_literal_int32(value _i32) {
   CAMLparam1(_i32);

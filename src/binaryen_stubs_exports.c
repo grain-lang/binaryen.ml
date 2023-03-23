@@ -8,14 +8,6 @@
 #include "ocaml_helpers.h"
 
 
-/* Allocating an OCaml custom block to hold the given BinaryenExportRef */
-static value alloc_BinaryenExportRef(BinaryenExportRef exp)
-{
-  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExportRef), 0, 1);
-  BinaryenExportRef_val(v) = exp;
-  return v;
-}
-
 CAMLprim value
 caml_binaryen_add_function_export(value _module, value _internalName, value _externalName) {
   CAMLparam3(_module, _internalName, _externalName);
