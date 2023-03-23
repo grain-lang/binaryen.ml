@@ -96,6 +96,14 @@ caml_binaryen_memory_is_shared(value _module, value _memoryName) {
 }
 
 CAMLprim value
+caml_binaryen_memory_is_64(value _module, value _memoryName) {
+  CAMLparam2(_module, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* memoryName = Safe_String_val(_memoryName);
+  CAMLreturn(Val_bool(BinaryenMemoryIs64(module, memoryName)));
+}
+
+CAMLprim value
 caml_binaryen_get_num_memory_segments(value _module) {
   CAMLparam1(_module);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);

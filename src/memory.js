@@ -95,6 +95,13 @@ function caml_binaryen_memory_is_shared(mod, memoryName) {
   return caml_js_to_bool(memory_info.shared);
 }
 
+//Provides: caml_binaryen_memory_is_64
+//Requires: caml_js_to_bool, caml_jsstring_of_string
+function caml_binaryen_memory_is_64(mod, memoryName) {
+  var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
+  return caml_js_to_bool(memory_info.is64);
+}
+
 //Provides: caml_binaryen_get_num_memory_segments
 function caml_binaryen_get_num_memory_segments(wasm_mod) {
   return wasm_mod.getNumMemorySegments();

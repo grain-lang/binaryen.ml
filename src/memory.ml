@@ -52,6 +52,8 @@ external get_max : Module.t -> string -> int = "caml_binaryen_memory_get_max"
 external is_shared : Module.t -> string -> bool
   = "caml_binaryen_memory_is_shared"
 
+external is_64 : Module.t -> string -> bool = "caml_binaryen_memory_is_64"
+
 let unlimited = -1
 
 external get_num_segments : Module.t -> int

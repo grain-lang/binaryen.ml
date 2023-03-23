@@ -36,6 +36,7 @@ let _ =
     = "external_base_name")
 
 let _ = assert (Memory.is_shared import_wasm_mod "internal_name" = true)
+let _ = assert (Memory.is_64 import_wasm_mod "internal_name" = false)
 
 (* Testing Return.get_value *)
 let _ =
