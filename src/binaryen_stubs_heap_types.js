@@ -82,6 +82,48 @@ function caml_binaryen_heap_type_nofunc() {
   return Binaryen._BinaryenHeapTypeNofunc();
 }
 
+//Provides: caml_binaryen_heap_type_is_basic
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_basic(ty) {
+  return Binaryen._BinaryenHeapTypeIsBasic(ty);
+}
+
+//Provides: caml_binaryen_heap_type_is_signature
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_signature(ty) {
+  return Binaryen._BinaryenHeapTypeIsSignature(ty);
+}
+
+//Provides: caml_binaryen_heap_type_is_struct
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_struct(ty) {
+  return Binaryen._BinaryenHeapTypeIsStruct(ty);
+}
+
+//Provides: caml_binaryen_heap_type_is_array
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_array(ty) {
+  return Binaryen._BinaryenHeapTypeIsArray(ty);
+}
+
+//Provides: caml_binaryen_heap_type_is_bottom
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_bottom(ty) {
+  return Binaryen._BinaryenHeapTypeIsBottom(ty);
+}
+
+//Provides: caml_binaryen_heap_type_get_bottom
+//Requires: Binaryen
+function caml_binaryen_heap_type_get_bottom(ty) {
+  return Binaryen._BinaryenHeapTypeGetBottom(ty);
+}
+
+//Provides: caml_binaryen_heap_type_is_sub_type
+//Requires: Binaryen
+function caml_binaryen_heap_type_is_sub_type(left, right) {
+  return Binaryen._BinaryenHeapTypeIsSubType(left, right);
+}
+
 //Provides: caml_binaryen_type_get_heap_type
 //Requires: Binaryen
 function caml_binaryen_type_get_heap_type(typ) {

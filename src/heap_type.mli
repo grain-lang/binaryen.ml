@@ -14,3 +14,10 @@ val stringview_iter : unit -> t
 val none : unit -> t
 val noext : unit -> t
 val nofunc : unit -> t
+val is_basic : t -> bool
+val is_signature : t -> bool
+val is_struct : t -> bool
+val is_array : t -> bool
+val is_bottom : t -> bool
+val get_bottom : t -> t
+val is_sub_type : t -> bool
