@@ -60,11 +60,6 @@ module Feature = struct
 
   let memory64 = memory64 ()
 
-  external typed_function_references : unit -> t
-    = "caml_binaryen_feature_typed_function_references"
-
-  let typed_function_references = typed_function_references ()
-
   external relaxed_simd : unit -> t = "caml_binaryen_feature_relaxed_simd"
 
   let relaxed_simd = relaxed_simd ()

@@ -86,12 +86,6 @@ function caml_binaryen_feature_memory64() {
   return Binaryen.Features.Memory64;
 }
 
-//Provides: caml_binaryen_feature_typed_function_references
-//Requires: Binaryen
-function caml_binaryen_feature_typed_function_references() {
-  return Binaryen.Features.TypedFunctionReferences;
-}
-
 //Provides: caml_binaryen_feature_relaxed_simd
 //Requires: Binaryen
 function caml_binaryen_feature_relaxed_simd() {

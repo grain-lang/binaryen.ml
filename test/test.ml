@@ -258,7 +258,6 @@ let _ =
       Module.Feature.multivalue;
       Module.Feature.gc;
       Module.Feature.memory64;
-      Module.Feature.typed_function_references;
       Module.Feature.relaxed_simd;
       Module.Feature.extended_const;
       Module.Feature.strings;
