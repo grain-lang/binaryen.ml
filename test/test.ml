@@ -236,11 +236,18 @@ let new_mod = Module.read byts
 let _ =
   Module.run_passes new_mod
     [
+      Passes.generate_global_effects;
       Passes.name_types;
       Passes.merge_similar_functions;
       Passes.spill_pointers;
       Passes.gufa;
       Passes.gufa_optimizing;
+      Passes.reorder_globals;
+      Passes.optimize_casts;
+      Passes.multi_memory_lowering;
+      Passes.monomorphize;
+      Passes.signext_lowering;
+      Passes.discard_global_effects;
     ]
 
 let _ =

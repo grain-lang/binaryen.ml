@@ -45,6 +45,9 @@ let denan = "denan"
 (** turns indirect calls into direct ones *)
 let directize = "directize"
 
+(** discards global effect info *)
+let discard_global_effects = "discard-global-effects"
+
 (** optimizes using the DataFlow SSA IR *)
 let dfo = "dfo"
 
@@ -81,6 +84,9 @@ let generate_dyncalls = "generate-dyncalls"
 (** generate dynCall functions used by emscripten ABI, but only for functions with i64 in their signature (which cannot be invoked via the wasm table without JavaScript BigInt support). *)
 let generate_i64_dyncalls = "generate-i64-dyncalls"
 
+(** generate global effect info (helps later passes) *)
+let generate_global_effects = "generate-global-effects"
+
 (** generate Stack IR *)
 let generate_stack_ir = "generate-stack-ir"
 
@@ -116,6 +122,9 @@ let inlining_optimizing = "inlining-optimizing"
 
 (** lower away binaryen intrinsics *)
 let intrinsic_lowering = "intrinsic-lowering"
+
+(** wrap imports and exports for JavaScript promise integration *)
+let jspi = "jspi"
 
 (** legalizes i64 types on the import/export boundary *)
 let legalize_js_interface = "legalize-js-interface"
@@ -181,6 +190,15 @@ let mod_asyncify_always_and_only_unwind = "mod-asyncify-always-and-only-unwind"
 (** apply the assumption that asyncify never unwinds *)
 let mod_asyncify_never_unwind = "mod-asyncify-never-unwind"
 
+(** creates specialized versions of functions *)
+let monomorphize = "monomorphize"
+
+(** creates specialized versions of functions (even if unhelpful) *)
+let monomorphize_always = "monomorphize-always"
+
+(** combines multiple memories into a single memory *)
+let multi_memory_lowering = "multi-memory-lowering"
+
 (** name list *)
 let nm = "nm"
 
@@ -195,6 +213,9 @@ let optimize_added_constants = "optimize-added-constants"
 
 (** optimizes added constants into load/store offsets, propagating them across locals too *)
 let optimize_added_constants_propagate = "optimize-added-constants-propagate"
+
+(** eliminate and reuse casts *)
+let optimize_casts = "optimize-casts"
 
 (** optimizes instruction combinations *)
 let optimize_instructions = "optimize-instructions"
@@ -269,6 +290,12 @@ let remove_unused_names = "remove-unused-names"
 (** sorts functions by access frequency *)
 let reorder_functions = "reorder-functions"
 
+(** sorts globals by access frequency *)
+let reorder_globals = "reorder-globals"
+
+(** sorts globals by access frequency (even if there are few) *)
+let reorder_globals_always = "reorder-globals-always"
+
 (** sorts locals by access frequency *)
 let reorder_locals = "reorder-locals"
 
@@ -292,6 +319,9 @@ let signature_pruning = "signature-pruning"
 
 (** apply more specific subtypes to signature types where possible *)
 let signature_refining = "signature-refining"
+
+(** lower sign-ext operations to wasm mvp *)
+let signext_lowering = "signext-lowering"
 
 (** miscellaneous globals-related optimizations *)
 let simplify_globals = "simplify-globals"
