@@ -19,6 +19,7 @@ module Feature : sig
   val relaxed_simd : t
   val extended_const : t
   val strings : t
+  val multi_memories : t
   val all : t
 end
 

@@ -261,6 +261,7 @@ let _ =
       Module.Feature.relaxed_simd;
       Module.Feature.extended_const;
       Module.Feature.strings;
+      Module.Feature.multi_memories;
       Module.Feature.all;
     ]
 

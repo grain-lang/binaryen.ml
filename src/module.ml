@@ -72,6 +72,10 @@ module Feature = struct
 
   let strings = strings ()
 
+  external multi_memories : unit -> t = "caml_binaryen_feature_multi_memories"
+
+  let multi_memories = multi_memories ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()
