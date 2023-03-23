@@ -5,6 +5,7 @@
  (foreign_stubs
   (language c)
   (names
+   array_type
    type
    op
    literal
@@ -26,6 +27,7 @@
   (flags :standard -O2 -Wall -Wextra))
  (js_of_ocaml
   (javascript_files
+   array_type.js
    type.js
    op.js
    literal.js
