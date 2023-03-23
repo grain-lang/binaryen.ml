@@ -94,6 +94,13 @@ caml_binaryen_type_dataref(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_type_arrayref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeArrayref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
 caml_binaryen_type_stringref(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeStringref();
@@ -118,6 +125,27 @@ CAMLprim value
 caml_binaryen_type_stringview_iter(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeStringviewIter();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_nullref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeNullref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_null_externref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeNullExternref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_null_funcref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeNullFuncref();
   CAMLreturn(alloc_BinaryenType(ty));
 }
 
