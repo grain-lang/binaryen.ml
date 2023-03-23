@@ -3,7 +3,7 @@
 )
 (table.size $table)
 (table.grow $table
- (ref.null func)
+ (ref.null nofunc)
  (i32.const 0)
 )
 (module
