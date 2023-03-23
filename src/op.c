@@ -2217,3 +2217,269 @@ caml_binaryen_binaryen_ref_as_i31(value unit) {
   BinaryenOp op = BinaryenRefAsI31();
   CAMLreturn(alloc_BinaryenOp(op));
 }
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_extern_internalize(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsExternInternalize();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_ref_as_extern_externalize(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRefAsExternExternalize();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_null(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnNull();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_non_null(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnNonNull();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_cast(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnCast();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_cast_fail(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnCastFail();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_func(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnFunc();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_non_func(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnNonFunc();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_data(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnData();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_non_data(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnNonData();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_i31(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnI31();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_br_on_non_i31(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenBrOnNonI31();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_utf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewUTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_wtf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewWTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_replace(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewReplace();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_wtf16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_utf8_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewUTF8Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_wtf8_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewWTF8Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_replace_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewReplaceArray();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_new_wtf16_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewWTF16Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_measure_utf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringMeasureUTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_measure_wtf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringMeasureWTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_measure_wtf16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringMeasureWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_measure_is_usv(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringMeasureIsUSV();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_measure_wtf16_view(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringMeasureWTF16View();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_utf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeUTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_wtf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeWTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_wtf16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_utf8_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeUTF8Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_wtf8_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeWTF8Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_encode_wtf16_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeWTF16Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_as_wtf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringAsWTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_as_wtf16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringAsWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_as_iter(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringAsIter();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_iter_move_advance(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringIterMoveAdvance();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_iter_move_rewind(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringIterMoveRewind();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_slice_wtf8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringSliceWTF8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_binaryen_string_slice_wtf16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringSliceWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}

@@ -1338,3 +1338,89 @@ let ref_as_data = ref_as_data ()
 external ref_as_i31 : unit -> t = "caml_binaryen_binaryen_ref_as_i31"
 
 let ref_as_i31 = ref_as_i31 ()
+
+external ref_as_extern_internalize : unit -> t
+  = "caml_binaryen_binaryen_ref_as_extern_internalize"
+
+external ref_as_extern_externalize : unit -> t
+  = "caml_binaryen_binaryen_ref_as_extern_externalize"
+
+external br_on_null : unit -> t = "caml_binaryen_binaryen_br_on_null"
+external br_on_non_null : unit -> t = "caml_binaryen_binaryen_br_on_non_null"
+external br_on_cast : unit -> t = "caml_binaryen_binaryen_br_on_cast"
+external br_on_cast_fail : unit -> t = "caml_binaryen_binaryen_br_on_cast_fail"
+external br_on_func : unit -> t = "caml_binaryen_binaryen_br_on_func"
+external br_on_non_func : unit -> t = "caml_binaryen_binaryen_br_on_non_func"
+external br_on_data : unit -> t = "caml_binaryen_binaryen_br_on_data"
+external br_on_non_data : unit -> t = "caml_binaryen_binaryen_br_on_non_data"
+external br_on_i31 : unit -> t = "caml_binaryen_binaryen_br_on_i31"
+external br_on_non_i31 : unit -> t = "caml_binaryen_binaryen_br_on_non_i31"
+external string_new_utf8 : unit -> t = "caml_binaryen_binaryen_string_new_utf8"
+external string_new_wtf8 : unit -> t = "caml_binaryen_binaryen_string_new_wtf8"
+
+external string_new_replace : unit -> t
+  = "caml_binaryen_binaryen_string_new_replace"
+
+external string_new_wtf16 : unit -> t
+  = "caml_binaryen_binaryen_string_new_wtf16"
+
+external string_new_utf8_array : unit -> t
+  = "caml_binaryen_binaryen_string_new_utf8_array"
+
+external string_new_wtf8_array : unit -> t
+  = "caml_binaryen_binaryen_string_new_wtf8_array"
+
+external string_new_replace_array : unit -> t
+  = "caml_binaryen_binaryen_string_new_replace_array"
+
+external string_new_wtf16_array : unit -> t
+  = "caml_binaryen_binaryen_string_new_wtf16_array"
+
+external string_measure_utf8 : unit -> t
+  = "caml_binaryen_binaryen_string_measure_utf8"
+
+external string_measure_wtf8 : unit -> t
+  = "caml_binaryen_binaryen_string_measure_wtf8"
+
+external string_measure_wtf16 : unit -> t
+  = "caml_binaryen_binaryen_string_measure_wtf16"
+
+external string_measure_is_usv : unit -> t
+  = "caml_binaryen_binaryen_string_measure_is_usv"
+
+external string_measure_wtf16_view : unit -> t
+  = "caml_binaryen_binaryen_string_measure_wtf16_view"
+
+external string_encode_utf8 : unit -> t
+  = "caml_binaryen_binaryen_string_encode_utf8"
+
+external string_encode_wtf8 : unit -> t
+  = "caml_binaryen_binaryen_string_encode_wtf8"
+
+external string_encode_wtf16 : unit -> t
+  = "caml_binaryen_binaryen_string_encode_wtf16"
+
+external string_encode_utf8_array : unit -> t
+  = "caml_binaryen_binaryen_string_encode_utf8_array"
+
+external string_encode_wtf8_array : unit -> t
+  = "caml_binaryen_binaryen_string_encode_wtf8_array"
+
+external string_encode_wtf16_array : unit -> t
+  = "caml_binaryen_binaryen_string_encode_wtf16_array"
+
+external string_as_wtf8 : unit -> t = "caml_binaryen_binaryen_string_as_wtf8"
+external string_as_wtf16 : unit -> t = "caml_binaryen_binaryen_string_as_wtf16"
+external string_as_iter : unit -> t = "caml_binaryen_binaryen_string_as_iter"
+
+external string_iter_move_advance : unit -> t
+  = "caml_binaryen_binaryen_string_iter_move_advance"
+
+external string_iter_move_rewind : unit -> t
+  = "caml_binaryen_binaryen_string_iter_move_rewind"
+
+external string_slice_wtf8 : unit -> t
+  = "caml_binaryen_binaryen_string_slice_wtf8"
+
+external string_slice_wtf16 : unit -> t
+  = "caml_binaryen_binaryen_string_slice_wtf16"
