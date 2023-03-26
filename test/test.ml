@@ -22,6 +22,10 @@ let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 let import_wasm_mod = Module.create ()
 
 let _ =
+  Module.set_features import_wasm_mod
+    [ Module.Feature.mvp; Module.Feature.atomics ]
+
+let _ =
   Import.add_memory_import import_wasm_mod "internal_name" "external_name"
     "external_base_name" true
 
@@ -32,6 +36,7 @@ let _ =
   assert (Import.memory_import_get_base import_wasm_mod = "external_base_name")
 
 let _ = assert (Memory.is_shared import_wasm_mod = true)
+let _ = print_endline (Module.write_asmjs import_wasm_mod)
 
 (* Testing Return.get_value *)
 let _ =
@@ -241,7 +246,6 @@ let _ =
 
 let _ = Module.validate new_mod
 let _ = Module.print new_mod
-
 let _ = Module.print_stack_ir new_mod
 
 (* Dispose the modules 👋 *)

@@ -92,6 +92,13 @@ function caml_binaryen_module_write_text(wasm_mod) {
   return caml_string_of_jsstring(text);
 }
 
+//Provides: caml_binaryen_module_write_asmjs
+//Requires: caml_string_of_jsstring
+function caml_binaryen_module_write_asmjs(wasm_mod) {
+  var asm = wasm_mod.emitAsmjs();
+  return caml_string_of_jsstring(asm);
+}
+
 //Provides: caml_binaryen_module_write_stack_ir
 //Requires: caml_string_of_jsstring
 function caml_binaryen_module_write_stack_ir(wasm_mod) {

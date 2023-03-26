@@ -37,6 +37,7 @@ val run_passes : t -> Passes.t list -> unit
 val auto_drop : t -> unit
 val write : t -> string option -> bytes * string option
 val write_text : t -> string
+val write_asmjs : t -> string
 val write_stack_ir : t -> string
 val read : bytes -> t
 val interpret : t -> unit

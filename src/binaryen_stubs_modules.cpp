@@ -3,10 +3,14 @@
 #include <caml/alloc.h>
 #include <caml/fail.h>
 #include <caml/memory.h>
+#include <streambuf>
+#include <iostream>
+#include <sstream>
 
 #include "binaryen-c.h"
-#include "ocaml_helpers.h"
+#include "ocaml_cpp_helpers.h"
 
+extern "C" {
 
 /* Allocating an OCaml custom block to hold the given BinaryenModuleRef */
 static value alloc_BinaryenModuleRef(BinaryenModuleRef typ)
@@ -107,7 +111,7 @@ caml_binaryen_module_write(value _module, value _sourceMapUrl) {
   }
   BinaryenModuleAllocateAndWriteResult result = BinaryenModuleAllocateAndWrite(module, sourceMapUrl);
   CAMLlocal3(binary, sourceMap, tuple);
-  binary = caml_alloc_initialized_string(result.binaryBytes, result.binary);
+  binary = caml_alloc_initialized_string(result.binaryBytes, (char *)result.binary);
   if (Is_some(_sourceMapUrl)) {
     sourceMap = caml_alloc_some(caml_copy_string(result.sourceMap));
   } else {
@@ -129,6 +133,25 @@ caml_binaryen_module_write_text(value _module) {
   CAMLlocal1(text);
   text = caml_copy_string(result);
   free(result);
+  CAMLreturn(text);
+}
+
+CAMLprim value
+caml_binaryen_module_write_asmjs(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  // Redirect cout.
+  std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
+  std::ostringstream strCout;
+  std::cout.rdbuf(strCout.rdbuf());
+
+  BinaryenModulePrintAsmjs(module);
+
+  // Restore old cout.
+  std::cout.rdbuf(oldCoutStreamBuf);
+
+  CAMLlocal1(text);
+  text = caml_copy_string(strCout.str().c_str());
   CAMLreturn(text);
 }
 
@@ -198,4 +221,5 @@ caml_binaryen_module_update_maps(value module) {
   CAMLparam1(module);
   BinaryenModuleUpdateMaps(BinaryenModuleRef_val(module));
   CAMLreturn(Val_unit);
+}
 }

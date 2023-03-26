@@ -118,6 +118,7 @@ external write : t -> string option -> bytes * string option
   = "caml_binaryen_module_write"
 
 external write_text : t -> string = "caml_binaryen_module_write_text"
+external write_asmjs : t -> string = "caml_binaryen_module_write_asmjs"
 external write_stack_ir : t -> string = "caml_binaryen_module_write_stack_ir"
 external read : bytes -> t = "caml_binaryen_module_read"
 external interpret : t -> unit = "caml_binaryen_module_interpret"
