@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        ocaml-compiler: [4.12.1, 4.13.1, 4.14.0]
+        ocaml-compiler: [4.12.1, 4.13.1, 4.14.1]
 
     steps:
       - name: Checkout project
@@ -20,21 +20,14 @@ jobs:
         with:
           submodules: "recursive"
 
-      # This is supposed to be solved by the time opam 2.2.0 is released
-      # Hack provided by https://github.com/ocaml/setup-ocaml/issues/529#issuecomment-1142547616
-      - name: Hack Git CRLF for ocaml/setup-ocaml with MinGW and upstream repository
-        if: ${{ startsWith(matrix.os, 'windows-') }}
-        run: |
-          git config --system core.autocrlf input
-
       - name: Setup OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
         if: ${{ startsWith(matrix.os, 'windows-') }}
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
           opam-repositories: |
-            default: https://github.com/fdopen/opam-repository-mingw.git#opam2
-            upstream: https://github.com/ocaml/opam-repository.git
+            opam-repository-mingw: https://github.com/ocaml-opam/opam-repository-mingw.git#sunset
+            default: https://github.com/ocaml/opam-repository.git
 
       - name: Setup OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
