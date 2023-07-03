@@ -85,35 +85,30 @@ function caml_binaryen_heap_type_nofunc() {
 //Provides: caml_binaryen_heap_type_is_basic
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_basic(ty) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsBasic(ty);
 }
 
 //Provides: caml_binaryen_heap_type_is_signature
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_signature(ty) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsSignature(ty);
 }
 
 //Provides: caml_binaryen_heap_type_is_struct
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_struct(ty) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsStruct(ty);
 }
 
 //Provides: caml_binaryen_heap_type_is_array
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_array(ty) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsArray(ty);
 }
 
 //Provides: caml_binaryen_heap_type_is_bottom
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_bottom(ty) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsBottom(ty);
 }
 
@@ -126,7 +121,6 @@ function caml_binaryen_heap_type_get_bottom(ty) {
 //Provides: caml_binaryen_heap_type_is_sub_type
 //Requires: Binaryen
 function caml_binaryen_heap_type_is_sub_type(left, right) {
-  // TODO: Verify that binaryen returns an int which jsoo will understand as bool
   return Binaryen._BinaryenHeapTypeIsSubType(left, right);
 }
 
