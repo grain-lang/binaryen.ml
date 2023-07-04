@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.21.0](https://github.com/grain-lang/binaryen.ml/compare/v0.20.1...v0.21.0) (2023-07-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove typed_function_reference feature which was removed in Binaryen
+* Add memory64 flag to `Memory.set_memory`
+* Upgrade to libbinaryen v111 ([#184](https://github.com/grain-lang/binaryen.ml/issues/184))
+
+### Features
+
+* Add array, none, noext, and nofunc heap types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add arrayref, nullref, null_externref, and null_funcref types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add is_64 check for memory ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add memory64 flag to `Memory.set_memory` ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add multi_memories module feature ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add new BinaryenOps ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add new optimization passes ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add operations on array types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add operations on heap types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add operations on signature types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Add operations on struct types ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Upgrade to libbinaryen v111 ([#184](https://github.com/grain-lang/binaryen.ml/issues/184)) ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+* Widen version range for js_of_ocaml ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+
+
+### Miscellaneous Chores
+
+* Remove typed_function_reference feature which was removed in Binaryen ([f1c9fd7](https://github.com/grain-lang/binaryen.ml/commit/f1c9fd7a9aab97bd5f4e72d9c2b41bff88969128))
+
 ## [0.20.1](https://github.com/grain-lang/binaryen.ml/compare/v0.20.0...v0.20.1) (2023-01-19)
 
 
