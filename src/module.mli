@@ -16,10 +16,10 @@ module Feature : sig
   val multivalue : t
   val gc : t
   val memory64 : t
-  val typed_function_references : t
   val relaxed_simd : t
   val extended_const : t
   val strings : t
+  val multi_memories : t
   val all : t
 end
 

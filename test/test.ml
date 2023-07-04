@@ -36,6 +36,7 @@ let _ =
     = "external_base_name")
 
 let _ = assert (Memory.is_shared import_wasm_mod "internal_name" = true)
+let _ = assert (Memory.is_64 import_wasm_mod "internal_name" = false)
 
 (* Testing Return.get_value *)
 let _ =
@@ -169,14 +170,14 @@ let _ = assert (Memory.has_memory wasm_mod = false)
 let _ =
   Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
     [ segment; passive_segment ]
-    false "0"
+    false false "0"
 
 let _ = assert (Memory.has_memory wasm_mod = true)
 let _ = assert (Memory.get_initial wasm_mod "0" = 1)
 let _ = assert (Memory.has_max wasm_mod "0" = false)
 let _ = assert (Memory.get_max wasm_mod "0" = Memory.unlimited)
 let max_memory_wasm_mod = Module.create ()
-let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false "0"
+let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false false "0"
 let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
@@ -235,11 +236,18 @@ let new_mod = Module.read byts
 let _ =
   Module.run_passes new_mod
     [
+      Passes.generate_global_effects;
       Passes.name_types;
       Passes.merge_similar_functions;
       Passes.spill_pointers;
       Passes.gufa;
       Passes.gufa_optimizing;
+      Passes.reorder_globals;
+      Passes.optimize_casts;
+      Passes.multi_memory_lowering;
+      Passes.monomorphize;
+      Passes.signext_lowering;
+      Passes.discard_global_effects;
     ]
 
 let _ =
@@ -258,10 +266,10 @@ let _ =
       Module.Feature.multivalue;
       Module.Feature.gc;
       Module.Feature.memory64;
-      Module.Feature.typed_function_references;
       Module.Feature.relaxed_simd;
       Module.Feature.extended_const;
       Module.Feature.strings;
+      Module.Feature.multi_memories;
       Module.Feature.all;
     ]
 

@@ -41,6 +41,39 @@ static struct custom_operations binaryen_ops = {
 
 #define Safe_String_val(v) ((char *)memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1))
 
+/* Allocating an OCaml custom block to hold the given BinaryenFunctionRef */
+value alloc_BinaryenFunctionRef(BinaryenFunctionRef fun);
+
+/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
+value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp);
+
+/* Allocating an OCaml custom block to hold the given BinaryenType */
+value alloc_BinaryenType(BinaryenType typ);
+
+/* Allocating an OCaml custom block to hold the given BinaryenGlobalRef */
+value alloc_BinaryenGlobalRef(BinaryenGlobalRef exp);
+
+/* Allocating an OCaml custom block to hold the given BinaryenExportRef */
+value alloc_BinaryenExportRef(BinaryenExportRef exp);
+
+/* Allocating an OCaml custom block to hold the given BinaryenHeapType */
+value alloc_BinaryenHeapType(BinaryenHeapType typ);
+
+/* Allocating an OCaml custom block to hold the given BinaryenLiteral */
+value alloc_BinaryenLiteral(struct BinaryenLiteral op);
+
+/* Allocating an OCaml custom block to hold the given BinaryenModuleRef */
+value alloc_BinaryenModuleRef(BinaryenModuleRef typ);
+
+/* Allocating an OCaml custom block to hold the given BinaryenOp */
+value alloc_BinaryenOp(BinaryenOp op);
+
+/* Allocating an OCaml custom block to hold the given BinaryenTableRef */
+value alloc_BinaryenTableRef(BinaryenTableRef table);
+
+/* Allocating an OCaml custom block to hold the given BinaryenElementSegmentRef */
+value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem);
+
 CAMLprim value
 array_of_list(value list);
 

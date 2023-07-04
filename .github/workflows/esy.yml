@@ -3,6 +3,11 @@ on:
   - push
   - pull_request
 
+# This will cancel previous runs when a branch or PR is updated
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build and test
@@ -15,7 +20,7 @@ jobs:
 
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: "16"
           check-latest: true
@@ -28,7 +33,7 @@ jobs:
           npm i -g shx
 
       - name: Checkout project
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.5.3
         with:
           submodules: "recursive"
 
@@ -38,7 +43,7 @@ jobs:
 
       - name: Esy cache
         id: esy-cache
-        uses: actions/cache@v3.0.11
+        uses: actions/cache@v3.3.1
         with:
           path: _export
           key: ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}

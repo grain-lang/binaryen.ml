@@ -316,3 +316,41 @@ val ref_as_non_null : t
 val ref_as_func : t
 val ref_as_data : t
 val ref_as_i31 : t
+val ref_as_extern_internalize : unit -> t
+val ref_as_extern_externalize : unit -> t
+val br_on_null : unit -> t
+val br_on_non_null : unit -> t
+val br_on_cast : unit -> t
+val br_on_cast_fail : unit -> t
+val br_on_func : unit -> t
+val br_on_non_func : unit -> t
+val br_on_data : unit -> t
+val br_on_non_data : unit -> t
+val br_on_i31 : unit -> t
+val br_on_non_i31 : unit -> t
+val string_new_utf8 : unit -> t
+val string_new_wtf8 : unit -> t
+val string_new_replace : unit -> t
+val string_new_wtf16 : unit -> t
+val string_new_utf8_array : unit -> t
+val string_new_wtf8_array : unit -> t
+val string_new_replace_array : unit -> t
+val string_new_wtf16_array : unit -> t
+val string_measure_utf8 : unit -> t
+val string_measure_wtf8 : unit -> t
+val string_measure_wtf16 : unit -> t
+val string_measure_is_usv : unit -> t
+val string_measure_wtf16_view : unit -> t
+val string_encode_utf8 : unit -> t
+val string_encode_wtf8 : unit -> t
+val string_encode_wtf16 : unit -> t
+val string_encode_utf8_array : unit -> t
+val string_encode_wtf8_array : unit -> t
+val string_encode_wtf16_array : unit -> t
+val string_as_wtf8 : unit -> t
+val string_as_wtf16 : unit -> t
+val string_as_iter : unit -> t
+val string_iter_move_advance : unit -> t
+val string_iter_move_rewind : unit -> t
+val string_slice_wtf8 : unit -> t
+val string_slice_wtf16 : unit -> t

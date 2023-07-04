@@ -6,6 +6,93 @@
 
 #include "ocaml_helpers.h"
 
+/* Allocating an OCaml custom block to hold the given BinaryenFunctionRef */
+value alloc_BinaryenFunctionRef(BinaryenFunctionRef fun)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenFunctionRef), 0, 1);
+  BinaryenFunctionRef_val(v) = fun;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenExpressionRef */
+value alloc_BinaryenExpressionRef(BinaryenExpressionRef exp)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExpressionRef), 0, 1);
+  BinaryenExpressionRef_val(v) = exp;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenType */
+value alloc_BinaryenType(BinaryenType typ)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenType), 0, 1);
+  BinaryenType_val(v) = typ;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenGlobalRef */
+value alloc_BinaryenGlobalRef(BinaryenGlobalRef exp)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenGlobalRef), 0, 1);
+  BinaryenGlobalRef_val(v) = exp;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenExportRef */
+value alloc_BinaryenExportRef(BinaryenExportRef exp)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenExportRef), 0, 1);
+  BinaryenExportRef_val(v) = exp;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenHeapType */
+value alloc_BinaryenHeapType(BinaryenHeapType typ)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenHeapType), 0, 1);
+  BinaryenHeapType_val(v) = typ;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenLiteral */
+value alloc_BinaryenLiteral(struct BinaryenLiteral op)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(struct BinaryenLiteral), 0, 1);
+  BinaryenLiteral_val(v) = op;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenModuleRef */
+value alloc_BinaryenModuleRef(BinaryenModuleRef typ)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenModuleRef), 0, 1);
+  BinaryenModuleRef_val(v) = typ;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenOp */
+value alloc_BinaryenOp(BinaryenOp op)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenOp), 0, 1);
+  BinaryenOp_val(v) = op;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenTableRef */
+value alloc_BinaryenTableRef(BinaryenTableRef table)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenTableRef), 0, 1);
+  BinaryenTableRef_val(v) = table;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given BinaryenElementSegmentRef */
+value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenElementSegmentRef), 0, 1);
+  BinaryenElementSegmentRef_val(v) = elem;
+  return v;
+}
 
 CAMLprim value
 array_of_list(value list) {

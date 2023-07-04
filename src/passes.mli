@@ -45,6 +45,9 @@ val denan : t
 val directize : t
 (** turns indirect calls into direct ones *)
 
+val discard_global_effects : t
+(** discards global effect info *)
+
 val dfo : t
 (** optimizes using the DataFlow SSA IR *)
 
@@ -81,6 +84,9 @@ val generate_dyncalls : t
 val generate_i64_dyncalls : t
 (** generate dynCall functions used by emscripten ABI, but only for functions with i64 in their signature (which cannot be invoked via the wasm table without JavaScript BigInt support). *)
 
+val generate_global_effects : t
+(** generate global effect info (helps later passes) *)
+
 val generate_stack_ir : t
 (** generate Stack IR *)
 
@@ -116,6 +122,9 @@ val inlining_optimizing : t
 
 val intrinsic_lowering : t
 (** lower away binaryen intrinsics *)
+
+val jspi : t
+(** wrap imports and exports for JavaScript promise integration *)
 
 val legalize_js_interface : t
 (** legalizes i64 types on the import/export boundary *)
@@ -180,6 +189,15 @@ val mod_asyncify_always_and_only_unwind : t
 val mod_asyncify_never_unwind : t
 (** apply the assumption that asyncify never unwinds *)
 
+val monomorphize : t
+(** creates specialized versions of functions *)
+
+val monomorphize_always : t
+(** creates specialized versions of functions (even if unhelpful) *)
+
+val multi_memory_lowering : t
+(** combines multiple memories into a single memory *)
+
 val nm : t
 (** name list *)
 
@@ -194,6 +212,9 @@ val optimize_added_constants : t
 
 val optimize_added_constants_propagate : t
 (** optimizes added constants into load/store offsets, propagating them across locals too *)
+
+val optimize_casts : t
+(** eliminate and reuse casts *)
 
 val optimize_instructions : t
 (** optimizes instruction combinations *)
@@ -267,6 +288,12 @@ val remove_unused_names : t
 val reorder_functions : t
 (** sorts functions by access frequency *)
 
+val reorder_globals : t
+(** sorts globals by access frequency *)
+
+val reorder_globals_always : t
+(** sorts globals by access frequency (even if there are few) *)
+
 val reorder_locals : t
 (** sorts locals by access frequency *)
 
@@ -290,6 +317,9 @@ val signature_pruning : t
 
 val signature_refining : t
 (** apply more specific subtypes to signature types where possible *)
+
+val signext_lowering : t
+(** lower sign-ext operations to wasm mvp *)
 
 val simplify_globals : t
 (** miscellaneous globals-related optimizations *)
