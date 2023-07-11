@@ -12,7 +12,7 @@ doc: "https://ocsigen.org/js_of_ocaml/latest/manual/overview"
 bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
 depends: [
   "dune" {>= "3.7"}
-  "ocaml" {>= "4.08" & < "5.1"}
+  "ocaml" {>= "4.08" & < "5.2"}
   "num" {with-test}
   "ppx_expect" {>= "v0.14.2" & with-test}
   "ppxlib" {>= "0.15.0"}
@@ -46,10 +46,10 @@ build: [
 ]
 url {
   src:
-    "https://github.com/ocsigen/js_of_ocaml/releases/download/5.3.0/js_of_ocaml-5.3.0.tbz"
+    "https://github.com/ocsigen/js_of_ocaml/releases/download/5.4.0/js_of_ocaml-5.4.0.tbz"
   checksum: [
-    "sha256=be9e3deeb98e5d28f1bcb2d9847c04d2885fc07ed58ccd8b08aa4b6628cd64d2"
-    "sha512=26ba67312747f63c1ab58e92a20fde635833275a56b0570c145e57c093a0412ea8dd6c1bce84a71fd321d76a4223b7e50843c4352f6515909ea1b0713b6cfe68"
+    "sha256=f1215de133867fefdb16e2798a225ee0446469a57462af0deebdd22d2a8d3b94"
+    "sha512=610cd22818bc6f0a0163f0eec74f58338e18709a6101639f65e58241a9216ed286c3cb091b41e36a82c926de5f030d718a6e76a493e885e61456047a8da153c9"
   ]
 }
-x-commit-hash: "7b2929f3e08375a859f13f31cf8d918b6e9455b7"
+x-commit-hash: "705b9e39bfb6ab22afbb606dc85c81d1c30faff4"
