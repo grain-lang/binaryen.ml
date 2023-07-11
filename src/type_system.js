@@ -1,9 +1,3 @@
-//Provides: caml_binaryen_type_system_equirecursive
-//Requires: Binaryen
-function caml_binaryen_type_system_equirecursive() {
-  return Binaryen._BinaryenTypeSystemEquirecursive();
-}
-
 //Provides: caml_binaryen_type_system_nominal
 //Requires: Binaryen
 function caml_binaryen_type_system_nominal() {
