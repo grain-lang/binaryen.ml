@@ -77,9 +77,9 @@ caml_binaryen_type_i31ref(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_type_dataref(value unit) {
+caml_binaryen_type_structref(value unit) {
   CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeDataref();
+  BinaryenType ty = BinaryenTypeStructref();
   CAMLreturn(alloc_BinaryenType(ty));
 }
 

@@ -10,7 +10,7 @@ val funcref : t
 val anyref : t
 val eqref : t
 val i31ref : t
-val dataref : t
+val structref : t
 val arrayref : t
 val stringref : t
 val stringview_wtf8 : t
