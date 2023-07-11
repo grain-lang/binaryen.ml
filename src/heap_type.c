@@ -43,9 +43,9 @@ caml_binaryen_heap_type_i31(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_heap_type_data(value unit) {
+caml_binaryen_heap_type_struct(value unit) {
   CAMLparam1(unit);
-  BinaryenHeapType ty = BinaryenHeapTypeData();
+  BinaryenHeapType ty = BinaryenHeapTypeStruct();
   CAMLreturn(alloc_BinaryenHeapType(ty));
 }
 

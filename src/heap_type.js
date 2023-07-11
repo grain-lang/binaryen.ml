@@ -28,10 +28,10 @@ function caml_binaryen_heap_type_i31() {
   return Binaryen._BinaryenHeapTypeI31();
 }
 
-//Provides: caml_binaryen_heap_type_data
+//Provides: caml_binaryen_heap_type_struct
 //Requires: Binaryen
-function caml_binaryen_heap_type_data() {
-  return Binaryen._BinaryenHeapTypeData();
+function caml_binaryen_heap_type_struct() {
+  return Binaryen._BinaryenHeapTypeStruct();
 }
 
 //Provides: caml_binaryen_heap_type_array
