@@ -1477,6 +1477,83 @@ caml_binaryen_bitselect_vec128(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_relaxed_fma_vec_f32x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRelaxedFmaVecF32x4();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_relaxed_fms_vec_f32x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRelaxedFmsVecF32x4();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_relaxed_fma_vec_f64x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRelaxedFmaVecF64x2();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_relaxed_fms_vec_f64x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRelaxedFmsVecF64x2();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_laneselect_i8x16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenLaneselectI8x16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_laneselect_i16x8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenLaneselectI16x8();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_laneselect_i32x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenLaneselectI32x4();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_laneselect_i64x2(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenLaneselectI64x2();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenDotI8x16I7x16AddSToVecI32x4();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_any_true_vec128(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenAnyTrueVec128();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_popcnt_vec_i8x16(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenPopcntVecI8x16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
 caml_binaryen_abs_vec_i8x16(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenAbsVecI8x16();
@@ -2359,6 +2436,13 @@ caml_binaryen_string_new_wtf16_array(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_string_new_from_code_point(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringNewFromCodePoint();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
 caml_binaryen_string_measure_utf8(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringMeasureUTF8();
@@ -2481,5 +2565,19 @@ CAMLprim value
 caml_binaryen_string_slice_wtf16(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringSliceWTF16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_string_eq_equal(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEqEqual();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_string_eq_compare(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEqCompare();
   CAMLreturn(alloc_BinaryenOp(op));
 }

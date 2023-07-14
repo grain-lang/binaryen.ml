@@ -878,6 +878,55 @@ external bitselect_vec128 : unit -> t = "caml_binaryen_bitselect_vec128"
 
 let bitselect_vec128 = bitselect_vec128 ()
 
+external relaxed_fma_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_fma_vec_f32x4"
+
+let relaxed_fma_vec_f32x4 = relaxed_fma_vec_f32x4 ()
+
+external relaxed_fms_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_fms_vec_f32x4"
+
+let relaxed_fms_vec_f32x4 = relaxed_fms_vec_f32x4 ()
+
+external relaxed_fma_vec_f64x4 : unit -> t
+  = "caml_binaryen_relaxed_fma_vec_f64x4"
+
+let relaxed_fma_vec_f64x4 = relaxed_fma_vec_f64x4 ()
+
+external relaxed_fms_vec_f64x4 : unit -> t
+  = "caml_binaryen_relaxed_fms_vec_f64x4"
+
+let relaxed_fms_vec_f64x4 = relaxed_fms_vec_f64x4 ()
+
+external laneselect_i8x16 : unit -> t = "caml_binaryen_laneselect_i8x16"
+
+let laneselect_i8x16 = laneselect_i8x16 ()
+
+external laneselect_i16x8 : unit -> t = "caml_binaryen_laneselect_i16x8"
+
+let laneselect_i16x8 = laneselect_i16x8 ()
+
+external laneselect_i32x4 : unit -> t = "caml_binaryen_laneselect_i32x4"
+
+let laneselect_i32x4 = laneselect_i32x4 ()
+
+external laneselect_i64x2 : unit -> t = "caml_binaryen_laneselect_i64x2"
+
+let laneselect_i64x2 = laneselect_i64x2 ()
+
+external dot_i8x16_i7x16_add_s_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4"
+
+let dot_i8x16_i7x16_add_s_to_vec_i32x4 = dot_i8x16_i7x16_add_s_to_vec_i32x4 ()
+
+external any_true_vec128 : unit -> t = "caml_binaryen_any_true_vec128"
+
+let any_true_vec128 = any_true_vec128 ()
+
+external popcnt_vec_i8x16 : unit -> t = "caml_binaryen_popcnt_vec_i8x16"
+
+let popcnt_vec_i8x16 = popcnt_vec_i8x16 ()
+
 external abs_vec_i8x16 : unit -> t = "caml_binaryen_abs_vec_i8x16"
 
 let abs_vec_i8x16 = abs_vec_i8x16 ()
@@ -1344,6 +1393,11 @@ external string_new_replace_array : unit -> t
 external string_new_wtf16_array : unit -> t
   = "caml_binaryen_string_new_wtf16_array"
 
+external string_new_from_code_point : unit -> t
+  = "caml_binaryen_string_new_from_code_point"
+
+let string_new_from_code_point = string_new_from_code_point ()
+
 external string_measure_utf8 : unit -> t = "caml_binaryen_string_measure_utf8"
 external string_measure_wtf8 : unit -> t = "caml_binaryen_string_measure_wtf8"
 external string_measure_wtf16 : unit -> t = "caml_binaryen_string_measure_wtf16"
@@ -1379,3 +1433,10 @@ external string_iter_move_rewind : unit -> t
 
 external string_slice_wtf8 : unit -> t = "caml_binaryen_string_slice_wtf8"
 external string_slice_wtf16 : unit -> t = "caml_binaryen_string_slice_wtf16"
+external string_eq_equal : unit -> t = "caml_binaryen_string_eq_equal"
+
+let string_eq_equal = string_eq_equal ()
+
+external string_eq_compare : unit -> t = "caml_binaryen_string_eq_compare"
+
+let string_eq_compare = string_eq_compare ()

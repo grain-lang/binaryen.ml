@@ -1258,6 +1258,72 @@ function caml_binaryen_bitselect_vec128() {
   return Binaryen.Operations.BitselectVec128;
 }
 
+//Provides: caml_binaryen_relaxed_fma_vec_f32x4
+//Requires: Binaryen
+function caml_binaryen_relaxed_fma_vec_f32x4() {
+  return Binaryen.Operations.RelaxedFmaVecF32x4;
+}
+
+//Provides: caml_binaryen_relaxed_fms_vec_f32x4
+//Requires: Binaryen
+function caml_binaryen_relaxed_fms_vec_f32x4() {
+  return Binaryen.Operations.RelaxedFmsVecF32x4;
+}
+
+//Provides: caml_binaryen_relaxed_fma_vec_f64x4
+//Requires: Binaryen
+function caml_binaryen_relaxed_fma_vec_f64x4() {
+  return Binaryen.Operations.RelaxedFmaVecF64x2;
+}
+
+//Provides: caml_binaryen_relaxed_fms_vec_f64x4
+//Requires: Binaryen
+function caml_binaryen_relaxed_fms_vec_f64x4() {
+  return Binaryen.Operations.RelaxedFmsVecF64x2;
+}
+
+//Provides: caml_binaryen_laneselect_i8x16
+//Requires: Binaryen
+function caml_binaryen_laneselect_i8x16() {
+  return Binaryen.Operations.LaneselectI8x16;
+}
+
+//Provides: caml_binaryen_laneselect_i16x8
+//Requires: Binaryen
+function caml_binaryen_laneselect_i16x8() {
+  return Binaryen.Operations.LaneselectI16x8;
+}
+
+//Provides: caml_binaryen_laneselect_i32x4
+//Requires: Binaryen
+function caml_binaryen_laneselect_i32x4() {
+  return Binaryen.Operations.LaneselectI32x4;
+}
+
+//Provides: caml_binaryen_laneselect_i64x2
+//Requires: Binaryen
+function caml_binaryen_laneselect_i64x2() {
+  return Binaryen.Operations.LaneselectI64x2;
+}
+
+//Provides: caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4
+//Requires: Binaryen
+function caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4() {
+  return Binaryen.Operations.DotI8x16I7x16AddSToVecI32x4;
+}
+
+//Provides: caml_binaryen_any_true_vec128
+//Requires: Binaryen
+function caml_binaryen_any_true_vec128() {
+  return Binaryen.Operations.AnyTrueVec128;
+}
+
+//Provides: caml_binaryen_popcnt_vec_i8x16
+//Requires: Binaryen
+function caml_binaryen_popcnt_vec_i8x16() {
+  return Binaryen.Operations.PopcntVecI8x16;
+}
+
 //Provides: caml_binaryen_abs_vec_i8x16
 //Requires: Binaryen
 function caml_binaryen_abs_vec_i8x16() {
@@ -2014,6 +2080,12 @@ function caml_binaryen_string_new_wtf16_array() {
   return Binaryen.Operations.StringNewWTF16Array;
 }
 
+//Provides: caml_binaryen_string_new_from_code_point
+//Requires: Binaryen
+function caml_binaryen_string_new_from_code_point() {
+  return Binaryen.Operations.StringNewFromCodePoint;
+}
+
 //Provides: caml_binaryen_string_measure_utf8
 //Requires: Binaryen
 function caml_binaryen_string_measure_utf8() {
@@ -2120,4 +2192,16 @@ function caml_binaryen_string_slice_wtf8() {
 //Requires: Binaryen
 function caml_binaryen_string_slice_wtf16() {
   return Binaryen.Operations.StringSliceWTF16;
+}
+
+//Provides: caml_binaryen_string_eq_equal
+//Requires: Binaryen
+function caml_binaryen_string_eq_equal() {
+  return Binaryen.Operations.StringEqEqual;
+}
+
+//Provides: caml_binaryen_string_eq_compare
+//Requires: Binaryen
+function caml_binaryen_string_eq_compare() {
+  return Binaryen.Operations.StringEqCompare;
 }
