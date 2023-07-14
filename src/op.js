@@ -1912,52 +1912,10 @@ function caml_binaryen_swizzle_vec8x16() {
   return Binaryen.Operations.SwizzleVecI8x16;
 }
 
-//Provides: caml_binaryen_ref_is_null
-//Requires: Binaryen
-function caml_binaryen_ref_is_null() {
-  return Binaryen.Operations.RefIsNull;
-}
-
-//Provides: caml_binaryen_ref_is_func
-//Requires: Binaryen
-function caml_binaryen_ref_is_func() {
-  return Binaryen.Operations.RefIsFunc;
-}
-
-//Provides: caml_binaryen_ref_is_data
-//Requires: Binaryen
-function caml_binaryen_ref_is_data() {
-  return Binaryen.Operations.RefIsData;
-}
-
-//Provides: caml_binaryen_ref_is_i31
-//Requires: Binaryen
-function caml_binaryen_ref_is_i31() {
-  return Binaryen.Operations.RefIsI31;
-}
-
 //Provides: caml_binaryen_ref_as_non_null
 //Requires: Binaryen
 function caml_binaryen_ref_as_non_null() {
   return Binaryen.Operations.RefAsNonNull;
-}
-
-//Provides: caml_binaryen_ref_as_func
-//Requires: Binaryen
-function caml_binaryen_ref_as_func() {
-  return Binaryen.Operations.RefAsFunc;
-}
-
-//Provides: caml_binaryen_ref_as_data
-//Requires: Binaryen
-function caml_binaryen_ref_as_data() {
-  return Binaryen.Operations.RefAsData;
-}
-
-//Provides: caml_binaryen_ref_as_i31
-//Requires: Binaryen
-function caml_binaryen_ref_as_i31() {
-  return Binaryen.Operations.RefAsI31;
 }
 
 //Provides: caml_binaryen_ref_as_extern_internalize
@@ -1994,42 +1952,6 @@ function caml_binaryen_br_on_cast() {
 //Requires: Binaryen
 function caml_binaryen_br_on_cast_fail() {
   return Binaryen.Operations.BrOnCastFail;
-}
-
-//Provides: caml_binaryen_br_on_func
-//Requires: Binaryen
-function caml_binaryen_br_on_func() {
-  return Binaryen.Operations.BrOnFunc;
-}
-
-//Provides: caml_binaryen_br_on_non_func
-//Requires: Binaryen
-function caml_binaryen_br_on_non_func() {
-  return Binaryen.Operations.BrOnNonFunc;
-}
-
-//Provides: caml_binaryen_br_on_data
-//Requires: Binaryen
-function caml_binaryen_br_on_data() {
-  return Binaryen.Operations.BrOnData;
-}
-
-//Provides: caml_binaryen_br_on_non_data
-//Requires: Binaryen
-function caml_binaryen_br_on_non_data() {
-  return Binaryen.Operations.BrOnNonData;
-}
-
-//Provides: caml_binaryen_br_on_i31
-//Requires: Binaryen
-function caml_binaryen_br_on_i31() {
-  return Binaryen.Operations.BrOnI31;
-}
-
-//Provides: caml_binaryen_br_on_non_i31
-//Requires: Binaryen
-function caml_binaryen_br_on_non_i31() {
-  return Binaryen.Operations.BrOnNonI31;
 }
 
 //Provides: caml_binaryen_string_new_utf8

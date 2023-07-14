@@ -2240,58 +2240,9 @@ caml_binaryen_swizzle_vec8x16(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_ref_is_null(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefIsNull();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_is_func(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefIsFunc();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_is_data(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefIsData();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_is_i31(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefIsI31();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_ref_as_non_null(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenRefAsNonNull();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_as_func(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefAsFunc();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_as_data(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefAsData();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_ref_as_i31(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenRefAsI31();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
@@ -2334,48 +2285,6 @@ CAMLprim value
 caml_binaryen_br_on_cast_fail(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenBrOnCastFail();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_func(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnFunc();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_non_func(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnNonFunc();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_data(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnData();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_non_data(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnNonData();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_i31(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnI31();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_br_on_non_i31(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenBrOnNonI31();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 

@@ -1328,37 +1328,9 @@ external swizzle_vec8x16 : unit -> t = "caml_binaryen_swizzle_vec8x16"
 
 let swizzle_vec8x16 = swizzle_vec8x16 ()
 
-external ref_is_null : unit -> t = "caml_binaryen_ref_is_null"
-
-let ref_is_null = ref_is_null ()
-
-external ref_is_func : unit -> t = "caml_binaryen_ref_is_func"
-
-let ref_is_func = ref_is_func ()
-
-external ref_is_data : unit -> t = "caml_binaryen_ref_is_data"
-
-let ref_is_data = ref_is_data ()
-
-external ref_is_i31 : unit -> t = "caml_binaryen_ref_is_i31"
-
-let ref_is_i31 = ref_is_i31 ()
-
 external ref_as_non_null : unit -> t = "caml_binaryen_ref_as_non_null"
 
 let ref_as_non_null = ref_as_non_null ()
-
-external ref_as_func : unit -> t = "caml_binaryen_ref_as_func"
-
-let ref_as_func = ref_as_func ()
-
-external ref_as_data : unit -> t = "caml_binaryen_ref_as_data"
-
-let ref_as_data = ref_as_data ()
-
-external ref_as_i31 : unit -> t = "caml_binaryen_ref_as_i31"
-
-let ref_as_i31 = ref_as_i31 ()
 
 external ref_as_extern_internalize : unit -> t
   = "caml_binaryen_ref_as_extern_internalize"
@@ -1385,30 +1357,6 @@ let br_on_cast = br_on_cast ()
 external br_on_cast_fail : unit -> t = "caml_binaryen_br_on_cast_fail"
 
 let br_on_cast_fail = br_on_cast_fail ()
-
-external br_on_func : unit -> t = "caml_binaryen_br_on_func"
-
-let br_on_func = br_on_func ()
-
-external br_on_non_func : unit -> t = "caml_binaryen_br_on_non_func"
-
-let br_on_non_func = br_on_non_func ()
-
-external br_on_data : unit -> t = "caml_binaryen_br_on_data"
-
-let br_on_data = br_on_data ()
-
-external br_on_non_data : unit -> t = "caml_binaryen_br_on_non_data"
-
-let br_on_non_data = br_on_non_data ()
-
-external br_on_i31 : unit -> t = "caml_binaryen_br_on_i31"
-
-let br_on_i31 = br_on_i31 ()
-
-external br_on_non_i31 : unit -> t = "caml_binaryen_br_on_non_i31"
-
-let br_on_non_i31 = br_on_non_i31 ()
 
 external string_new_utf8 : unit -> t = "caml_binaryen_string_new_utf8"
 
