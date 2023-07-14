@@ -752,10 +752,10 @@ function caml_binaryen_expression_id_pop() {
 function caml_binaryen_expression_id_ref_null() {
   return Binaryen.RefNullId;
 }
-//Provides: caml_binaryen_expression_id_ref_is
+//Provides: caml_binaryen_expression_id_ref_is_null
 //Requires: Binaryen
-function caml_binaryen_expression_id_ref_is() {
-  return Binaryen.RefIsId;
+function caml_binaryen_expression_id_ref_is_null() {
+  return Binaryen.RefIsNullId;
 }
 //Provides: caml_binaryen_expression_id_ref_as
 //Requires: Binaryen

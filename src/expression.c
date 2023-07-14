@@ -653,9 +653,9 @@ caml_binaryen_expression_id_ref_null(value unit) {
   CAMLreturn(Val_int(BinaryenRefNullId()));
 }
 CAMLprim value
-caml_binaryen_expression_id_ref_is(value unit) {
+caml_binaryen_expression_id_ref_is_null(value unit) {
   CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenRefIsId()));
+  CAMLreturn(Val_int(BinaryenRefIsNullId()));
 }
 CAMLprim value
 caml_binaryen_expression_id_ref_as(value unit) {

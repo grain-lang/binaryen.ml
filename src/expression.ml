@@ -251,9 +251,10 @@ external id_ref_null : unit -> int = "caml_binaryen_expression_id_ref_null"
 
 let id_ref_null = id_ref_null ()
 
-external id_ref_is : unit -> int = "caml_binaryen_expression_id_ref_is"
+external id_ref_is_null : unit -> int
+  = "caml_binaryen_expression_id_ref_is_null"
 
-let id_ref_is = id_ref_is ()
+let id_ref_is_null = id_ref_is_null ()
 
 external id_ref_func : unit -> int = "caml_binaryen_expression_id_ref_func"
 
@@ -385,7 +386,7 @@ let get_kind expr =
   | n when n = id_unreachable -> Unreachable
   | n when n = id_pop -> Pop
   | n when n = id_ref_null -> RefNull
-  | n when n = id_ref_is -> RefIs
+  | n when n = id_ref_is_null -> RefIs
   | n when n = id_ref_func -> RefFunc
   | n when n = id_ref_eq -> RefEq
   | n when n = id_try -> Try
