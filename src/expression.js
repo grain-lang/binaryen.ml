@@ -1664,10 +1664,10 @@ function caml_binaryen_ref_null(wasm_mod, typ) {
   return wasm_mod.ref.null(typ);
 }
 
-//Provides: caml_binaryen_ref_is
+//Provides: caml_binaryen_ref_is_null
 //Requires: Binaryen
-function caml_binaryen_ref_is(wasm_mod, op, value) {
-  return Binaryen._BinaryenRefIs(wasm_mod, op, value);
+function caml_binaryen_ref_is_null(wasm_mod, value) {
+  return Binaryen.ExpressionIds.RefIsNull(wasm_mod, value);
 }
 
 //Provides: caml_binaryen_ref_as

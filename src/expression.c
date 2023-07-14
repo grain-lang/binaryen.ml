@@ -1827,12 +1827,11 @@ caml_binaryen_ref_null(value _module, value _ty) {
 }
 
 CAMLprim value
-caml_binaryen_ref_is(value _module, value _op, value _value) {
-  CAMLparam3(_module, _op, _value);
+caml_binaryen_ref_is_null(value _module, value _value) {
+  CAMLparam2(_module, _value);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  BinaryenOp op = BinaryenOp_val(_op);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
-  BinaryenExpressionRef exp = BinaryenRefIs(module, op, val);
+  BinaryenExpressionRef exp = BinaryenRefIsNull(module, val);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 

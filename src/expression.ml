@@ -808,8 +808,8 @@ module Ref = struct
   external null : Module.t -> Type.t -> t = "caml_binaryen_ref_null"
   (** Module, type *)
 
-  external is : Module.t -> Op.t -> t -> t = "caml_binaryen_ref_is"
-  (** Module, op, value *)
+  external is_null : Module.t -> t -> t = "caml_binaryen_ref_is_null"
+  (** Module, value *)
 
   external as_ : Module.t -> Op.t -> t -> t = "caml_binaryen_ref_as"
   (** Module, op, value *)

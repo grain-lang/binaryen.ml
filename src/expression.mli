@@ -329,8 +329,8 @@ module Ref : sig
   val null : Module.t -> Type.t -> t
   (** Module, type *)
 
-  val is : Module.t -> Op.t -> t -> t
-  (** Module, op, value *)
+  val is_null : Module.t -> t -> t
+  (** Module, value *)
 
   val as_ : Module.t -> Op.t -> t -> t
   (** Module, op, value *)
