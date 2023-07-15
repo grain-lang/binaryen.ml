@@ -15,6 +15,9 @@ let dae = "dae"
 (** removes arguments to calls in an lto-like manner, and optimizes where we removed *)
 let dae_optimizing = "dae-optimizing"
 
+(** refine and merge abstract (never-created) types *)
+let abstract_type_refining = "abstract-type-refining"
+
 (** reduce # of locals by coalescing *)
 let coalesce_locals = "coalesce-locals"
 
@@ -199,6 +202,10 @@ let monomorphize_always = "monomorphize-always"
 (** combines multiple memories into a single memory *)
 let multi_memory_lowering = "multi-memory-lowering"
 
+(** combines multiple memories into a single memory, trapping if the read or write is larger than the length of the memory's data *)
+let multi_memory_lowering_with_bounds_checks =
+  "multi-memory-lowering-with-bounds-checks"
+
 (** name list *)
 let nm = "nm"
 
@@ -286,6 +293,9 @@ let remove_unused_nonfunction_module_elements =
 
 (** removes names from locations that are never branched to *)
 let remove_unused_names = "remove-unused-names"
+
+(** remove unused private GC types *)
+let remove_unused_types = "remove-unused-types"
 
 (** sorts functions by access frequency *)
 let reorder_functions = "reorder-functions"
@@ -385,6 +395,12 @@ let trap_mode_clamp = "trap-mode-clamp"
 
 (** replace trapping operations with js semantics *)
 let trap_mode_js = "trap-mode-js"
+
+(** merge types to their supertypes where possible *)
+let type_merging = "type-merging"
+
+(** create new nominal types to help other optimizations *)
+let type_ssa = "type-ssa"
 
 (** removes local.tees, replacing them with sets and gets *)
 let untee = "untee"

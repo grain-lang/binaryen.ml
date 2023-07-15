@@ -15,6 +15,9 @@ val dae : t
 val dae_optimizing : t
 (** removes arguments to calls in an lto-like manner, and optimizes where we removed *)
 
+val abstract_type_refining : t
+(** refine and merge abstract (never-created) types *)
+
 val coalesce_locals : t
 (** reduce # of locals by coalescing *)
 
@@ -198,6 +201,9 @@ val monomorphize_always : t
 val multi_memory_lowering : t
 (** combines multiple memories into a single memory *)
 
+val multi_memory_lowering_with_bounds_checks : t
+(** combines multiple memories into a single memory, trapping if the read or write is larger than the length of the memory's data *)
+
 val nm : t
 (** name list *)
 
@@ -284,6 +290,9 @@ val remove_unused_nonfunction_module_elements : t
 
 val remove_unused_names : t
 (** removes names from locations that are never branched to *)
+
+val remove_unused_types : t
+(** remove unused private GC types *)
 
 val reorder_functions : t
 (** sorts functions by access frequency *)
@@ -383,6 +392,12 @@ val trap_mode_clamp : t
 
 val trap_mode_js : t
 (** replace trapping operations with js semantics *)
+
+val type_merging : t
+(** merge types to their supertypes where possible *)
+
+val type_ssa : t
+(** create new nominal types to help other optimizations *)
 
 val untee : t
 (** removes local.tees, replacing them with sets and gets *)
