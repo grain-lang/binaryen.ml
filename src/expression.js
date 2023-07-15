@@ -541,6 +541,20 @@ function caml_binaryen_pop(wasm_mod, typ) {
   return Binaryen._BinaryenPop(wasm_mod, typ);
 }
 
+//Provides: caml_binaryen_i31_new
+function caml_binaryen_i31_new(wasm_mod, typ) {
+  return wasm_mod.i31.new(typ);
+}
+
+//Provides: caml_binaryen_i31_get
+function caml_binaryen_i31_get(wasm_mod, typ, signed) {
+  if (signed) {
+    return wasm_mod.i31.get_s(typ);
+  } else {
+    return wasm_mod.i31.get_u(typ);
+  }
+}
+
 //Provides: caml_binaryen_expression_id_invalid
 //Requires: Binaryen
 function caml_binaryen_expression_id_invalid() {

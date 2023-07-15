@@ -800,6 +800,14 @@ module Pop = struct
   (** Module, type *)
 end
 
+module I31 = struct
+  external make : Module.t -> t -> t = "caml_binaryen_i31_new"
+  (** Module, value *)
+
+  external get : Module.t -> t -> bool -> t = "caml_binaryen_i31_get"
+  (** Module, i31, is_signed *)
+end
+
 module Null = struct
   external make : unit -> t = "caml_binaryen_null_expression"
   (** A null reference. *)

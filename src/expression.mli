@@ -321,6 +321,14 @@ module Pop : sig
   val make : Module.t -> Type.t -> t
 end
 
+module I31 : sig
+  val make : Module.t -> t -> t
+  (** Module, value *)
+
+  val get : Module.t -> t -> bool -> t
+  (** Module, i31, is_signed *)
+end
+
 module Null : sig
   val make : unit -> t
 end

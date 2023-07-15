@@ -442,6 +442,25 @@ caml_binaryen_pop(value _module, value _ty) {
 }
 
 CAMLprim value
+caml_binaryen_i31_new(value _module, value _val) {
+  CAMLparam2(_module, _val);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  BinaryenExpressionRef exp = BinaryenI31New(module, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_i31_get(value _module, value _val, value _signed) {
+  CAMLparam3(_module, _val, _signed);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  bool isSigned = Bool_val(_signed);
+  BinaryenExpressionRef exp = BinaryenI31Get(module, val, isSigned);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_expression_id_invalid(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenInvalidId()));
