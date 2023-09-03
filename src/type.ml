@@ -40,9 +40,9 @@ external i31ref : unit -> t = "caml_binaryen_type_i31ref"
 
 let i31ref = i31ref ()
 
-external dataref : unit -> t = "caml_binaryen_type_dataref"
+external structref : unit -> t = "caml_binaryen_type_structref"
 
-let dataref = dataref ()
+let structref = structref ()
 
 external arrayref : unit -> t = "caml_binaryen_type_arrayref"
 

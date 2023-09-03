@@ -8,12 +8,6 @@
 
 
 CAMLprim value
-caml_binaryen_type_system_equirecursive(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenTypeSystemEquirecursive()));
-}
-
-CAMLprim value
 caml_binaryen_type_system_nominal(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenTypeSystemNominal()));

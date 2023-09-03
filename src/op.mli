@@ -210,6 +210,17 @@ val or_vec128 : t
 val xor_vec128 : t
 val and_not_vec128 : t
 val bitselect_vec128 : t
+val relaxed_fma_vec_f32x4 : t
+val relaxed_fms_vec_f32x4 : t
+val relaxed_fma_vec_f64x4 : t
+val relaxed_fms_vec_f64x4 : t
+val laneselect_i8x16 : t
+val laneselect_i16x8 : t
+val laneselect_i32x4 : t
+val laneselect_i64x2 : t
+val dot_i8x16_i7x16_add_s_to_vec_i32x4 : t
+val any_true_vec128 : t
+val popcnt_vec_i8x16 : t
 val abs_vec_i8x16 : t
 val neg_vec_i8x16 : t
 val all_true_vec_i8x16 : t
@@ -308,49 +319,39 @@ val narrow_u_vec_i16x8_to_vec_i8x16 : t
 val narrow_s_vec_i32x4_to_vec_i16x8 : t
 val narrow_u_vec_i32x4_to_vec_i16x8 : t
 val swizzle_vec8x16 : t
-val ref_is_null : t
-val ref_is_func : t
-val ref_is_data : t
-val ref_is_i31 : t
 val ref_as_non_null : t
-val ref_as_func : t
-val ref_as_data : t
-val ref_as_i31 : t
-val ref_as_extern_internalize : unit -> t
-val ref_as_extern_externalize : unit -> t
-val br_on_null : unit -> t
-val br_on_non_null : unit -> t
-val br_on_cast : unit -> t
-val br_on_cast_fail : unit -> t
-val br_on_func : unit -> t
-val br_on_non_func : unit -> t
-val br_on_data : unit -> t
-val br_on_non_data : unit -> t
-val br_on_i31 : unit -> t
-val br_on_non_i31 : unit -> t
-val string_new_utf8 : unit -> t
-val string_new_wtf8 : unit -> t
-val string_new_replace : unit -> t
-val string_new_wtf16 : unit -> t
-val string_new_utf8_array : unit -> t
-val string_new_wtf8_array : unit -> t
-val string_new_replace_array : unit -> t
-val string_new_wtf16_array : unit -> t
-val string_measure_utf8 : unit -> t
-val string_measure_wtf8 : unit -> t
-val string_measure_wtf16 : unit -> t
-val string_measure_is_usv : unit -> t
-val string_measure_wtf16_view : unit -> t
-val string_encode_utf8 : unit -> t
-val string_encode_wtf8 : unit -> t
-val string_encode_wtf16 : unit -> t
-val string_encode_utf8_array : unit -> t
-val string_encode_wtf8_array : unit -> t
-val string_encode_wtf16_array : unit -> t
-val string_as_wtf8 : unit -> t
-val string_as_wtf16 : unit -> t
-val string_as_iter : unit -> t
-val string_iter_move_advance : unit -> t
-val string_iter_move_rewind : unit -> t
-val string_slice_wtf8 : unit -> t
-val string_slice_wtf16 : unit -> t
+val ref_as_extern_internalize : t
+val ref_as_extern_externalize : t
+val br_on_null : t
+val br_on_non_null : t
+val br_on_cast : t
+val br_on_cast_fail : t
+val string_new_utf8 : t
+val string_new_wtf8 : t
+val string_new_replace : t
+val string_new_wtf16 : t
+val string_new_utf8_array : t
+val string_new_wtf8_array : t
+val string_new_replace_array : t
+val string_new_wtf16_array : t
+val string_new_from_code_point : t
+val string_measure_utf8 : t
+val string_measure_wtf8 : t
+val string_measure_wtf16 : t
+val string_measure_is_usv : t
+val string_measure_wtf16_view : t
+val string_encode_utf8 : t
+val string_encode_wtf8 : t
+val string_encode_wtf16 : t
+val string_encode_utf8_array : t
+val string_encode_wtf8_array : t
+val string_encode_wtf16_array : t
+val string_as_wtf8 : t
+val string_as_wtf16 : t
+val string_as_iter : t
+val string_iter_move_advance : t
+val string_iter_move_rewind : t
+val string_slice_wtf8 : t
+val string_slice_wtf16 : t
+val string_eq_equal : t
+val string_eq_compare : t

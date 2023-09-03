@@ -541,6 +541,20 @@ function caml_binaryen_pop(wasm_mod, typ) {
   return Binaryen._BinaryenPop(wasm_mod, typ);
 }
 
+//Provides: caml_binaryen_i31_new
+function caml_binaryen_i31_new(wasm_mod, typ) {
+  return wasm_mod.i31.new(typ);
+}
+
+//Provides: caml_binaryen_i31_get
+function caml_binaryen_i31_get(wasm_mod, typ, signed) {
+  if (signed) {
+    return wasm_mod.i31.get_s(typ);
+  } else {
+    return wasm_mod.i31.get_u(typ);
+  }
+}
+
 //Provides: caml_binaryen_expression_id_invalid
 //Requires: Binaryen
 function caml_binaryen_expression_id_invalid() {
@@ -752,10 +766,10 @@ function caml_binaryen_expression_id_pop() {
 function caml_binaryen_expression_id_ref_null() {
   return Binaryen.RefNullId;
 }
-//Provides: caml_binaryen_expression_id_ref_is
+//Provides: caml_binaryen_expression_id_ref_is_null
 //Requires: Binaryen
-function caml_binaryen_expression_id_ref_is() {
-  return Binaryen.RefIsId;
+function caml_binaryen_expression_id_ref_is_null() {
+  return Binaryen.RefIsNullId;
 }
 //Provides: caml_binaryen_expression_id_ref_as
 //Requires: Binaryen
@@ -1664,10 +1678,10 @@ function caml_binaryen_ref_null(wasm_mod, typ) {
   return wasm_mod.ref.null(typ);
 }
 
-//Provides: caml_binaryen_ref_is
+//Provides: caml_binaryen_ref_is_null
 //Requires: Binaryen
-function caml_binaryen_ref_is(wasm_mod, op, value) {
-  return Binaryen._BinaryenRefIs(wasm_mod, op, value);
+function caml_binaryen_ref_is_null(wasm_mod, value) {
+  return Binaryen.ExpressionIds.RefIsNull(wasm_mod, value);
 }
 
 //Provides: caml_binaryen_ref_as

@@ -24,7 +24,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $hello))
  (start $start)
- (func $adder (param $0 i32) (param $1 i32) (result i32)
+ (func $adder (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
    (if
     (i32.const 0)
@@ -42,7 +42,7 @@
    )
   )
  )
- (func $start
+ (func $start (type $none_=>_none)
   (block $start
    (memory.init 1
     (i32.const 2048)
@@ -58,7 +58,7 @@
    )
   )
  )
- (func $hello (param $0 anyref) (result i32)
+ (func $hello (type $anyref_=>_i32) (param $0 anyref) (result i32)
   (call $write
    (local.get $0)
    (i32.const 0)
@@ -81,7 +81,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $hello))
  (start $start)
- (func $adder (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $adder (type $i32_i32_=>_i32) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
     (local.get $0)
@@ -93,7 +93,7 @@
    (local.get $1)
   )
  )
- (func $start (; has Stack IR ;)
+ (func $start (type $none_=>_none) (; has Stack IR ;)
   (memory.init 1
    (i32.const 2048)
    (i32.const 0)
@@ -106,7 +106,7 @@
    )
   )
  )
- (func $hello (; has Stack IR ;) (param $0 anyref) (result i32)
+ (func $hello (type $anyref_=>_i32) (; has Stack IR ;) (param $0 anyref) (result i32)
   (call $write
    (local.get $0)
    (i32.const 0)
@@ -129,7 +129,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $2))
  (start $1)
- (func $0 (param $0 i32) (param $1 i32) (result i32)
+ (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
     (local.get $0)
@@ -141,7 +141,7 @@
    (local.get $1)
   )
  )
- (func $1
+ (func $1 (type $type$2)
   (memory.init 1
    (i32.const 2048)
    (i32.const 0)
@@ -154,7 +154,7 @@
    )
   )
  )
- (func $2 (param $0 anyref) (result i32)
+ (func $2 (type $type$3) (param $0 anyref) (result i32)
   (call $fimport$0
    (local.get $0)
    (i32.const 0)
@@ -177,7 +177,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $2))
  (start $1)
- (func $0 (param $0 i32) (param $1 i32) (result i32)
+ (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   i32.load $0
@@ -186,7 +186,7 @@
   local.get $1
   i32.add
  )
- (func $1
+ (func $1 (type $type$2)
   i32.const 2048
   i32.const 0
   i32.const 5
@@ -196,7 +196,7 @@
   call $0
   drop
  )
- (func $2 (param $0 anyref) (result i32)
+ (func $2 (type $type$3) (param $0 anyref) (result i32)
   local.get $0
   i32.const 0
   i32.const 1

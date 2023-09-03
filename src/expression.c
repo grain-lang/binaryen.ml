@@ -442,6 +442,25 @@ caml_binaryen_pop(value _module, value _ty) {
 }
 
 CAMLprim value
+caml_binaryen_i31_new(value _module, value _val) {
+  CAMLparam2(_module, _val);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  BinaryenExpressionRef exp = BinaryenI31New(module, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_i31_get(value _module, value _val, value _signed) {
+  CAMLparam3(_module, _val, _signed);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  bool isSigned = Bool_val(_signed);
+  BinaryenExpressionRef exp = BinaryenI31Get(module, val, isSigned);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_expression_id_invalid(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenInvalidId()));
@@ -653,9 +672,9 @@ caml_binaryen_expression_id_ref_null(value unit) {
   CAMLreturn(Val_int(BinaryenRefNullId()));
 }
 CAMLprim value
-caml_binaryen_expression_id_ref_is(value unit) {
+caml_binaryen_expression_id_ref_is_null(value unit) {
   CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenRefIsId()));
+  CAMLreturn(Val_int(BinaryenRefIsNullId()));
 }
 CAMLprim value
 caml_binaryen_expression_id_ref_as(value unit) {
@@ -1827,12 +1846,11 @@ caml_binaryen_ref_null(value _module, value _ty) {
 }
 
 CAMLprim value
-caml_binaryen_ref_is(value _module, value _op, value _value) {
-  CAMLparam3(_module, _op, _value);
+caml_binaryen_ref_is_null(value _module, value _value) {
+  CAMLparam2(_module, _value);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  BinaryenOp op = BinaryenOp_val(_op);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
-  BinaryenExpressionRef exp = BinaryenRefIs(module, op, val);
+  BinaryenExpressionRef exp = BinaryenRefIsNull(module, val);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 

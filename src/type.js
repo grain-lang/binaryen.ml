@@ -58,10 +58,10 @@ function caml_binaryen_type_i31ref() {
   return Binaryen.i31ref;
 }
 
-//Provides: caml_binaryen_type_dataref
+//Provides: caml_binaryen_type_structref
 //Requires: Binaryen
-function caml_binaryen_type_dataref() {
-  return Binaryen.dataref;
+function caml_binaryen_type_structref() {
+  return Binaryen.structref;
 }
 
 //Provides: caml_binaryen_type_arrayref

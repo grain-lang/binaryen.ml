@@ -5,7 +5,7 @@ val func : unit -> t
 val any : unit -> t
 val eq : unit -> t
 val i31 : unit -> t
-val data : unit -> t
+val struct_ : unit -> t
 val array : unit -> t
 val string : unit -> t
 val stringview_wtf8 : unit -> t
