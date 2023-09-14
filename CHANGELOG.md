@@ -1,5 +1,39 @@
 # Changelog
 
+## [0.22.0](https://github.com/grain-lang/binaryen.ml/compare/v0.21.0...v0.22.0) (2023-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rename `dataref` to `structref`
+* Rename `data` to `struct_` in `Heap_type`
+* Remove `equirecursive` in `Type_system`
+* Properly resolve ops externals to their type
+* Replace `Expression.Ref.is` with `Expression.Ref.is_null`
+* Remove Ops that no longer exist in Binaryen
+* Upgrade to libbinaryen v112 ([#188](https://github.com/grain-lang/binaryen.ml/issues/188))
+
+### Features
+
+* Add i31 expressions ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Add new Binaryen ops ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Add new optimization passes ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Replace `Expression.Ref.is` with `Expression.Ref.is_null` ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Upgrade to libbinaryen v112 ([#188](https://github.com/grain-lang/binaryen.ml/issues/188)) ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+
+
+### Bug Fixes
+
+* Properly resolve ops externals to their type ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+
+
+### Miscellaneous Chores
+
+* Remove `equirecursive` in `Type_system` ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Remove Ops that no longer exist in Binaryen ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Rename `data` to `struct_` in `Heap_type` ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+* Rename `dataref` to `structref` ([46c97c2](https://github.com/grain-lang/binaryen.ml/commit/46c97c2e92d95ffbe880c084ce3c13c503240e58))
+
 ## [0.21.0](https://github.com/grain-lang/binaryen.ml/compare/v0.20.1...v0.21.0) (2023-07-04)
 
 
