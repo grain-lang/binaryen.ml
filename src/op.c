@@ -2422,6 +2422,13 @@ caml_binaryen_string_encode_utf8_array(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_string_encode_lossy_utf8_array(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenStringEncodeLossyUTF8Array();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
 caml_binaryen_string_encode_wtf8_array(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringEncodeWTF8Array();

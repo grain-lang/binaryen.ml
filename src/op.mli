@@ -345,6 +345,7 @@ val string_encode_lossy_utf8 : t
 val string_encode_wtf8 : t
 val string_encode_wtf16 : t
 val string_encode_utf8_array : t
+val string_encode_lossy_utf8_array : t
 val string_encode_wtf8_array : t
 val string_encode_wtf16_array : t
 val string_as_wtf8 : t

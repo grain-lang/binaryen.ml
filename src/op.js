@@ -2068,6 +2068,12 @@ function caml_binaryen_string_encode_utf8_array() {
   return Binaryen.Operations.StringEncodeUTF8Array;
 }
 
+//Provides: caml_binaryen_string_encode_lossy_utf8_array
+//Requires: Binaryen
+function caml_binaryen_string_encode_lossy_utf8_array() {
+  return Binaryen.Operations.StringEncodeLossyUTF8Array;
+}
+
 //Provides: caml_binaryen_string_encode_wtf8_array
 //Requires: Binaryen
 function caml_binaryen_string_encode_wtf8_array() {
