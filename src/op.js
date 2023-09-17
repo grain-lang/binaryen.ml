@@ -2044,6 +2044,12 @@ function caml_binaryen_string_encode_utf8() {
   return Binaryen.Operations.StringEncodeUTF8;
 }
 
+//Provides: caml_binaryen_string_encode_lossy_utf8
+//Requires: Binaryen
+function caml_binaryen_string_encode_lossy_utf8() {
+  return Binaryen.Operations.StringEncodeLossyUTF8;
+}
+
 //Provides: caml_binaryen_string_encode_wtf8
 //Requires: Binaryen
 function caml_binaryen_string_encode_wtf8() {

@@ -341,6 +341,7 @@ val string_measure_wtf16 : t
 val string_measure_is_usv : t
 val string_measure_wtf16_view : t
 val string_encode_utf8 : t
+val string_encode_lossy_utf8 : t
 val string_encode_wtf8 : t
 val string_encode_wtf16 : t
 val string_encode_utf8_array : t

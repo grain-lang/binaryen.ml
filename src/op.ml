@@ -1426,6 +1426,11 @@ external string_encode_utf8 : unit -> t = "caml_binaryen_string_encode_utf8"
 
 let string_encode_utf8 = string_encode_utf8 ()
 
+external string_encode_lossy_utf8 : unit -> t
+  = "caml_binaryen_string_encode_lossy_utf8"
+
+let string_encode_lossy_utf8 = string_encode_lossy_utf8 ()
+
 external string_encode_wtf8 : unit -> t = "caml_binaryen_string_encode_wtf8"
 
 let string_encode_wtf8 = string_encode_wtf8 ()
