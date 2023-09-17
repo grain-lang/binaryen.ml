@@ -1990,6 +1990,12 @@ function caml_binaryen_string_new_wtf8_array() {
   return Binaryen.Operations.StringNewWTF8Array;
 }
 
+//Provides: caml_binaryen_string_new_lossy_utf8_array
+//Requires: Binaryen
+function caml_binaryen_string_new_lossy_utf8_array() {
+  return Binaryen.Operations.StringNewLossyUTF8Array;
+}
+
 //Provides: caml_binaryen_string_new_wtf16_array
 //Requires: Binaryen
 function caml_binaryen_string_new_wtf16_array() {
