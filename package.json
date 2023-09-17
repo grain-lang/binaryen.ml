@@ -16,6 +16,7 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
   "resolutions": {
+    "@grain/libbinaryen": "grain-lang/libbinaryen:package.json#8c9f37b13cf7a4ec8de15ef428f9e9f10be55bb8",
     "@opam/ocp-indent": "1.7.0"
   },
   "esy": {
