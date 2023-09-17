@@ -1366,10 +1366,6 @@ external string_new_wtf8 : unit -> t = "caml_binaryen_string_new_wtf8"
 
 let string_new_wtf8 = string_new_wtf8 ()
 
-external string_new_replace : unit -> t = "caml_binaryen_string_new_replace"
-
-let string_new_replace = string_new_replace ()
-
 external string_new_wtf16 : unit -> t = "caml_binaryen_string_new_wtf16"
 
 let string_new_wtf16 = string_new_wtf16 ()

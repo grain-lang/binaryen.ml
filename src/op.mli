@@ -328,7 +328,6 @@ val br_on_cast : t
 val br_on_cast_fail : t
 val string_new_utf8 : t
 val string_new_wtf8 : t
-val string_new_replace : t
 val string_new_wtf16 : t
 val string_new_utf8_array : t
 val string_new_wtf8_array : t

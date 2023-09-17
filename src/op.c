@@ -2303,13 +2303,6 @@ caml_binaryen_string_new_wtf8(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_string_new_replace(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewReplace();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_string_new_wtf16(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringNewWTF16();
