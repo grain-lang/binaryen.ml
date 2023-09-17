@@ -23,7 +23,6 @@
    heap_type
    signature_type
    struct_type
-   type_system
    ocaml_helpers)
   (flags :standard -O2 -Wall -Wextra))
  (js_of_ocaml
@@ -45,5 +44,4 @@
    packed_type.js
    heap_type.js
    signature_type.js
-   struct_type.js
-   type_system.js)))
+   struct_type.js)))
