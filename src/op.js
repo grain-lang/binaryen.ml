@@ -1966,6 +1966,12 @@ function caml_binaryen_string_new_wtf8() {
   return Binaryen.Operations.StringNewWTF8;
 }
 
+//Provides: caml_binaryen_string_new_lossy_utf8
+//Requires: Binaryen
+function caml_binaryen_string_new_lossy_utf8() {
+  return Binaryen.Operations.StringNewLossyUTF8;
+}
+
 //Provides: caml_binaryen_string_new_wtf16
 //Requires: Binaryen
 function caml_binaryen_string_new_wtf16() {
