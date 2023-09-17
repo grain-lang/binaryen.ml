@@ -1984,12 +1984,6 @@ function caml_binaryen_string_new_wtf8_array() {
   return Binaryen.Operations.StringNewWTF8Array;
 }
 
-//Provides: caml_binaryen_string_new_replace_array
-//Requires: Binaryen
-function caml_binaryen_string_new_replace_array() {
-  return Binaryen.Operations.StringNewReplaceArray;
-}
-
 //Provides: caml_binaryen_string_new_wtf16_array
 //Requires: Binaryen
 function caml_binaryen_string_new_wtf16_array() {

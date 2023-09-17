@@ -331,7 +331,6 @@ val string_new_wtf8 : t
 val string_new_wtf16 : t
 val string_new_utf8_array : t
 val string_new_wtf8_array : t
-val string_new_replace_array : t
 val string_new_wtf16_array : t
 val string_new_from_code_point : t
 val string_measure_utf8 : t
