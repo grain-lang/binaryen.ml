@@ -703,14 +703,24 @@ module Memory_grow = struct
 end
 
 module Memory_init = struct
-  external make : Module.t -> int -> t -> t -> t -> string -> t
+  external make : Module.t -> string -> t -> t -> t -> string -> t
     = "caml_binaryen_memory_init__bytecode" "caml_binaryen_memory_init"
   (** Module, segment, destination, offset, size, memory_name *)
 
-  external get_segment : t -> int = "caml_binaryen_memory_init_get_segment"
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let make wasm_mod segment dest offset size memory_name =
+    make wasm_mod (string_of_int segment) dest offset size memory_name
 
-  external set_segment : t -> int -> unit
+  external get_segment : t -> string = "caml_binaryen_memory_init_get_segment"
+
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let get_segment expr = int_of_string (get_segment expr)
+
+  external set_segment : t -> string -> unit
     = "caml_binaryen_memory_init_set_segment"
+
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let set_segment expr segment = set_segment expr (string_of_int segment)
 
   external get_dest : t -> t = "caml_binaryen_memory_init_get_dest"
   external set_dest : t -> t -> unit = "caml_binaryen_memory_init_set_dest"
@@ -721,13 +731,22 @@ module Memory_init = struct
 end
 
 module Data_drop = struct
-  external make : Module.t -> int -> t = "caml_binaryen_data_drop"
+  external make : Module.t -> string -> t = "caml_binaryen_data_drop"
   (** Module, segment. *)
 
-  external get_segment : t -> int = "caml_binaryen_data_drop_get_segment"
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let make wasm_mod segment = make wasm_mod (string_of_int segment)
 
-  external set_segment : t -> int -> unit
+  external get_segment : t -> string = "caml_binaryen_data_drop_get_segment"
+
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let get_segment expr = int_of_string (get_segment expr)
+
+  external set_segment : t -> string -> unit
     = "caml_binaryen_data_drop_set_segment"
+
+  (* Binaryen v113 still uses indexes for data segements, so we only want to change the binding itself, not our interface *)
+  let set_segment expr segment = set_segment expr (string_of_int segment)
 end
 
 module Memory_copy = struct

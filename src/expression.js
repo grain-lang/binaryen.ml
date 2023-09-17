@@ -457,7 +457,7 @@ function caml_binaryen_memory_init(
   memoryName
 ) {
   return wasm_mod.memory.init(
-    segment,
+    caml_jsstring_of_string(segment),
     dest,
     offset,
     size,
@@ -478,8 +478,9 @@ function caml_binaryen_memory_init__bytecode() {
 }
 
 //Provides: caml_binaryen_data_drop
+//Requires: caml_jsstring_of_string
 function caml_binaryen_data_drop(wasm_mod, segment) {
-  return wasm_mod.data.drop(segment);
+  return wasm_mod.data.drop(caml_jsstring_of_string(segment));
 }
 
 //Provides: caml_binaryen_memory_copy
@@ -1493,14 +1494,16 @@ function caml_binaryen_return_set_value(exp, value) {
 
 //Provides: caml_binaryen_memory_init_get_segment
 //Requires: Binaryen
-function caml_binaryen_memory_init_get_segment(exp) {
-  return Binaryen.MemoryInit.getSegment(exp);
+//Requires: caml_string_of_jsstring
+function caml_binaryen_memory_init_get_segment(expr) {
+  return caml_string_of_jsstring(Binaryen.MemoryInit.getSegment(expr));
 }
 
 //Provides: caml_binaryen_memory_init_set_segment
 //Requires: Binaryen
-function caml_binaryen_memory_init_set_segment(exp, value) {
-  return Binaryen.MemoryInit.setSegment(exp, value);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_memory_init_set_segment(expr, segment) {
+  return Binaryen.MemoryInit.setSegment(expr, caml_jsstring_of_string(segment));
 }
 
 //Provides: caml_binaryen_memory_init_get_dest
@@ -1541,14 +1544,16 @@ function caml_binaryen_memory_init_set_size(exp, value) {
 
 //Provides: caml_binaryen_data_drop_get_segment
 //Requires: Binaryen
-function caml_binaryen_data_drop_get_segment(exp) {
-  return Binaryen.DataDrop.getSegment(exp);
+//Requires: caml_string_of_jsstring
+function caml_binaryen_data_drop_get_segment(expr) {
+  return caml_string_of_jsstring(Binaryen.DataDrop.getSegment(expr));
 }
 
 //Provides: caml_binaryen_data_drop_set_segment
 //Requires: Binaryen
-function caml_binaryen_data_drop_set_segment(exp, value) {
-  return Binaryen.DataDrop.setSegment(exp, value);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_data_drop_set_segment(expr, segment) {
+  return Binaryen.DataDrop.setSegment(expr, caml_jsstring_of_string(segment));
 }
 
 //Provides: caml_binaryen_memory_copy_get_dest

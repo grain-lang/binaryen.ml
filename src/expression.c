@@ -356,7 +356,7 @@ caml_binaryen_memory_init(value _module, value _segment, value _dest, value _off
   CAMLparam5(_module, _segment, _dest, _offset, _size);
   CAMLxparam1(_memoryName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  uint32_t segment = Int_val(_segment);
+  char* segment = Safe_String_val(_segment);
   BinaryenExpressionRef dest = BinaryenExpressionRef_val(_dest);
   BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
   BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
@@ -373,7 +373,7 @@ CAMLprim value
 caml_binaryen_data_drop(value _module, value _segment) {
   CAMLparam2(_module, _segment);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  uint32_t segment = Int_val(_segment);
+  char* segment = Safe_String_val(_segment);
   BinaryenExpressionRef exp = BinaryenDataDrop(module, segment);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
@@ -1596,14 +1596,14 @@ CAMLprim value
 caml_binaryen_memory_init_get_segment(value _exp) {
   CAMLparam1(_exp);
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  CAMLreturn(Val_int(BinaryenMemoryInitGetSegment(exp)));
+  CAMLreturn(caml_copy_string(BinaryenMemoryInitGetSegment(exp)));
 }
 
 CAMLprim value
 caml_binaryen_memory_init_set_segment(value _exp, value _value) {
   CAMLparam2(_exp, _value);
   BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  uint32_t val = Int_val(_value);
+  char* val = Safe_String_val(_value);
   BinaryenMemoryInitSetSegment(exp, val);
   CAMLreturn(Val_unit);
 }
@@ -1648,27 +1648,27 @@ caml_binaryen_memory_init_get_size(value _exp) {
 }
 
 CAMLprim value
-caml_binaryen_memory_init_set_size(value _exp, value _value) {
-  CAMLparam2(_exp, _value);
-  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
-  BinaryenMemoryInitSetSize(exp, val);
+caml_binaryen_memory_init_set_size(value _expr, value _segment) {
+  CAMLparam2(_expr, _segment);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenExpressionRef segment = BinaryenExpressionRef_val(_segment);
+  BinaryenMemoryInitSetSize(expr, segment);
   CAMLreturn(Val_unit);
 }
 
 CAMLprim value
-caml_binaryen_data_drop_get_segment(value _exp) {
-  CAMLparam1(_exp);
-  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  CAMLreturn(Val_int(BinaryenDataDropGetSegment(exp)));
+caml_binaryen_data_drop_get_segment(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  CAMLreturn(caml_copy_string(BinaryenDataDropGetSegment(expr)));
 }
 
 CAMLprim value
-caml_binaryen_data_drop_set_segment(value _exp, value _value) {
-  CAMLparam2(_exp, _value);
-  BinaryenExpressionRef exp = BinaryenExpressionRef_val(_exp);
-  uint32_t val = Int_val(_value);
-  BinaryenDataDropSetSegment(exp, val);
+caml_binaryen_data_drop_set_segment(value _expr, value _segment) {
+  CAMLparam2(_expr, _segment);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  char* segment = Safe_String_val(_segment);
+  BinaryenDataDropSetSegment(expr, segment);
   CAMLreturn(Val_unit);
 }
 
