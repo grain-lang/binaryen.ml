@@ -31,9 +31,9 @@ provided by companion libraries such as stdio:
   https://github.com/janestreet/stdio
 "
 url {
-  src: "https://github.com/janestreet/base/archive/refs/tags/v0.16.1.tar.gz"
+  src: "https://github.com/janestreet/base/archive/refs/tags/v0.16.3.tar.gz"
   checksum: [
-    "md5=ae1cc041c0f8ea3ca163bc904336e9aa"
-    "sha512=347ccc68be09ef207f0ac793f1c472688855ba53c317a35c95f7124be4105985b54f866b604a66a9d2e54bc320f7b29ffa3eb224622b1cce6ca504e1ee4888ff"
+    "md5=04572fc23a4651604cfcab83f720cb4c"
+    "sha512=69380ed392faf4495459f97f70a10a6959fce71d2e6ba093472fc272141646307fd7872407de855dfa48ef0435f6587eae5aa50f4a67eac40a9e1946d0c3c070"
   ]
 }
