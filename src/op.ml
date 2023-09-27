@@ -1366,9 +1366,10 @@ external string_new_wtf8 : unit -> t = "caml_binaryen_string_new_wtf8"
 
 let string_new_wtf8 = string_new_wtf8 ()
 
-external string_new_replace : unit -> t = "caml_binaryen_string_new_replace"
+external string_new_lossy_utf8 : unit -> t
+  = "caml_binaryen_string_new_lossy_utf8"
 
-let string_new_replace = string_new_replace ()
+let string_new_lossy_utf8 = string_new_lossy_utf8 ()
 
 external string_new_wtf16 : unit -> t = "caml_binaryen_string_new_wtf16"
 
@@ -1384,10 +1385,10 @@ external string_new_wtf8_array : unit -> t
 
 let string_new_wtf8_array = string_new_wtf8_array ()
 
-external string_new_replace_array : unit -> t
-  = "caml_binaryen_string_new_replace_array"
+external string_new_lossy_utf8_array : unit -> t
+  = "caml_binaryen_string_new_lossy_utf8_array"
 
-let string_new_replace_array = string_new_replace_array ()
+let string_new_lossy_utf8_array = string_new_lossy_utf8_array ()
 
 external string_new_wtf16_array : unit -> t
   = "caml_binaryen_string_new_wtf16_array"
@@ -1425,6 +1426,11 @@ external string_encode_utf8 : unit -> t = "caml_binaryen_string_encode_utf8"
 
 let string_encode_utf8 = string_encode_utf8 ()
 
+external string_encode_lossy_utf8 : unit -> t
+  = "caml_binaryen_string_encode_lossy_utf8"
+
+let string_encode_lossy_utf8 = string_encode_lossy_utf8 ()
+
 external string_encode_wtf8 : unit -> t = "caml_binaryen_string_encode_wtf8"
 
 let string_encode_wtf8 = string_encode_wtf8 ()
@@ -1437,6 +1443,11 @@ external string_encode_utf8_array : unit -> t
   = "caml_binaryen_string_encode_utf8_array"
 
 let string_encode_utf8_array = string_encode_utf8_array ()
+
+external string_encode_lossy_utf8_array : unit -> t
+  = "caml_binaryen_string_encode_lossy_utf8_array"
+
+let string_encode_lossy_utf8_array = string_encode_lossy_utf8_array ()
 
 external string_encode_wtf8_array : unit -> t
   = "caml_binaryen_string_encode_wtf8_array"

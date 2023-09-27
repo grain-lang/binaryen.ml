@@ -330,7 +330,7 @@ let signature_pruning = "signature-pruning"
 (** apply more specific subtypes to signature types where possible *)
 let signature_refining = "signature-refining"
 
-(** lower sign-ext operations to wasm mvp *)
+(** lower sign-ext operations to wasm mvp and disable the sign extension feature *)
 let signext_lowering = "signext-lowering"
 
 (** miscellaneous globals-related optimizations *)

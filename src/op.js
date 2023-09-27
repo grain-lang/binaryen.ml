@@ -1966,10 +1966,10 @@ function caml_binaryen_string_new_wtf8() {
   return Binaryen.Operations.StringNewWTF8;
 }
 
-//Provides: caml_binaryen_string_new_replace
+//Provides: caml_binaryen_string_new_lossy_utf8
 //Requires: Binaryen
-function caml_binaryen_string_new_replace() {
-  return Binaryen.Operations.StringNewReplace;
+function caml_binaryen_string_new_lossy_utf8() {
+  return Binaryen.Operations.StringNewLossyUTF8;
 }
 
 //Provides: caml_binaryen_string_new_wtf16
@@ -1990,10 +1990,10 @@ function caml_binaryen_string_new_wtf8_array() {
   return Binaryen.Operations.StringNewWTF8Array;
 }
 
-//Provides: caml_binaryen_string_new_replace_array
+//Provides: caml_binaryen_string_new_lossy_utf8_array
 //Requires: Binaryen
-function caml_binaryen_string_new_replace_array() {
-  return Binaryen.Operations.StringNewReplaceArray;
+function caml_binaryen_string_new_lossy_utf8_array() {
+  return Binaryen.Operations.StringNewLossyUTF8Array;
 }
 
 //Provides: caml_binaryen_string_new_wtf16_array
@@ -2044,6 +2044,12 @@ function caml_binaryen_string_encode_utf8() {
   return Binaryen.Operations.StringEncodeUTF8;
 }
 
+//Provides: caml_binaryen_string_encode_lossy_utf8
+//Requires: Binaryen
+function caml_binaryen_string_encode_lossy_utf8() {
+  return Binaryen.Operations.StringEncodeLossyUTF8;
+}
+
 //Provides: caml_binaryen_string_encode_wtf8
 //Requires: Binaryen
 function caml_binaryen_string_encode_wtf8() {
@@ -2060,6 +2066,12 @@ function caml_binaryen_string_encode_wtf16() {
 //Requires: Binaryen
 function caml_binaryen_string_encode_utf8_array() {
   return Binaryen.Operations.StringEncodeUTF8Array;
+}
+
+//Provides: caml_binaryen_string_encode_lossy_utf8_array
+//Requires: Binaryen
+function caml_binaryen_string_encode_lossy_utf8_array() {
+  return Binaryen.Operations.StringEncodeLossyUTF8Array;
 }
 
 //Provides: caml_binaryen_string_encode_wtf8_array
