@@ -16,6 +16,7 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
   "resolutions": {
+    "@opam/ocamlformat-rpc-lib": "0.26.0",
     "@opam/ocp-indent": "1.7.0"
   },
   "esy": {
