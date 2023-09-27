@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.23.0](https://github.com/grain-lang/binaryen.ml/compare/v0.22.0...v0.23.0) (2023-09-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove `type_system`
+* Remove `string_new_replace` operation
+* Remove `string_new_replace_array` operation
+* Upgrade to libbinaryen v113 ([#194](https://github.com/grain-lang/binaryen.ml/issues/194))
+
+### Features
+
+* Add `string_encode_lossy_utf8_array` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Add `string_encode_lossy_utf8` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Add `string_new_lossy_utf8_array` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Add `string_new_lossy_utf8` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Upgrade to libbinaryen v113 ([#194](https://github.com/grain-lang/binaryen.ml/issues/194)) ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+
+
+### Miscellaneous Chores
+
+* Remove `string_new_replace_array` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Remove `string_new_replace` operation ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+* Remove `type_system` ([7d222e0](https://github.com/grain-lang/binaryen.ml/commit/7d222e0f8ebc0cfb45e7c07304a59e9559accedc))
+
 ## [0.22.0](https://github.com/grain-lang/binaryen.ml/compare/v0.21.0...v0.22.0) (2023-09-14)
 
 
