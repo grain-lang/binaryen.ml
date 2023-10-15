@@ -6,6 +6,64 @@
  (ref.null nofunc)
  (i32.const 0)
 )
+(try $tc1 (result i32)
+ (do
+  (throw $foo
+   (i32.const 1)
+  )
+ )
+ (catch $foo
+  (i32.const 2)
+ )
+ (catch $bar
+  (i32.const 3)
+ )
+)
+(try $tc2 (result i32)
+ (do
+  (rethrow $foo)
+ )
+ (catch $foo
+  (i32.const 2)
+ )
+ (catch $bar
+  (i32.const 3)
+ )
+)
+(try $tc3 (result i32)
+ (do
+  (i32.const 1)
+ )
+ (catch $foo
+  (i32.const 2)
+ )
+ (catch_all
+  (i32.const 3)
+ )
+)
+(try $tc4 (result i32)
+ (do
+  (i32.const 1)
+ )
+ (catch $foo
+  (i32.const 2)
+ )
+ (catch_all
+  (i32.const 3)
+ )
+)
+(try $td1 (result i32)
+ (do
+  (i32.const 1)
+ )
+ (delegate $del1)
+)
+(try $td2 (result i32)
+ (do
+  (i32.const 1)
+ )
+ (delegate $del1)
+)
 (module
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $none_=>_none (func))

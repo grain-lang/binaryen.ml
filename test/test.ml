@@ -185,6 +185,50 @@ let _ =
   assert (
     Bytes.equal (Memory.get_segment_data wasm_mod 1) (Bytes.of_string "world"))
 
+(* Exception handling *)
+let try_catch_1 =
+  Expression.Try.make wasm_mod (Some "tc1")
+    (Expression.Throw.make wasm_mod "foo" [Expression.Const.make wasm_mod (Literal.int32 1l)])
+    ["foo"; "bar"]
+    [Expression.Const.make wasm_mod (Literal.int32 2l); Expression.Const.make wasm_mod (Literal.int32 3l)]
+    None
+let try_catch_2 =
+  Expression.Try_Catch.make wasm_mod (Some "tc2")
+    (Expression.Rethrow.make wasm_mod "foo")
+    ["foo"; "bar"]
+    [Expression.Const.make wasm_mod (Literal.int32 2l); Expression.Const.make wasm_mod (Literal.int32 3l)]
+
+(* One more catch-body than catch-tag; last body becomes the catch_all *)
+let try_catch_all_1 =
+  Expression.Try.make wasm_mod (Some "tc3")
+    (Expression.Const.make wasm_mod (Literal.int32 1l))
+    ["foo"]
+    [Expression.Const.make wasm_mod (Literal.int32 2l); Expression.Const.make wasm_mod (Literal.int32 3l)]
+    None
+let try_catch_all_2 =
+  Expression.Try_Catch.make wasm_mod (Some "tc4")
+    (Expression.Const.make wasm_mod (Literal.int32 1l))
+    ["foo"]
+    [Expression.Const.make wasm_mod (Literal.int32 2l); Expression.Const.make wasm_mod (Literal.int32 3l)]
+
+let try_delegate_1 =
+  Expression.Try.make wasm_mod (Some "td1")
+    (Expression.Const.make wasm_mod (Literal.int32 1l))
+    []
+    []
+    (Some "del1")
+let try_delegate_2 =
+  Expression.Try_Delegate.make wasm_mod (Some "td2")
+    (Expression.Const.make wasm_mod (Literal.int32 1l))
+    "del1"
+
+let _ = Expression.print try_catch_1
+let _ = Expression.print try_catch_2
+let _ = Expression.print try_catch_all_1
+let _ = Expression.print try_catch_all_2
+let _ = Expression.print try_delegate_1
+let _ = Expression.print try_delegate_2
+
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 

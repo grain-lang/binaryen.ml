@@ -1884,6 +1884,117 @@ caml_binaryen_ref_eq(value _module, value _left, value _right) {
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
+// Exception handling operations
+CAMLprim value
+caml_binaryen_try_native(value _module, value _name, value _body, value _catchTags, value _catchBodies, value _delegateTarget) {
+  CAMLparam5(_module, _name, _body, _catchTags, _catchBodies);
+  CAMLxparam1(_delegateTarget);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char *name;
+  if (Is_none(_name)) {
+    name = NULL;
+  } else {
+    name = Safe_String_val(Some_val(_name));
+  }
+  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
+  _catchTags = array_of_list(_catchTags);
+  int catchTagsLen = array_length(_catchTags);
+  const char* catchTags[catchTagsLen];
+  for (int i = 0; i < catchTagsLen; i++) {
+    catchTags[i] = Safe_String_val(Field(_catchTags, i));
+  }
+  _catchBodies = array_of_list(_catchBodies);
+  int catchBodiesLen = array_length(_catchBodies);
+  BinaryenExpressionRef catchBodies[catchBodiesLen];
+  for (int i = 0; i < catchBodiesLen; i++) {
+    catchBodies[i] = BinaryenExpressionRef_val(Field(_catchBodies, i));
+  }
+  char *delegateTarget;
+  if (Is_none(_delegateTarget)) {
+    delegateTarget = NULL;
+  } else {
+    delegateTarget = Safe_String_val(Some_val(_delegateTarget));
+  }
+  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value caml_binaryen_try_bytecode(value *argv, int argn) {
+  return caml_binaryen_try_native(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_trycatch(value _module, value _name, value _body, value _catchTags, value _catchBodies) {
+  CAMLparam5(_module, _name, _body, _catchTags, _catchBodies);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char *name;
+  if (Is_none(_name)) {
+    name = NULL;
+  } else {
+    name = Safe_String_val(Some_val(_name));
+  }
+  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
+  _catchTags = array_of_list(_catchTags);
+  int catchTagsLen = array_length(_catchTags);
+  const char* catchTags[catchTagsLen];
+  for (int i = 0; i < catchTagsLen; i++) {
+    catchTags[i] = Safe_String_val(Field(_catchTags, i));
+  }
+  _catchBodies = array_of_list(_catchBodies);
+  int catchBodiesLen = array_length(_catchBodies);
+  BinaryenExpressionRef catchBodies[catchBodiesLen];
+  for (int i = 0; i < catchBodiesLen; i++) {
+    catchBodies[i] = BinaryenExpressionRef_val(Field(_catchBodies, i));
+  }
+  char *delegateTarget = NULL;
+  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_trydelegate(value _module, value _name, value _body, value _delegateTarget) {
+  CAMLparam4(_module, _name, _body,_delegateTarget);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char *name;
+  if (Is_none(_name)) {
+    name = NULL;
+  } else {
+    name = Safe_String_val(Some_val(_name));
+  }
+  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
+  char *delegateTarget = Safe_String_val(_delegateTarget);
+  int catchTagsLen = 0;
+  int catchBodiesLen = 0;
+  const char *catchTags[1] = {NULL};
+  BinaryenExpressionRef catchBodies[1] = {NULL};
+  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_throw(value _module, value _tag, value _operands) {
+  CAMLparam3(_module, _tag, _operands);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char *tag = Safe_String_val(_tag);
+  _operands = array_of_list(_operands);
+  int operandsLen = array_length(_operands);
+  BinaryenExpressionRef operands[operandsLen];
+  for (int i = 0; i < operandsLen; i++) {
+    operands[i] = BinaryenExpressionRef_val(Field(_operands, i));
+  }
+  BinaryenExpressionRef exp = BinaryenThrow(module, tag, operands, operandsLen);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_rethrow(value _module, value _target) {
+  CAMLparam2(_module, _target);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char *target = Safe_String_val(_target);
+  BinaryenExpressionRef exp = BinaryenRethrow(module, target);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
 // Table operations
 CAMLprim value
 caml_binaryen_table_get(value _module, value _name, value _index, value _ty) {

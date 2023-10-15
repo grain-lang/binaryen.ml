@@ -849,6 +849,32 @@ module Ref = struct
   (** Module, left, right *)
 end
 
+(** Bindings for `try` instruction. For better validation, use `Try_catch` or `Try_Delegate`. *)
+module Try = struct
+  external make : Module.t -> string option -> t -> string list -> t list -> string option -> t = "caml_binaryen_try_bytecode" "caml_binaryen_try_native"
+  (** Module, name, body, catch tags, catch bodies, delegate target *)
+end
+
+module Try_Catch = struct
+  external make : Module.t -> string option -> t -> string list -> t list -> t = "caml_binaryen_trycatch"
+  (** Module, name, body, catch tags, catch bodies *)
+end
+
+module Try_Delegate = struct
+  external make : Module.t -> string option -> t -> string -> t = "caml_binaryen_trydelegate"
+  (** Module, name, body, delegate *)
+end
+
+module Throw = struct
+  external make : Module.t -> string -> t list -> t = "caml_binaryen_throw"
+  (** Module, tag, operands *)
+end
+
+module Rethrow = struct
+  external make : Module.t -> string -> t = "caml_binaryen_rethrow"
+  (** Module, target *)
+end
+
 module Table = struct
   external get : Module.t -> string -> t -> Type.t -> t
     = "caml_binaryen_table_get"

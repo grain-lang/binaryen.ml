@@ -350,6 +350,32 @@ module Ref : sig
   (** Module, left, right *)
 end
 
+(** Bindings for `try` instruction. For better validation, use `Try_catch` or `Try_Delegate`. *)
+module Try : sig
+  val make : Module.t -> string option -> t -> string list -> t list -> string option -> t
+  (** Module, name, body, catch tags, catch bodies, delegate target *)
+end
+
+module Try_Catch : sig
+  val make : Module.t -> string option -> t -> string list -> t list -> t
+  (** Module, name, body, catch tags, catch bodies *)
+end
+
+module Try_Delegate : sig
+  val make : Module.t -> string option -> t -> string -> t
+  (** Module, name, body, delegate *)
+end
+
+module Throw : sig
+  val make : Module.t -> string -> t list -> t
+  (** Module, tag, operands *)
+end
+
+module Rethrow : sig
+  val make : Module.t -> string -> t
+  (** Module, target *)
+end
+
 module Table : sig
   val get : Module.t -> string -> t -> Type.t -> t
   (** Module, name, index, type *)
