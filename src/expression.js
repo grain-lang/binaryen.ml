@@ -1726,30 +1726,6 @@ function caml_binaryen_try_bytecode() {
   return caml_binaryen_try_native(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
 }
 
-//Provides: caml_binaryen_trycatch
-//Requires: caml_jsstring_of_string, caml_list_to_js_array
-function caml_binaryen_trycatch(wasm_mod, name, body, catch_tags, catch_bodies) {
-  return wasm_mod.try(
-    caml_jsstring_of_string(name),
-    body,
-    caml_list_to_js_array(catch_tags).map(caml_jsstring_of_string),
-    caml_list_to_js_array(catch_bodies),
-    null,
-  );
-}
-
-//Provides: caml_binaryen_trydelegate
-//Requires: caml_jsstring_of_string, caml_list_to_js_array
-function caml_binaryen_trydelegate(wasm_mod, name, body, delegate_target) {
-  return wasm_mod.try(
-    caml_jsstring_of_string(name),
-    body,
-    [],
-    [],
-    delegate_target ? caml_jsstring_of_string(delegate_target[1]) : null,
-  );
-}
-
 //Provides: caml_binaryen_throw
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
 function caml_binaryen_throw(wasm_mod, tag, operands) {
