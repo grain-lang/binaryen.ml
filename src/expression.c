@@ -1923,54 +1923,6 @@ CAMLprim value caml_binaryen_try_bytecode(value *argv, int argn) {
 }
 
 CAMLprim value
-caml_binaryen_trycatch(value _module, value _name, value _body, value _catchTags, value _catchBodies) {
-  CAMLparam5(_module, _name, _body, _catchTags, _catchBodies);
-  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char *name;
-  if (Is_none(_name)) {
-    name = NULL;
-  } else {
-    name = Safe_String_val(Some_val(_name));
-  }
-  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
-  _catchTags = array_of_list(_catchTags);
-  int catchTagsLen = array_length(_catchTags);
-  const char* catchTags[catchTagsLen];
-  for (int i = 0; i < catchTagsLen; i++) {
-    catchTags[i] = Safe_String_val(Field(_catchTags, i));
-  }
-  _catchBodies = array_of_list(_catchBodies);
-  int catchBodiesLen = array_length(_catchBodies);
-  BinaryenExpressionRef catchBodies[catchBodiesLen];
-  for (int i = 0; i < catchBodiesLen; i++) {
-    catchBodies[i] = BinaryenExpressionRef_val(Field(_catchBodies, i));
-  }
-  char *delegateTarget = NULL;
-  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
-  CAMLreturn(alloc_BinaryenExpressionRef(exp));
-}
-
-CAMLprim value
-caml_binaryen_trydelegate(value _module, value _name, value _body, value _delegateTarget) {
-  CAMLparam4(_module, _name, _body,_delegateTarget);
-  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char *name;
-  if (Is_none(_name)) {
-    name = NULL;
-  } else {
-    name = Safe_String_val(Some_val(_name));
-  }
-  BinaryenExpressionRef body = BinaryenExpressionRef_val(_body);
-  char *delegateTarget = Safe_String_val(_delegateTarget);
-  int catchTagsLen = 0;
-  int catchBodiesLen = 0;
-  const char *catchTags[1] = {NULL};
-  BinaryenExpressionRef catchBodies[1] = {NULL};
-  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
-  CAMLreturn(alloc_BinaryenExpressionRef(exp));
-}
-
-CAMLprim value
 caml_binaryen_throw(value _module, value _tag, value _operands) {
   CAMLparam3(_module, _tag, _operands);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);

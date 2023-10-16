@@ -839,13 +839,11 @@ module Try = struct
 end
 
 module Try_Catch = struct
-  external make : Module.t -> string option -> t -> string list -> t list -> t = "caml_binaryen_trycatch"
-  (** Module, name, body, catch tags, catch bodies *)
+  let make module_ name body catch_tags catch_bodies = Try.make module_ name body catch_tags catch_bodies None
 end
 
 module Try_Delegate = struct
-  external make : Module.t -> string option -> t -> string -> t = "caml_binaryen_trydelegate"
-  (** Module, name, body, delegate *)
+  let make module_ name body delegate = Try.make module_ name body [] [] (Some delegate)
 end
 
 module Throw = struct
