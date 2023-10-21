@@ -92,6 +92,37 @@ function caml_binaryen_add_global_import__bytecode() {
   );
 }
 
+//Provides: caml_binaryen_add_tag_import
+//Requires: caml_jsstring_of_string
+function caml_binaryen_add_tag_import(
+  wasm_mod,
+  internalName,
+  externalModuleName,
+  externalBaseName,
+  paramsty,
+  resultsty
+) {
+  return wasm_mod.addTagImport(
+    caml_jsstring_of_string(internalName),
+    caml_jsstring_of_string(externalModuleName),
+    caml_jsstring_of_string(externalBaseName),
+    paramsty,
+    resultsty
+  );
+}
+//Provides: caml_binaryen_add_tag_import__bytecode
+//Requires: caml_binaryen_add_tag_import
+function caml_binaryen_add_tag_import__bytecode() {
+  return caml_binaryen_add_tag_import(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
+}
+
 //Provides: caml_binaryen_function_import_get_module
 //Requires: Binaryen
 //Requires: caml_string_of_jsstring
@@ -115,6 +146,14 @@ function caml_binaryen_global_import_get_module(global) {
   return caml_string_of_jsstring(global_info.module);
 }
 
+//Provides: caml_binaryen_tag_import_get_module
+//Requires: Binaryen
+//Requires: caml_string_of_jsstring
+function caml_binaryen_tag_import_get_module(tag) {
+  var tag_info = Binaryen.getTagInfo(tag);
+  return caml_string_of_jsstring(tag_info.module);
+}
+
 //Provides: caml_binaryen_function_import_get_base
 //Requires: Binaryen
 //Requires: caml_string_of_jsstring
@@ -136,4 +175,12 @@ function caml_binaryen_memory_import_get_base(mod, memoryName) {
 function caml_binaryen_global_import_get_base(global) {
   var global_info = Binaryen.getGlobalInfo(global);
   return caml_string_of_jsstring(global_info.base);
+}
+
+//Provides: caml_binaryen_tag_import_get_base
+//Requires: Binaryen
+//Requires: caml_string_of_jsstring
+function caml_binaryen_tag_import_get_base(tag) {
+  var tag_info = Binaryen.getTagInfo(tag);
+  return caml_string_of_jsstring(tag_info.base);
 }

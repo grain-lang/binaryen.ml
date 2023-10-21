@@ -6,65 +6,8 @@
  (ref.null nofunc)
  (i32.const 0)
 )
-(try $tc1 (result i32)
- (do
-  (throw $foo
-   (i32.const 1)
-  )
- )
- (catch $foo
-  (i32.const 2)
- )
- (catch $bar
-  (i32.const 3)
- )
-)
-(try $tc2 (result i32)
- (do
-  (rethrow $foo)
- )
- (catch $foo
-  (i32.const 2)
- )
- (catch $bar
-  (i32.const 3)
- )
-)
-(try $tc3 (result i32)
- (do
-  (i32.const 1)
- )
- (catch $foo
-  (i32.const 2)
- )
- (catch_all
-  (i32.const 3)
- )
-)
-(try $tc4 (result i32)
- (do
-  (i32.const 1)
- )
- (catch $foo
-  (i32.const 2)
- )
- (catch_all
-  (i32.const 3)
- )
-)
-(try $td1 (result i32)
- (do
-  (i32.const 1)
- )
- (delegate $del1)
-)
-(try $td2 (result i32)
- (do
-  (i32.const 1)
- )
- (delegate $del1)
-)
 (module
+ (type $i32_=>_none (func (param i32)))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $none_=>_none (func))
  (type $anyref_i32_i32_=>_i32 (func (param anyref i32 i32) (result i32)))
@@ -78,9 +21,12 @@
  (data $1 "world")
  (table $table 1 1 funcref)
  (elem $elem (i32.const 0) $adder)
+ (tag $foo (param i32))
+ (tag $bar (param i32))
  (export "adder" (func $adder))
  (export "memory" (memory $0))
  (export "hello" (func $hello))
+ (export "trydelegate" (func $trydelegate))
  (start $start)
  (func $adder (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
@@ -123,10 +69,135 @@
    (i32.const 1)
   )
  )
+ (func $trydelegate (type $none_=>_none)
+  (block $blk
+   (drop
+    (try $tc1 (result i32)
+     (do
+      (throw $foo
+       (i32.const 1)
+      )
+     )
+     (catch $foo
+      (block $tc1blk2 (result i32)
+       (drop
+        (pop i32)
+       )
+       (i32.const 2)
+      )
+     )
+     (catch $bar
+      (block $tc1blk3 (result i32)
+       (drop
+        (pop i32)
+       )
+       (i32.const 3)
+      )
+     )
+    )
+   )
+   (drop
+    (try $tc2 (result i32)
+     (do
+      (throw $foo
+       (i32.const 1)
+      )
+     )
+     (catch $foo
+      (block $tc2blk2
+       (drop
+        (pop i32)
+       )
+       (rethrow $tc2)
+      )
+     )
+     (catch $bar
+      (block $tc2blk3 (result i32)
+       (drop
+        (pop i32)
+       )
+       (i32.const 3)
+      )
+     )
+    )
+   )
+   (drop
+    (try $tc3 (result i32)
+     (do
+      (i32.const 1)
+     )
+     (catch $foo
+      (block $tc3blk2 (result i32)
+       (drop
+        (pop i32)
+       )
+       (i32.const 2)
+      )
+     )
+     (catch_all
+      (i32.const 3)
+     )
+    )
+   )
+   (drop
+    (try $tc4 (result i32)
+     (do
+      (i32.const 1)
+     )
+     (catch $foo
+      (block $tc4blk2 (result i32)
+       (drop
+        (pop i32)
+       )
+       (i32.const 2)
+      )
+     )
+     (catch_all
+      (i32.const 3)
+     )
+    )
+   )
+   (drop
+    (try $del1 (result i32)
+     (do
+      (try $td1 (result i32)
+       (do
+        (i32.const 1)
+       )
+       (delegate $del1)
+      )
+     )
+     (catch_all
+      (block $del1blk (result i32)
+       (i32.const 2)
+      )
+     )
+    )
+   )
+   (drop
+    (try $del2 (result i32)
+     (do
+      (try $td2 (result i32)
+       (do
+        (i32.const 1)
+       )
+       (delegate $del2)
+      )
+     )
+     (catch_all
+      (block $del2blk (result i32)
+       (i32.const 2)
+      )
+     )
+    )
+   )
+  )
+ )
 )
 (module
- (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
+ (type $i32_=>_none (func (param i32)))
  (type $none_=>_none (func))
+ (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $anyref_i32_i32_=>_i32 (func (param anyref i32 i32) (result i32)))
  (type $anyref_=>_i32 (func (param anyref) (result i32)))
  (import "future-wasi" "write" (func $write (param anyref i32 i32) (result i32)))
@@ -135,9 +206,12 @@
  (data $1 "world")
  (table $table 1 1 funcref)
  (elem $elem (i32.const 0) $adder)
+ (tag $foo (param i32))
+ (tag $bar (param i32))
  (export "adder" (func $adder))
  (export "memory" (memory $0))
  (export "hello" (func $hello))
+ (export "trydelegate" (func $trydelegate))
  (start $start)
  (func $adder (type $i32_i32_=>_i32) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
@@ -171,23 +245,71 @@
    (i32.const 1)
   )
  )
+ (func $trydelegate (type $none_=>_none) (; has Stack IR ;)
+  (drop
+   (try (result i32)
+    (do
+     (throw $foo
+      (i32.const 1)
+     )
+    )
+    (catch $foo
+     (drop
+      (pop i32)
+     )
+     (i32.const 2)
+    )
+    (catch $bar
+     (drop
+      (pop i32)
+     )
+     (i32.const 3)
+    )
+   )
+  )
+  (drop
+   (try $tc2 (result i32)
+    (do
+     (throw $foo
+      (i32.const 1)
+     )
+    )
+    (catch $foo
+     (drop
+      (pop i32)
+     )
+     (rethrow $tc2)
+    )
+    (catch $bar
+     (drop
+      (pop i32)
+     )
+     (i32.const 3)
+    )
+   )
+  )
+ )
 )
 (module
- (type $type$0 (func (param anyref i32 i32) (result i32)))
- (type $type$1 (func (param i32 i32) (result i32)))
- (type $type$2 (func))
- (type $type$3 (func (param anyref) (result i32)))
+ (type $type$0 (func (param i32)))
+ (type $type$3 (func))
+ (type $type$1 (func (param anyref i32 i32) (result i32)))
+ (type $type$2 (func (param i32 i32) (result i32)))
+ (type $type$4 (func (param anyref) (result i32)))
  (import "future-wasi" "write" (func $fimport$0 (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data $0 (i32.const 0) "hello")
  (data $1 "world")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 0) $0)
+ (tag $tag$0 (param i32))
+ (tag $tag$1 (param i32))
  (export "adder" (func $0))
  (export "memory" (memory $0))
  (export "hello" (func $2))
+ (export "trydelegate" (func $3))
  (start $1)
- (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
+ (func $0 (type $type$2) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
     (local.get $0)
@@ -199,7 +321,7 @@
    (local.get $1)
   )
  )
- (func $1 (type $type$2)
+ (func $1 (type $type$3)
   (memory.init $1
    (i32.const 2048)
    (i32.const 0)
@@ -212,30 +334,76 @@
    )
   )
  )
- (func $2 (type $type$3) (param $0 anyref) (result i32)
+ (func $2 (type $type$4) (param $0 anyref) (result i32)
   (call $fimport$0
    (local.get $0)
    (i32.const 0)
    (i32.const 1)
   )
  )
+ (func $3 (type $type$3)
+  (drop
+   (try $label$3 (result i32)
+    (do
+     (throw $tag$0
+      (i32.const 1)
+     )
+    )
+    (catch $tag$0
+     (drop
+      (pop i32)
+     )
+     (i32.const 2)
+    )
+    (catch $tag$1
+     (drop
+      (pop i32)
+     )
+     (unreachable)
+    )
+   )
+  )
+  (try $label$6
+   (do
+    (throw $tag$0
+     (i32.const 1)
+    )
+   )
+   (catch $tag$0
+    (drop
+     (pop i32)
+    )
+    (rethrow $label$6)
+   )
+   (catch $tag$1
+    (drop
+     (pop i32)
+    )
+    (unreachable)
+   )
+  )
+ )
 )
 (module
- (type $type$0 (func (param anyref i32 i32) (result i32)))
- (type $type$1 (func (param i32 i32) (result i32)))
- (type $type$2 (func))
- (type $type$3 (func (param anyref) (result i32)))
+ (type $type$0 (func (param i32)))
+ (type $type$3 (func))
+ (type $type$1 (func (param anyref i32 i32) (result i32)))
+ (type $type$2 (func (param i32 i32) (result i32)))
+ (type $type$4 (func (param anyref) (result i32)))
  (import "future-wasi" "write" (func $fimport$0 (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data $0 (i32.const 0) "hello")
  (data $1 "world")
  (table $0 1 1 funcref)
  (elem $0 (i32.const 0) $0)
+ (tag $tag$0 (param i32))
+ (tag $tag$1 (param i32))
  (export "adder" (func $0))
  (export "memory" (memory $0))
  (export "hello" (func $2))
+ (export "trydelegate" (func $3))
  (start $1)
- (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
+ (func $0 (type $type$2) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
   i32.load $0
@@ -244,7 +412,7 @@
   local.get $1
   i32.add
  )
- (func $1 (type $type$2)
+ (func $1 (type $type$3)
   i32.const 2048
   i32.const 0
   i32.const 5
@@ -254,10 +422,38 @@
   call $0
   drop
  )
- (func $2 (type $type$3) (param $0 anyref) (result i32)
+ (func $2 (type $type$4) (param $0 anyref) (result i32)
   local.get $0
   i32.const 0
   i32.const 1
   call $fimport$0
+ )
+ (func $3 (type $type$3)
+  try $label$3 (result i32)
+   i32.const 1
+   throw $tag$0
+  catch $tag$0
+   
+   drop
+   i32.const 2
+  catch $tag$1
+   
+   drop
+   unreachable
+  end
+  drop
+  try $label$6
+   i32.const 1
+   throw $tag$0
+  catch $tag$0
+   
+   drop
+   rethrow $label$6
+  catch $tag$1
+   
+   drop
+   unreachable
+  end
+  unreachable
  )
 )

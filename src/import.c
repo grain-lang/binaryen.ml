@@ -68,6 +68,24 @@ caml_binaryen_add_global_import__bytecode(value * argv) {
 }
 
 CAMLprim value
+caml_binaryen_add_tag_import(value _module, value _internalName, value _externalModuleName, value _externalBaseName, value _paramsty, value _resultsty) {
+  CAMLparam5(_module, _internalName, _externalModuleName, _externalBaseName, _paramsty);
+  CAMLxparam1(_resultsty);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalModuleName = Safe_String_val(_externalModuleName);
+  char* externalBaseName = Safe_String_val(_externalBaseName);
+  BinaryenType paramsty = BinaryenType_val(_paramsty);
+  BinaryenType resultsty = BinaryenType_val(_resultsty);
+  BinaryenAddTagImport(module, internalName, externalModuleName, externalBaseName, paramsty, resultsty);
+  CAMLreturn(Val_unit);
+}
+CAMLprim value
+caml_binaryen_add_tag_import__bytecode(value * argv) {
+  return caml_binaryen_add_tag_import(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
 caml_binaryen_function_import_get_module(value _fun) {
   CAMLparam1(_fun);
   BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
@@ -90,6 +108,13 @@ caml_binaryen_global_import_get_module(value _global) {
 }
 
 CAMLprim value
+caml_binaryen_tag_import_get_module(value _tag) {
+  CAMLparam1(_tag);
+  BinaryenTagRef tag = BinaryenTagRef_val(_tag);
+  CAMLreturn(caml_copy_string(BinaryenTagImportGetModule(tag)));
+}
+
+CAMLprim value
 caml_binaryen_function_import_get_base(value _fun) {
   CAMLparam1(_fun);
   BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);
@@ -109,4 +134,11 @@ caml_binaryen_global_import_get_base(value _global) {
   CAMLparam1(_global);
   BinaryenGlobalRef global = BinaryenGlobalRef_val(_global);
   CAMLreturn(caml_copy_string(BinaryenGlobalImportGetBase(global)));
+}
+
+CAMLprim value
+caml_binaryen_tag_import_get_base(value _tag) {
+  CAMLparam1(_tag);
+  BinaryenTagRef tag = BinaryenTagRef_val(_tag);
+  CAMLreturn(caml_copy_string(BinaryenTagImportGetBase(tag)));
 }

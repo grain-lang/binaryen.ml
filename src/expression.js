@@ -1712,7 +1712,7 @@ function caml_binaryen_ref_eq(wasm_mod, left, right) {
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
 function caml_binaryen_try_native(wasm_mod, name, body, catch_tags, catch_bodies, delegate_target) {
   return wasm_mod.try(
-    caml_jsstring_of_string(name),
+    name ? caml_jsstring_of_string(name[1]) : null,
     body,
     caml_list_to_js_array(catch_tags).map(caml_jsstring_of_string),
     caml_list_to_js_array(catch_bodies),
@@ -1736,7 +1736,7 @@ function caml_binaryen_throw(wasm_mod, tag, operands) {
 }
 
 //Provides: caml_binaryen_rethrow
-//Requires: caml_jsstring_of_string, caml_list_to_js_array
+//Requires: caml_jsstring_of_string
 function caml_binaryen_rethrow(wasm_mod, target) {
   return wasm_mod.rethrow(
     caml_jsstring_of_string(target),

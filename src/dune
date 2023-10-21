@@ -15,6 +15,7 @@
    export
    global
    table
+   tag
    memory
    module_feature
    module
@@ -37,6 +38,7 @@
    export.js
    global.js
    table.js
+   tag.js
    memory.js
    module_feature.js
    module.js
