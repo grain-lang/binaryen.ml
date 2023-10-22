@@ -354,26 +354,234 @@ end
 module Try : sig
   val make : Module.t -> string option -> t -> string list -> t list -> string option -> t
   (** Module, name, body, catch tags, catch bodies, delegate target *)
+  val get_name : t -> string
+  (** expr *)
+
+  val set_name : t -> string -> unit
+  (** expr, name *)
+
+  val get_body : t -> t
+  (** expr *)
+
+  val set_body : t -> t -> unit
+  (** expr, bodyExpr *)
+
+  val get_num_catch_tags : t -> int
+  (** expr *)
+
+  val get_num_catch_bodies : t -> int
+  (** expr *)
+
+  val get_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val set_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val append_catch_tag : t -> string -> int
+  (** expr, catchTag *)
+
+  val insert_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val remove_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val get_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val set_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val append_catch_body : t -> t -> int
+  (** expr, catchExpr *)
+
+  val insert_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val remove_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val has_catch_all : t -> bool
+  (** expr *)
+
+  val get_delegate_target : t -> string option
+  (** expr *)
+
+  val set_delegate_target : t -> string -> unit
+  (** expr, delegateTarget *)
+
+  val is_delegate : t -> bool
+  (** expr *)
 end
 
 module Try_Catch : sig
   val make : Module.t -> string option -> t -> string list -> t list -> t
   (** Module, name, body, catch tags, catch bodies *)
+
+  val get_name : t -> string
+  (** expr *)
+
+  val set_name : t -> string -> unit
+  (** expr, name *)
+
+  val get_body : t -> t
+  (** expr *)
+
+  val set_body : t -> t -> unit
+  (** expr, bodyExpr *)
+
+  val get_num_catch_tags : t -> int
+  (** expr *)
+
+  val get_num_catch_bodies : t -> int
+  (** expr *)
+
+  val get_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val set_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val append_catch_tag : t -> string -> int
+  (** expr, catchTag *)
+
+  val insert_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val remove_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val get_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val set_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val append_catch_body : t -> t -> int
+  (** expr, catchExpr *)
+
+  val insert_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val remove_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val has_catch_all : t -> bool
+  (** expr *)
+
+  val get_delegate_target : t -> string option
+  (** expr *)
+
+  val set_delegate_target : t -> string -> unit
+  (** expr, delegateTarget *)
+
+  val is_delegate : t -> bool
+  (** expr *)
 end
 
 module Try_Delegate : sig
   val make : Module.t -> string option -> t -> string -> t
   (** Module, name, body, delegate *)
+
+  val get_name : t -> string
+  (** expr *)
+
+  val set_name : t -> string -> unit
+  (** expr, name *)
+
+  val get_body : t -> t
+  (** expr *)
+
+  val set_body : t -> t -> unit
+  (** expr, bodyExpr *)
+
+  val get_num_catch_tags : t -> int
+  (** expr *)
+
+  val get_num_catch_bodies : t -> int
+  (** expr *)
+
+  val get_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val set_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val append_catch_tag : t -> string -> int
+  (** expr, catchTag *)
+
+  val insert_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val remove_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val get_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val set_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val append_catch_body : t -> t -> int
+  (** expr, catchExpr *)
+
+  val insert_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val remove_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val has_catch_all : t -> bool
+  (** expr *)
+
+  val get_delegate_target : t -> string option
+  (** expr *)
+
+  val set_delegate_target : t -> string -> unit
+  (** expr, delegateTarget *)
+
+  val is_delegate : t -> bool
+  (** expr *)
 end
 
 module Throw : sig
   val make : Module.t -> string -> t list -> t
   (** Module, tag, operands *)
+  val get_tag : t -> string
+  (** expr *)
+
+  val set_tag : t -> string -> unit
+  (** expr, tagName *)
+
+  val get_num_operands : t -> int
+  (** expr *)
+
+  val get_operand_at : t -> int -> t
+  (** expr, index *)
+
+  val set_operand_at : t -> int -> t -> unit
+  (** expr, index, operandExpr *)
+
+  val append_operand : t -> t -> int
+  (** expr, operandExpr *)
+
+  val insert_operand_at : t -> int -> t -> unit
+  (** expr, index, operandExpr *)
+
+  val remove_operand_at : t -> int -> t
+  (** expr, index *)
 end
 
 module Rethrow : sig
   val make : Module.t -> string -> t
   (** Module, target *)
+
+  val get_target : t -> string
+  (** expr *)
+
+  val set_target : t -> string -> unit
+  (** expr, target *)
 end
 
 module Table : sig

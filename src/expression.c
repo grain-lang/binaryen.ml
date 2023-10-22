@@ -1946,6 +1946,276 @@ caml_binaryen_rethrow(value _module, value _target) {
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
+CAMLprim value
+caml_binaryen_try_get_name(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* binaryenRetVal = BinaryenTryGetName(expr);
+  CAMLreturn(caml_copy_string(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_set_name(value _expr, value _name) {
+  CAMLparam2(_expr, _name);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* name = Safe_String_val(_name);
+  BinaryenTrySetName(expr, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_get_body(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenExpressionRef binaryenRetVal = BinaryenTryGetBody(expr);
+  CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_set_body(value _expr, value _bodyExpr) {
+  CAMLparam2(_expr, _bodyExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenExpressionRef bodyExpr = BinaryenExpressionRef_val(_bodyExpr);
+  BinaryenTrySetBody(expr, bodyExpr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_get_num_catch_tags(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex binaryenRetVal = BinaryenTryGetNumCatchTags(expr);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_get_num_catch_bodies(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex binaryenRetVal = BinaryenTryGetNumCatchBodies(expr);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_get_catch_tag_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  const char* binaryenRetVal = BinaryenTryGetCatchTagAt(expr, index);
+  CAMLreturn(caml_copy_string(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_set_catch_tag_at(value _expr, value _index, value _catchTag) {
+  CAMLparam3(_expr, _index, _catchTag);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  const char* catchTag = Safe_String_val(_catchTag);
+  BinaryenTrySetCatchTagAt(expr, index, catchTag);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_append_catch_tag(value _expr, value _catchTag) {
+  CAMLparam2(_expr, _catchTag);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* catchTag = Safe_String_val(_catchTag);
+  BinaryenIndex binaryenRetVal = BinaryenTryAppendCatchTag(expr, catchTag);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_insert_catch_tag_at(value _expr, value _index, value _catchTag) {
+  CAMLparam3(_expr, _index, _catchTag);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  const char* catchTag = Safe_String_val(_catchTag);
+  BinaryenTryInsertCatchTagAt(expr, index, catchTag);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_remove_catch_tag_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  const char* binaryenRetVal = BinaryenTryRemoveCatchTagAt(expr, index);
+  CAMLreturn(caml_copy_string(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_get_catch_body_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef binaryenRetVal = BinaryenTryGetCatchBodyAt(expr, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_set_catch_body_at(value _expr, value _index, value _catchExpr) {
+  CAMLparam3(_expr, _index, _catchExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef catchExpr = BinaryenExpressionRef_val(_catchExpr);
+  BinaryenTrySetCatchBodyAt(expr, index, catchExpr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_append_catch_body(value _expr, value _catchExpr) {
+  CAMLparam2(_expr, _catchExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenExpressionRef catchExpr = BinaryenExpressionRef_val(_catchExpr);
+  BinaryenIndex binaryenRetVal = BinaryenTryAppendCatchBody(expr, catchExpr);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_insert_catch_body_at(value _expr, value _index, value _catchExpr) {
+  CAMLparam3(_expr, _index, _catchExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef catchExpr = BinaryenExpressionRef_val(_catchExpr);
+  BinaryenTryInsertCatchBodyAt(expr, index, catchExpr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_remove_catch_body_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef binaryenRetVal = BinaryenTryRemoveCatchBodyAt(expr, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_has_catch_all(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  bool binaryenRetVal = BinaryenTryHasCatchAll(expr);
+  CAMLreturn(Val_bool(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_try_get_delegate_target(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* binaryenRetVal = BinaryenTryGetDelegateTarget(expr);
+  if (binaryenRetVal == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(binaryenRetVal)));
+  }
+}
+
+CAMLprim value
+caml_binaryen_try_set_delegate_target(value _expr, value _delegateTarget) {
+  CAMLparam2(_expr, _delegateTarget);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* delegateTarget = Safe_String_val(_delegateTarget);
+  BinaryenTrySetDelegateTarget(expr, delegateTarget);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_try_is_delegate(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  bool binaryenRetVal = BinaryenTryIsDelegate(expr);
+  CAMLreturn(Val_bool(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_throw_get_tag(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* binaryenRetVal = BinaryenThrowGetTag(expr);
+  CAMLreturn(caml_copy_string(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_throw_set_tag(value _expr, value _tagName) {
+  CAMLparam2(_expr, _tagName);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* tagName = Safe_String_val(_tagName);
+  BinaryenThrowSetTag(expr, tagName);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_throw_get_num_operands(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex binaryenRetVal = BinaryenThrowGetNumOperands(expr);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_throw_get_operand_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef binaryenRetVal = BinaryenThrowGetOperandAt(expr, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_throw_set_operand_at(value _expr, value _index, value _operandExpr) {
+  CAMLparam3(_expr, _index, _operandExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operandExpr = BinaryenExpressionRef_val(_operandExpr);
+  BinaryenThrowSetOperandAt(expr, index, operandExpr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_throw_append_operand(value _expr, value _operandExpr) {
+  CAMLparam2(_expr, _operandExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenExpressionRef operandExpr = BinaryenExpressionRef_val(_operandExpr);
+  BinaryenIndex binaryenRetVal = BinaryenThrowAppendOperand(expr, operandExpr);
+  CAMLreturn(Val_int(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_throw_insert_operand_at(value _expr, value _index, value _operandExpr) {
+  CAMLparam3(_expr, _index, _operandExpr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef operandExpr = BinaryenExpressionRef_val(_operandExpr);
+  BinaryenThrowInsertOperandAt(expr, index, operandExpr);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_throw_remove_operand_at(value _expr, value _index) {
+  CAMLparam2(_expr, _index);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  BinaryenIndex index = Int_val(_index);
+  BinaryenExpressionRef binaryenRetVal = BinaryenThrowRemoveOperandAt(expr, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_rethrow_get_target(value _expr) {
+  CAMLparam1(_expr);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* binaryenRetVal = BinaryenRethrowGetTarget(expr);
+  CAMLreturn(caml_copy_string(binaryenRetVal));
+}
+
+CAMLprim value
+caml_binaryen_rethrow_set_target(value _expr, value _target) {
+  CAMLparam2(_expr, _target);
+  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
+  const char* target = Safe_String_val(_target);
+  BinaryenRethrowSetTarget(expr, target);
+  CAMLreturn(Val_unit);
+}
+
 // Table operations
 CAMLprim value
 caml_binaryen_table_get(value _module, value _name, value _index, value _ty) {

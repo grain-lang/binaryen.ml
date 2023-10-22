@@ -1744,6 +1744,187 @@ function caml_binaryen_rethrow(wasm_mod, target) {
   )
 }
 
+//Provides: caml_binaryen_try_get_name
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_try_get_name(expr) {
+  return caml_string_of_jsstring(Binaryen['_BinaryenTryGetName'](expr));
+}
+
+//Provides: caml_binaryen_try_set_name
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_try_set_name(expr, name) {
+  Binaryen['_BinaryenTrySetName'](expr, name);
+}
+
+//Provides: caml_binaryen_try_get_body
+//Requires: Binaryen
+function caml_binaryen_try_get_body(expr) {
+  return Binaryen['_BinaryenTryGetBody'](expr);
+}
+
+//Provides: caml_binaryen_try_set_body
+//Requires: Binaryen
+function caml_binaryen_try_set_body(expr, bodyExpr) {
+  Binaryen['_BinaryenTrySetBody'](expr, bodyExpr);
+}
+
+//Provides: caml_binaryen_try_get_num_catch_tags
+//Requires: Binaryen
+function caml_binaryen_try_get_num_catch_tags(expr) {
+  return Binaryen['_BinaryenTryGetNumCatchTags'](expr);
+}
+
+//Provides: caml_binaryen_try_get_num_catch_bodies
+//Requires: Binaryen
+function caml_binaryen_try_get_num_catch_bodies(expr) {
+  return Binaryen['_BinaryenTryGetNumCatchBodies'](expr);
+}
+
+//Provides: caml_binaryen_try_get_catch_tag_at
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_try_get_catch_tag_at(expr, index) {
+  return caml_string_of_jsstring(Binaryen['_BinaryenTryGetCatchTagAt'](expr, index));
+}
+
+//Provides: caml_binaryen_try_set_catch_tag_at
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_try_set_catch_tag_at(expr, index, catchTag) {
+  Binaryen['_BinaryenTrySetCatchTagAt'](expr, index, catchTag);
+}
+
+//Provides: caml_binaryen_try_append_catch_tag
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_try_append_catch_tag(expr, catchTag) {
+  return Binaryen['_BinaryenTryAppendCatchTag'](expr, catchTag);
+}
+
+//Provides: caml_binaryen_try_insert_catch_tag_at
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_try_insert_catch_tag_at(expr, index, catchTag) {
+  Binaryen['_BinaryenTryInsertCatchTagAt'](expr, index, catchTag);
+}
+
+//Provides: caml_binaryen_try_remove_catch_tag_at
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_try_remove_catch_tag_at(expr, index) {
+  return caml_string_of_jsstring(Binaryen['_BinaryenTryRemoveCatchTagAt'](expr, index));
+}
+
+//Provides: caml_binaryen_try_get_catch_body_at
+//Requires: Binaryen
+function caml_binaryen_try_get_catch_body_at(expr, index) {
+  return Binaryen['_BinaryenTryGetCatchBodyAt'](expr, index);
+}
+
+//Provides: caml_binaryen_try_set_catch_body_at
+//Requires: Binaryen
+function caml_binaryen_try_set_catch_body_at(expr, index, catchExpr) {
+  Binaryen['_BinaryenTrySetCatchBodyAt'](expr, index, catchExpr);
+}
+
+//Provides: caml_binaryen_try_append_catch_body
+//Requires: Binaryen
+function caml_binaryen_try_append_catch_body(expr, catchExpr) {
+  return Binaryen['_BinaryenTryAppendCatchBody'](expr, catchExpr);
+}
+
+//Provides: caml_binaryen_try_insert_catch_body_at
+//Requires: Binaryen
+function caml_binaryen_try_insert_catch_body_at(expr, index, catchExpr) {
+  Binaryen['_BinaryenTryInsertCatchBodyAt'](expr, index, catchExpr);
+}
+
+//Provides: caml_binaryen_try_remove_catch_body_at
+//Requires: Binaryen
+function caml_binaryen_try_remove_catch_body_at(expr, index) {
+  return Binaryen['_BinaryenTryRemoveCatchBodyAt'](expr, index);
+}
+
+//Provides: caml_binaryen_try_has_catch_all
+//Requires: Binaryen
+function caml_binaryen_try_has_catch_all(expr) {
+  return Binaryen['_BinaryenTryHasCatchAll'](expr);
+}
+
+//Provides: caml_binaryen_try_get_delegate_target
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_try_get_delegate_target(expr) {
+  const retval = Binaryen['_BinaryenTryGetDelegateTarget'](expr);
+  return retval ? [0, caml_string_of_jsstring(retval)] : null;
+}
+
+//Provides: caml_binaryen_try_set_delegate_target
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_try_set_delegate_target(expr, delegateTarget) {
+  Binaryen['_BinaryenTrySetDelegateTarget'](expr, delegateTarget);
+}
+
+//Provides: caml_binaryen_try_is_delegate
+//Requires: Binaryen
+function caml_binaryen_try_is_delegate(expr) {
+  return Binaryen['_BinaryenTryIsDelegate'](expr);
+}
+
+//Provides: caml_binaryen_throw_get_tag
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_throw_get_tag(expr) {
+  return caml_string_of_jsstring(Binaryen['_BinaryenThrowGetTag'](expr));
+}
+
+//Provides: caml_binaryen_throw_set_tag
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_throw_set_tag(expr, tagName) {
+  Binaryen['_BinaryenThrowSetTag'](expr, tagName);
+}
+
+//Provides: caml_binaryen_throw_get_num_operands
+//Requires: Binaryen
+function caml_binaryen_throw_get_num_operands(expr) {
+  return Binaryen['_BinaryenThrowGetNumOperands'](expr);
+}
+
+//Provides: caml_binaryen_throw_get_operand_at
+//Requires: Binaryen
+function caml_binaryen_throw_get_operand_at(expr, index) {
+  return Binaryen['_BinaryenThrowGetOperandAt'](expr, index);
+}
+
+//Provides: caml_binaryen_throw_set_operand_at
+//Requires: Binaryen
+function caml_binaryen_throw_set_operand_at(expr, index, operandExpr) {
+  Binaryen['_BinaryenThrowSetOperandAt'](expr, index, operandExpr);
+}
+
+//Provides: caml_binaryen_throw_append_operand
+//Requires: Binaryen
+function caml_binaryen_throw_append_operand(expr, operandExpr) {
+  return Binaryen['_BinaryenThrowAppendOperand'](expr, operandExpr);
+}
+
+//Provides: caml_binaryen_throw_insert_operand_at
+//Requires: Binaryen
+function caml_binaryen_throw_insert_operand_at(expr, index, operandExpr) {
+  Binaryen['_BinaryenThrowInsertOperandAt'](expr, index, operandExpr);
+}
+
+//Provides: caml_binaryen_throw_remove_operand_at
+//Requires: Binaryen
+function caml_binaryen_throw_remove_operand_at(expr, index) {
+  return Binaryen['_BinaryenThrowRemoveOperandAt'](expr, index);
+}
+
+//Provides: caml_binaryen_rethrow_get_target
+//Requires: Binaryen, caml_string_of_jsstring
+function caml_binaryen_rethrow_get_target(expr) {
+  return caml_string_of_jsstring(Binaryen['_BinaryenRethrowGetTarget'](expr));
+}
+
+//Provides: caml_binaryen_rethrow_set_target
+//Requires: Binaryen, caml_jsstring_of_string
+function caml_binaryen_rethrow_set_target(expr, target) {
+  Binaryen['_BinaryenRethrowSetTarget'](expr, target);
+}
+
 // Table operations
 
 //Provides: caml_binaryen_table_get
