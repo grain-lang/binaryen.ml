@@ -40,6 +40,7 @@ static struct custom_operations binaryen_ops = {
 #define Is_some(v) Is_block(v)
 
 #define Safe_String_val(v) ((char *)memcpy(malloc(caml_string_length(v) + 1), String_val(v), caml_string_length(v) + 1))
+#define Safe_Bytes_val(v) ((char *)memcpy(malloc(caml_string_length(v) + 1), Bytes_val(v), caml_string_length(v) + 1))
 
 /* Allocating an OCaml custom block to hold the given BinaryenFunctionRef */
 value alloc_BinaryenFunctionRef(BinaryenFunctionRef fun);
