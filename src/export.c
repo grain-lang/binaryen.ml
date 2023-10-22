@@ -49,6 +49,16 @@ caml_binaryen_add_global_export(value _module, value _internalName, value _exter
 }
 
 CAMLprim value
+caml_binaryen_add_tag_export(value _module, value _internalName, value _externalName) {
+  CAMLparam3(_module, _internalName, _externalName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* internalName = Safe_String_val(_internalName);
+  char* externalName = Safe_String_val(_externalName);
+  BinaryenExportRef exp = BinaryenAddTagExport(module, internalName, externalName);
+  CAMLreturn(alloc_BinaryenExportRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_get_export(value _module, value _externalName) {
   CAMLparam2(_module, _externalName);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
