@@ -5,7 +5,7 @@
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
   "dependencies": {
-    "ocaml": ">= 4.12.0",
+    "ocaml": ">= 4.12.0 < 5.0.0",
     "@grain/libbinaryen": ">= 114.0.0 < 115.0.0",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
