@@ -384,6 +384,9 @@ val strip_dwarf : t
 val strip_producers : t
 (** strip the wasm producers section *)
 
+val strip_eh : t
+(** strip EH instructions *)
+
 val strip_target_features : t
 (** strip the wasm target features section *)
 

@@ -387,6 +387,9 @@ let strip_dwarf = "strip-dwarf"
 (** strip the wasm producers section *)
 let strip_producers = "strip-producers"
 
+(** strip EH instructions *)
+let strip_eh = "strip-eh"
+
 (** strip the wasm target features section *)
 let strip_target_features = "strip-target-features"
 
