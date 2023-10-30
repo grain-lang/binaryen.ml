@@ -248,6 +248,7 @@ let _ =
       Passes.monomorphize;
       Passes.signext_lowering;
       Passes.discard_global_effects;
+      Passes.strip_eh;
     ]
 
 let _ =
