@@ -107,7 +107,7 @@ function caml_binaryen_feature_strings() {
 //Provides: caml_binaryen_feature_multi_memories
 //Requires: Binaryen
 function caml_binaryen_feature_multi_memories() {
-  return Binaryen.Features.MultiMemories;
+  return Binaryen.Features.MultiMemory;
 }
 
 //Provides: caml_binaryen_feature_all
