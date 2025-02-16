@@ -14,7 +14,6 @@ depends: [
   "sexplib0"          {>= "v0.16" & < "v0.17"}
   "dune"              {>= "2.0.0"}
   "dune-configurator"
-  "conf-bash"
 ]
 synopsis: "Full standard library replacement for OCaml"
 description: "
@@ -32,9 +31,9 @@ provided by companion libraries such as stdio:
   https://github.com/janestreet/stdio
 "
 url {
-  src: "https://github.com/janestreet/base/archive/refs/tags/v0.16.3.tar.gz"
+  src: "https://github.com/janestreet/base/archive/refs/tags/v0.16.4.tar.gz"
   checksum: [
-    "md5=04572fc23a4651604cfcab83f720cb4c"
-    "sha512=69380ed392faf4495459f97f70a10a6959fce71d2e6ba093472fc272141646307fd7872407de855dfa48ef0435f6587eae5aa50f4a67eac40a9e1946d0c3c070"
+    "md5=1716b735b93c9d068dd9790bb40d6562"
+    "sha512=ab1bf389889dda97235a76782858521256ab65290831c1234781bc4b3ec8186680616f64b922b0c9dfd11b2ed46e0be9e9b8778904a97ef5f849132b925fd210"
   ]
 }
