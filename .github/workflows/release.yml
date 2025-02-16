@@ -36,7 +36,7 @@ jobs:
           brew install git-archive-all
 
       - name: Checkout code
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           submodules: "recursive"
 
@@ -84,7 +84,7 @@ jobs:
           echo -n "$CHANGES" > CHANGES.md
 
       - name: Setup OCaml
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@c2e6bb92370612b89f302c3aaefa1da45ee2d702 # v3.2.15
         with:
           ocaml-compiler: 4.14.0
 
@@ -104,9 +104,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup NodeJS
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
-          node-version: "16"
+          node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm

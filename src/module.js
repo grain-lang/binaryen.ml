@@ -101,9 +101,9 @@ function caml_binaryen_module_write_stack_ir(wasm_mod, optimize) {
 
 //Provides: caml_binaryen_module_read
 //Requires: Binaryen
-//Requires: caml_array_of_bytes
+//Requires: caml_uint8_array_of_bytes
 function caml_binaryen_module_read(bytes) {
-  var data = caml_array_of_bytes(bytes);
+  var data = caml_uint8_array_of_bytes(bytes);
   return Binaryen.readBinary(data);
 }
 

@@ -20,20 +20,20 @@ jobs:
 
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
-          node-version: "16"
+          node-version: "22"
           check-latest: true
 
       # Install `esy` to build the project
       # It also adds `shx` globally for cross-platform shell commands
       - name: Setup environment
         run: |
-          npm i -g esy
+          npm i -g esy@0.8.0
           npm i -g shx
 
       - name: Checkout project
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           submodules: "recursive"
 
@@ -43,7 +43,7 @@ jobs:
 
       - name: Esy cache
         id: esy-cache
-        uses: actions/cache@v3.3.1
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: _export
           key: ${{ runner.os }}-esy-${{ hashFiles('esy.lock/index.json') }}
