@@ -5,8 +5,7 @@
  (flags
   :standard
   (:include ./config/ocamlopt_flags.sexp))
- (js_of_ocaml
-  (flags --no-sourcemap)))
+ (js_of_ocaml))
 
 (rule
  (alias runtest)
