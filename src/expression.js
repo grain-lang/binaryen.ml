@@ -101,6 +101,18 @@ function caml_binaryen_call_indirect__bytecode() {
   );
 }
 
+//Provides: caml_binaryen_call_ref
+//Requires: caml_jsstring_of_string
+//Requires: caml_list_to_js_array, caml_js_from_bool
+function caml_binaryen_call_ref(wasm_mod, target, params, typ, is_return) {
+  return wasm_mod.call_ref(
+    target,
+    caml_list_to_js_array(params),
+    typ,
+    caml_js_from_bool(is_return)
+  );
+}
+
 //Provides: caml_binaryen_return_call
 //Requires: caml_jsstring_of_string
 //Requires: caml_list_to_js_array
@@ -545,6 +557,32 @@ function caml_binaryen_pop(wasm_mod, typ) {
 //Provides: caml_binaryen_ref_i31
 function caml_binaryen_ref_i31(wasm_mod, typ) {
   return wasm_mod.ref.i31(typ);
+}
+
+//Provides: caml_binaryen_ref_test
+function caml_binaryen_ref_test(wasm_mod, ref, typ) {
+  return wasm_mod.ref.test(ref, typ);
+}
+
+//Provides: caml_binaryen_ref_cast
+function caml_binaryen_ref_cast(wasm_mod, ref, typ) {
+  return wasm_mod.ref.cast(ref, typ);
+}
+
+//Provides: caml_binaryen_br_on
+//Requires: caml_jsstring_of_string
+//Requires: Binaryen
+function caml_binaryen_br_on(wasm_mod, op, name, ref, typ) {
+  switch (op) {
+    case Binaryen.BrOnNull:
+      return wasm_mod.br_on.null(caml_jsstring_of_string(name), ref, typ);
+    case Binaryen.BrOnNonNull:
+      return wasm_mod.br_on.non_null(caml_jsstring_of_string(name), ref, typ);
+    case Binaryen.BrOnCast:
+      return wasm_mod.br_on.cast(caml_jsstring_of_string(name), ref, typ);
+    case Binaryen.BrOnCastFail:
+      return wasm_mod.br_on.cast_fail(caml_jsstring_of_string(name), ref, typ);
+  }
 }
 
 //Provides: caml_binaryen_i31_get
@@ -1296,6 +1334,68 @@ function caml_binaryen_call_indirect_set_return(exp, isReturn) {
   return Binaryen.CallIndirect.setReturn(exp, caml_js_from_bool(isReturn));
 }
 
+//Provides: caml_binaryen_call_ref_get_target
+//Requires: Binaryen
+function caml_binaryen_call_ref_get_target(exp) {
+  return Binaryen.CallRef.getTarget(exp);
+}
+
+//Provides: caml_binaryen_call_ref_set_target
+//Requires: Binaryen
+function caml_binaryen_call_ref_set_target(exp, target) {
+  return Binaryen.CallRef.setTarget(exp, target);
+}
+
+//Provides: caml_binaryen_call_ref_get_num_operands
+//Requires: Binaryen
+function caml_binaryen_call_ref_get_num_operands(exp) {
+  return Binaryen.CallRef.getNumOperands(exp);
+}
+
+//Provides: caml_binaryen_call_ref_get_operand_at
+//Requires: Binaryen
+function caml_binaryen_call_ref_get_operand_at(exp, index) {
+  return Binaryen.CallRef.getOperandAt(exp, index);
+}
+
+//Provides: caml_binaryen_call_ref_set_operand_at
+//Requires: Binaryen
+function caml_binaryen_call_ref_set_operand_at(exp, index, operand) {
+  return Binaryen.CallRef.setOperandAt(exp, index, operand);
+}
+
+//Provides: caml_binaryen_call_ref_append_operand
+//Requires: Binaryen
+function caml_binaryen_call_ref_append_operand(exp, operand) {
+  return Binaryen.CallRef.appendOperand(exp, operand);
+}
+
+//Provides: caml_binaryen_call_ref_insert_operand_at
+//Requires: Binaryen
+function caml_binaryen_call_ref_insert_operand_at(exp, index, operand) {
+  return Binaryen.CallRef.insertOperandAt(exp, index, operand);
+}
+
+//Provides: caml_binaryen_call_ref_remove_operand_at
+//Requires: Binaryen
+function caml_binaryen_call_ref_remove_operand_at(exp, index) {
+  return Binaryen.CallRef.removeOperandAt(exp, index);
+}
+
+//Provides: caml_binaryen_call_ref_is_return
+//Requires: Binaryen
+//Requires: caml_js_to_bool
+function caml_binaryen_call_ref_is_return(exp) {
+  return caml_js_to_bool(Binaryen.CallRef.isReturn(exp));
+}
+
+//Provides: caml_binaryen_call_ref_set_return
+//Requires: Binaryen
+//Requires: caml_js_from_bool
+function caml_binaryen_call_ref_set_return(exp, isReturn) {
+  return Binaryen.CallRef.setReturn(exp, caml_js_from_bool(isReturn));
+}
+
 //Provides: caml_binaryen_local_set_get_value
 //Requires: Binaryen
 function caml_binaryen_local_set_get_value(exp) {
@@ -1705,6 +1805,100 @@ function caml_binaryen_ref_func(wasm_mod, name, typ) {
 //Provides: caml_binaryen_ref_eq
 function caml_binaryen_ref_eq(wasm_mod, left, right) {
   return wasm_mod.ref.func(left, right);
+}
+
+// Struct operations
+
+//Provides: caml_binaryen_struct_new
+//Requires: caml_list_to_js_array
+function caml_binaryen_struct_new(wasm_mod, operands, type) {
+  return wasm_mod.struct.new(
+    operands ? caml_list_to_js_array(operands[1]) : null,
+    type
+  );
+}
+
+//Provides: caml_binaryen_struct_get
+//Requires: caml_js_from_bool
+function caml_binaryen_struct_get(wasm_mod, index, ref, type, signed) {
+  if (caml_js_from_bool(signed)) {
+    return wasm_mod.struct.get_s(index, ref, type);
+  } else {
+    return wasm_mod.struct.get_u(index, ref, type);
+  }
+}
+
+//Provides: caml_binaryen_struct_set
+function caml_binaryen_struct_set(wasm_mod, index, ref, value) {
+  return wasm_mod.struct.set(index, ref, value);
+}
+
+// Array operations
+
+//Provides: caml_binaryen_array_new
+function caml_binaryen_array_new(wasm_mod, type, size, init) {
+  return wasm_mod.array.new(type, size, init);
+}
+
+//Provides: caml_binaryen_array_new_data
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_new_data(wasm_mod, type, name, offset, size) {
+  return wasm_mod.array.new_data(
+    type,
+    caml_jsstring_of_string(name),
+    offset,
+    size
+  );
+}
+
+//Provides: caml_binaryen_array_new_fixed
+//Requires: caml_list_to_js_array
+function caml_binaryen_array_new_fixed(wasm_mod, type, values) {
+  return wasm_mod.array.new_fixed(type, caml_list_to_js_array(values));
+}
+
+//Provides: caml_binaryen_array_get
+//Requires: caml_js_from_bool
+function caml_binaryen_array_get(wasm_mod, ref, index, type, signed) {
+  if (caml_js_from_bool(signed)) {
+    return wasm_mod.array.get_s(ref, index, type);
+  } else {
+    return wasm_mod.array.get_u(ref, index, type);
+  }
+}
+
+//Provides: caml_binaryen_array_set
+function caml_binaryen_array_set(wasm_mod, ref, index, value) {
+  return wasm_mod.array.set(ref, index, value);
+}
+
+//Provides: caml_binaryen_array_len
+function caml_binaryen_array_len(wasm_mod, ref) {
+  return wasm_mod.array.len(ref);
+}
+
+//Provides: caml_binaryen_array_copy
+function caml_binaryen_array_copy(
+  wasm_mod,
+  destRef,
+  destIndex,
+  srcRef,
+  srcIndex,
+  length
+) {
+  return wasm_mod.array.copy(destRef, destIndex, srcRef, srcIndex, length);
+}
+//Provides: caml_binaryen_array_copy__bytecode
+//Requires: caml_binaryen_array_copy
+function caml_binaryen_array_copy__bytecode() {
+  return caml_binaryen_array_copy(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
 }
 
 // Exception handling operations
