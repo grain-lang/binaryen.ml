@@ -21,5 +21,5 @@ val auto : t
 val create : t array -> t
 val expand : t -> t array
 val is_nullable : t -> bool
-val from_heap_type : Heap_type.t -> t
+val from_heap_type : Heap_type.t -> bool -> t
 val get_heap_type : t -> Heap_type.t
