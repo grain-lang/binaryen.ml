@@ -3,6 +3,7 @@
 #include <caml/fail.h>
 #include <caml/memory.h>
 #include <caml/callback.h>
+#include <caml/alloc.h>
 
 #include "ocaml_helpers.h"
 
@@ -99,6 +100,14 @@ value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem)
 {
   value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenElementSegmentRef), 0, 1);
   BinaryenElementSegmentRef_val(v) = elem;
+  return v;
+}
+
+/* Allocating an OCaml custom block to hold the given TypeBuilderRef */
+value alloc_TypeBuilderRef(TypeBuilderRef builder)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(TypeBuilderRef), 0, 1);
+  TypeBuilderRef_val(v) = builder;
   return v;
 }
 
