@@ -161,6 +161,21 @@ module Call_indirect : sig
   val set_return : t -> bool -> unit
 end
 
+module Call_ref : sig
+  val make : Module.t -> t -> t list -> Type.t -> t
+  val make_return : Module.t -> t -> t list -> Type.t -> t
+  val get_target : t -> t
+  val set_target : t -> t -> unit
+  val get_num_operands : t -> int
+  val get_operand_at : t -> int -> t
+  val set_operand_at : t -> int -> t -> unit
+  val append_operand : t -> t -> int
+  val insert_operand_at : t -> int -> t -> unit
+  val remove_operand_at : t -> int -> t
+  val is_return : t -> bool
+  val set_return : t -> bool -> unit
+end
+
 module Local_get : sig
   val make : Module.t -> int -> Type.t -> t
 end
@@ -348,6 +363,51 @@ module Ref : sig
 
   val eq : Module.t -> t -> t -> t
   (** Module, left, right *)
+
+  val test : Module.t -> t -> Type.t -> t
+  (** Module, value, type *)
+
+  val cast : Module.t -> t -> Type.t -> t
+  (** Module, value, type *)
+end
+
+module BrOn : sig
+  val make : Module.t -> Op.t -> string -> t -> Type.t -> t
+  (** Module, op, label, value, type *)
+end
+
+module Struct : sig
+  val new_ : Module.t -> t list option -> Heap_type.t -> t
+  (** Mdoule, operands, type *)
+
+  val get : Module.t -> int -> t -> Type.t -> bool -> t
+  (** Module, index, struct, type, signed *)
+
+  val set : Module.t -> int -> t -> t -> t
+  (** Module, index, struct, value *)
+end
+
+module Array : sig
+  val new_ : Module.t -> Heap_type.t -> t -> t -> t
+  (** Module, type, size, init *)
+
+  val new_data : Module.t -> Heap_type.t -> string -> t -> t -> t
+  (** Module, type, data name, offset, size *)
+
+  val new_fixed : Module.t -> Heap_type.t -> t list -> t
+  (** Module, type, values *)
+
+  val get : Module.t -> t -> t -> Type.t -> bool -> t
+  (** Module, array, index, type, signed *)
+
+  val set : Module.t -> t -> t -> t -> t
+  (** Module, array, index, value *)
+
+  val len : Module.t -> t -> t
+  (** Module, array *)
+
+  val copy : Module.t -> t -> t -> t -> t -> t -> t
+  (** Module, dest, dest index, src, src index, length *)
 end
 
 module Table : sig
