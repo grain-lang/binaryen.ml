@@ -285,9 +285,9 @@ external id_tuple_extract : unit -> int
 
 let id_tuple_extract = id_tuple_extract ()
 
-external id_i31_new : unit -> int = "caml_binaryen_expression_id_i31_new"
+external id_ref_i31 : unit -> int = "caml_binaryen_expression_id_ref_i31"
 
-let id_i31_new = id_i31_new ()
+let id_ref_i31 = id_ref_i31 ()
 
 external id_i31_get : unit -> int = "caml_binaryen_expression_id_i31_get"
 
@@ -394,7 +394,7 @@ let get_kind expr =
   | n when n = id_rethrow -> Rethrow
   | n when n = id_tuple_make -> TupleMake
   | n when n = id_tuple_extract -> TupleExtract
-  | n when n = id_i31_new -> I31New
+  | n when n = id_ref_i31 -> I31New
   | n when n = id_i31_get -> I31Get
   | n when n = id_call_ref -> CallRef
   | n when n = id_ref_test -> RefTest
@@ -820,7 +820,7 @@ module Pop = struct
 end
 
 module I31 = struct
-  external make : Module.t -> t -> t = "caml_binaryen_i31_new"
+  external make : Module.t -> t -> t = "caml_binaryen_ref_i31"
   (** Module, value *)
 
   external get : Module.t -> t -> bool -> t = "caml_binaryen_i31_get"

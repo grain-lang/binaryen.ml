@@ -442,11 +442,11 @@ caml_binaryen_pop(value _module, value _ty) {
 }
 
 CAMLprim value
-caml_binaryen_i31_new(value _module, value _val) {
+caml_binaryen_ref_i31(value _module, value _val) {
   CAMLparam2(_module, _val);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
-  BinaryenExpressionRef exp = BinaryenI31New(module, val);
+  BinaryenExpressionRef exp = BinaryenRefI31(module, val);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
@@ -717,9 +717,9 @@ caml_binaryen_expression_id_tuple_extract(value unit) {
   CAMLreturn(Val_int(BinaryenTupleExtractId()));
 }
 CAMLprim value
-caml_binaryen_expression_id_i31_new(value unit) {
+caml_binaryen_expression_id_ref_i31(value unit) {
   CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenI31NewId()));
+  CAMLreturn(Val_int(BinaryenRefI31Id()));
 }
 CAMLprim value
 caml_binaryen_expression_id_i31_get(value unit) {
