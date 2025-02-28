@@ -97,7 +97,7 @@ let start =
   Function.add_function wasm_mod "start" Type.none Type.none [||]
     (Expression.Block.make wasm_mod ~return_type:Type.none "start"
        [
-         Expression.Memory_init.make wasm_mod 1
+         Expression.Memory_init.make wasm_mod "world"
            (Expression.Const.make wasm_mod (Literal.int32 2048l))
            (Expression.Const.make wasm_mod (Literal.int32 0l))
            (Expression.Const.make wasm_mod (Literal.int32 5l))
@@ -157,13 +157,13 @@ let segment : Binaryen.Memory.segment =
       { offset = Expression.Const.make wasm_mod (Literal.int32 0l) }
   in
   let size = Bytes.length data in
-  { data; kind; size }
+  { name = "hello"; data; kind; size }
 
 let passive_segment : Binaryen.Memory.segment =
   let data = Bytes.of_string "world" in
   let kind = Binaryen.Memory.Passive in
   let size = Bytes.length data in
-  { data; kind; size }
+  { name = "world"; data; kind; size }
 
 let _ = assert (Memory.has_memory wasm_mod = false)
 
@@ -183,7 +183,9 @@ let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
 let _ =
   assert (
-    Bytes.equal (Memory.get_segment_data wasm_mod 1) (Bytes.of_string "world"))
+    Bytes.equal
+      (Memory.get_segment_data wasm_mod "world")
+      (Bytes.of_string "world"))
 
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
