@@ -6,7 +6,8 @@ function caml_binaryen_set_memory(
   initial,
   maximum,
   exportName,
-  segments,
+  segmentNames,
+  segmentData,
   segmentPassives,
   segmentOffsets,
   segmentSizes,
@@ -14,11 +15,13 @@ function caml_binaryen_set_memory(
   memory64,
   memoryName
 ) {
+  var datas = caml_list_to_js_array(segmentData);
   var passives = caml_list_to_js_array(segmentPassives);
   var offsets = caml_list_to_js_array(segmentOffsets);
-  var segs = caml_list_to_js_array(segments).map(function (segment, idx) {
+  var segs = caml_list_to_js_array(segmentNames).map(function (name, idx) {
     return {
-      data: caml_convert_bytes_to_array(segment),
+      name: caml_jsstring_of_string(name),
+      data: caml_convert_bytes_to_array(datas[idx]),
       passive: caml_js_from_bool(passives[idx]),
       offset: offsets[idx],
     };
@@ -48,7 +51,8 @@ function caml_binaryen_set_memory__bytecode() {
     arguments[7],
     arguments[8],
     arguments[9],
-    arguments[10]
+    arguments[10],
+    arguments[11]
   );
 }
 
@@ -108,20 +112,22 @@ function caml_binaryen_get_num_memory_segments(wasm_mod) {
 }
 
 //Provides: caml_binaryen_get_memory_segment_byte_offset
-function caml_binaryen_get_memory_segment_byte_offset(wasm_mod, idx) {
-  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_get_memory_segment_byte_offset(wasm_mod, name) {
+  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
   return info.offset;
 }
 
 //Provides: caml_binaryen_get_memory_segment_passive
-function caml_binaryen_get_memory_segment_passive(wasm_mod, idx) {
-  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+//Requires: caml_jsstring_of_string
+function caml_binaryen_get_memory_segment_passive(wasm_mod, name) {
+  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
   return info.passive;
 }
 
 //Provides: caml_binaryen_get_memory_segment_data
-//Requires: caml_bytes_of_array
-function caml_binaryen_get_memory_segment_data(wasm_mod, idx) {
-  var info = wasm_mod.getMemorySegmentInfoByIndex(idx);
+//Requires: caml_bytes_of_array, caml_jsstring_of_string
+function caml_binaryen_get_memory_segment_data(wasm_mod, name) {
+  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
   return caml_bytes_of_array(info.data);
 }
