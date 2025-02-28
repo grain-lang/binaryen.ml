@@ -1,4 +1,4 @@
-type segment = { data : bytes; kind : segment_kind; size : int }
+type segment = { name : string; data : bytes; kind : segment_kind; size : int }
 and segment_kind = Passive | Active of { offset : Expression.t }
 
 val set_memory :
@@ -20,6 +20,6 @@ val is_shared : Module.t -> string -> bool
 val is_64 : Module.t -> string -> bool
 val unlimited : int
 val get_num_segments : Module.t -> int
-val get_segment_byte_offset : Module.t -> int -> int
-val get_segment_passive : Module.t -> int -> bool
-val get_segment_data : Module.t -> int -> bytes
+val get_segment_byte_offset : Module.t -> string -> int
+val get_segment_passive : Module.t -> string -> bool
+val get_segment_data : Module.t -> string -> bytes
