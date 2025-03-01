@@ -878,25 +878,25 @@ external bitselect_vec128 : unit -> t = "caml_binaryen_bitselect_vec128"
 
 let bitselect_vec128 = bitselect_vec128 ()
 
-external relaxed_fma_vec_f32x4 : unit -> t
-  = "caml_binaryen_relaxed_fma_vec_f32x4"
+external relaxed_madd_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_madd_vec_f32x4"
 
-let relaxed_fma_vec_f32x4 = relaxed_fma_vec_f32x4 ()
+let relaxed_madd_vec_f32x4 = relaxed_madd_vec_f32x4 ()
 
-external relaxed_fms_vec_f32x4 : unit -> t
-  = "caml_binaryen_relaxed_fms_vec_f32x4"
+external relaxed_nmadd_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_nmadd_vec_f32x4"
 
-let relaxed_fms_vec_f32x4 = relaxed_fms_vec_f32x4 ()
+let relaxed_nmadd_vec_f32x4 = relaxed_nmadd_vec_f32x4 ()
 
-external relaxed_fma_vec_f64x4 : unit -> t
-  = "caml_binaryen_relaxed_fma_vec_f64x4"
+external relaxed_madd_vec_f64x4 : unit -> t
+  = "caml_binaryen_relaxed_madd_vec_f64x4"
 
-let relaxed_fma_vec_f64x4 = relaxed_fma_vec_f64x4 ()
+let relaxed_madd_vec_f64x4 = relaxed_madd_vec_f64x4 ()
 
-external relaxed_fms_vec_f64x4 : unit -> t
-  = "caml_binaryen_relaxed_fms_vec_f64x4"
+external relaxed_nmadd_vec_f64x4 : unit -> t
+  = "caml_binaryen_relaxed_nmadd_vec_f64x4"
 
-let relaxed_fms_vec_f64x4 = relaxed_fms_vec_f64x4 ()
+let relaxed_nmadd_vec_f64x4 = relaxed_nmadd_vec_f64x4 ()
 
 external laneselect_i8x16 : unit -> t = "caml_binaryen_laneselect_i8x16"
 
