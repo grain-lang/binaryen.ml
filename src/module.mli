@@ -35,7 +35,6 @@ val optimize : t -> unit
 val get_features : t -> Feature.t list
 val set_features : t -> Feature.t list -> unit
 val run_passes : t -> Passes.t list -> unit
-val auto_drop : t -> unit
 val write : t -> string option -> bytes * string option
 val write_text : t -> string
 val write_stack_ir : t -> string
