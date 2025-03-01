@@ -67,11 +67,6 @@ function caml_binaryen_module_run_passes(wasm_mod, passes) {
   );
 }
 
-//Provides: caml_binaryen_module_auto_drop
-function caml_binaryen_module_auto_drop(wasm_mod) {
-  return wasm_mod.autoDrop();
-}
-
 //Provides: caml_binaryen_module_write
 //Requires: to_option
 //Requires: caml_jsstring_of_string, caml_string_of_jsstring, caml_bytes_of_array
