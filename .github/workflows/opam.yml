@@ -37,13 +37,6 @@ jobs:
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
 
-        # Necessary until using libbinaryen v122
-      - name: Override C Compiler Flags For Windows
-        if: ${{ startsWith(matrix.os, 'windows-') }}
-        run: |
-          echo "CC=x86_64-w64-mingw32-gcc" | Out-File -FilePath $env:GITHUB_ENV -Append
-          echo "CXX=x86_64-w64-mingw32-g++" | Out-File -FilePath $env:GITHUB_ENV -Append
-
       - name: Install local dependencies
         run: |
           opam install . --deps-only --with-test
