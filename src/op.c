@@ -1477,30 +1477,30 @@ caml_binaryen_bitselect_vec128(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_relaxed_fma_vec_f32x4(value unit) {
+caml_binaryen_relaxed_madd_vec_f32x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenRelaxedFmaVecF32x4();
+  BinaryenOp op = BinaryenRelaxedMaddVecF32x4();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_relaxed_fms_vec_f32x4(value unit) {
+caml_binaryen_relaxed_nmadd_vec_f32x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenRelaxedFmsVecF32x4();
+  BinaryenOp op = BinaryenRelaxedNmaddVecF32x4();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_relaxed_fma_vec_f64x4(value unit) {
+caml_binaryen_relaxed_madd_vec_f64x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenRelaxedFmaVecF64x2();
+  BinaryenOp op = BinaryenRelaxedMaddVecF64x2();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_relaxed_fms_vec_f64x4(value unit) {
+caml_binaryen_relaxed_nmadd_vec_f64x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenRelaxedFmsVecF64x2();
+  BinaryenOp op = BinaryenRelaxedNmaddVecF64x2();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
