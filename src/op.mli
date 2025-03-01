@@ -210,10 +210,10 @@ val or_vec128 : t
 val xor_vec128 : t
 val and_not_vec128 : t
 val bitselect_vec128 : t
-val relaxed_fma_vec_f32x4 : t
-val relaxed_fms_vec_f32x4 : t
-val relaxed_fma_vec_f64x4 : t
-val relaxed_fms_vec_f64x4 : t
+val relaxed_madd_vec_f32x4 : t
+val relaxed_nmadd_vec_f32x4 : t
+val relaxed_madd_vec_f64x4 : t
+val relaxed_nmadd_vec_f64x4 : t
 val laneselect_i8x16 : t
 val laneselect_i16x8 : t
 val laneselect_i32x4 : t
