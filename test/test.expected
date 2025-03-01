@@ -83,7 +83,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $hello))
  (start $start)
- (func $adder (type $0) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $adder (type $0) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
     (local.get $0)
@@ -95,7 +95,7 @@
    (local.get $1)
   )
  )
- (func $start (type $1) (; has Stack IR ;)
+ (func $start (type $1)
   (memory.init $world
    (i32.const 2048)
    (i32.const 0)
@@ -108,7 +108,7 @@
    )
   )
  )
- (func $hello (type $3) (; has Stack IR ;) (param $0 anyref) (result i32)
+ (func $hello (type $3) (param $0 anyref) (result i32)
   (call $write
    (local.get $0)
    (i32.const 0)
