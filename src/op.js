@@ -1258,28 +1258,28 @@ function caml_binaryen_bitselect_vec128() {
   return Binaryen.Operations.BitselectVec128;
 }
 
-//Provides: caml_binaryen_relaxed_fma_vec_f32x4
+//Provides: caml_binaryen_relaxed_madd_vec_f32x4
 //Requires: Binaryen
-function caml_binaryen_relaxed_fma_vec_f32x4() {
-  return Binaryen.Operations.RelaxedFmaVecF32x4;
+function caml_binaryen_relaxed_madd_vec_f32x4() {
+  return Binaryen.Operations.RelaxedMaddVecF32x4;
 }
 
-//Provides: caml_binaryen_relaxed_fms_vec_f32x4
+//Provides: caml_binaryen_relaxed_nmadd_vec_f32x4
 //Requires: Binaryen
-function caml_binaryen_relaxed_fms_vec_f32x4() {
-  return Binaryen.Operations.RelaxedFmsVecF32x4;
+function caml_binaryen_relaxed_nmadd_vec_f32x4() {
+  return Binaryen.Operations.RelaxedNmaddVecF32x4;
 }
 
-//Provides: caml_binaryen_relaxed_fma_vec_f64x4
+//Provides: caml_binaryen_relaxed_madd_vec_f64x4
 //Requires: Binaryen
-function caml_binaryen_relaxed_fma_vec_f64x4() {
-  return Binaryen.Operations.RelaxedFmaVecF64x2;
+function caml_binaryen_relaxed_madd_vec_f64x4() {
+  return Binaryen.Operations.RelaxedMaddVecF64x2;
 }
 
-//Provides: caml_binaryen_relaxed_fms_vec_f64x4
+//Provides: caml_binaryen_relaxed_nmadd_vec_f64x4
 //Requires: Binaryen
-function caml_binaryen_relaxed_fms_vec_f64x4() {
-  return Binaryen.Operations.RelaxedFmsVecF64x2;
+function caml_binaryen_relaxed_nmadd_vec_f64x4() {
+  return Binaryen.Operations.RelaxedNmaddVecF64x2;
 }
 
 //Provides: caml_binaryen_laneselect_i8x16
