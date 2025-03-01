@@ -285,14 +285,13 @@ caml_binaryen_binary(value _module, value _op, value _p1, value _p2) {
 }
 
 CAMLprim value
-caml_binaryen_select(value _module, value _cond, value _tru, value _fals, value _ty) {
-  CAMLparam5(_module, _cond, _tru, _fals, _ty);
+caml_binaryen_select(value _module, value _cond, value _tru, value _fals) {
+  CAMLparam4(_module, _cond, _tru, _fals);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenExpressionRef cond = BinaryenExpressionRef_val(_cond);
   BinaryenExpressionRef tru = BinaryenExpressionRef_val(_tru);
   BinaryenExpressionRef fals = BinaryenExpressionRef_val(_fals);
-  BinaryenType ty = BinaryenType_val(_ty);
-  BinaryenExpressionRef exp = BinaryenSelect(module, cond, tru, fals, ty);
+  BinaryenExpressionRef exp = BinaryenSelect(module, cond, tru, fals);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
