@@ -44,10 +44,9 @@ caml_binaryen_module_print_asmjs(value module) {
 }
 
 CAMLprim value
-caml_binaryen_module_print_stack_ir(value module, value _optimize) {
-  CAMLparam2(module, _optimize);
-  bool optimize = Bool_val(_optimize);
-  BinaryenModulePrintStackIR(BinaryenModuleRef_val(module), optimize);
+caml_binaryen_module_print_stack_ir(value module) {
+  CAMLparam1(module);
+  BinaryenModulePrintStackIR(BinaryenModuleRef_val(module));
   CAMLreturn(Val_unit);
 }
 
@@ -127,11 +126,10 @@ caml_binaryen_module_write_text(value _module) {
 // There is something weird with this function that causes a bunch of newlines to
 // be printed on stdout when calling it. Not sure if that's a bug in Binaryen.
 CAMLprim value
-caml_binaryen_module_write_stack_ir(value _module, value _optimize) {
-  CAMLparam2(_module, _optimize);
+caml_binaryen_module_write_stack_ir(value _module) {
+  CAMLparam1(_module);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  bool optimize = Bool_val(_optimize);
-  char* result = BinaryenModuleAllocateAndWriteStackIR(module, optimize);
+  char* result = BinaryenModuleAllocateAndWriteStackIR(module);
   CAMLlocal1(text);
   text = caml_copy_string(result);
   free(result);

@@ -8,12 +8,6 @@ external i31 : unit -> t = "caml_binaryen_heap_type_i31"
 external struct_ : unit -> t = "caml_binaryen_heap_type_struct"
 external array : unit -> t = "caml_binaryen_heap_type_array"
 external string : unit -> t = "caml_binaryen_heap_type_string"
-external stringview_wtf8 : unit -> t = "caml_binaryen_heap_type_stringview_wtf8"
-
-external stringview_wtf16 : unit -> t
-  = "caml_binaryen_heap_type_stringview_wtf16"
-
-external stringview_iter : unit -> t = "caml_binaryen_heap_type_stringview_iter"
 external none : unit -> t = "caml_binaryen_heap_type_none"
 external noext : unit -> t = "caml_binaryen_heap_type_noext"
 external nofunc : unit -> t = "caml_binaryen_heap_type_nofunc"

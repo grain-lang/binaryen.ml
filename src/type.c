@@ -98,27 +98,6 @@ caml_binaryen_type_stringref(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_type_stringview_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeStringviewWTF8();
-  CAMLreturn(alloc_BinaryenType(ty));
-}
-
-CAMLprim value
-caml_binaryen_type_stringview_wtf16(value unit) {
-  CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeStringviewWTF16();
-  CAMLreturn(alloc_BinaryenType(ty));
-}
-
-CAMLprim value
-caml_binaryen_type_stringview_iter(value unit) {
-  CAMLparam1(unit);
-  BinaryenType ty = BinaryenTypeStringviewIter();
-  CAMLreturn(alloc_BinaryenType(ty));
-}
-
-CAMLprim value
 caml_binaryen_type_nullref(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeNullref();
