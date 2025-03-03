@@ -84,7 +84,7 @@ jobs:
           echo -n "$CHANGES" > CHANGES.md
 
       - name: Setup OCaml
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@0b8b8c6f352bfdd12fa56b6727eed5990aa22859
         with:
           ocaml-compiler: 4.14.0
 
