@@ -16,7 +16,8 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.7.0"
+    "@opam/ocp-indent": "1.7.0",
+    "@opam/ocamlfind": "1.9.2"
   },
   "esy": {
     "build": "dune build -p binaryen"
@@ -24,9 +25,6 @@
   "scripts": {
     "test": "esy b dune runtest --display=short",
     "format": "dune build @fmt --auto-promote"
-  },
-  "installConfig": {
-    "pnp": false
   },
   "publishConfig": {
     "access": "public"
