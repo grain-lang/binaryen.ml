@@ -9,8 +9,8 @@ let () =
         | Some "macosx" ->
             (* These flags preserve the original C++ error behavior. Ref https://github.com/ocaml/ocaml/issues/10423 *)
             [ "-cc"; "clang++" ]
-        | Some "windows" -> [ "-Wall"; "-Wextra" ]
-        | _ -> default
+        | Some _ -> default
+        | None -> default
       in
 
       C.Flags.write_sexp "ocamlopt_flags.sexp" ocamlopt_flags)
