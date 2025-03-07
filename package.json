@@ -16,8 +16,7 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.7.0",
-    "@opam/ocamlfind": "1.9.2"
+    "@opam/ocp-indent": "1.7.0"
   },
   "esy": {
     "build": "dune build -p binaryen"
