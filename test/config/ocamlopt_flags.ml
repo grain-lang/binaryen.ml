@@ -9,7 +9,7 @@ let () =
         | Some "macosx" ->
             (* These flags preserve the original C++ error behavior. Ref https://github.com/ocaml/ocaml/issues/10423 *)
             [ "-cc"; "clang++" ]
-        | Some "mingw" -> [ "-Wall"; "-Wextra" ]
+        | Some "windows" -> [ "-Wall"; "-Wextra" ]
         | _ -> default
       in
 
