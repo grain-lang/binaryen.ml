@@ -26,17 +26,7 @@ jobs:
           submodules: "recursive"
 
       - name: Setup OCaml ${{ matrix.ocaml-compiler }}
-        uses: ocaml/setup-ocaml@v2
-        if: ${{ startsWith(matrix.os, 'windows-') }}
-        with:
-          ocaml-compiler: ${{ matrix.ocaml-compiler }}
-          opam-repositories: |
-            opam-repository-mingw: https://github.com/ocaml-opam/opam-repository-mingw.git#sunset
-            default: https://github.com/ocaml/opam-repository.git
-
-      - name: Setup OCaml ${{ matrix.ocaml-compiler }}
-        uses: ocaml/setup-ocaml@v2
-        if: ${{ !startsWith(matrix.os, 'windows-') }}
+        uses: ocaml/setup-ocaml@0b8b8c6f352bfdd12fa56b6727eed5990aa22859 # v3.2.10
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
 
