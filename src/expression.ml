@@ -581,6 +581,39 @@ module Call_indirect = struct
     = "caml_binaryen_call_indirect_set_return"
 end
 
+module Call_ref = struct
+  external make : Module.t -> t -> t list -> Type.t -> bool -> t
+    = "caml_binaryen_call_ref"
+  (** Module, function value, params, type, is return. *)
+
+  let make_return mod_ target params typ = make mod_ target params typ true
+  let make mod_ target params typ = make mod_ target params typ false
+
+  external get_target : t -> t = "caml_binaryen_call_ref_get_target"
+  external set_target : t -> t -> unit = "caml_binaryen_call_ref_set_target"
+
+  external get_num_operands : t -> int
+    = "caml_binaryen_call_ref_get_num_operands"
+
+  external get_operand_at : t -> int -> t
+    = "caml_binaryen_call_ref_get_operand_at"
+
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_ref_set_operand_at"
+
+  external append_operand : t -> t -> int
+    = "caml_binaryen_call_ref_append_operand"
+
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_call_ref_insert_operand_at"
+
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_call_ref_remove_operand_at"
+
+  external is_return : t -> bool = "caml_binaryen_call_ref_is_return"
+  external set_return : t -> bool -> unit = "caml_binaryen_call_ref_set_return"
+end
+
 module Local_get = struct
   external make : Module.t -> int -> Type.t -> t = "caml_binaryen_local_get"
   (** Module, slot, type. *)
@@ -662,8 +695,7 @@ module Binary = struct
 end
 
 module Select = struct
-  external make : Module.t -> t -> t -> t -> t
-    = "caml_binaryen_select"
+  external make : Module.t -> t -> t -> t -> t = "caml_binaryen_select"
 
   (** Module, condition, true branch, false branch. *)
   let make wasm_mod cond tru fals = make wasm_mod cond tru fals
@@ -706,9 +738,12 @@ module Memory_init = struct
   external make : Module.t -> string -> t -> t -> t -> string -> t
     = "caml_binaryen_memory_init__bytecode" "caml_binaryen_memory_init"
   (** Module, segment, destination, offset, size, memory_name *)
+
   external get_segment : t -> string = "caml_binaryen_memory_init_get_segment"
+
   external set_segment : t -> string -> unit
     = "caml_binaryen_memory_init_set_segment"
+
   external get_dest : t -> t = "caml_binaryen_memory_init_get_dest"
   external set_dest : t -> t -> unit = "caml_binaryen_memory_init_set_dest"
   external get_offset : t -> t = "caml_binaryen_memory_init_get_offset"
@@ -720,7 +755,9 @@ end
 module Data_drop = struct
   external make : Module.t -> string -> t = "caml_binaryen_data_drop"
   (** Module, segment. *)
+
   external get_segment : t -> string = "caml_binaryen_data_drop_get_segment"
+
   external set_segment : t -> string -> unit
     = "caml_binaryen_data_drop_set_segment"
 end
@@ -823,6 +860,59 @@ module Ref = struct
 
   external eq : Module.t -> t -> t -> t = "caml_binaryen_ref_eq"
   (** Module, left, right *)
+
+  external test : Module.t -> t -> Type.t -> t = "caml_binaryen_ref_test"
+  (** Module, value, type *)
+
+  external cast : Module.t -> t -> Type.t -> t = "caml_binaryen_ref_cast"
+  (** Module, value, type *)
+end
+
+module BrOn = struct
+  external make : Module.t -> Op.t -> string -> t -> Type.t -> t
+    = "caml_binaryen_br_on"
+  (** Module, op, label, value, type *)
+end
+
+module Struct = struct
+  external new_ : Module.t -> t list option -> Heap_type.t -> t
+    = "caml_binaryen_struct_new"
+  (** Mdoule, operands, type *)
+
+  external get : Module.t -> int -> t -> Type.t -> bool -> t
+    = "caml_binaryen_struct_get"
+  (** Module, index, struct, type, signed *)
+
+  external set : Module.t -> int -> t -> t -> t = "caml_binaryen_struct_set"
+  (** Module, index, struct, value *)
+end
+
+module Array = struct
+  external new_ : Module.t -> Heap_type.t -> t -> t -> t
+    = "caml_binaryen_array_new"
+  (** Module, type, size, init *)
+
+  external new_data : Module.t -> Heap_type.t -> string -> t -> t -> t
+    = "caml_binaryen_array_new_data"
+  (** Module, type, data name, offset, size *)
+
+  external new_fixed : Module.t -> Heap_type.t -> t list -> t
+    = "caml_binaryen_array_new_fixed"
+  (** Module, type, values *)
+
+  external get : Module.t -> t -> t -> Type.t -> bool -> t
+    = "caml_binaryen_array_get"
+  (** Module, array, index, type, signed *)
+
+  external set : Module.t -> t -> t -> t -> t = "caml_binaryen_array_set"
+  (** Module, array, index, value *)
+
+  external len : Module.t -> t -> t = "caml_binaryen_array_len"
+  (** Module, array *)
+
+  external copy : Module.t -> t -> t -> t -> t -> t -> t
+    = "caml_binaryen_array_copy__bytecode" "caml_binaryen_array_copy"
+  (** Module, dest, dest index, src, src index, length *)
 end
 
 module Table = struct
