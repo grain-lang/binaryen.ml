@@ -21,12 +21,12 @@ jobs:
 
     steps:
       - name: Checkout project
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.2.2
         with:
           submodules: "recursive"
 
       - name: Setup OCaml ${{ matrix.ocaml-compiler }}
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@v3
         if: ${{ startsWith(matrix.os, 'windows-') }}
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
@@ -35,7 +35,7 @@ jobs:
             default: https://github.com/ocaml/opam-repository.git
 
       - name: Setup OCaml ${{ matrix.ocaml-compiler }}
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@v3
         if: ${{ !startsWith(matrix.os, 'windows-') }}
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
