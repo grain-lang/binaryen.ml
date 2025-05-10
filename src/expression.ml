@@ -819,6 +819,54 @@ module Pop = struct
   (** Module, type *)
 end
 
+module SIMD_extract = struct
+  external make : Module.t -> Op.t -> t -> int -> t
+    = "caml_binaryen_simd_extract"
+  (** Module, op, vec, index *)
+end
+
+module SIMD_replace = struct
+  external make : Module.t -> Op.t -> t -> int -> t -> t
+    = "caml_binaryen_simd_replace"
+  (** Module, op, vec, index, value *)
+end
+
+module SIMD_shuffle = struct
+  external make : Module.t -> t -> t -> int array -> t
+    = "caml_binaryen_simd_shuffle"
+
+  (** Module, left, right, mask *)
+  let make wasm_mod left right mask =
+    if Array.length mask <> 16 then
+      raise
+        (Invalid_argument
+           "Binaryen.SIMD_shuffle.make: mask must be of length 16");
+    make wasm_mod left right mask
+end
+
+module SIMD_ternary = struct
+  external make : Module.t -> Op.t -> t -> t -> t -> t
+    = "caml_binaryen_simd_ternary"
+  (** Module, op, first, second, third *)
+end
+
+module SIMD_shift = struct
+  external make : Module.t -> Op.t -> t -> t -> t = "caml_binaryen_simd_shift"
+  (** Module, op, left, right *)
+end
+
+module SIMD_load = struct
+  external make : Module.t -> Op.t -> int -> int -> t -> string -> t
+    = "caml_binaryen_simd_load__bytecode" "caml_binaryen_simd_load"
+  (** Module, op, offset, align, ptr, memory *)
+end
+
+module SIMD_load_store_lane = struct
+  external make : Module.t -> Op.t -> int -> int -> int -> t -> t -> string -> t
+    = "caml_binaryen_simd_load_store_lane__bytecode" "caml_binaryen_simd_load_store_lane"
+  (** Module, op, offset, align, index, ptr, vec, memory *)
+end
+
 module I31 = struct
   external make : Module.t -> t -> t = "caml_binaryen_ref_i31"
   (** Module, value *)

@@ -321,6 +321,34 @@ module Pop : sig
   val make : Module.t -> Type.t -> t
 end
 
+module SIMD_extract : sig
+  val make : Module.t -> Op.t -> t -> int -> t
+end
+
+module SIMD_replace : sig
+  val make : Module.t -> Op.t -> t -> int -> t -> t
+end
+
+module SIMD_shuffle : sig
+  val make : Module.t -> t -> t -> int array -> t
+end
+
+module SIMD_ternary : sig
+  val make : Module.t -> Op.t -> t -> t -> t -> t
+end
+
+module SIMD_shift : sig
+  val make : Module.t -> Op.t -> t -> t -> t
+end
+
+module SIMD_load : sig
+  val make : Module.t -> Op.t -> int -> int -> t -> string -> t
+end
+
+module SIMD_load_store_lane : sig
+  val make : Module.t -> Op.t -> int -> int -> int -> t -> t -> string -> t
+end
+
 module I31 : sig
   val make : Module.t -> t -> t
   (** Module, value *)

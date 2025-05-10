@@ -45,3 +45,14 @@ caml_binaryen_literal_float64_bits(value _i64) {
   struct BinaryenLiteral lit = BinaryenLiteralFloat64Bits(i64);
   CAMLreturn(alloc_BinaryenLiteral(lit));
 }
+
+CAMLprim value
+caml_binaryen_literal_vec128(value _v128) {
+  CAMLparam1(_v128);
+  uint8_t v128[16];
+  for (int i = 0; i < 16; i++) {
+    v128[i] = Int_val(Field(_v128, i));
+  }
+  struct BinaryenLiteral lit = BinaryenLiteralVec128(v128);
+  CAMLreturn(alloc_BinaryenLiteral(lit));
+}

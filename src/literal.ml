@@ -8,3 +8,11 @@ external float64_bits : int64 -> t = "caml_binaryen_literal_float64_bits"
 let float32 n = float32_bits @@ Int32.bits_of_float n
 
 external float64 : float -> t = "caml_binaryen_literal_float64"
+external vec128 : int array -> t = "caml_binaryen_literal_vec128"
+
+let vec128 (low, high) =
+  let bytes = Bytes.create 16 in
+  Bytes.set_int64_le bytes 0 low;
+  Bytes.set_int64_le bytes 8 high;
+  let arr = Array.init 16 (Bytes.get_uint8 bytes) in
+  vec128 arr
