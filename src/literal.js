@@ -27,3 +27,10 @@ function caml_binaryen_literal_float64_bits(i64) {
   // Hack around Binaryen.js
   return { type: 'float64_bits', value: i64 };
 }
+
+//Provides: caml_binaryen_literal_vec128
+//Requires: caml_js_from_array
+function caml_binaryen_literal_vec128(v128) {
+  // Hack around Binaryen.js
+  return { type: "vec128", value: caml_js_from_array(v128) };
+}

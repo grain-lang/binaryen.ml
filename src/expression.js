@@ -387,6 +387,10 @@ function caml_binaryen_const(wasm_mod, lit) {
     );
   }
 
+  if (lit.type === "vec128") {
+    return wasm_mod.v128.const(lit.value);
+  }
+
   caml_failwith("invalid Literal for Binaryen.Const.make");
 }
 
@@ -444,6 +448,107 @@ function caml_binaryen_nop(wasm_mod) {
 //Provides: caml_binaryen_unreachable
 function caml_binaryen_unreachable(wasm_mod) {
   return wasm_mod.unreachable();
+}
+
+//Provides: caml_binaryen_simd_extract
+//Requires: Binaryen
+function caml_binaryen_simd_extract(wasm_mod, op, vec, index) {
+  return Binaryen._BinaryenSIMDExtract(wasm_mod, op, vec, index);
+}
+
+//Provides: caml_binaryen_simd_replace
+//Requires: Binaryen
+function caml_binaryen_simd_replace(wasm_mod, op, vec, index, value) {
+  return Binaryen._BinaryenSIMDReplace(wasm_mod, op, vec, index, value);
+}
+
+//Provides: caml_binaryen_simd_shuffle
+//Requires: caml_js_from_array
+function caml_binaryen_simd_shuffle(wasm_mod, left, right, mask) {
+  return wasm_mod.i8x16.shuffle(left, right, caml_js_from_array(mask));
+}
+
+//Provides: caml_binaryen_simd_ternary
+//Requires: Binaryen
+function caml_binaryen_simd_ternary(wasm_mod, op, a, b, c) {
+  return Binaryen._BinaryenSIMDTernary(wasm_mod, op, a, b, c);
+}
+
+//Provides: caml_binaryen_simd_shift
+//Requires: Binaryen
+function caml_binaryen_simd_shift(wasm_mod, op, vec, shift) {
+  return Binaryen._BinaryenSIMDShift(wasm_mod, op, vec, shift);
+}
+
+//Provides: caml_binaryen_simd_load
+//Requires: Binaryen
+//Requires: caml_jsstring_of_string, caml_alloc_string_on_heap
+function caml_binaryen_simd_load(wasm_mod, op, offset, align, ptr, memoryName) {
+  var memory = caml_alloc_string_on_heap(caml_jsstring_of_string(memoryName));
+  var exp = Binaryen._BinaryenSIMDLoad(
+    wasm_mod,
+    op,
+    offset,
+    align,
+    ptr,
+    memory
+  );
+  Binaryen._free(memory);
+  return exp;
+}
+//Provides: caml_binaryen_simd_load__bytecode
+//Requires: caml_binaryen_simd_load
+function caml_binaryen_simd_load__bytecode() {
+  return caml_binaryen_simd_load(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
+}
+
+//Provides: caml_binaryen_simd_load_store_lane
+//Requires: Binaryen
+//Requires: caml_jsstring_of_string, caml_alloc_string_on_heap
+function caml_binaryen_simd_load_store_lane(
+  wasm_mod,
+  op,
+  offset,
+  align,
+  index,
+  ptr,
+  vec,
+  memoryName
+) {
+  var memory = caml_alloc_string_on_heap(caml_jsstring_of_string(memoryName));
+  var exp = Binaryen._BinaryenSIMDLoadStoreLane(
+    wasm_mod,
+    op,
+    offset,
+    align,
+    index,
+    ptr,
+    vec,
+    memory
+  );
+  Binaryen._free(memory);
+  return exp;
+}
+//Provides: caml_binaryen_simd_load_store_lane__bytecode
+//Requires: caml_binaryen_simd_load_store_lane
+function caml_binaryen_simd_load_store_lane__bytecode() {
+  return caml_binaryen_simd_load_store_lane(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5],
+    arguments[6],
+    arguments[7]
+  );
 }
 
 //Provides: caml_binaryen_memory_init

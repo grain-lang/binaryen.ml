@@ -27,6 +27,7 @@
   (flags :standard -O2 -Wall -Wextra))
  (js_of_ocaml
   (javascript_files
+   helpers.js
    array_type.js
    type.js
    op.js

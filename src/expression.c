@@ -352,6 +352,104 @@ caml_binaryen_unreachable(value _module) {
 }
 
 CAMLprim value
+caml_binaryen_simd_extract(value _module, value _op, value _vec, value _index) {
+  CAMLparam4(_module, _op, _vec, _index);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef vec = BinaryenExpressionRef_val(_vec);
+  int index = Int_val(_index);
+  BinaryenExpressionRef exp = BinaryenSIMDExtract(module, op, vec, index);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_simd_replace(value _module, value _op, value _vec, value _index, value _val) {
+  CAMLparam5(_module, _op, _vec, _index, _val);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef vec = BinaryenExpressionRef_val(_vec);
+  int index = Int_val(_index);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_val);
+  BinaryenExpressionRef exp = BinaryenSIMDReplace(module, op, vec, index, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_simd_shuffle(value _module, value _left, value _right, value _mask) {
+  CAMLparam4(_module, _left, _right, _mask);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef left = BinaryenExpressionRef_val(_left);
+  BinaryenExpressionRef right = BinaryenExpressionRef_val(_right);
+  uint8_t mask[16];
+  for (int i = 0; i < 16; i++) {
+    mask[i] = Int_val(Field(_mask, i));
+  }
+  BinaryenExpressionRef exp = BinaryenSIMDShuffle(module, left, right, mask);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_simd_ternary(value _module, value _op, value _a, value _b, value _c) {
+  CAMLparam5(_module, _op, _a, _b, _c);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef a = BinaryenExpressionRef_val(_a);
+  BinaryenExpressionRef b = BinaryenExpressionRef_val(_b);
+  BinaryenExpressionRef c = BinaryenExpressionRef_val(_c);
+  BinaryenExpressionRef exp = BinaryenSIMDTernary(module, op, a, b, c);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_simd_shift(value _module, value _op, value _vec, value _shift) {
+  CAMLparam4(_module, _op, _vec, _shift);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  BinaryenExpressionRef vec = BinaryenExpressionRef_val(_vec);
+  BinaryenExpressionRef shift = BinaryenExpressionRef_val(_shift);
+  BinaryenExpressionRef exp = BinaryenSIMDShift(module, op, vec, shift);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_simd_load(value _module, value _op, value _offset, value _align, value _ptr, value _memoryName) {
+  CAMLparam5(_module, _op, _offset, _align, _ptr);
+  CAMLxparam1(_memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  int offset = Int_val(_offset);
+  int align = Int_val(_align);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef exp = BinaryenSIMDLoad(module, op, offset, align, ptr, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+CAMLprim value
+caml_binaryen_simd_load__bytecode(value * argv) {
+  return caml_binaryen_simd_load(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_simd_load_store_lane(value _module, value _op, value _offset, value _align, value _index, value _ptr, value _vec, value _memoryName) {
+  CAMLparam5(_module, _op, _offset, _align, _index);
+  CAMLxparam3(_ptr, _vec, _memoryName);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenOp op = BinaryenOp_val(_op);
+  int offset = Int_val(_offset);
+  int align = Int_val(_align);
+  int index = Int_val(_index);
+  BinaryenExpressionRef ptr = BinaryenExpressionRef_val(_ptr);
+  BinaryenExpressionRef vec = BinaryenExpressionRef_val(_vec);
+  char* memoryName = Safe_String_val(_memoryName);
+  BinaryenExpressionRef exp = BinaryenSIMDLoadStoreLane(module, op, offset, align, index, ptr, vec, memoryName);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+CAMLprim value
+caml_binaryen_simd_load_store_lane__bytecode(value * argv) {
+  return caml_binaryen_simd_load_store_lane(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
+}
+
+CAMLprim value
 caml_binaryen_memory_init(value _module, value _segment, value _dest, value _offset, value _size, value _memoryName) {
   CAMLparam5(_module, _segment, _dest, _offset, _size);
   CAMLxparam1(_memoryName);
