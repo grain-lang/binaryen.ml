@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.25.0](https://github.com/grain-lang/binaryen.ml/compare/v0.24.0...v0.25.0) (2025-05-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v115 ([#200](https://github.com/grain-lang/binaryen.ml/issues/200))
+* Drop support for OCaml 4.12
+* Pin CI dependencies and require Node 22 ([#214](https://github.com/grain-lang/binaryen.ml/issues/214))
+
+### Features
+
+* Upgrade to Binaryen v115 ([#200](https://github.com/grain-lang/binaryen.ml/issues/200)) ([e35c596](https://github.com/grain-lang/binaryen.ml/commit/e35c596aae01935b88aa3bbda5078517b1fae36a))
+
+
+### Miscellaneous Chores
+
+* Drop support for OCaml 4.12 ([971b06e](https://github.com/grain-lang/binaryen.ml/commit/971b06ee542b37b56a6041bbbd16017fa6510d45))
+* Pin CI dependencies and require Node 22 ([#214](https://github.com/grain-lang/binaryen.ml/issues/214)) ([971b06e](https://github.com/grain-lang/binaryen.ml/commit/971b06ee542b37b56a6041bbbd16017fa6510d45))
+
 ## [0.24.0](https://github.com/grain-lang/binaryen.ml/compare/v0.23.0...v0.24.0) (2023-10-30)
 
 
