@@ -1150,6 +1150,42 @@ function caml_binaryen_ge_u_vec_i32x4() {
   return Binaryen.Operations.GeUVecI32x4;
 }
 
+//Provides: caml_binaryen_eq_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_eq_vec_i64x2() {
+  return Binaryen.Operations.EqVecI64x2;
+}
+
+//Provides: caml_binaryen_ne_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ne_vec_i64x2() {
+  return Binaryen.Operations.NeVecI64x2;
+}
+
+//Provides: caml_binaryen_lt_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_lt_s_vec_i64x2() {
+  return Binaryen.Operations.LtSVecI64x2;
+}
+
+//Provides: caml_binaryen_gt_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_gt_s_vec_i64x2() {
+  return Binaryen.Operations.GtSVecI64x2;
+}
+
+//Provides: caml_binaryen_le_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_le_s_vec_i64x2() {
+  return Binaryen.Operations.LeSVecI64x2;
+}
+
+//Provides: caml_binaryen_ge_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ge_s_vec_i64x2() {
+  return Binaryen.Operations.GeSVecI64x2;
+}
+
 //Provides: caml_binaryen_eq_vec_f32x4
 //Requires: Binaryen
 function caml_binaryen_eq_vec_f32x4() {
@@ -1546,6 +1582,36 @@ function caml_binaryen_avgr_u_vec_i16x8() {
   return Binaryen.Operations.AvgrUVecI16x8;
 }
 
+//Provides: caml_binaryen_q15_mulr_sat_s_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_q15_mulr_sat_s_vec_i16x8() {
+  return Binaryen.Operations.Q15MulrSatSVecI16x8;
+}
+
+//Provides: caml_binaryen_ext_mul_low_s_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_s_vec_i16x8() {
+  return Binaryen.Operations.ExtMulLowSVecI16x8;
+}
+
+//Provides: caml_binaryen_ext_mul_high_s_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_s_vec_i16x8() {
+  return Binaryen.Operations.ExtMulHighSVecI16x8;
+}
+
+//Provides: caml_binaryen_ext_mul_low_u_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_u_vec_i16x8() {
+  return Binaryen.Operations.ExtMulLowUVecI16x8;
+}
+
+//Provides: caml_binaryen_ext_mul_high_u_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_u_vec_i16x8() {
+  return Binaryen.Operations.ExtMulHighUVecI16x8;
+}
+
 //Provides: caml_binaryen_abs_vec_i32x4
 //Requires: Binaryen
 function caml_binaryen_abs_vec_i32x4() {
@@ -1636,10 +1702,52 @@ function caml_binaryen_dot_s_vec_i16x8_to_vec_i32x4() {
   return Binaryen.Operations.DotSVecI16x8ToVecI32x4;
 }
 
+//Provides: caml_binaryen_ext_mul_low_s_vec_i32x4
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_s_vec_i32x4() {
+  return Binaryen.Operations.ExtMulLowSVecI32x4;
+}
+
+//Provides: caml_binaryen_ext_mul_high_s_vec_i32x4
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_s_vec_i32x4() {
+  return Binaryen.Operations.ExtMulHighSVecI32x4;
+}
+
+//Provides: caml_binaryen_ext_mul_low_u_vec_i32x4
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_u_vec_i32x4() {
+  return Binaryen.Operations.ExtMulLowUVecI32x4;
+}
+
+//Provides: caml_binaryen_ext_mul_high_u_vec_i32x4
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_u_vec_i32x4() {
+  return Binaryen.Operations.ExtMulHighUVecI32x4;
+}
+
+//Provides: caml_binaryen_abs_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_abs_vec_i64x2() {
+  return Binaryen.Operations.AbsVecI64x2;
+}
+
 //Provides: caml_binaryen_neg_vec_i64x2
 //Requires: Binaryen
 function caml_binaryen_neg_vec_i64x2() {
   return Binaryen.Operations.NegVecI64x2;
+}
+
+//Provides: caml_binaryen_all_true_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_all_true_vec_i64x2() {
+  return Binaryen.Operations.AllTrueVecI64x2;
+}
+
+//Provides: caml_binaryen_bitmask_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_bitmask_vec_i64x2() {
+  return Binaryen.Operations.BitmaskVecI64x2;
 }
 
 //Provides: caml_binaryen_shl_vec_i64x2
@@ -1676,6 +1784,30 @@ function caml_binaryen_sub_vec_i64x2() {
 //Requires: Binaryen
 function caml_binaryen_mul_vec_i64x2() {
   return Binaryen.Operations.MulVecI64x2;
+}
+
+//Provides: caml_binaryen_ext_mul_low_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_s_vec_i64x2() {
+  return Binaryen.Operations.ExtMulLowSVecI64x2;
+}
+
+//Provides: caml_binaryen_ext_mul_high_s_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_s_vec_i64x2() {
+  return Binaryen.Operations.ExtMulHighSVecI64x2;
+}
+
+//Provides: caml_binaryen_ext_mul_low_u_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ext_mul_low_u_vec_i64x2() {
+  return Binaryen.Operations.ExtMulLowUVecI64x2;
+}
+
+//Provides: caml_binaryen_ext_mul_high_u_vec_i64x2
+//Requires: Binaryen
+function caml_binaryen_ext_mul_high_u_vec_i64x2() {
+  return Binaryen.Operations.ExtMulHighUVecI64x2;
 }
 
 //Provides: caml_binaryen_abs_vec_f32x4
