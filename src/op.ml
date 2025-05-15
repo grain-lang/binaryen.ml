@@ -806,6 +806,30 @@ external ge_u_vec_i32x4 : unit -> t = "caml_binaryen_ge_u_vec_i32x4"
 
 let ge_u_vec_i32x4 = ge_u_vec_i32x4 ()
 
+external eq_vec_i64x2 : unit -> t = "caml_binaryen_eq_vec_i64x2"
+
+let eq_vec_i64x2 = eq_vec_i64x2 ()
+
+external ne_vec_i64x2 : unit -> t = "caml_binaryen_ne_vec_i64x2"
+
+let ne_vec_i64x2 = ne_vec_i64x2 ()
+
+external lt_s_vec_i64x2 : unit -> t = "caml_binaryen_lt_s_vec_i64x2"
+
+let lt_s_vec_i64x2 = lt_s_vec_i64x2 ()
+
+external gt_s_vec_i64x2 : unit -> t = "caml_binaryen_gt_s_vec_i64x2"
+
+let gt_s_vec_i64x2 = gt_s_vec_i64x2 ()
+
+external le_s_vec_i64x2 : unit -> t = "caml_binaryen_le_s_vec_i64x2"
+
+let le_s_vec_i64x2 = le_s_vec_i64x2 ()
+
+external ge_s_vec_i64x2 : unit -> t = "caml_binaryen_ge_s_vec_i64x2"
+
+let ge_s_vec_i64x2 = ge_s_vec_i64x2 ()
+
 external eq_vec_f32x4 : unit -> t = "caml_binaryen_eq_vec_f32x4"
 
 let eq_vec_f32x4 = eq_vec_f32x4 ()
@@ -1075,6 +1099,31 @@ external avgr_u_vec_i16x8 : unit -> t = "caml_binaryen_avgr_u_vec_i16x8"
 
 let avgr_u_vec_i16x8 = avgr_u_vec_i16x8 ()
 
+external q15_mulr_sat_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_q15_mulr_sat_s_vec_i16x8"
+
+let q15_mulr_sat_s_vec_i16x8 = q15_mulr_sat_s_vec_i16x8 ()
+
+external ext_mul_low_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i16x8"
+
+let ext_mul_low_s_vec_i16x8 = ext_mul_low_s_vec_i16x8 ()
+
+external ext_mul_high_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i16x8"
+
+let ext_mul_high_s_vec_i16x8 = ext_mul_high_s_vec_i16x8 ()
+
+external ext_mul_low_u_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i16x8"
+
+let ext_mul_low_u_vec_i16x8 = ext_mul_low_u_vec_i16x8 ()
+
+external ext_mul_high_u_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i16x8"
+
+let ext_mul_high_u_vec_i16x8 = ext_mul_high_u_vec_i16x8 ()
+
 external abs_vec_i32x4 : unit -> t = "caml_binaryen_abs_vec_i32x4"
 
 let abs_vec_i32x4 = abs_vec_i32x4 ()
@@ -1136,9 +1185,41 @@ external dot_s_vec_i16x8_to_vec_i32x4 : unit -> t
 
 let dot_s_vec_i16x8_to_vec_i32x4 = dot_s_vec_i16x8_to_vec_i32x4 ()
 
+external ext_mul_low_s_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i32x4"
+
+let ext_mul_low_s_vec_i32x4 = ext_mul_low_s_vec_i32x4 ()
+
+external ext_mul_high_s_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i32x4"
+
+let ext_mul_high_s_vec_i32x4 = ext_mul_high_s_vec_i32x4 ()
+
+external ext_mul_low_u_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i32x4"
+
+let ext_mul_low_u_vec_i32x4 = ext_mul_low_u_vec_i32x4 ()
+
+external ext_mul_high_u_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i32x4"
+
+let ext_mul_high_u_vec_i32x4 = ext_mul_high_u_vec_i32x4 ()
+
+external abs_vec_i64x2 : unit -> t = "caml_binaryen_abs_vec_i64x2"
+
+let abs_vec_i64x2 = abs_vec_i64x2 ()
+
 external neg_vec_i64x2 : unit -> t = "caml_binaryen_neg_vec_i64x2"
 
 let neg_vec_i64x2 = neg_vec_i64x2 ()
+
+external all_true_vec_i64x2 : unit -> t = "caml_binaryen_all_true_vec_i64x2"
+
+let all_true_vec_i64x2 = all_true_vec_i64x2 ()
+
+external bitmask_vec_i64x2 : unit -> t = "caml_binaryen_bitmask_vec_i64x2"
+
+let bitmask_vec_i64x2 = bitmask_vec_i64x2 ()
 
 external shl_vec_i64x2 : unit -> t = "caml_binaryen_shl_vec_i64x2"
 
@@ -1163,6 +1244,26 @@ let sub_vec_i64x2 = sub_vec_i64x2 ()
 external mul_vec_i64x2 : unit -> t = "caml_binaryen_mul_vec_i64x2"
 
 let mul_vec_i64x2 = mul_vec_i64x2 ()
+
+external ext_mul_low_s_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i64x2"
+
+let ext_mul_low_s_vec_i64x2 = ext_mul_low_s_vec_i64x2 ()
+
+external ext_mul_high_s_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i64x2"
+
+let ext_mul_high_s_vec_i64x2 = ext_mul_high_s_vec_i64x2 ()
+
+external ext_mul_low_u_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i64x2"
+
+let ext_mul_low_u_vec_i64x2 = ext_mul_low_u_vec_i64x2 ()
+
+external ext_mul_high_u_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i64x2"
+
+let ext_mul_high_u_vec_i64x2 = ext_mul_high_u_vec_i64x2 ()
 
 external abs_vec_f32x4 : unit -> t = "caml_binaryen_abs_vec_f32x4"
 

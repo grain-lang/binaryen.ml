@@ -6,4 +6,4 @@ val float32_bits : int32 -> t
 val float64_bits : int64 -> t
 val float32 : float -> t
 val float64 : float -> t
-val vec128 : int64 * int64 -> t
+val vec128 : int32 * int32 * int32 * int32 -> t
