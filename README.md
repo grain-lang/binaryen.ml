@@ -78,7 +78,7 @@ These flags might not work on other operating systems (like MacOS), so you'll pr
 
 ## Contributing
 
-You'll need Node.js and [`esy`](https://esy.sh/docs/en/getting-started.html#install-esy) to build this project.
+You'll need Node.js and [`esy`](https://esy.sh/docs/getting-started/) to build this project.
 
 `dune` will take care of compiling the C stubs, so to build the project you'll only need to run:
 
