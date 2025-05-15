@@ -1,5 +1,5 @@
 {
-  "checksum": "52f9c3f31f87661fe868ffdbe6097da0",
+  "checksum": "027362814c85d00422b9f9ff4957739b",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.14.1000@d41d8cd9": {
