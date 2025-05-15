@@ -120,9 +120,9 @@ caml_binaryen_feature_strings(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_feature_multi_memories(value unit) {
+caml_binaryen_feature_multi_memory(value unit) {
   CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenFeatureMultiMemories()));
+  CAMLreturn(Val_int(BinaryenFeatureMultiMemory()));
 }
 
 CAMLprim value

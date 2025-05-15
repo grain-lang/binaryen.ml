@@ -7,11 +7,11 @@
  (i32.const 0)
 )
 (module
- (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
- (type $none_=>_none (func))
- (type $anyref_i32_i32_=>_i32 (func (param anyref i32 i32) (result i32)))
- (type $anyref_=>_i32 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $write (type $anyref_i32_i32_=>_i32) (param anyref i32 i32) (result i32)))
+ (type $0 (func (param i32 i32) (result i32)))
+ (type $1 (func))
+ (type $2 (func (param anyref i32 i32) (result i32)))
+ (type $3 (func (param anyref) (result i32)))
+ (import "future-wasi" "write" (func $write (type $2) (param anyref i32 i32) (result i32)))
  (global $max_int64 i64 (i64.const 9223372036854775807))
  (global $max_int64_mut (mut i64) (i64.const 9223372036854775807))
  (global $test_float64_bits f64 (f64.const 1.23))
@@ -24,7 +24,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $hello))
  (start $start)
- (func $adder (type $i32_i32_=>_i32) (param $0 i32) (param $1 i32) (result i32)
+ (func $adder (type $0) (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
    (if
     (i32.const 0)
@@ -42,7 +42,7 @@
    )
   )
  )
- (func $start (type $none_=>_none)
+ (func $start (type $1)
   (block $start
    (memory.init $1
     (i32.const 2048)
@@ -50,7 +50,7 @@
     (i32.const 5)
    )
    (drop
-    (call_indirect $table (type $i32_i32_=>_i32)
+    (call_indirect $table (type $0)
      (i32.const 3)
      (i32.const 5)
      (i32.const 0)
@@ -58,7 +58,7 @@
    )
   )
  )
- (func $hello (type $anyref_=>_i32) (param $0 anyref) (result i32)
+ (func $hello (type $3) (param $0 anyref) (result i32)
   (call $write
    (local.get $0)
    (i32.const 0)
@@ -67,11 +67,11 @@
  )
 )
 (module
- (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
- (type $none_=>_none (func))
- (type $anyref_i32_i32_=>_i32 (func (param anyref i32 i32) (result i32)))
- (type $anyref_=>_i32 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $write (type $anyref_i32_i32_=>_i32) (param anyref i32 i32) (result i32)))
+ (type $0 (func (param i32 i32) (result i32)))
+ (type $1 (func))
+ (type $2 (func (param anyref i32 i32) (result i32)))
+ (type $3 (func (param anyref) (result i32)))
+ (import "future-wasi" "write" (func $write (type $2) (param anyref i32 i32) (result i32)))
  (memory $0 1)
  (data $0 (i32.const 0) "hello")
  (data $1 "world")
@@ -81,7 +81,7 @@
  (export "memory" (memory $0))
  (export "hello" (func $hello))
  (start $start)
- (func $adder (type $i32_i32_=>_i32) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
+ (func $adder (type $0) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
   (i32.add
    (select
     (local.get $0)
@@ -93,7 +93,7 @@
    (local.get $1)
   )
  )
- (func $start (type $none_=>_none) (; has Stack IR ;)
+ (func $start (type $1) (; has Stack IR ;)
   (memory.init $1
    (i32.const 2048)
    (i32.const 0)
@@ -106,7 +106,7 @@
    )
   )
  )
- (func $hello (type $anyref_=>_i32) (; has Stack IR ;) (param $0 anyref) (result i32)
+ (func $hello (type $3) (; has Stack IR ;) (param $0 anyref) (result i32)
   (call $write
    (local.get $0)
    (i32.const 0)
@@ -180,7 +180,7 @@
  (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
   local.get $0
   local.get $1
-  i32.load $0
+  i32.load
   i32.const 1
   select
   local.get $1
@@ -190,7 +190,7 @@
   i32.const 2048
   i32.const 0
   i32.const 5
-  memory.init $0 $1
+  memory.init $1
   i32.const 3
   i32.const 5
   call $0
