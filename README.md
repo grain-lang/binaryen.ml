@@ -58,7 +58,7 @@ Your stanza could look something like this:
   (libraries binaryen))
 ```
 
-These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [tests/](./dune).
+These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [tests/](./tests/dune).
 
 ## Static Linking
 
