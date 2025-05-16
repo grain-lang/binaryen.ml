@@ -11,7 +11,7 @@
     "@opam/dune-configurator": ">= 3.0.0"
   },
   "devDependencies": {
-    "@opam/js_of_ocaml-compiler": ">= 4.1.0 < 6.0.0",
+    "@opam/js_of_ocaml-compiler": ">= 6.0.0 < 7.0.0",
     "@opam/ocamlformat": "0.24.1",
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
   },
