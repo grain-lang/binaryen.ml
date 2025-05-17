@@ -3,6 +3,7 @@ external set_memory :
   int ->
   int ->
   string ->
+  string list ->
   bytes list ->
   bool list ->
   Expression.t list ->
@@ -12,7 +13,7 @@ external set_memory :
   string ->
   unit = "caml_binaryen_set_memory__bytecode" "caml_binaryen_set_memory"
 
-type segment = { data : bytes; kind : segment_kind; size : int }
+type segment = { name : string; data : bytes; kind : segment_kind; size : int }
 and segment_kind = Passive | Active of { offset : Expression.t }
 
 (** Module, initial size, maximum size, export name, segments, shared, memory64, moduleName . *)
@@ -20,26 +21,36 @@ let set_memory wasm_mod initial maximum export_name (segments : segment list)
     shared memory64 moduleName =
   let split_segments segments =
     List.fold_right
-      (fun { data; kind; size }
-           (segment_data, segment_passive, segment_offsets, segment_sizes) ->
+      (fun { name; data; kind; size }
+           ( segment_name,
+             segment_data,
+             segment_passive,
+             segment_offsets,
+             segment_sizes ) ->
         match kind with
         | Active { offset } ->
-            ( data :: segment_data,
+            ( name :: segment_name,
+              data :: segment_data,
               false :: segment_passive,
               offset :: segment_offsets,
               size :: segment_sizes )
         | Passive ->
-            ( data :: segment_data,
+            ( name :: segment_name,
+              data :: segment_data,
               true :: segment_passive,
               Expression.Null.make () :: segment_offsets,
               size :: segment_sizes ))
-      segments ([], [], [], [])
+      segments ([], [], [], [], [])
   in
-  let segment_data, segment_passive, segment_offsets, segment_sizes =
+  let ( segment_name,
+        segment_data,
+        segment_passive,
+        segment_offsets,
+        segment_sizes ) =
     split_segments segments
   in
-  set_memory wasm_mod initial maximum export_name segment_data segment_passive
-    segment_offsets segment_sizes shared memory64 moduleName
+  set_memory wasm_mod initial maximum export_name segment_name segment_data
+    segment_passive segment_offsets segment_sizes shared memory64 moduleName
 
 external has_memory : Module.t -> bool = "caml_binaryen_has_memory"
 
@@ -59,11 +70,11 @@ let unlimited = -1
 external get_num_segments : Module.t -> int
   = "caml_binaryen_get_num_memory_segments"
 
-external get_segment_byte_offset : Module.t -> int -> int
+external get_segment_byte_offset : Module.t -> string -> int
   = "caml_binaryen_get_memory_segment_byte_offset"
 
-external get_segment_passive : Module.t -> int -> bool
+external get_segment_passive : Module.t -> string -> bool
   = "caml_binaryen_get_memory_segment_passive"
 
-external get_segment_data : Module.t -> int -> bytes
+external get_segment_data : Module.t -> string -> bytes
   = "caml_binaryen_get_memory_segment_data"
