@@ -82,7 +82,7 @@ let add =
 let _ = assert (Expression.Block.get_name add = Some "add")
 
 (* Create the add function *)
-let _adder = Function.add_function wasm_mod "adder" (params ()) results [||] add
+let adder = Function.add_function wasm_mod "adder" (params ()) results [||] add
 
 let call_adder =
   Expression.Call_indirect.make wasm_mod "table"

@@ -4,7 +4,8 @@
  (modes exe js)
  (flags
   :standard
-  (:include ./config/ocamlopt_flags.sexp)))
+  (:include ./config/ocamlopt_flags.sexp))
+ (js_of_ocaml))
 
 (rule
  (alias runtest)
