@@ -542,9 +542,9 @@ function caml_binaryen_pop(wasm_mod, typ) {
   return Binaryen._BinaryenPop(wasm_mod, typ);
 }
 
-//Provides: caml_binaryen_i31_new
-function caml_binaryen_i31_new(wasm_mod, typ) {
-  return wasm_mod.i31.new(typ);
+//Provides: caml_binaryen_ref_i31
+function caml_binaryen_ref_i31(wasm_mod, typ) {
+  return wasm_mod.ref.i31(typ);
 }
 
 //Provides: caml_binaryen_i31_get
@@ -812,10 +812,10 @@ function caml_binaryen_expression_id_tuple_make() {
 function caml_binaryen_expression_id_tuple_extract() {
   return Binaryen.TupleExtractId;
 }
-//Provides: caml_binaryen_expression_id_i31_new
+//Provides: caml_binaryen_expression_id_ref_i31
 //Requires: Binaryen
-function caml_binaryen_expression_id_i31_new() {
-  return Binaryen.I31NewId;
+function caml_binaryen_expression_id_ref_i31() {
+  return Binaryen.RefI31Id;
 }
 //Provides: caml_binaryen_expression_id_i31_get
 //Requires: Binaryen
