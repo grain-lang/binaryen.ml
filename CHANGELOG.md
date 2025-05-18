@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.27.0](https://github.com/grain-lang/binaryen.ml/compare/v0.26.0...v0.27.0) (2025-05-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Require node `22` or above ([#219](https://github.com/grain-lang/binaryen.ml/issues/219))
+
+### Miscellaneous Chores
+
+* Require node `22` or above ([#219](https://github.com/grain-lang/binaryen.ml/issues/219)) ([3e1261e](https://github.com/grain-lang/binaryen.ml/commit/3e1261eabd76d8e5d546e104219c05201440053a))
+
 ## [0.26.0](https://github.com/grain-lang/binaryen.ml/compare/v0.25.0...v0.26.0) (2025-05-17)
 
 
