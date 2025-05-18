@@ -1,5 +1,5 @@
 {
-  "checksum": "ad7ec1c1f18f2da0d805bf4ce5a7f697",
+  "checksum": "027362814c85d00422b9f9ff4957739b",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@4.14.1000@d41d8cd9": {
@@ -1039,20 +1039,20 @@
       ],
       "available": "true"
     },
-    "@opam/js_of_ocaml-compiler@opam:5.9.1@e8650b39": {
-      "id": "@opam/js_of_ocaml-compiler@opam:5.9.1@e8650b39",
+    "@opam/js_of_ocaml-compiler@opam:6.0.1@ac2ae2e8": {
+      "id": "@opam/js_of_ocaml-compiler@opam:6.0.1@ac2ae2e8",
       "name": "@opam/js_of_ocaml-compiler",
-      "version": "opam:5.9.1",
+      "version": "opam:6.0.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/68/68c95c60871d8e9c9a54c82f35e2ed50413bcb440f220d0b3516b2a1ee1c7307#sha256:68c95c60871d8e9c9a54c82f35e2ed50413bcb440f220d0b3516b2a1ee1c7307",
-          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/5.9.1/js_of_ocaml-5.9.1.tbz#sha256:68c95c60871d8e9c9a54c82f35e2ed50413bcb440f220d0b3516b2a1ee1c7307"
+          "archive:https://opam.ocaml.org/cache/sha256/81/813dbee2b62e1541049ea23a20e405cf244e27ebfa9859785cfa53e286d2c614#sha256:813dbee2b62e1541049ea23a20e405cf244e27ebfa9859785cfa53e286d2c614",
+          "archive:https://github.com/ocsigen/js_of_ocaml/releases/download/6.0.1/js_of_ocaml-6.0.1.tbz#sha256:813dbee2b62e1541049ea23a20e405cf244e27ebfa9859785cfa53e286d2c614"
         ],
         "opam": {
           "name": "js_of_ocaml-compiler",
-          "version": "5.9.1",
-          "path": "esy.lock/opam/js_of_ocaml-compiler.5.9.1"
+          "version": "6.0.1",
+          "path": "esy.lock/opam/js_of_ocaml-compiler.6.0.1"
         }
       },
       "overrides": [],
@@ -1648,7 +1648,7 @@
       "devDependencies": [
         "@opam/ocamlformat@opam:0.24.1@01d7df0f",
         "@opam/ocaml-lsp-server@opam:1.12.4@c24ab770",
-        "@opam/js_of_ocaml-compiler@opam:5.9.1@e8650b39"
+        "@opam/js_of_ocaml-compiler@opam:6.0.1@ac2ae2e8"
       ]
     },
     "@esy-ocaml/substs@0.0.1@d41d8cd9": {
