@@ -1,6 +1,7 @@
 # Binaryen.ml
 
 [![Opam](https://github.com/grain-lang/binaryen.ml/actions/workflows/opam.yml/badge.svg)](https://github.com/grain-lang/binaryen.ml/actions/workflows/opam.yml)
+[![Esy](https://github.com/grain-lang/binaryen.ml/actions/workflows/esy.yml/badge.svg)](https://github.com/grain-lang/binaryen.ml/actions/workflows/esy.yml)
 
 OCaml bindings for [Binaryen](https://github.com/WebAssembly/binaryen).
 
