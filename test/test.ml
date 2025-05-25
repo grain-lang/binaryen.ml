@@ -76,8 +76,62 @@ let if_ =
 
 let _ = assert (Expression.If.get_if_false if_ = None)
 
+(* SIMD *)
+
+let v128 v = Expression.Const.make wasm_mod (Literal.vec128 v)
+
+let simd =
+  Expression.Block.make wasm_mod "simd"
+    [
+      Expression.Drop.make wasm_mod (v128 (0l, 0l, 0l, 0l));
+      Expression.Drop.make wasm_mod
+        (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl));
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_extract.make wasm_mod Op.extract_lane_vec_i64x2
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           0);
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_replace.make wasm_mod Op.replace_lane_vec_i8x16
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           7 (x ()));
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_shuffle.make wasm_mod
+           (v128 (0l, 0l, 0l, 0l))
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           [| 0; 16; 1; 17; 2; 18; 3; 19; 4; 20; 5; 21; 6; 22; 7; 23 |]);
+      Expression.Drop.make wasm_mod
+        (Expression.Unary.make wasm_mod Op.any_true_vec128
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl)));
+      Expression.Drop.make wasm_mod
+        (Expression.Binary.make wasm_mod Op.and_vec128
+           (v128 (0l, 0l, 0l, 0l))
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl)));
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_ternary.make wasm_mod Op.bitselect_vec128
+           (v128 (0l, 0l, 0l, 0l))
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           (v128 (1l, 1l, 1l, 1l)));
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_shift.make wasm_mod Op.shl_vec_i16x8
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           (x ()));
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_load.make wasm_mod Op.load64_splat_vec128 4 8 (x ())
+           "0");
+      Expression.Drop.make wasm_mod
+        (Expression.SIMD_load_store_lane.make wasm_mod Op.load32_lane_vec128 4 4
+           3 (x ())
+           (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+           "0");
+      Expression.SIMD_load_store_lane.make wasm_mod Op.store64_lane_vec128 4 8 1
+        (x ())
+        (v128 (0x12345678l, 0x87654321l, 0xdeadbeefl, 0xdeadbeefl))
+        "0";
+    ]
+
 let add =
-  Expression.Block.make wasm_mod ~return_type:Type.int32 "add" [ if_; bin ]
+  Expression.Block.make wasm_mod ~return_type:Type.int32 "add"
+    [ simd; if_; bin ]
 
 let _ = assert (Expression.Block.get_name add = Some "add")
 

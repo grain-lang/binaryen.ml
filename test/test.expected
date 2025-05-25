@@ -26,6 +26,70 @@
  (start $start)
  (func $adder (type $0) (param $0 i32) (param $1 i32) (result i32)
   (block $add (result i32)
+   (block $simd
+    (drop
+     (v128.const i32x4 0x00000000 0x00000000 0x00000000 0x00000000)
+    )
+    (drop
+     (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+    )
+    (drop
+     (i64x2.extract_lane 0
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+     )
+    )
+    (drop
+     (i8x16.replace_lane 7
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+      (local.get $0)
+     )
+    )
+    (drop
+     (i8x16.shuffle 0 16 1 17 2 18 3 19 4 20 5 21 6 22 7 23
+      (v128.const i32x4 0x00000000 0x00000000 0x00000000 0x00000000)
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+     )
+    )
+    (drop
+     (v128.any_true
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+     )
+    )
+    (drop
+     (v128.and
+      (v128.const i32x4 0x00000000 0x00000000 0x00000000 0x00000000)
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+     )
+    )
+    (drop
+     (v128.bitselect
+      (v128.const i32x4 0x00000000 0x00000000 0x00000000 0x00000000)
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+      (v128.const i32x4 0x00000001 0x00000001 0x00000001 0x00000001)
+     )
+    )
+    (drop
+     (i16x8.shl
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+      (local.get $0)
+     )
+    )
+    (drop
+     (v128.load64_splat offset=4
+      (local.get $0)
+     )
+    )
+    (drop
+     (v128.load32_lane offset=4 3
+      (local.get $0)
+      (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+     )
+    )
+    (v128.store64_lane offset=4 1
+     (local.get $0)
+     (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+    )
+   )
    (if
     (i32.const 0)
     (unreachable)
@@ -82,6 +146,21 @@
  (export "hello" (func $hello))
  (start $start)
  (func $adder (type $0) (; has Stack IR ;) (param $0 i32) (param $1 i32) (result i32)
+  (drop
+   (v128.load64_splat offset=4
+    (local.get $0)
+   )
+  )
+  (drop
+   (v128.load32_lane offset=4 3
+    (local.get $0)
+    (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+   )
+  )
+  (v128.store64_lane offset=4 1
+   (local.get $0)
+   (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+  )
   (i32.add
    (select
     (local.get $0)
@@ -130,6 +209,21 @@
  (export "hello" (func $2))
  (start $1)
  (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
+  (drop
+   (v128.load64_splat offset=4
+    (local.get $0)
+   )
+  )
+  (drop
+   (v128.load32_lane offset=4 3
+    (local.get $0)
+    (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+   )
+  )
+  (v128.store64_lane offset=4 1
+   (local.get $0)
+   (v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef)
+  )
   (i32.add
    (select
     (local.get $0)
@@ -178,6 +272,16 @@
  (export "hello" (func $2))
  (start $1)
  (func $0 (type $type$1) (param $0 i32) (param $1 i32) (result i32)
+  local.get $0
+  v128.load64_splat offset=4
+  drop
+  local.get $0
+  v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef
+  v128.load32_lane offset=4 3
+  drop
+  local.get $0
+  v128.const i32x4 0x12345678 0x87654321 0xdeadbeef 0xdeadbeef
+  v128.store64_lane offset=4 1
   local.get $0
   local.get $1
   i32.load

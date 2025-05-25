@@ -806,6 +806,30 @@ external ge_u_vec_i32x4 : unit -> t = "caml_binaryen_ge_u_vec_i32x4"
 
 let ge_u_vec_i32x4 = ge_u_vec_i32x4 ()
 
+external eq_vec_i64x2 : unit -> t = "caml_binaryen_eq_vec_i64x2"
+
+let eq_vec_i64x2 = eq_vec_i64x2 ()
+
+external ne_vec_i64x2 : unit -> t = "caml_binaryen_ne_vec_i64x2"
+
+let ne_vec_i64x2 = ne_vec_i64x2 ()
+
+external lt_s_vec_i64x2 : unit -> t = "caml_binaryen_lt_s_vec_i64x2"
+
+let lt_s_vec_i64x2 = lt_s_vec_i64x2 ()
+
+external gt_s_vec_i64x2 : unit -> t = "caml_binaryen_gt_s_vec_i64x2"
+
+let gt_s_vec_i64x2 = gt_s_vec_i64x2 ()
+
+external le_s_vec_i64x2 : unit -> t = "caml_binaryen_le_s_vec_i64x2"
+
+let le_s_vec_i64x2 = le_s_vec_i64x2 ()
+
+external ge_s_vec_i64x2 : unit -> t = "caml_binaryen_ge_s_vec_i64x2"
+
+let ge_s_vec_i64x2 = ge_s_vec_i64x2 ()
+
 external eq_vec_f32x4 : unit -> t = "caml_binaryen_eq_vec_f32x4"
 
 let eq_vec_f32x4 = eq_vec_f32x4 ()
@@ -1075,6 +1099,31 @@ external avgr_u_vec_i16x8 : unit -> t = "caml_binaryen_avgr_u_vec_i16x8"
 
 let avgr_u_vec_i16x8 = avgr_u_vec_i16x8 ()
 
+external q15_mulr_sat_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_q15_mulr_sat_s_vec_i16x8"
+
+let q15_mulr_sat_s_vec_i16x8 = q15_mulr_sat_s_vec_i16x8 ()
+
+external ext_mul_low_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i16x8"
+
+let ext_mul_low_s_vec_i16x8 = ext_mul_low_s_vec_i16x8 ()
+
+external ext_mul_high_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i16x8"
+
+let ext_mul_high_s_vec_i16x8 = ext_mul_high_s_vec_i16x8 ()
+
+external ext_mul_low_u_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i16x8"
+
+let ext_mul_low_u_vec_i16x8 = ext_mul_low_u_vec_i16x8 ()
+
+external ext_mul_high_u_vec_i16x8 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i16x8"
+
+let ext_mul_high_u_vec_i16x8 = ext_mul_high_u_vec_i16x8 ()
+
 external abs_vec_i32x4 : unit -> t = "caml_binaryen_abs_vec_i32x4"
 
 let abs_vec_i32x4 = abs_vec_i32x4 ()
@@ -1136,9 +1185,41 @@ external dot_s_vec_i16x8_to_vec_i32x4 : unit -> t
 
 let dot_s_vec_i16x8_to_vec_i32x4 = dot_s_vec_i16x8_to_vec_i32x4 ()
 
+external ext_mul_low_s_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i32x4"
+
+let ext_mul_low_s_vec_i32x4 = ext_mul_low_s_vec_i32x4 ()
+
+external ext_mul_high_s_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i32x4"
+
+let ext_mul_high_s_vec_i32x4 = ext_mul_high_s_vec_i32x4 ()
+
+external ext_mul_low_u_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i32x4"
+
+let ext_mul_low_u_vec_i32x4 = ext_mul_low_u_vec_i32x4 ()
+
+external ext_mul_high_u_vec_i32x4 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i32x4"
+
+let ext_mul_high_u_vec_i32x4 = ext_mul_high_u_vec_i32x4 ()
+
+external abs_vec_i64x2 : unit -> t = "caml_binaryen_abs_vec_i64x2"
+
+let abs_vec_i64x2 = abs_vec_i64x2 ()
+
 external neg_vec_i64x2 : unit -> t = "caml_binaryen_neg_vec_i64x2"
 
 let neg_vec_i64x2 = neg_vec_i64x2 ()
+
+external all_true_vec_i64x2 : unit -> t = "caml_binaryen_all_true_vec_i64x2"
+
+let all_true_vec_i64x2 = all_true_vec_i64x2 ()
+
+external bitmask_vec_i64x2 : unit -> t = "caml_binaryen_bitmask_vec_i64x2"
+
+let bitmask_vec_i64x2 = bitmask_vec_i64x2 ()
 
 external shl_vec_i64x2 : unit -> t = "caml_binaryen_shl_vec_i64x2"
 
@@ -1163,6 +1244,26 @@ let sub_vec_i64x2 = sub_vec_i64x2 ()
 external mul_vec_i64x2 : unit -> t = "caml_binaryen_mul_vec_i64x2"
 
 let mul_vec_i64x2 = mul_vec_i64x2 ()
+
+external ext_mul_low_s_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_low_s_vec_i64x2"
+
+let ext_mul_low_s_vec_i64x2 = ext_mul_low_s_vec_i64x2 ()
+
+external ext_mul_high_s_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_high_s_vec_i64x2"
+
+let ext_mul_high_s_vec_i64x2 = ext_mul_high_s_vec_i64x2 ()
+
+external ext_mul_low_u_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_low_u_vec_i64x2"
+
+let ext_mul_low_u_vec_i64x2 = ext_mul_low_u_vec_i64x2 ()
+
+external ext_mul_high_u_vec_i64x2 : unit -> t
+  = "caml_binaryen_ext_mul_high_u_vec_i64x2"
+
+let ext_mul_high_u_vec_i64x2 = ext_mul_high_u_vec_i64x2 ()
 
 external abs_vec_f32x4 : unit -> t = "caml_binaryen_abs_vec_f32x4"
 
@@ -1284,6 +1385,30 @@ external nearest_vec_f64x2 : unit -> t = "caml_binaryen_nearest_vec_f64x2"
 
 let nearest_vec_f64x2 = nearest_vec_f64x2 ()
 
+external ext_add_pairwise_s_vec_i8x16_to_i16x8 : unit -> t
+  = "caml_binaryen_ext_add_pairwise_s_vec_i8x16_to_i16x8"
+
+let ext_add_pairwise_s_vec_i8x16_to_i16x8 =
+  ext_add_pairwise_s_vec_i8x16_to_i16x8 ()
+
+external ext_add_pairwise_u_vec_i8x16_to_i16x8 : unit -> t
+  = "caml_binaryen_ext_add_pairwise_u_vec_i8x16_to_i16x8"
+
+let ext_add_pairwise_u_vec_i8x16_to_i16x8 =
+  ext_add_pairwise_u_vec_i8x16_to_i16x8 ()
+
+external ext_add_pairwise_s_vec_i16x8_to_i32x4 : unit -> t
+  = "caml_binaryen_ext_add_pairwise_s_vec_i16x8_to_i32x4"
+
+let ext_add_pairwise_s_vec_i16x8_to_i32x4 =
+  ext_add_pairwise_s_vec_i16x8_to_i32x4 ()
+
+external ext_add_pairwise_u_vec_i16x8_to_i32x4 : unit -> t
+  = "caml_binaryen_ext_add_pairwise_u_vec_i16x8_to_i32x4"
+
+let ext_add_pairwise_u_vec_i16x8_to_i32x4 =
+  ext_add_pairwise_u_vec_i16x8_to_i32x4 ()
+
 external trunc_sat_s_vec_f32x4_to_vec_i32x4 : unit -> t
   = "caml_binaryen_trunc_sat_s_vec_f32x4_to_vec_i32x4"
 
@@ -1303,6 +1428,86 @@ external convert_u_vec_i32x4_to_vec_f32x4 : unit -> t
   = "caml_binaryen_convert_u_vec_i32x4_to_vec_f32x4"
 
 let convert_u_vec_i32x4_to_vec_f32x4 = convert_u_vec_i32x4_to_vec_f32x4 ()
+
+external load8_splat_vec128 : unit -> t = "caml_binaryen_load8_splat_vec128"
+
+let load8_splat_vec128 = load8_splat_vec128 ()
+
+external load16_splat_vec128 : unit -> t = "caml_binaryen_load16_splat_vec128"
+
+let load16_splat_vec128 = load16_splat_vec128 ()
+
+external load32_splat_vec128 : unit -> t = "caml_binaryen_load32_splat_vec128"
+
+let load32_splat_vec128 = load32_splat_vec128 ()
+
+external load64_splat_vec128 : unit -> t = "caml_binaryen_load64_splat_vec128"
+
+let load64_splat_vec128 = load64_splat_vec128 ()
+
+external load8x8_s_vec128 : unit -> t = "caml_binaryen_load8x8_s_vec128"
+
+let load8x8_s_vec128 = load8x8_s_vec128 ()
+
+external load8x8_u_vec128 : unit -> t = "caml_binaryen_load8x8_u_vec128"
+
+let load8x8_u_vec128 = load8x8_u_vec128 ()
+
+external load16x4_s_vec128 : unit -> t = "caml_binaryen_load16x4_s_vec128"
+
+let load16x4_s_vec128 = load16x4_s_vec128 ()
+
+external load16x4_u_vec128 : unit -> t = "caml_binaryen_load16x4_u_vec128"
+
+let load16x4_u_vec128 = load16x4_u_vec128 ()
+
+external load32x2_s_vec128 : unit -> t = "caml_binaryen_load32x2_s_vec128"
+
+let load32x2_s_vec128 = load32x2_s_vec128 ()
+
+external load32x2_u_vec128 : unit -> t = "caml_binaryen_load32x2_u_vec128"
+
+let load32x2_u_vec128 = load32x2_u_vec128 ()
+
+external load32_zero_vec128 : unit -> t = "caml_binaryen_load32_zero_vec128"
+
+let load32_zero_vec128 = load32_zero_vec128 ()
+
+external load64_zero_vec128 : unit -> t = "caml_binaryen_load64_zero_vec128"
+
+let load64_zero_vec128 = load64_zero_vec128 ()
+
+external load8_lane_vec128 : unit -> t = "caml_binaryen_load8_lane_vec128"
+
+let load8_lane_vec128 = load8_lane_vec128 ()
+
+external load16_lane_vec128 : unit -> t = "caml_binaryen_load16_lane_vec128"
+
+let load16_lane_vec128 = load16_lane_vec128 ()
+
+external load32_lane_vec128 : unit -> t = "caml_binaryen_load32_lane_vec128"
+
+let load32_lane_vec128 = load32_lane_vec128 ()
+
+external load64_lane_vec128 : unit -> t = "caml_binaryen_load64_lane_vec128"
+
+let load64_lane_vec128 = load64_lane_vec128 ()
+
+external store8_lane_vec128 : unit -> t = "caml_binaryen_store8_lane_vec128"
+
+let store8_lane_vec128 = store8_lane_vec128 ()
+
+external store16_lane_vec128 : unit -> t = "caml_binaryen_store16_lane_vec128"
+
+let store16_lane_vec128 = store16_lane_vec128 ()
+
+external store32_lane_vec128 : unit -> t = "caml_binaryen_store32_lane_vec128"
+
+let store32_lane_vec128 = store32_lane_vec128 ()
+
+external store64_lane_vec128 : unit -> t = "caml_binaryen_store64_lane_vec128"
+
+let store64_lane_vec128 = store64_lane_vec128 ()
 
 external narrow_s_vec_i16x8_to_vec_i8x16 : unit -> t
   = "caml_binaryen_narrow_s_vec_i16x8_to_vec_i8x16"
@@ -1324,9 +1529,168 @@ external narrow_u_vec_i32x4_to_vec_i16x8 : unit -> t
 
 let narrow_u_vec_i32x4_to_vec_i16x8 = narrow_u_vec_i32x4_to_vec_i16x8 ()
 
+external extend_low_s_vec_i8x16_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_extend_low_s_vec_i8x16_to_vec_i16x8"
+
+let extend_low_s_vec_i8x16_to_vec_i16x8 = extend_low_s_vec_i8x16_to_vec_i16x8 ()
+
+external extend_high_s_vec_i8x16_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_extend_high_s_vec_i8x16_to_vec_i16x8"
+
+let extend_high_s_vec_i8x16_to_vec_i16x8 =
+  extend_high_s_vec_i8x16_to_vec_i16x8 ()
+
+external extend_low_u_vec_i8x16_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_extend_low_u_vec_i8x16_to_vec_i16x8"
+
+let extend_low_u_vec_i8x16_to_vec_i16x8 = extend_low_u_vec_i8x16_to_vec_i16x8 ()
+
+external extend_high_u_vec_i8x16_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_extend_high_u_vec_i8x16_to_vec_i16x8"
+
+let extend_high_u_vec_i8x16_to_vec_i16x8 =
+  extend_high_u_vec_i8x16_to_vec_i16x8 ()
+
+external extend_low_s_vec_i16x8_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_extend_low_s_vec_i16x8_to_vec_i32x4"
+
+let extend_low_s_vec_i16x8_to_vec_i32x4 = extend_low_s_vec_i16x8_to_vec_i32x4 ()
+
+external extend_high_s_vec_i16x8_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_extend_high_s_vec_i16x8_to_vec_i32x4"
+
+let extend_high_s_vec_i16x8_to_vec_i32x4 =
+  extend_high_s_vec_i16x8_to_vec_i32x4 ()
+
+external extend_low_u_vec_i16x8_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_extend_low_u_vec_i16x8_to_vec_i32x4"
+
+let extend_low_u_vec_i16x8_to_vec_i32x4 = extend_low_u_vec_i16x8_to_vec_i32x4 ()
+
+external extend_high_u_vec_i16x8_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_extend_high_u_vec_i16x8_to_vec_i32x4"
+
+let extend_high_u_vec_i16x8_to_vec_i32x4 =
+  extend_high_u_vec_i16x8_to_vec_i32x4 ()
+
+external extend_low_s_vec_i32x4_to_vec_i64x2 : unit -> t
+  = "caml_binaryen_extend_low_s_vec_i32x4_to_vec_i64x2"
+
+let extend_low_s_vec_i32x4_to_vec_i64x2 = extend_low_s_vec_i32x4_to_vec_i64x2 ()
+
+external extend_high_s_vec_i32x4_to_vec_i64x2 : unit -> t
+  = "caml_binaryen_extend_high_s_vec_i32x4_to_vec_i64x2"
+
+let extend_high_s_vec_i32x4_to_vec_i64x2 =
+  extend_high_s_vec_i32x4_to_vec_i64x2 ()
+
+external extend_low_u_vec_i32x4_to_vec_i64x2 : unit -> t
+  = "caml_binaryen_extend_low_u_vec_i32x4_to_vec_i64x2"
+
+let extend_low_u_vec_i32x4_to_vec_i64x2 = extend_low_u_vec_i32x4_to_vec_i64x2 ()
+
+external extend_high_u_vec_i32x4_to_vec_i64x2 : unit -> t
+  = "caml_binaryen_extend_high_u_vec_i32x4_to_vec_i64x2"
+
+let extend_high_u_vec_i32x4_to_vec_i64x2 =
+  extend_high_u_vec_i32x4_to_vec_i64x2 ()
+
+external convert_low_s_vec_i32x4_to_vec_f64x2 : unit -> t
+  = "caml_binaryen_convert_low_s_vec_i32x4_to_vec_f64x2"
+
+let convert_low_s_vec_i32x4_to_vec_f64x2 =
+  convert_low_s_vec_i32x4_to_vec_f64x2 ()
+
+external convert_low_u_vec_i32x4_to_vec_f64x2 : unit -> t
+  = "caml_binaryen_convert_low_u_vec_i32x4_to_vec_f64x2"
+
+let convert_low_u_vec_i32x4_to_vec_f64x2 =
+  convert_low_u_vec_i32x4_to_vec_f64x2 ()
+
+external trunc_sat_zero_s_vec_f64x2_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_trunc_sat_zero_s_vec_f64x2_to_vec_i32x4"
+
+let trunc_sat_zero_s_vec_f64x2_to_vec_i32x4 =
+  trunc_sat_zero_s_vec_f64x2_to_vec_i32x4 ()
+
+external trunc_sat_zero_u_vec_f64x2_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_trunc_sat_zero_u_vec_f64x2_to_vec_i32x4"
+
+let trunc_sat_zero_u_vec_f64x2_to_vec_i32x4 =
+  trunc_sat_zero_u_vec_f64x2_to_vec_i32x4 ()
+
+external demote_zero_vec_f64x2_to_vec_f32x4 : unit -> t
+  = "caml_binaryen_demote_zero_vec_f64x2_to_vec_f32x4"
+
+let demote_zero_vec_f64x2_to_vec_f32x4 = demote_zero_vec_f64x2_to_vec_f32x4 ()
+
+external promote_low_vec_f32x4_to_vec_f64x2 : unit -> t
+  = "caml_binaryen_promote_low_vec_f32x4_to_vec_f64x2"
+
+let promote_low_vec_f32x4_to_vec_f64x2 = promote_low_vec_f32x4_to_vec_f64x2 ()
+
+external relaxed_trunc_s_vec_f32x4_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_trunc_s_vec_f32x4_to_vec_i32x4"
+
+let relaxed_trunc_s_vec_f32x4_to_vec_i32x4 =
+  relaxed_trunc_s_vec_f32x4_to_vec_i32x4 ()
+
+external relaxed_trunc_u_vec_f32x4_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_trunc_u_vec_f32x4_to_vec_i32x4"
+
+let relaxed_trunc_u_vec_f32x4_to_vec_i32x4 =
+  relaxed_trunc_u_vec_f32x4_to_vec_i32x4 ()
+
+external relaxed_trunc_zero_s_vec_f64x2_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_trunc_zero_s_vec_f64x2_to_vec_i32x4"
+
+let relaxed_trunc_zero_s_vec_f64x2_to_vec_i32x4 =
+  relaxed_trunc_zero_s_vec_f64x2_to_vec_i32x4 ()
+
+external relaxed_trunc_zero_u_vec_f64x2_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_trunc_zero_u_vec_f64x2_to_vec_i32x4"
+
+let relaxed_trunc_zero_u_vec_f64x2_to_vec_i32x4 =
+  relaxed_trunc_zero_u_vec_f64x2_to_vec_i32x4 ()
+
 external swizzle_vec8x16 : unit -> t = "caml_binaryen_swizzle_vec8x16"
 
 let swizzle_vec8x16 = swizzle_vec8x16 ()
+
+external relaxed_swizzle_vec_i8x16 : unit -> t
+  = "caml_binaryen_relaxed_swizzle_vec_i8x16"
+
+let relaxed_swizzle_vec_i8x16 = relaxed_swizzle_vec_i8x16 ()
+
+external relaxed_min_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_min_vec_f32x4"
+
+let relaxed_min_vec_f32x4 = relaxed_min_vec_f32x4 ()
+
+external relaxed_max_vec_f32x4 : unit -> t
+  = "caml_binaryen_relaxed_max_vec_f32x4"
+
+let relaxed_max_vec_f32x4 = relaxed_max_vec_f32x4 ()
+
+external relaxed_min_vec_f64x2 : unit -> t
+  = "caml_binaryen_relaxed_min_vec_f64x2"
+
+let relaxed_min_vec_f64x2 = relaxed_min_vec_f64x2 ()
+
+external relaxed_max_vec_f64x2 : unit -> t
+  = "caml_binaryen_relaxed_max_vec_f64x2"
+
+let relaxed_max_vec_f64x2 = relaxed_max_vec_f64x2 ()
+
+external relaxed_q15_mulr_s_vec_i16x8 : unit -> t
+  = "caml_binaryen_relaxed_q15_mulr_s_vec_i16x8"
+
+let relaxed_q15_mulr_s_vec_i16x8 = relaxed_q15_mulr_s_vec_i16x8 ()
+
+external dot_i8x16_i7x16_s_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_dot_i8x16_i7x16_s_to_vec_i16x8"
+
+let dot_i8x16_i7x16_s_to_vec_i16x8 = dot_i8x16_i7x16_s_to_vec_i16x8 ()
 
 external ref_as_non_null : unit -> t = "caml_binaryen_ref_as_non_null"
 
