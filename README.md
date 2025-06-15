@@ -59,7 +59,7 @@ Your stanza could look something like this:
   (libraries binaryen))
 ```
 
-These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [master/](https://github.com/grain-lang/binaryen.ml/blob/master/dune).
+These flags likely won't work on other operating systems, so you'll probably need to use `dune-configurator` to vary the flags per platform. You can see an example of this in our [test/](./test/dune).
 
 ## Static Linking
 
