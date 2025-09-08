@@ -5,15 +5,15 @@
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
   "dependencies": {
-    "ocaml": ">= 4.13.0 < 5.0.0",
-    "@grain/libbinaryen": ">= 117.0.0 < 118.0.0",
+    "ocaml": ">= 4.13.0 < 5.4.0",
+    "@grain/libbinaryen": "117.0.0-b",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
   },
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": ">= 6.0.0 < 7.0.0",
-    "@opam/ocamlformat": "0.24.1",
-    "@opam/ocaml-lsp-server": ">= 1.9.1 < 1.13.0"
+    "@opam/ocamlformat": "0.27.0",
+    "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0"
   },
   "resolutions": {
     "@opam/ocp-indent": "1.7.0"
