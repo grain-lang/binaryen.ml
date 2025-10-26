@@ -4,6 +4,9 @@
   "description": "OCaml bindings for Binaryen.",
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
+  "installConfig": {
+    "pnp": false
+  },
   "dependencies": {
     "ocaml": ">= 4.13.0 < 5.4.0",
     "@grain/libbinaryen": "117.0.0-b",
