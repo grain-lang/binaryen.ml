@@ -2289,48 +2289,6 @@ caml_binaryen_br_on_cast_fail(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_string_new_utf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewUTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_new_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewWTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_new_lossy_utf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewLossyUTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_new_wtf16(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewWTF16();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_new_utf8_array(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewUTF8Array();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_new_wtf8_array(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringNewWTF8Array();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_string_new_lossy_utf8_array(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringNewLossyUTF8Array();
@@ -2359,65 +2317,9 @@ caml_binaryen_string_measure_utf8(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_string_measure_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringMeasureWTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_string_measure_wtf16(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringMeasureWTF16();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_measure_is_usv(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringMeasureIsUSV();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_measure_wtf16_view(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringMeasureWTF16View();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_encode_utf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeUTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_encode_lossy_utf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeLossyUTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_encode_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeWTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_encode_wtf16(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeWTF16();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_encode_utf8_array(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeUTF8Array();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
@@ -2429,65 +2331,9 @@ caml_binaryen_string_encode_lossy_utf8_array(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_string_encode_wtf8_array(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringEncodeWTF8Array();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
 caml_binaryen_string_encode_wtf16_array(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenStringEncodeWTF16Array();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_as_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringAsWTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_as_wtf16(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringAsWTF16();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_as_iter(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringAsIter();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_iter_move_advance(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringIterMoveAdvance();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_iter_move_rewind(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringIterMoveRewind();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_slice_wtf8(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringSliceWTF8();
-  CAMLreturn(alloc_BinaryenOp(op));
-}
-
-CAMLprim value
-caml_binaryen_string_slice_wtf16(value unit) {
-  CAMLparam1(unit);
-  BinaryenOp op = BinaryenStringSliceWTF16();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 

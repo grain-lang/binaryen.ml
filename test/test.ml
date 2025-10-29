@@ -278,7 +278,7 @@ let _ =
 
 let _ = Module.validate new_mod
 let _ = Module.print new_mod
-let _ = Module.print_stack_ir new_mod false
+let _ = Module.print_stack_ir new_mod
 
 (* Dispose the modules 👋 *)
 

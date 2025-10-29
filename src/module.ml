@@ -91,7 +91,7 @@ external parse : string -> t = "caml_binaryen_module_parse"
 external print : t -> unit = "caml_binaryen_module_print"
 external print_asmjs : t -> unit = "caml_binaryen_module_print_asmjs"
 
-external print_stack_ir : t -> bool -> unit
+external print_stack_ir : t -> unit
   = "caml_binaryen_module_print_stack_ir"
 
 external validate : t -> int = "caml_binaryen_module_validate"
@@ -125,7 +125,7 @@ external write : t -> string option -> bytes * string option
 
 external write_text : t -> string = "caml_binaryen_module_write_text"
 
-external write_stack_ir : t -> bool -> string
+external write_stack_ir : t -> string
   = "caml_binaryen_module_write_stack_ir"
 
 external read : bytes -> t = "caml_binaryen_module_read"

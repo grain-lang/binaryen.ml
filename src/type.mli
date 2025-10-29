@@ -13,9 +13,6 @@ val i31ref : t
 val structref : t
 val arrayref : t
 val stringref : t
-val stringview_wtf8 : t
-val stringview_wtf16 : t
-val stringview_iter : t
 val nullref : t
 val null_externref : t
 val null_funcref : t
