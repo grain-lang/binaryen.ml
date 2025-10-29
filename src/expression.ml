@@ -662,11 +662,11 @@ module Binary = struct
 end
 
 module Select = struct
-  external make : Module.t -> t -> t -> t -> Type.t -> t
+  external make : Module.t -> t -> t -> t-> t
     = "caml_binaryen_select"
 
   (** Module, condition, true branch, false branch. *)
-  let make wasm_mod cond tru fals = make wasm_mod cond tru fals Type.auto
+  let make wasm_mod cond tru fals = make wasm_mod cond tru fals
 
   external get_if_true : t -> t = "caml_binaryen_select_get_if_true"
   external set_if_true : t -> t -> unit = "caml_binaryen_select_set_if_true"

@@ -118,8 +118,6 @@ let set_features wasm_mod features =
 external run_passes : t -> Passes.t list -> unit
   = "caml_binaryen_module_run_passes"
 
-external auto_drop : t -> unit = "caml_binaryen_module_auto_drop"
-
 external write : t -> string option -> bytes * string option
   = "caml_binaryen_module_write"
 
