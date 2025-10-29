@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.27.0](https://github.com/grain-lang/binaryen.ml/compare/v0.26.0...v0.27.0) (2025-10-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v117 ([#225](https://github.com/grain-lang/binaryen.ml/issues/225))
+* Require jsoo >= 6.0 ([#211](https://github.com/grain-lang/binaryen.ml/issues/211))
+* Require node `22` or above ([#219](https://github.com/grain-lang/binaryen.ml/issues/219))
+
+### Features
+
+* Upgrade to Binaryen v117 ([#225](https://github.com/grain-lang/binaryen.ml/issues/225)) ([246d9fc](https://github.com/grain-lang/binaryen.ml/commit/246d9fc365bdfd40d8631e3a3b6ddd92efbb8fad))
+
+
+### Miscellaneous Chores
+
+* Require jsoo &gt;= 6.0 ([#211](https://github.com/grain-lang/binaryen.ml/issues/211)) ([cf53ffc](https://github.com/grain-lang/binaryen.ml/commit/cf53ffc132caed040ee9e7eca179cfd697bb5868))
+* Require node `22` or above ([#219](https://github.com/grain-lang/binaryen.ml/issues/219)) ([3e1261e](https://github.com/grain-lang/binaryen.ml/commit/3e1261eabd76d8e5d546e104219c05201440053a))
+
 ## [0.26.0](https://github.com/grain-lang/binaryen.ml/compare/v0.25.0...v0.26.0) (2025-05-17)
 
 
