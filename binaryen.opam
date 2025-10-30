@@ -18,3 +18,4 @@ depends: [
   "js_of_ocaml-compiler" {>= "6.0.0" < "7.0.0"}
   "libbinaryen" {> "117.0.0" < "118.0.0"}
 ]
+x-maintenance-intent: ["0.(latest)"]
