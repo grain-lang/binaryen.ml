@@ -63,20 +63,6 @@ jobs:
           git config --global user.email "bot@grain-lang.org"
           git config --global user.name "Grain Bot"
 
-      # Some hacks to make sure opam doesn't pull the repo in a way we can't deal with
-      - name: Setup opam repository
-        run: |
-          mkdir -p  ~/.opam/plugins/opam-publish/repos/
-          git clone https://github.com/ocaml/opam-repository ~/.opam/plugins/opam-publish/repos/ocaml%opam-repository
-          cd ~/.opam/plugins/opam-publish/repos/ocaml%opam-repository
-          git remote add user https://${{ secrets.OPAM_RELEASE }}@github.com/grainbot/opam-repository
-
-      # Set up our token because opam doesn't support env var tokens
-      - name: Setup token
-        run: |
-          mkdir -p  ~/.opam/plugins/opam-publish/
-          echo -n ${{ secrets.OPAM_RELEASE }} > ~/.opam/plugins/opam-publish/binaryen.token
-
       - name: Generate CHANGES file
         env:
           CHANGES: ${{ needs.add-archive.outputs.notes }}
@@ -86,14 +72,16 @@ jobs:
       - name: Setup OCaml
         uses: ocaml/setup-ocaml@c2e6bb92370612b89f302c3aaefa1da45ee2d702 # v3.2.15
         with:
-          ocaml-compiler: 4.14.0
+          ocaml-compiler: 5.2.0
 
       - name: Install publish utils
         run: |
-          opam install opam-publish=2.4.0
+          opam install opam-publish=2.7.0
 
       - name: Publish to opam
-        run: |
+      env:
+          OPAM_PUBLISH_GH_TOKEN: ${{ secrets.OPAM_RELEASE }}  
+      run: |
           opam publish --no-confirmation --no-browser --msg-file=CHANGES.md ${{ needs.add-archive.outputs.browser_download_url }}
 
   npm-release:
