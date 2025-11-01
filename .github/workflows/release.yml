@@ -79,9 +79,9 @@ jobs:
           opam install opam-publish=2.7.0
 
       - name: Publish to opam
-      env:
-          OPAM_PUBLISH_GH_TOKEN: ${{ secrets.OPAM_RELEASE }}  
-      run: |
+        env:
+          OPAM_PUBLISH_GH_TOKEN: ${{ secrets.OPAM_RELEASE }}
+        run: |
           opam publish --no-confirmation --no-browser --msg-file=CHANGES.md ${{ needs.add-archive.outputs.browser_download_url }}
 
   npm-release:
