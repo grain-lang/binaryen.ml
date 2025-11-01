@@ -1,5 +1,5 @@
 {
-  "checksum": "3a14718f627039c7bf5ab17940a38d14",
+  "checksum": "55b439676e74c57977482d2499504bd2",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -1663,14 +1663,14 @@
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
       "available": "true"
     },
-    "@grain/libbinaryen@121.0.0-b@d41d8cd9": {
-      "id": "@grain/libbinaryen@121.0.0-b@d41d8cd9",
+    "@grain/libbinaryen@122.0.0@d41d8cd9": {
+      "id": "@grain/libbinaryen@122.0.0@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "121.0.0-b",
+      "version": "122.0.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-121.0.0-b.tgz#sha1:0d6f99e9c9f9ed4dd07b3a012ba9c042c13e0783"
+          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-122.0.0.tgz#sha1:63c01c799e798e88fbf86c60a5b4b151c062e635"
         ]
       },
       "overrides": [],
@@ -1680,8 +1680,7 @@
         "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/conf-cmake@github:grain-lang/cmake:esy.json#033cab656dc71a6488b3c1ca6ea45099f794bd03@d41d8cd9"
       ],
-      "devDependencies": [],
-      "installConfig": { "pnp": false }
+      "devDependencies": []
     },
     "@grain/binaryen.ml@link-dev:./package.json": {
       "id": "@grain/binaryen.ml@link-dev:./package.json",
@@ -1697,7 +1696,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.20.2@7eb6ff01",
         "@opam/dune@opam:3.20.2@8daef28d",
-        "@grain/libbinaryen@121.0.0-b@d41d8cd9"
+        "@grain/libbinaryen@122.0.0@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.27.0@c40d4612",

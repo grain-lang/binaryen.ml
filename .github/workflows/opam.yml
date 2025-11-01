@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           submodules: "recursive"
-      
+
       - name: Setup node.js
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
@@ -35,13 +35,6 @@ jobs:
         uses: ocaml/setup-ocaml@c2e6bb92370612b89f302c3aaefa1da45ee2d702 # v3.2.15
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
-
-        # Necessary until using libbinaryen v122
-      - name: Override C Compiler Flags For Windows
-        if: ${{ startsWith(matrix.os, 'windows-') }}
-        run: |
-          echo "CC=x86_64-w64-mingw32-gcc" | Out-File -FilePath $env:GITHUB_ENV -Append
-          echo "CXX=x86_64-w64-mingw32-g++" | Out-File -FilePath $env:GITHUB_ENV -Append
 
       - name: Install local dependencies
         run: |
