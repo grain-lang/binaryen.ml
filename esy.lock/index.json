@@ -1703,8 +1703,7 @@
         "@opam/ocamlformat@opam:0.27.0@c40d4612",
         "@opam/ocaml-lsp-server@opam:1.23.1@38cf22a2",
         "@opam/js_of_ocaml-compiler@opam:6.2.0@45dd83ba"
-      ],
-      "installConfig": { "pnp": false }
+      ]
     },
     "@esy-ocaml/substs@0.0.1@d41d8cd9": {
       "id": "@esy-ocaml/substs@0.0.1@d41d8cd9",
