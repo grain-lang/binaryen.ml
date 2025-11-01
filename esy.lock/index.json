@@ -14,7 +14,13 @@
       },
       "overrides": [],
       "dependencies": [],
-      "devDependencies": []
+      "devDependencies": [],
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/yojson@opam:3.0.0@b2c9a6c1": {
       "id": "@opam/yojson@opam:3.0.0@b2c9a6c1",
@@ -40,7 +46,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/xdg@opam:3.20.2@ade9ef81": {
       "id": "@opam/xdg@opam:3.20.2@ade9ef81",
@@ -66,7 +77,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/uutf@opam:1.0.4@ba7fbef7": {
       "id": "@opam/uutf@opam:1.0.4@ba7fbef7",
@@ -93,7 +109,12 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/uuseg@opam:17.0.0@52f3d276": {
       "id": "@opam/uuseg@opam:17.0.0@52f3d276",
@@ -123,7 +144,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/uucp@opam:17.0.0@843de755"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/uucp@opam:17.0.0@843de755": {
       "id": "@opam/uucp@opam:17.0.0@843de755",
@@ -150,7 +176,12 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/topkg@opam:1.1.0@fa72996d": {
       "id": "@opam/topkg@opam:1.1.0@fa72996d",
@@ -177,7 +208,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/ocamlbuild@opam:0.16.1@b3fc8209"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/stdune@opam:3.20.2@c89dc074": {
       "id": "@opam/stdune@opam:3.20.2@c89dc074",
@@ -211,7 +247,12 @@
         "@opam/csexp@opam:1.5.2@46614bf4",
         "@opam/base-unix@opam:base@87d0b2eb"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/stdlib-shims@opam:0.3.0@72c7bc98": {
       "id": "@opam/stdlib-shims@opam:0.3.0@72c7bc98",
@@ -237,7 +278,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/stdio@opam:v0.17.0@def6a62f": {
       "id": "@opam/stdio@opam:v0.17.0@def6a62f",
@@ -265,7 +311,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/base@opam:v0.17.3@78923773"
       ],
-      "available": "arch != \"x86_32\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/spawn@opam:v0.17.0@d0f69739": {
       "id": "@opam/spawn@opam:v0.17.0@d0f69739",
@@ -291,7 +342,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "os != \"freebsd\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/sexplib0@opam:v0.17.0@75dcb697": {
       "id": "@opam/sexplib0@opam:v0.17.0@75dcb697",
@@ -317,7 +373,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "arch != \"x86_32\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/seq@opam:base@5ed5af70": {
       "id": "@opam/seq@opam:base@5ed5af70",
@@ -349,7 +410,12 @@
           "relativePath": "seq.install"
         }
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/sedlex@opam:3.7@7fb2caab": {
       "id": "@opam/sedlex@opam:3.7@7fb2caab",
@@ -377,7 +443,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/ppxlib@opam:0.37.0@42a12c9c",
         "@opam/gen@opam:1.1@55327887", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/re@opam:1.14.0@62aa9f42": {
       "id": "@opam/re@opam:1.14.0@62aa9f42",
@@ -403,7 +474,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ppxlib@opam:0.37.0@42a12c9c": {
       "id": "@opam/ppxlib@opam:0.37.0@42a12c9c",
@@ -436,7 +512,12 @@
         "@opam/ocaml-compiler-libs@opam:v0.17.0@6bdcfede",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ppx_yojson_conv_lib@opam:v0.17.0@2b444c0e": {
       "id": "@opam/ppx_yojson_conv_lib@opam:v0.17.0@2b444c0e",
@@ -463,7 +544,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "arch != \"arm32\" & arch != \"x86_32\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ppx_derivers@opam:1.2.1@d78727cd": {
       "id": "@opam/ppx_derivers@opam:1.2.1@d78727cd",
@@ -489,7 +575,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/pp@opam:2.0.0@2177bbde": {
       "id": "@opam/pp@opam:2.0.0@2177bbde",
@@ -515,7 +606,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ordering@opam:3.20.2@6865c105": {
       "id": "@opam/ordering@opam:3.20.2@6865c105",
@@ -541,7 +637,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocp-indent@opam:1.7.0@3e255333": {
       "id": "@opam/ocp-indent@opam:1.7.0@3e255333",
@@ -573,7 +674,12 @@
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@opam/base-bytes@opam:base@785dbd33"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlformat-rpc-lib@opam:0.28.1@4c691df7": {
       "id": "@opam/ocamlformat-rpc-lib@opam:0.28.1@4c691df7",
@@ -600,7 +706,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/csexp@opam:1.5.2@46614bf4"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlformat-lib@opam:0.27.0@09e368b0": {
       "id": "@opam/ocamlformat-lib@opam:0.27.0@09e368b0",
@@ -658,7 +769,12 @@
         "@opam/base@opam:v0.17.3@78923773",
         "@opam/astring@opam:0.8.5@9975798d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlformat@opam:0.27.0@c40d4612": {
       "id": "@opam/ocamlformat@opam:0.27.0@c40d4612",
@@ -690,7 +806,12 @@
         "@opam/dune@opam:3.20.2@8daef28d", "@opam/csexp@opam:1.5.2@46614bf4",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlfind@opam:1.9.8@ee910ff5": {
       "id": "@opam/ocamlfind@opam:1.9.8@ee910ff5",
@@ -717,7 +838,12 @@
         "ocaml@5.3.0@d41d8cd9", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlc-loc@opam:3.20.2@4ca99b2f": {
       "id": "@opam/ocamlc-loc@opam:3.20.2@4ca99b2f",
@@ -744,7 +870,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/dyn@opam:3.20.2@a43d3aee",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocamlbuild@opam:0.16.1@b3fc8209": {
       "id": "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
@@ -767,7 +898,12 @@
         "ocaml@5.3.0@d41d8cd9", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocaml_intrinsics_kernel@opam:v0.17.1@122c1c73": {
       "id": "@opam/ocaml_intrinsics_kernel@opam:v0.17.1@122c1c73",
@@ -793,7 +929,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "arch != \"x86_32\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocaml-version@opam:4.0.3@371c2527": {
       "id": "@opam/ocaml-version@opam:4.0.3@371c2527",
@@ -819,7 +960,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocaml-lsp-server@opam:1.23.1@38cf22a2": {
       "id": "@opam/ocaml-lsp-server@opam:1.23.1@38cf22a2",
@@ -883,7 +1029,12 @@
         "@opam/base@opam:v0.17.3@78923773",
         "@opam/astring@opam:0.8.5@9975798d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/ocaml-compiler-libs@opam:v0.17.0@6bdcfede": {
       "id": "@opam/ocaml-compiler-libs@opam:v0.17.0@6bdcfede",
@@ -909,7 +1060,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/merlin-lib@opam:5.6-503@f2a59b18": {
       "id": "@opam/merlin-lib@opam:5.6-503@f2a59b18",
@@ -936,7 +1092,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/csexp@opam:1.5.2@46614bf4"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/menhirSdk@opam:20250912@f434747d": {
       "id": "@opam/menhirSdk@opam:20250912@f434747d",
@@ -962,7 +1123,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/menhirLib@opam:20250912@7bcb2f61": {
       "id": "@opam/menhirLib@opam:20250912@7bcb2f61",
@@ -988,7 +1154,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/menhirCST@opam:20250912@c495ddd4": {
       "id": "@opam/menhirCST@opam:20250912@c495ddd4",
@@ -1014,7 +1185,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/menhir@opam:20250912@0ed10637": {
       "id": "@opam/menhir@opam:20250912@0ed10637",
@@ -1045,7 +1221,12 @@
         "@opam/menhirCST@opam:20250912@c495ddd4",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/lsp@opam:1.23.1@22e2f8da": {
       "id": "@opam/lsp@opam:1.23.1@22e2f8da",
@@ -1078,7 +1259,12 @@
         "@opam/jsonrpc@opam:1.23.1@f2566740",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/jsonrpc@opam:1.23.1@f2566740": {
       "id": "@opam/jsonrpc@opam:1.23.1@f2566740",
@@ -1105,7 +1291,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/js_of_ocaml-compiler@opam:6.2.0@45dd83ba": {
       "id": "@opam/js_of_ocaml-compiler@opam:6.2.0@45dd83ba",
@@ -1146,7 +1337,12 @@
         "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/gen@opam:1.1@55327887": {
       "id": "@opam/gen@opam:1.1@55327887",
@@ -1173,7 +1369,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/seq@opam:base@5ed5af70",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/fpath@opam:0.7.3@d817a3b5": {
       "id": "@opam/fpath@opam:0.7.3@d817a3b5",
@@ -1202,7 +1403,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/astring@opam:0.8.5@9975798d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/fix@opam:20250919@2cb92ccc": {
       "id": "@opam/fix@opam:20250919@2cb92ccc",
@@ -1228,7 +1434,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/fiber@opam:3.7.0@bf633a34": {
       "id": "@opam/fiber@opam:3.7.0@bf633a34",
@@ -1256,7 +1467,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/stdune@opam:3.20.2@c89dc074",
         "@opam/dyn@opam:3.20.2@a43d3aee", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/either@opam:1.0.0@378fa7c4": {
       "id": "@opam/either@opam:1.0.0@378fa7c4",
@@ -1282,7 +1498,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/dyn@opam:3.20.2@a43d3aee": {
       "id": "@opam/dyn@opam:3.20.2@a43d3aee",
@@ -1311,7 +1532,12 @@
         "@opam/ordering@opam:3.20.2@6865c105",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/dune-rpc@opam:3.20.2@c55481ce": {
       "id": "@opam/dune-rpc@opam:3.20.2@c55481ce",
@@ -1346,7 +1572,12 @@
         "@opam/dyn@opam:3.20.2@a43d3aee", "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/csexp@opam:1.5.2@46614bf4"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/dune-configurator@opam:3.20.2@7eb6ff01": {
       "id": "@opam/dune-configurator@opam:3.20.2@7eb6ff01",
@@ -1376,7 +1607,12 @@
         "@opam/csexp@opam:1.5.2@46614bf4",
         "@opam/base-unix@opam:base@87d0b2eb"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/dune-build-info@opam:3.20.2@a53d0f1c": {
       "id": "@opam/dune-build-info@opam:3.20.2@a53d0f1c",
@@ -1402,7 +1638,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/dune@opam:3.20.2@8daef28d": {
       "id": "@opam/dune@opam:3.20.2@8daef28d",
@@ -1430,7 +1671,12 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/base-unix@opam:base@87d0b2eb",
         "@opam/base-threads@opam:base@36803084"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/csexp@opam:1.5.2@46614bf4": {
       "id": "@opam/csexp@opam:1.5.2@46614bf4",
@@ -1456,7 +1702,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/conf-cmake@github:grain-lang/cmake:esy.json#033cab656dc71a6488b3c1ca6ea45099f794bd03@d41d8cd9": {
       "id": "@opam/conf-cmake@github:grain-lang/cmake:esy.json#033cab656dc71a6488b3c1ca6ea45099f794bd03@d41d8cd9",
@@ -1470,7 +1721,13 @@
       },
       "overrides": [],
       "dependencies": [],
-      "devDependencies": []
+      "devDependencies": [],
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/cmdliner@opam:1.3.0@8e6dd99f": {
       "id": "@opam/cmdliner@opam:1.3.0@8e6dd99f",
@@ -1493,7 +1750,12 @@
         "ocaml@5.3.0@d41d8cd9", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/chrome-trace@opam:3.20.2@0904f6e5": {
       "id": "@opam/chrome-trace@opam:3.20.2@0904f6e5",
@@ -1519,7 +1781,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/camlp-streams@opam:5.0.1@8e96208c": {
       "id": "@opam/camlp-streams@opam:5.0.1@8e96208c",
@@ -1545,7 +1812,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/base-unix@opam:base@87d0b2eb": {
       "id": "@opam/base-unix@opam:base@87d0b2eb",
@@ -1563,7 +1835,12 @@
       "overrides": [],
       "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
       "devDependencies": [],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/base-threads@opam:base@36803084": {
       "id": "@opam/base-threads@opam:base@36803084",
@@ -1581,7 +1858,12 @@
       "overrides": [],
       "dependencies": [ "@esy-ocaml/substs@0.0.1@d41d8cd9" ],
       "devDependencies": [],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/base-bytes@opam:base@785dbd33": {
       "id": "@opam/base-bytes@opam:base@785dbd33",
@@ -1604,7 +1886,12 @@
       "devDependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5"
       ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/base@opam:v0.17.3@78923773": {
       "id": "@opam/base@opam:v0.17.3@78923773",
@@ -1635,7 +1922,12 @@
         "@opam/dune-configurator@opam:3.20.2@7eb6ff01",
         "@opam/dune@opam:3.20.2@8daef28d"
       ],
-      "available": "arch != \"arm32\" & arch != \"x86_32\""
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@opam/astring@opam:0.8.5@9975798d": {
       "id": "@opam/astring@opam:0.8.5@9975798d",
@@ -1661,7 +1953,12 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@5.3.0@d41d8cd9" ],
-      "available": "true"
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@grain/libbinaryen@119.0.0-b@d41d8cd9": {
       "id": "@grain/libbinaryen@119.0.0-b@d41d8cd9",
@@ -1681,7 +1978,13 @@
         "@opam/conf-cmake@github:grain-lang/cmake:esy.json#033cab656dc71a6488b3c1ca6ea45099f794bd03@d41d8cd9"
       ],
       "devDependencies": [],
-      "installConfig": { "pnp": false }
+      "installConfig": { "pnp": false },
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     },
     "@grain/binaryen.ml@link-dev:./package.json": {
       "id": "@grain/binaryen.ml@link-dev:./package.json",
@@ -1703,6 +2006,12 @@
         "@opam/ocamlformat@opam:0.27.0@c40d4612",
         "@opam/ocaml-lsp-server@opam:1.23.1@38cf22a2",
         "@opam/js_of_ocaml-compiler@opam:6.2.0@45dd83ba"
+      ],
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
       ]
     },
     "@esy-ocaml/substs@0.0.1@d41d8cd9": {
@@ -1717,7 +2026,14 @@
       },
       "overrides": [],
       "dependencies": [],
-      "devDependencies": []
+      "devDependencies": [],
+      "available": [
+        [ "darwin", "x86_64" ],
+        [ "darwin", "arm64" ],
+        [ "linux", "x86_64" ],
+        [ "windows", "x86_64" ]
+      ]
     }
-  }
+  },
+  "platformSpecific": {}
 }
