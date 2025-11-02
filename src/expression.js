@@ -403,8 +403,8 @@ function caml_binaryen_binary(wasm_mod, op, p1, p2) {
 }
 
 //Provides: caml_binaryen_select
-function caml_binaryen_select(wasm_mod, cond, if_true, if_false, typ) {
-  return wasm_mod.select(cond, if_true, if_false, typ);
+function caml_binaryen_select(wasm_mod, cond, if_true, if_false) {
+  return wasm_mod.select(cond, if_true, if_false);
 }
 
 //Provides: caml_binaryen_drop

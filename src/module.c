@@ -79,14 +79,6 @@ caml_binaryen_module_run_passes(value _module, value _passes) {
 }
 
 CAMLprim value
-caml_binaryen_module_auto_drop(value _module) {
-  CAMLparam1(_module);
-  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  BinaryenModuleAutoDrop(module);
-  CAMLreturn(Val_unit);
-}
-
-CAMLprim value
 caml_binaryen_module_write(value _module, value _sourceMapUrl) {
   CAMLparam2(_module, _sourceMapUrl);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
