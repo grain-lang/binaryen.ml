@@ -7,6 +7,8 @@ external add_function :
 
 external set_start : Module.t -> t -> unit = "caml_binaryen_set_start"
 
+external get_start : Module.t -> t = "caml_binaryen_get_start"
+
 external set_debug_location : t -> Expression.t -> int -> int -> int -> unit
   = "caml_binaryen_function_set_debug_location"
 
