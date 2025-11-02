@@ -1,5 +1,5 @@
 {
-  "checksum": "55b439676e74c57977482d2499504bd2",
+  "checksum": "155674e15af22e7cb1432c6d5b252eee",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -102,7 +102,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.0@fa72996d",
+        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
         "@opam/ocamlfind@opam:1.9.8@ee910ff5",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
@@ -135,7 +135,7 @@
       "overrides": [],
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/uutf@opam:1.0.4@ba7fbef7",
-        "@opam/uucp@opam:17.0.0@843de755", "@opam/topkg@opam:1.1.0@fa72996d",
+        "@opam/uucp@opam:17.0.0@843de755", "@opam/topkg@opam:1.1.1@2377d2f8",
         "@opam/ocamlfind@opam:1.9.8@ee910ff5",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
@@ -169,7 +169,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.0@fa72996d",
+        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
         "@opam/ocamlfind@opam:1.9.8@ee910ff5",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
@@ -183,20 +183,20 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/topkg@opam:1.1.0@fa72996d": {
-      "id": "@opam/topkg@opam:1.1.0@fa72996d",
+    "@opam/topkg@opam:1.1.1@2377d2f8": {
+      "id": "@opam/topkg@opam:1.1.1@2377d2f8",
       "name": "@opam/topkg",
-      "version": "opam:1.1.0",
+      "version": "opam:1.1.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha512/34/34d22ae5b6bd166dd4a601a7d12d89c336684b3c56d7c7f481b40837eab263616cc3a6e6f63602f3d4a7d53c911967bf261de6c1ac205341b98a9838e5ea7aeb#sha512:34d22ae5b6bd166dd4a601a7d12d89c336684b3c56d7c7f481b40837eab263616cc3a6e6f63602f3d4a7d53c911967bf261de6c1ac205341b98a9838e5ea7aeb",
-          "archive:https://erratique.ch/software/topkg/releases/topkg-1.1.0.tbz#sha512:34d22ae5b6bd166dd4a601a7d12d89c336684b3c56d7c7f481b40837eab263616cc3a6e6f63602f3d4a7d53c911967bf261de6c1ac205341b98a9838e5ea7aeb"
+          "archive:https://opam.ocaml.org/cache/sha512/c3/c36c549a362ddf5b7fe3f6ff91c79b7ab531c43633bb9737576370bcbd69db7e1625d247c278a869b503d45a175e9753231ccf595e5bfa4e3b7e2602ac3d3b42#sha512:c36c549a362ddf5b7fe3f6ff91c79b7ab531c43633bb9737576370bcbd69db7e1625d247c278a869b503d45a175e9753231ccf595e5bfa4e3b7e2602ac3d3b42",
+          "archive:https://erratique.ch/software/topkg/releases/topkg-1.1.1.tbz#sha512:c36c549a362ddf5b7fe3f6ff91c79b7ab531c43633bb9737576370bcbd69db7e1625d247c278a869b503d45a175e9753231ccf595e5bfa4e3b7e2602ac3d3b42"
         ],
         "opam": {
           "name": "topkg",
-          "version": "1.1.0",
-          "path": "esy.lock/opam/topkg.1.1.0"
+          "version": "1.1.1",
+          "path": "esy.lock/opam/topkg.1.1.1"
         }
       },
       "overrides": [],
@@ -1394,7 +1394,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.0@fa72996d",
+        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
         "@opam/ocamlfind@opam:1.9.8@ee910ff5",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/astring@opam:0.8.5@9975798d",
@@ -1947,7 +1947,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.0@fa72996d",
+        "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
         "@opam/ocamlfind@opam:1.9.8@ee910ff5",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
@@ -1960,14 +1960,14 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@grain/libbinaryen@122.0.0@d41d8cd9": {
-      "id": "@grain/libbinaryen@122.0.0@d41d8cd9",
+    "@grain/libbinaryen@123.0.1@d41d8cd9": {
+      "id": "@grain/libbinaryen@123.0.1@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "122.0.0",
+      "version": "123.0.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-122.0.0.tgz#sha1:63c01c799e798e88fbf86c60a5b4b151c062e635"
+          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-123.0.1.tgz#sha1:5d4c992f6761d67d7d297bb48f0f4093ab5328e4"
         ]
       },
       "overrides": [],
@@ -1999,7 +1999,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.20.2@7eb6ff01",
         "@opam/dune@opam:3.20.2@8daef28d",
-        "@grain/libbinaryen@122.0.0@d41d8cd9"
+        "@grain/libbinaryen@123.0.1@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.27.0@c40d4612",
