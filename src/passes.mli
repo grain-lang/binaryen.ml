@@ -13,7 +13,8 @@ val dae : t
 (** removes arguments to calls in an lto-like manner *)
 
 val dae_optimizing : t
-(** removes arguments to calls in an lto-like manner, and optimizes where we removed *)
+(** removes arguments to calls in an lto-like manner, and optimizes where we
+    removed *)
 
 val abstract_type_refining : t
 (** refine and merge abstract (never-created) types *)
@@ -76,7 +77,8 @@ val flatten : t
 (** flattens out code, removing nesting *)
 
 val fpcast_emu : t
-(** emulates function pointer casts, allowing incorrect indirect calls to (sometimes) work *)
+(** emulates function pointer casts, allowing incorrect indirect calls to
+    (sometimes) work *)
 
 val func_metrics : t
 (** reports function metrics *)
@@ -85,7 +87,9 @@ val generate_dyncalls : t
 (** generate dynCall fuctions used by emscripten ABI *)
 
 val generate_i64_dyncalls : t
-(** generate dynCall functions used by emscripten ABI, but only for functions with i64 in their signature (which cannot be invoked via the wasm table without JavaScript BigInt support). *)
+(** generate dynCall functions used by emscripten ABI, but only for functions
+    with i64 in their signature (which cannot be invoked via the wasm table
+    without JavaScript BigInt support). *)
 
 val generate_global_effects : t
 (** generate global effect info (helps later passes) *)
@@ -103,7 +107,8 @@ val gto : t
 (** globally optimize GC types *)
 
 val gufa : t
-(** Grand Unified Flow Analysis: optimize the entire program using information about what content can actually appear in each location *)
+(** Grand Unified Flow Analysis: optimize the entire program using information
+    about what content can actually appear in each location *)
 
 val gufa_optimizing : t
 (** GUFA plus local optimizations in functions we modified *)
@@ -133,7 +138,8 @@ val legalize_js_interface : t
 (** legalizes i64 types on the import/export boundary *)
 
 val legalize_js_interface_minimally : t
-(** legalizes i64 types on the import/export boundary in a minimal manner, only on things only JS will call *)
+(** legalizes i64 types on the import/export boundary in a minimal manner, only
+    on things only JS will call *)
 
 val local_cse : t
 (** common subexpression elimination inside basic blocks *)
@@ -178,16 +184,20 @@ val metrics : t
 (** reports metrics *)
 
 val minify_imports : t
-(** minifies import names (only those, and not export names), and emits a mapping to the minified ones *)
+(** minifies import names (only those, and not export names), and emits a
+    mapping to the minified ones *)
 
 val minify_imports_and_exports : t
-(** minifies both import and export names, and emits a mapping to the minified ones *)
+(** minifies both import and export names, and emits a mapping to the minified
+    ones *)
 
 val minify_imports_and_exports_and_modules : t
-(** minifies both import and export names, and emits a mapping to the minified ones, and minifies the modules as well *)
+(** minifies both import and export names, and emits a mapping to the minified
+    ones, and minifies the modules as well *)
 
 val mod_asyncify_always_and_only_unwind : t
-(** apply the assumption that asyncify imports always unwind, and we never rewind *)
+(** apply the assumption that asyncify imports always unwind, and we never
+    rewind *)
 
 val mod_asyncify_never_unwind : t
 (** apply the assumption that asyncify never unwinds *)
@@ -202,7 +212,8 @@ val multi_memory_lowering : t
 (** combines multiple memories into a single memory *)
 
 val multi_memory_lowering_with_bounds_checks : t
-(** combines multiple memories into a single memory, trapping if the read or write is larger than the length of the memory's data *)
+(** combines multiple memories into a single memory, trapping if the read or
+    write is larger than the length of the memory's data *)
 
 val nm : t
 (** name list *)
@@ -217,7 +228,8 @@ val optimize_added_constants : t
 (** optimizes added constants into load/store offsets *)
 
 val optimize_added_constants_propagate : t
-(** optimizes added constants into load/store offsets, propagating them across locals too *)
+(** optimizes added constants into load/store offsets, propagating them across
+    locals too *)
 
 val optimize_casts : t
 (** eliminate and reuse casts *)
@@ -244,7 +256,8 @@ val precompute : t
 (** computes compile-time evaluatable expressions *)
 
 val precompute_propagate : t
-(** computes compile-time evaluatable expressions and propagates them through locals *)
+(** computes compile-time evaluatable expressions and propagates them through
+    locals *)
 
 val print : t
 (** print in s-expression format *)
@@ -334,13 +347,15 @@ val simplify_globals : t
 (** miscellaneous globals-related optimizations *)
 
 val simplify_globals_optimizing : t
-(** miscellaneous globals-related optimizations, and optimizes where we replaced global.gets with constants *)
+(** miscellaneous globals-related optimizations, and optimizes where we replaced
+    global.gets with constants *)
 
 val simplify_locals : t
 (** miscellaneous locals-related optimizations *)
 
 val simplify_locals_nonesting : t
-(** miscellaneous locals-related optimizations (no nesting at all; preserves flatness) *)
+(** miscellaneous locals-related optimizations (no nesting at all; preserves
+    flatness) *)
 
 val simplify_locals_notee : t
 (** miscellaneous locals-related optimizations (no tees) *)

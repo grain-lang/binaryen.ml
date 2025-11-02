@@ -16,7 +16,8 @@ external set_memory :
 type segment = { name : string; data : bytes; kind : segment_kind; size : int }
 and segment_kind = Passive | Active of { offset : Expression.t }
 
-(** Module, initial size, maximum size, export name, segments, shared, memory64, moduleName . *)
+(** Module, initial size, maximum size, export name, segments, shared, memory64,
+    moduleName . *)
 let set_memory wasm_mod initial maximum export_name (segments : segment list)
     shared memory64 moduleName =
   let split_segments segments =
