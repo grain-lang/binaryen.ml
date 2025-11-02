@@ -83,3 +83,9 @@ jobs:
       - name: Run tests
         run: |
           esy test
+
+      # Check formatting
+      - name: Check format
+        run: |
+          esy format
+          git diff --exit-code --name-only
