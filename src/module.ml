@@ -14,10 +14,6 @@ module Feature = struct
 
   let atomics = atomics ()
 
-  external bulk_memory : unit -> t = "caml_binaryen_feature_bulk_memory"
-
-  let bulk_memory = bulk_memory ()
-
   external mutable_globals : unit -> t = "caml_binaryen_feature_mutable_globals"
 
   let mutable_globals = mutable_globals ()
@@ -27,13 +23,17 @@ module Feature = struct
 
   let nontrapping_fp_to_int = nontrapping_fp_to_int ()
 
-  external sign_ext : unit -> t = "caml_binaryen_feature_sign_ext"
-
-  let sign_ext = sign_ext ()
-
   external simd128 : unit -> t = "caml_binaryen_feature_simd128"
 
   let simd128 = simd128 ()
+
+  external bulk_memory : unit -> t = "caml_binaryen_feature_bulk_memory"
+
+  let bulk_memory = bulk_memory ()
+
+  external sign_ext : unit -> t = "caml_binaryen_feature_sign_ext"
+
+  let sign_ext = sign_ext ()
 
   external exception_handling : unit -> t
     = "caml_binaryen_feature_exception_handling"
@@ -75,6 +75,28 @@ module Feature = struct
   external multi_memory : unit -> t = "caml_binaryen_feature_multi_memory"
 
   let multi_memory = multi_memory ()
+
+  external stack_switching : unit -> t = "caml_binaryen_feature_stack_switching"
+
+  let stack_switching = stack_switching ()
+
+  external shared_everything : unit -> t
+    = "caml_binaryen_feature_shared_everything"
+
+  let shared_everything = shared_everything ()
+
+  external fp16 : unit -> t = "caml_binaryen_feature_fp16"
+
+  let fp16 = fp16 ()
+
+  external bulk_memory_opt : unit -> t = "caml_binaryen_feature_bulk_memory_opt"
+
+  let bulk_memory_opt = bulk_memory_opt ()
+
+  external call_indirect_overlong : unit -> t
+    = "caml_binaryen_feature_call_indirect_overlong"
+
+  let call_indirect_overlong = call_indirect_overlong ()
 
   external all : unit -> t = "caml_binaryen_feature_all"
 

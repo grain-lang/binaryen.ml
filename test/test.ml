@@ -107,7 +107,7 @@ let start =
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
-let funcref_expr1 = Expression.Ref.func wasm_mod "adder" Type.funcref
+let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
 
 let _ =
   Expression.Table.set wasm_mod "table"
@@ -258,11 +258,11 @@ let _ =
     [
       Module.Feature.mvp;
       Module.Feature.atomics;
-      Module.Feature.bulk_memory;
       Module.Feature.mutable_globals;
       Module.Feature.nontrapping_fp_to_int;
-      Module.Feature.sign_ext;
       Module.Feature.simd128;
+      Module.Feature.bulk_memory;
+      Module.Feature.sign_ext;
       Module.Feature.exception_handling;
       Module.Feature.tail_call;
       Module.Feature.reference_types;
@@ -273,6 +273,11 @@ let _ =
       Module.Feature.extended_const;
       Module.Feature.strings;
       Module.Feature.multi_memory;
+      Module.Feature.stack_switching;
+      Module.Feature.shared_everything;
+      Module.Feature.fp16;
+      Module.Feature.bulk_memory_opt;
+      Module.Feature.call_indirect_overlong;
       Module.Feature.all;
     ]
 

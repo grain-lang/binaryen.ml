@@ -343,7 +343,7 @@ module Ref : sig
   val as_ : Module.t -> Op.t -> t -> t
   (** Module, op, value *)
 
-  val func : Module.t -> string -> Type.t -> t
+  val func : Module.t -> string -> Heap_type.t -> t
   (** Module, func, type *)
 
   val eq : Module.t -> t -> t -> t

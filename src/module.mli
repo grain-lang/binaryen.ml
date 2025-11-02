@@ -5,11 +5,11 @@ module Feature : sig
 
   val mvp : t
   val atomics : t
-  val bulk_memory : t
   val mutable_globals : t
   val nontrapping_fp_to_int : t
-  val sign_ext : t
   val simd128 : t
+  val bulk_memory : t
+  val sign_ext : t
   val exception_handling : t
   val tail_call : t
   val reference_types : t
@@ -20,6 +20,11 @@ module Feature : sig
   val extended_const : t
   val strings : t
   val multi_memory : t
+  val stack_switching : t
+  val shared_everything : t
+  val fp16 : t
+  val bulk_memory_opt : t
+  val call_indirect_overlong : t
   val all : t
 end
 
