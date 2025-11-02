@@ -86,6 +86,7 @@ jobs:
 
       # Check formatting
       - name: Check format
+        if: inputs.os == 'ubuntu-latest'
         run: |
           esy format
           git diff --exit-code --name-only

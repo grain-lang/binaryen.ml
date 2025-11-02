@@ -480,7 +480,8 @@ end
 module Switch = struct
   external make : Module.t -> string list -> string -> t -> t -> t
     = "caml_binaryen_switch"
-  (** Module, branch names, default branch name, condition, value. Value may be null. *)
+  (** Module, branch names, default branch name, condition, value. Value may be
+      null. *)
 
   external get_num_names : t -> int = "caml_binaryen_switch_get_num_names"
   external get_name_at : t -> int -> string = "caml_binaryen_switch_get_name_at"
@@ -544,7 +545,8 @@ module Call_indirect = struct
 
   external make_return :
     Module.t -> string -> t -> t list -> Type.t -> Type.t -> t
-    = "caml_binaryen_return_call_indirect__bytecode" "caml_binaryen_return_call_indirect"
+    = "caml_binaryen_return_call_indirect__bytecode"
+      "caml_binaryen_return_call_indirect"
   (** Module, table, function value, params, params type, return type. *)
 
   external get_target : t -> t = "caml_binaryen_call_indirect_get_target"
@@ -705,10 +707,13 @@ end
 module Memory_init = struct
   external make : Module.t -> string -> t -> t -> t -> string -> t
     = "caml_binaryen_memory_init__bytecode" "caml_binaryen_memory_init"
-  (** Module, segment, destination, offset, size, memory_name *)
+
   external get_segment : t -> string = "caml_binaryen_memory_init_get_segment"
+  (** Module, segment, destination, offset, size, memory_name *)
+
   external set_segment : t -> string -> unit
     = "caml_binaryen_memory_init_set_segment"
+
   external get_dest : t -> t = "caml_binaryen_memory_init_get_dest"
   external set_dest : t -> t -> unit = "caml_binaryen_memory_init_set_dest"
   external get_offset : t -> t = "caml_binaryen_memory_init_get_offset"
@@ -719,8 +724,10 @@ end
 
 module Data_drop = struct
   external make : Module.t -> string -> t = "caml_binaryen_data_drop"
-  (** Module, segment. *)
+
   external get_segment : t -> string = "caml_binaryen_data_drop_get_segment"
+  (** Module, segment. *)
+
   external set_segment : t -> string -> unit
     = "caml_binaryen_data_drop_set_segment"
 end

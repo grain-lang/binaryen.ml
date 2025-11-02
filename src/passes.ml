@@ -12,7 +12,8 @@ let avoid_reinterprets = "avoid-reinterprets"
 (** removes arguments to calls in an lto-like manner *)
 let dae = "dae"
 
-(** removes arguments to calls in an lto-like manner, and optimizes where we removed *)
+(** removes arguments to calls in an lto-like manner, and optimizes where we
+    removed *)
 let dae_optimizing = "dae-optimizing"
 
 (** refine and merge abstract (never-created) types *)
@@ -75,7 +76,8 @@ let extract_function_index = "extract-function-index"
 (** flattens out code, removing nesting *)
 let flatten = "flatten"
 
-(** emulates function pointer casts, allowing incorrect indirect calls to (sometimes) work *)
+(** emulates function pointer casts, allowing incorrect indirect calls to
+    (sometimes) work *)
 let fpcast_emu = "fpcast-emu"
 
 (** reports function metrics *)
@@ -84,7 +86,9 @@ let func_metrics = "func-metrics"
 (** generate dynCall fuctions used by emscripten ABI *)
 let generate_dyncalls = "generate-dyncalls"
 
-(** generate dynCall functions used by emscripten ABI, but only for functions with i64 in their signature (which cannot be invoked via the wasm table without JavaScript BigInt support). *)
+(** generate dynCall functions used by emscripten ABI, but only for functions
+    with i64 in their signature (which cannot be invoked via the wasm table
+    without JavaScript BigInt support). *)
 let generate_i64_dyncalls = "generate-i64-dyncalls"
 
 (** generate global effect info (helps later passes) *)
@@ -102,7 +106,8 @@ let gsi = "gsi"
 (** globally optimize GC types *)
 let gto = "gto"
 
-(** Grand Unified Flow Analysis: optimize the entire program using information about what content can actually appear in each location *)
+(** Grand Unified Flow Analysis: optimize the entire program using information
+    about what content can actually appear in each location *)
 let gufa = "gufa"
 
 (** GUFA plus local optimizations in functions we modified *)
@@ -132,7 +137,8 @@ let jspi = "jspi"
 (** legalizes i64 types on the import/export boundary *)
 let legalize_js_interface = "legalize-js-interface"
 
-(** legalizes i64 types on the import/export boundary in a minimal manner, only on things only JS will call *)
+(** legalizes i64 types on the import/export boundary in a minimal manner, only
+    on things only JS will call *)
 let legalize_js_interface_minimally = "legalize-js-interface-minimally"
 
 (** common subexpression elimination inside basic blocks *)
@@ -177,17 +183,21 @@ let merge_locals = "merge-locals"
 (** reports metrics *)
 let metrics = "metrics"
 
-(** minifies import names (only those, and not export names), and emits a mapping to the minified ones *)
+(** minifies import names (only those, and not export names), and emits a
+    mapping to the minified ones *)
 let minify_imports = "minify-imports"
 
-(** minifies both import and export names, and emits a mapping to the minified ones *)
+(** minifies both import and export names, and emits a mapping to the minified
+    ones *)
 let minify_imports_and_exports = "minify-imports-and-exports"
 
-(** minifies both import and export names, and emits a mapping to the minified ones, and minifies the modules as well *)
+(** minifies both import and export names, and emits a mapping to the minified
+    ones, and minifies the modules as well *)
 let minify_imports_and_exports_and_modules =
   "minify-imports-and-exports-and-modules"
 
-(** apply the assumption that asyncify imports always unwind, and we never rewind *)
+(** apply the assumption that asyncify imports always unwind, and we never
+    rewind *)
 let mod_asyncify_always_and_only_unwind = "mod-asyncify-always-and-only-unwind"
 
 (** apply the assumption that asyncify never unwinds *)
@@ -202,7 +212,8 @@ let monomorphize_always = "monomorphize-always"
 (** combines multiple memories into a single memory *)
 let multi_memory_lowering = "multi-memory-lowering"
 
-(** combines multiple memories into a single memory, trapping if the read or write is larger than the length of the memory's data *)
+(** combines multiple memories into a single memory, trapping if the read or
+    write is larger than the length of the memory's data *)
 let multi_memory_lowering_with_bounds_checks =
   "multi-memory-lowering-with-bounds-checks"
 
@@ -218,7 +229,8 @@ let once_reduction = "once-reduction"
 (** optimizes added constants into load/store offsets *)
 let optimize_added_constants = "optimize-added-constants"
 
-(** optimizes added constants into load/store offsets, propagating them across locals too *)
+(** optimizes added constants into load/store offsets, propagating them across
+    locals too *)
 let optimize_added_constants_propagate = "optimize-added-constants-propagate"
 
 (** eliminate and reuse casts *)
@@ -245,7 +257,8 @@ let optimize_for_js = "optimize-for-js"
 (** computes compile-time evaluatable expressions *)
 let precompute = "precompute"
 
-(** computes compile-time evaluatable expressions and propagates them through locals *)
+(** computes compile-time evaluatable expressions and propagates them through
+    locals *)
 let precompute_propagate = "precompute-propagate"
 
 (** print in s-expression format *)
@@ -330,19 +343,22 @@ let signature_pruning = "signature-pruning"
 (** apply more specific subtypes to signature types where possible *)
 let signature_refining = "signature-refining"
 
-(** lower sign-ext operations to wasm mvp and disable the sign extension feature *)
+(** lower sign-ext operations to wasm mvp and disable the sign extension feature
+*)
 let signext_lowering = "signext-lowering"
 
 (** miscellaneous globals-related optimizations *)
 let simplify_globals = "simplify-globals"
 
-(** miscellaneous globals-related optimizations, and optimizes where we replaced global.gets with constants *)
+(** miscellaneous globals-related optimizations, and optimizes where we replaced
+    global.gets with constants *)
 let simplify_globals_optimizing = "simplify-globals-optimizing"
 
 (** miscellaneous locals-related optimizations *)
 let simplify_locals = "simplify-locals"
 
-(** miscellaneous locals-related optimizations (no nesting at all; preserves flatness) *)
+(** miscellaneous locals-related optimizations (no nesting at all; preserves
+    flatness) *)
 let simplify_locals_nonesting = "simplify-locals-nonesting"
 
 (** miscellaneous locals-related optimizations (no tees) *)
