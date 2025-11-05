@@ -53,6 +53,36 @@ caml_binaryen_set_debug_info(value _on) {
 }
 
 CAMLprim value
+caml_binaryen_get_traps_never_happen(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetTrapsNeverHappen();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_traps_never_happen(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetTrapsNeverHappen(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_closed_world(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetClosedWorld();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_closed_world(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetClosedWorld(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
 caml_binaryen_get_low_memory_unused(value unit) {
   CAMLparam1(unit);
   bool res = BinaryenGetLowMemoryUnused();
@@ -64,6 +94,66 @@ caml_binaryen_set_low_memory_unused(value _on) {
   CAMLparam1(_on);
   bool on = Bool_val(_on);
   BinaryenSetLowMemoryUnused(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_zero_filled_memory(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetZeroFilledMemory();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_zero_filled_memory(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetZeroFilledMemory(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_fast_math(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetFastMath();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_fast_math(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetFastMath(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_generate_stack_ir(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetGenerateStackIR();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_generate_stack_ir(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetGenerateStackIR(on);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_optimize_stack_ir(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetOptimizeStackIR();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_optimize_stack_ir(value _on) {
+  CAMLparam1(_on);
+  bool on = Bool_val(_on);
+  BinaryenSetOptimizeStackIR(on);
   CAMLreturn(Val_unit);
 }
 
@@ -130,6 +220,21 @@ caml_binaryen_set_one_caller_inline_max_size(value _size) {
   CAMLparam1(_size);
   int size = Int_val(_size);
   BinaryenSetOneCallerInlineMaxSize(size);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_get_allow_inlining_functions_with_loops(value unit) {
+  CAMLparam1(unit);
+  bool res = BinaryenGetAllowInliningFunctionsWithLoops();
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_set_allow_inlining_functions_with_loops(value _size) {
+  CAMLparam1(_size);
+  int on = Bool_val(_size);
+  BinaryenSetAllowInliningFunctionsWithLoops(on);
   CAMLreturn(Val_unit);
 }
 
