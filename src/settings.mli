@@ -20,6 +20,10 @@ val get_optimize_stack_ir : unit -> bool
 val set_optimize_stack_ir : bool -> unit
 val get_pass_argument : string -> string option
 val set_pass_argument : string -> string -> unit
+val clear_pass_arguments : unit -> unit
+val has_pass_to_skip : string -> bool
+val add_pass_to_skip : string -> unit
+val clear_passes_to_skip : unit -> unit
 val get_always_inline_max_size : unit -> int
 val set_always_inline_max_size : int -> unit
 val get_flexible_inline_max_size : unit -> int

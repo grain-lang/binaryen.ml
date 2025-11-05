@@ -54,6 +54,23 @@ let _ = Settings.set_optimize_stack_ir true
 let _ = assert (Settings.get_optimize_stack_ir () == true)
 let _ = Settings.set_optimize_stack_ir false
 
+(* Testing pass_argument *)
+let _ = Settings.set_pass_argument "theKey" "theValue"
+let _ = Settings.get_pass_argument "theKey" = "theValue"
+let _ = Settings.set_pass_argument "theKey" "theValue2"
+let _ = Settings.get_pass_argument "theKey" = "theValue2"
+
+let _ =
+  Settings.clear_pass_arguments
+    () (* Note: there is no way to test this currently *)
+
+(* Testing skip_pass *)
+let _ = assert (Settings.has_pass_to_skip "thePass" == false)
+let _ = Settings.add_pass_to_skip "thePass"
+let _ = assert (Settings.has_pass_to_skip "thePass" == true)
+let _ = Settings.clear_passes_to_skip ()
+let _ = assert (Settings.has_pass_to_skip "thePass" == false)
+
 (* Testing allow_inlining_functions_with_loops enable *)
 let _ = assert (Settings.get_allow_inlining_functions_with_loops () == false)
 let _ = Settings.set_allow_inlining_functions_with_loops true

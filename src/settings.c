@@ -179,6 +179,36 @@ caml_binaryen_set_pass_argument(value _name, value _val) {
 }
 
 CAMLprim value
+caml_binaryen_clear_pass_arguments(value unit) {
+  CAMLparam1(unit);
+  BinaryenClearPassArguments();
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_has_pass_to_skip(value _pass) {
+  CAMLparam1(_pass);
+  const char* pass = Safe_String_val(_pass);
+  bool res = BinaryenHasPassToSkip(pass);
+  CAMLreturn(Val_bool(res));
+}
+
+CAMLprim value
+caml_binaryen_add_pass_to_skip(value _pass) {
+  CAMLparam1(_pass);
+  const char* pass = Safe_String_val(_pass);
+  BinaryenAddPassToSkip(pass);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
+caml_binaryen_clear_passes_to_skip(value unit) {
+  CAMLparam1(unit);
+  BinaryenClearPassesToSkip();
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value
 caml_binaryen_get_always_inline_max_size(value unit) {
   CAMLparam1(unit);
   int res = BinaryenGetAlwaysInlineMaxSize();

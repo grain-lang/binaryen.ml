@@ -47,6 +47,15 @@ external get_pass_argument : string -> string option
 external set_pass_argument : string -> string -> unit
   = "caml_binaryen_set_pass_argument"
 
+external clear_pass_arguments : unit -> unit
+  = "caml_binaryen_clear_pass_arguments"
+
+external has_pass_to_skip : string -> bool = "caml_binaryen_has_pass_to_skip"
+external add_pass_to_skip : string -> unit = "caml_binaryen_add_pass_to_skip"
+
+external clear_passes_to_skip : unit -> unit
+  = "caml_binaryen_clear_passes_to_skip"
+
 external get_always_inline_max_size : unit -> int
   = "caml_binaryen_get_always_inline_max_size"
 

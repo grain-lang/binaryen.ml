@@ -154,6 +154,36 @@ function caml_binaryen_set_pass_argument(name, value) {
   );
 }
 
+//Provides: caml_binaryen_clear_pass_arguments
+//Requires: Binaryen
+function caml_binaryen_clear_pass_arguments() {
+  return Binaryen.clearPassArguments();
+}
+
+//Provides: caml_binaryen_has_pass_to_skip
+//Requires: Binaryen
+//Requires: caml_jsstring_of_string
+function caml_binaryen_has_pass_to_skip(pass) {
+  return Binaryen.hasPassToSkip(
+    caml_jsstring_of_string(pass)
+  );
+}
+
+//Provides: caml_binaryen_add_pass_to_skip
+//Requires: Binaryen
+//Requires: caml_jsstring_of_string
+function caml_binaryen_add_pass_to_skip(pass) {
+  return Binaryen.addPassToSkip(
+    caml_jsstring_of_string(pass)
+  );
+}
+
+//Provides: caml_binaryen_clear_passes_to_skip
+//Requires: Binaryen
+function caml_binaryen_clear_passes_to_skip(pass) {
+  return Binaryen.clearPassesToSkip();
+}
+
 //Provides: caml_binaryen_get_always_inline_max_size
 //Requires: Binaryen
 function caml_binaryen_get_always_inline_max_size() {
