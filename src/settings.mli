@@ -6,7 +6,7 @@ val get_debug_info : unit -> bool
 val set_debug_info : bool -> unit
 val get_low_memory_unused : unit -> bool
 val set_low_memory_unused : bool -> unit
-val get_pass_argument : string -> string
+val get_pass_argument : string -> string option
 val set_pass_argument : string -> string -> unit
 val get_always_inline_max_size : unit -> int
 val set_always_inline_max_size : int -> unit

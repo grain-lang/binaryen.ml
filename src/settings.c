@@ -72,7 +72,11 @@ caml_binaryen_get_pass_argument(value _name) {
   CAMLparam1(_name);
   const char* name = Safe_String_val(_name);
   const char* val = BinaryenGetPassArgument(name);
-  CAMLreturn(caml_copy_string(val));
+  if (val == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(val)));
+  }
 }
 
 CAMLprim value
