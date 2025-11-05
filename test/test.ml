@@ -55,14 +55,11 @@ let _ = assert (Settings.get_optimize_stack_ir () == true)
 let _ = Settings.set_optimize_stack_ir false
 
 (* Testing pass_argument *)
+let _ = assert (Settings.get_pass_argument "theKey" = None)
 let _ = Settings.set_pass_argument "theKey" "theValue"
-let _ = Settings.get_pass_argument "theKey" = "theValue"
-let _ = Settings.set_pass_argument "theKey" "theValue2"
-let _ = Settings.get_pass_argument "theKey" = "theValue2"
-
-let _ =
-  Settings.clear_pass_arguments
-    () (* Note: there is no way to test this currently *)
+let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue")
+let _ = Settings.clear_pass_arguments ()
+let _ = assert (Settings.get_pass_argument "theKey" = None)
 
 (* Testing skip_pass *)
 let _ = assert (Settings.has_pass_to_skip "thePass" == false)
