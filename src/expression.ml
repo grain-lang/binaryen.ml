@@ -664,8 +664,7 @@ module Binary = struct
 end
 
 module Select = struct
-  external make : Module.t -> t -> t -> t -> t
-    = "caml_binaryen_select"
+  external make : Module.t -> t -> t -> t -> t = "caml_binaryen_select"
 
   (** Module, condition, true branch, false branch. *)
   let make wasm_mod cond tru fals = make wasm_mod cond tru fals
