@@ -38,6 +38,7 @@ jobs:
 
       - name: Install local dependencies
         run: |
+          opam repo add ospencer https://github.com/ospencer/opam-repository.git
           opam install . --deps-only --with-test
 
       - name: Build project
