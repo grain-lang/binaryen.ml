@@ -21,6 +21,13 @@ let wasm_mod = Module.create ()
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 let import_wasm_mod = Module.create ()
 
+(* Testing pass_argument *)
+let _ = assert (Settings.get_pass_argument "theKey" = None)
+let _ = Settings.set_pass_argument "theKey" "theValue"
+let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue")
+let _ = Settings.set_pass_argument "theKey" "theValue2"
+let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue2")
+
 let _ =
   Import.add_memory_import import_wasm_mod "internal_name" "external_name"
     "external_base_name" true

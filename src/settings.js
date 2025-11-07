@@ -53,8 +53,11 @@ function caml_binaryen_set_low_memory_unused(on) {
 //Provides: caml_binaryen_get_pass_argument
 //Requires: Binaryen
 //Requires: caml_jsstring_of_string
+//Requires: to_option
 function caml_binaryen_get_pass_argument(name) {
-  return Binaryen.getPassArgument(caml_jsstring_of_string(name));
+  var val = Binaryen.getPassArgument(caml_jsstring_of_string(name));
+  var str = name != null ? val : null;
+  return to_option(str);
 }
 
 //Provides: caml_binaryen_set_pass_argument

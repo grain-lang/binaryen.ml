@@ -11,7 +11,7 @@ external get_low_memory_unused : unit -> bool
 external set_low_memory_unused : bool -> unit
   = "caml_binaryen_set_low_memory_unused"
 
-external get_pass_argument : string -> string
+external get_pass_argument : string -> string option
   = "caml_binaryen_get_pass_argument"
 
 external set_pass_argument : string -> string -> unit
