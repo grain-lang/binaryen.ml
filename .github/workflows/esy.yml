@@ -1,7 +1,8 @@
 name: Esy
 on:
-  - push
-  - pull_request
+  push:
+    branches: [main]
+  pull_request:
 
 # This will cancel previous runs when a branch or PR is updated
 concurrency:
