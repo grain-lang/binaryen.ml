@@ -4,15 +4,33 @@ val get_shrink_level : unit -> int
 val set_shrink_level : int -> unit
 val get_debug_info : unit -> bool
 val set_debug_info : bool -> unit
+val get_traps_never_happen : unit -> bool
+val set_traps_never_happen : bool -> unit
+val get_closed_world : unit -> bool
+val set_closed_world : bool -> unit
 val get_low_memory_unused : unit -> bool
 val set_low_memory_unused : bool -> unit
+val get_zero_filled_memory : unit -> bool
+val set_zero_filled_memory : bool -> unit
+val get_fast_math : unit -> bool
+val set_fast_math : bool -> unit
+val get_generate_stack_ir : unit -> bool
+val set_generate_stack_ir : bool -> unit
+val get_optimize_stack_ir : unit -> bool
+val set_optimize_stack_ir : bool -> unit
 val get_pass_argument : string -> string option
 val set_pass_argument : string -> string -> unit
+val clear_pass_arguments : unit -> unit
+val has_pass_to_skip : string -> bool
+val add_pass_to_skip : string -> unit
+val clear_passes_to_skip : unit -> unit
 val get_always_inline_max_size : unit -> int
 val set_always_inline_max_size : int -> unit
 val get_flexible_inline_max_size : unit -> int
 val set_flexible_inline_max_size : int -> unit
 val get_one_caller_inline_max_size : unit -> int
 val set_one_caller_inline_max_size : int -> unit
+val get_allow_inlining_functions_with_loops : unit -> bool
+val set_allow_inlining_functions_with_loops : bool -> unit
 val set_colors_enabled : bool -> unit
 val are_colors_enabled : unit -> bool

@@ -12,11 +12,67 @@ let _ = Settings.set_debug_info true
 let _ = assert (Settings.get_debug_info () == true)
 let _ = Settings.set_debug_info false
 
+(* Testing traps_never_happen enable *)
+let _ = assert (Settings.get_traps_never_happen () == false)
+let _ = Settings.set_traps_never_happen true
+let _ = assert (Settings.get_traps_never_happen () == true)
+let _ = Settings.set_traps_never_happen false
+
+(* Testing closed_world enable *)
+let _ = assert (Settings.get_closed_world () == false)
+let _ = Settings.set_closed_world true
+let _ = assert (Settings.get_closed_world () == true)
+let _ = Settings.set_closed_world false
+
 (* Testing low_memory_unused enable *)
 let _ = assert (Settings.get_low_memory_unused () == false)
 let _ = Settings.set_low_memory_unused true
 let _ = assert (Settings.get_low_memory_unused () == true)
 let _ = Settings.set_low_memory_unused false
+
+(* Testing zero_filled_memory enable *)
+let _ = assert (Settings.get_zero_filled_memory () == false)
+let _ = Settings.set_zero_filled_memory true
+let _ = assert (Settings.get_zero_filled_memory () == true)
+let _ = Settings.set_zero_filled_memory false
+
+(* Testing fast_math enable *)
+let _ = assert (Settings.get_fast_math () == false)
+let _ = Settings.set_fast_math true
+let _ = assert (Settings.get_fast_math () == true)
+let _ = Settings.set_fast_math false
+
+(* Testing generate_stack_ir enable *)
+let _ = assert (Settings.get_generate_stack_ir () == false)
+let _ = Settings.set_generate_stack_ir true
+let _ = assert (Settings.get_generate_stack_ir () == true)
+let _ = Settings.set_generate_stack_ir false
+
+(* Testing optimize_stack_ir enable *)
+let _ = assert (Settings.get_optimize_stack_ir () == false)
+let _ = Settings.set_optimize_stack_ir true
+let _ = assert (Settings.get_optimize_stack_ir () == true)
+let _ = Settings.set_optimize_stack_ir false
+
+(* Testing pass_argument *)
+let _ = assert (Settings.get_pass_argument "theKey" = None)
+let _ = Settings.set_pass_argument "theKey" "theValue"
+let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue")
+let _ = Settings.clear_pass_arguments ()
+let _ = assert (Settings.get_pass_argument "theKey" = None)
+
+(* Testing skip_pass *)
+let _ = assert (Settings.has_pass_to_skip "thePass" == false)
+let _ = Settings.add_pass_to_skip "thePass"
+let _ = assert (Settings.has_pass_to_skip "thePass" == true)
+let _ = Settings.clear_passes_to_skip ()
+let _ = assert (Settings.has_pass_to_skip "thePass" == false)
+
+(* Testing allow_inlining_functions_with_loops enable *)
+let _ = assert (Settings.get_allow_inlining_functions_with_loops () == false)
+let _ = Settings.set_allow_inlining_functions_with_loops true
+let _ = assert (Settings.get_allow_inlining_functions_with_loops () == true)
+let _ = Settings.set_allow_inlining_functions_with_loops false
 let wasm_mod = Module.create ()
 let _ = Module.set_features wasm_mod [ Module.Feature.all ]
 let import_wasm_mod = Module.create ()
