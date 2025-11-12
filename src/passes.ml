@@ -37,11 +37,17 @@ let const_hoisting = "const-hoisting"
 (** propagate constant struct field values *)
 let cfp = "cfp"
 
+(** propagate constant struct field values, using ref.test *)
+let cfp_reftest = "cfp-reftest"
+
 (** removes unreachable code *)
 let dce = "dce"
 
 (** forces all loads and stores to have alignment 1 *)
 let dealign = "dealign"
+
+(** propagate debug location from parents or previous siblings to child nodes *)
+let propagate_debug_locs = "propagate-debug-locs"
 
 (** instrument the wasm to convert NaNs into 0 at runtime *)
 let denan = "denan"
@@ -66,6 +72,9 @@ let duplicate_function_elimination = "duplicate-function-elimination"
 
 (** emit the target features section in the output *)
 let emit_target_features = "emit-target-features"
+
+(** modify the wasm (destructively) for closed-world *)
+let enclose_world = "enclose-world"
 
 (** leaves just one function (useful for debugging) *)
 let extract_function = "extract-function"
@@ -94,9 +103,6 @@ let generate_i64_dyncalls = "generate-i64-dyncalls"
 (** generate global effect info (helps later passes) *)
 let generate_global_effects = "generate-global-effects"
 
-(** generate Stack IR *)
-let generate_stack_ir = "generate-stack-ir"
-
 (** refine the types of globals *)
 let global_refining = "global-refining"
 
@@ -110,14 +116,29 @@ let gto = "gto"
     about what content can actually appear in each location *)
 let gufa = "gufa"
 
+(** GUFA plus add casts for all inferences *)
+let gufa_cast_all = "gufa-cast-all"
+
 (** GUFA plus local optimizations in functions we modified *)
 let gufa_optimizing = "gufa-optimizing"
+
+(** optimizes J2CL specific constructs. *)
+let optimize_j2cl = "optimize-j2cl"
+
+(** Merges itable structures into vtables to make types more compact *)
+let merge_j2cl_itables = "merge-j2cl-itables"
 
 (** apply more specific subtypes to type fields where possible *)
 let type_refining = "type-refining"
 
+(** apply more specific subtypes to type fields where possible (using GUFA) *)
+let type_refining_gufa = "type-refining-gufa"
+
 (** replace GC allocations with locals *)
 let heap2local = "heap2local"
+
+(** optimize heap (GC) stores *)
+let heap_store_optimization = "heap-store-optimization"
 
 (** inline __original_main into main *)
 let inline_main = "inline-main"
@@ -137,9 +158,8 @@ let jspi = "jspi"
 (** legalizes i64 types on the import/export boundary *)
 let legalize_js_interface = "legalize-js-interface"
 
-(** legalizes i64 types on the import/export boundary in a minimal manner, only
-    on things only JS will call *)
-let legalize_js_interface_minimally = "legalize-js-interface-minimally"
+(** legalizes the import/export boundary and prunes when needed *)
+let legalize_and_prune_js_interface = "legalize-and-prune-js-interface"
 
 (** common subexpression elimination inside basic blocks *)
 let local_cse = "local-cse"
@@ -152,6 +172,9 @@ let log_execution = "log-execution"
 
 (** lower all uses of i64s to use i32s instead *)
 let i64_to_i32_lowering = "i64-to-i32-lowering"
+
+(** instrument the build with code to intercept specific function calls *)
+let trace_calls = "trace-calls"
 
 (** instrument the build with code to intercept all loads and stores *)
 let instrument_locals = "instrument-locals"
@@ -167,6 +190,13 @@ let limit_segments = "limit-segments"
 
 (** lower loads and stores to a 64-bit memory to instead use a 32-bit one *)
 let memory64_lowering = "memory64-lowering"
+
+(** alias for memory64-lowering *)
+let table64_lowering = "table64-lowering"
+
+(** Lower memory.copy and memory.fill to wasm mvp and disable the bulk-memory
+    feature. *)
+let llvm_memory_copy_fill_lowering = "llvm-memory-copy-fill-lowering"
 
 (** packs memory into separate segments, skipping zeros *)
 let memory_packing = "memory-packing"
@@ -196,6 +226,9 @@ let minify_imports_and_exports = "minify-imports-and-exports"
 let minify_imports_and_exports_and_modules =
   "minify-imports-and-exports-and-modules"
 
+(** Split types into minimal recursion groups *)
+let minimize_rec_groups = "minimize-rec-groups"
+
 (** apply the assumption that asyncify imports always unwind, and we never
     rewind *)
 let mod_asyncify_always_and_only_unwind = "mod-asyncify-always-and-only-unwind"
@@ -223,6 +256,19 @@ let nm = "nm"
 (** (re)name all heap types *)
 let name_types = "name-types"
 
+(** mark functions as no-inline *)
+let no_inline = "no-inline"
+
+(** mark functions as no-inline (for full inlining only) *)
+let no_full_inline = "no-full-inline"
+
+(** mark functions as no-inline (for partial inlining only) *)
+let no_partial_inline = "no-partial-inline"
+
+(** lower nontrapping float-to-int operations to wasm mvp and disable the
+    nontrapping fptoint feature *)
+let llvm_nontrapping_fptoint_lowering = "llvm-nontrapping-fptoint-lowering"
+
 (** reduces calls to code that only runs once *)
 let once_reduction = "once-reduction"
 
@@ -238,9 +284,6 @@ let optimize_casts = "optimize-casts"
 
 (** optimizes instruction combinations *)
 let optimize_instructions = "optimize-instructions"
-
-(** optimize Stack IR *)
-let optimize_stack_ir = "optimize-stack-ir"
 
 (** pick load signs based on their uses *)
 let pick_load_signs = "pick-load-signs"
@@ -282,14 +325,14 @@ let print_function_map = "print-function-map"
 (** alias for print_function_map *)
 let symbolmap = "symbolmap"
 
-(** print out Stack IR (useful for internal debugging) *)
-let print_stack_ir = "print-stack-ir"
-
 (** removes operations incompatible with js *)
 let remove_non_js_ops = "remove-non-js-ops"
 
 (** removes imports and replaces them with nops *)
 let remove_imports = "remove-imports"
+
+(** removes memory initialization *)
+let remove_memory_init = "remove-memory-init"
 
 (** removes memory segments *)
 let remove_memory = "remove-memory"
@@ -310,14 +353,14 @@ let remove_unused_names = "remove-unused-names"
 (** remove unused private GC types *)
 let remove_unused_types = "remove-unused-types"
 
+(** sorts functions by name (useful for debugging) *)
+let reorder_functions_by_name = "reorder-functions-by-name"
+
 (** sorts functions by access frequency *)
 let reorder_functions = "reorder-functions"
 
 (** sorts globals by access frequency *)
 let reorder_globals = "reorder-globals"
-
-(** sorts globals by access frequency (even if there are few) *)
-let reorder_globals_always = "reorder-globals-always"
 
 (** sorts locals by access frequency *)
 let reorder_locals = "reorder-locals"
@@ -336,6 +379,9 @@ let safe_heap = "safe-heap"
 
 (** sets specified globals to specified values *)
 let set_globals = "set-globals"
+
+(** write data segments to a file and strip them from the module *)
+let separate_data_segments = "separate-data-segments"
 
 (** remove params from function signature types where possible *)
 let signature_pruning = "signature-pruning"
@@ -388,6 +434,23 @@ let ssa = "ssa"
 (** ssa-ify variables so that they have a single assignment, ignoring merges *)
 let ssa_nomerge = "ssa-nomerge"
 
+(** gathers wasm strings to globals *)
+let string_gathering = "string-gathering"
+
+(** lift string imports to wasm strings *)
+let string_lifting = "string-lifting"
+
+(** lowers wasm strings and operations to imports *)
+let string_lowering = "string-lowering"
+
+(** same as string-lowering, but encodes well-formed strings as magic imports *)
+let string_lowering_magic_imports = "string-lowering-magic-imports"
+
+(** same as string-lowering-magic-imports, but raise a fatal error if there are
+    invalid strings *)
+let string_lowering_magic_imports_assert =
+  "string-lowering-magic-imports-assert"
+
 (** deprecated; same as strip-debug *)
 let strip = "strip"
 
@@ -409,17 +472,32 @@ let strip_eh = "strip-eh"
 (** strip the wasm target features section *)
 let strip_target_features = "strip-target-features"
 
+(** translate old Phase 3 EH instructions to new ones with exnref *)
+let translate_to_exnref = "translate-to-exnref"
+
 (** replace trapping operations with clamping semantics *)
 let trap_mode_clamp = "trap-mode-clamp"
 
 (** replace trapping operations with js semantics *)
 let trap_mode_js = "trap-mode-js"
 
+(** optimize trivial tuples away *)
+let tuple_optimization = "tuple-optimization"
+
+(** mark all leaf types as final *)
+let type_finalizing = "type-finalizing"
+
 (** merge types to their supertypes where possible *)
 let type_merging = "type-merging"
 
 (** create new nominal types to help other optimizations *)
 let type_ssa = "type-ssa"
+
+(** mark all types as non-final (open) *)
+let type_unfinalizing = "type-unfinalizing"
+
+(** removes removes unnecessary subtyping relationships *)
+let unsubtyping = "unsubtyping"
 
 (** removes local.tees, replacing them with sets and gets *)
 let untee = "untee"

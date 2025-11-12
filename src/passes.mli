@@ -37,11 +37,17 @@ val const_hoisting : t
 val cfp : t
 (** propagate constant struct field values *)
 
+val cfp_reftest : t
+(** propagate constant struct field values, using ref.test *)
+
 val dce : t
 (** removes unreachable code *)
 
 val dealign : t
 (** forces all loads and stores to have alignment 1 *)
+
+val propagate_debug_locs : t
+(** propagate debug location from parents or previous siblings to child nodes *)
 
 val denan : t
 (** instrument the wasm to convert NaNs into 0 at runtime *)
@@ -66,6 +72,9 @@ val duplicate_function_elimination : t
 
 val emit_target_features : t
 (** emit the target features section in the output *)
+
+val enclose_world : t
+(** modify the wasm (destructively) for closed-world *)
 
 val extract_function : t
 (** leaves just one function (useful for debugging) *)
@@ -94,9 +103,6 @@ val generate_i64_dyncalls : t
 val generate_global_effects : t
 (** generate global effect info (helps later passes) *)
 
-val generate_stack_ir : t
-(** generate Stack IR *)
-
 val global_refining : t
 (** refine the types of globals *)
 
@@ -110,14 +116,26 @@ val gufa : t
 (** Grand Unified Flow Analysis: optimize the entire program using information
     about what content can actually appear in each location *)
 
+val gufa_cast_all : t
+(** GUFA plus add casts for all inferences *)
+
 val gufa_optimizing : t
 (** GUFA plus local optimizations in functions we modified *)
+
+val optimize_j2cl : t
+(** optimizes J2CL specific constructs. *)
+
+val merge_j2cl_itables : t
+(** Merges itable structures into vtables to make types more compact *)
 
 val type_refining : t
 (** apply more specific subtypes to type fields where possible *)
 
 val heap2local : t
 (** replace GC allocations with locals *)
+
+val heap_store_optimization : t
+(** optimize heap (GC) stores *)
 
 val inline_main : t
 (** inline __original_main into main *)
@@ -137,9 +155,8 @@ val jspi : t
 val legalize_js_interface : t
 (** legalizes i64 types on the import/export boundary *)
 
-val legalize_js_interface_minimally : t
-(** legalizes i64 types on the import/export boundary in a minimal manner, only
-    on things only JS will call *)
+val legalize_and_prune_js_interface : t
+(** legalizes the import/export boundary and prunes when needed *)
 
 val local_cse : t
 (** common subexpression elimination inside basic blocks *)
@@ -152,6 +169,9 @@ val log_execution : t
 
 val i64_to_i32_lowering : t
 (** lower all uses of i64s to use i32s instead *)
+
+val trace_calls : t
+(** instrument the build with code to intercept specific function calls *)
 
 val instrument_locals : t
 (** instrument the build with code to intercept all loads and stores *)
@@ -167,6 +187,13 @@ val limit_segments : t
 
 val memory64_lowering : t
 (** lower loads and stores to a 64-bit memory to instead use a 32-bit one *)
+
+val table64_lowering : t
+(** alias for memory64-lowering *)
+
+val llvm_memory_copy_fill_lowering : t
+(** Lower memory.copy and memory.fill to wasm mvp and disable the bulk-memory
+    feature. *)
 
 val memory_packing : t
 (** packs memory into separate segments, skipping zeros *)
@@ -195,6 +222,9 @@ val minify_imports_and_exports_and_modules : t
 (** minifies both import and export names, and emits a mapping to the minified
     ones, and minifies the modules as well *)
 
+val minimize_rec_groups : t
+(** Split types into minimal recursion groups *)
+
 val mod_asyncify_always_and_only_unwind : t
 (** apply the assumption that asyncify imports always unwind, and we never
     rewind *)
@@ -221,6 +251,19 @@ val nm : t
 val name_types : t
 (** (re)name all heap types *)
 
+val no_inline : t
+(** mark functions as no-inline *)
+
+val no_full_inline : t
+(** mark functions as no-inline (for full inlining only) *)
+
+val no_partial_inline : t
+(** mark functions as no-inline (for partial inlining only) *)
+
+val llvm_nontrapping_fptoint_lowering : t
+(** lower nontrapping float-to-int operations to wasm mvp and disable the
+    nontrapping fptoint feature *)
+
 val once_reduction : t
 (** reduces calls to code that only runs once *)
 
@@ -236,9 +279,6 @@ val optimize_casts : t
 
 val optimize_instructions : t
 (** optimizes instruction combinations *)
-
-val optimize_stack_ir : t
-(** optimize Stack IR *)
 
 val pick_load_signs : t
 (** pick load signs based on their uses *)
@@ -280,14 +320,14 @@ val print_function_map : t
 val symbolmap : t
 (** alias for print_function_map *)
 
-val print_stack_ir : t
-(** print out Stack IR (useful for internal debugging) *)
-
 val remove_non_js_ops : t
 (** removes operations incompatible with js *)
 
 val remove_imports : t
 (** removes imports and replaces them with nops *)
+
+val remove_memory_init : t
+(** removes memory initialization *)
 
 val remove_memory : t
 (** removes memory segments *)
@@ -307,14 +347,14 @@ val remove_unused_names : t
 val remove_unused_types : t
 (** remove unused private GC types *)
 
+val reorder_functions_by_name : t
+(** sorts functions by name (useful for debugging) *)
+
 val reorder_functions : t
 (** sorts functions by access frequency *)
 
 val reorder_globals : t
 (** sorts globals by access frequency *)
-
-val reorder_globals_always : t
-(** sorts globals by access frequency (even if there are few) *)
 
 val reorder_locals : t
 (** sorts locals by access frequency *)
@@ -333,6 +373,9 @@ val safe_heap : t
 
 val set_globals : t
 (** sets specified globals to specified values *)
+
+val separate_data_segments : t
+(** write data segments to a file and strip them from the module *)
 
 val signature_pruning : t
 (** remove params from function signature types where possible *)
@@ -384,6 +427,22 @@ val ssa : t
 val ssa_nomerge : t
 (** ssa-ify variables so that they have a single assignment, ignoring merges *)
 
+val string_gathering : t
+(** gathers wasm strings to globals *)
+
+val string_lifting : t
+(** lift string imports to wasm strings *)
+
+val string_lowering : t
+(** lowers wasm strings and operations to imports *)
+
+val string_lowering_magic_imports : t
+(** same as string-lowering, but encodes well-formed strings as magic imports *)
+
+val string_lowering_magic_imports_assert : t
+(** same as string-lowering-magic-imports, but raise a fatal error if there are
+    invalid strings *)
+
 val strip : t
 (** deprecated; same as strip-debug *)
 
@@ -405,17 +464,32 @@ val strip_eh : t
 val strip_target_features : t
 (** strip the wasm target features section *)
 
+val translate_to_exnref : t
+(** translate old Phase 3 EH instructions to new ones with exnref *)
+
 val trap_mode_clamp : t
 (** replace trapping operations with clamping semantics *)
 
 val trap_mode_js : t
 (** replace trapping operations with js semantics *)
 
+val tuple_optimization : t
+(** optimize trivial tuples away *)
+
+val type_finalizing : t
+(** mark all leaf types as final *)
+
 val type_merging : t
 (** merge types to their supertypes where possible *)
 
 val type_ssa : t
 (** create new nominal types to help other optimizations *)
+
+val type_unfinalizing : t
+(** mark all types as non-final (open) *)
+
+val unsubtyping : t
+(** removes removes unnecessary subtyping relationships *)
 
 val untee : t
 (** removes local.tees, replacing them with sets and gets *)
