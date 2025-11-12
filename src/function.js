@@ -56,6 +56,11 @@ function caml_binaryen_set_start(wasm_mod, func) {
   return wasm_mod.setStart(func);
 }
 
+//Provides: caml_binaryen_get_start
+function caml_binaryen_get_start(wasm_mod) {
+  return wasm_mod.getStart();
+}
+
 //Provides: caml_binaryen_function_set_debug_location
 //Requires: Binaryen
 function caml_binaryen_function_set_debug_location(

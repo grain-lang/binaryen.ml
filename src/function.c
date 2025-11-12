@@ -74,6 +74,14 @@ caml_binaryen_set_start(value _module, value _fun) {
 }
 
 CAMLprim value
+caml_binaryen_get_start(value _module) {
+  CAMLparam1(_module);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenFunctionRef fun = BinaryenGetStart(module);
+  CAMLreturn(alloc_BinaryenFunctionRef(fun));
+}
+
+CAMLprim value
 caml_binaryen_function_set_debug_location(value _fun, value _exp, value _file, value _line, value _column) {
   CAMLparam5(_fun, _exp, _file, _line, _column);
   BinaryenFunctionRef fun = BinaryenFunctionRef_val(_fun);

@@ -170,12 +170,14 @@ let start =
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
-let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
+
+(* TODO(#240): Re-enable after type-builder api is merged *)
+(* let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
 
 let _ =
   Expression.Table.set wasm_mod "table"
     (Expression.Const.make wasm_mod (Literal.int32 0l))
-    funcref_expr1
+    funcref_expr1 *)
 
 let funcref_expr2 =
   Expression.Table.get wasm_mod "table"
@@ -212,6 +214,8 @@ let _ =
     (Expression.Const.make wasm_mod (Literal.int32 0l))
 
 let _ = Function.set_start wasm_mod start
+let start_func = Function.get_start wasm_mod
+let _ = assert (Function.get_name start_func = "start")
 
 let segment : Binaryen.Memory.segment =
   let data = Bytes.of_string "hello" in
