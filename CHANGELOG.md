@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.32.0](https://github.com/grain-lang/binaryen.ml/compare/v0.31.0...v0.32.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v122 ([#208](https://github.com/grain-lang/binaryen.ml/issues/208))
+* Correct signature of `get_pass_argument` ([#247](https://github.com/grain-lang/binaryen.ml/issues/247))
+
+### Features
+
+* Upgrade to Binaryen v122 ([#208](https://github.com/grain-lang/binaryen.ml/issues/208)) ([434417d](https://github.com/grain-lang/binaryen.ml/commit/434417df5720205824b3fdfa3ce82fa72465c444))
+
+
+### Bug Fixes
+
+* Correct signature of `get_pass_argument` ([#247](https://github.com/grain-lang/binaryen.ml/issues/247)) ([986ecec](https://github.com/grain-lang/binaryen.ml/commit/986ecec07af320813f4137cfed4d454ae6c13f82))
+
 ## [0.31.0](https://github.com/grain-lang/binaryen.ml/compare/v0.30.0...v0.31.0) (2025-11-02)
 
 
