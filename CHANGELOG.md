@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.34.0](https://github.com/grain-lang/binaryen.ml/compare/v0.33.0...v0.34.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update Passes api for Binaryen v124
+* Upgrade to Binaryen v124 ([#241](https://github.com/grain-lang/binaryen.ml/issues/241))
+
+### Features
+
+* Update Passes api for Binaryen v124 ([305137a](https://github.com/grain-lang/binaryen.ml/commit/305137a264049f3f38bf8828c57aad190195ca49))
+* Upgrade to Binaryen v124 ([#241](https://github.com/grain-lang/binaryen.ml/issues/241)) ([02829f8](https://github.com/grain-lang/binaryen.ml/commit/02829f805cd3133bb4b04c83abac8380996bd0ec))
+
 ## [0.33.0](https://github.com/grain-lang/binaryen.ml/compare/v0.32.0...v0.33.0) (2025-11-12)
 
 
