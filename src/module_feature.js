@@ -20,12 +20,6 @@ function caml_binaryen_feature_atomics() {
   return Binaryen.Features.Atomics;
 }
 
-//Provides: caml_binaryen_feature_bulk_memory
-//Requires: Binaryen
-function caml_binaryen_feature_bulk_memory() {
-  return Binaryen.Features.BulkMemory;
-}
-
 //Provides: caml_binaryen_feature_mutable_globals
 //Requires: Binaryen
 function caml_binaryen_feature_mutable_globals() {
@@ -38,16 +32,22 @@ function caml_binaryen_feature_nontrapping_fp_to_int() {
   return Binaryen.Features.NontrappingFPToInt;
 }
 
-//Provides: caml_binaryen_feature_sign_ext
-//Requires: Binaryen
-function caml_binaryen_feature_sign_ext() {
-  return Binaryen.Features.SignExt;
-}
-
 //Provides: caml_binaryen_feature_simd128
 //Requires: Binaryen
 function caml_binaryen_feature_simd128() {
   return Binaryen.Features.SIMD128;
+}
+
+//Provides: caml_binaryen_feature_bulk_memory
+//Requires: Binaryen
+function caml_binaryen_feature_bulk_memory() {
+  return Binaryen.Features.BulkMemory;
+}
+
+//Provides: caml_binaryen_feature_sign_ext
+//Requires: Binaryen
+function caml_binaryen_feature_sign_ext() {
+  return Binaryen.Features.SignExt;
 }
 
 //Provides: caml_binaryen_feature_exception_handling
@@ -108,6 +108,36 @@ function caml_binaryen_feature_strings() {
 //Requires: Binaryen
 function caml_binaryen_feature_multi_memory() {
   return Binaryen.Features.MultiMemory;
+}
+
+//Provides: caml_binaryen_feature_stack_switching
+//Requires: Binaryen
+function caml_binaryen_feature_stack_switching() {
+  return Binaryen.Features.StackSwitching;
+}
+
+//Provides: caml_binaryen_feature_shared_everything
+//Requires: Binaryen
+function caml_binaryen_feature_shared_everything() {
+  return Binaryen.Features.SharedEverything;
+}
+
+//Provides: caml_binaryen_feature_fp16
+//Requires: Binaryen
+function caml_binaryen_feature_fp16() {
+  return Binaryen.Features.FP16;
+}
+
+//Provides: caml_binaryen_feature_bulk_memory_opt
+//Requires: Binaryen
+function caml_binaryen_feature_bulk_memory_opt() {
+  return Binaryen.Features.BulkMemoryOpt;
+}
+
+//Provides: caml_binaryen_feature_call_indirect_overlong
+//Requires: Binaryen
+function caml_binaryen_feature_call_indirect_overlong() {
+  return Binaryen.Features.BulkMemoryOpt;
 }
 
 //Provides: caml_binaryen_feature_all

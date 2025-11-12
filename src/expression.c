@@ -1868,7 +1868,7 @@ caml_binaryen_ref_func(value _module, value _name, value _ty) {
   CAMLparam3(_module, _name, _ty);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   char* name = Safe_String_val(_name);
-  BinaryenType ty = BinaryenType_val(_ty);
+  BinaryenHeapType ty = BinaryenHeapType_val(_ty);
   BinaryenExpressionRef exp = BinaryenRefFunc(module, name, ty);
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }

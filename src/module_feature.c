@@ -36,12 +36,6 @@ caml_binaryen_feature_atomics(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_feature_bulk_memory(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenFeatureBulkMemory()));
-}
-
-CAMLprim value
 caml_binaryen_feature_mutable_globals(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureMutableGlobals()));
@@ -54,15 +48,21 @@ caml_binaryen_feature_nontrapping_fp_to_int(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_feature_sign_ext(value unit) {
-  CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenFeatureSignExt()));
-}
-
-CAMLprim value
 caml_binaryen_feature_simd128(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureSIMD128()));
+}
+
+CAMLprim value
+caml_binaryen_feature_bulk_memory(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureBulkMemory()));
+}
+
+CAMLprim value
+caml_binaryen_feature_sign_ext(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureSignExt()));
 }
 
 CAMLprim value
@@ -123,6 +123,36 @@ CAMLprim value
 caml_binaryen_feature_multi_memory(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureMultiMemory()));
+}
+
+CAMLprim value
+caml_binaryen_feature_stack_switching(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureStackSwitching()));
+}
+
+CAMLprim value
+caml_binaryen_feature_shared_everything(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureSharedEverything()));
+}
+
+CAMLprim value
+caml_binaryen_feature_fp16(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureFP16()));
+}
+
+CAMLprim value
+caml_binaryen_feature_bulk_memory_opt(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureBulkMemoryOpt()));
+}
+
+CAMLprim value
+caml_binaryen_feature_call_indirect_overlong(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureCallIndirectOverlong()));
 }
 
 CAMLprim value

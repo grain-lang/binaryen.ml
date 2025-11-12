@@ -824,7 +824,8 @@ module Ref = struct
   external as_ : Module.t -> Op.t -> t -> t = "caml_binaryen_ref_as"
   (** Module, op, value *)
 
-  external func : Module.t -> string -> Type.t -> t = "caml_binaryen_ref_func"
+  external func : Module.t -> string -> Heap_type.t -> t
+    = "caml_binaryen_ref_func"
   (** Module, func, type *)
 
   external eq : Module.t -> t -> t -> t = "caml_binaryen_ref_eq"
