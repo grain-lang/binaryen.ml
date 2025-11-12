@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.33.0](https://github.com/grain-lang/binaryen.ml/compare/v0.32.0...v0.33.0) (2025-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v123 ([#256](https://github.com/grain-lang/binaryen.ml/issues/256))
+
+### Features
+
+* Implement optimization settings api ([#243](https://github.com/grain-lang/binaryen.ml/issues/243)) ([1f25caf](https://github.com/grain-lang/binaryen.ml/commit/1f25cafc96a1f6969a1ecca8ea778aeefae893a8))
+* Upgrade to Binaryen v123 ([#256](https://github.com/grain-lang/binaryen.ml/issues/256)) ([dd6bfa7](https://github.com/grain-lang/binaryen.ml/commit/dd6bfa7bd1c072b33bbc1731a046d169ceb9ea39))
+
 ## [0.32.0](https://github.com/grain-lang/binaryen.ml/compare/v0.31.0...v0.32.0) (2025-11-12)
 
 
