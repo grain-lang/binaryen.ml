@@ -6,6 +6,7 @@ type struct_field = {
   mutable_ : bool;
 }
 
+(* Source: https://github.com/WebAssembly/binaryen/blob/64ba23996a10e229d46e41eb37736a55af87f79a/src/binaryen-c.h#L3618 *)
 type error =
   | SelfSupertype of int
   | InvalidSupertype of int
@@ -21,7 +22,8 @@ external set_signature_type : t -> int -> Type.t -> Type.t -> unit
 
 external set_struct_type :
   t -> int -> Type.t list -> Packed_type.t list -> bool list -> int -> unit
-  = "caml_type_builder_set_struct_type__bytecode" "caml_type_builder_set_struct_type"
+  = "caml_type_builder_set_struct_type__bytecode"
+    "caml_type_builder_set_struct_type"
 
 let set_struct_type builder index fields =
   let split_fields fields =
@@ -45,7 +47,7 @@ external get_temp_tuple_type : t -> Type.t list -> Type.t
 external get_temp_ref_type : t -> Heap_type.t -> bool -> Type.t
   = "caml_type_builder_get_temp_ref_type"
 
-external set_sub_type : t -> int -> Type.t -> unit
+external set_sub_type : t -> int -> Heap_type.t -> unit
   = "caml_type_builder_set_sub_type"
 
 external set_open : t -> int -> unit = "caml_type_builder_set_open"
@@ -53,7 +55,7 @@ external set_open : t -> int -> unit = "caml_type_builder_set_open"
 external create_rec_group : t -> int -> int -> unit
   = "caml_type_builder_create_rec_group"
 
-external build_and_dispose : t -> (Type.t array, int * int) result
+external build_and_dispose : t -> (Heap_type.t array, int * int) result
   = "caml_type_builder_build_and_dispose"
 
 let build_and_dispose builder =
