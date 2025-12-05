@@ -414,6 +414,12 @@ module Array : sig
 
   val copy : Module.t -> t -> t -> t -> t -> t -> t
   (** Module, dest, dest index, src, src index, length *)
+
+  val init_data : Module.t -> string -> t -> t -> t -> t -> t
+  (** Module, name, ref, index, offset, size *)
+
+  val init_elem : Module.t -> string -> t -> t -> t -> t -> t
+  (** Module, seg, ref, index, offset, size *)
 end
 
 (** Bindings for `try` instruction. *)
