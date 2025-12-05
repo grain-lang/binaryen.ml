@@ -2087,6 +2087,18 @@ caml_binaryen_array_new_data(value _module, value _type, value _name, value _off
 }
 
 CAMLprim value
+caml_binaryen_array_new_elem(value _module, value _type, value _seg, value _offset, value _size) {
+  CAMLparam5(_module, _type, _seg, _offset, _size);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenHeapType type = BinaryenHeapType_val(_type);
+  char* seg = Safe_String_val(_seg);
+  BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
+  BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
+  BinaryenExpressionRef exp = BinaryenArrayNewElem(module, type, seg, offset, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
 caml_binaryen_array_new_fixed(value _module, value _type, value _values) {
   CAMLparam3(_module, _type, _values);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
@@ -2149,6 +2161,18 @@ caml_binaryen_array_copy(value _module, value _destRef, value _destIndex, value 
 CAMLprim value
 caml_binaryen_array_copy__bytecode(value * argv) {
   return caml_binaryen_array_copy(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_array_fill(value _module, value _ref, value _index, value _value, value _size) {
+  CAMLparam5(_module, _ref, _index, _value, _size);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenExpressionRef ref = BinaryenExpressionRef_val(_ref);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenExpressionRef val = BinaryenExpressionRef_val(_value);
+  BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
+  BinaryenExpressionRef exp = BinaryenArrayFill(module, ref, index, val, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
 // Table operations
