@@ -924,6 +924,14 @@ module Array = struct
   external copy : Module.t -> t -> t -> t -> t -> t -> t
     = "caml_binaryen_array_copy__bytecode" "caml_binaryen_array_copy"
   (** Module, dest, dest index, src, src index, length *)
+
+  external init_data : Module.t -> string -> t -> t -> t -> t -> t
+    = "caml_binaryen_array_init_data__bytecode" "caml_binaryen_array_init_data"
+  (** Module, name, ref, index, offset, size *)
+
+  external init_elem : Module.t -> string -> t -> t -> t -> t -> t
+    = "caml_binaryen_array_init_elem__bytecode" "caml_binaryen_array_init_elem"
+  (** Module, seg, ref, index, offset, size *)
 end
 
 (** Bindings for `try_table` instruction. *)

@@ -1896,6 +1896,19 @@ function caml_binaryen_array_copy(
 ) {
   return wasm_mod.array.copy(destRef, destIndex, srcRef, srcIndex, length);
 }
+
+//Provides: caml_binaryen_array_init_data
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_init_data(name, ref, index, offset, size) {
+  return wasm_mod.array.init_data(caml_jsstring_of_string(name), ref, index, offset, size);
+}
+
+//Provides: caml_binaryen_array_init_elem
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_init_elem(name, ref, index, offset, size) {
+  return wasm_mod.array.init_elem(caml_jsstring_of_string(name), ref, index, offset, size);
+}
+
 //Provides: caml_binaryen_array_copy__bytecode
 //Requires: caml_binaryen_array_copy
 function caml_binaryen_array_copy__bytecode() {

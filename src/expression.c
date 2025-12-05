@@ -2175,6 +2175,44 @@ caml_binaryen_array_fill(value _module, value _ref, value _index, value _value, 
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
+CAMLprim value
+caml_binaryen_array_init_data(value _module, value _name, value _ref, value _index, value _offset, value _size) {
+  CAMLparam5(_module, _name, _ref, _index, _offset);
+  CAMLxparam1(_size);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* name = Safe_String_val(_name);
+  BinaryenExpressionRef ref = BinaryenExpressionRef_val(_ref);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
+  BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
+  BinaryenExpressionRef exp = BinaryenArrayInitData(module, name, ref, index, offset, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_array_init_data__bytecode(value * argv) {
+  return caml_binaryen_array_init_data(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
+CAMLprim value
+caml_binaryen_array_init_elem(value _module, value _seg, value _ref, value _index, value _offset, value _size) {
+  CAMLparam5(_module, _seg, _ref, _index, _offset);
+  CAMLxparam1(_size);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* seg = Safe_String_val(_seg);
+  BinaryenExpressionRef ref = BinaryenExpressionRef_val(_ref);
+  BinaryenExpressionRef index = BinaryenExpressionRef_val(_index);
+  BinaryenExpressionRef offset = BinaryenExpressionRef_val(_offset);
+  BinaryenExpressionRef size = BinaryenExpressionRef_val(_size);
+  BinaryenExpressionRef exp = BinaryenArrayInitElem(module, seg, ref, index, offset, size);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
+CAMLprim value
+caml_binaryen_array_init_elem__bytecode(value * argv) {
+  return caml_binaryen_array_init_elem(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+}
+
 // Exception handling operations
 CAMLprim value
 caml_binaryen_try(value _module, value _name, value _body, value _catchTags, value _catchBodies, value _delegateTarget) {
