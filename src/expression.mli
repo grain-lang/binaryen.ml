@@ -394,6 +394,9 @@ module Array : sig
   val new_data : Module.t -> Heap_type.t -> string -> t -> t -> t
   (** Module, type, data name, offset, size *)
 
+  val new_elem : Module.t -> Heap_type.t -> string -> t -> t -> t
+  (** Module, type, seg, offset, size *)
+
   val new_fixed : Module.t -> Heap_type.t -> t list -> t
   (** Module, type, values *)
 
@@ -406,8 +409,17 @@ module Array : sig
   val len : Module.t -> t -> t
   (** Module, array *)
 
+  val fill : Module.t -> Heap_type.t -> t -> t -> t -> t
+  (** Module, type, seg, offset, size *)
+
   val copy : Module.t -> t -> t -> t -> t -> t -> t
   (** Module, dest, dest index, src, src index, length *)
+
+  val init_data : Module.t -> string -> t -> t -> t -> t -> t
+  (** Module, name, ref, index, offset, size *)
+
+  val init_elem : Module.t -> string -> t -> t -> t -> t -> t
+  (** Module, seg, ref, index, offset, size *)
 end
 
 module Table : sig

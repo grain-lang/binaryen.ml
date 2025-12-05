@@ -899,6 +899,10 @@ module Array = struct
     = "caml_binaryen_array_new_data"
   (** Module, type, data name, offset, size *)
 
+  external new_elem : Module.t -> Heap_type.t -> string -> t -> t -> t
+    = "caml_binaryen_array_new_elem"
+  (** Module, type, seg, offset, size *)
+
   external new_fixed : Module.t -> Heap_type.t -> t list -> t
     = "caml_binaryen_array_new_fixed"
   (** Module, type, values *)
@@ -913,9 +917,21 @@ module Array = struct
   external len : Module.t -> t -> t = "caml_binaryen_array_len"
   (** Module, array *)
 
+  external fill : Module.t -> Heap_type.t -> t -> t -> t -> t
+    = "caml_binaryen_array_fill"
+  (** Module, type, seg, offset, size *)
+
   external copy : Module.t -> t -> t -> t -> t -> t -> t
     = "caml_binaryen_array_copy__bytecode" "caml_binaryen_array_copy"
   (** Module, dest, dest index, src, src index, length *)
+
+  external init_data : Module.t -> string -> t -> t -> t -> t -> t
+    = "caml_binaryen_array_init_data__bytecode" "caml_binaryen_array_init_data"
+  (** Module, name, ref, index, offset, size *)
+
+  external init_elem : Module.t -> string -> t -> t -> t -> t -> t
+    = "caml_binaryen_array_init_elem__bytecode" "caml_binaryen_array_init_elem"
+  (** Module, seg, ref, index, offset, size *)
 end
 
 module Table = struct

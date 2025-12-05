@@ -171,13 +171,19 @@ let start =
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
-(* TODO(#240): Re-enable after type-builder api is merged *)
-(* let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
+let adder_type =
+  let builder = Type_builder.make 1 in
+  Type_builder.set_signature_type builder 0 Type.none Type.none;
+  match Type_builder.build_and_dispose builder with
+  | Ok [ ty ] -> ty
+  | _ -> failwith "failed to build type"
+
+let funcref_expr1 = Expression.Ref.func wasm_mod "adder" adder_type
 
 let _ =
   Expression.Table.set wasm_mod "table"
     (Expression.Const.make wasm_mod (Literal.int32 0l))
-    funcref_expr1 *)
+    funcref_expr1
 
 let funcref_expr2 =
   Expression.Table.get wasm_mod "table"
@@ -325,25 +331,25 @@ let _ =
   let i32 v = Expression.Const.make wasm_mod (Literal.int32 v) in
   let i31 v = Expression.I31.make wasm_mod (i32 v) in
   let cons first rest =
-    Expression.Struct.new_ wasm_mod
-      (Some [ first; rest ])
-      (Type.get_heap_type list_type)
+    Expression.Struct.new_ wasm_mod (Some [ first; rest ]) list_type
   in
   let empty () =
-    Expression.Ref.null wasm_mod
-      (Type.from_heap_type (Type.get_heap_type list_type) true)
+    Expression.Ref.null wasm_mod (Type.from_heap_type list_type true)
   in
   Function.add_function wasm_mod "gc" Type.anyref
     (Type.create [| Type.anyref; Type.anyref |])
-    [| array_u8_type; list_type |]
+    [|
+      Type.from_heap_type array_u8_type false;
+      Type.from_heap_type list_type false;
+    |]
     (Expression.Block.make wasm_mod "gc_block"
        [
          Expression.Local_set.make wasm_mod 1
-           (Expression.Array.new_fixed wasm_mod
-              (Type.get_heap_type array_u8_type)
+           (Expression.Array.new_fixed wasm_mod array_u8_type
               [ i32 0l; i32 255l ]);
          Expression.Array.set wasm_mod
-           (Expression.Local_get.make wasm_mod 1 array_u8_type)
+           (Expression.Local_get.make wasm_mod 1
+              (Type.from_heap_type array_u8_type false))
            (i32 1l) (i32 42l);
          Expression.Local_set.make wasm_mod 2
            (cons
@@ -353,8 +359,10 @@ let _ =
               (cons (i31 1l) (cons (i31 2l) (cons (i31 3l) (empty ())))));
          Expression.Tuple_make.make wasm_mod
            [
-             Expression.Local_get.make wasm_mod 1 array_u8_type;
-             Expression.Local_get.make wasm_mod 2 list_type;
+             Expression.Local_get.make wasm_mod 1
+               (Type.from_heap_type array_u8_type false);
+             Expression.Local_get.make wasm_mod 2
+               (Type.from_heap_type list_type false);
            ];
        ])
 

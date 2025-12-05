@@ -575,13 +575,13 @@ function caml_binaryen_ref_cast(wasm_mod, ref, typ) {
 function caml_binaryen_br_on(wasm_mod, op, name, ref, typ) {
   switch (op) {
     case Binaryen.BrOnNull:
-      return wasm_mod.br_on.null(caml_jsstring_of_string(name), ref, typ);
+      return wasm_mod.br_on_null(caml_jsstring_of_string(name), ref);
     case Binaryen.BrOnNonNull:
-      return wasm_mod.br_on.non_null(caml_jsstring_of_string(name), ref, typ);
+      return wasm_mod.br_on_non_null(caml_jsstring_of_string(name), ref);
     case Binaryen.BrOnCast:
-      return wasm_mod.br_on.cast(caml_jsstring_of_string(name), ref, typ);
+      return wasm_mod.br_on_cast(caml_jsstring_of_string(name), ref, typ);
     case Binaryen.BrOnCastFail:
-      return wasm_mod.br_on.cast_fail(caml_jsstring_of_string(name), ref, typ);
+      return wasm_mod.br_on_cast_fail(caml_jsstring_of_string(name), ref, typ);
   }
 }
 
@@ -1821,11 +1821,7 @@ function caml_binaryen_struct_new(wasm_mod, operands, type) {
 //Provides: caml_binaryen_struct_get
 //Requires: caml_js_from_bool
 function caml_binaryen_struct_get(wasm_mod, index, ref, type, signed) {
-  if (caml_js_from_bool(signed)) {
-    return wasm_mod.struct.get_s(index, ref, type);
-  } else {
-    return wasm_mod.struct.get_u(index, ref, type);
-  }
+  return wasm_mod.struct.get(index, ref, type, caml_js_from_bool(signed));
 }
 
 //Provides: caml_binaryen_struct_set
@@ -1851,6 +1847,17 @@ function caml_binaryen_array_new_data(wasm_mod, type, name, offset, size) {
   );
 }
 
+//Provides: caml_binaryen_array_new_elem
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_new_elem(wasm_mod, type, name, offset, size) {
+  return wasm_mod.array.new_elem(
+    type,
+    caml_jsstring_of_string(name),
+    offset,
+    size
+  );
+}
+
 //Provides: caml_binaryen_array_new_fixed
 //Requires: caml_list_to_js_array
 function caml_binaryen_array_new_fixed(wasm_mod, type, values) {
@@ -1860,11 +1867,7 @@ function caml_binaryen_array_new_fixed(wasm_mod, type, values) {
 //Provides: caml_binaryen_array_get
 //Requires: caml_js_from_bool
 function caml_binaryen_array_get(wasm_mod, ref, index, type, signed) {
-  if (caml_js_from_bool(signed)) {
-    return wasm_mod.array.get_s(ref, index, type);
-  } else {
-    return wasm_mod.array.get_u(ref, index, type);
-  }
+  return wasm_mod.array.get(ref, index, type, caml_js_from_bool(signed));
 }
 
 //Provides: caml_binaryen_array_set
@@ -1875,6 +1878,11 @@ function caml_binaryen_array_set(wasm_mod, ref, index, value) {
 //Provides: caml_binaryen_array_len
 function caml_binaryen_array_len(wasm_mod, ref) {
   return wasm_mod.array.len(ref);
+}
+
+//Provides: caml_binaryen_array_fill
+function caml_binaryen_array_fill(wasm_mod, ref, index, value, size) {
+  return wasm_mod.array.fill(ref, index, value, size);
 }
 
 //Provides: caml_binaryen_array_copy
@@ -1888,6 +1896,19 @@ function caml_binaryen_array_copy(
 ) {
   return wasm_mod.array.copy(destRef, destIndex, srcRef, srcIndex, length);
 }
+
+//Provides: caml_binaryen_array_init_data
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_init_data(name, ref, index, offset, size) {
+  return wasm_mod.array.init_data(caml_jsstring_of_string(name), ref, index, offset, size);
+}
+
+//Provides: caml_binaryen_array_init_elem
+//Requires: caml_jsstring_of_string
+function caml_binaryen_array_init_elem(name, ref, index, offset, size) {
+  return wasm_mod.array.init_elem(caml_jsstring_of_string(name), ref, index, offset, size);
+}
+
 //Provides: caml_binaryen_array_copy__bytecode
 //Requires: caml_binaryen_array_copy
 function caml_binaryen_array_copy__bytecode() {
