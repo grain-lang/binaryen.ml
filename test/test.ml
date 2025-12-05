@@ -171,13 +171,19 @@ let start =
 let _ = Export.add_function_export wasm_mod "adder" "adder"
 let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
-(* TODO(#240): Re-enable after type-builder api is merged *)
-(* let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
+let adder_type =
+  let builder = Type_builder.make 1 in
+  Type_builder.set_signature_type builder 0 Type.none Type.none;
+  match Type_builder.build_and_dispose builder with
+  | Ok [ ty ] -> ty
+  | _ -> failwith "failed to build type"
+
+let funcref_expr1 = Expression.Ref.func wasm_mod "adder" adder_type
 
 let _ =
   Expression.Table.set wasm_mod "table"
     (Expression.Const.make wasm_mod (Literal.int32 0l))
-    funcref_expr1 *)
+    funcref_expr1
 
 let funcref_expr2 =
   Expression.Table.get wasm_mod "table"
