@@ -415,25 +415,25 @@ let _ =
   let i32 v = Expression.Const.make wasm_mod (Literal.int32 v) in
   let i31 v = Expression.I31.make wasm_mod (i32 v) in
   let cons first rest =
-    Expression.Struct.new_ wasm_mod
-      (Some [ first; rest ])
-      (Type.get_heap_type list_type)
+    Expression.Struct.new_ wasm_mod (Some [ first; rest ]) list_type
   in
   let empty () =
-    Expression.Ref.null wasm_mod
-      (Type.from_heap_type (Type.get_heap_type list_type) true)
+    Expression.Ref.null wasm_mod (Type.from_heap_type list_type true)
   in
   Function.add_function wasm_mod "gc" Type.anyref
     (Type.create [| Type.anyref; Type.anyref |])
-    [| array_u8_type; list_type |]
+    [|
+      Type.from_heap_type array_u8_type false;
+      Type.from_heap_type list_type false;
+    |]
     (Expression.Block.make wasm_mod "gc_block"
        [
          Expression.Local_set.make wasm_mod 1
-           (Expression.Array.new_fixed wasm_mod
-              (Type.get_heap_type array_u8_type)
+           (Expression.Array.new_fixed wasm_mod array_u8_type
               [ i32 0l; i32 255l ]);
          Expression.Array.set wasm_mod
-           (Expression.Local_get.make wasm_mod 1 array_u8_type)
+           (Expression.Local_get.make wasm_mod 1
+              (Type.from_heap_type array_u8_type false))
            (i32 1l) (i32 42l);
          Expression.Local_set.make wasm_mod 2
            (cons
@@ -443,8 +443,10 @@ let _ =
               (cons (i31 1l) (cons (i31 2l) (cons (i31 3l) (empty ())))));
          Expression.Tuple_make.make wasm_mod
            [
-             Expression.Local_get.make wasm_mod 1 array_u8_type;
-             Expression.Local_get.make wasm_mod 2 list_type;
+             Expression.Local_get.make wasm_mod 1
+               (Type.from_heap_type array_u8_type false);
+             Expression.Local_get.make wasm_mod 2
+               (Type.from_heap_type list_type false);
            ];
        ])
 
