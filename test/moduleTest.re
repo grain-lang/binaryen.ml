@@ -10,17 +10,7 @@ suite("Module", () => {
         Type.none,
         Type.none,
         [||],
-        Expression.Block.make(
-          wasm_mod,
-          ~return_type=Type.none,
-          "test_body",
-          [
-            Expression.Drop.make(
-              wasm_mod,
-              Expression.Const.make(wasm_mod, Literal.int32(0l)),
-            ),
-          ],
-        ),
+        Expression.Nop.make(wasm_mod),
       );
     ();
   };

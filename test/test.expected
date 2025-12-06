@@ -17,7 +17,36 @@ function asmFunc(imports) {
  };
 }
 
-Running suite: Module
+Running suite: Function
+. Running test: Add Function
+(module
+ (type $0 (func))
+ (func $test_func
+  (nop)
+ )
+)
+. Running test: get name
+. Running test: get params and results
+. Running test: get num vars
+. Running test: get var
+. Running test: get/set start
+. Running test: function count
+. Running test: get func & get func by index
+. Running test: remove_function
+(module
+)
+. Running test: get/set body
+(module
+ (type $0 (func))
+ (func $body_func
+  (nop)
+ )
+ (func $new_body_func
+  (nop)
+ )
+)
+. Running test: set_debug_location
+{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Module
 . Running test: create and dispose
 . Running test: add custom section
 . Running test: write
@@ -25,19 +54,14 @@ Running suite: Module
 (module
  (type $0 (func))
  (func $test_func
-  (block $test_body
-   (drop
-    (i32.const 0)
-   )
-  )
+  (nop)
  )
 )
 . Running test: write_stack_ir
 (module
  (type $0 (func))
  (func $test_func
-  i32.const 0
-  drop
+  nop
  )
 )
 . Running test: parse
@@ -57,20 +81,35 @@ Running suite: Module
 (module
  (type $0 (func))
  (func $0
-  (drop
-   (i32.const 0)
-  )
+  (nop)
  )
 )
 . Running test: interpret
 . Running test: debug info filename management
 . Running test: update maps
+Running suite: Settings
+. Running test: optimize_level
+. Running test: shrink_level
+. Running test: debug_info
+. Running test: traps_never_happen
+. Running test: closed_world
+. Running test: low_memory_unused
+. Running test: zero_filled_memory
+. Running test: fast_math
+. Running test: generate_stack_ir
+. Running test: optimize_stack_ir
+. Running test: pass_argument
+. Running test: skip_pass
+. Running test: always inline max size
+. Running test: flexible inline max size
+. Running test: one caller inline max size
+. Running test: allow inlining functions with loops
+. Running test: colors enabled
 var retasmFunc = asmFunc({
 });
 (module
  (type $0 (func))
  (func $test_func
-  i32.const 0
-  drop
+  nop
  )
 )
