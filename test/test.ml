@@ -258,11 +258,12 @@ let _ = Tag.add_tag wasm_mod "foo" Type.int32 Type.none
 let _ = Tag.add_tag wasm_mod "bar" Type.int32 Type.none
 
 (* Exception handling *)
+let body =
+  Expression.Throw.make wasm_mod "foo"
+    [ Expression.Const.make wasm_mod (Literal.int32 1l) ]
+
 let try_catch_1 =
-  Expression.Try.make wasm_mod (Some "tc1")
-    (Expression.Throw.make wasm_mod "foo"
-       [ Expression.Const.make wasm_mod (Literal.int32 1l) ])
-    [ "foo"; "bar" ]
+  Expression.Try.make wasm_mod (Some "tc1") body [ "foo"; "bar" ]
     [
       Expression.Block.make wasm_mod "tc1blk2"
         [
@@ -278,6 +279,19 @@ let try_catch_1 =
         ];
     ]
     None
+
+let _ = assert (Expression.Try.get_name try_catch_1 = Some "tc1")
+let _ = Expression.Try.set_name try_catch_1 "renamed_tc1"
+let _ = assert (Expression.Try.get_name try_catch_1 = Some "renamed_tc1")
+let _ = Expression.Try.set_name try_catch_1 "tc1"
+
+let _ =
+  assert (
+    Expression.get_kind (Expression.Try.get_body try_catch_1)
+    = Expression.get_kind body)
+
+let _ = assert (Expression.Try_Catch.get_num_catch_tags try_catch_1 = 2)
+let _ = assert (Expression.Try_Catch.get_num_catch_bodies try_catch_1 = 2)
 
 let try_catch_2 =
   Expression.Try_Catch.make wasm_mod (Some "tc2")
@@ -298,6 +312,8 @@ let try_catch_2 =
           Expression.Const.make wasm_mod (Literal.int32 3l);
         ];
     ]
+
+let _ = assert (Expression.Try_Catch.get_name try_catch_2 = Some "tc2")
 
 (* One more catch-body than catch-tag; last body becomes the catch_all *)
 let try_catch_all_1 =
