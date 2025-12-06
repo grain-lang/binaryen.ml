@@ -1,5 +1,5 @@
 open Binaryen;
-open Framework;
+open Frame_work;
 
 suite("Function", () => {
   let create_test_func = (wasm_mod, name) =>

@@ -1,6 +1,7 @@
-open ModuleTest;
-open FunctionTest;
-open SettingsTest;
+open Module_test;
+open Function_test;
+open Settings_test;
+open Type_test;
 // TODO: Type
 // TODO: Table
 // TODO: Struct_Type

@@ -105,6 +105,37 @@ Running suite: Settings
 . Running test: one caller inline max size
 . Running test: allow inlining functions with loops
 . Running test: colors enabled
+Running suite: Type
+. Running test: none
+(module
+ (type $0 (func))
+ (func $none_type_test
+  (nop)
+ )
+)
+. Running test: create/expand
+. Running test: basic types
+(module
+ (type $0 (func (param i32 i64 f32 f64 v128)))
+ (func $basic_type_test (param $0 i32) (param $1 i64) (param $2 f32) (param $3 f64) (param $4 v128)
+  (nop)
+ )
+)
+. Running test: ref types
+(module
+ (type $0 (func (param funcref anyref eqref i31ref structref arrayref stringref nullref nullexternref nullfuncref)))
+ (func $ref_type_test (param $0 funcref) (param $1 anyref) (param $2 eqref) (param $3 i31ref) (param $4 structref) (param $5 arrayref) (param $6 stringref) (param $7 nullref) (param $8 nullexternref) (param $9 nullfuncref)
+  (nop)
+ )
+)
+. Running test: unreachable type
+(module
+ (type $0 (func (param unreachable)))
+ (func $unreachable_type_test (param $0 unreachable)
+  (nop)
+ )
+)
+. Running test: is_nullable
 var retasmFunc = asmFunc({
 });
 (module
