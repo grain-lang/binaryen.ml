@@ -1,8 +1,8 @@
 open Module_test;
+open Literal_test;
 open Function_test;
 open Settings_test;
 open Type_test;
-// TODO: Type
 // TODO: Table
 // TODO: Struct_Type
 // TODO: Signature_Type
@@ -10,7 +10,6 @@ open Type_test;
 // TODO: Packed_Type
 // TODO: OP
 // TODO: Memory
-// TODO: Literal
 // TODO: Import
 // TODO: Heap_Type
 // TODO: Global
