@@ -1,5 +1,5 @@
 open Binaryen;
-open Framework;
+open Frame_work;
 
 suite("Settings", () => {
   test("optimize_level", () => {
