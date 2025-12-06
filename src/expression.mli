@@ -350,11 +350,20 @@ module Ref : sig
   (** Module, left, right *)
 end
 
-(** Bindings for `try` instruction. For better validation, use `Try_catch` or `Try_Delegate`. *)
+(** Bindings for `try` instruction. For better validation, use `Try_catch` or
+    `Try_Delegate`. *)
 module Try : sig
-  val make : Module.t -> string option -> t -> string list -> t list -> string option -> t
+  val make :
+    Module.t ->
+    string option ->
+    t ->
+    string list ->
+    t list ->
+    string option ->
+    t
   (** Module, name, body, catch tags, catch bodies, delegate target *)
-  val get_name : t -> string
+
+  val get_name : t -> string option
   (** expr *)
 
   val set_name : t -> string -> unit
@@ -419,7 +428,7 @@ module Try_Catch : sig
   val make : Module.t -> string option -> t -> string list -> t list -> t
   (** Module, name, body, catch tags, catch bodies *)
 
-  val get_name : t -> string
+  val get_name : t -> string option
   (** expr *)
 
   val set_name : t -> string -> unit
@@ -484,7 +493,7 @@ module Try_Delegate : sig
   val make : Module.t -> string option -> t -> string -> t
   (** Module, name, body, delegate *)
 
-  val get_name : t -> string
+  val get_name : t -> string option
   (** expr *)
 
   val set_name : t -> string -> unit
@@ -548,6 +557,7 @@ end
 module Throw : sig
   val make : Module.t -> string -> t list -> t
   (** Module, tag, operands *)
+
   val get_tag : t -> string
   (** expr *)
 
@@ -577,7 +587,7 @@ module Rethrow : sig
   val make : Module.t -> string -> t
   (** Module, target *)
 
-  val get_target : t -> string
+  val get_target : t -> string option
   (** expr *)
 
   val set_target : t -> string -> unit

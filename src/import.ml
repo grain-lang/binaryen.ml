@@ -24,7 +24,8 @@ external add_global_import :
 external add_tag_import :
   Module.t -> string -> string -> string -> Type.t -> Type.t -> unit
   = "caml_binaryen_add_tag_import__bytecode" "caml_binaryen_add_tag_import"
-(** Module, internal name, external module name, external base name, params type, results type. *)
+(** Module, internal name, external module name, external base name, params
+    type, results type. *)
 
 external function_import_get_module : Function.t -> string
   = "caml_binaryen_function_import_get_module"

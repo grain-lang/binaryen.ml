@@ -1885,7 +1885,7 @@ caml_binaryen_ref_eq(value _module, value _left, value _right) {
 
 // Exception handling operations
 CAMLprim value
-caml_binaryen_try_native(value _module, value _name, value _body, value _catchTags, value _catchBodies, value _delegateTarget) {
+caml_binaryen_try(value _module, value _name, value _body, value _catchTags, value _catchBodies, value _delegateTarget) {
   CAMLparam5(_module, _name, _body, _catchTags, _catchBodies);
   CAMLxparam1(_delegateTarget);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
@@ -1914,12 +1914,21 @@ caml_binaryen_try_native(value _module, value _name, value _body, value _catchTa
   } else {
     delegateTarget = Safe_String_val(Some_val(_delegateTarget));
   }
-  BinaryenExpressionRef exp = BinaryenTry(module, name, body, catchTags, catchTagsLen, catchBodies, catchBodiesLen, delegateTarget);
+  BinaryenExpressionRef exp = BinaryenTry(
+    module,
+    name,
+    body,
+    catchTags,
+    catchTagsLen,
+    catchBodies,
+    catchBodiesLen,
+    delegateTarget
+  );
   CAMLreturn(alloc_BinaryenExpressionRef(exp));
 }
 
-CAMLprim value caml_binaryen_try_bytecode(value *argv, int argn) {
-  return caml_binaryen_try_native(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
+CAMLprim value caml_binaryen_try__bytecode(value * argv) {
+  return caml_binaryen_try(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
 }
 
 CAMLprim value
@@ -1950,8 +1959,12 @@ CAMLprim value
 caml_binaryen_try_get_name(value _expr) {
   CAMLparam1(_expr);
   BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  const char* binaryenRetVal = BinaryenTryGetName(expr);
-  CAMLreturn(caml_copy_string(binaryenRetVal));
+  const char* name = BinaryenTryGetName(expr);
+  if (name == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(name)));
+  }
 }
 
 CAMLprim value
@@ -2204,7 +2217,11 @@ caml_binaryen_rethrow_get_target(value _expr) {
   CAMLparam1(_expr);
   BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
   const char* binaryenRetVal = BinaryenRethrowGetTarget(expr);
-  CAMLreturn(caml_copy_string(binaryenRetVal));
+  if (binaryenRetVal == NULL) {
+    CAMLreturn(Val_none);
+  } else {
+    CAMLreturn(caml_alloc_some(caml_copy_string(binaryenRetVal)));
+  }
 }
 
 CAMLprim value

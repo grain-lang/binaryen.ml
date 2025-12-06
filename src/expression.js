@@ -1709,9 +1709,9 @@ function caml_binaryen_ref_eq(wasm_mod, left, right) {
 
 // Exception handling operations
 
-//Provides: caml_binaryen_try_native
+//Provides: caml_binaryen_try
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
-function caml_binaryen_try_native(wasm_mod, name, body, catch_tags, catch_bodies, delegate_target) {
+function caml_binaryen_try(wasm_mod, name, body, catch_tags, catch_bodies, delegate_target) {
   return wasm_mod.try(
     name ? caml_jsstring_of_string(name[1]) : null,
     body,
@@ -1721,10 +1721,10 @@ function caml_binaryen_try_native(wasm_mod, name, body, catch_tags, catch_bodies
   );
 }
 
-//Provides: caml_binaryen_try_bytecode
-//Requires: caml_binaryen_try_native
-function caml_binaryen_try_bytecode() {
-  return caml_binaryen_try_native(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
+//Provides: caml_binaryen_try__bytecode
+//Requires: caml_binaryen_try
+function caml_binaryen_try__bytecode() {
+  return caml_binaryen_try(arguments[0], arguments[1], arguments[2], arguments[3], arguments[4], arguments[5]);
 }
 
 //Provides: caml_binaryen_throw
@@ -1745,184 +1745,194 @@ function caml_binaryen_rethrow(wasm_mod, target) {
 }
 
 //Provides: caml_binaryen_try_get_name
-//Requires: Binaryen, caml_string_of_jsstring
+//Requires: Binaryen, caml_string_of_jsstring, to_option
 function caml_binaryen_try_get_name(expr) {
-  return caml_string_of_jsstring(Binaryen['_BinaryenTryGetName'](expr));
+  var name = Binaryen.Try.getName(expr);
+  var str = name != null ? caml_string_of_jsstring(name) : null;
+  return to_option(str);
 }
 
 //Provides: caml_binaryen_try_set_name
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_try_set_name(expr, name) {
-  Binaryen['_BinaryenTrySetName'](expr, name);
+  Binaryen.Try.setName(expr, caml_jsstring_of_string(name));
 }
 
 //Provides: caml_binaryen_try_get_body
 //Requires: Binaryen
 function caml_binaryen_try_get_body(expr) {
-  return Binaryen['_BinaryenTryGetBody'](expr);
+  return Binaryen.Try.getBody(expr);
 }
 
 //Provides: caml_binaryen_try_set_body
 //Requires: Binaryen
 function caml_binaryen_try_set_body(expr, bodyExpr) {
-  Binaryen['_BinaryenTrySetBody'](expr, bodyExpr);
+  Binaryen.Try.setBody(expr, bodyExpr);
 }
 
 //Provides: caml_binaryen_try_get_num_catch_tags
 //Requires: Binaryen
 function caml_binaryen_try_get_num_catch_tags(expr) {
-  return Binaryen['_BinaryenTryGetNumCatchTags'](expr);
+  return Binaryen.Try.getNumCatchTags(expr);
 }
 
 //Provides: caml_binaryen_try_get_num_catch_bodies
 //Requires: Binaryen
 function caml_binaryen_try_get_num_catch_bodies(expr) {
-  return Binaryen['_BinaryenTryGetNumCatchBodies'](expr);
+  return Binaryen.Try.getNumCatchBodies(expr);
 }
 
 //Provides: caml_binaryen_try_get_catch_tag_at
 //Requires: Binaryen, caml_string_of_jsstring
 function caml_binaryen_try_get_catch_tag_at(expr, index) {
-  return caml_string_of_jsstring(Binaryen['_BinaryenTryGetCatchTagAt'](expr, index));
+  return caml_string_of_jsstring(Binaryen.Try.getCatchTagAt(expr, index));
 }
 
 //Provides: caml_binaryen_try_set_catch_tag_at
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_try_set_catch_tag_at(expr, index, catchTag) {
-  Binaryen['_BinaryenTrySetCatchTagAt'](expr, index, catchTag);
+  Binaryen.Try.setCatchTagAt(expr, index, caml_jsstring_of_string(catchTag));
 }
 
 //Provides: caml_binaryen_try_append_catch_tag
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_try_append_catch_tag(expr, catchTag) {
-  return Binaryen['_BinaryenTryAppendCatchTag'](expr, catchTag);
+  return Binaryen.Try.appendCatchTag(expr, caml_jsstring_of_string(catchTag));
 }
 
 //Provides: caml_binaryen_try_insert_catch_tag_at
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_try_insert_catch_tag_at(expr, index, catchTag) {
-  Binaryen['_BinaryenTryInsertCatchTagAt'](expr, index, catchTag);
+  Binaryen.Try.insertCatchTagAt(expr, index, caml_jsstring_of_string(catchTag));
 }
 
 //Provides: caml_binaryen_try_remove_catch_tag_at
 //Requires: Binaryen, caml_string_of_jsstring
 function caml_binaryen_try_remove_catch_tag_at(expr, index) {
-  return caml_string_of_jsstring(Binaryen['_BinaryenTryRemoveCatchTagAt'](expr, index));
+  return caml_string_of_jsstring(Binaryen.Try.removeCatchTagAt(expr, index));
 }
 
 //Provides: caml_binaryen_try_get_catch_body_at
 //Requires: Binaryen
 function caml_binaryen_try_get_catch_body_at(expr, index) {
-  return Binaryen['_BinaryenTryGetCatchBodyAt'](expr, index);
+  return Binaryen.Try.getCatchBodyAt(expr, index);
 }
 
 //Provides: caml_binaryen_try_set_catch_body_at
 //Requires: Binaryen
 function caml_binaryen_try_set_catch_body_at(expr, index, catchExpr) {
-  Binaryen['_BinaryenTrySetCatchBodyAt'](expr, index, catchExpr);
+  Binaryen.Try.setCatchBodyAt(expr, index, catchExpr);
 }
 
 //Provides: caml_binaryen_try_append_catch_body
 //Requires: Binaryen
 function caml_binaryen_try_append_catch_body(expr, catchExpr) {
-  return Binaryen['_BinaryenTryAppendCatchBody'](expr, catchExpr);
+  return Binaryen.Try.appendCatchBody(expr, catchExpr);
 }
 
 //Provides: caml_binaryen_try_insert_catch_body_at
 //Requires: Binaryen
 function caml_binaryen_try_insert_catch_body_at(expr, index, catchExpr) {
-  Binaryen['_BinaryenTryInsertCatchBodyAt'](expr, index, catchExpr);
+  Binaryen.Try.insertCatchBodyAt(expr, index, catchExpr);
 }
 
 //Provides: caml_binaryen_try_remove_catch_body_at
 //Requires: Binaryen
 function caml_binaryen_try_remove_catch_body_at(expr, index) {
-  return Binaryen['_BinaryenTryRemoveCatchBodyAt'](expr, index);
+  return Binaryen.Try.removeCatchBodyAt(expr, index);
 }
 
 //Provides: caml_binaryen_try_has_catch_all
 //Requires: Binaryen
+//Requires: caml_js_to_bool
 function caml_binaryen_try_has_catch_all(expr) {
-  return Binaryen['_BinaryenTryHasCatchAll'](expr);
+  return caml_js_to_bool(Binaryen.Try.hasCatchAll(expr));
 }
 
 //Provides: caml_binaryen_try_get_delegate_target
-//Requires: Binaryen, caml_string_of_jsstring
+//Requires: Binaryen
+//Requires: caml_string_of_jsstring
+//Requires: to_option
 function caml_binaryen_try_get_delegate_target(expr) {
-  const retval = Binaryen['_BinaryenTryGetDelegateTarget'](expr);
-  return retval ? [0, caml_string_of_jsstring(retval)] : null;
+  const name = Binaryen.Try.getDelegateTarget(expr);
+  const str = name ? caml_string_of_jsstring(name) : null;
+  return to_option(str);
 }
 
 //Provides: caml_binaryen_try_set_delegate_target
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_try_set_delegate_target(expr, delegateTarget) {
-  Binaryen['_BinaryenTrySetDelegateTarget'](expr, delegateTarget);
+  Binaryen.Try.setDelegateTarget(expr, caml_jsstring_of_string(delegateTarget));
 }
 
 //Provides: caml_binaryen_try_is_delegate
 //Requires: Binaryen
+//Requires: caml_js_to_bool
 function caml_binaryen_try_is_delegate(expr) {
-  return Binaryen['_BinaryenTryIsDelegate'](expr);
+  return caml_js_to_bool(Binaryen.Try.isDelegate(expr));
 }
 
 //Provides: caml_binaryen_throw_get_tag
 //Requires: Binaryen, caml_string_of_jsstring
 function caml_binaryen_throw_get_tag(expr) {
-  return caml_string_of_jsstring(Binaryen['_BinaryenThrowGetTag'](expr));
+  return caml_string_of_jsstring(Binaryen.Throw.getTag(expr));
 }
 
 //Provides: caml_binaryen_throw_set_tag
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_throw_set_tag(expr, tagName) {
-  Binaryen['_BinaryenThrowSetTag'](expr, tagName);
+  Binaryen.Throw.setTag(expr, caml_jsstring_of_string(tagName));
 }
 
 //Provides: caml_binaryen_throw_get_num_operands
 //Requires: Binaryen
 function caml_binaryen_throw_get_num_operands(expr) {
-  return Binaryen['_BinaryenThrowGetNumOperands'](expr);
+  return Binaryen.Throw.getNumOperands(expr);
 }
 
 //Provides: caml_binaryen_throw_get_operand_at
 //Requires: Binaryen
 function caml_binaryen_throw_get_operand_at(expr, index) {
-  return Binaryen['_BinaryenThrowGetOperandAt'](expr, index);
+  return Binaryen.Throw.getOperandAt(expr, index);
 }
 
 //Provides: caml_binaryen_throw_set_operand_at
 //Requires: Binaryen
 function caml_binaryen_throw_set_operand_at(expr, index, operandExpr) {
-  Binaryen['_BinaryenThrowSetOperandAt'](expr, index, operandExpr);
+  Binaryen.Throw.setOperandAt(expr, index, operandExpr);
 }
 
 //Provides: caml_binaryen_throw_append_operand
 //Requires: Binaryen
 function caml_binaryen_throw_append_operand(expr, operandExpr) {
-  return Binaryen['_BinaryenThrowAppendOperand'](expr, operandExpr);
+  return Binaryen.Throw.appendOperand(expr, operandExpr);
 }
 
 //Provides: caml_binaryen_throw_insert_operand_at
 //Requires: Binaryen
 function caml_binaryen_throw_insert_operand_at(expr, index, operandExpr) {
-  Binaryen['_BinaryenThrowInsertOperandAt'](expr, index, operandExpr);
+  Binaryen.Throw.insertOperandAt(expr, index, operandExpr);
 }
 
 //Provides: caml_binaryen_throw_remove_operand_at
 //Requires: Binaryen
 function caml_binaryen_throw_remove_operand_at(expr, index) {
-  return Binaryen['_BinaryenThrowRemoveOperandAt'](expr, index);
+  return Binaryen.Throw.removeOperandAt(expr, index);
 }
 
 //Provides: caml_binaryen_rethrow_get_target
 //Requires: Binaryen, caml_string_of_jsstring
+//Requires: to_option
 function caml_binaryen_rethrow_get_target(expr) {
-  return caml_string_of_jsstring(Binaryen['_BinaryenRethrowGetTarget'](expr));
+  const name = Binaryen.Rethrow.getTarget(expr);
+  const str = name ? caml_string_of_jsstring(name) : null;
+  return to_option(str);
 }
 
 //Provides: caml_binaryen_rethrow_set_target
 //Requires: Binaryen, caml_jsstring_of_string
 function caml_binaryen_rethrow_set_target(expr, target) {
-  Binaryen['_BinaryenRethrowSetTarget'](expr, target);
+  Binaryen.Rethrow.setTarget(expr, caml_jsstring_of_string(target));
 }
 
 // Table operations

@@ -260,66 +260,95 @@ let _ = Tag.add_tag wasm_mod "bar" Type.int32 Type.none
 (* Exception handling *)
 let try_catch_1 =
   Expression.Try.make wasm_mod (Some "tc1")
-    (Expression.Throw.make wasm_mod "foo" [Expression.Const.make wasm_mod (Literal.int32 1l)])
-    ["foo"; "bar"]
-    [(Expression.Block.make wasm_mod "tc1blk2" [Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32); Expression.Const.make wasm_mod (Literal.int32 2l)]);
-     (Expression.Block.make wasm_mod "tc1blk3" [Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32); Expression.Const.make wasm_mod (Literal.int32 3l)])]
+    (Expression.Throw.make wasm_mod "foo"
+       [ Expression.Const.make wasm_mod (Literal.int32 1l) ])
+    [ "foo"; "bar" ]
+    [
+      Expression.Block.make wasm_mod "tc1blk2"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Const.make wasm_mod (Literal.int32 2l);
+        ];
+      Expression.Block.make wasm_mod "tc1blk3"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Const.make wasm_mod (Literal.int32 3l);
+        ];
+    ]
     None
+
 let try_catch_2 =
   Expression.Try_Catch.make wasm_mod (Some "tc2")
-    (Expression.Throw.make wasm_mod "foo" [Expression.Const.make wasm_mod (Literal.int32 1l)])
-    ["foo"; "bar"]
-    [(Expression.Block.make wasm_mod "tc2blk2" [Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32); Expression.Rethrow.make wasm_mod "tc2"]);
-     (Expression.Block.make wasm_mod "tc2blk3" [Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32); Expression.Const.make wasm_mod (Literal.int32 3l)])]
+    (Expression.Throw.make wasm_mod "foo"
+       [ Expression.Const.make wasm_mod (Literal.int32 1l) ])
+    [ "foo"; "bar" ]
+    [
+      Expression.Block.make wasm_mod "tc2blk2"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Rethrow.make wasm_mod "tc2";
+        ];
+      Expression.Block.make wasm_mod "tc2blk3"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Const.make wasm_mod (Literal.int32 3l);
+        ];
+    ]
 
 (* One more catch-body than catch-tag; last body becomes the catch_all *)
 let try_catch_all_1 =
   Expression.Try.make wasm_mod (Some "tc3")
     (Expression.Const.make wasm_mod (Literal.int32 1l))
-    ["foo"]
+    [ "foo" ]
     [
-      Expression.Block.make wasm_mod "tc3blk2" [
-        Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32);
-        Expression.Const.make wasm_mod (Literal.int32 2l);
-      ];
-      Expression.Const.make wasm_mod (Literal.int32 3l)
+      Expression.Block.make wasm_mod "tc3blk2"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Const.make wasm_mod (Literal.int32 2l);
+        ];
+      Expression.Const.make wasm_mod (Literal.int32 3l);
     ]
     None
+
 let try_catch_all_2 =
   Expression.Try_Catch.make wasm_mod (Some "tc4")
     (Expression.Const.make wasm_mod (Literal.int32 1l))
-    ["foo"]
+    [ "foo" ]
     [
-      Expression.Block.make wasm_mod "tc4blk2" [
-        Expression.Drop.make wasm_mod (Expression.Pop.make wasm_mod Type.int32);
-        Expression.Const.make wasm_mod (Literal.int32 2l);
-      ];
-      Expression.Const.make wasm_mod (Literal.int32 3l)
+      Expression.Block.make wasm_mod "tc4blk2"
+        [
+          Expression.Drop.make wasm_mod
+            (Expression.Pop.make wasm_mod Type.int32);
+          Expression.Const.make wasm_mod (Literal.int32 2l);
+        ];
+      Expression.Const.make wasm_mod (Literal.int32 3l);
     ]
 
 let try_delegate_1 =
   Expression.Try_Catch.make wasm_mod (Some "del1")
     (Expression.Try.make wasm_mod (Some "td1")
-      (Expression.Const.make wasm_mod (Literal.int32 1l))
-      []
-      []
-      (Some "del1"))
+       (Expression.Const.make wasm_mod (Literal.int32 1l))
+       [] [] (Some "del1"))
     []
     [
-      Expression.Block.make wasm_mod "del1blk" [
-        Expression.Const.make wasm_mod (Literal.int32 2l);
-      ];
+      Expression.Block.make wasm_mod "del1blk"
+        [ Expression.Const.make wasm_mod (Literal.int32 2l) ];
     ]
+
 let try_delegate_2 =
   Expression.Try_Catch.make wasm_mod (Some "del2")
     (Expression.Try_Delegate.make wasm_mod (Some "td2")
-      (Expression.Const.make wasm_mod (Literal.int32 1l))
-      "del2")
+       (Expression.Const.make wasm_mod (Literal.int32 1l))
+       "del2")
     []
     [
-      Expression.Block.make wasm_mod "del2blk" [
-        Expression.Const.make wasm_mod (Literal.int32 2l);
-      ];
+      Expression.Block.make wasm_mod "del2blk"
+        [ Expression.Const.make wasm_mod (Literal.int32 2l) ];
     ]
 
 (* Create an imported "write" function i32 (externref, i32, i32) *)
@@ -344,14 +373,15 @@ let _ =
 (* Create a function with try/delegate *)
 let _ =
   Function.add_function wasm_mod "trydelegate" Type.none Type.none [||]
-    (Expression.Block.make wasm_mod "blk" [
-      Expression.Drop.make wasm_mod try_catch_1;
-      Expression.Drop.make wasm_mod try_catch_2;
-      Expression.Drop.make wasm_mod try_catch_all_1;
-      Expression.Drop.make wasm_mod try_catch_all_2;
-      Expression.Drop.make wasm_mod try_delegate_1;
-      Expression.Drop.make wasm_mod try_delegate_2;
-    ])
+    (Expression.Block.make wasm_mod "blk"
+       [
+         Expression.Drop.make wasm_mod try_catch_1;
+         Expression.Drop.make wasm_mod try_catch_2;
+         Expression.Drop.make wasm_mod try_catch_all_1;
+         Expression.Drop.make wasm_mod try_catch_all_2;
+         Expression.Drop.make wasm_mod try_delegate_1;
+         Expression.Drop.make wasm_mod try_delegate_2;
+       ])
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
 let _ = Export.add_function_export wasm_mod "trydelegate" "trydelegate"
