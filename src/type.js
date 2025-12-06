@@ -67,7 +67,7 @@ function caml_binaryen_type_structref() {
 //Provides: caml_binaryen_type_arrayref
 //Requires: Binaryen
 function caml_binaryen_type_arrayref() {
-  // TODO: Binaryen v111 didn't expose this directly
+  // TODO: Binaryen v125 doesn't expose this directly
   return Binaryen._BinaryenTypeArrayref();
 }
 
@@ -80,22 +80,19 @@ function caml_binaryen_type_stringref() {
 //Provides: caml_binaryen_type_nullref
 //Requires: Binaryen
 function caml_binaryen_type_nullref() {
-  // TODO: Binaryen v111 didn't expose this directly
-  return Binaryen._BinaryenTypeNullref();
+  return Binaryen.nullref;
 }
 
 //Provides: caml_binaryen_type_null_externref
 //Requires: Binaryen
 function caml_binaryen_type_null_externref() {
-  // TODO: Binaryen v111 didn't expose this directly
-  return Binaryen._BinaryenTypeNullExternref();
+  return Binaryen.nullexternref;
 }
 
 //Provides: caml_binaryen_type_null_funcref
 //Requires: Binaryen
 function caml_binaryen_type_null_funcref() {
-  // TODO: Binaryen v111 didn't expose this directly
-  return Binaryen._BinaryenTypeNullFuncref();
+  return Binaryen.nullfuncref;
 }
 
 //Provides: caml_binaryen_type_unreachable
