@@ -17,5 +17,6 @@ depends: [
   "dune-configurator" {>= "3.0.0"}
   "js_of_ocaml-compiler" {>= "6.0.0" < "7.0.0"}
   "libbinaryen" {>= "124.0.1" < "125.0.0"}
+  "reason" {>= "3.11.0" <= "3.17.2"}
 ]
 x-maintenance-intent: ["0.(latest)"]
