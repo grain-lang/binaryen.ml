@@ -46,7 +46,62 @@ Running suite: Function
  )
 )
 . Running test: set_debug_location
-{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Module
+{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Literal
+. Running test: int32
+(module
+ (type $0 (func))
+ (func $int32_test
+  (drop
+   (i32.const 42)
+  )
+ )
+)
+. Running test: int64
+(module
+ (type $0 (func))
+ (func $int64_test
+  (drop
+   (i64.const -35)
+  )
+ )
+)
+. Running test: float32_bits
+(module
+ (type $0 (func))
+ (func $float32_bits_test
+  (drop
+   (f32.const 4.5)
+  )
+ )
+)
+. Running test: float64_bits
+(module
+ (type $0 (func))
+ (func $float64_bits_test
+  (drop
+   (f64.const 4.5)
+  )
+ )
+)
+. Running test: float32
+(module
+ (type $0 (func))
+ (func $float32_test
+  (drop
+   (f32.const 3.5)
+  )
+ )
+)
+. Running test: float64
+(module
+ (type $0 (func))
+ (func $float64_test
+  (drop
+   (f64.const 5.5)
+  )
+ )
+)
+Running suite: Module
 . Running test: create and dispose
 . Running test: add custom section
 . Running test: write
