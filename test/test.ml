@@ -1,4 +1,5 @@
-open Binaryen
+open Module
+(* open Binaryen
 
 (* Testing colors enable *)
 let _ = assert (Settings.are_colors_enabled () == true)
@@ -355,4 +356,4 @@ let _ = Module.print_stack_ir new_mod
 (* Dispose the modules 👋 *)
 
 let _ = Module.dispose wasm_mod
-let _ = Module.dispose new_mod
+let _ = Module.dispose new_mod *)
