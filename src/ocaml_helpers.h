@@ -29,6 +29,7 @@ static struct custom_operations binaryen_ops = {
 #define BinaryenLiteral_val(v) (*((struct BinaryenLiteral*) Data_custom_val(v)))
 #define BinaryenFunctionRef_val(v) (*((BinaryenFunctionRef*) Data_custom_val(v)))
 #define BinaryenGlobalRef_val(v) (*((BinaryenGlobalRef*) Data_custom_val(v)))
+#define BinaryenTagRef_val(v) (*((BinaryenTagRef*) Data_custom_val(v)))
 #define BinaryenExportRef_val(v) (*((BinaryenExportRef*) Data_custom_val(v)))
 #define BinaryenTableRef_val(v) (*((BinaryenTableRef*) Data_custom_val(v)))
 #define BinaryenElementSegmentRef_val(v) (*((BinaryenElementSegmentRef*) Data_custom_val(v)))
@@ -52,6 +53,9 @@ value alloc_BinaryenType(BinaryenType typ);
 
 /* Allocating an OCaml custom block to hold the given BinaryenGlobalRef */
 value alloc_BinaryenGlobalRef(BinaryenGlobalRef exp);
+
+/* Allocating an OCaml custom block to hold the given BinaryenTagRef */
+value alloc_BinaryenTagRef(BinaryenTagRef exp);
 
 /* Allocating an OCaml custom block to hold the given BinaryenExportRef */
 value alloc_BinaryenExportRef(BinaryenExportRef exp);
