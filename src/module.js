@@ -122,11 +122,11 @@ function caml_binaryen_module_get_debug_info_filename(wasm_mod, index) {
 }
 
 //Provides: caml_binaryen_add_custom_section
-//Requires: caml_jsstring_of_string, caml_array_of_string
+//Requires: caml_jsstring_of_string, caml_uint8_array_of_string
 function caml_binaryen_add_custom_section(wasm_mod, name, contents) {
   return wasm_mod.addCustomSection(
     caml_jsstring_of_string(name),
-    caml_array_of_string(contents)
+    caml_uint8_array_of_string(contents)
   );
 }
 
