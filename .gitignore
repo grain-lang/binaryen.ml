@@ -1,10 +1,15 @@
+# Esy
 node_modules/
 _esy/
 _build/
+
+# Ocaml
 .merlin
+
+# General
 META
-.vscode/
 .DS_Store
 *.tar.gz
 *.install
 *.zip
+

@@ -46,7 +46,21 @@ Running suite: Function
  )
 )
 . Running test: set_debug_location
-{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Literal
+{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Global
+. Running test: Add global
+(module
+ (global $test_global i32 (i32.const 0))
+)
+
+. Running test: Get Name
+. Running test: Get Type
+. Running test: Get Global
+. Running test: Is Mutable
+. Running test: Number of Globals
+. Running test: Remove Global
+. Running test: Get Global by Index
+. Running test: Get Init Expr
+Running suite: Literal
 . Running test: int32
 (module
  (type $0 (func))
