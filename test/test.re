@@ -1,33 +1,22 @@
-open Module_test;
-open Literal_test;
-open Function_test;
-open Settings_test;
+open Module_test; // TODO: Document
+open Literal_test; // TODO: Document
+open Function_test; // TODO: Document
+open Settings_test; // TODO: Document
 open Type_test;
-// TODO: Table
-// TODO: Struct_Type
-// TODO: Signature_Type
-// TODO: Passes
-// TODO: Packed_Type
-// TODO: OP
-// TODO: Memory
-// TODO: Import
-// TODO: Heap_Type
-// TODO: Global
-// TODO: Expression
-// TODO: Export
-// TODO: Element_Segment
-// TODO: Array_Type
-
-// let wasm_mod = Module.create ()
-// let _ = Module.set_features wasm_mod [ Module.Feature.all ]
-// let import_wasm_mod = Module.create ()
-
-// (* Testing pass_argument *)
-// let _ = assert (Settings.get_pass_argument "theKey" = None)
-// let _ = Settings.set_pass_argument "theKey" "theValue"
-// let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue")
-// let _ = Settings.set_pass_argument "theKey" "theValue2"
-// let _ = assert (Settings.get_pass_argument "theKey" = Some "theValue2")
+// TODO: Heap_Type (quick)
+// TODO: Array_Type (quick)
+// TODO: Struct_Type (quick)
+// TODO: Signature_Type (quick)
+// TODO: Packed_Type (quick)
+open Global_test; // TODO: Document
+// TODO: Memory (Medium)
+// TODO: Table (Medium)
+// TODO: Element_Segment (Medium)
+// TODO: Export (Medium)
+// TODO: Import (Medium)
+// TODO: Passes (Hard)
+// TODO: Expression (Hard)
+// TODO: OP (Medium)
 
 // let _ =
 //   Import.add_memory_import import_wasm_mod "internal_name" "external_name"
@@ -141,18 +130,6 @@ open Type_test;
 //     (Expression.Const.make wasm_mod (Literal.int32 0l))
 
 // let _ = Expression.print table_grow
-
-// let _ =
-//   Global.add_global wasm_mod "max_int64" Type.int64 false
-//     (Expression.Const.make wasm_mod (Literal.int64 Int64.max_int))
-
-// let _ =
-//   Global.add_global wasm_mod "max_int64_mut" Type.int64 true
-//     (Expression.Const.make wasm_mod (Literal.int64 Int64.max_int))
-
-// let _ =
-//   Global.add_global wasm_mod "test_float64_bits" Type.float64 false
-//     (Expression.Const.make wasm_mod (Literal.float64_bits 0x3FF3AE147AE147AEL))
 
 // let _ =
 //   Table.add_active_element_segment wasm_mod "table" "elem" [ "adder" ]
