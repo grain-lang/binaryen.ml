@@ -4,6 +4,7 @@ val add_function_export : Module.t -> string -> string -> t
 val add_table_export : Module.t -> string -> string -> t
 val add_memory_export : Module.t -> string -> string -> t
 val add_global_export : Module.t -> string -> string -> t
+val add_tag_export : Module.t -> string -> string -> t
 val get_export : Module.t -> string -> t
 val remove_export : Module.t -> string -> unit
 val get_num_exports : Module.t -> int
