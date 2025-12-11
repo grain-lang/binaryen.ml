@@ -254,6 +254,19 @@ let _ =
       (Memory.get_segment_data wasm_mod "world")
       (Bytes.of_string "world"))
 
+(* Call_ref *)
+let thunk_type =
+  let builder = Type_builder.make 1 in
+  Type_builder.set_signature_type builder 0 Type.none Type.none;
+  match Type_builder.build_and_dispose builder with
+  | Ok [ ty ] -> ty
+  | _ -> failwith "failed to build type"
+
+let _ =
+  Expression.Call_ref.make wasm_mod
+    (Expression.Ref.func wasm_mod "start" thunk_type)
+    [] Type.none
+
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 
@@ -274,7 +287,79 @@ let _ =
        Type.int32)
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
-let _ = Module.validate wasm_mod
+
+(* Create a function that does gc *)
+let _ =
+  let array_u8_type =
+    let builder = Type_builder.make 1 in
+    Type_builder.set_array_type builder 0 Type.int32 Packed_type.int8 true;
+    match Type_builder.build_and_dispose builder with
+    | Ok [ ty ] -> ty
+    | _ -> failwith "failed to make array type"
+  in
+  let list_type =
+    let builder = Type_builder.make 1 in
+    let temp_heap_type = Type_builder.get_temp_heap_type builder 0 in
+    let temp_ref_type =
+      Type_builder.get_temp_ref_type builder temp_heap_type true
+    in
+    Type_builder.set_struct_type builder 0
+      [
+        Type_builder.
+          {
+            type_ = Type.i31ref;
+            packed_type = Packed_type.not_packed;
+            mutable_ = false;
+          };
+        Type_builder.
+          {
+            type_ = temp_ref_type;
+            packed_type = Packed_type.not_packed;
+            mutable_ = false;
+          };
+      ];
+    match Type_builder.build_and_dispose builder with
+    | Ok [ ty ] -> ty
+    | _ -> failwith "failed to make list type"
+  in
+  let i32 v = Expression.Const.make wasm_mod (Literal.int32 v) in
+  let i31 v = Expression.I31.make wasm_mod (i32 v) in
+  let cons first rest =
+    Expression.Struct.new_ wasm_mod
+      (Some [ first; rest ])
+      (Type.get_heap_type list_type)
+  in
+  let empty () =
+    Expression.Ref.null wasm_mod
+      (Type.from_heap_type (Type.get_heap_type list_type) true)
+  in
+  Function.add_function wasm_mod "gc" Type.anyref
+    (Type.create [| Type.anyref; Type.anyref |])
+    [| array_u8_type; list_type |]
+    (Expression.Block.make wasm_mod "gc_block"
+       [
+         Expression.Local_set.make wasm_mod 1
+           (Expression.Array.new_fixed wasm_mod
+              (Type.get_heap_type array_u8_type)
+              [ i32 0l; i32 255l ]);
+         Expression.Array.set wasm_mod
+           (Expression.Local_get.make wasm_mod 1 array_u8_type)
+           (i32 1l) (i32 42l);
+         Expression.Local_set.make wasm_mod 2
+           (cons
+              (Expression.Ref.cast wasm_mod
+                 (Expression.Local_get.make wasm_mod 0 Type.anyref)
+                 Type.i31ref)
+              (cons (i31 1l) (cons (i31 2l) (cons (i31 3l) (empty ())))));
+         Expression.Tuple_make.make wasm_mod
+           [
+             Expression.Local_get.make wasm_mod 1 array_u8_type;
+             Expression.Local_get.make wasm_mod 2 list_type;
+           ];
+       ])
+
+let _ = Export.add_function_export wasm_mod "gc" "gc"
+let _ = assert (Module.validate wasm_mod == 1)
 
 (* Shouldn't actually do anything since we aren't doing function renames *)
 let _ = Module.update_maps wasm_mod
@@ -348,7 +433,7 @@ let _ =
       Module.Feature.all;
     ]
 
-let _ = Module.validate new_mod
+let _ = assert (Module.validate new_mod == 1)
 let _ = Module.print new_mod
 let _ = Module.print_stack_ir new_mod
 
