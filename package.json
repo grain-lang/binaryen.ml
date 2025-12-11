@@ -13,7 +13,8 @@
   "devDependencies": {
     "@opam/js_of_ocaml-compiler": ">= 6.0.0 < 7.0.0",
     "@opam/ocamlformat": "0.27.0",
-    "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0"
+    "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0",
+    "@opam/reason": ">= 3.11.0 <= 3.17.2"
   },
   "resolutions": {
     "@opam/ocp-indent": "1.7.0"
