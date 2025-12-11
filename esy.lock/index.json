@@ -1,5 +1,5 @@
 {
-  "checksum": "43b607828957b76c0263dc0b329d0237",
+  "checksum": "857a7074d0b2ba0531945439d1dffb14",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -103,7 +103,7 @@
       "overrides": [],
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
@@ -136,7 +136,7 @@
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/uutf@opam:1.0.4@ba7fbef7",
         "@opam/uucp@opam:17.0.0@843de755", "@opam/topkg@opam:1.1.1@2377d2f8",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
@@ -170,7 +170,7 @@
       "overrides": [],
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
@@ -201,7 +201,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
@@ -662,14 +662,14 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@opam/base-bytes@opam:base@785dbd33",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/dune@opam:3.20.2@8daef28d",
         "@opam/cmdliner@opam:1.3.0@8e6dd99f",
         "@opam/base-bytes@opam:base@785dbd33"
@@ -813,8 +813,8 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/ocamlfind@opam:1.9.8@ee910ff5": {
-      "id": "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+    "@opam/ocamlfind@opam:1.9.8@4b291364": {
+      "id": "@opam/ocamlfind@opam:1.9.8@4b291364",
       "name": "@opam/ocamlfind",
       "version": "opam:1.9.8",
       "source": {
@@ -1319,7 +1319,7 @@
         "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/sedlex@opam:3.7@7fb2caab",
         "@opam/ppxlib@opam:0.37.0@42a12c9c",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/menhirSdk@opam:20250912@f434747d",
         "@opam/menhirLib@opam:20250912@7bcb2f61",
         "@opam/menhir@opam:20250912@0ed10637",
@@ -1395,7 +1395,7 @@
       "overrides": [],
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@opam/astring@opam:0.8.5@9975798d",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
@@ -1880,11 +1880,11 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@ee910ff5"
+        "ocaml@5.3.0@d41d8cd9", "@opam/ocamlfind@opam:1.9.8@4b291364"
       ],
       "available": [
         [ "darwin", "x86_64" ],
@@ -1948,7 +1948,7 @@
       "overrides": [],
       "dependencies": [
         "ocaml@5.3.0@d41d8cd9", "@opam/topkg@opam:1.1.1@2377d2f8",
-        "@opam/ocamlfind@opam:1.9.8@ee910ff5",
+        "@opam/ocamlfind@opam:1.9.8@4b291364",
         "@opam/ocamlbuild@opam:0.16.1@b3fc8209",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
@@ -1960,14 +1960,14 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@grain/libbinaryen@124.0.1@d41d8cd9": {
-      "id": "@grain/libbinaryen@124.0.1@d41d8cd9",
+    "@grain/libbinaryen@git:https://www.github.com/spotandjake/libbinaryen.git#84d8962a81ff9472649aef5381fc85d26262ed5c@d41d8cd9": {
+      "id": "@grain/libbinaryen@git:https://www.github.com/spotandjake/libbinaryen.git#84d8962a81ff9472649aef5381fc85d26262ed5c@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "124.0.1",
+      "version": "git:https://www.github.com/spotandjake/libbinaryen.git#84d8962a81ff9472649aef5381fc85d26262ed5c",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-124.0.1.tgz#sha1:7b29acc4a62ab5a849c6e01c3d8e90c78efd05f2"
+          "git:https://www.github.com/spotandjake/libbinaryen.git#84d8962a81ff9472649aef5381fc85d26262ed5c"
         ]
       },
       "overrides": [],
@@ -1999,7 +1999,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.20.2@7eb6ff01",
         "@opam/dune@opam:3.20.2@8daef28d",
-        "@grain/libbinaryen@124.0.1@d41d8cd9"
+        "@grain/libbinaryen@git:https://www.github.com/spotandjake/libbinaryen.git#84d8962a81ff9472649aef5381fc85d26262ed5c@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.27.0@c40d4612",
