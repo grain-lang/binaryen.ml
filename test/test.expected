@@ -115,6 +115,22 @@ Running suite: Literal
   )
  )
 )
+Running suite: Memory
+. Running test: set_memory
+(module
+ (memory $memory 1 2)
+ (export "memory" (memory $memory))
+)
+. Running test: Has Memory
+. Running test: Get Initial
+. Running test: Has Max
+. Running test: Get Max
+. Running test: Get Shared
+. Running test: Get Is64
+. Running test: Get Num Segments
+. Running test: Get Segment Offset
+. Running test: Get Segment Passive
+. Running test: Get Segment Data
 Running suite: Module
 . Running test: create and dispose
 . Running test: add custom section

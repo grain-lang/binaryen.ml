@@ -11,6 +11,7 @@ val set_memory :
   bool ->
   string ->
   unit
+(** module, initial, maximum, exportName, segmentNames, segmentData, segmentPassive, segmentOffsets, segmentSizes, shared, memory64, memoryName *)
 
 val has_memory : Module.t -> bool
 val get_initial : Module.t -> string -> int

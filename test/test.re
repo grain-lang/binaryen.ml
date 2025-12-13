@@ -9,7 +9,7 @@ open Type_test;
 // TODO: Signature_Type (quick)
 // TODO: Packed_Type (quick)
 open Global_test; // TODO: Document
-// TODO: Memory (Medium)
+open Memory_test; // TODO: Document
 // TODO: Table (Medium)
 // TODO: Element_Segment (Medium)
 // TODO: Export (Medium)
