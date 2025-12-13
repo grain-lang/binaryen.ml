@@ -173,7 +173,7 @@ let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
 let adder_type =
   let builder = Type_builder.make 1 in
-  Type_builder.set_signature_type builder 0 Type.none Type.none;
+  Type_builder.set_signature_type builder 0 (params ()) results;
   match Type_builder.build_and_dispose builder with
   | Ok [ ty ] -> ty
   | _ -> failwith "failed to build type"

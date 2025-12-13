@@ -105,12 +105,19 @@ function caml_binaryen_call_indirect__bytecode() {
 //Requires: caml_jsstring_of_string
 //Requires: caml_list_to_js_array, caml_js_from_bool
 function caml_binaryen_call_ref(wasm_mod, target, params, typ, is_return) {
-  return wasm_mod.call_ref(
-    target,
-    caml_list_to_js_array(params),
-    typ,
-    caml_js_from_bool(is_return)
-  );
+  if (caml_js_from_bool(is_return)) {
+    return wasm_mod.return_call_ref(
+      target,
+      caml_list_to_js_array(params),
+      typ
+    );
+  } else {
+    return wasm_mod.call_ref(
+      target,
+      caml_list_to_js_array(params),
+      typ
+    ); 
+  }
 }
 
 //Provides: caml_binaryen_return_call
