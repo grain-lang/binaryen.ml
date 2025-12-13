@@ -29,6 +29,10 @@ suite("Module", () => {
     assert(source_map == None);
     assert(bytes == Bytes.of_string("\000asm\001\000\000\000"));
     let (_, source_map) = Module.write(wasm_mod, Some(""));
+    switch (source_map) {
+    | None => assert(false)
+    | Some(map) => Printf.printf("%s\n", map);
+    }
     assert(
       source_map
       == Some({|{"version":3,"sources":[],"names":[],"mappings":""}|}),
