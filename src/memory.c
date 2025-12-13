@@ -122,7 +122,7 @@ caml_binaryen_get_memory_segment_byte_offset(value _module, value _name) {
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   char* name = Safe_String_val(_name);
   if (BinaryenGetMemorySegmentPassive(module, name)) {
-    CAMLreturn(Val_int(0));
+    CAMLreturn(Val_int(-1));
   } else {
     CAMLreturn(Val_int(BinaryenGetMemorySegmentByteOffset(module, name)));
   }
