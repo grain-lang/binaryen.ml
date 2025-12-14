@@ -129,12 +129,14 @@ Running suite: Memory
 . Running test: Get Is64
 . Running test: Get Num Segments
 . Running test: Get Segment Offset
+memory: -1
 . Running test: Get Segment Passive
 . Running test: Get Segment Data
 Running suite: Module
 . Running test: create and dispose
 . Running test: add custom section
 . Running test: write
+Source map: {"version":3,"sources":[],"names":[],"mappings":""}
 . Running test: write_text
 (module
  (type $0 (func))
