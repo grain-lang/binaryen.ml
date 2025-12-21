@@ -1,6 +1,7 @@
 type t
 
 val add_table : Module.t -> string -> int -> int -> Type.t -> t
+(** Module, name, initial size, maximum size, table type *)
 
 val add_active_element_segment :
   Module.t ->
@@ -9,6 +10,7 @@ val add_active_element_segment :
   string list ->
   Expression.t ->
   Element_segment.t
+(** Module, table, name, function names, offset. *)
 
 val remove_element_segment : Module.t -> string -> unit
 val get_num_element_segments : Module.t -> int

@@ -1,207 +1,281 @@
-(table.get $table
- (i32.const 0)
-)
-(table.size $table)
-(table.grow $table
- (ref.null nofunc)
- (i32.const 0)
-)
+Running suite: Element Segment
+. Running test: GetName
+. Running test: GetTable
+. Running test: GetOffset
+. Running test: GetLength
+. Running test: GetData
+Running suite: Export
+. Running test: AddFunctionExport
 (module
- (type $0 (func (param i32 i32) (result i32)))
- (type $1 (func))
- (type $2 (func (param anyref i32 i32) (result i32)))
- (type $3 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $write (type $2) (param anyref i32 i32) (result i32)))
- (global $max_int64 i64 (i64.const 9223372036854775807))
- (global $max_int64_mut (mut i64) (i64.const 9223372036854775807))
- (global $test_float64_bits f64 (f64.const 1.23))
- (memory $0 1)
- (data $hello (i32.const 0) "hello")
- (data $world "world")
- (table $table 1 1 funcref)
- (elem $elem (i32.const 0) $adder)
- (export "adder" (func $adder))
- (export "memory" (memory $0))
- (export "hello" (func $hello))
- (start $start)
- (func $adder (type $0) (param $0 i32) (param $1 i32) (result i32)
-  (block $add (result i32)
-   (if
-    (i32.const 0)
-    (then
-     (unreachable)
-    )
-   )
-   (i32.add
-    (select
-     (local.get $0)
-     (i32.load
-      (local.get $1)
-     )
-     (i32.const 1)
-    )
-    (local.get $1)
-   )
-  )
- )
- (func $start (type $1)
-  (block $start
-   (memory.init $world
-    (i32.const 2048)
-    (i32.const 0)
-    (i32.const 5)
-   )
-   (drop
-    (call_indirect $table (type $0)
-     (i32.const 3)
-     (i32.const 5)
-     (i32.const 0)
-    )
-   )
-  )
- )
- (func $hello (type $3) (param $0 anyref) (result i32)
-  (call $write
-   (local.get $0)
-   (i32.const 0)
-   (i32.const 1)
-  )
+ (type $0 (func))
+ (export "funcExport" (func $ExportedFunc))
+ (func $ExportedFunc
+  (nop)
  )
 )
+. Running test: AddTableExport
 (module
- (type $0 (func (param i32 i32) (result i32)))
- (type $1 (func))
- (type $2 (func (param anyref i32 i32) (result i32)))
- (type $3 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $write (type $2) (param anyref i32 i32) (result i32)))
- (memory $0 1)
- (data $hello (i32.const 0) "hello")
- (data $world "world")
- (table $table 1 1 funcref)
- (elem $elem (i32.const 0) $adder)
- (export "adder" (func $adder))
- (export "memory" (memory $0))
- (export "hello" (func $hello))
- (start $start)
- (func $adder (type $0) (param $0 i32) (param $1 i32) (result i32)
-  (i32.add
-   (select
-    (local.get $0)
-    (i32.load
-     (local.get $1)
-    )
-    (i32.const 1)
-   )
-   (local.get $1)
-  )
+ (table $ExportedTable 0 1 funcref)
+ (export "tableExport" (table $ExportedTable))
+)
+. Running test: AddMemoryExport
+(module
+ (memory $ExportedMemory 1)
+ (export "DefaultMemoryExport" (memory $ExportedMemory))
+ (export "memoryExport" (memory $ExportedMemory))
+)
+. Running test: AddGlobalExport
+(module
+ (global $ExportedGlobal i32 (i32.const 1))
+ (export "globalExport" (global $ExportedGlobal))
+)
+. Running test: GetNumExports
+. Running test: RemoveExport
+. Running test: GetName
+. Running test: GetExport
+. Running test: GetExportByIndex
+. Running test: GetValue
+. Running test: GetKind
+Running suite: Expression
+. Running test: Simple Get Kind
+. Running test: Finalize
+. Running test: Copy
+. Running test: Nop
+. Running test: Block
+. Running test: If
+Running suite: Function
+. Running test: Add Function
+(module
+ (type $0 (func))
+ (func $test_func
+  (nop)
  )
- (func $start (type $1)
-  (memory.init $world
-   (i32.const 2048)
-   (i32.const 0)
-   (i32.const 5)
-  )
+)
+. Running test: get name
+. Running test: get params and results
+. Running test: get num vars
+. Running test: get var
+. Running test: get/set start
+. Running test: function count
+. Running test: get func & get func by index
+. Running test: remove_function
+(module
+)
+. Running test: get/set body
+(module
+ (type $0 (func))
+ (func $body_func
+  (nop)
+ )
+ (func $new_body_func
+  (nop)
+ )
+)
+. Running test: set_debug_location
+{"version":3,"sources":[],"names":[],"mappings":"uBASoB,C"}Running suite: Global
+. Running test: Add global
+(module
+ (global $test_global i32 (i32.const 0))
+)
+
+. Running test: Get Name
+. Running test: Get Type
+. Running test: Get Global
+. Running test: Is Mutable
+. Running test: Number of Globals
+. Running test: Remove Global
+. Running test: Get Global by Index
+. Running test: Get Init Expr
+Running suite: Import
+. Running test: Add Import
+(module
+ (type $0 (func))
+ (import "ext_module" "ext_base" (memory $ext_memory 0 65536))
+ (import "ext_module" "ext_base" (table $ext_table 0 funcref))
+ (import "ext_module" "ext_base" (global $ext_global i32))
+ (import "ext_module" "ext_base" (func $ext_func))
+)
+. Running test: Get Module
+. Running test: Get Base
+Running suite: Literal
+. Running test: int32
+(module
+ (type $0 (func))
+ (func $int32_test
   (drop
-   (call $adder
-    (i32.const 3)
-    (i32.const 5)
-   )
-  )
- )
- (func $hello (type $3) (param $0 anyref) (result i32)
-  (call $write
-   (local.get $0)
-   (i32.const 0)
-   (i32.const 1)
+   (i32.const 42)
   )
  )
 )
+. Running test: int64
 (module
- (type $type (func (param anyref i32 i32) (result i32)))
- (type $type_1 (func (param i32 i32) (result i32)))
- (type $type_2 (func))
- (type $type_3 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $fimport$0 (type $type) (param anyref i32 i32) (result i32)))
- (memory $0 1)
- (data $0 (i32.const 0) "hello")
- (data $1 "world")
- (table $0 1 1 funcref)
- (elem $0 (i32.const 0) $0)
- (export "adder" (func $0))
- (export "memory" (memory $0))
- (export "hello" (func $2))
- (start $1)
- (func $0 (type $type_1) (param $0 i32) (param $1 i32) (result i32)
-  (i32.add
-   (select
-    (local.get $0)
-    (i32.load
-     (local.get $1)
-    )
-    (i32.const 1)
-   )
-   (local.get $1)
-  )
- )
- (func $1 (type $type_2)
-  (memory.init $1
-   (i32.const 2048)
-   (i32.const 0)
-   (i32.const 5)
-  )
+ (type $0 (func))
+ (func $int64_test
   (drop
-   (call $0
-    (i32.const 3)
-    (i32.const 5)
-   )
-  )
- )
- (func $2 (type $type_3) (param $0 anyref) (result i32)
-  (call $fimport$0
-   (local.get $0)
-   (i32.const 0)
-   (i32.const 1)
+   (i64.const -35)
   )
  )
 )
+. Running test: float32_bits
 (module
- (type $type (func (param anyref i32 i32) (result i32)))
- (type $type_1 (func (param i32 i32) (result i32)))
- (type $type_2 (func))
- (type $type_3 (func (param anyref) (result i32)))
- (import "future-wasi" "write" (func $fimport$0 (type $type) (param anyref i32 i32) (result i32)))
- (memory $0 1)
- (data $0 (i32.const 0) "hello")
- (data $1 "world")
- (table $0 1 1 funcref)
- (elem $0 (i32.const 0) $0)
- (export "adder" (func $0))
- (export "memory" (memory $0))
- (export "hello" (func $2))
- (start $1)
- (func $0 (type $type_1) (param $0 i32) (param $1 i32) (result i32)
-  local.get $0
-  local.get $1
-  i32.load
-  i32.const 1
-  select
-  local.get $1
-  i32.add
- )
- (func $1 (type $type_2)
-  i32.const 2048
-  i32.const 0
-  i32.const 5
-  memory.init $1
-  i32.const 3
-  i32.const 5
-  call $0
-  drop
- )
- (func $2 (type $type_3) (param $0 anyref) (result i32)
-  local.get $0
-  i32.const 0
-  i32.const 1
-  call $fimport$0
+ (type $0 (func))
+ (func $float32_bits_test
+  (drop
+   (f32.const 4.5)
+  )
  )
 )
+. Running test: float64_bits
+(module
+ (type $0 (func))
+ (func $float64_bits_test
+  (drop
+   (f64.const 4.5)
+  )
+ )
+)
+. Running test: float32
+(module
+ (type $0 (func))
+ (func $float32_test
+  (drop
+   (f32.const 3.5)
+  )
+ )
+)
+. Running test: float64
+(module
+ (type $0 (func))
+ (func $float64_test
+  (drop
+   (f64.const 5.5)
+  )
+ )
+)
+Running suite: Memory
+. Running test: set_memory
+(module
+ (memory $memory 1 2)
+ (export "memory" (memory $memory))
+)
+. Running test: Has Memory
+. Running test: Get Initial
+. Running test: Has Max
+. Running test: Get Max
+. Running test: Get Shared
+. Running test: Get Is64
+. Running test: Get Num Segments
+. Running test: Get Segment Offset
+. Running test: Get Segment Passive
+. Running test: Get Segment Data
+Running suite: Module
+. Running test: create and dispose
+. Running test: add custom section
+. Running test: write
+. Running test: write_text
+(module
+ (type $0 (func))
+ (func $test_func
+  (nop)
+ )
+)
+. Running test: write_stack_ir
+(module
+ (type $0 (func))
+ (func $test_func
+  nop
+ )
+)
+. Running test: parse
+(module
+ (type $0 (func))
+ (func $0
+ )
+)
+. Running test: validate
+. Running test: optimize
+. Running test: get and set features
+. Running test: run_empty_passes
+. Running test: read
+(module
+ (type $0 (func))
+ (func $0
+  (nop)
+ )
+)
+. Running test: interpret
+. Running test: debug info filename management
+. Running test: update maps
+Running suite: Settings
+. Running test: optimize_level
+. Running test: shrink_level
+. Running test: debug_info
+. Running test: traps_never_happen
+. Running test: closed_world
+. Running test: low_memory_unused
+. Running test: zero_filled_memory
+. Running test: fast_math
+. Running test: generate_stack_ir
+. Running test: optimize_stack_ir
+. Running test: pass_argument
+. Running test: skip_pass
+. Running test: always inline max size
+. Running test: flexible inline max size
+. Running test: one caller inline max size
+. Running test: allow inlining functions with loops
+. Running test: colors enabled
+Running suite: Table
+. Running test: Add Table
+(module
+ (table $addTableTest 10 20 funcref)
+)
+. Running test: Add Active Element Segment
+(module
+ (type $0 (func))
+ (table $addActiveElementSegment 6 9 funcref)
+ (elem $ActiveSegmentTest (i32.const 3) $func1 $func2 $func3)
+ (func $func1
+  (nop)
+ )
+ (func $func2
+  (nop)
+ )
+ (func $func3
+  (nop)
+ )
+)
+. Running test: Get Num Element Segments
+. Running test: Remove Element Segment
+. Running test: Get Element Segment
+. Running test: Get Element Segment By Index
+Running suite: Type
+. Running test: none
+(module
+ (type $0 (func))
+ (func $none_type_test
+  (nop)
+ )
+)
+. Running test: create/expand
+. Running test: basic types
+(module
+ (type $0 (func (param i32 i64 f32 f64 v128)))
+ (func $basic_type_test (param $0 i32) (param $1 i64) (param $2 f32) (param $3 f64) (param $4 v128)
+  (nop)
+ )
+)
+. Running test: ref types
+(module
+ (type $0 (func (param funcref anyref eqref i31ref structref arrayref stringref nullref nullexternref nullfuncref)))
+ (func $ref_type_test (param $0 funcref) (param $1 anyref) (param $2 eqref) (param $3 i31ref) (param $4 structref) (param $5 arrayref) (param $6 stringref) (param $7 nullref) (param $8 nullexternref) (param $9 nullfuncref)
+  (nop)
+ )
+)
+. Running test: unreachable type
+(module
+ (type $0 (func (param unreachable)))
+ (func $unreachable_type_test (param $0 unreachable)
+  (nop)
+ )
+)
+. Running test: is_nullable
