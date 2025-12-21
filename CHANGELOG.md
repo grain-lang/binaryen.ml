@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.34.1](https://github.com/grain-lang/binaryen.ml/compare/v0.34.0...v0.34.1) (2025-12-21)
+
+
+### Bug Fixes
+
+* Use `caml_uint8_array_of_string` in add_custom_section ([#269](https://github.com/grain-lang/binaryen.ml/issues/269)) ([0877b1e](https://github.com/grain-lang/binaryen.ml/commit/0877b1e2b8fb1df4ddb29c73bbb867875fa5f580))
+
 ## [0.34.0](https://github.com/grain-lang/binaryen.ml/compare/v0.33.0...v0.34.0) (2025-11-12)
 
 
