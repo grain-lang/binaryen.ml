@@ -3,15 +3,15 @@ open Literal_test; // TODO: Document
 open Function_test; // TODO: Document
 open Settings_test; // TODO: Document
 open Type_test;
-// TODO: Heap_Type (quick)
-// TODO: Array_Type (quick)
-// TODO: Struct_Type (quick)
-// TODO: Signature_Type (quick)
-// TODO: Packed_Type (quick)
+// TODO: Heap_Type (quick) (Blocked on gc)
+// TODO: Array_Type (quick) (Blocked on gc)
+// TODO: Struct_Type (quick) (Blocked on gc)
+// TODO: Signature_Type (quick) (Blocked on gc)
+// TODO: Packed_Type (quick) (Blocked on gc)
 open Global_test; // TODO: Document
 open Memory_test; // TODO: Document
-// TODO: Table (Medium)
-// TODO: Element_Segment (Medium)
+open Table_test; // TODO: Document
+open Element_segment_test; // TODO: Document
 // TODO: Export (Medium)
 // TODO: Import (Medium)
 // TODO: Passes (Hard)
