@@ -20,6 +20,6 @@ val is_shared : Module.t -> string -> bool
 val is_64 : Module.t -> string -> bool
 val unlimited : int
 val get_num_segments : Module.t -> int
-val get_segment_byte_offset : Module.t -> string -> int
+val get_segment_byte_offset : Module.t -> string -> int option
 val get_segment_passive : Module.t -> string -> bool
 val get_segment_data : Module.t -> string -> bytes

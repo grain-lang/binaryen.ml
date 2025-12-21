@@ -112,10 +112,10 @@ function caml_binaryen_get_num_memory_segments(wasm_mod) {
 }
 
 //Provides: caml_binaryen_get_memory_segment_byte_offset
-//Requires: caml_jsstring_of_string
+//Requires: caml_jsstring_of_string, to_option
 function caml_binaryen_get_memory_segment_byte_offset(wasm_mod, name) {
   var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
-  return info.offset;
+  return to_option(info.offset);
 }
 
 //Provides: caml_binaryen_get_memory_segment_passive

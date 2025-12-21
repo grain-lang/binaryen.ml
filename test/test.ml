@@ -249,7 +249,7 @@ let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
 (* Memory.get_segment_byte_offset Passive *)
-let _ = assert (Memory.get_segment_byte_offset wasm_mod "world" = -1)
+let _ = assert (Memory.get_segment_byte_offset wasm_mod "world" = None)
 
 let _ =
   assert (
