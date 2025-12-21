@@ -23,6 +23,38 @@ Running suite: Element Segment
 . Running test: GetOffset
 . Running test: GetLength
 . Running test: GetData
+Running suite: Export
+. Running test: AddFunctionExport
+(module
+ (type $0 (func))
+ (export "funcExport" (func $ExportedFunc))
+ (func $ExportedFunc
+  (nop)
+ )
+)
+. Running test: AddTableExport
+(module
+ (table $ExportedTable 0 1 funcref)
+ (export "tableExport" (table $ExportedTable))
+)
+. Running test: AddMemoryExport
+(module
+ (memory $ExportedMemory 1)
+ (export "DefaultMemoryExport" (memory $ExportedMemory))
+ (export "memoryExport" (memory $ExportedMemory))
+)
+. Running test: AddGlobalExport
+(module
+ (global $ExportedGlobal i32 (i32.const 1))
+ (export "globalExport" (global $ExportedGlobal))
+)
+. Running test: GetNumExports
+. Running test: RemoveExport
+. Running test: GetName
+. Running test: GetExport
+. Running test: GetExportByIndex
+. Running test: GetValue
+. Running test: GetKind
 Running suite: Function
 . Running test: Add Function
 (module

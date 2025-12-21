@@ -12,7 +12,7 @@ open Global_test; // TODO: Document
 open Memory_test; // TODO: Document
 open Table_test; // TODO: Document
 open Element_segment_test; // TODO: Document
-// TODO: Export (Medium)
+open Export_test; // TODO: Document
 // TODO: Import (Medium)
 // TODO: Passes (Hard)
 // TODO: Expression (Hard)
@@ -103,7 +103,6 @@ open Element_segment_test; // TODO: Document
 //        ])
 
 // let _ = Export.add_function_export wasm_mod "adder" "adder"
-// let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
 
 // (* TODO(#240): Re-enable after type-builder api is merged *)
 // (* let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
@@ -131,51 +130,6 @@ open Element_segment_test; // TODO: Document
 
 // let _ = Expression.print table_grow
 
-// let _ =
-//   Table.add_active_element_segment wasm_mod "table" "elem" [ "adder" ]
-//     (Expression.Const.make wasm_mod (Literal.int32 0l))
-
-// let _ = Function.set_start wasm_mod start
-// let start_func = Function.get_start wasm_mod
-// let _ = assert (Function.get_name start_func = "start")
-
-// let segment : Binaryen.Memory.segment =
-//   let data = Bytes.of_string "hello" in
-//   let kind =
-//     Binaryen.Memory.Active
-//       { offset = Expression.Const.make wasm_mod (Literal.int32 0l) }
-//   in
-//   let size = Bytes.length data in
-//   { name = "hello"; data; kind; size }
-
-// let passive_segment : Binaryen.Memory.segment =
-//   let data = Bytes.of_string "world" in
-//   let kind = Binaryen.Memory.Passive in
-//   let size = Bytes.length data in
-//   { name = "world"; data; kind; size }
-
-// let _ = assert (Memory.has_memory wasm_mod = false)
-
-// let _ =
-//   Memory.set_memory wasm_mod 1 Memory.unlimited "memory"
-//     [ segment; passive_segment ]
-//     false false "0"
-
-// let _ = assert (Memory.has_memory wasm_mod = true)
-// let _ = assert (Memory.get_initial wasm_mod "0" = 1)
-// let _ = assert (Memory.has_max wasm_mod "0" = false)
-// let _ = assert (Memory.get_max wasm_mod "0" = Memory.unlimited)
-// let max_memory_wasm_mod = Module.create ()
-// let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false false "0"
-// let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
-// let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
-
-// let _ =
-//   assert (
-//     Bytes.equal
-//       (Memory.get_segment_data wasm_mod "world")
-//       (Bytes.of_string "world"))
-
 // (* Create an imported "write" function i32 (externref, i32, i32) *)
 // (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 
@@ -196,9 +150,6 @@ open Element_segment_test; // TODO: Document
 //        Type.int32)
 
 // let _ = Export.add_function_export wasm_mod "hello" "hello"
-// let _ = Module.validate wasm_mod
-
-// let new_mod = Module.read byts
 
 // let _ =
 //   Module.run_passes new_mod
