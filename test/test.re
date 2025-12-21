@@ -15,25 +15,8 @@ open Element_segment_test; // TODO: Document
 open Export_test; // TODO: Document
 open Import_test; // TODO: Document
 // TODO: Passes (Hard)
-// TODO: Expression (Hard)
+open Expression_test; // TODO: Document
 // TODO: OP (Medium)
-
-// let _ =
-//   Import.add_memory_import import_wasm_mod "internal_name" "external_name"
-//     "external_base_name" true
-
-// let _ =
-//   assert (
-//     Import.memory_import_get_module import_wasm_mod "internal_name"
-//     = "external_name")
-
-// let _ =
-//   assert (
-//     Import.memory_import_get_base import_wasm_mod "internal_name"
-//     = "external_base_name")
-
-// let _ = assert (Memory.is_shared import_wasm_mod "internal_name" = true)
-// let _ = assert (Memory.is_64 import_wasm_mod "internal_name" = false)
 
 // (* Testing Return.get_value *)
 // let _ =
@@ -130,11 +113,6 @@ open Import_test; // TODO: Document
 
 // (* Create an imported "write" function i32 (externref, i32, i32) *)
 // (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
-
-// let _ =
-//   Import.add_function_import wasm_mod "write" "future-wasi" "write"
-//     (Type.create [| Type.anyref; Type.int32; Type.int32 |])
-//     Type.int32
 
 // (* Create a function that calls the imported write function *)
 // let _ =

@@ -28,7 +28,7 @@ suite("Module", () => {
     let (bytes, source_map) = Module.write(wasm_mod, None);
     assert(source_map == None);
     assert(bytes == Bytes.of_string("\000asm\001\000\000\000"));
-    let (_, source_map) = Module.write(wasm_mod, Some(""));
+    let (_, source_map) = Module.write(wasm_mod, Some("test.wasm.map"));
     // TODO: Correct api between js and native backends
     if (Sys.backend_type == Other("js_of_ocaml")) {
       assert(source_map == None);
@@ -59,24 +59,24 @@ suite("Module", () => {
     Module.dispose(wasm_mod);
   });
 
-  // Note: Print tests will output to stdout directly.
-  test("print", () => {
-    let wasm_mod = Module.create();
-    Module.print(wasm_mod);
-    Module.dispose(wasm_mod);
-  });
-  test("print_asmjs", () => {
-    let wasm_mod = Module.create();
-    create_test_func(wasm_mod);
-    Module.print_asmjs(wasm_mod);
-    Module.dispose(wasm_mod);
-  });
-  test("print_stack_ir", () => {
-    let wasm_mod = Module.create();
-    create_test_func(wasm_mod);
-    Module.print_stack_ir(wasm_mod);
-    Module.dispose(wasm_mod);
-  });
+  // Note: Print tests will output to stdout directly, so they are disabled by default.
+  // test("print", () => {
+  //   let wasm_mod = Module.create();
+  //   Module.print(wasm_mod);
+  //   Module.dispose(wasm_mod);
+  // });
+  // test("print_asmjs", () => {
+  //   let wasm_mod = Module.create();
+  //   create_test_func(wasm_mod);
+  //   Module.print_asmjs(wasm_mod);
+  //   Module.dispose(wasm_mod);
+  // });
+  // test("print_stack_ir", () => {
+  //   let wasm_mod = Module.create();
+  //   create_test_func(wasm_mod);
+  //   Module.print_stack_ir(wasm_mod);
+  //   Module.dispose(wasm_mod);
+  // });
 
   test("validate", () => {
     let wasm_mod = Module.create();

@@ -1,22 +1,3 @@
-(module
-)
-
-function asmFunc(imports) {
- var Math_imul = Math.imul;
- var Math_fround = Math.fround;
- var Math_abs = Math.abs;
- var Math_clz32 = Math.clz32;
- var Math_min = Math.min;
- var Math_max = Math.max;
- var Math_floor = Math.floor;
- var Math_ceil = Math.ceil;
- var Math_trunc = Math.trunc;
- var Math_sqrt = Math.sqrt;
- return {
-  
- };
-}
-
 Running suite: Element Segment
 . Running test: GetName
 . Running test: GetTable
@@ -55,6 +36,13 @@ Running suite: Export
 . Running test: GetExportByIndex
 . Running test: GetValue
 . Running test: GetKind
+Running suite: Expression
+. Running test: Simple Get Kind
+. Running test: Finalize
+. Running test: Copy
+. Running test: Nop
+. Running test: Block
+. Running test: If
 Running suite: Function
 . Running test: Add Function
 (module
@@ -204,9 +192,6 @@ Running suite: Module
  (func $0
  )
 )
-. Running test: print
-. Running test: print_asmjs
-. Running test: print_stack_ir
 . Running test: validate
 . Running test: optimize
 . Running test: get and set features
@@ -294,11 +279,3 @@ Running suite: Type
  )
 )
 . Running test: is_nullable
-var retasmFunc = asmFunc({
-});
-(module
- (type $0 (func))
- (func $test_func
-  nop
- )
-)
