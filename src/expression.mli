@@ -350,6 +350,93 @@ module Ref : sig
   (** Module, left, right *)
 end
 
+(** Bindings for `try` instruction. *)
+module Try : sig
+  val make :
+    Module.t -> string option -> t -> (string * t) list -> t option -> t
+  (** Module, name, body, catch clauses, catch all *)
+
+  val get_name : t -> string option
+  (** expr *)
+
+  val set_name : t -> string -> unit
+  (** expr, name *)
+
+  val get_body : t -> t
+  (** expr *)
+
+  val set_body : t -> t -> unit
+  (** expr, bodyExpr *)
+
+  val get_num_catch_tags : t -> int
+  (** expr *)
+
+  val get_num_catch_bodies : t -> int
+  (** expr *)
+
+  val get_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val set_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val append_catch_tag : t -> string -> int
+  (** expr, catchTag *)
+
+  val insert_catch_tag_at : t -> int -> string -> unit
+  (** expr, index, catchTag *)
+
+  val remove_catch_tag_at : t -> int -> string
+  (** expr, index *)
+
+  val get_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val set_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val append_catch_body : t -> t -> int
+  (** expr, catchExpr *)
+
+  val insert_catch_body_at : t -> int -> t -> unit
+  (** expr, index, catchExpr *)
+
+  val remove_catch_body_at : t -> int -> t
+  (** expr, index *)
+
+  val has_catch_all : t -> bool
+  (** expr *)
+end
+
+module Throw : sig
+  val make : Module.t -> string -> t list -> t
+  (** Module, tag, operands *)
+
+  val get_tag : t -> string
+  (** expr *)
+
+  val set_tag : t -> string -> unit
+  (** expr, tagName *)
+
+  val get_num_operands : t -> int
+  (** expr *)
+
+  val get_operand_at : t -> int -> t
+  (** expr, index *)
+
+  val set_operand_at : t -> int -> t -> unit
+  (** expr, index, operandExpr *)
+
+  val append_operand : t -> t -> int
+  (** expr, operandExpr *)
+
+  val insert_operand_at : t -> int -> t -> unit
+  (** expr, index, operandExpr *)
+
+  val remove_operand_at : t -> int -> t
+  (** expr, index *)
+end
+
 module Table : sig
   val get : Module.t -> string -> t -> Type.t -> t
   (** Module, name, index, type *)

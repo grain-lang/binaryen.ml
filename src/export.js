@@ -50,6 +50,19 @@ function caml_binaryen_add_global_export(
   );
 }
 
+//Provides: caml_binaryen_add_tag_export
+//Requires: caml_jsstring_of_string
+function caml_binaryen_add_tag_export(
+  wasm_mod,
+  internal_name,
+  external_name
+) {
+  return wasm_mod.addTagExport(
+    caml_jsstring_of_string(internal_name),
+    caml_jsstring_of_string(external_name)
+  );
+}
+
 //Provides: caml_binaryen_get_export
 //Requires: caml_jsstring_of_string
 function caml_binaryen_get_export(wasm_mod, external_name) {
