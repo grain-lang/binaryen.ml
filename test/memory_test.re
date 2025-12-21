@@ -147,30 +147,26 @@ suite("Memory", () => {
       false,
       "getOffset1",
     );
-    Printf.printf(
-      "memory: %d\n",
-      Memory.get_segment_byte_offset(wasm_mod, "1"),
+    assert(Memory.get_segment_byte_offset(wasm_mod, "1") == None);
+    Memory.set_memory(
+      wasm_mod,
+      1,
+      2,
+      "getOffset2",
+      [
+        create_segment(
+          wasm_mod,
+          "2",
+          Memory.Active({
+            offset: Expression.Const.make(wasm_mod, Literal.int32(4l)),
+          }),
+        ),
+      ],
+      false,
+      false,
+      "getOffset2",
     );
-    // assert(Memory.get_segment_byte_offset(wasm_mod, "1") == -1);
-    // Memory.set_memory(
-    //   wasm_mod,
-    //   1,
-    //   2,
-    //   "getOffset2",
-    //   [
-    //     create_segment(
-    //       wasm_mod,
-    //       "2",
-    //       Memory.Active({
-    //         offset: Expression.Const.make(wasm_mod, Literal.int32(4l)),
-    //       }),
-    //     ),
-    //   ],
-    //   false,
-    //   false,
-    //   "getOffset2",
-    // );
-    // assert(Memory.get_segment_byte_offset(wasm_mod, "2") == 4);
+    assert(Memory.get_segment_byte_offset(wasm_mod, "2") == Some(4));
     Module.dispose(wasm_mod);
   });
   test("Get Segment Passive", () => {

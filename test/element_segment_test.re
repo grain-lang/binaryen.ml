@@ -22,7 +22,7 @@ suite("Element Segment", () => {
       wasm_mod,
       table_name,
       segment_name,
-      [ "testFunc1", "testFunc2" ],
+      ["testFunc1", "testFunc2"],
       Expression.Const.make(wasm_mod, Literal.int32(0l)),
     );
   };
@@ -31,7 +31,7 @@ suite("Element Segment", () => {
     let table_name = "testTable";
     let segment_name = "testSegment";
     let segment = create_segment(wasm_mod, table_name, segment_name);
-    assert (Element_segment.get_name(segment) == segment_name);
+    assert(Element_segment.get_name(segment) == segment_name);
     Module.dispose(wasm_mod);
   });
   test("GetTable", () => {
@@ -39,7 +39,7 @@ suite("Element Segment", () => {
     let table_name = "testTable";
     let segment_name = "testSegment";
     let segment = create_segment(wasm_mod, table_name, segment_name);
-    assert (Element_segment.get_table(segment) == table_name);
+    assert(Element_segment.get_table(segment) == table_name);
     Module.dispose(wasm_mod);
   });
   test("GetOffset", () => {
@@ -48,7 +48,7 @@ suite("Element Segment", () => {
     let segment_name = "testSegment";
     let segment = create_segment(wasm_mod, table_name, segment_name);
     let offset_expr = Element_segment.get_offset(segment);
-    assert (Expression.get_kind(offset_expr) == Expression.Const);
+    assert(Expression.get_kind(offset_expr) == Expression.Const);
     Module.dispose(wasm_mod);
   });
   test("GetLength", () => {
@@ -56,7 +56,7 @@ suite("Element Segment", () => {
     let table_name = "testTable";
     let segment_name = "testSegment";
     let segment = create_segment(wasm_mod, table_name, segment_name);
-    assert (Element_segment.get_length(segment) == 2);
+    assert(Element_segment.get_length(segment) == 2);
     Module.dispose(wasm_mod);
   });
   test("GetData", () => {
@@ -64,8 +64,8 @@ suite("Element Segment", () => {
     let table_name = "testTable";
     let segment_name = "testSegment";
     let segment = create_segment(wasm_mod, table_name, segment_name);
-    assert (Element_segment.get_data(segment, 0) == "testFunc1");
-    assert (Element_segment.get_data(segment, 1) == "testFunc2");
+    assert(Element_segment.get_data(segment, 0) == "testFunc1");
+    assert(Element_segment.get_data(segment, 1) == "testFunc2");
     Module.dispose(wasm_mod);
   });
 });

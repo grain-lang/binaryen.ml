@@ -29,14 +29,15 @@ suite("Module", () => {
     assert(source_map == None);
     assert(bytes == Bytes.of_string("\000asm\001\000\000\000"));
     let (_, source_map) = Module.write(wasm_mod, Some(""));
-    switch (source_map) {
-    | Some(map) => Printf.printf("Source map: %s\n", map)
-    | None => Printf.printf("No source map\n")
+    // TODO: Correct api between js and native backends
+    if (Sys.backend_type == Other("js_of_ocaml")) {
+      assert(source_map == None);
+    } else {
+      assert(
+        source_map
+        == Some({|{"version":3,"sources":[],"names":[],"mappings":""}|}),
+      );
     };
-    // assert(
-    //   source_map
-    //   == Some({|{"version":3,"sources":[],"names":[],"mappings":""}|}),
-    // );
     Module.dispose(wasm_mod);
   });
   test("write_text", () => {

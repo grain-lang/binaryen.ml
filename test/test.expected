@@ -17,6 +17,12 @@ function asmFunc(imports) {
  };
 }
 
+Running suite: Element Segment
+. Running test: GetName
+. Running test: GetTable
+. Running test: GetOffset
+. Running test: GetLength
+. Running test: GetData
 Running suite: Function
 . Running test: Add Function
 (module
@@ -129,14 +135,12 @@ Running suite: Memory
 . Running test: Get Is64
 . Running test: Get Num Segments
 . Running test: Get Segment Offset
-memory: -1
 . Running test: Get Segment Passive
 . Running test: Get Segment Data
 Running suite: Module
 . Running test: create and dispose
 . Running test: add custom section
 . Running test: write
-Source map: {"version":3,"sources":[],"names":[],"mappings":""}
 . Running test: write_text
 (module
  (type $0 (func))
@@ -192,6 +196,30 @@ Running suite: Settings
 . Running test: one caller inline max size
 . Running test: allow inlining functions with loops
 . Running test: colors enabled
+Running suite: Table
+. Running test: Add Table
+(module
+ (table $addTableTest 10 20 funcref)
+)
+. Running test: Add Active Element Segment
+(module
+ (type $0 (func))
+ (table $addActiveElementSegment 6 9 funcref)
+ (elem $ActiveSegmentTest (i32.const 3) $func1 $func2 $func3)
+ (func $func1
+  (nop)
+ )
+ (func $func2
+  (nop)
+ )
+ (func $func3
+  (nop)
+ )
+)
+. Running test: Get Num Element Segments
+. Running test: Remove Element Segment
+. Running test: Get Element Segment
+. Running test: Get Element Segment By Index
 Running suite: Type
 . Running test: none
 (module
