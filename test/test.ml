@@ -263,20 +263,22 @@ let body =
     [ Expression.Const.make wasm_mod (Literal.int32 1l) ]
 
 let try_catch_1 =
-  Expression.Try.make wasm_mod (Some "tc1") body [ "foo"; "bar" ]
+  Expression.Try.make wasm_mod (Some "tc1") body
     [
-      Expression.Block.make wasm_mod "tc1blk2"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Const.make wasm_mod (Literal.int32 2l);
-        ];
-      Expression.Block.make wasm_mod "tc1blk3"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Const.make wasm_mod (Literal.int32 3l);
-        ];
+      ( "foo",
+        Expression.Block.make wasm_mod "tc1blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 2l);
+          ] );
+      ( "bar",
+        Expression.Block.make wasm_mod "tc1blk3"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 3l);
+          ] );
     ]
     None
 
@@ -290,82 +292,45 @@ let _ =
     Expression.get_kind (Expression.Try.get_body try_catch_1)
     = Expression.get_kind body)
 
-let _ = assert (Expression.Try_Catch.get_num_catch_tags try_catch_1 = 2)
-let _ = assert (Expression.Try_Catch.get_num_catch_bodies try_catch_1 = 2)
+let _ = assert (Expression.Try.get_num_catch_tags try_catch_1 = 2)
+let _ = assert (Expression.Try.get_num_catch_bodies try_catch_1 = 2)
 
 let try_catch_2 =
-  Expression.Try_Catch.make wasm_mod (Some "tc2")
+  Expression.Try.make wasm_mod (Some "tc2")
     (Expression.Throw.make wasm_mod "foo"
        [ Expression.Const.make wasm_mod (Literal.int32 1l) ])
-    [ "foo"; "bar" ]
     [
-      Expression.Block.make wasm_mod "tc2blk2"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Rethrow.make wasm_mod "tc2";
-        ];
-      Expression.Block.make wasm_mod "tc2blk3"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Const.make wasm_mod (Literal.int32 3l);
-        ];
-    ]
-
-let _ = assert (Expression.Try_Catch.get_name try_catch_2 = Some "tc2")
-
-(* One more catch-body than catch-tag; last body becomes the catch_all *)
-let try_catch_all_1 =
-  Expression.Try.make wasm_mod (Some "tc3")
-    (Expression.Const.make wasm_mod (Literal.int32 1l))
-    [ "foo" ]
-    [
-      Expression.Block.make wasm_mod "tc3blk2"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Const.make wasm_mod (Literal.int32 2l);
-        ];
-      Expression.Const.make wasm_mod (Literal.int32 3l);
+      ( "foo",
+        Expression.Block.make wasm_mod "tc2blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+          ] );
+      ( "bar",
+        Expression.Block.make wasm_mod "tc2blk3"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+          ] );
     ]
     None
 
-let try_catch_all_2 =
-  Expression.Try_Catch.make wasm_mod (Some "tc4")
+let _ = assert (Expression.Try.get_name try_catch_2 = Some "tc2")
+
+(* Test catch_all *)
+let try_catch_all_1 =
+  Expression.Try.make wasm_mod (Some "tc3")
     (Expression.Const.make wasm_mod (Literal.int32 1l))
-    [ "foo" ]
     [
-      Expression.Block.make wasm_mod "tc4blk2"
-        [
-          Expression.Drop.make wasm_mod
-            (Expression.Pop.make wasm_mod Type.int32);
-          Expression.Const.make wasm_mod (Literal.int32 2l);
-        ];
-      Expression.Const.make wasm_mod (Literal.int32 3l);
+      ( "foo",
+        Expression.Block.make wasm_mod "tc3blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 2l);
+          ] );
     ]
-
-let try_delegate_1 =
-  Expression.Try_Catch.make wasm_mod (Some "del1")
-    (Expression.Try.make wasm_mod (Some "td1")
-       (Expression.Const.make wasm_mod (Literal.int32 1l))
-       [] [] (Some "del1"))
-    []
-    [
-      Expression.Block.make wasm_mod "del1blk"
-        [ Expression.Const.make wasm_mod (Literal.int32 2l) ];
-    ]
-
-let try_delegate_2 =
-  Expression.Try_Catch.make wasm_mod (Some "del2")
-    (Expression.Try_Delegate.make wasm_mod (Some "td2")
-       (Expression.Const.make wasm_mod (Literal.int32 1l))
-       "del2")
-    []
-    [
-      Expression.Block.make wasm_mod "del2blk"
-        [ Expression.Const.make wasm_mod (Literal.int32 2l) ];
-    ]
+    (Some (Expression.Const.make wasm_mod (Literal.int32 3l)))
 
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
@@ -386,21 +351,18 @@ let _ =
        ]
        Type.int32)
 
-(* Create a function with try/delegate *)
+(* Create a function with try *)
 let _ =
-  Function.add_function wasm_mod "trydelegate" Type.none Type.none [||]
+  Function.add_function wasm_mod "try" Type.none Type.none [||]
     (Expression.Block.make wasm_mod "blk"
        [
          Expression.Drop.make wasm_mod try_catch_1;
-         Expression.Drop.make wasm_mod try_catch_2;
+         try_catch_2;
          Expression.Drop.make wasm_mod try_catch_all_1;
-         Expression.Drop.make wasm_mod try_catch_all_2;
-         Expression.Drop.make wasm_mod try_delegate_1;
-         Expression.Drop.make wasm_mod try_delegate_2;
        ])
 
 let _ = Export.add_function_export wasm_mod "hello" "hello"
-let _ = Export.add_function_export wasm_mod "trydelegate" "trydelegate"
+let _ = Export.add_function_export wasm_mod "try" "try"
 let _ = Module.validate wasm_mod
 
 (* Shouldn't actually do anything since we aren't doing function renames *)

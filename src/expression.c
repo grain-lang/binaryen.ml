@@ -1947,15 +1947,6 @@ caml_binaryen_throw(value _module, value _tag, value _operands) {
 }
 
 CAMLprim value
-caml_binaryen_rethrow(value _module, value _target) {
-  CAMLparam2(_module, _target);
-  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  char *target = Safe_String_val(_target);
-  BinaryenExpressionRef exp = BinaryenRethrow(module, target);
-  CAMLreturn(alloc_BinaryenExpressionRef(exp));
-}
-
-CAMLprim value
 caml_binaryen_try_get_name(value _expr) {
   CAMLparam1(_expr);
   BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
@@ -2112,35 +2103,6 @@ caml_binaryen_try_has_catch_all(value _expr) {
 }
 
 CAMLprim value
-caml_binaryen_try_get_delegate_target(value _expr) {
-  CAMLparam1(_expr);
-  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  const char* binaryenRetVal = BinaryenTryGetDelegateTarget(expr);
-  if (binaryenRetVal == NULL) {
-    CAMLreturn(Val_none);
-  } else {
-    CAMLreturn(caml_alloc_some(caml_copy_string(binaryenRetVal)));
-  }
-}
-
-CAMLprim value
-caml_binaryen_try_set_delegate_target(value _expr, value _delegateTarget) {
-  CAMLparam2(_expr, _delegateTarget);
-  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  const char* delegateTarget = Safe_String_val(_delegateTarget);
-  BinaryenTrySetDelegateTarget(expr, delegateTarget);
-  CAMLreturn(Val_unit);
-}
-
-CAMLprim value
-caml_binaryen_try_is_delegate(value _expr) {
-  CAMLparam1(_expr);
-  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  bool binaryenRetVal = BinaryenTryIsDelegate(expr);
-  CAMLreturn(Val_bool(binaryenRetVal));
-}
-
-CAMLprim value
 caml_binaryen_throw_get_tag(value _expr) {
   CAMLparam1(_expr);
   BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
@@ -2210,27 +2172,6 @@ caml_binaryen_throw_remove_operand_at(value _expr, value _index) {
   BinaryenIndex index = Int_val(_index);
   BinaryenExpressionRef binaryenRetVal = BinaryenThrowRemoveOperandAt(expr, index);
   CAMLreturn(alloc_BinaryenExpressionRef(binaryenRetVal));
-}
-
-CAMLprim value
-caml_binaryen_rethrow_get_target(value _expr) {
-  CAMLparam1(_expr);
-  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  const char* binaryenRetVal = BinaryenRethrowGetTarget(expr);
-  if (binaryenRetVal == NULL) {
-    CAMLreturn(Val_none);
-  } else {
-    CAMLreturn(caml_alloc_some(caml_copy_string(binaryenRetVal)));
-  }
-}
-
-CAMLprim value
-caml_binaryen_rethrow_set_target(value _expr, value _target) {
-  CAMLparam2(_expr, _target);
-  BinaryenExpressionRef expr = BinaryenExpressionRef_val(_expr);
-  const char* target = Safe_String_val(_target);
-  BinaryenRethrowSetTarget(expr, target);
-  CAMLreturn(Val_unit);
 }
 
 // Table operations

@@ -1736,14 +1736,6 @@ function caml_binaryen_throw(wasm_mod, tag, operands) {
   );
 }
 
-//Provides: caml_binaryen_rethrow
-//Requires: caml_jsstring_of_string
-function caml_binaryen_rethrow(wasm_mod, target) {
-  return wasm_mod.rethrow(
-    caml_jsstring_of_string(target),
-  )
-}
-
 //Provides: caml_binaryen_try_get_name
 //Requires: Binaryen, caml_string_of_jsstring, to_option
 function caml_binaryen_try_get_name(expr) {
@@ -1849,29 +1841,6 @@ function caml_binaryen_try_has_catch_all(expr) {
   return caml_js_to_bool(Binaryen.Try.hasCatchAll(expr));
 }
 
-//Provides: caml_binaryen_try_get_delegate_target
-//Requires: Binaryen
-//Requires: caml_string_of_jsstring
-//Requires: to_option
-function caml_binaryen_try_get_delegate_target(expr) {
-  const name = Binaryen.Try.getDelegateTarget(expr);
-  const str = name ? caml_string_of_jsstring(name) : null;
-  return to_option(str);
-}
-
-//Provides: caml_binaryen_try_set_delegate_target
-//Requires: Binaryen, caml_jsstring_of_string
-function caml_binaryen_try_set_delegate_target(expr, delegateTarget) {
-  Binaryen.Try.setDelegateTarget(expr, caml_jsstring_of_string(delegateTarget));
-}
-
-//Provides: caml_binaryen_try_is_delegate
-//Requires: Binaryen
-//Requires: caml_js_to_bool
-function caml_binaryen_try_is_delegate(expr) {
-  return caml_js_to_bool(Binaryen.Try.isDelegate(expr));
-}
-
 //Provides: caml_binaryen_throw_get_tag
 //Requires: Binaryen, caml_string_of_jsstring
 function caml_binaryen_throw_get_tag(expr) {
@@ -1918,21 +1887,6 @@ function caml_binaryen_throw_insert_operand_at(expr, index, operandExpr) {
 //Requires: Binaryen
 function caml_binaryen_throw_remove_operand_at(expr, index) {
   return Binaryen.Throw.removeOperandAt(expr, index);
-}
-
-//Provides: caml_binaryen_rethrow_get_target
-//Requires: Binaryen, caml_string_of_jsstring
-//Requires: to_option
-function caml_binaryen_rethrow_get_target(expr) {
-  const name = Binaryen.Rethrow.getTarget(expr);
-  const str = name ? caml_string_of_jsstring(name) : null;
-  return to_option(str);
-}
-
-//Provides: caml_binaryen_rethrow_set_target
-//Requires: Binaryen, caml_jsstring_of_string
-function caml_binaryen_rethrow_set_target(expr, target) {
-  Binaryen.Rethrow.setTarget(expr, caml_jsstring_of_string(target));
 }
 
 // Table operations

@@ -845,6 +845,16 @@ module Try = struct
     t = "caml_binaryen_try__bytecode" "caml_binaryen_try"
   (** Module, name, body, catch tags, catch bodies, delegate target *)
 
+  (** Module, name, body, catch clauses, catch all *)
+  let make wasm_mod name body catch_clauses catch_all =
+    let catch_tags, catch_bodies = List.split catch_clauses in
+    let catch_bodies =
+      match catch_all with
+      | Some target -> List.append catch_bodies [ target ]
+      | None -> catch_bodies
+    in
+    make wasm_mod name body catch_tags catch_bodies None
+
   external get_name : t -> string option = "caml_binaryen_try_get_name"
   (** expr *)
 
@@ -907,69 +917,6 @@ module Try = struct
 
   external has_catch_all : t -> bool = "caml_binaryen_try_has_catch_all"
   (** expr *)
-
-  external get_delegate_target : t -> string option
-    = "caml_binaryen_try_get_delegate_target"
-  (** expr *)
-
-  external set_delegate_target : t -> string -> unit
-    = "caml_binaryen_try_set_delegate_target"
-  (** expr, delegateTarget *)
-
-  external is_delegate : t -> bool = "caml_binaryen_try_is_delegate"
-  (** expr *)
-end
-
-module Try_Catch = struct
-  let make module_ name body catch_tags catch_bodies =
-    Try.make module_ name body catch_tags catch_bodies None
-
-  let get_name = Try.get_name
-  let set_name = Try.set_name
-  let get_body = Try.get_body
-  let set_body = Try.set_body
-  let get_num_catch_tags = Try.get_num_catch_tags
-  let get_num_catch_bodies = Try.get_num_catch_bodies
-  let get_catch_tag_at = Try.get_catch_tag_at
-  let set_catch_tag_at = Try.set_catch_tag_at
-  let append_catch_tag = Try.append_catch_tag
-  let insert_catch_tag_at = Try.insert_catch_tag_at
-  let remove_catch_tag_at = Try.remove_catch_tag_at
-  let get_catch_body_at = Try.get_catch_body_at
-  let set_catch_body_at = Try.set_catch_body_at
-  let append_catch_body = Try.append_catch_body
-  let insert_catch_body_at = Try.insert_catch_body_at
-  let remove_catch_body_at = Try.remove_catch_body_at
-  let has_catch_all = Try.has_catch_all
-  let get_delegate_target = Try.get_delegate_target
-  let set_delegate_target = Try.set_delegate_target
-  let is_delegate = Try.is_delegate
-end
-
-module Try_Delegate = struct
-  let make module_ name body delegate =
-    Try.make module_ name body [] [] (Some delegate)
-
-  let get_name = Try.get_name
-  let set_name = Try.set_name
-  let get_body = Try.get_body
-  let set_body = Try.set_body
-  let get_num_catch_tags = Try.get_num_catch_tags
-  let get_num_catch_bodies = Try.get_num_catch_bodies
-  let get_catch_tag_at = Try.get_catch_tag_at
-  let set_catch_tag_at = Try.set_catch_tag_at
-  let append_catch_tag = Try.append_catch_tag
-  let insert_catch_tag_at = Try.insert_catch_tag_at
-  let remove_catch_tag_at = Try.remove_catch_tag_at
-  let get_catch_body_at = Try.get_catch_body_at
-  let set_catch_body_at = Try.set_catch_body_at
-  let append_catch_body = Try.append_catch_body
-  let insert_catch_body_at = Try.insert_catch_body_at
-  let remove_catch_body_at = Try.remove_catch_body_at
-  let has_catch_all = Try.has_catch_all
-  let get_delegate_target = Try.get_delegate_target
-  let set_delegate_target = Try.set_delegate_target
-  let is_delegate = Try.is_delegate
 end
 
 module Throw = struct
@@ -1002,17 +949,6 @@ module Throw = struct
   external remove_operand_at : t -> int -> t
     = "caml_binaryen_throw_remove_operand_at"
   (** expr, index *)
-end
-
-module Rethrow = struct
-  external make : Module.t -> string -> t = "caml_binaryen_rethrow"
-  (** Module, target *)
-
-  external get_target : t -> string option = "caml_binaryen_rethrow_get_target"
-  (** expr *)
-
-  external set_target : t -> string -> unit = "caml_binaryen_rethrow_set_target"
-  (** expr, target *)
 end
 
 module Table = struct
