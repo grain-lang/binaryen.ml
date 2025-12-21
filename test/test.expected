@@ -98,6 +98,17 @@ Running suite: Function
 . Running test: Remove Global
 . Running test: Get Global by Index
 . Running test: Get Init Expr
+Running suite: Import
+. Running test: Add Import
+(module
+ (type $0 (func))
+ (import "ext_module" "ext_base" (memory $ext_memory 0 65536))
+ (import "ext_module" "ext_base" (table $ext_table 0 funcref))
+ (import "ext_module" "ext_base" (global $ext_global i32))
+ (import "ext_module" "ext_base" (func $ext_func))
+)
+. Running test: Get Module
+. Running test: Get Base
 Running suite: Literal
 . Running test: int32
 (module

@@ -13,7 +13,7 @@ open Memory_test; // TODO: Document
 open Table_test; // TODO: Document
 open Element_segment_test; // TODO: Document
 open Export_test; // TODO: Document
-// TODO: Import (Medium)
+open Import_test; // TODO: Document
 // TODO: Passes (Hard)
 // TODO: Expression (Hard)
 // TODO: OP (Medium)
@@ -102,8 +102,6 @@ open Export_test; // TODO: Document
 //          Expression.Drop.make wasm_mod call_adder;
 //        ])
 
-// let _ = Export.add_function_export wasm_mod "adder" "adder"
-
 // (* TODO(#240): Re-enable after type-builder api is merged *)
 // (* let funcref_expr1 = Expression.Ref.func wasm_mod "adder" (Heap_type.func ())
 
@@ -148,8 +146,6 @@ open Export_test; // TODO: Document
 //          Expression.Const.make wasm_mod (Literal.int32 1l);
 //        ]
 //        Type.int32)
-
-// let _ = Export.add_function_export wasm_mod "hello" "hello"
 
 // let _ =
 //   Module.run_passes new_mod
