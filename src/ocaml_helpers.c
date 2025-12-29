@@ -38,6 +38,14 @@ value alloc_BinaryenGlobalRef(BinaryenGlobalRef exp)
   return v;
 }
 
+/* Allocating an OCaml custom block to hold the given BinaryenTagRef */
+value alloc_BinaryenTagRef(BinaryenTagRef exp)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(BinaryenTagRef), 0, 1);
+  BinaryenTagRef_val(v) = exp;
+  return v;
+}
+
 /* Allocating an OCaml custom block to hold the given BinaryenExportRef */
 value alloc_BinaryenExportRef(BinaryenExportRef exp)
 {

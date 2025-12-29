@@ -254,6 +254,84 @@ let _ =
       (Memory.get_segment_data wasm_mod "world")
       (Bytes.of_string "world"))
 
+let _ = Tag.add_tag wasm_mod "foo" Type.int32 Type.none
+let _ = Tag.add_tag wasm_mod "bar" Type.int32 Type.none
+
+(* Exception handling *)
+let body =
+  Expression.Throw.make wasm_mod "foo"
+    [ Expression.Const.make wasm_mod (Literal.int32 1l) ]
+
+let try_catch_1 =
+  Expression.Try.make wasm_mod (Some "tc1") body
+    [
+      ( "foo",
+        Expression.Block.make wasm_mod "tc1blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 2l);
+          ] );
+      ( "bar",
+        Expression.Block.make wasm_mod "tc1blk3"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 3l);
+          ] );
+    ]
+    None
+
+let _ = assert (Expression.Try.get_name try_catch_1 = Some "tc1")
+let _ = Expression.Try.set_name try_catch_1 "renamed_tc1"
+let _ = assert (Expression.Try.get_name try_catch_1 = Some "renamed_tc1")
+let _ = Expression.Try.set_name try_catch_1 "tc1"
+
+let _ =
+  assert (
+    Expression.get_kind (Expression.Try.get_body try_catch_1)
+    = Expression.get_kind body)
+
+let _ = assert (Expression.Try.get_num_catch_tags try_catch_1 = 2)
+let _ = assert (Expression.Try.get_num_catch_bodies try_catch_1 = 2)
+
+let try_catch_2 =
+  Expression.Try.make wasm_mod (Some "tc2")
+    (Expression.Throw.make wasm_mod "foo"
+       [ Expression.Const.make wasm_mod (Literal.int32 1l) ])
+    [
+      ( "foo",
+        Expression.Block.make wasm_mod "tc2blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+          ] );
+      ( "bar",
+        Expression.Block.make wasm_mod "tc2blk3"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+          ] );
+    ]
+    None
+
+let _ = assert (Expression.Try.get_name try_catch_2 = Some "tc2")
+
+(* Test catch_all *)
+let try_catch_all_1 =
+  Expression.Try.make wasm_mod (Some "tc3")
+    (Expression.Const.make wasm_mod (Literal.int32 1l))
+    [
+      ( "foo",
+        Expression.Block.make wasm_mod "tc3blk2"
+          [
+            Expression.Drop.make wasm_mod
+              (Expression.Pop.make wasm_mod Type.int32);
+            Expression.Const.make wasm_mod (Literal.int32 2l);
+          ] );
+    ]
+    (Some (Expression.Const.make wasm_mod (Literal.int32 3l)))
+
 (* Create an imported "write" function i32 (externref, i32, i32) *)
 (* Similar to the example here: https://bytecodealliance.org/articles/reference-types-in-wasmtime *)
 
@@ -273,7 +351,18 @@ let _ =
        ]
        Type.int32)
 
+(* Create a function with try *)
+let _ =
+  Function.add_function wasm_mod "try" Type.none Type.none [||]
+    (Expression.Block.make wasm_mod "blk"
+       [
+         Expression.Drop.make wasm_mod try_catch_1;
+         try_catch_2;
+         Expression.Drop.make wasm_mod try_catch_all_1;
+       ])
+
 let _ = Export.add_function_export wasm_mod "hello" "hello"
+let _ = Export.add_function_export wasm_mod "try" "try"
 let _ = Module.validate wasm_mod
 
 (* Shouldn't actually do anything since we aren't doing function renames *)

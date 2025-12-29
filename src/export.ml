@@ -16,6 +16,10 @@ external add_global_export : Module.t -> string -> string -> t
   = "caml_binaryen_add_global_export"
 (** Module, internal name, external name. *)
 
+external add_tag_export : Module.t -> string -> string -> t
+  = "caml_binaryen_add_tag_export"
+(** Module, internal name, external name. *)
+
 external get_export : Module.t -> string -> t = "caml_binaryen_get_export"
 
 external remove_export : Module.t -> string -> unit

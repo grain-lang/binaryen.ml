@@ -832,6 +832,124 @@ module Ref = struct
   (** Module, left, right *)
 end
 
+(** Bindings for `try_table` instruction. *)
+module Try = struct
+  external make :
+    Module.t ->
+    string option ->
+    t ->
+    string list ->
+    t list ->
+    string option ->
+    t = "caml_binaryen_try__bytecode" "caml_binaryen_try"
+  (** Module, name, body, catch tags, catch bodies, delegate target *)
+
+  (** Module, name, body, catch clauses, catch all *)
+  let make wasm_mod name body catch_clauses catch_all =
+    let catch_tags, catch_bodies = List.split catch_clauses in
+    let catch_bodies =
+      match catch_all with
+      | Some target -> List.append catch_bodies [ target ]
+      | None -> catch_bodies
+    in
+    make wasm_mod name body catch_tags catch_bodies None
+
+  external get_name : t -> string option = "caml_binaryen_try_get_name"
+  (** expr *)
+
+  external set_name : t -> string -> unit = "caml_binaryen_try_set_name"
+  (** expr, name *)
+
+  external get_body : t -> t = "caml_binaryen_try_get_body"
+  (** expr *)
+
+  external set_body : t -> t -> unit = "caml_binaryen_try_set_body"
+  (** expr, bodyExpr *)
+
+  external get_num_catch_tags : t -> int
+    = "caml_binaryen_try_get_num_catch_tags"
+  (** expr *)
+
+  external get_num_catch_bodies : t -> int
+    = "caml_binaryen_try_get_num_catch_bodies"
+  (** expr *)
+
+  external get_catch_tag_at : t -> int -> string
+    = "caml_binaryen_try_get_catch_tag_at"
+  (** expr, index *)
+
+  external set_catch_tag_at : t -> int -> string -> unit
+    = "caml_binaryen_try_set_catch_tag_at"
+  (** expr, index, catchTag *)
+
+  external append_catch_tag : t -> string -> int
+    = "caml_binaryen_try_append_catch_tag"
+  (** expr, catchTag *)
+
+  external insert_catch_tag_at : t -> int -> string -> unit
+    = "caml_binaryen_try_insert_catch_tag_at"
+  (** expr, index, catchTag *)
+
+  external remove_catch_tag_at : t -> int -> string
+    = "caml_binaryen_try_remove_catch_tag_at"
+  (** expr, index *)
+
+  external get_catch_body_at : t -> int -> t
+    = "caml_binaryen_try_get_catch_body_at"
+  (** expr, index *)
+
+  external set_catch_body_at : t -> int -> t -> unit
+    = "caml_binaryen_try_set_catch_body_at"
+  (** expr, index, catchExpr *)
+
+  external append_catch_body : t -> t -> int
+    = "caml_binaryen_try_append_catch_body"
+  (** expr, catchExpr *)
+
+  external insert_catch_body_at : t -> int -> t -> unit
+    = "caml_binaryen_try_insert_catch_body_at"
+  (** expr, index, catchExpr *)
+
+  external remove_catch_body_at : t -> int -> t
+    = "caml_binaryen_try_remove_catch_body_at"
+  (** expr, index *)
+
+  external has_catch_all : t -> bool = "caml_binaryen_try_has_catch_all"
+  (** expr *)
+end
+
+module Throw = struct
+  external make : Module.t -> string -> t list -> t = "caml_binaryen_throw"
+  (** Module, tag, operands *)
+
+  external get_tag : t -> string = "caml_binaryen_throw_get_tag"
+  (** expr *)
+
+  external set_tag : t -> string -> unit = "caml_binaryen_throw_set_tag"
+  (** expr, tagName *)
+
+  external get_num_operands : t -> int = "caml_binaryen_throw_get_num_operands"
+  (** expr *)
+
+  external get_operand_at : t -> int -> t = "caml_binaryen_throw_get_operand_at"
+  (** expr, index *)
+
+  external set_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_throw_set_operand_at"
+  (** expr, index, operandExpr *)
+
+  external append_operand : t -> t -> int = "caml_binaryen_throw_append_operand"
+  (** expr, operandExpr *)
+
+  external insert_operand_at : t -> int -> t -> unit
+    = "caml_binaryen_throw_insert_operand_at"
+  (** expr, index, operandExpr *)
+
+  external remove_operand_at : t -> int -> t
+    = "caml_binaryen_throw_remove_operand_at"
+  (** expr, index *)
+end
+
 module Table = struct
   external get : Module.t -> string -> t -> Type.t -> t
     = "caml_binaryen_table_get"
