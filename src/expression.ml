@@ -832,8 +832,7 @@ module Ref = struct
   (** Module, left, right *)
 end
 
-(** Bindings for `try` instruction. For better validation, use `Try_catch` or
-    `Try_Delegate`. *)
+(** Bindings for `try_table` instruction. *)
 module Try = struct
   external make :
     Module.t ->
