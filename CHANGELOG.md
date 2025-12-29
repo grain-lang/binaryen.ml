@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.34.1](https://github.com/grain-lang/binaryen.ml/compare/v0.34.0...v0.34.1) (2025-12-29)
+
+
+### Features
+
+* Add bindings for exception handling (try/throw) ([#264](https://github.com/grain-lang/binaryen.ml/issues/264)) ([bc003c7](https://github.com/grain-lang/binaryen.ml/commit/bc003c789316a98a7989929b6e67bc6d9b31b23f))
+
+
+### Bug Fixes
+
+* Use `caml_uint8_array_of_string` in add_custom_section ([#269](https://github.com/grain-lang/binaryen.ml/issues/269)) ([0877b1e](https://github.com/grain-lang/binaryen.ml/commit/0877b1e2b8fb1df4ddb29c73bbb867875fa5f580))
+
 ## [0.34.0](https://github.com/grain-lang/binaryen.ml/compare/v0.33.0...v0.34.0) (2025-11-12)
 
 
