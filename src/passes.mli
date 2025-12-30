@@ -225,13 +225,6 @@ val minify_imports_and_exports_and_modules : t
 val minimize_rec_groups : t
 (** Split types into minimal recursion groups *)
 
-val mod_asyncify_always_and_only_unwind : t
-(** apply the assumption that asyncify imports always unwind, and we never
-    rewind *)
-
-val mod_asyncify_never_unwind : t
-(** apply the assumption that asyncify never unwinds *)
-
 val monomorphize : t
 (** creates specialized versions of functions *)
 
@@ -358,6 +351,9 @@ val reorder_globals : t
 
 val reorder_locals : t
 (** sorts locals by access frequency *)
+
+val reorder_types: t
+(** sorts private types by access frequency *)
 
 val rereloop : t
 (** re-optimize control flow using the relooper algorithm *)

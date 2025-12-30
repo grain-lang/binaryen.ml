@@ -229,13 +229,6 @@ let minify_imports_and_exports_and_modules =
 (** Split types into minimal recursion groups *)
 let minimize_rec_groups = "minimize-rec-groups"
 
-(** apply the assumption that asyncify imports always unwind, and we never
-    rewind *)
-let mod_asyncify_always_and_only_unwind = "mod-asyncify-always-and-only-unwind"
-
-(** apply the assumption that asyncify never unwinds *)
-let mod_asyncify_never_unwind = "mod-asyncify-never-unwind"
-
 (** creates specialized versions of functions *)
 let monomorphize = "monomorphize"
 
@@ -364,6 +357,9 @@ let reorder_globals = "reorder-globals"
 
 (** sorts locals by access frequency *)
 let reorder_locals = "reorder-locals"
+
+(** sorts private types by access frequency *)
+let reorder_types = "reorder-types"
 
 (** re-optimize control flow using the relooper algorithm *)
 let rereloop = "rereloop"
