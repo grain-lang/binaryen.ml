@@ -584,12 +584,17 @@ module Call_indirect = struct
 end
 
 module Call_ref = struct
-  external make : Module.t -> t -> t list -> Type.t -> bool -> t
+  external make : Module.t -> t -> t list -> Type.t -> t
     = "caml_binaryen_call_ref"
-  (** Module, function value, params, type, is return. *)
 
-  let make_return mod_ target params typ = make mod_ target params typ true
-  let make mod_ target params typ = make mod_ target params typ false
+  (** Module, function value, params, type. *)
+  let make mod_ target params typ = make mod_ target params typ
+
+  external make_return : Module.t -> t -> t list -> Type.t -> t
+    = "caml_binaryen_return_call_ref"
+
+  (** Module, function value, params, type. *)
+  let make_return mod_ target params typ = make mod_ target params typ
 
   external get_target : t -> t = "caml_binaryen_call_ref_get_target"
   external set_target : t -> t -> unit = "caml_binaryen_call_ref_set_target"

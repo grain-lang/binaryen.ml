@@ -148,3 +148,22 @@ caml_binaryen_type_get_heap_type(value _ty) {
   BinaryenHeapType heapTy = BinaryenTypeGetHeapType(ty);
   CAMLreturn(alloc_BinaryenHeapType(heapTy));
 }
+
+CAMLprim value caml_binaryen_module_set_type_name(value _module, value _heapType, value _name) {
+  CAMLparam3(_module, _heapType, _name);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenHeapType heapType = BinaryenHeapType_val(_heapType);
+  const char* name = String_val(_name);
+  BinaryenModuleSetTypeName(module, heapType, name);
+  CAMLreturn(Val_unit);
+}
+
+CAMLprim value caml_binaryen_module_set_field_name(value _module, value _heapType, value _index, value _name) {
+  CAMLparam4(_module, _heapType, _index, _name);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  BinaryenHeapType heapType = BinaryenHeapType_val(_heapType);
+  BinaryenIndex index = Int_val(_index);
+  const char* name = String_val(_name);
+  BinaryenModuleSetFieldName(module, heapType, index, name);
+  CAMLreturn(Val_unit);
+}
