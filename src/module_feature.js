@@ -140,6 +140,12 @@ function caml_binaryen_feature_call_indirect_overlong() {
   return Binaryen.Features.BulkMemoryOpt;
 }
 
+//Provides: caml_binaryen_feature_relaxed_atomics
+//Requires: Binaryen
+function caml_binaryen_feature_relaxed_atomics() {
+  return Binaryen.Features.RelaxedAtomics;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: Binaryen
 function caml_binaryen_feature_all() {

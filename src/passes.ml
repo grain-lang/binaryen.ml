@@ -106,6 +106,9 @@ let generate_global_effects = "generate-global-effects"
 (** refine the types of globals *)
 let global_refining = "global-refining"
 
+(** globally optimize struct values, also emitting ref.cast_desc_eq *)
+let gsi_desc_cast = "gsi-desc-cast"
+
 (** globally optimize struct values *)
 let gsi = "gsi"
 
@@ -151,9 +154,6 @@ let inlining_optimizing = "inlining-optimizing"
 
 (** lower away binaryen intrinsics *)
 let intrinsic_lowering = "intrinsic-lowering"
-
-(** wrap imports and exports for JavaScript promise integration *)
-let jspi = "jspi"
 
 (** legalizes i64 types on the import/export boundary *)
 let legalize_js_interface = "legalize-js-interface"
@@ -321,6 +321,9 @@ let symbolmap = "symbolmap"
 (** removes operations incompatible with js *)
 let remove_non_js_ops = "remove-non-js-ops"
 
+(** replaces relaxed SIMD instructions with unreachable *)
+let remove_relaxed_simd = "remove-relaxed-simd"
+
 (** removes imports and replaces them with nops *)
 let remove_imports = "remove-imports"
 
@@ -468,6 +471,9 @@ let strip_eh = "strip-eh"
 (** strip the wasm target features section *)
 let strip_target_features = "strip-target-features"
 
+(** strip all toolchain-specific code annotations *)
+let strip_toolchain_annotations = "strip-toolchain-annotations"
+
 (** translate old Phase 3 EH instructions to new ones with exnref *)
 let translate_to_exnref = "translate-to-exnref"
 
@@ -486,7 +492,7 @@ let type_finalizing = "type-finalizing"
 (** merge types to their supertypes where possible *)
 let type_merging = "type-merging"
 
-(** create new nominal types to help other optimizations *)
+(** create new types to help other optimizations *)
 let type_ssa = "type-ssa"
 
 (** mark all types as non-final (open) *)

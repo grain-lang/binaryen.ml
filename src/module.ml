@@ -98,6 +98,10 @@ module Feature = struct
 
   let call_indirect_overlong = call_indirect_overlong ()
 
+  external relaxed_atomics : unit -> t = "caml_binaryen_feature_relaxed_atomics"
+
+  let relaxed_atomics = relaxed_atomics ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()
