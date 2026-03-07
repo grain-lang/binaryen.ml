@@ -462,6 +462,36 @@ let _ =
 let _ = Export.add_function_export wasm_mod "gc" "gc"
 let _ = assert (Module.validate wasm_mod == 1)
 
+(* Test Heap_type.set_type_name and Heap_type.set_field_name *)
+let list_type =
+  let builder = Type_builder.make 1 in
+  let temp_heap_type = Type_builder.get_temp_heap_type builder 0 in
+  let temp_ref_type =
+    Type_builder.get_temp_ref_type builder temp_heap_type true
+  in
+  Type_builder.set_struct_type builder 0
+    [
+      Type_builder.
+        {
+          type_ = Type.i31ref;
+          packed_type = Packed_type.not_packed;
+          mutable_ = false;
+        };
+      Type_builder.
+        {
+          type_ = temp_ref_type;
+          packed_type = Packed_type.not_packed;
+          mutable_ = false;
+        };
+    ];
+  match Type_builder.build_and_dispose builder with
+  | Ok [ ty ] -> ty
+  | _ -> failwith "failed to make list type"
+
+let _ = Heap_type.set_type_name wasm_mod list_type "List"
+let _ = Heap_type.set_field_name wasm_mod list_type 0 "head"
+let _ = Heap_type.set_field_name wasm_mod list_type 1 "tail"
+
 (* Shouldn't actually do anything since we aren't doing function renames *)
 let _ = Module.update_maps wasm_mod
 
