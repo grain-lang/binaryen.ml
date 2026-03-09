@@ -409,8 +409,8 @@ module Array : sig
   val len : Module.t -> t -> t
   (** Module, array *)
 
-  val fill : Module.t -> Heap_type.t -> t -> t -> t -> t
-  (** Module, type, seg, offset, size *)
+  val fill : Module.t -> t -> t -> t -> t -> t
+  (** Module, array, index, value, offset *)
 
   val copy : Module.t -> t -> t -> t -> t -> t -> t
   (** Module, dest, dest index, src, src index, length *)
