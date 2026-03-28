@@ -1,7 +1,7 @@
 name: Esy
 on:
   push:
-    branches: [main]
+    branches: [main, oscar/check-ci]
   pull_request:
 
 # This will cancel previous runs when a branch or PR is updated
