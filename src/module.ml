@@ -143,6 +143,13 @@ external write : t -> string option -> bytes * string option
 external write_text : t -> string = "caml_binaryen_module_write_text"
 external write_stack_ir : t -> string = "caml_binaryen_module_write_stack_ir"
 external read : bytes -> t = "caml_binaryen_module_read"
+
+external read_with_features : bytes -> int -> t
+  = "caml_binaryen_module_read_with_features"
+
+let read_with_features buf features =
+  read_with_features buf (List.fold_left ( lor ) 0 features)
+
 external interpret : t -> unit = "caml_binaryen_module_interpret"
 
 external add_debug_info_filename : t -> string -> int

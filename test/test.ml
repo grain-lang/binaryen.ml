@@ -391,6 +391,24 @@ let _ =
 
 let new_mod = Module.read byts
 
+(* Test read_with_features *)
+let new_mod_with_features =
+  Module.read_with_features byts
+    [
+      Module.Feature.bulk_memory;
+      Module.Feature.mutable_globals;
+      Module.Feature.reference_types;
+      Module.Feature.multivalue;
+      Module.Feature.gc;
+      Module.Feature.strings;
+      Module.Feature.exception_handling;
+      Module.Feature.tail_call;
+      Module.Feature.multi_memory;
+    ]
+
+let _ = assert (Module.validate new_mod_with_features = 1)
+let _ = Module.dispose new_mod_with_features
+
 let _ =
   Module.run_passes new_mod
     [

@@ -105,6 +105,16 @@ function caml_binaryen_module_read(bytes) {
   return Binaryen.readBinary(data);
 }
 
+//Provides: caml_binaryen_module_read_with_features
+//Requires: Binaryen
+//Requires: caml_uint8_array_of_bytes
+function caml_binaryen_module_read_with_features(bytes, features) {
+  var data = caml_uint8_array_of_bytes(bytes);
+  var wasm_mod = Binaryen.readBinary(data);
+  wasm_mod.setFeatures(features);
+  return wasm_mod;
+}
+
 //Provides: caml_binaryen_module_interpret
 function caml_binaryen_module_interpret(wasm_mod) {
   return wasm_mod.interpret();

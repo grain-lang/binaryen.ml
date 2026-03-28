@@ -44,6 +44,7 @@ val write : t -> string option -> bytes * string option
 val write_text : t -> string
 val write_stack_ir : t -> string
 val read : bytes -> t
+val read_with_features : bytes -> Feature.t list -> t
 val interpret : t -> unit
 val add_debug_info_filename : t -> string -> int
 val get_debug_info_filename : t -> int -> string
