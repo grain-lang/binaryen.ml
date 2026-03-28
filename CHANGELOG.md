@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.36.0](https://github.com/grain-lang/binaryen.ml/compare/v0.35.0...v0.36.0) (2026-03-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* `Memory.get_segment_byte_offset` on Passive data sections ([#268](https://github.com/grain-lang/binaryen.ml/issues/268))
+
+### Bug Fixes
+
+* `Memory.get_segment_byte_offset` on Passive data sections ([#268](https://github.com/grain-lang/binaryen.ml/issues/268)) ([45e4c55](https://github.com/grain-lang/binaryen.ml/commit/45e4c55147ce4cf88fe59529c2fde9d1b0a22247))
+
 ## [0.35.0](https://github.com/grain-lang/binaryen.ml/compare/v0.34.0...v0.35.0) (2026-03-15)
 
 
