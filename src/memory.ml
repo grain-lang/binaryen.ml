@@ -71,7 +71,7 @@ let unlimited = -1
 external get_num_segments : Module.t -> int
   = "caml_binaryen_get_num_memory_segments"
 
-external get_segment_byte_offset : Module.t -> string -> int
+external get_segment_byte_offset : Module.t -> string -> int option
   = "caml_binaryen_get_memory_segment_byte_offset"
 
 external get_segment_passive : Module.t -> string -> bool
