@@ -78,7 +78,7 @@ function caml_type_builder_get_temp_heap_type(builder, index) {
 
 //Provides: caml_type_builder_get_temp_tuple_type
 //Requires: caml_list_to_js_array
-function caml_type_builder_get_temp_tuple_type(builder, types, numTypes) {
+function caml_type_builder_get_temp_tuple_type(builder, types) {
   var tupleTypes = caml_list_to_js_array(types);
   return builder.getTempTupleType(tupleTypes);
 }

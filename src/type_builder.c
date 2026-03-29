@@ -95,8 +95,8 @@ caml_type_builder_get_temp_heap_type(value _builder, value _index) {
 }
 
 CAMLprim value
-caml_type_builder_get_temp_tuple_type(value _builder, value _types, value _numTypes) {
-  CAMLparam3(_builder, _types, _numTypes);
+caml_type_builder_get_temp_tuple_type(value _builder, value _types) {
+  CAMLparam2(_builder, _types);
   TypeBuilderRef builder = TypeBuilderRef_val(_builder);
   _types = array_of_list(_types);
   int typesLen = array_length(_types);
@@ -104,8 +104,7 @@ caml_type_builder_get_temp_tuple_type(value _builder, value _types, value _numTy
   for (int i = 0; i < typesLen; i++) {
     types[i] = BinaryenType_val(Field(_types, i));
   }
-  int numTypes = Int_val(_numTypes);
-  CAMLreturn(alloc_BinaryenType(TypeBuilderGetTempTupleType(builder, types, numTypes)));
+  CAMLreturn(alloc_BinaryenType(TypeBuilderGetTempTupleType(builder, types, typesLen)));
 }
 
 CAMLprim value
