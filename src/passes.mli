@@ -352,7 +352,7 @@ val reorder_globals : t
 val reorder_locals : t
 (** sorts locals by access frequency *)
 
-val reorder_types: t
+val reorder_types : t
 (** sorts private types by access frequency *)
 
 val rereloop : t

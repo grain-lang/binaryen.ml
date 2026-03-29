@@ -111,3 +111,15 @@ function caml_binaryen_heap_type_is_sub_type(left, right) {
 function caml_binaryen_type_get_heap_type(typ) {
   return Binaryen._BinaryenTypeGetHeapType(typ);
 }
+
+//Provides: caml_binaryen_module_set_type_name
+//Requires: caml_jsstring_of_string
+function caml_binaryen_module_set_type_name(wasm_mod, heapType, name) {
+  wasm_mod.setTypeName(heapType, caml_jsstring_of_string(name));
+}
+
+//Provides: caml_binaryen_module_set_field_name
+//Requires: caml_jsstring_of_string
+function caml_binaryen_module_set_field_name(wasm_mod, heapType, index, name) {
+  wasm_mod.setFieldName(heapType, index, caml_jsstring_of_string(name));
+}

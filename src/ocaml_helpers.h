@@ -23,6 +23,7 @@ static struct custom_operations binaryen_ops = {
 
 #define BinaryenModuleRef_val(v) (*((BinaryenModuleRef*) Data_custom_val(v)))
 #define BinaryenType_val(v) (*((BinaryenType*) Data_custom_val(v)))
+#define BinaryenPackedType_val(v) Int_val(v)
 #define BinaryenHeapType_val(v) (*((BinaryenHeapType*) Data_custom_val(v)))
 #define BinaryenExpressionRef_val(v) (*((BinaryenExpressionRef*) Data_custom_val(v)))
 #define BinaryenOp_val(v) (*((BinaryenOp*) Data_custom_val(v)))
@@ -33,6 +34,7 @@ static struct custom_operations binaryen_ops = {
 #define BinaryenExportRef_val(v) (*((BinaryenExportRef*) Data_custom_val(v)))
 #define BinaryenTableRef_val(v) (*((BinaryenTableRef*) Data_custom_val(v)))
 #define BinaryenElementSegmentRef_val(v) (*((BinaryenElementSegmentRef*) Data_custom_val(v)))
+#define TypeBuilderRef_val(v) (*((TypeBuilderRef*) Data_custom_val(v)))
 
 #define Val_none Val_int(0)
 #define Some_val(v) Field(v, 0)
@@ -77,6 +79,9 @@ value alloc_BinaryenTableRef(BinaryenTableRef table);
 
 /* Allocating an OCaml custom block to hold the given BinaryenElementSegmentRef */
 value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem);
+
+/* Allocating an OCaml custom block to hold the given TypeBuilderRef */
+value alloc_TypeBuilderRef(TypeBuilderRef builder);
 
 CAMLprim value
 array_of_list(value list);
