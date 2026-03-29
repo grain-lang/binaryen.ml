@@ -594,7 +594,7 @@ module Call_ref = struct
     = "caml_binaryen_return_call_ref"
 
   (** Module, function value, params, type. *)
-  let make_return mod_ target params typ = make mod_ target params typ
+  let make_return mod_ target params typ = make_return mod_ target params typ
 
   external get_target : t -> t = "caml_binaryen_call_ref_get_target"
   external set_target : t -> t -> unit = "caml_binaryen_call_ref_set_target"
