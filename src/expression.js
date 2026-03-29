@@ -1909,13 +1909,26 @@ function caml_binaryen_array_copy(
 
 //Provides: caml_binaryen_array_init_data
 //Requires: caml_jsstring_of_string
-function caml_binaryen_array_init_data(name, ref, index, offset, size) {
+function caml_binaryen_array_init_data(wasm_mod, name, ref, index, offset, size) {
   return wasm_mod.array.init_data(caml_jsstring_of_string(name), ref, index, offset, size);
+}
+
+//Provides: caml_binaryen_array_init_data__bytecode
+//Requires: caml_binaryen_array_init_data
+function caml_binaryen_array_init_data__bytecode() {
+  return caml_binaryen_array_init_data(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
 }
 
 //Provides: caml_binaryen_array_init_elem
 //Requires: caml_jsstring_of_string
-function caml_binaryen_array_init_elem(name, ref, index, offset, size) {
+function caml_binaryen_array_init_elem(wasm_mod, name, ref, index, offset, size) {
   return wasm_mod.array.init_elem(caml_jsstring_of_string(name), ref, index, offset, size);
 }
 
