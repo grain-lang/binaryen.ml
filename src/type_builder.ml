@@ -15,7 +15,7 @@ type error =
 
 external make : int -> t = "caml_type_builder_create"
 external grow : t -> int -> unit = "caml_type_builder_grow"
-external size : t -> int = "caml_type_builder_grow"
+external size : t -> int = "caml_type_builder_get_size"
 
 external set_signature_type : t -> int -> Type.t -> Type.t -> unit
   = "caml_type_builder_set_signature_type"
