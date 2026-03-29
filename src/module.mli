@@ -25,6 +25,7 @@ module Feature : sig
   val fp16 : t
   val bulk_memory_opt : t
   val call_indirect_overlong : t
+  val relaxed_atomics : t
   val all : t
 end
 
