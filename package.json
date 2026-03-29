@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ocaml": ">= 4.13.0 < 5.4.0",
-    "@grain/libbinaryen": "*",
+    "@grain/libbinaryen": ">= 126.0.0 < 127.0.0",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
   },
@@ -16,8 +16,7 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.7.0",
-    "@grain/libbinaryen": "git+https://github.com/spotandjake/libbinaryen.git#c596fe826ccb9edd91e060becb6284a2d429ea6d"
+    "@opam/ocp-indent": "1.7.0"
   },
   "esy": {
     "build": "dune build -p binaryen"

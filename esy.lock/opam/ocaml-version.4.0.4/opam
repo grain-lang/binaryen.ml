@@ -45,10 +45,10 @@ build: [
 dev-repo: "git+https://github.com/ocurrent/ocaml-version.git"
 url {
   src:
-    "https://github.com/ocurrent/ocaml-version/releases/download/v4.0.3/ocaml-version-4.0.3.tbz"
+    "https://github.com/ocurrent/ocaml-version/releases/download/v4.0.4/ocaml-version-4.0.4.tbz"
   checksum: [
-    "md5=6a8cce4bd5b60149ca4302ce587bff94"
-    "sha512=199533647516b1bea700046437c3b1f0d605e593c4bfd3b694f16944a6bfdba44297a45d696da1742c57bc621ecaafa2237cb3dc379f66f7fa2e1b2d93743022"
+    "md5=b5b4812aab0052900f462b2e024d5329"
+    "sha512=5813a6577e66b3567ce543255b3ab1bf58f7034bfd17b793d60843a6c422fc01f702ef5db5928be4289a89d1b48ec9454d906a6d9b2e4a19fbd3afd8a541045b"
   ]
 }
 x-maintenance-intent: ["(latest)"]
