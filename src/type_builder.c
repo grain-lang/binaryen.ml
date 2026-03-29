@@ -150,23 +150,27 @@ caml_conv_heap_type(BinaryenHeapType heapType) {
   return alloc_BinaryenHeapType(heapType);
 }
 
-CAMLprim value
-caml_type_builder_build_and_dispose(value _builder) {
+CAMLprim value caml_type_builder_build_and_dispose(value _builder) {
   CAMLparam1(_builder);
+  CAMLlocal4(arr, ok, error, tuple);
   TypeBuilderRef builder = TypeBuilderRef_val(_builder);
   BinaryenIndex size = TypeBuilderGetSize(builder);
   BinaryenHeapType heapTypes[size + 1];
-  heapTypes[size] = (BinaryenHeapType) NULL;
   BinaryenIndex errorIndex;
   TypeBuilderErrorReason errorReason;
-  bool success = TypeBuilderBuildAndDispose(builder, heapTypes, &errorIndex, &errorReason);
+  bool success =
+      TypeBuilderBuildAndDispose(builder, heapTypes, &errorIndex, &errorReason);
   if (success) {
-    value ok = caml_alloc_small(1, 0);
-    Field(ok, 0) = caml_alloc_array((void*)caml_conv_heap_type, (char const **)heapTypes);
+    arr = caml_alloc(size, 0);
+    for (mlsize_t i = 0; i < (mlsize_t)size; i++) {
+      Field(arr, i) = alloc_BinaryenHeapType(heapTypes[i]);
+    }
+    ok = caml_alloc_small(1, 0);
+    Field(ok, 0) = arr;
     CAMLreturn(ok);
   } else {
-    value error = caml_alloc_small(1, 1);
-    value tuple = caml_alloc_small(2, 0);
+    error = caml_alloc_small(1, 1);
+    tuple = caml_alloc_small(2, 0);
     Field(tuple, 0) = Val_int(errorIndex);
     Field(tuple, 1) = Val_int(errorReason);
     Field(error, 0) = tuple;
