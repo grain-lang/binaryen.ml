@@ -152,7 +152,7 @@ caml_conv_heap_type(BinaryenHeapType heapType) {
 
 CAMLprim value caml_type_builder_build_and_dispose(value _builder) {
   CAMLparam1(_builder);
-  CAMLlocal4(arr, ok, error, tuple);
+  CAMLlocal5(arr, ok, error, tuple, field);
   TypeBuilderRef builder = TypeBuilderRef_val(_builder);
   BinaryenIndex size = TypeBuilderGetSize(builder);
   BinaryenHeapType heapTypes[size + 1];
@@ -163,17 +163,18 @@ CAMLprim value caml_type_builder_build_and_dispose(value _builder) {
   if (success) {
     arr = caml_alloc(size, 0);
     for (mlsize_t i = 0; i < (mlsize_t)size; i++) {
-      Field(arr, i) = alloc_BinaryenHeapType(heapTypes[i]);
+      field = alloc_BinaryenHeapType(heapTypes[i]);
+      Store_field(arr, i, field);
     }
     ok = caml_alloc_small(1, 0);
-    Field(ok, 0) = arr;
+    Store_field(ok, 0, arr);
     CAMLreturn(ok);
   } else {
     error = caml_alloc_small(1, 1);
     tuple = caml_alloc_small(2, 0);
     Field(tuple, 0) = Val_int(errorIndex);
     Field(tuple, 1) = Val_int(errorReason);
-    Field(error, 0) = tuple;
+    Store_field(error, 0, tuple);
     CAMLreturn(error);
   }
 }
