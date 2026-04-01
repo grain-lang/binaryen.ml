@@ -1814,7 +1814,7 @@ function caml_binaryen_ref_func(wasm_mod, name, typ) {
 
 //Provides: caml_binaryen_ref_eq
 function caml_binaryen_ref_eq(wasm_mod, left, right) {
-  return wasm_mod.ref.func(left, right);
+  return wasm_mod.ref.eq(left, right);
 }
 
 // Struct operations
