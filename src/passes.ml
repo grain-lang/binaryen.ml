@@ -16,6 +16,9 @@ let dae = "dae"
     removed *)
 let dae_optimizing = "dae-optimizing"
 
+(** Experimental reimplementation of DAE *)
+let dae_2 = "dae-2"
+
 (** refine and merge abstract (never-created) types *)
 let abstract_type_refining = "abstract-type-refining"
 
