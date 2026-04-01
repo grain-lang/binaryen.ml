@@ -162,6 +162,12 @@ caml_binaryen_feature_relaxed_atomics(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_feature_custom_page_sizes(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureCustomPageSizes()));
+}
+
+CAMLprim value
 caml_binaryen_feature_all(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureAll()));
