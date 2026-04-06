@@ -132,6 +132,5 @@ function caml_binaryen_add_custom_section(wasm_mod, name, contents) {
 
 //Provides: caml_binaryen_module_update_maps
 function caml_binaryen_module_update_maps(wasm_mod) {
-  // The JS version doesn't expose `update_maps`
-  return;
+  return wasm_mod.updateMaps();
 }

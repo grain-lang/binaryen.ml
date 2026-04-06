@@ -67,8 +67,7 @@ function caml_binaryen_type_structref() {
 //Provides: caml_binaryen_type_arrayref
 //Requires: Binaryen
 function caml_binaryen_type_arrayref() {
-  // TODO: Binaryen v125 doesn't expose this directly
-  return Binaryen._BinaryenTypeArrayref();
+  return Binaryen.arrayref;
 }
 
 //Provides: caml_binaryen_type_stringref

@@ -106,6 +106,9 @@ val generate_global_effects : t
 val global_refining : t
 (** refine the types of globals *)
 
+val gsi_desc_cast : t
+(** globally optimize struct values, also emitting ref.cast_desc_eq *)
+
 val gsi : t
 (** globally optimize struct values *)
 
@@ -148,9 +151,6 @@ val inlining_optimizing : t
 
 val intrinsic_lowering : t
 (** lower away binaryen intrinsics *)
-
-val jspi : t
-(** wrap imports and exports for JavaScript promise integration *)
 
 val legalize_js_interface : t
 (** legalizes i64 types on the import/export boundary *)
@@ -316,6 +316,9 @@ val symbolmap : t
 val remove_non_js_ops : t
 (** removes operations incompatible with js *)
 
+val remove_relaxed_simd : t
+(** replaces relaxed SIMD instructions with unreachable *)
+
 val remove_imports : t
 (** removes imports and replaces them with nops *)
 
@@ -352,7 +355,7 @@ val reorder_globals : t
 val reorder_locals : t
 (** sorts locals by access frequency *)
 
-val reorder_types: t
+val reorder_types : t
 (** sorts private types by access frequency *)
 
 val rereloop : t
@@ -460,6 +463,9 @@ val strip_eh : t
 val strip_target_features : t
 (** strip the wasm target features section *)
 
+val strip_toolchain_annotations : t
+(** strip all toolchain-specific code annotations *)
+
 val translate_to_exnref : t
 (** translate old Phase 3 EH instructions to new ones with exnref *)
 
@@ -479,7 +485,7 @@ val type_merging : t
 (** merge types to their supertypes where possible *)
 
 val type_ssa : t
-(** create new nominal types to help other optimizations *)
+(** create new types to help other optimizations *)
 
 val type_unfinalizing : t
 (** mark all types as non-final (open) *)
