@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.36.0](https://github.com/grain-lang/binaryen.ml/compare/v0.35.0...v0.36.0) (2026-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v126 ([#272](https://github.com/grain-lang/binaryen.ml/issues/272))
+* `Memory.get_segment_byte_offset` on Passive data sections ([#268](https://github.com/grain-lang/binaryen.ml/issues/268))
+
+### Features
+
+* Upgrade to Binaryen v126 ([#272](https://github.com/grain-lang/binaryen.ml/issues/272)) ([a1269f0](https://github.com/grain-lang/binaryen.ml/commit/a1269f0b9e14b349676d6d489f03d67f9d88e770))
+
+
+### Bug Fixes
+
+* `Memory.get_segment_byte_offset` on Passive data sections ([#268](https://github.com/grain-lang/binaryen.ml/issues/268)) ([45e4c55](https://github.com/grain-lang/binaryen.ml/commit/45e4c55147ce4cf88fe59529c2fde9d1b0a22247))
+
 ## [0.35.0](https://github.com/grain-lang/binaryen.ml/compare/v0.34.0...v0.35.0) (2026-03-15)
 
 
