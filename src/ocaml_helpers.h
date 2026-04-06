@@ -33,6 +33,7 @@ static struct custom_operations binaryen_ops = {
 #define BinaryenExportRef_val(v) (*((BinaryenExportRef*) Data_custom_val(v)))
 #define BinaryenTableRef_val(v) (*((BinaryenTableRef*) Data_custom_val(v)))
 #define BinaryenElementSegmentRef_val(v) (*((BinaryenElementSegmentRef*) Data_custom_val(v)))
+#define BinaryenDataSegmentRef_val(v) (*((BinaryenDataSegmentRef*) Data_custom_val(v)))
 
 #define Val_none Val_int(0)
 #define Some_val(v) Field(v, 0)
@@ -77,6 +78,9 @@ value alloc_BinaryenTableRef(BinaryenTableRef table);
 
 /* Allocating an OCaml custom block to hold the given BinaryenElementSegmentRef */
 value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem);
+
+/* Allocating an OCaml custom block to hold the given BinaryenDataSegmentRef */
+value alloc_BinaryenDataSegmentRef(BinaryenDataSegmentRef seg);
 
 CAMLprim value
 array_of_list(value list);

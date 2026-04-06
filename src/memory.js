@@ -105,29 +105,3 @@ function caml_binaryen_memory_is_64(mod, memoryName) {
   var memory_info = mod.getMemoryInfo(caml_jsstring_of_string(memoryName));
   return caml_js_to_bool(memory_info.is64);
 }
-
-//Provides: caml_binaryen_get_num_memory_segments
-function caml_binaryen_get_num_memory_segments(wasm_mod) {
-  return wasm_mod.getNumMemorySegments();
-}
-
-//Provides: caml_binaryen_get_memory_segment_byte_offset
-//Requires: caml_jsstring_of_string, to_option
-function caml_binaryen_get_memory_segment_byte_offset(wasm_mod, name) {
-  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
-  return to_option(info.offset);
-}
-
-//Provides: caml_binaryen_get_memory_segment_passive
-//Requires: caml_jsstring_of_string
-function caml_binaryen_get_memory_segment_passive(wasm_mod, name) {
-  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
-  return info.passive;
-}
-
-//Provides: caml_binaryen_get_memory_segment_data
-//Requires: caml_bytes_of_array, caml_jsstring_of_string
-function caml_binaryen_get_memory_segment_data(wasm_mod, name) {
-  var info = wasm_mod.getMemorySegmentInfo(caml_jsstring_of_string(name));
-  return caml_bytes_of_array(info.data);
-}
