@@ -138,6 +138,16 @@ caml_binaryen_module_read(value _bytes) {
 }
 
 CAMLprim value
+caml_binaryen_module_read_with_features(value _bytes, value _features) {
+  CAMLparam2(_bytes, _features);
+  char* bytes = Safe_String_val(_bytes);
+  int length = caml_string_length(_bytes);
+  BinaryenFeatures features = Int_val(_features);
+  BinaryenModuleRef result = BinaryenModuleReadWithFeatures(bytes, length, features);
+  CAMLreturn(alloc_BinaryenModuleRef(result));
+}
+
+CAMLprim value
 caml_binaryen_module_interpret(value _module) {
   CAMLparam1(_module);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
