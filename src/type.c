@@ -147,14 +147,16 @@ caml_binaryen_type_create(value tys) {
 CAMLprim value
 caml_binaryen_type_expand(value _ty) {
   CAMLparam1(_ty);
+  CAMLlocal2(typeArray, field);
   BinaryenType ty = BinaryenType_val(_ty);
   int arity = BinaryenTypeArity(ty);
   BinaryenType* buf = malloc(sizeof(BinaryenType) * arity);
   BinaryenTypeExpand(ty, buf);
 
-  value typeArray = caml_alloc(arity, 0);
+  typeArray = caml_alloc(arity, 0);
   for (int i = 0; i < arity; i++) {
-    Field(typeArray, i) = alloc_BinaryenType(buf[i]);
+    field = alloc_BinaryenType(buf[i]);
+    Store_field(typeArray, i, field);
   }
 
   free(buf);
