@@ -16,8 +16,9 @@ depends: [
   "num" {with-test}
   "ppx_expect" {>= "v0.16.1" & with-test}
   "ppxlib" {>= "0.35"}
+  "ocaml-compiler-libs" {>= "v0.12.4"}
   "re" {with-test}
-  "cmdliner" {>= "1.1.0"}
+  "cmdliner" {>= "2.0"}
   "sedlex" {>= "3.3"}
   "qcheck" {with-test}
   "menhir"
@@ -44,13 +45,23 @@ build: [
     "@install"
     "@doc" {with-doc}
   ]
+  ["cmdliner" "install" "tool-support"
+              "--update-opam-install=%{_:name}%.install"
+              "_build/install/default/bin/js_of_ocaml" {os-family != "windows"}
+              "_build/install/default/bin/js_of_ocaml.exe:js_of_ocaml" {os-family = "windows"}
+              "_build/cmdliner-install"]
+  ["cmdliner" "install" "tool-support"
+              "--update-opam-install=%{_:name}%.install"
+              "_build/install/default/bin/jsoo_minify" {os-family != "windows"}
+              "_build/install/default/bin/jsoo_minify.exe:jsoo_minify" {os-family = "windows"}
+              "_build/cmdliner-install"]
 ]
 url {
   src:
-    "https://github.com/ocsigen/js_of_ocaml/releases/download/6.2.0/js_of_ocaml-6.2.0.tbz"
+    "https://github.com/ocsigen/js_of_ocaml/releases/download/6.3.2/js_of_ocaml-6.3.2.tbz"
   checksum: [
-    "sha256=7cc641778d1b172a352a88333ee0e8c621365a0acfcd9b87e38bfddb8dd2a5da"
-    "sha512=da50c79e1ad667df22abe03d0928ee135729c90cf09279e3c4854aec66557e8600890ca58f550529de1b1a44698720890b97528df167fd9e10cce24c71e763e6"
+    "sha256=a93afc9654ec3464701fbce0dccf3a8beb9508acb12c6045776bf2cf106cabc0"
+    "sha512=3cd59bd4395a3ac83f546ae20259b026b61cea33e3ef35ab0560ce0baadaf50ebefb704dba28246a3c8b1ce3ff6d8efdc3e514dcbd728af0afb2e2a2c2032620"
   ]
 }
-x-commit-hash: "938c18c46b78836119483d9cc9ce25ffdc44b718"
+x-commit-hash: "f5fe45b83cd0ba477c2abbc9cda92f2ef51a6fa4"

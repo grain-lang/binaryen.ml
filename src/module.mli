@@ -26,6 +26,7 @@ module Feature : sig
   val bulk_memory_opt : t
   val call_indirect_overlong : t
   val relaxed_atomics : t
+  val custom_page_sizes : t
   val all : t
 end
 

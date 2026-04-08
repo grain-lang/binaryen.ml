@@ -16,6 +16,9 @@ val dae_optimizing : t
 (** removes arguments to calls in an lto-like manner, and optimizes where we
     removed *)
 
+val dae_2: t
+(** Experimental reimplementation of DAE *)
+
 val abstract_type_refining : t
 (** refine and merge abstract (never-created) types *)
 

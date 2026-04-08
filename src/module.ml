@@ -102,6 +102,10 @@ module Feature = struct
 
   let relaxed_atomics = relaxed_atomics ()
 
+  external custom_page_sizes : unit -> t = "caml_binaryen_feature_custom_page_sizes"
+
+  let custom_page_sizes = custom_page_sizes ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()

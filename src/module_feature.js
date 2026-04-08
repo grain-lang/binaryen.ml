@@ -146,6 +146,12 @@ function caml_binaryen_feature_relaxed_atomics() {
   return Binaryen.Features.RelaxedAtomics;
 }
 
+//Provides: caml_binaryen_feature_custom_page_sizes
+//Requires: Binaryen
+function caml_binaryen_feature_custom_page_sizes() {
+  return Binaryen.Features.CustomPageSizes;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: Binaryen
 function caml_binaryen_feature_all() {
