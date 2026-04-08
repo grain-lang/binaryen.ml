@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ocaml": ">= 4.13.0 < 5.4.0",
-    "@grain/libbinaryen": ">= 127.0.0 < 128.0.0",
+    "@grain/libbinaryen": "*",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
   },
@@ -19,7 +19,8 @@
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.9.0"
+    "@opam/ocp-indent": "1.9.0",
+    "@grain/libbinaryen": "git+https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816"
   },
   "esy": {
     "build": "dune build -p binaryen"

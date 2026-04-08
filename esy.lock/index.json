@@ -1,5 +1,5 @@
 {
-  "checksum": "cb683f0d62e9f150b764a7ff45bb0fd2",
+  "checksum": "c3ec53b2f6aa254a622a459ddf046e21",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -2031,14 +2031,14 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@grain/libbinaryen@127.0.0@d41d8cd9": {
-      "id": "@grain/libbinaryen@127.0.0@d41d8cd9",
+    "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816@d41d8cd9": {
+      "id": "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "127.0.0",
+      "version": "git:https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-127.0.0.tgz#sha1:ab94716e590c89241c24f690b81b54481cef60cd"
+          "git:https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816"
         ]
       },
       "overrides": [],
@@ -2071,7 +2071,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.22.1@1e3bb10c",
         "@opam/dune@opam:3.22.1@02acf2a7",
-        "@grain/libbinaryen@127.0.0@d41d8cd9"
+        "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#0c23f56e2d0b6d2207bc1b7a7e514881bc9c7816@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.29.0@966c16ee",
