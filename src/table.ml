@@ -1,7 +1,7 @@
 type t
 
-external add_table : Module.t -> string -> int -> int -> Type.t -> t
-  = "caml_binaryen_add_table"
+external add_table : Module.t -> string -> int -> int -> Type.t -> Expression.t option -> t
+  = "caml_binaryen_add_table__bytecode" "caml_binaryen_add_table"
 (** Module, name, initial size, maximum size, table type *)
 
 external add_active_element_segment :

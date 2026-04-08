@@ -26,6 +26,7 @@ module Feature : sig
   val bulk_memory_opt : t
   val call_indirect_overlong : t
   val relaxed_atomics : t
+  val multibyte : t
   val custom_page_sizes : t
   val all : t
 end
@@ -46,6 +47,7 @@ val write : t -> string option -> bytes * string option
 val write_text : t -> string
 val write_stack_ir : t -> string
 val read : bytes -> t
+val read_with_features : bytes -> Feature.t list -> t
 val interpret : t -> unit
 val add_debug_info_filename : t -> string -> int
 val get_debug_info_filename : t -> int -> string

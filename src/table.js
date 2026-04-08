@@ -1,14 +1,26 @@
 //Provides: caml_binaryen_add_table
 //Requires: caml_jsstring_of_string
-function caml_binaryen_add_table(wasm_mod, table, initial, maximum, tableType) {
+function caml_binaryen_add_table(wasm_mod, table, initial, maximum, tableType, init) {
   return wasm_mod.addTable(
     caml_jsstring_of_string(table),
     initial,
     maximum,
-    tableType
+    tableType,
+    init ? init : null
   );
 }
-
+//Provides: caml_binaryen_add_table__bytecode
+//Requires: caml_binaryen_add_table
+function caml_binaryen_add_table__bytecode() {
+  return caml_binaryen_add_table(
+    arguments[0],
+    arguments[1],
+    arguments[2],
+    arguments[3],
+    arguments[4],
+    arguments[5]
+  );
+}
 //Provides: caml_binaryen_add_active_element_segment
 //Requires: caml_jsstring_of_string, caml_list_to_js_array
 function caml_binaryen_add_active_element_segment(

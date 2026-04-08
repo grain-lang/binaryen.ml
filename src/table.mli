@@ -1,6 +1,6 @@
 type t
 
-val add_table : Module.t -> string -> int -> int -> Type.t -> t
+val add_table : Module.t -> string -> int -> int -> Type.t -> Expression.t option -> t
 
 val add_active_element_segment :
   Module.t ->

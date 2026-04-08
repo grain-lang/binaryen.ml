@@ -6,6 +6,7 @@
   (language c)
   (names
    array_type
+   data_segment
    type
    op
    literal
@@ -29,6 +30,7 @@
  (js_of_ocaml
   (javascript_files
    array_type.js
+   data_segment.js
    type.js
    op.js
    literal.js
