@@ -1,7 +1,11 @@
 #define CAML_NAME_SPACE
 #include <caml/mlvalues.h>
-#include <caml/fail.h>
+#include <caml/misc.h>
 #include <caml/memory.h>
+#include <caml/alloc.h>
+
+#include <stdbool.h>
+#include <stddef.h>
 
 #include "binaryen-c.h"
 #include "ocaml_helpers.h"
