@@ -17,4 +17,11 @@ val is_struct : t -> bool
 val is_array : t -> bool
 val is_bottom : t -> bool
 val get_bottom : t -> t
-val is_sub_type : t -> bool
+val is_sub_type : t -> t -> bool
+
+val set_type_name : Module.t -> t -> string -> unit
+(** Sets the textual name of a compound `heapType`. Has no effect if the type
+    already has a canonical name. *)
+
+val set_field_name : Module.t -> t -> int -> string -> unit
+(** Sets the field name of a struct `heapType` at index `index`. *)
