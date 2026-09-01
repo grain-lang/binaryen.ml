@@ -17,36 +17,24 @@ function caml_binaryen_module_parse(text) {
 }
 
 //Provides: caml_binaryen_module_print
-//Requires: caml_sys_fds
-//Requires: caml_string_of_jsstring
-//Requires: caml_ml_output, caml_ml_string_length
+//Requires: caml_ml_output_str_stdout
 function caml_binaryen_module_print(wasm_mod) {
   var text = wasm_mod.emitText();
-  var chanid = caml_sys_fds[1].chanid; // stdout
-  var s = caml_string_of_jsstring(text);
-  caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
+  caml_ml_output_str_stdout(text);
 }
 
 //Provides: caml_binaryen_module_print_asmjs
-//Requires: caml_sys_fds
-//Requires: caml_string_of_jsstring
-//Requires: caml_ml_output, caml_ml_string_length
+//Requires: caml_ml_output_str_stdout
 function caml_binaryen_module_print_asmjs(wasm_mod) {
   var asm = wasm_mod.emitAsmjs();
-  var chanid = caml_sys_fds[1].chanid; // stdout
-  var s = caml_string_of_jsstring(asm);
-  caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
+  caml_ml_output_str_stdout(asm);
 }
 
 //Provides: caml_binaryen_module_print_stack_ir
-//Requires: caml_sys_fds
-//Requires: caml_string_of_jsstring
-//Requires: caml_ml_output, caml_ml_string_length
+//Requires: caml_ml_output_str_stdout
 function caml_binaryen_module_print_stack_ir(wasm_mod) {
   var stackir = wasm_mod.emitStackIR();
-  var chanid = caml_sys_fds[1].chanid; // stdout
-  var s = caml_string_of_jsstring(stackir);
-  caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
+  caml_ml_output_str_stdout(stackir);
 }
 
 //Provides: caml_binaryen_module_validate
