@@ -180,6 +180,12 @@ caml_binaryen_feature_wide_arithmetic(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_feature_compact_imports(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureCompactImports()));
+}
+
+CAMLprim value
 caml_binaryen_feature_all(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureAll()));
