@@ -105,6 +105,14 @@ value alloc_BinaryenElementSegmentRef(BinaryenElementSegmentRef elem)
   return v;
 }
 
+/* Allocating an OCaml custom block to hold the given TypeBuilderRef */
+value alloc_TypeBuilderRef(TypeBuilderRef builder)
+{
+  value v = caml_alloc_custom(&binaryen_ops, sizeof(TypeBuilderRef), 0, 1);
+  TypeBuilderRef_val(v) = builder;
+  return v;
+}
+
 CAMLprim value
 array_of_list(value list) {
   CAMLparam1(list);

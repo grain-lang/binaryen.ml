@@ -17,4 +17,13 @@ external is_struct : t -> bool = "caml_binaryen_heap_type_is_struct"
 external is_array : t -> bool = "caml_binaryen_heap_type_is_array"
 external is_bottom : t -> bool = "caml_binaryen_heap_type_is_bottom"
 external get_bottom : t -> t = "caml_binaryen_heap_type_get_bottom"
-external is_sub_type : t -> bool = "caml_binaryen_heap_type_is_sub_type"
+external is_sub_type : t -> t -> bool = "caml_binaryen_heap_type_is_sub_type"
+
+external set_type_name : Module.t -> t -> string -> unit
+  = "caml_binaryen_module_set_type_name"
+(** Sets the textual name of a compound `heapType`. Has no effect if the type
+    already has a canonical name. *)
+
+external set_field_name : Module.t -> t -> int -> string -> unit
+  = "caml_binaryen_module_set_field_name"
+(** Sets the field name of a struct `heapType` at index `index`. *)
