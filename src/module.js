@@ -16,6 +16,13 @@ function caml_binaryen_module_parse(text) {
   return Binaryen.parseText(caml_jsstring_of_string(text));
 }
 
+//Provides: caml_binaryen_module_parse_with_features
+//Requires: Binaryen
+//Requires: caml_jsstring_of_string
+function caml_binaryen_module_parse_with_features(text, features) {
+  return Binaryen.parseText(caml_jsstring_of_string(text), features);
+}
+
 //Provides: caml_binaryen_module_print
 //Requires: caml_ml_output_str_stdout
 function caml_binaryen_module_print(wasm_mod) {
