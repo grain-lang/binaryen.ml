@@ -48,4 +48,5 @@
    heap_type.js
    signature_type.js
    type_builder.js
-   struct_type.js)))
+   struct_type.js
+   ocaml_helpers.js)))
