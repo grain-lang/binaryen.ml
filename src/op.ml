@@ -528,6 +528,22 @@ external ge_float64 : unit -> t = "caml_binaryen_ge_float64"
 
 let ge_float64 = ge_float64 ()
 
+external add_int128 : unit -> t = "caml_binaryen_add_int128"
+
+let add_int128 = add_int128 ()
+
+external sub_int128 : unit -> t = "caml_binaryen_sub_int128"
+
+let sub_int128 = sub_int128 ()
+
+external mul_wide_sint64 : unit -> t = "caml_binaryen_mul_wide_sint64"
+
+let mul_wide_sint64 = mul_wide_sint64 ()
+
+external mul_wide_uint64 : unit -> t = "caml_binaryen_mul_wide_uint64"
+
+let mul_wide_uint64 = mul_wide_uint64 ()
+
 external atomic_rmw_add : unit -> t = "caml_binaryen_atomic_rmw_add"
 
 let atomic_rmw_add = atomic_rmw_add ()
@@ -898,26 +914,31 @@ external relaxed_nmadd_vec_f64x4 : unit -> t
 
 let relaxed_nmadd_vec_f64x4 = relaxed_nmadd_vec_f64x4 ()
 
-external laneselect_i8x16 : unit -> t = "caml_binaryen_laneselect_i8x16"
+external relaxed_laneselect_i8x16 : unit -> t
+  = "caml_binaryen_relaxed_laneselect_i8x16"
 
-let laneselect_i8x16 = laneselect_i8x16 ()
+let relaxed_laneselect_i8x16 = relaxed_laneselect_i8x16 ()
 
-external laneselect_i16x8 : unit -> t = "caml_binaryen_laneselect_i16x8"
+external relaxed_laneselect_i16x8 : unit -> t
+  = "caml_binaryen_relaxed_laneselect_i16x8"
 
-let laneselect_i16x8 = laneselect_i16x8 ()
+let relaxed_laneselect_i16x8 = relaxed_laneselect_i16x8 ()
 
-external laneselect_i32x4 : unit -> t = "caml_binaryen_laneselect_i32x4"
+external relaxed_laneselect_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_laneselect_i32x4"
 
-let laneselect_i32x4 = laneselect_i32x4 ()
+let relaxed_laneselect_i32x4 = relaxed_laneselect_i32x4 ()
 
-external laneselect_i64x2 : unit -> t = "caml_binaryen_laneselect_i64x2"
+external relaxed_laneselect_i64x2 : unit -> t
+  = "caml_binaryen_relaxed_laneselect_i64x2"
 
-let laneselect_i64x2 = laneselect_i64x2 ()
+let relaxed_laneselect_i64x2 = relaxed_laneselect_i64x2 ()
 
-external dot_i8x16_i7x16_add_s_to_vec_i32x4 : unit -> t
-  = "caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4"
+external relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4 : unit -> t
+  = "caml_binaryen_relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4"
 
-let dot_i8x16_i7x16_add_s_to_vec_i32x4 = dot_i8x16_i7x16_add_s_to_vec_i32x4 ()
+let relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4 =
+  relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4 ()
 
 external any_true_vec128 : unit -> t = "caml_binaryen_any_true_vec128"
 
@@ -1327,6 +1348,12 @@ let narrow_u_vec_i32x4_to_vec_i16x8 = narrow_u_vec_i32x4_to_vec_i16x8 ()
 external swizzle_vec8x16 : unit -> t = "caml_binaryen_swizzle_vec8x16"
 
 let swizzle_vec8x16 = swizzle_vec8x16 ()
+
+external relaxed_dot_i8x16_i7x16_s_to_vec_i16x8 : unit -> t
+  = "caml_binaryen_relaxed_dot_i8x16_i7x16_s_to_vec_i16x8"
+
+let relaxed_dot_i8x16_i7x16_s_to_vec_i16x8 =
+  relaxed_dot_i8x16_i7x16_s_to_vec_i16x8 ()
 
 external ref_as_non_null : unit -> t = "caml_binaryen_ref_as_non_null"
 

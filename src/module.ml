@@ -111,6 +111,10 @@ module Feature = struct
 
   let custom_page_sizes = custom_page_sizes ()
 
+  external wide_arithmetic : unit -> t = "caml_binaryen_feature_wide_arithmetic"
+
+  let wide_arithmetic = wide_arithmetic ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()

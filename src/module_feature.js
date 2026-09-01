@@ -158,6 +158,12 @@ function caml_binaryen_feature_custom_page_sizes() {
   return Binaryen.Features.CustomPageSizes;
 }
 
+//Provides: caml_binaryen_feature_wide_arithmetic
+//Requires: Binaryen
+function caml_binaryen_feature_wide_arithmetic() {
+  return Binaryen.Features.WideArithmetic;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: Binaryen
 function caml_binaryen_feature_all() {
