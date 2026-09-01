@@ -903,6 +903,34 @@ caml_binaryen_ge_float64(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_add_int128(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenAddInt128();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_sub_int128(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenSubInt128();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_mul_wide_sint64(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenMulWideSInt64();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_mul_wide_uint64(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenMulWideUInt64();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
 caml_binaryen_atomic_rmw_add(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenAtomicRMWAdd();
@@ -1505,37 +1533,37 @@ caml_binaryen_relaxed_nmadd_vec_f64x4(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_laneselect_i8x16(value unit) {
+caml_binaryen_relaxed_laneselect_i8x16(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenLaneselectI8x16();
+  BinaryenOp op = BinaryenRelaxedLaneselectI8x16();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_laneselect_i16x8(value unit) {
+caml_binaryen_relaxed_laneselect_i16x8(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenLaneselectI16x8();
+  BinaryenOp op = BinaryenRelaxedLaneselectI16x8();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_laneselect_i32x4(value unit) {
+caml_binaryen_relaxed_laneselect_i32x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenLaneselectI32x4();
+  BinaryenOp op = BinaryenRelaxedLaneselectI32x4();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_laneselect_i64x2(value unit) {
+caml_binaryen_relaxed_laneselect_i64x2(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenLaneselectI64x2();
+  BinaryenOp op = BinaryenRelaxedLaneselectI64x2();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
 CAMLprim value
-caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4(value unit) {
+caml_binaryen_relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4(value unit) {
   CAMLparam1(unit);
-  BinaryenOp op = BinaryenDotI8x16I7x16AddSToVecI32x4();
+  BinaryenOp op = BinaryenRelaxedDotI8x16I7x16AddSToVecI32x4();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 
@@ -2236,6 +2264,13 @@ CAMLprim value
 caml_binaryen_swizzle_vec8x16(value unit) {
   CAMLparam1(unit);
   BinaryenOp op = BinaryenSwizzleVecI8x16();
+  CAMLreturn(alloc_BinaryenOp(op));
+}
+
+CAMLprim value
+caml_binaryen_relaxed_dot_i8x16_i7x16_s_to_vec_i16x8(value unit) {
+  CAMLparam1(unit);
+  BinaryenOp op = BinaryenRelaxedDotI8x16I7x16SToVecI16x8();
   CAMLreturn(alloc_BinaryenOp(op));
 }
 

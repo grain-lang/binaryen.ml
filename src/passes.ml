@@ -191,6 +191,9 @@ let licm = "licm"
 (** attempt to merge segments to fit within web limits *)
 let limit_segments = "limit-segments"
 
+(** mark js called functions (using configureAll) as doing so *)
+let mark_js_called = "mark-js-called"
+
 (** lower loads and stores to a 64-bit memory to instead use a 32-bit one *)
 let memory64_lowering = "memory64-lowering"
 
@@ -312,6 +315,9 @@ let print_features = "print-features"
 (** print in full s-expression format *)
 let print_full = "print-full"
 
+(** print boundary in JSON format *)
+let print_boundary = "print-boundary"
+
 (** print call graph *)
 let print_call_graph = "print-call-graph"
 
@@ -326,6 +332,9 @@ let remove_non_js_ops = "remove-non-js-ops"
 
 (** replaces relaxed SIMD instructions with unreachable *)
 let remove_relaxed_simd = "remove-relaxed-simd"
+
+(** removes exports using a wildcard *)
+let remove_exports = "remove-exports"
 
 (** removes imports and replaces them with nops *)
 let remove_imports = "remove-imports"
