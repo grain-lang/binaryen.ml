@@ -389,8 +389,7 @@ function caml_binaryen_const(wasm_mod, lit) {
 
   if (lit.type === "int64") {
     return wasm_mod.i64.const(
-      caml_int64_lo32(lit.value),
-      caml_int64_hi32(lit.value)
+      (BigInt(caml_int64_hi32(lit.value)) << 32n) | BigInt(caml_int64_lo32(lit.value) >>> 0)
     );
   }
 
@@ -404,8 +403,7 @@ function caml_binaryen_const(wasm_mod, lit) {
 
   if (lit.type === "float64_bits") {
     return wasm_mod.f64.const_bits(
-      caml_int64_lo32(lit.value),
-      caml_int64_hi32(lit.value)
+      (BigInt(caml_int64_hi32(lit.value)) << 32n) | BigInt(caml_int64_lo32(lit.value) >>> 0)
     );
   }
 

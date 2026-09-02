@@ -1,5 +1,5 @@
 {
-  "checksum": "5c222c1460a4598620ddef56248bc82f",
+  "checksum": "a2b1f45014de94318280736834285de9",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -968,7 +968,7 @@
         "@opam/dune-rpc@opam:3.20.2@c55481ce",
         "@opam/dune-build-info@opam:3.24.2@e3506498",
         "@opam/dune@opam:3.24.2@dc9091c2", "@opam/csexp@opam:1.5.2@46614bf4",
-        "@opam/chrome-trace@opam:3.24.1@98879dd0",
+        "@opam/chrome-trace@opam:3.24.2@cd44885b",
         "@opam/camlp-streams@opam:5.0.1@8e96208c",
         "@opam/base@opam:v0.17.3@1b4d501e",
         "@opam/astring@opam:0.8.5@9975798d",
@@ -991,7 +991,7 @@
         "@opam/dune-rpc@opam:3.20.2@c55481ce",
         "@opam/dune-build-info@opam:3.24.2@e3506498",
         "@opam/dune@opam:3.24.2@dc9091c2", "@opam/csexp@opam:1.5.2@46614bf4",
-        "@opam/chrome-trace@opam:3.24.1@98879dd0",
+        "@opam/chrome-trace@opam:3.24.2@cd44885b",
         "@opam/camlp-streams@opam:5.0.1@8e96208c",
         "@opam/base@opam:v0.17.3@1b4d501e",
         "@opam/astring@opam:0.8.5@9975798d"
@@ -1759,20 +1759,20 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/chrome-trace@opam:3.24.1@98879dd0": {
-      "id": "@opam/chrome-trace@opam:3.24.1@98879dd0",
+    "@opam/chrome-trace@opam:3.24.2@cd44885b": {
+      "id": "@opam/chrome-trace@opam:3.24.2@cd44885b",
       "name": "@opam/chrome-trace",
-      "version": "opam:3.24.1",
+      "version": "opam:3.24.2",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/0a/0a8eaa62dfcb945802bcaf9a6f2026ca5228333ee391a1bdedd3e70a3f26ea2c#sha256:0a8eaa62dfcb945802bcaf9a6f2026ca5228333ee391a1bdedd3e70a3f26ea2c",
-          "archive:https://github.com/ocaml/dune/releases/download/3.24.1/dune-3.24.1.tbz#sha256:0a8eaa62dfcb945802bcaf9a6f2026ca5228333ee391a1bdedd3e70a3f26ea2c"
+          "archive:https://opam.ocaml.org/cache/sha256/47/472798691b0216daf538709f0f4703b3617ef24ad0866c9096068baaba4d762a#sha256:472798691b0216daf538709f0f4703b3617ef24ad0866c9096068baaba4d762a",
+          "archive:https://github.com/ocaml/dune/releases/download/3.24.2/dune-3.24.2.tbz#sha256:472798691b0216daf538709f0f4703b3617ef24ad0866c9096068baaba4d762a"
         ],
         "opam": {
           "name": "chrome-trace",
-          "version": "3.24.1",
-          "path": "esy.lock/opam/chrome-trace.3.24.1"
+          "version": "3.24.2",
+          "path": "esy.lock/opam/chrome-trace.3.24.2"
         }
       },
       "overrides": [],
@@ -1934,14 +1934,14 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@grain/libbinaryen@126.0.0@d41d8cd9": {
-      "id": "@grain/libbinaryen@126.0.0@d41d8cd9",
+    "@grain/libbinaryen@127.0.0@d41d8cd9": {
+      "id": "@grain/libbinaryen@127.0.0@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "126.0.0",
+      "version": "127.0.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-126.0.0.tgz#sha1:ab54f1245bd408c96fa72573adb2ebbdeee1bb96"
+          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-127.0.0.tgz#sha1:ab94716e590c89241c24f690b81b54481cef60cd"
         ]
       },
       "overrides": [],
@@ -1952,6 +1952,7 @@
         "@opam/conf-cmake@github:grain-lang/cmake:esy.json#033cab656dc71a6488b3c1ca6ea45099f794bd03@d41d8cd9"
       ],
       "devDependencies": [],
+      "installConfig": { "pnp": false },
       "available": [
         [ "darwin", "x86_64" ],
         [ "darwin", "arm64" ],
@@ -1973,7 +1974,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.24.2@7928eaef",
         "@opam/dune@opam:3.24.2@dc9091c2",
-        "@grain/libbinaryen@126.0.0@d41d8cd9"
+        "@grain/libbinaryen@127.0.0@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.29.0@966c16ee",
