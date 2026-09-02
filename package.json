@@ -4,6 +4,9 @@
   "description": "OCaml bindings for Binaryen.",
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
+  "installConfig": {
+    "pnp": false
+  },
   "dependencies": {
     "ocaml": ">= 4.13.0 < 5.4.0",
     "@grain/libbinaryen": ">= 126.0.0 < 127.0.0",
@@ -11,12 +14,13 @@
     "@opam/dune-configurator": ">= 3.0.0"
   },
   "devDependencies": {
-    "@opam/js_of_ocaml-compiler": ">= 6.0.0 < 7.0.0",
-    "@opam/ocamlformat": "0.27.0",
+    "@opam/js_of_ocaml-compiler": ">= 6.4.0 < 7.0.0",
+    "@opam/ocamlformat": "0.29.0",
     "@opam/ocaml-lsp-server": ">= 1.9.1 < 2.0.0"
   },
   "resolutions": {
-    "@opam/ocp-indent": "1.7.0"
+    "@opam/ocp-indent": "1.9.0",
+    "@opam/ocamlfind": "1.9.8"
   },
   "esy": {
     "build": "dune build -p binaryen"
