@@ -25,11 +25,12 @@ module Feature : sig
   val fp16 : t
   val bulk_memory_opt : t
   val call_indirect_overlong : t
-  val relaxed_atomics : t
+  val acquire_release_atomics : t
   val multibyte : t
   val custom_page_sizes : t
   val wide_arithmetic : t
   val compact_imports : t
+  val relaxed_atomics : t
   val all : t
 end
 

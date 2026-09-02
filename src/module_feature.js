@@ -140,10 +140,10 @@ function caml_binaryen_feature_call_indirect_overlong() {
   return Binaryen.Features.BulkMemoryOpt;
 }
 
-//Provides: caml_binaryen_feature_relaxed_atomics
+//Provides: caml_binaryen_feature_acquire_release_atomics
 //Requires: Binaryen
-function caml_binaryen_feature_relaxed_atomics() {
-  return Binaryen.Features.RelaxedAtomics;
+function caml_binaryen_feature_acquire_release_atomics() {
+  return Binaryen.Features.AcquireReleaseAtomics;
 }
 
 //Provides: caml_binaryen_feature_multibyte
@@ -168,6 +168,12 @@ function caml_binaryen_feature_wide_arithmetic() {
 //Requires: Binaryen
 function caml_binaryen_feature_compact_imports() {
   return Binaryen.Features.CompactImports;
+}
+
+//Provides: caml_binaryen_feature_relaxed_atomics
+//Requires: Binaryen
+function caml_binaryen_feature_relaxed_atomics() {
+  return Binaryen.Features.RelaxedAtomics;
 }
 
 //Provides: caml_binaryen_feature_all
