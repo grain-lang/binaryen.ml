@@ -930,12 +930,12 @@ function caml_binaryen_expression_id_array_len() {
 
 //Provides: caml_binaryen_expression_print
 //Requires: Binaryen
-//Requires: caml_sys_fds
+//Requires: caml_ml_std_channel_id
 //Requires: caml_string_of_jsstring
 //Requires: caml_ml_output, caml_ml_string_length
 function caml_binaryen_expression_print(expr) {
   var text = Binaryen.emitText(expr);
-  var chanid = caml_sys_fds[1].chanid; // stdout
+  var chanid = caml_ml_std_channel_id[1]; // stdout
   var s = caml_string_of_jsstring(text);
   caml_ml_output(chanid, s, 0, caml_ml_string_length(s));
 }
