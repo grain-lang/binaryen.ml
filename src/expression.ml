@@ -938,6 +938,11 @@ module Array = struct
   (** Module, seg, ref, index, offset, size *)
 end
 
+module String = struct
+  external make : Module.t -> string -> t = "caml_binaryen_string_const"
+  (** Module, value *)
+end
+
 (** Bindings for `try_table` instruction. *)
 module Try = struct
   external make :

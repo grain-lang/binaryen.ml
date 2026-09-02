@@ -156,9 +156,9 @@ caml_binaryen_feature_call_indirect_overlong(value unit) {
 }
 
 CAMLprim value
-caml_binaryen_feature_relaxed_atomics(value unit) {
+caml_binaryen_feature_acquire_release_atomics(value unit) {
   CAMLparam1(unit);
-  CAMLreturn(Val_int(BinaryenFeatureRelaxedAtomics()));
+  CAMLreturn(Val_int(BinaryenFeatureAcquireReleaseAtomics()));
 }
 
 CAMLprim value
@@ -183,6 +183,12 @@ CAMLprim value
 caml_binaryen_feature_compact_imports(value unit) {
   CAMLparam1(unit);
   CAMLreturn(Val_int(BinaryenFeatureCompactImports()));
+}
+
+CAMLprim value
+caml_binaryen_feature_relaxed_atomics(value unit) {
+  CAMLparam1(unit);
+  CAMLreturn(Val_int(BinaryenFeatureRelaxedAtomics()));
 }
 
 CAMLprim value
