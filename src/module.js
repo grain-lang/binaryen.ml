@@ -105,7 +105,7 @@ function caml_binaryen_module_read(bytes) {
 //Requires: caml_uint8_array_of_bytes
 function caml_binaryen_module_read_with_features(bytes, features) {
   var data = caml_uint8_array_of_bytes(bytes);
-  return Binaryen.readBinaryWithFeatures(data, features);
+  return Binaryen.readBinary(data, features);
 }
 
 //Provides: caml_binaryen_module_interpret

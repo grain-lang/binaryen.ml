@@ -194,6 +194,9 @@ let licm = "licm"
 (** attempt to merge segments to fit within web limits *)
 let limit_segments = "limit-segments"
 
+(** Make structs and arrays shared and functions unshared *)
+let make_shared_objects = "make-shared-objects"
+
 (** mark js called functions (using configureAll) as doing so *)
 let mark_js_called = "mark-js-called"
 

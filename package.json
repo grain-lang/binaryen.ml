@@ -21,7 +21,7 @@
   "resolutions": {
     "@opam/ocp-indent": "1.9.0",
     "@opam/ocamlfind": "1.9.8",
-    "@grain/libbinaryen": "git+https://github.com/grain-lang/libbinaryen.git#e06fac15ef19f9b9bb784b2be980f03618a27ced"
+    "@grain/libbinaryen": "git+https://github.com/grain-lang/libbinaryen.git#d5a652d30d5098ae1db145a9c427e8a81de59426"
   },
   "esy": {
     "build": "dune build -p binaryen"
