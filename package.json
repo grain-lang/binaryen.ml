@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "ocaml": ">= 4.13.0 < 5.4.0",
-    "@grain/libbinaryen": ">= 128.0.0 < 129.0.0",
+    "@grain/libbinaryen": ">= 129.0.0 < 130.0.0",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
   },

@@ -8,14 +8,25 @@
 #include "ocaml_helpers.h"
 
 CAMLprim value
-caml_binaryen_add_table(value _module, value _table, value _initial, value _maximum, value _tableType) {
+caml_binaryen_add_table(value _module, value _table, value _initial, value _maximum, value _tableType, value _init) {
   CAMLparam5(_module, _table, _initial, _maximum, _tableType);
+  CAMLxparam1(_init);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   char* table = Safe_String_val(_table);
   BinaryenIndex initial = Int_val(_initial);
   BinaryenIndex maximum = Int_val(_maximum);
   BinaryenType tableType = BinaryenType_val(_tableType);
-  CAMLreturn(alloc_BinaryenTableRef(BinaryenAddTable(module, table, initial, maximum, tableType)));
+  BinaryenExpressionRef init;
+  if (Is_none(_init)) {
+    init = NULL;
+  } else {
+    init = BinaryenExpressionRef_val(Some_val(_init));
+  }
+  CAMLreturn(alloc_BinaryenTableRef(BinaryenAddTable(module, table, initial, maximum, tableType, init)));
+}
+CAMLprim value
+caml_binaryen_add_table__bytecode(value * argv) {
+  return caml_binaryen_add_table(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
 }
 
 CAMLprim value
