@@ -9,10 +9,10 @@
 
 
 CAMLprim value
-caml_binaryen_get_num_memory_segments(value _module) {
+caml_binaryen_get_num_data_segments(value _module) {
   CAMLparam1(_module);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
-  CAMLreturn(Val_int(BinaryenGetNumMemorySegments(module)));
+  CAMLreturn(Val_int(BinaryenGetNumDataSegments(module)));
 }
 
 CAMLprim value caml_binaryen_get_data_segment(value _module, value _name) {
@@ -43,39 +43,39 @@ CAMLprim value caml_binaryen_data_segment_get_name(value _module, value _segment
 }
 
 CAMLprim value
-caml_binaryen_get_memory_segment_byte_offset(value _module, value _segment) {
+caml_binaryen_get_data_segment_byte_offset(value _module, value _segment) {
   CAMLparam2(_module, _segment);
   BinaryenModuleRef module = BinaryenModuleRef_val(_module);
   BinaryenDataSegmentRef segment = BinaryenDataSegmentRef_val(_segment);
-  if (BinaryenGetMemorySegmentPassive(segment)) {
+  if (BinaryenGetDataSegmentPassive(segment)) {
     CAMLreturn(Val_none);
   } else {
-    int offset = BinaryenGetMemorySegmentByteOffset(module, segment);
+    int offset = BinaryenGetDataSegmentByteOffset(module, segment);
     CAMLreturn(caml_alloc_some(Val_int(offset)));
   }
 }
 
 CAMLprim value
-caml_binaryen_get_memory_segment_byte_length(value _segment) {
+caml_binaryen_get_data_segment_byte_length(value _segment) {
   CAMLparam1(_segment);
   BinaryenDataSegmentRef segment = BinaryenDataSegmentRef_val(_segment);
-  int length = BinaryenGetMemorySegmentByteLength(segment);
+  int length = BinaryenGetDataSegmentByteLength(segment);
   CAMLreturn(Val_int(length));
 }
 
 CAMLprim value
-caml_binaryen_get_memory_segment_passive(value _segment) {
+caml_binaryen_get_data_segment_passive(value _segment) {
   CAMLparam1(_segment);
   BinaryenDataSegmentRef segment = BinaryenDataSegmentRef_val(_segment);
-  CAMLreturn(Val_bool(BinaryenGetMemorySegmentPassive(segment)));
+  CAMLreturn(Val_bool(BinaryenGetDataSegmentPassive(segment)));
 }
 
 CAMLprim value
-caml_binaryen_get_memory_segment_data(value _module, value _segment) {
+caml_binaryen_get_data_segment_data(value _module, value _segment) {
   CAMLparam2(_module, _segment);
   BinaryenDataSegmentRef segment = BinaryenDataSegmentRef_val(_segment);
-  size_t size = BinaryenGetMemorySegmentByteLength(segment);
+  size_t size = BinaryenGetDataSegmentByteLength(segment);
   CAMLprim value bytes = caml_alloc_string(size);
-  BinaryenCopyMemorySegmentData(segment, (char*)Bytes_val(bytes));
+  BinaryenCopyDataSegmentData(segment, (char*)Bytes_val(bytes));
   CAMLreturn(bytes);
 }

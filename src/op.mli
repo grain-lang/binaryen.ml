@@ -128,6 +128,10 @@ val lt_float64 : t
 val le_float64 : t
 val gt_float64 : t
 val ge_float64 : t
+val add_int128 : t
+val sub_int128 : t
+val mul_wide_sint64 : t
+val mul_wide_uint64 : t
 val atomic_rmw_add : t
 val atomic_rmw_sub : t
 val atomic_rmw_and : t
@@ -214,11 +218,11 @@ val relaxed_madd_vec_f32x4 : t
 val relaxed_nmadd_vec_f32x4 : t
 val relaxed_madd_vec_f64x4 : t
 val relaxed_nmadd_vec_f64x4 : t
-val laneselect_i8x16 : t
-val laneselect_i16x8 : t
-val laneselect_i32x4 : t
-val laneselect_i64x2 : t
-val dot_i8x16_i7x16_add_s_to_vec_i32x4 : t
+val relaxed_laneselect_i8x16 : t
+val relaxed_laneselect_i16x8 : t
+val relaxed_laneselect_i32x4 : t
+val relaxed_laneselect_i64x2 : t
+val relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4 : t
 val any_true_vec128 : t
 val popcnt_vec_i8x16 : t
 val abs_vec_i8x16 : t
@@ -319,6 +323,7 @@ val narrow_u_vec_i16x8_to_vec_i8x16 : t
 val narrow_s_vec_i32x4_to_vec_i16x8 : t
 val narrow_u_vec_i32x4_to_vec_i16x8 : t
 val swizzle_vec8x16 : t
+val relaxed_dot_i8x16_i7x16_s_to_vec_i16x8 : t
 val ref_as_non_null : t
 val ref_as_extern_internalize : t
 val ref_as_extern_externalize : t

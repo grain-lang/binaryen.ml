@@ -766,6 +766,30 @@ function caml_binaryen_ge_float64() {
   return Binaryen.Operations.GeFloat64;
 }
 
+//Provides: caml_binaryen_add_int128
+//Requires: Binaryen
+function caml_binaryen_add_int128() {
+  return Binaryen.Operations.AddInt128;
+}
+
+//Provides: caml_binaryen_sub_int128
+//Requires: Binaryen
+function caml_binaryen_sub_int128() {
+  return Binaryen.Operations.SubInt128;
+}
+
+//Provides: caml_binaryen_mul_wide_sint64
+//Requires: Binaryen
+function caml_binaryen_mul_wide_sint64() {
+  return Binaryen.Operations.MulWideSInt64;
+}
+
+//Provides: caml_binaryen_mul_wide_uint64
+//Requires: Binaryen
+function caml_binaryen_mul_wide_uint64() {
+  return Binaryen.Operations.MulWideUInt64;
+}
+
 //Provides: caml_binaryen_atomic_rmw_add
 //Requires: Binaryen
 function caml_binaryen_atomic_rmw_add() {
@@ -1282,34 +1306,34 @@ function caml_binaryen_relaxed_nmadd_vec_f64x4() {
   return Binaryen.Operations.RelaxedNmaddVecF64x2;
 }
 
-//Provides: caml_binaryen_laneselect_i8x16
+//Provides: caml_binaryen_relaxed_laneselect_i8x16
 //Requires: Binaryen
-function caml_binaryen_laneselect_i8x16() {
-  return Binaryen.Operations.LaneselectI8x16;
+function caml_binaryen_relaxed_laneselect_i8x16() {
+  return Binaryen.Operations.RelaxedLaneselectI8x16;
 }
 
-//Provides: caml_binaryen_laneselect_i16x8
+//Provides: caml_binaryen_relaxed_laneselect_i16x8
 //Requires: Binaryen
-function caml_binaryen_laneselect_i16x8() {
-  return Binaryen.Operations.LaneselectI16x8;
+function caml_binaryen_relaxed_laneselect_i16x8() {
+  return Binaryen.Operations.RelaxedLaneselectI16x8;
 }
 
-//Provides: caml_binaryen_laneselect_i32x4
+//Provides: caml_binaryen_relaxed_laneselect_i32x4
 //Requires: Binaryen
-function caml_binaryen_laneselect_i32x4() {
-  return Binaryen.Operations.LaneselectI32x4;
+function caml_binaryen_relaxed_laneselect_i32x4() {
+  return Binaryen.Operations.RelaxedLaneselectI32x4;
 }
 
-//Provides: caml_binaryen_laneselect_i64x2
+//Provides: caml_binaryen_relaxed_laneselect_i64x2
 //Requires: Binaryen
-function caml_binaryen_laneselect_i64x2() {
-  return Binaryen.Operations.LaneselectI64x2;
+function caml_binaryen_relaxed_laneselect_i64x2() {
+  return Binaryen.Operations.RelaxedLaneselectI64x2;
 }
 
-//Provides: caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4
+//Provides: caml_binaryen_relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4
 //Requires: Binaryen
-function caml_binaryen_dot_i8x16_i7x16_add_s_to_vec_i32x4() {
-  return Binaryen.Operations.DotI8x16I7x16AddSToVecI32x4;
+function caml_binaryen_relaxed_dot_i8x16_i7x16_add_s_to_vec_i32x4() {
+  return Binaryen.Operations.RelaxedDotI8x16I7x16AddSToVecI32x4;
 }
 
 //Provides: caml_binaryen_any_true_vec128
@@ -1910,6 +1934,12 @@ function caml_binaryen_narrow_u_vec_i32x4_to_vec_i16x8() {
 //Requires: Binaryen
 function caml_binaryen_swizzle_vec8x16() {
   return Binaryen.Operations.SwizzleVecI8x16;
+}
+
+//Provides: caml_binaryen_relaxed_dot_i8x16_i7x16_s_to_vec_i16x8
+//Requires: Binaryen
+function caml_binaryen_relaxed_dot_i8x16_i7x16_s_to_vec_i16x8() {
+  return Binaryen.Operations.RelaxedDotI8x16I7x16SToVecI16x8;
 }
 
 //Provides: caml_binaryen_ref_as_non_null
