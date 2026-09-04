@@ -4,14 +4,13 @@ on:
     branches:
       - main
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   release-please:
     name: Create Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
@@ -31,6 +30,8 @@ jobs:
     if: ${{ needs.release-please.outputs.release_created }}
     name: Add archive to release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       browser_download_url: ${{ steps.upload.outputs.browser_download_url }}
       notes: ${{ steps.upload.outputs.notes }}
@@ -61,6 +62,8 @@ jobs:
     needs: [release-please, add-archive]
     name: Publish to opam registry
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Setup bot user
         run: |
@@ -92,6 +95,9 @@ jobs:
     needs: [add-archive]
     name: Publish to npm registry
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Setup NodeJS
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
