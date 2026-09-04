@@ -164,6 +164,12 @@ function caml_binaryen_feature_wide_arithmetic() {
   return Binaryen.Features.WideArithmetic;
 }
 
+//Provides: caml_binaryen_feature_compact_imports
+//Requires: Binaryen
+function caml_binaryen_feature_compact_imports() {
+  return Binaryen.Features.CompactImports;
+}
+
 //Provides: caml_binaryen_feature_all
 //Requires: Binaryen
 function caml_binaryen_feature_all() {
