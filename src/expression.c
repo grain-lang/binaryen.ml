@@ -2228,6 +2228,17 @@ caml_binaryen_array_init_elem__bytecode(value * argv) {
   return caml_binaryen_array_init_elem(argv[0], argv[1], argv[2], argv[3], argv[4], argv[5]);
 }
 
+// Strings
+
+CAMLprim value
+caml_binaryen_string_const(value _module, value _val) {
+  CAMLparam2(_module, _val);
+  BinaryenModuleRef module = BinaryenModuleRef_val(_module);
+  char* val = Safe_String_val(_val);
+  BinaryenExpressionRef exp = BinaryenStringConst(module, val);
+  CAMLreturn(alloc_BinaryenExpressionRef(exp));
+}
+
 // Exception handling operations
 CAMLprim value
 caml_binaryen_try(value _module, value _name, value _body, value _catchTags, value _catchBodies, value _delegateTarget) {

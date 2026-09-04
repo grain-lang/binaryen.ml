@@ -1939,6 +1939,14 @@ function caml_binaryen_array_copy__bytecode() {
   );
 }
 
+// Strings
+
+//Provides: caml_binaryen_string_const
+//Requires: caml_jsstring_of_string
+function caml_binaryen_string_const(wasm_mod, value) {
+  return wasm_mod.string.const(caml_jsstring_of_string(value));
+}
+
 // Exception handling operations
 
 //Provides: caml_binaryen_try
