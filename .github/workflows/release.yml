@@ -96,10 +96,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
-          node-version: "22"
-          registry-url: "https://registry.npmjs.org"
+          node-version: "24"
 
       - name: Publish to npm
-        run: npm publish ${{ needs.add-archive.outputs.browser_download_url }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_RELEASE }}
+        run: npm publish --provenance ${{ needs.add-archive.outputs.browser_download_url }}
