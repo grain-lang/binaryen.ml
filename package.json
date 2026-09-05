@@ -4,6 +4,10 @@
   "description": "OCaml bindings for Binaryen.",
   "author": "Oscar Spencer <oscar@grain-lang.org>",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grain-lang/binaryen.ml.git"
+  },
   "installConfig": {
     "pnp": false
   },
