@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.38.0](https://github.com/grain-lang/binaryen.ml/compare/v0.37.0...v0.38.0) (2026-09-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Drop ocaml 4.13 support ([#292](https://github.com/grain-lang/binaryen.ml/issues/292))
+* Upgrade to Binaryen v128 ([#275](https://github.com/grain-lang/binaryen.ml/issues/275))
+
+### Features
+
+* Drop ocaml 4.13 support ([#292](https://github.com/grain-lang/binaryen.ml/issues/292)) ([cce6b0e](https://github.com/grain-lang/binaryen.ml/commit/cce6b0e1bf9c677e7d143b0d82f913cebd3b0915))
+* Upgrade to Binaryen v128 ([#275](https://github.com/grain-lang/binaryen.ml/issues/275)) ([0c10491](https://github.com/grain-lang/binaryen.ml/commit/0c10491f1e8a0a9df044b49ee6b48119e997e2bc))
+
 ## [0.37.0](https://github.com/grain-lang/binaryen.ml/compare/v0.36.0...v0.37.0) (2026-09-02)
 
 
