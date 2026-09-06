@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.39.0](https://github.com/grain-lang/binaryen.ml/compare/v0.38.0...v0.39.0) (2026-09-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v129 ([#276](https://github.com/grain-lang/binaryen.ml/issues/276))
+
+### Features
+
+* Upgrade to Binaryen v129 ([#276](https://github.com/grain-lang/binaryen.ml/issues/276)) ([4784ff8](https://github.com/grain-lang/binaryen.ml/commit/4784ff8afbeab8870b72ab84a0bfbb0bf3a4451c))
+
 ## [0.38.0](https://github.com/grain-lang/binaryen.ml/compare/v0.37.0...v0.38.0) (2026-09-05)
 
 
