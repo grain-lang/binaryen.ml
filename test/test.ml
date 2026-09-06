@@ -169,7 +169,7 @@ let start =
        ])
 
 let _ = Export.add_function_export wasm_mod "adder" "adder"
-let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref
+let _ = Table.add_table wasm_mod "table" 1 1 Type.funcref None
 
 let adder_type =
   let builder = Type_builder.make 1 in
@@ -254,13 +254,43 @@ let _ = Memory.set_memory max_memory_wasm_mod 1 2 "memory" [] false false "0"
 let _ = assert (Memory.has_max max_memory_wasm_mod "0" = true)
 let _ = assert (Memory.get_max max_memory_wasm_mod "0" = 2)
 
-(* Memory.get_segment_byte_offset Passive *)
-let _ = assert (Memory.get_segment_byte_offset wasm_mod "world" = None)
+(* Data_segment.get_num_segments *)
+let _ = assert (Data_segment.get_num_segments wasm_mod = 2)
 
+(* Data_segment.get_segment *)
+let segment_hello = Data_segment.get_segment wasm_mod "hello"
+let segment_world = Data_segment.get_segment wasm_mod "world"
+let _ = assert (segment_hello <> None)
+let _ = assert (segment_world <> None)
+let _ = assert (Data_segment.get_segment wasm_mod "nonexistent" = None)
+let segment_hello = Option.get segment_hello
+let segment_world = Option.get segment_world
+
+(* Data_segment.get_segment_by_index *)
+let _ =
+  assert (
+    Data_segment.get_segment_name wasm_mod
+      (Data_segment.get_segment_by_index wasm_mod 0)
+    = "hello")
+
+(* Data_segment.get_segment_name *)
+let _ = assert (Data_segment.get_segment_name wasm_mod segment_hello = "hello")
+
+(* Data_segment.get_segment_byte_offset *)
+let _ =
+  assert (Data_segment.get_segment_byte_offset wasm_mod segment_world = None)
+
+(* Data_segment.get_segment_byte_length *)
+let _ = assert (Data_segment.get_segment_byte_length segment_hello = 5)
+
+(* Data_segment.get_segment_passive *)
+let _ = assert (Data_segment.get_segment_passive segment_hello = false)
+
+(* Data_segment.get_segment_data *)
 let _ =
   assert (
     Bytes.equal
-      (Memory.get_segment_data wasm_mod "world")
+      (Data_segment.get_segment_data wasm_mod segment_world)
       (Bytes.of_string "world"))
 
 (* Call_ref *)
@@ -518,6 +548,9 @@ let _ =
 
 let new_mod = Module.read byts
 
+let new_mod_with_features =
+  Module.read_with_features byts [ Module.Feature.all ]
+
 let _ =
   Module.run_passes new_mod
     [
@@ -567,8 +600,10 @@ let _ =
 let _ = assert (Module.validate new_mod == 1)
 let _ = Module.print new_mod
 let _ = Module.print_stack_ir new_mod
+let _ = Module.validate new_mod_with_features
 
 (* Dispose the modules 👋 *)
 
 let _ = Module.dispose wasm_mod
 let _ = Module.dispose new_mod
+let _ = Module.dispose new_mod_with_features
