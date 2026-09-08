@@ -28,6 +28,7 @@ module Feature : sig
   val relaxed_atomics : t
   val multibyte : t
   val custom_page_sizes : t
+  val wide_arithmetic : t
   val all : t
 end
 

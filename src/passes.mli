@@ -188,6 +188,9 @@ val licm : t
 val limit_segments : t
 (** attempt to merge segments to fit within web limits *)
 
+val mark_js_called : t
+(** mark js called functions (using configureAll) as doing so *)
+
 val memory64_lowering : t
 (** lower loads and stores to a 64-bit memory to instead use a 32-bit one *)
 
@@ -280,7 +283,7 @@ val pick_load_signs : t
 (** pick load signs based on their uses *)
 
 val poppify : t
-(** Tranform Binaryen IR into Poppy IR *)
+(** Transform Binaryen IR into Poppy IR *)
 
 val post_emscripten : t
 (** miscellaneous optimizations for Emscripten-generated code *)
@@ -307,6 +310,9 @@ val print_features : t
 val print_full : t
 (** print in full s-expression format *)
 
+val print_boundary : t
+(** print boundary in JSON format *)
+
 val print_call_graph : t
 (** print call graph *)
 
@@ -321,6 +327,9 @@ val remove_non_js_ops : t
 
 val remove_relaxed_simd : t
 (** replaces relaxed SIMD instructions with unreachable *)
+
+val remove_exports : t
+(** removes exports using a wildcard *)
 
 val remove_imports : t
 (** removes imports and replaces them with nops *)
