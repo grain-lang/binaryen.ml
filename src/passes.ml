@@ -43,6 +43,9 @@ let cfp = "cfp"
 (** propagate constant struct field values, using ref.test *)
 let cfp_reftest = "cfp-reftest"
 
+(** finds and uses mathematical constraints on locals *)
+let constraint_analysis = "constraint-analysis"
+
 (** removes unreachable code *)
 let dce = "dce"
 

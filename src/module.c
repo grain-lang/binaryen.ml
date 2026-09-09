@@ -29,6 +29,16 @@ caml_binaryen_module_parse(value _text) {
   CAMLreturn(alloc_BinaryenModuleRef(module));
 }
 
+
+CAMLprim value
+caml_binaryen_module_parse_with_features(value _text, value _features) {
+  CAMLparam2(_text, _features);
+  const char* text = Safe_String_val(_text);
+  BinaryenFeatures features = Int_val(_features);
+  BinaryenModuleRef module = BinaryenModuleParseWithFeatures(text, features);
+  CAMLreturn(alloc_BinaryenModuleRef(module));
+}
+
 CAMLprim value
 caml_binaryen_module_print(value module) {
   CAMLparam1(module);
