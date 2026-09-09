@@ -191,6 +191,9 @@ val licm : t
 val limit_segments : t
 (** attempt to merge segments to fit within web limits *)
 
+val make_shared_objects : t
+(** Make structs and arrays shared and functions unshared *)
+
 val mark_js_called : t
 (** mark js called functions (using configureAll) as doing so *)
 
