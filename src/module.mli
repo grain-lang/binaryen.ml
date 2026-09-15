@@ -29,6 +29,7 @@ module Feature : sig
   val multibyte : t
   val custom_page_sizes : t
   val wide_arithmetic : t
+  val compact_imports : t
   val all : t
 end
 
@@ -36,6 +37,7 @@ val create : unit -> t
 val dispose : t -> unit
 val add_custom_section : t -> string -> string -> unit
 val parse : string -> t
+val parse_with_features : string -> Feature.t -> t
 val print : t -> unit
 val print_asmjs : t -> unit
 val print_stack_ir : t -> unit

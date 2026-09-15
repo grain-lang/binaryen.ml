@@ -43,6 +43,9 @@ val cfp : t
 val cfp_reftest : t
 (** propagate constant struct field values, using ref.test *)
 
+val constraint_analysis : t
+(** finds and uses mathematical constraints on locals *)
+
 val dce : t
 (** removes unreachable code *)
 

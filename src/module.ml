@@ -115,6 +115,10 @@ module Feature = struct
 
   let wide_arithmetic = wide_arithmetic ()
 
+  external compact_imports : unit -> t = "caml_binaryen_feature_compact_imports"
+
+  let compact_imports = compact_imports ()
+
   external all : unit -> t = "caml_binaryen_feature_all"
 
   let all = all ()
@@ -127,6 +131,10 @@ external add_custom_section : t -> string -> string -> unit
   = "caml_binaryen_add_custom_section"
 
 external parse : string -> t = "caml_binaryen_module_parse"
+
+external parse_with_features : string -> Feature.t -> t
+  = "caml_binaryen_module_parse_with_features"
+
 external print : t -> unit = "caml_binaryen_module_print"
 external print_asmjs : t -> unit = "caml_binaryen_module_print_asmjs"
 external print_stack_ir : t -> unit = "caml_binaryen_module_print_stack_ir"
