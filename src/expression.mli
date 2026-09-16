@@ -422,6 +422,11 @@ module Array : sig
   (** Module, seg, ref, index, offset, size *)
 end
 
+module String : sig
+  val make : Module.t -> string -> t
+  (** Module, value *)
+end
+
 (** Bindings for `try` instruction. *)
 module Try : sig
   val make :
