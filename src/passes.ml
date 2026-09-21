@@ -216,7 +216,7 @@ let memory_packing = "memory-packing"
 (** merges blocks to their parents *)
 let merge_blocks = "merge-blocks"
 
-(** merges similar functions when benefical *)
+(** merges similar functions when beneficial *)
 let merge_similar_functions = "merge-similar-functions"
 
 (** merges locals when beneficial *)
@@ -338,6 +338,9 @@ let remove_non_js_ops = "remove-non-js-ops"
 
 (** replaces relaxed SIMD instructions with unreachable *)
 let remove_relaxed_simd = "remove-relaxed-simd"
+
+(** removes exports of empty functions *)
+let remove_empty_function_exports = "remove-empty-function-exports"
 
 (** removes exports using a wildcard *)
 let remove_exports = "remove-exports"
@@ -474,6 +477,9 @@ let strip = "strip"
 (** enforce limits on llvm's __stack_pointer global *)
 let stack_check = "stack-check"
 
+(** convert calls in tail position to return calls *)
+let tail_call = "tail-call"
+
 (** strip debug info (including the names section) *)
 let strip_debug = "strip-debug"
 
@@ -494,12 +500,6 @@ let strip_toolchain_annotations = "strip-toolchain-annotations"
 
 (** translate old Phase 3 EH instructions to new ones with exnref *)
 let translate_to_exnref = "translate-to-exnref"
-
-(** replace trapping operations with clamping semantics *)
-let trap_mode_clamp = "trap-mode-clamp"
-
-(** replace trapping operations with js semantics *)
-let trap_mode_js = "trap-mode-js"
 
 (** optimize trivial tuples away *)
 let tuple_optimization = "tuple-optimization"
