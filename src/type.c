@@ -119,6 +119,20 @@ caml_binaryen_type_null_funcref(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_type_exnref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeExnref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
+caml_binaryen_type_null_exnref(value unit) {
+  CAMLparam1(unit);
+  BinaryenType ty = BinaryenTypeNullExnref();
+  CAMLreturn(alloc_BinaryenType(ty));
+}
+
+CAMLprim value
 caml_binaryen_type_unreachable(value unit) {
   CAMLparam1(unit);
   BinaryenType ty = BinaryenTypeUnreachable();

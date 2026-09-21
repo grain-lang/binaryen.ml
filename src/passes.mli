@@ -214,7 +214,7 @@ val merge_blocks : t
 (** merges blocks to their parents *)
 
 val merge_similar_functions : t
-(** merges similar functions when benefical *)
+(** merges similar functions when beneficial *)
 
 val merge_locals : t
 (** merges locals when beneficial *)
@@ -333,6 +333,9 @@ val remove_non_js_ops : t
 
 val remove_relaxed_simd : t
 (** replaces relaxed SIMD instructions with unreachable *)
+
+val remove_empty_function_exports : t
+(** removes exports of empty functions *)
 
 val remove_exports : t
 (** removes exports using a wildcard *)
@@ -466,6 +469,9 @@ val strip : t
 val stack_check : t
 (** enforce limits on llvm's __stack_pointer global *)
 
+val tail_call : t
+(** convert calls in tail position to return calls *)
+
 val strip_debug : t
 (** strip debug info (including the names section) *)
 
@@ -486,12 +492,6 @@ val strip_toolchain_annotations : t
 
 val translate_to_exnref : t
 (** translate old Phase 3 EH instructions to new ones with exnref *)
-
-val trap_mode_clamp : t
-(** replace trapping operations with clamping semantics *)
-
-val trap_mode_js : t
-(** replace trapping operations with js semantics *)
 
 val tuple_optimization : t
 (** optimize trivial tuples away *)

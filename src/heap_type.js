@@ -1,67 +1,79 @@
 //Provides: caml_binaryen_heap_type_ext
 //Requires: Binaryen
 function caml_binaryen_heap_type_ext() {
-  return Binaryen._BinaryenHeapTypeExt();
+  return Binaryen.HeapType.extern;
 }
 
 //Provides: caml_binaryen_heap_type_func
 //Requires: Binaryen
 function caml_binaryen_heap_type_func() {
-  return Binaryen._BinaryenHeapTypeFunc();
+  return Binaryen.HeapType.func;
 }
 
 //Provides: caml_binaryen_heap_type_any
 //Requires: Binaryen
 function caml_binaryen_heap_type_any() {
-  return Binaryen._BinaryenHeapTypeAny();
+  return Binaryen.HeapType.any;
 }
 
 //Provides: caml_binaryen_heap_type_eq
 //Requires: Binaryen
 function caml_binaryen_heap_type_eq() {
-  return Binaryen._BinaryenHeapTypeEq();
+  return Binaryen.HeapType.eq;
 }
 
 //Provides: caml_binaryen_heap_type_i31
 //Requires: Binaryen
 function caml_binaryen_heap_type_i31() {
-  return Binaryen._BinaryenHeapTypeI31();
+  return Binaryen.HeapType.i31;
 }
 
 //Provides: caml_binaryen_heap_type_struct
 //Requires: Binaryen
 function caml_binaryen_heap_type_struct() {
-  return Binaryen._BinaryenHeapTypeStruct();
+  return Binaryen.HeapType.struct;
 }
 
 //Provides: caml_binaryen_heap_type_array
 //Requires: Binaryen
 function caml_binaryen_heap_type_array() {
-  return Binaryen._BinaryenHeapTypeArray();
+  return Binaryen.HeapType.array;
 }
 
 //Provides: caml_binaryen_heap_type_string
 //Requires: Binaryen
 function caml_binaryen_heap_type_string() {
-  return Binaryen._BinaryenHeapTypeString();
+  return Binaryen.HeapType.string;
 }
 
 //Provides: caml_binaryen_heap_type_none
 //Requires: Binaryen
 function caml_binaryen_heap_type_none() {
-  return Binaryen._BinaryenHeapTypeNone();
+  return Binaryen.HeapType.none;
 }
 
 //Provides: caml_binaryen_heap_type_noext
 //Requires: Binaryen
 function caml_binaryen_heap_type_noext() {
-  return Binaryen._BinaryenHeapTypeNoext();
+  return Binaryen.HeapType.noextern;
 }
 
 //Provides: caml_binaryen_heap_type_nofunc
 //Requires: Binaryen
 function caml_binaryen_heap_type_nofunc() {
-  return Binaryen._BinaryenHeapTypeNofunc();
+  return Binaryen.HeapType.nofunc;
+}
+
+//Provides: caml_binaryen_heap_type_exn
+//Requires: Binaryen
+function caml_binaryen_heap_type_exn() {
+  return Binaryen.HeapType.exn;
+}
+
+//Provides: caml_binaryen_heap_type_noexn
+//Requires: Binaryen
+function caml_binaryen_heap_type_noexn() {
+  return Binaryen.HeapType.noexn;
 }
 
 //Provides: caml_binaryen_heap_type_is_basic

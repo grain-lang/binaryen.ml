@@ -85,6 +85,20 @@ caml_binaryen_heap_type_nofunc(value unit) {
 }
 
 CAMLprim value
+caml_binaryen_heap_type_exn(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeExn();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
+caml_binaryen_heap_type_noexn(value unit) {
+  CAMLparam1(unit);
+  BinaryenHeapType ty = BinaryenHeapTypeNoexn();
+  CAMLreturn(alloc_BinaryenHeapType(ty));
+}
+
+CAMLprim value
 caml_binaryen_heap_type_is_basic(value _ty) {
   CAMLparam1(_ty);
   BinaryenHeapType ty = BinaryenHeapType_val(_ty);
