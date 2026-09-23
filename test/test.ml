@@ -195,7 +195,7 @@ let table_size = Expression.Table.size wasm_mod "table"
 let _ = Expression.print table_size
 let table_name = Expression.Table_size.get_table table_size
 let _ = Expression.Table_size.set_table table_size table_name
-let null_ref = Expression.Ref.null wasm_mod Type.funcref
+let null_ref = Expression.Ref.null wasm_mod (Heap_type.func ())
 
 let table_grow =
   Expression.Table.grow wasm_mod "table" null_ref
@@ -456,9 +456,7 @@ let _ =
   let cons first rest =
     Expression.Struct.new_ wasm_mod (Some [ first; rest ]) list_type
   in
-  let empty () =
-    Expression.Ref.null wasm_mod (Type.from_heap_type list_type true)
-  in
+  let empty () = Expression.Ref.null wasm_mod list_type in
   Function.add_function wasm_mod "gc" Type.anyref
     (Type.create [| Type.anyref; Type.anyref |])
     [|

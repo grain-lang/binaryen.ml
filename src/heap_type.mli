@@ -11,6 +11,8 @@ val string : unit -> t
 val none : unit -> t
 val noext : unit -> t
 val nofunc : unit -> t
+val exn : unit -> t
+val noexn : unit -> t
 val is_basic : t -> bool
 val is_signature : t -> bool
 val is_struct : t -> bool

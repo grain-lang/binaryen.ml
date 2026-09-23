@@ -29,7 +29,7 @@ depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build & >= "1.1.0"}
-  "uucp" {>= "17.0.0" & < "18.0.0"}
+  "uucp" {>= "18.0.0" & < "19.0.0"}
 ]
 depopts: ["uutf" "cmdliner"]
 conflicts: [
@@ -49,8 +49,8 @@ build: [
 ]
 dev-repo: "git+https://erratique.ch/repos/uuseg.git"
 url {
-  src: "https://erratique.ch/software/uuseg/releases/uuseg-17.0.0.tbz"
+  src: "https://erratique.ch/software/uuseg/releases/uuseg-18.0.0.tbz"
   checksum:
-    "sha512=8d81ca0a57516b94c66a0da256f3455ba26b0875ca9e354a665ec30223c9216be57abdd52c39c8c384fe127df8060c18ff07d92d4d9f53892bc4ed20699df3ef"
+    "sha512=ff7f8d2548e6fe887813d98dae8240236d9881354200bdcf6c8186a958bf9d95ccdc2a19ae31f1dffdf266adaabdc444ba7727c1e50c8a3f1f339b99427f92f1"
 }
 x-maintenance-intent: ["(latest)"]

@@ -21,12 +21,12 @@ depends: [
   "ocamlfind" {build}
   "ocamlbuild" {build}
   "topkg" {build & >= "1.1.0"}
-  "uucd" {with-test & dev & >= "17.0.0" & < "18.0.0"}
+  "uucd" {with-test & dev & >= "18.0.0" & < "19.0.0"}
   "uunf" {with-test}
 ]
 depopts: ["uunf" "cmdliner"]
 conflicts: [
-  "uunf" {< "17.0.0" | >= "18.0.0"}
+  "uunf" {< "18.0.0" | >= "19.0.0"}
   "cmdliner" {< "1.1.0"}
 ]
 build: [
@@ -45,8 +45,8 @@ post-messages:
     {failure & (arch = "ppc64" | arch = "arm64")}
 dev-repo: "git+https://erratique.ch/repos/uucp.git"
 url {
-  src: "https://erratique.ch/software/uucp/releases/uucp-17.0.0.tbz"
+  src: "https://erratique.ch/software/uucp/releases/uucp-18.0.0.tbz"
   checksum:
-    "sha512=c2b5c883c2ed1ee8e7bc9102339dfbca5940e68cd2af59a10abc827fb64c91ad03f85cfc12d4c79605c10e9b3a90743267af8b069143fefeeff6658ec8ed843f"
+    "sha512=89047b5586244c6636e8ebef64c911cb830bfe4e3cb62a344a1938a934ef51fdde75418785dc46da6e9a8d0eec1bdd22d508b6c4a4b29f6a48a220c8f718ad9f"
 }
 x-maintenance-intent: ["(latest)"]
