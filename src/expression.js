@@ -210,7 +210,7 @@ function caml_binaryen_load(
   var name = caml_jsstring_of_string(memoryName);
 
   switch (typ) {
-    case Binaryen.i32: {
+    case Binaryen.Type.i32: {
       // Using four bytes doesn't matter if it is signed or unsigned
       if (bytes === 4) {
         return wasm_mod.i32.load(offset, align, ptr, name);
@@ -236,7 +236,7 @@ function caml_binaryen_load(
 
       break;
     }
-    case Binaryen.i64: {
+    case Binaryen.Type.i64: {
       // Using eight bytes doesn't matter if it is signed or unsigned
       if (bytes === 8) {
         return wasm_mod.i64.load(offset, align, ptr, name);
@@ -270,13 +270,13 @@ function caml_binaryen_load(
 
       break;
     }
-    case Binaryen.f32: {
+    case Binaryen.Type.f32: {
       return wasm_mod.f32.load(offset, align, ptr, name);
     }
-    case Binaryen.f64: {
+    case Binaryen.Type.f64: {
       return wasm_mod.f64.load(offset, align, ptr, name);
     }
-    case Binaryen.v128: {
+    case Binaryen.Type.v128: {
       return wasm_mod.v128.load(offset, align, ptr, name);
     }
     default: {
@@ -316,7 +316,7 @@ function caml_binaryen_store(
   var name = caml_jsstring_of_string(memoryName);
 
   switch (typ) {
-    case Binaryen.i32: {
+    case Binaryen.Type.i32: {
       if (bytes === 4) {
         return wasm_mod.i32.store(offset, align, ptr, value, name);
       }
@@ -331,7 +331,7 @@ function caml_binaryen_store(
 
       break;
     }
-    case Binaryen.i64: {
+    case Binaryen.Type.i64: {
       if (bytes === 8) {
         return wasm_mod.i64.store(offset, align, ptr, value, name);
       }
@@ -350,13 +350,13 @@ function caml_binaryen_store(
 
       break;
     }
-    case Binaryen.f32: {
+    case Binaryen.Type.f32: {
       return wasm_mod.f32.store(offset, align, ptr, value, name);
     }
-    case Binaryen.f64: {
+    case Binaryen.Type.f64: {
       return wasm_mod.f64.store(offset, align, ptr, value, name);
     }
-    case Binaryen.v128: {
+    case Binaryen.Type.v128: {
       return wasm_mod.v128.store(offset, align, ptr, value, name);
     }
     default: {
