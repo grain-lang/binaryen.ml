@@ -349,7 +349,7 @@ module Null : sig
 end
 
 module Ref : sig
-  val null : Module.t -> Type.t -> t
+  val null : Module.t -> Heap_type.t -> t
   (** Module, type *)
 
   val is_null : Module.t -> t -> t
