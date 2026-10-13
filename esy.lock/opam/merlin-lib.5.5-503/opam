@@ -27,10 +27,10 @@ description:
   thoroughly documented, and its public API might break with any new release."
 url {
   src:
-    "https://github.com/ocaml/merlin/releases/download/v5.6-503/merlin-5.6-503.tbz"
+    "https://github.com/ocaml/merlin/releases/download/v5.5-503/merlin-5.5-503.tbz"
   checksum: [
-    "sha256=b0dcad092aaaf7a23f65ab9a089e8761bd665cc72357909e0ac6c2182f4fc2d4"
-    "sha512=9987baf2b2e82bab4c90a328bfcba9945e797e0f3d947156f04435ee84b49542844b379e35a79027c3ffe81f4b7a8f1c60803233999b4c039d4598033371880d"
+    "sha256=67da3b34f2fea07678267309f61da4a2c6f08298de0dc59655b8d30fd8269af1"
+    "sha512=1fb3b5180d36aa82b82a319e15b743b802b6888f0dc67645baafdb4e18dfc23a7b90064ec9bc42f7424061cf8cde7f8839178d8a8537bf4596759f3ff4891873"
   ]
 }
-x-commit-hash: "ced228ec336b6d1996322f472145c26d69e785af"
+x-commit-hash: "8b88b89ee7431a23eaf95e4e02e45dc65595aa74"

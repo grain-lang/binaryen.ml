@@ -1,5 +1,5 @@
 {
-  "checksum": "38db7bfd53e9889be55ce209233ee019",
+  "checksum": "45936021905417ef32adcb0ce652436c",
   "root": "@grain/binaryen.ml@link-dev:./package.json",
   "node": {
     "ocaml@5.3.0@d41d8cd9": {
@@ -22,30 +22,29 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/yojson@opam:2.2.2@0786d153": {
-      "id": "@opam/yojson@opam:2.2.2@0786d153",
+    "@opam/yojson@opam:3.0.0@b2c9a6c1": {
+      "id": "@opam/yojson@opam:3.0.0@b2c9a6c1",
       "name": "@opam/yojson",
-      "version": "opam:2.2.2",
+      "version": "opam:3.0.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/9a/9abfad8c9a79d4723ad2f6448e669c1e68dbfc87cc54a1b7c064b0c90912c595#sha256:9abfad8c9a79d4723ad2f6448e669c1e68dbfc87cc54a1b7c064b0c90912c595",
-          "archive:https://github.com/ocaml-community/yojson/releases/download/2.2.2/yojson-2.2.2.tbz#sha256:9abfad8c9a79d4723ad2f6448e669c1e68dbfc87cc54a1b7c064b0c90912c595"
+          "archive:https://opam.ocaml.org/cache/sha256/99/99414da7609b92a02474ef4b49ecda15edc8cbba5229341b124e7e4695c39610#sha256:99414da7609b92a02474ef4b49ecda15edc8cbba5229341b124e7e4695c39610",
+          "archive:https://github.com/ocaml-community/yojson/releases/download/3.0.0/yojson-3.0.0.tbz#sha256:99414da7609b92a02474ef4b49ecda15edc8cbba5229341b124e7e4695c39610"
         ],
         "opam": {
           "name": "yojson",
-          "version": "2.2.2",
-          "path": "esy.lock/opam/yojson.2.2.2"
+          "version": "3.0.0",
+          "path": "esy.lock/opam/yojson.3.0.0"
         }
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/seq@opam:base@5ed5af70",
-        "@opam/dune@opam:3.24.2@dc9091c2", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+        "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.24.2@dc9091c2",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/seq@opam:base@5ed5af70",
-        "@opam/dune@opam:3.24.2@dc9091c2"
+        "ocaml@5.3.0@d41d8cd9", "@opam/dune@opam:3.24.2@dc9091c2"
       ],
       "available": [
         [ "darwin", "x86_64" ],
@@ -387,32 +386,30 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/sedlex@opam:3.7@7fb2caab": {
-      "id": "@opam/sedlex@opam:3.7@7fb2caab",
+    "@opam/sedlex@opam:3.8.1@c6658dba": {
+      "id": "@opam/sedlex@opam:3.8.1@c6658dba",
       "name": "@opam/sedlex",
-      "version": "opam:3.7",
+      "version": "opam:3.8.1",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/md5/89/893790268f68a1bb60dcc139f390a2d3#md5:893790268f68a1bb60dcc139f390a2d3",
-          "archive:https://github.com/ocaml-community/sedlex/archive/refs/tags/v3.7.tar.gz#md5:893790268f68a1bb60dcc139f390a2d3"
+          "archive:https://opam.ocaml.org/cache/sha256/b8/b8efae9d2a9a39c2ca2c43a2684f3fb686a8775329f7f9b07c3e3d8a2b7682d6#sha256:b8efae9d2a9a39c2ca2c43a2684f3fb686a8775329f7f9b07c3e3d8a2b7682d6",
+          "archive:https://github.com/ocaml-community/sedlex/releases/download/v3.8.1/sedlex-3.8.1.tbz#sha256:b8efae9d2a9a39c2ca2c43a2684f3fb686a8775329f7f9b07c3e3d8a2b7682d6"
         ],
         "opam": {
           "name": "sedlex",
-          "version": "3.7",
-          "path": "esy.lock/opam/sedlex.3.7"
+          "version": "3.8.1",
+          "path": "esy.lock/opam/sedlex.3.8.1"
         }
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9",
-        "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ppxlib@opam:0.39.0@c925e4a9",
         "@opam/gen@opam:1.1@55327887", "@opam/dune@opam:3.24.2@dc9091c2",
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9",
-        "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c",
+        "ocaml@5.3.0@d41d8cd9", "@opam/ppxlib@opam:0.39.0@c925e4a9",
         "@opam/gen@opam:1.1@55327887", "@opam/dune@opam:3.24.2@dc9091c2"
       ],
       "available": [
@@ -453,20 +450,20 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c": {
-      "id": "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c",
+    "@opam/ppxlib@opam:0.39.0@c925e4a9": {
+      "id": "@opam/ppxlib@opam:0.39.0@c925e4a9",
       "name": "@opam/ppxlib",
-      "version": "opam:0.39.0~5.6preview",
+      "version": "opam:0.39.0",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/59/591d694609fed01783c9f360602e8660ae0e49eb33b7074c1317a261e00c6cdb#sha256:591d694609fed01783c9f360602e8660ae0e49eb33b7074c1317a261e00c6cdb",
-          "archive:https://github.com/ocaml-ppx/ppxlib/archive/2e150834476230e99e48dfdf34c5e4a1ea6e749b.tar.gz#sha256:591d694609fed01783c9f360602e8660ae0e49eb33b7074c1317a261e00c6cdb"
+          "archive:https://opam.ocaml.org/cache/sha256/44/441a2814dbac3f5dc0c8dcefca263548e9b4d6dda1ef2990ce6a4999e108be3c#sha256:441a2814dbac3f5dc0c8dcefca263548e9b4d6dda1ef2990ce6a4999e108be3c",
+          "archive:https://github.com/ocaml-ppx/ppxlib/releases/download/0.39.0/ppxlib-0.39.0.tbz#sha256:441a2814dbac3f5dc0c8dcefca263548e9b4d6dda1ef2990ce6a4999e108be3c"
         ],
         "opam": {
           "name": "ppxlib",
-          "version": "0.39.0~5.6preview",
-          "path": "esy.lock/opam/ppxlib.0.39.0~5.6preview"
+          "version": "0.39.0",
+          "path": "esy.lock/opam/ppxlib.0.39.0"
         }
       },
       "overrides": [],
@@ -507,11 +504,11 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.24.2@dc9091c2", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.24.2@dc9091c2"
       ],
       "available": [
@@ -953,7 +950,7 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/xdg@opam:3.24.2@cb11774c",
         "@opam/stdune@opam:3.20.2@c89dc074",
         "@opam/spawn@opam:v0.17.0@d0f69739", "@opam/re@opam:1.14.0@62aa9f42",
@@ -962,7 +959,7 @@
         "@opam/ordering@opam:3.20.2@6865c105",
         "@opam/ocamlformat-rpc-lib@opam:0.29.0@6c183c49",
         "@opam/ocamlc-loc@opam:3.20.2@4ca99b2f",
-        "@opam/merlin-lib@opam:5.6-503@f2a59b18",
+        "@opam/merlin-lib@opam:5.5-503@dae82f4f",
         "@opam/lsp@opam:1.23.1@22e2f8da",
         "@opam/jsonrpc@opam:1.23.1@f2566740",
         "@opam/fiber@opam:3.7.0@bf633a34", "@opam/dyn@opam:3.20.2@a43d3aee",
@@ -976,7 +973,7 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/xdg@opam:3.24.2@cb11774c",
         "@opam/stdune@opam:3.20.2@c89dc074",
         "@opam/spawn@opam:v0.17.0@d0f69739", "@opam/re@opam:1.14.0@62aa9f42",
@@ -985,7 +982,7 @@
         "@opam/ordering@opam:3.20.2@6865c105",
         "@opam/ocamlformat-rpc-lib@opam:0.29.0@6c183c49",
         "@opam/ocamlc-loc@opam:3.20.2@4ca99b2f",
-        "@opam/merlin-lib@opam:5.6-503@f2a59b18",
+        "@opam/merlin-lib@opam:5.5-503@dae82f4f",
         "@opam/lsp@opam:1.23.1@22e2f8da",
         "@opam/jsonrpc@opam:1.23.1@f2566740",
         "@opam/fiber@opam:3.7.0@bf633a34", "@opam/dyn@opam:3.20.2@a43d3aee",
@@ -1035,20 +1032,20 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@opam/merlin-lib@opam:5.6-503@f2a59b18": {
-      "id": "@opam/merlin-lib@opam:5.6-503@f2a59b18",
+    "@opam/merlin-lib@opam:5.5-503@dae82f4f": {
+      "id": "@opam/merlin-lib@opam:5.5-503@dae82f4f",
       "name": "@opam/merlin-lib",
-      "version": "opam:5.6-503",
+      "version": "opam:5.5-503",
       "source": {
         "type": "install",
         "source": [
-          "archive:https://opam.ocaml.org/cache/sha256/b0/b0dcad092aaaf7a23f65ab9a089e8761bd665cc72357909e0ac6c2182f4fc2d4#sha256:b0dcad092aaaf7a23f65ab9a089e8761bd665cc72357909e0ac6c2182f4fc2d4",
-          "archive:https://github.com/ocaml/merlin/releases/download/v5.6-503/merlin-5.6-503.tbz#sha256:b0dcad092aaaf7a23f65ab9a089e8761bd665cc72357909e0ac6c2182f4fc2d4"
+          "archive:https://opam.ocaml.org/cache/sha256/67/67da3b34f2fea07678267309f61da4a2c6f08298de0dc59655b8d30fd8269af1#sha256:67da3b34f2fea07678267309f61da4a2c6f08298de0dc59655b8d30fd8269af1",
+          "archive:https://github.com/ocaml/merlin/releases/download/v5.5-503/merlin-5.5-503.tbz#sha256:67da3b34f2fea07678267309f61da4a2c6f08298de0dc59655b8d30fd8269af1"
         ],
         "opam": {
           "name": "merlin-lib",
-          "version": "5.6-503",
-          "path": "esy.lock/opam/merlin-lib.5.6-503"
+          "version": "5.5-503",
+          "path": "esy.lock/opam/merlin-lib.5.5-503"
         }
       },
       "overrides": [],
@@ -1247,14 +1244,14 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/uutf@opam:1.0.4@ba7fbef7",
         "@opam/ppx_yojson_conv_lib@opam:v0.17.0@e7e988bb",
         "@opam/jsonrpc@opam:1.23.1@f2566740",
         "@opam/dune@opam:3.24.2@dc9091c2", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/uutf@opam:1.0.4@ba7fbef7",
         "@opam/ppx_yojson_conv_lib@opam:v0.17.0@e7e988bb",
         "@opam/jsonrpc@opam:1.23.1@f2566740",
@@ -1285,11 +1282,11 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.24.2@dc9091c2", "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
         "@opam/dune@opam:3.24.2@dc9091c2"
       ],
       "available": [
@@ -1317,9 +1314,9 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
-        "@opam/sedlex@opam:3.7@7fb2caab",
-        "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
+        "@opam/sedlex@opam:3.8.1@c6658dba",
+        "@opam/ppxlib@opam:0.39.0@c925e4a9",
         "@opam/ocamlfind@opam:1.9.8@c9de249d",
         "@opam/ocaml-compiler-libs@opam:v0.17.0@6bdcfede",
         "@opam/menhirSdk@opam:20260209@1b57a7c9",
@@ -1330,9 +1327,9 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [
-        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:2.2.2@0786d153",
-        "@opam/sedlex@opam:3.7@7fb2caab",
-        "@opam/ppxlib@opam:0.39.0~5.6preview@31af2f7c",
+        "ocaml@5.3.0@d41d8cd9", "@opam/yojson@opam:3.0.0@b2c9a6c1",
+        "@opam/sedlex@opam:3.8.1@c6658dba",
+        "@opam/ppxlib@opam:0.39.0@c925e4a9",
         "@opam/ocaml-compiler-libs@opam:v0.17.0@6bdcfede",
         "@opam/menhirSdk@opam:20260209@1b57a7c9",
         "@opam/menhirLib@opam:20260209@f5704f2b",
@@ -1935,14 +1932,14 @@
         [ "windows", "x86_64" ]
       ]
     },
-    "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#f4ed1e3d7efac8851b43062575a4a3703f3634a2@d41d8cd9": {
-      "id": "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#f4ed1e3d7efac8851b43062575a4a3703f3634a2@d41d8cd9",
+    "@grain/libbinaryen@133.0.0@d41d8cd9": {
+      "id": "@grain/libbinaryen@133.0.0@d41d8cd9",
       "name": "@grain/libbinaryen",
-      "version": "git:https://github.com/grain-lang/libbinaryen.git#f4ed1e3d7efac8851b43062575a4a3703f3634a2",
+      "version": "133.0.0",
       "source": {
         "type": "install",
         "source": [
-          "git:https://github.com/grain-lang/libbinaryen.git#f4ed1e3d7efac8851b43062575a4a3703f3634a2"
+          "archive:https://registry.npmjs.org/@grain/libbinaryen/-/libbinaryen-133.0.0.tgz#sha1:a904b1e7b8ddceae013c584651d605808eb867fc"
         ]
       },
       "overrides": [],
@@ -1975,7 +1972,7 @@
         "ocaml@5.3.0@d41d8cd9",
         "@opam/dune-configurator@opam:3.24.2@7928eaef",
         "@opam/dune@opam:3.24.2@dc9091c2",
-        "@grain/libbinaryen@git:https://github.com/grain-lang/libbinaryen.git#f4ed1e3d7efac8851b43062575a4a3703f3634a2@d41d8cd9"
+        "@grain/libbinaryen@133.0.0@d41d8cd9"
       ],
       "devDependencies": [
         "@opam/ocamlformat@opam:0.29.0@966c16ee",
