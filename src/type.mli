@@ -16,6 +16,8 @@ val stringref : t
 val nullref : t
 val null_externref : t
 val null_funcref : t
+val exnref : t
+val null_exnref : t
 val unreachable : t
 val auto : t
 val create : t array -> t

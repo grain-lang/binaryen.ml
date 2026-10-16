@@ -853,7 +853,7 @@ module Null = struct
 end
 
 module Ref = struct
-  external null : Module.t -> Type.t -> t = "caml_binaryen_ref_null"
+  external null : Module.t -> Heap_type.t -> t = "caml_binaryen_ref_null"
   (** Module, type *)
 
   external is_null : Module.t -> t -> t = "caml_binaryen_ref_is_null"

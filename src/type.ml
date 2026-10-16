@@ -64,6 +64,14 @@ external null_funcref : unit -> t = "caml_binaryen_type_null_funcref"
 
 let null_funcref = null_funcref ()
 
+external exnref : unit -> t = "caml_binaryen_type_exnref"
+
+let exnref = exnref ()
+
+external null_exnref : unit -> t = "caml_binaryen_type_null_exnref"
+
+let null_exnref = null_exnref ()
+
 external unreachable : unit -> t = "caml_binaryen_type_unreachable"
 
 let unreachable = unreachable ()

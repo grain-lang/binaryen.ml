@@ -12,8 +12,8 @@
     "pnp": false
   },
   "dependencies": {
-    "ocaml": ">= 4.14.0 < 6.0.0",
-    "@grain/libbinaryen": ">= 132.0.0 < 133.0.0",
+    "ocaml": ">= 4.14.0 < 5.5.0",
+    "@grain/libbinaryen": ">= 133.0.0 < 134.0.0",
     "@opam/dune": ">= 3.0.0",
     "@opam/dune-configurator": ">= 3.0.0"
   },
