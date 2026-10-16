@@ -13,6 +13,8 @@ jobs:
   build:
     name: Build and test
     runs-on: ${{ matrix.os }}
+    # Most runs take between 20 and 30 minutes, but we leave some extra time, notably because windows is a bit inconsistent and can take longer to build.
+    timeout-minutes: 90
 
     strategy:
       fail-fast: false
