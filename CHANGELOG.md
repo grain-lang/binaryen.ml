@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.43.0](https://github.com/grain-lang/binaryen.ml/compare/v0.42.0...v0.43.0) (2026-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Upgrade to Binaryen v133 ([#299](https://github.com/grain-lang/binaryen.ml/issues/299))
+
+### Features
+
+* Upgrade ci dependencies ([#289](https://github.com/grain-lang/binaryen.ml/issues/289)) ([66a86c4](https://github.com/grain-lang/binaryen.ml/commit/66a86c4ea621a48d5d7e7ceef15937734077e3ba))
+* Upgrade to Binaryen v133 ([#299](https://github.com/grain-lang/binaryen.ml/issues/299)) ([c8b2406](https://github.com/grain-lang/binaryen.ml/commit/c8b2406481bbc0b81b5057e48db5a66bbb6fef46))
+
 ## [0.42.0](https://github.com/grain-lang/binaryen.ml/compare/v0.41.0...v0.42.0) (2026-09-16)
 
 
