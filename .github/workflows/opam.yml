@@ -37,6 +37,16 @@ jobs:
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
 
+      - name: Install cygwin dependencies
+        if: runner.os == 'Windows'
+        run: |
+          opam install conf-cmake
+
+      # Cygwin's cmake hangs during compiler detection with libuv1 1.53.0
+      - name: Pin Cygwin libuv1
+        if: runner.os == 'Windows'
+        run: Start-Process -Wait -NoNewWindow C:\.opam\.cygwin\setup-x86_64.exe '-q -R C:\cygwin -P libuv1=1.52.1-1'
+
       - name: Install local dependencies
         run: |
           opam install . --deps-only --with-test
